@@ -1,12 +1,14 @@
 package com.hideoaki.scanner.db.model;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
-
-import com.hideoaki.scanner.db.utils.ScannerDBException;
+import java.util.List;
 
 import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
+
+import com.hideoaki.scanner.db.utils.ScannerDBException;
 
 public class Card {
 	public static final String DEFAULT_LOCAL_CARD_FILE = "defaultcard.csv";
@@ -30,6 +32,36 @@ public class Card {
 	private String imgBack;
 	private Group group;
 	private int privacy;
+
+	public Card() {
+
+	}
+
+	public Card(String firstName, String lastName, String position,
+			String email, String company, String website, String address,
+			String city, String state, String country, String zip,
+			String telephone, String fax, String mobile, String note,
+			String imgFront, String imgBack, Group group, int privacy) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.position = position;
+		this.email = email;
+		this.company = company;
+		this.website = website;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.zip = zip;
+		this.telephone = telephone;
+		this.fax = fax;
+		this.mobile = mobile;
+		this.note = note;
+		this.imgFront = imgFront;
+		this.imgBack = imgBack;
+		this.group = group;
+		this.privacy = privacy;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -183,6 +215,30 @@ public class Card {
 		this.privacy = privacy;
 	}
 
+	public String[] toArray() {
+		String[] arr = new String[19];
+		arr[0] = firstName;
+		arr[1] = lastName;
+		arr[2] = position;
+		arr[3] = email;
+		arr[4] = company;
+		arr[5] = website;
+		arr[6] = address;
+		arr[7] = city;
+		arr[8] = state;
+		arr[9] = country;
+		arr[10] = zip;
+		arr[11] = telephone;
+		arr[12] = fax;
+		arr[13] = mobile;
+		arr[14] = note;
+		arr[15] = imgFront;
+		arr[16] = imgBack;
+		arr[17] = group == null ? "" : group.getName();
+		arr[18] = String.valueOf(privacy);
+		return arr;
+	}
+
 	public static ArrayList<Card> loadLocalCard(String pathToCSV)
 			throws ScannerDBException {
 		try {
@@ -192,25 +248,25 @@ public class Card {
 			Card card = new Card();
 			while ((nextLine = reader.readNext()) != null) {
 				card = new Card();
-				card. firstName = nextLine[0];
-				card. lastName= nextLine[1];
-				card. position= nextLine[2];
-				card. email= nextLine[3];
-				card. company= nextLine[4];
-				card. website= nextLine[5];
-				card. address= nextLine[6];
-				card. city= nextLine[7];
-				card. state= nextLine[8];
-				card. country= nextLine[9];
-				card. zip= nextLine[10];
-				card. telephone= nextLine[11];
-				card. fax= nextLine[12];
-				card. mobile= nextLine[13];
-				card. note= nextLine[14];
-				card. imgFront= nextLine[15];
-				card. imgBack= nextLine[16];
-				card.group= new Group( nextLine[17]);
-				card.privacy= Integer.parseInt(nextLine[18]) ;
+				card.firstName = nextLine[0];
+				card.lastName = nextLine[1];
+				card.position = nextLine[2];
+				card.email = nextLine[3];
+				card.company = nextLine[4];
+				card.website = nextLine[5];
+				card.address = nextLine[6];
+				card.city = nextLine[7];
+				card.state = nextLine[8];
+				card.country = nextLine[9];
+				card.zip = nextLine[10];
+				card.telephone = nextLine[11];
+				card.fax = nextLine[12];
+				card.mobile = nextLine[13];
+				card.note = nextLine[14];
+				card.imgFront = nextLine[15];
+				card.imgBack = nextLine[16];
+				card.group = new Group(nextLine[17]);
+				card.privacy = Integer.parseInt(nextLine[18]);
 				System.out.println("Name: [" + nextLine[0] + "]\nAddress: ["
 						+ nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
 				listCard.add(card);
@@ -221,9 +277,22 @@ public class Card {
 			throw ex;
 		}
 	}
-	public void saveLocalCard(String pathToCSV){
-		/// todo
+
+	public static void saveLocalCard(List<Card> cards, String pathToCSV)
+			throws ScannerDBException {
+		try {
+			CSVWriter writer = new CSVWriter(new FileWriter(pathToCSV));
+			List<String[]> list = new ArrayList<String[]>();
+			for (Card card : cards) {
+				list.add(card.toArray());
+			}
+			writer.writeAll(list);
+		} catch (Exception e) {
+			ScannerDBException ex = new ScannerDBException(e);
+			throw ex;
+		}
 	}
+
 	public static void main() {
 
 	}
