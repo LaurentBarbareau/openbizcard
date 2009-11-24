@@ -1,9 +1,8 @@
 package com.hideoaki.scanner.db.utils;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.Properties;
 
 public class Config {
@@ -43,8 +42,9 @@ public class Config {
 		try {
 			Config config = new Config();
 			Properties prop = new Properties();
-			FileReader reader = new FileReader(CONFIG_FILE_NAME);
-			prop.load(reader);
+//			FileReader reader = new FileReader(CONFIG_FILE_NAME);
+			FileInputStream inputStram = new FileInputStream(CONFIG_FILE_NAME);
+			prop.load(inputStram);
 			config.username = prop.getProperty(USERNAME_PROP);
 			config.password = prop.getProperty(PASSWORD_PROP);
 			config.rememberPassword = Boolean.getBoolean(prop.getProperty(REMEMBERPASS_PROP) );
@@ -57,8 +57,7 @@ public class Config {
 
 	public void saveConfig() throws ScannerDBException {
 		try {
-			OutputStreamWriter writer = new OutputStreamWriter(
-					new FileOutputStream(CONFIG_FILE_NAME));
+			FileOutputStream writer = new FileOutputStream(CONFIG_FILE_NAME);
 			Properties prop = new Properties();
 			prop.setProperty(USERNAME_PROP, username);
 			prop.setProperty(PASSWORD_PROP, password);
