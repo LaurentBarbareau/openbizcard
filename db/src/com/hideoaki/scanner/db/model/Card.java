@@ -5,14 +5,27 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
+import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
-
+@Entity
+@Table(name = "Card")
 public class Card {
 	public static final String DEFAULT_LOCAL_CARD_FILE = "defaultcard.csv";
-
+	@Id @GeneratedValue
+    @Column(name = "ID")
+    private Long id;
 	private String firstName;
 	private String lastName;
 	private String position;
@@ -30,6 +43,8 @@ public class Card {
 	private String note;
 	private String imgFront;
 	private String imgBack;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "GROUP_ID")
 	private Group group;
 	private int privacy;
 
@@ -63,6 +78,13 @@ public class Card {
 		this.privacy = privacy;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -271,6 +293,7 @@ public class Card {
 						+ nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
 				listCard.add(card);
 			}
+			reader.close();
 			return listCard;
 		} catch (Exception e) {
 			ScannerDBException ex = new ScannerDBException(e);
@@ -287,17 +310,48 @@ public class Card {
 				list.add(card.toArray());
 			}
 			writer.writeAll(list);
+			writer.flush();
+			writer.close();
 		} catch (Exception e) {
 			ScannerDBException ex = new ScannerDBException(e);
 			throw ex;
 		}
 	}
 
-	public static void main() {
-
+	public static void main(String arg[]) {
+		testLoadLocalCSV();
 	}
 
-	public static void testLocalCSV() {
+	public static void testSaveLocalCSV() {
 
+		List<Card> cards = new ArrayList<Card>();
+		Card card1 = new Card("krissada", "chalermsook", "Project LEader",
+				"hideoaki@gmail.com", "Crie Company Limited",
+				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
+				"sss", "sss", new Group("Test"), Privacy.GROUP);
+		Card card2 = new Card("krissada2", "chalermsook2", "Project LEader2",
+				"hideoaki@gmail.com2", "Crie Company Limited2",
+				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
+				"sss", "sss", new Group("Test"), Privacy.GROUP);
+		cards.add(card1);
+		cards.add(card2);
+		try {
+			saveLocalCard(cards, DEFAULT_LOCAL_CARD_FILE);
+		} catch (ScannerDBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	public static void testLoadLocalCSV() {
+		try {
+			List<Card> list = loadLocalCard(DEFAULT_LOCAL_CARD_FILE);
+			System.out.println(list.size());
+		} catch (ScannerDBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
