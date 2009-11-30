@@ -236,6 +236,11 @@ public class Card {
 	public void setPrivacy(int privacy) {
 		this.privacy = privacy;
 	}
+	
+	@Override
+	public String toString() {
+		return "FNAME " + firstName + " LNAME "+ lastName + " EMAIL " + email + " IMG_F "+ imgFront+ " IMG_B " + imgBack;
+	}
 
 	public String[] toArray() {
 		String[] arr = new String[19];
@@ -354,4 +359,5 @@ public class Card {
 			e.printStackTrace();
 		}
 	}
+	
 }
