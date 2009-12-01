@@ -49,7 +49,7 @@ public class Card {
 	private int privacy;
 
 	public Card() {
-
+		id = -1L;
 	}
 
 	public Card(String firstName, String lastName, String position,
@@ -57,6 +57,7 @@ public class Card {
 			String city, String state, String country, String zip,
 			String telephone, String fax, String mobile, String note,
 			String imgFront, String imgBack, Group group, int privacy) {
+		id = -1L;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.position = position;
@@ -241,28 +242,52 @@ public class Card {
 	public String toString() {
 		return "FNAME " + firstName + " LNAME "+ lastName + " EMAIL " + email + " IMG_F "+ imgFront+ " IMG_B " + imgBack;
 	}
-
+	public void copy(Card card){
+		this.id = card.id;
+		this.firstName = card.firstName;
+		this.lastName = card.lastName;
+		this.position = card.position;
+		this.email = card.email;
+		this.company = card.company;
+		this.website = card.website;
+		this.address = card.address;
+		this.city = card.city;
+		this.state = card.state;
+		this.country = card.country;
+		this.zip = card.zip;
+		this.telephone = card.telephone;
+		this.fax = card.fax;
+		this.mobile = card.mobile;
+		this.note = card.note;
+		this.imgFront = card.imgFront;
+		this.imgBack = card.imgBack;
+		if(this.group != null && card.group != null){
+			this.group.copy(card.group);
+		}
+		this.privacy = card.privacy;
+	}
 	public String[] toArray() {
-		String[] arr = new String[19];
-		arr[0] = firstName;
-		arr[1] = lastName;
-		arr[2] = position;
-		arr[3] = email;
-		arr[4] = company;
-		arr[5] = website;
-		arr[6] = address;
-		arr[7] = city;
-		arr[8] = state;
-		arr[9] = country;
-		arr[10] = zip;
-		arr[11] = telephone;
-		arr[12] = fax;
-		arr[13] = mobile;
-		arr[14] = note;
-		arr[15] = imgFront;
-		arr[16] = imgBack;
-		arr[17] = group == null ? "" : group.getName();
-		arr[18] = String.valueOf(privacy);
+		String[] arr = new String[20];
+		arr[0] = String.valueOf(id);
+		arr[1] = firstName;
+		arr[2] = lastName;
+		arr[3] = position;
+		arr[4] = email;
+		arr[5] = company;
+		arr[6] = website;
+		arr[7] = address;
+		arr[8] = city;
+		arr[9] = state;
+		arr[10] = country;
+		arr[11] = zip;
+		arr[12] = telephone;
+		arr[13] = fax;
+		arr[14] = mobile;
+		arr[15] = note;
+		arr[16] = imgFront;
+		arr[17] = imgBack;
+		arr[18] = group == null ? "" : group.getName();
+		arr[19] = String.valueOf(privacy);
 		return arr;
 	}
 
@@ -275,25 +300,26 @@ public class Card {
 			Card card = new Card();
 			while ((nextLine = reader.readNext()) != null) {
 				card = new Card();
-				card.firstName = nextLine[0];
-				card.lastName = nextLine[1];
-				card.position = nextLine[2];
-				card.email = nextLine[3];
-				card.company = nextLine[4];
-				card.website = nextLine[5];
-				card.address = nextLine[6];
-				card.city = nextLine[7];
-				card.state = nextLine[8];
-				card.country = nextLine[9];
-				card.zip = nextLine[10];
-				card.telephone = nextLine[11];
-				card.fax = nextLine[12];
-				card.mobile = nextLine[13];
-				card.note = nextLine[14];
-				card.imgFront = nextLine[15];
-				card.imgBack = nextLine[16];
-				card.group = new Group(nextLine[17]);
-				card.privacy = Integer.parseInt(nextLine[18]);
+				card.id = Long.valueOf(nextLine[0]) ;
+				card.firstName = nextLine[1];
+				card.lastName = nextLine[2];
+				card.position = nextLine[3];
+				card.email = nextLine[4];
+				card.company = nextLine[5];
+				card.website = nextLine[6];
+				card.address = nextLine[7];
+				card.city = nextLine[8];
+				card.state = nextLine[9];
+				card.country = nextLine[10];
+				card.zip = nextLine[11];
+				card.telephone = nextLine[12];
+				card.fax = nextLine[13];
+				card.mobile = nextLine[14];
+				card.note = nextLine[15];
+				card.imgFront = nextLine[16];
+				card.imgBack = nextLine[17];
+				card.group = new Group(nextLine[18]);
+				card.privacy = Integer.parseInt(nextLine[19]);
 				System.out.println("Name: [" + nextLine[0] + "]\nAddress: ["
 						+ nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
 				listCard.add(card);
