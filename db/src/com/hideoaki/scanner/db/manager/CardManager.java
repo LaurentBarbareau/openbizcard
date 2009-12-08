@@ -38,7 +38,7 @@ public class CardManager {
 		card1.setFirstName("hideoak2i2");
 		Card card2 = cards.get(2);
 		card2.setLastName("hideo2");
-//		cards.clear();
+		// cards.clear();
 		cards.add(card5);
 		System.out.println(cards.size());
 		saveDBAllCard(cards);
@@ -77,13 +77,13 @@ public class CardManager {
 		tx.begin();
 		for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
 			Card card = (Card) iterator.next();
-			if(card.getId() == -1){
+			if (card.getId() == -1) {
 				em.persist(card);
-			}else{
+			} else {
 				Card oldCard = em.find(Card.class, card.getId());
-				oldCard.copy(card);	
+				oldCard.copy(card);
 			}
-//			em.persist(card);
+			// em.persist(card);
 		}
 		tx.commit();
 		em.close();
@@ -135,5 +135,10 @@ public class CardManager {
 	public static void saveLocalCard(List<Card> cards, String pathToCSV)
 			throws ScannerDBException {
 		Card.saveLocalCard(cards, pathToCSV);
+	}
+
+	public static void addLocalCard(Card card, String pathToCSV)
+			throws ScannerDBException {
+		Card.addLocalCard(card, pathToCSV);
 	}
 }

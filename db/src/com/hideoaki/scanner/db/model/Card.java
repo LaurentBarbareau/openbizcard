@@ -19,13 +19,15 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
+
 @Entity
 @Table(name = "Card")
 public class Card {
 	public static final String DEFAULT_LOCAL_CARD_FILE = "defaultcard.csv";
-	@Id @GeneratedValue
-    @Column(name = "ID")
-    private Long id;
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String position;
@@ -44,9 +46,26 @@ public class Card {
 	private String imgFront;
 	private String imgBack;
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "GROUP_ID")
+	@JoinColumn(name = "GROUP_ID")
 	private Group group;
 	private int privacy;
+
+	@Override
+	public boolean equals(Object obj) {
+		// System.out.print("equal" + this.id + ":" + ((Card) obj).id);
+		// System.out.print("minus " + (((Card) obj).id - this.id) );
+		if (obj != null) {
+			boolean a = false;
+			if ((this.id - ((Card) obj).id) == 0) {
+				a = true;
+			}
+			// System.out.println(a);
+			return a;
+		} else {
+			return false;
+		}
+
+	}
 
 	public Card() {
 		id = -1L;
@@ -86,6 +105,7 @@ public class Card {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -237,12 +257,14 @@ public class Card {
 	public void setPrivacy(int privacy) {
 		this.privacy = privacy;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "FNAME " + firstName + " LNAME "+ lastName + " EMAIL " + email + " IMG_F "+ imgFront+ " IMG_B " + imgBack;
+		return "FNAME " + firstName + " LNAME " + lastName + " EMAIL " + email
+				+ " IMG_F " + imgFront + " IMG_B " + imgBack;
 	}
-	public void copy(Card card){
+
+	public void copy(Card card) {
 		this.id = card.id;
 		this.firstName = card.firstName;
 		this.lastName = card.lastName;
@@ -261,11 +283,12 @@ public class Card {
 		this.note = card.note;
 		this.imgFront = card.imgFront;
 		this.imgBack = card.imgBack;
-		if(this.group != null && card.group != null){
+		if (this.group != null && card.group != null) {
 			this.group.copy(card.group);
 		}
 		this.privacy = card.privacy;
 	}
+
 	public String[] toArray() {
 		String[] arr = new String[20];
 		arr[0] = String.valueOf(id);
@@ -300,7 +323,7 @@ public class Card {
 			Card card = new Card();
 			while ((nextLine = reader.readNext()) != null) {
 				card = new Card();
-				card.id = Long.valueOf(nextLine[0]) ;
+				card.id = Long.valueOf(nextLine[0]);
 				card.firstName = nextLine[1];
 				card.lastName = nextLine[2];
 				card.position = nextLine[3];
@@ -320,8 +343,8 @@ public class Card {
 				card.imgBack = nextLine[17];
 				card.group = new Group(nextLine[18]);
 				card.privacy = Integer.parseInt(nextLine[19]);
-				System.out.println("Name: [" + nextLine[0] + "]\nAddress: ["
-						+ nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
+				// System.out.println("Name: [" + nextLine[0] + "]\nAddress: ["
+				// + nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
 				listCard.add(card);
 			}
 			reader.close();
@@ -335,10 +358,14 @@ public class Card {
 	public static void saveLocalCard(List<Card> cards, String pathToCSV)
 			throws ScannerDBException {
 		try {
+
 			CSVWriter writer = new CSVWriter(new FileWriter(pathToCSV));
 			List<String[]> list = new ArrayList<String[]>();
+			long i = 0;
 			for (Card card : cards) {
+				card.id = i;
 				list.add(card.toArray());
+				i = i + 1;
 			}
 			writer.writeAll(list);
 			writer.flush();
@@ -349,41 +376,60 @@ public class Card {
 		}
 	}
 
-	public static void main(String arg[]) {
-		testLoadLocalCSV();
+	public static List<Card> addLocalCard(Card card, String pathToCSV)
+			throws ScannerDBException {
+		ArrayList<Card> currentCards = loadLocalCard(pathToCSV);
+		currentCards.add(card);
+		saveLocalCard(currentCards, pathToCSV);
+		return currentCards;
 	}
 
-	public static void testSaveLocalCSV() {
+	public static List<Card> deleteLocalCard(long id, String pathToCSV)
+			throws ScannerDBException {
+		Card temp = new Card();
+		temp.setId(id);
+		ArrayList<Card> currentCards = loadLocalCard(pathToCSV);
+		int i = currentCards.indexOf(temp);
+		if (i >= 0) {
+			currentCards.remove(i);
+		}
+		saveLocalCard(currentCards, pathToCSV);
+		return currentCards;
+	}
 
-		List<Card> cards = new ArrayList<Card>();
-		Card card1 = new Card("krissada", "chalermsook", "Project LEader",
+	public static void main(String arg[]) {
+		testDeleteLocalCard();
+	}
+
+	public static void testAddLocalCard() {
+
+		Card card1 = new Card("krissada5", "chalermsook", "Project LEader",
 				"hideoaki@gmail.com", "Crie Company Limited",
 				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
 				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
 				"sss", "sss", new Group("Test"), Privacy.GROUP);
-		Card card2 = new Card("krissada2", "chalermsook2", "Project LEader2",
+		Card card2 = new Card("krissada6", "chalermsook2", "Project LEader2",
 				"hideoaki@gmail.com2", "Crie Company Limited2",
 				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
 				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
 				"sss", "sss", new Group("Test"), Privacy.GROUP);
-		cards.add(card1);
-		cards.add(card2);
 		try {
-			saveLocalCard(cards, DEFAULT_LOCAL_CARD_FILE);
+			addLocalCard(card1, DEFAULT_LOCAL_CARD_FILE);
+			addLocalCard(card2, DEFAULT_LOCAL_CARD_FILE);
 		} catch (ScannerDBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+
 	}
-	public static void testLoadLocalCSV() {
+
+	public static void testDeleteLocalCard() {
 		try {
-			List<Card> list = loadLocalCard(DEFAULT_LOCAL_CARD_FILE);
-			System.out.println(list.size());
+			List<Card> c = deleteLocalCard(1, DEFAULT_LOCAL_CARD_FILE);
+			System.out.println("after " + c.size());
 		} catch (ScannerDBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 }
