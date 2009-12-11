@@ -2,6 +2,7 @@ package com.hideoaki.scanner.db.model.test;
 
 import java.util.List;
 
+import com.hideoaki.scanner.db.manager.CardDBManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.model.Group;
 import com.hideoaki.scanner.db.utils.Privacy;
@@ -9,15 +10,15 @@ import com.hideoaki.scanner.db.utils.ScannerDBException;
 
 import junit.framework.TestCase;
 
-public class TestCardManager extends TestCase {
+public class TestCardManagerLocal extends TestCase {
 	public static final String DEFAULT_TEST_CARD_FILE = "defaulttestcard.csv";
 
-	public TestCardManager(String name) {
+	public TestCardManagerLocal(String name) {
 		super(name);
 	}
 
 	public static void main(String[] args) {
-		junit.textui.TestRunner.run(TestCardManager.class);
+		junit.textui.TestRunner.run(TestCardManagerLocal.class);
 	}
 
 	public static void testLoadLocalCSV() throws Exception {
@@ -56,5 +57,18 @@ public class TestCardManager extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static void testAddLocalCSV() throws Exception {
+		List<Card> cards = Card.loadLocalCard(DEFAULT_TEST_CARD_FILE);
+		
+	}
+
+	public static void testEditLocalCSV() throws Exception {
+
+	}
+
+	public static void testDeleteLocalCSV() throws Exception {
+
 	}
 }

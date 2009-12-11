@@ -69,7 +69,7 @@ public class CardDBManager {
 		return cards;
 	}
 
-	private static void saveDBAllCard(List<Card> cards) {
+	public static void saveDBAllCard(List<Card> cards) {
 		// Start EntityManagerFactory
 		// First unit of work
 		EntityManager em = emf.createEntityManager();
@@ -90,7 +90,7 @@ public class CardDBManager {
 		// emf.close();
 	}
 
-	private static void addCard(Card card) {
+	public static void addCard(Card card) {
 		// Start EntityManagerFactory
 		// First unit of work
 		EntityManager em = emf.createEntityManager();
@@ -101,19 +101,36 @@ public class CardDBManager {
 		em.close();
 		// emf.close();
 	}
-
-	public static Card getDBCardById(long id) {
-		Card retCard = null;
+	public static void editCard(Card card) {
 		// Start EntityManagerFactory
 		// First unit of work
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		List<Card> cards = em.createQuery(SQL_SELECT_CARD_BY_ID)
-				.getResultList();
-		if (cards.size() > 0) {
-			retCard = cards.get(0);
-		}
+		Card c  =  em.find(Card.class, card.getId());
+		c.copy(card);
+		tx.commit();
+		em.close();
+		// emf.close();
+	}
+	public static void deleteCard(long id) {
+		// Start EntityManagerFactory
+		// First unit of work
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Card c = em.find(Card.class, id);
+		em.remove(c);
+		tx.commit();
+		em.close();
+		// emf.close();
+	}
+	public static Card getDBCardById(long id) {
+		Card retCard = null;
+		// Start EntityManagerFactory
+		// First unit of work
+		EntityManager em = emf.createEntityManager();
+		retCard = em.find(Card.class, id);
 		em.close();
 		// emf.close();
 		return retCard;
