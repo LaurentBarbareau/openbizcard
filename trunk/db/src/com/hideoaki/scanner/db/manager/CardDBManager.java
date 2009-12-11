@@ -15,7 +15,7 @@ import com.hideoaki.scanner.db.model.Group;
 import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 
-public class CardManager {
+public class CardDBManager {
 	static EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("openscanner");
 	public static final String SQL_SELECT_CARD_BY_ID = "select c from Card c order by c.id asc";
@@ -123,22 +123,4 @@ public class CardManager {
 		emf.close();
 	}
 
-	/*
-	 * For Local CArds
-	 */
-
-	public static ArrayList<Card> loadLocalCard(String pathToCSV)
-			throws ScannerDBException {
-		return Card.loadLocalCard(pathToCSV);
-	}
-
-	public static void saveLocalCard(List<Card> cards, String pathToCSV)
-			throws ScannerDBException {
-		Card.saveLocalCard(cards, pathToCSV);
-	}
-
-	public static void addLocalCard(Card card, String pathToCSV)
-			throws ScannerDBException {
-		Card.addLocalCard(card, pathToCSV);
-	}
 }
