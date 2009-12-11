@@ -397,6 +397,17 @@ public class Card {
 		return currentCards;
 	}
 
+	public static List<Card> editLocalCard(Card card, String pathToCSV)
+			throws ScannerDBException {
+		ArrayList<Card> currentCards = loadLocalCard(pathToCSV);
+		int i = currentCards.indexOf(card);
+		if (i >= 0) {
+			currentCards.set(i, card);
+		}
+		saveLocalCard(currentCards, pathToCSV);
+		return currentCards;
+	}
+
 	public static void main(String arg[]) {
 		testDeleteLocalCard();
 	}

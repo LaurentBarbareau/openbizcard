@@ -45,4 +45,9 @@ public class CardLocalManager {
 			throws ScannerDBException {
 		return Card.deleteLocalCard(id, pathToCSV);
 	}
+
+	public static List<Card> editLocalCard(Card card, String pathToCSV)
+			throws ScannerDBException {
+		return Card.editLocalCard(card, pathToCSV);
+	}
 }
