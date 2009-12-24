@@ -13,7 +13,7 @@
             </test-roots>
         </data>
         <swingapp xmlns="http://www.netbeans.org/ns/form-swingapp/1">
-            <application-class name="scanner.ScannerApp"/>
+            <application-class name="com.jen.scanner.ui.ScannerApp"/>
         </swingapp>
     </configuration>
 </project>
