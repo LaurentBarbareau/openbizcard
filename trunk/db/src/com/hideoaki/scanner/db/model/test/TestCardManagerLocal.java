@@ -3,6 +3,7 @@ package com.hideoaki.scanner.db.model.test;
 import java.util.List;
 
 import com.hideoaki.scanner.db.manager.CardDBManager;
+import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.model.Group;
 import com.hideoaki.scanner.db.utils.Privacy;
@@ -60,8 +61,16 @@ public class TestCardManagerLocal extends TestCase {
 	}
 
 	public static void testAddLocalCSV() throws Exception {
-		List<Card> cards = Card.loadLocalCard(DEFAULT_TEST_CARD_FILE);
-		
+		List<Card> cards = CardLocalManager.loadLocalCard(DEFAULT_TEST_CARD_FILE);
+		assertEquals(9, cards.size());
+		Card card2 = new Card("krissada4", "chalermsook2", "Project LEader2",
+				"hideoaki@gmail.com2", "Crie Company Limited2",
+				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
+				"sss", "sss", new Group("Test"), Privacy.GROUP);
+		cards = CardLocalManager.addLocalCard(card2, DEFAULT_TEST_CARD_FILE);
+		assertEquals(10, cards.size());
+		CardLocalManager.deleteLocalCard(9, DEFAULT_TEST_CARD_FILE);
 	}
 
 	public static void testEditLocalCSV() throws Exception {

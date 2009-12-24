@@ -49,6 +49,10 @@ public class Card {
 	@JoinColumn(name = "GROUP_ID")
 	private Group group;
 	private int privacy;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "USER_ID")
+	private User user;
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -97,7 +101,11 @@ public class Card {
 		this.group = group;
 		this.privacy = privacy;
 	}
-
+	
+	public void setOwner(User user){
+		this.user = user;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -257,7 +265,13 @@ public class Card {
 	public void setPrivacy(int privacy) {
 		this.privacy = privacy;
 	}
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@Override
 	public String toString() {
 		return "FNAME " + firstName + " LNAME " + lastName + " EMAIL " + email
