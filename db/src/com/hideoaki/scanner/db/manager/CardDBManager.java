@@ -16,7 +16,7 @@ import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 
 public class CardDBManager {
-	static EntityManagerFactory emf = Persistence
+	public static EntityManagerFactory emf = Persistence
 			.createEntityManagerFactory("openscanner");
 	public static final String SQL_SELECT_CARD_BY_ID = "select c from Card c order by c.id asc";
 	public static final String SQL_SELECT_CARD_BY_SEARCHKEY = "SELECT c from Card c WHERE c.firstName like :searchKey OR lastName like :searchKey order by c.id asc";
