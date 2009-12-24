@@ -1,0 +1,4 @@
+#Thu Dec 24 14:42:20 ICT 2009
+eclipse.preferences.version=1
+SdkRegistrants=com.google.appengine.eclipse.sdkbundle_1.2.5.v200909021031,com.google.gwt.eclipse.sdkbundle.win32_1.7.0.v200907291526
+addedNewWizardActionsorg.eclipse.jdt.ui.JavaPerspective=true
