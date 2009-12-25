@@ -59,5 +59,10 @@ public class User {
 	public void setRole(int role) {
 		this.role = role;
 	}
-
+	public void copy(User user) {
+		this.id = user.id;
+		this.username = user.username;
+		this.password = user.password;
+		this.role = user.role;
+	}
 }

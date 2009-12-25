@@ -50,4 +50,11 @@ public class CardLocalManager {
 			throws ScannerDBException {
 		return Card.editLocalCard(card, pathToCSV);
 	}
+
+	// filters is a column number of field that want to use to filter
+	// if filter == null or size == 0 it will use all field to search
+	public static List<Card> searchLocalCard(List<Card> cards,
+			String searchKey, List<Integer> filters) throws ScannerDBException {
+		return Card.searchLocalCard(cards, searchKey, filters);
+	}
 }
