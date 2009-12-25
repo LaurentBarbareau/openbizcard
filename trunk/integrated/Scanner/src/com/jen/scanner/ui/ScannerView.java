@@ -115,6 +115,7 @@ public class ScannerView extends FrameView {
         settingPanel = new javax.swing.JPanel();
         databaseTf = new javax.swing.JTextField();
         databaseBtn = new javax.swing.JButton();
+        setDbBtn = new javax.swing.JButton();
         scannerTab = new javax.swing.JPanel();
         upLeftT1 = new javax.swing.JPanel();
         nameLbT1 = new javax.swing.JLabel();
@@ -410,24 +411,34 @@ public class ScannerView extends FrameView {
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
-        mainPanel.setMaximumSize(new java.awt.Dimension(704, 674));
-        mainPanel.setMinimumSize(new java.awt.Dimension(704, 674));
+        mainPanel.setMaximumSize(new java.awt.Dimension(704, 660));
+        mainPanel.setMinimumSize(new java.awt.Dimension(704, 660));
         mainPanel.setName("mainPanel"); // NOI18N
+        mainPanel.setPreferredSize(new java.awt.Dimension(704, 660));
 
+        menuTab.setMaximumSize(new java.awt.Dimension(704, 660));
+        menuTab.setMinimumSize(new java.awt.Dimension(350, 250));
         menuTab.setName("menuTab"); // NOI18N
         menuTab.setPreferredSize(new java.awt.Dimension(350, 250));
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jen.scanner.ui.ScannerApp.class).getContext().getResourceMap(ScannerView.class);
         loginTab.setToolTipText(resourceMap.getString("loginTab.toolTipText")); // NOI18N
+        loginTab.setMaximumSize(new java.awt.Dimension(350, 250));
+        loginTab.setMinimumSize(new java.awt.Dimension(350, 250));
         loginTab.setName("loginTab"); // NOI18N
-        loginTab.setLayout(new javax.swing.BoxLayout(loginTab, javax.swing.BoxLayout.LINE_AXIS));
+        loginTab.setPreferredSize(new java.awt.Dimension(350, 250));
+        loginTab.setLayout(new java.awt.GridBagLayout());
 
-        loginP.setMaximumSize(new java.awt.Dimension(704, 674));
+        loginP.setMaximumSize(new java.awt.Dimension(350, 250));
+        loginP.setMinimumSize(new java.awt.Dimension(350, 250));
         loginP.setName("loginP"); // NOI18N
+        loginP.setPreferredSize(new java.awt.Dimension(350, 270));
         loginP.setLayout(new java.awt.GridBagLayout());
 
         loginPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("loginPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("loginPanel.border.titleColor"))); // NOI18N
         loginPanel.setToolTipText(resourceMap.getString("loginPanel.toolTipText")); // NOI18N
+        loginPanel.setMaximumSize(new java.awt.Dimension(236, 160));
+        loginPanel.setMinimumSize(new java.awt.Dimension(236, 160));
         loginPanel.setName("loginPanel"); // NOI18N
         loginPanel.setPreferredSize(new java.awt.Dimension(236, 160));
 
@@ -485,11 +496,20 @@ public class ScannerView extends FrameView {
         loginPanel.getAccessibleContext().setAccessibleDescription(resourceMap.getString("loginPanel.AccessibleContext.accessibleDescription")); // NOI18N
 
         settingPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("settingPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("settingPanel.border.titleColor"))); // NOI18N
+        settingPanel.setMaximumSize(new java.awt.Dimension(236, 100));
+        settingPanel.setMinimumSize(new java.awt.Dimension(236, 100));
         settingPanel.setName("settingPanel"); // NOI18N
-        settingPanel.setPreferredSize(new java.awt.Dimension(236, 90));
+        settingPanel.setPreferredSize(new java.awt.Dimension(236, 100));
+        settingPanel.setLayout(new java.awt.GridBagLayout());
 
         databaseTf.setText(resourceMap.getString("databaseTf.text")); // NOI18N
+        databaseTf.setMaximumSize(new java.awt.Dimension(100, 20));
+        databaseTf.setMinimumSize(new java.awt.Dimension(100, 20));
         databaseTf.setName("databaseTf"); // NOI18N
+        databaseTf.setPreferredSize(new java.awt.Dimension(100, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 6);
+        settingPanel.add(databaseTf, gridBagConstraints);
 
         databaseBtn.setText(resourceMap.getString("databaseBtn.text")); // NOI18N
         databaseBtn.setName("databaseBtn"); // NOI18N
@@ -498,27 +518,16 @@ public class ScannerView extends FrameView {
                 databaseBtnActionPerformed(evt);
             }
         });
+        settingPanel.add(databaseBtn, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout settingPanelLayout = new javax.swing.GroupLayout(settingPanel);
-        settingPanel.setLayout(settingPanelLayout);
-        settingPanelLayout.setHorizontalGroup(
-            settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(databaseTf, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(databaseBtn)
-                .addContainerGap())
-        );
-        settingPanelLayout.setVerticalGroup(
-            settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(settingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(databaseTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(databaseBtn))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        setDbBtn.setText(resourceMap.getString("setDbBtn.text")); // NOI18N
+        setDbBtn.setName("setDbBtn"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        settingPanel.add(setDbBtn, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -526,7 +535,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         loginP.add(settingPanel, gridBagConstraints);
 
-        loginTab.add(loginP);
+        loginTab.add(loginP, new java.awt.GridBagConstraints());
 
         menuTab.addTab(resourceMap.getString("loginTab.TabConstraints.tabTitle"), loginTab); // NOI18N
 
@@ -3276,16 +3285,11 @@ public class ScannerView extends FrameView {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menuTab, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(menuTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menuTab, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
+            .addComponent(menuTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
         );
 
         menuTab.getAccessibleContext().setAccessibleName(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleName")); // NOI18N
@@ -3608,6 +3612,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel scannerPanel2;
     private javax.swing.JPanel scannerTab;
     private javax.swing.JButton searchT2;
+    private javax.swing.JButton setDbBtn;
     private javax.swing.JPanel settingPanel;
     private javax.swing.JLabel stateLbT1;
     private javax.swing.JLabel stateLbT2;
