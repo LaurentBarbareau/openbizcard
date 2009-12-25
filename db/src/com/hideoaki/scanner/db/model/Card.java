@@ -3,6 +3,7 @@ package com.hideoaki.scanner.db.model;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,32 +28,31 @@ public class Card {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String position;
-	private String email;
-	private String company;
-	private String website;
-	private String address;
-	private String city;
-	private String state;
-	private String country;
-	private String zip;
-	private String telephone;
-	private String fax;
-	private String mobile;
-	private String note;
-	private String imgFront;
-	private String imgBack;
+	private Long id;// 0
+	private String firstName; // 1
+	private String lastName; // 2
+	private String position; // 3
+	private String email; // 4
+	private String company;// 5
+	private String website;// 6
+	private String address; // 7
+	private String city;// 8
+	private String state;// 9
+	private String country;// 10
+	private String zip;// 11
+	private String telephone;// 12
+	private String fax;// 13
+	private String mobile;// 14
+	private String note;// 15
+	private String imgFront;// 16
+	private String imgBack;// 17
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "GROUP_ID")
-	private Group group;
-	private int privacy;
+	private Group group;// 18
+	private int privacy;// 19
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "USER_ID")
 	private User user;
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -101,11 +101,11 @@ public class Card {
 		this.group = group;
 		this.privacy = privacy;
 	}
-	
-	public void setOwner(User user){
+
+	public void setOwner(User user) {
 		this.user = user;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -265,6 +265,7 @@ public class Card {
 	public void setPrivacy(int privacy) {
 		this.privacy = privacy;
 	}
+
 	public User getUser() {
 		return user;
 	}
@@ -272,6 +273,7 @@ public class Card {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	@Override
 	public String toString() {
 		return "FNAME " + firstName + " LNAME " + lastName + " EMAIL " + email
@@ -456,5 +458,114 @@ public class Card {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static List<Card> searchLocalCard(List<Card> cards,
+			String searchKey, List<Integer> filters) throws ScannerDBException {
+		List<Card> result = new ArrayList<Card>();
+		// no filter condition
+		if (filters == null || (filters != null && filters.size() == 0)) {
+			for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
+				Card card = (Card) iterator.next();
+				// private String firstName; // 1
+				// private String lastName; // 2
+				// private String position; // 3
+				// private String email; // 4
+				// private String company;// 5
+				// private String website;// 6
+				// private String address; // 7
+				// private String city;// 8
+				// private String state;// 9
+				// private String country;// 10
+				// private String zip;// 11
+				// private String telephone;// 12
+				// private String fax;// 13
+				// private String mobile;// 14
+				// private String note;// 15
+				if (card.firstName.indexOf(searchKey) >= 0
+						|| card.lastName.indexOf(searchKey) >= 0
+						|| card.position.indexOf(searchKey) >= 0
+						|| card.email.indexOf(searchKey) >= 0
+						|| card.company.indexOf(searchKey) >= 0
+						|| card.website.indexOf(searchKey) >= 0
+						|| card.address.indexOf(searchKey) >= 0
+						|| card.city.indexOf(searchKey) >= 0
+						|| card.state.indexOf(searchKey) >= 0
+						|| card.country.indexOf(searchKey) >= 0
+						|| card.zip.indexOf(searchKey) >= 0
+						|| card.telephone.indexOf(searchKey) >= 0
+						|| card.fax.indexOf(searchKey) >= 0
+						|| card.mobile.indexOf(searchKey) >= 0
+						|| card.note.indexOf(searchKey) >= 0) {
+					result.add(card);
+				}
+			}
+		}
+		// have filter
+		else {
+			char SEPERATOR = ' ';
+			for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
+				StringBuffer allString = new StringBuffer();
+				Card card = (Card) iterator.next();
+				for (Iterator iterator2 = filters.iterator(); iterator
+						.hasNext();) {
+					int mode = ((Integer) iterator2.next()).intValue();
+					switch (mode) {
+					case 1:
+						allString.append(card.firstName);
+						break;
+					case 2:
+						allString.append(card.lastName);
+						break;
+					case 3:
+						allString.append(card.position);
+						break;
+					case 4:
+						allString.append(card.email);
+						break;
+					case 5:
+						allString.append(card.company);
+						break;
+					case 6:
+						allString.append(card.website);
+						break;
+					case 7:
+						allString.append(card.address);
+						break;
+					case 8:
+						allString.append(card.city);
+						break;
+					case 9:
+						allString.append(card.state);
+						break;
+					case 10:
+						allString.append(card.country);
+						break;
+					case 11:
+						allString.append(card.zip);
+						break;
+					case 12:
+						allString.append(card.telephone);
+						break;
+					case 13:
+						allString.append(card.fax);
+						break;
+					case 14:
+						allString.append(card.mobile);
+						break;
+					case 15:
+						allString.append(card.note);
+						break;
+					default:
+						break;
+					}
+				}
+				if(allString.toString().indexOf(searchKey) >=0){
+					result.add(card);
+				}
+			}
+		}
+
+		return result;
 	}
 }
