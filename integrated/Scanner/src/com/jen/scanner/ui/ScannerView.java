@@ -25,11 +25,13 @@ public class ScannerView extends FrameView {
 
     public ScannerView(SingleFrameApplication app) {
         super(app);
-
+  
         initComponents();
-
+        
+       // setDbBtn.setText("set reference");
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
+
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -115,7 +117,7 @@ public class ScannerView extends FrameView {
         settingPanel = new javax.swing.JPanel();
         databaseTf = new javax.swing.JTextField();
         databaseBtn = new javax.swing.JButton();
-        setDbBtn = new javax.swing.JButton();
+        setRefBtn = new javax.swing.JButton();
         scannerTab = new javax.swing.JPanel();
         upLeftT1 = new javax.swing.JPanel();
         nameLbT1 = new javax.swing.JLabel();
@@ -410,6 +412,8 @@ public class ScannerView extends FrameView {
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
+        databaseLb = new javax.swing.JLabel();
+        databaseNameLb = new javax.swing.JLabel();
 
         mainPanel.setMaximumSize(new java.awt.Dimension(704, 660));
         mainPanel.setMinimumSize(new java.awt.Dimension(704, 660));
@@ -421,22 +425,21 @@ public class ScannerView extends FrameView {
         menuTab.setName("menuTab"); // NOI18N
         menuTab.setPreferredSize(new java.awt.Dimension(350, 250));
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jen.scanner.ui.ScannerApp.class).getContext().getResourceMap(ScannerView.class);
-        loginTab.setToolTipText(resourceMap.getString("loginTab.toolTipText")); // NOI18N
+        loginTab.setToolTipText(""); // NOI18N
         loginTab.setMaximumSize(new java.awt.Dimension(350, 250));
         loginTab.setMinimumSize(new java.awt.Dimension(350, 250));
         loginTab.setName("loginTab"); // NOI18N
         loginTab.setPreferredSize(new java.awt.Dimension(350, 250));
         loginTab.setLayout(new java.awt.GridBagLayout());
 
-        loginP.setMaximumSize(new java.awt.Dimension(350, 250));
+        loginP.setMaximumSize(new java.awt.Dimension(350, 300));
         loginP.setMinimumSize(new java.awt.Dimension(350, 250));
         loginP.setName("loginP"); // NOI18N
-        loginP.setPreferredSize(new java.awt.Dimension(350, 270));
+        loginP.setPreferredSize(new java.awt.Dimension(350, 300));
         loginP.setLayout(new java.awt.GridBagLayout());
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(com.jen.scanner.ui.ScannerApp.class).getContext().getResourceMap(ScannerView.class);
         loginPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("loginPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("loginPanel.border.titleColor"))); // NOI18N
-        loginPanel.setToolTipText(resourceMap.getString("loginPanel.toolTipText")); // NOI18N
         loginPanel.setMaximumSize(new java.awt.Dimension(236, 160));
         loginPanel.setMinimumSize(new java.awt.Dimension(236, 160));
         loginPanel.setName("loginPanel"); // NOI18N
@@ -520,14 +523,23 @@ public class ScannerView extends FrameView {
         });
         settingPanel.add(databaseBtn, new java.awt.GridBagConstraints());
 
-        setDbBtn.setText(resourceMap.getString("setDbBtn.text")); // NOI18N
-        setDbBtn.setName("setDbBtn"); // NOI18N
+        setRefBtn.setText(resourceMap.getString("setRefBtn.text")); // NOI18N
+        setRefBtn.setMaximumSize(new java.awt.Dimension(100, 23));
+        setRefBtn.setMinimumSize(new java.awt.Dimension(100, 23));
+        setRefBtn.setName("setRefBtn"); // NOI18N
+        setRefBtn.setOpaque(false);
+        setRefBtn.setPreferredSize(new java.awt.Dimension(100, 23));
+        setRefBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setRefBtnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        settingPanel.add(setDbBtn, gridBagConstraints);
+        settingPanel.add(setRefBtn, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -538,6 +550,7 @@ public class ScannerView extends FrameView {
         loginTab.add(loginP, new java.awt.GridBagConstraints());
 
         menuTab.addTab(resourceMap.getString("loginTab.TabConstraints.tabTitle"), loginTab); // NOI18N
+        loginTab.getAccessibleContext().setAccessibleDescription(resourceMap.getString("loginTab.AccessibleContext.accessibleDescription")); // NOI18N
 
         scannerTab.setMaximumSize(new java.awt.Dimension(704, 674));
         scannerTab.setName("scannerTab"); // NOI18N
@@ -1594,7 +1607,6 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 8;
         upLeftT2.add(blankPanel4, gridBagConstraints);
 
-        searchT2.setText(resourceMap.getString("searchT2.text")); // NOI18N
         searchT2.setName("searchT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3304,6 +3316,12 @@ public class ScannerView extends FrameView {
 
         progressBar.setName("progressBar"); // NOI18N
 
+        databaseLb.setText(resourceMap.getString("databaseLb.text")); // NOI18N
+        databaseLb.setName("databaseLb"); // NOI18N
+
+        databaseNameLb.setText(resourceMap.getString("databaseNameLb.text")); // NOI18N
+        databaseNameLb.setName("databaseNameLb"); // NOI18N
+
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
@@ -3311,11 +3329,16 @@ public class ScannerView extends FrameView {
             .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 534, Short.MAX_VALUE)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statusAnimationLabel)
+                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statusMessageLabel)
+                    .addGroup(statusPanelLayout.createSequentialGroup()
+                        .addComponent(databaseLb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(databaseNameLb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 462, Short.MAX_VALUE)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(statusAnimationLabel)))
                 .addContainerGap())
         );
         statusPanelLayout.setVerticalGroup(
@@ -3323,11 +3346,16 @@ public class ScannerView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusMessageLabel)
-                    .addComponent(statusAnimationLabel)
-                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3))
+                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(statusPanelLayout.createSequentialGroup()
+                        .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(statusMessageLabel)
+                            .addComponent(statusAnimationLabel)
+                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3))
+                    .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(databaseLb)
+                        .addComponent(databaseNameLb))))
         );
 
         setComponent(mainPanel);
@@ -3358,10 +3386,16 @@ public class ScannerView extends FrameView {
 
             if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
                 java.io.File file = dbChooser.getSelectedFile();
+                databaseTf.setText(file.getAbsolutePath());
             } else {
             }
        }
     }//GEN-LAST:event_databaseBtnActionPerformed
+
+    private void setRefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setRefBtnActionPerformed
+        // TODO add your handling code here:
+        databaseNameLb.setText(databaseTf.getText());
+    }//GEN-LAST:event_setRefBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
@@ -3445,6 +3479,8 @@ public class ScannerView extends FrameView {
     private javax.swing.JToggleButton cropBtnT1;
     private javax.swing.JToggleButton cropBtnT3;
     private javax.swing.JButton databaseBtn;
+    private javax.swing.JLabel databaseLb;
+    private javax.swing.JLabel databaseNameLb;
     private javax.swing.JTextField databaseTf;
     private javax.swing.JToggleButton doubleSideBtnT1;
     private javax.swing.JPanel editGroupPanelT5;
@@ -3612,7 +3648,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel scannerPanel2;
     private javax.swing.JPanel scannerTab;
     private javax.swing.JButton searchT2;
-    private javax.swing.JButton setDbBtn;
+    private javax.swing.JButton setRefBtn;
     private javax.swing.JPanel settingPanel;
     private javax.swing.JLabel stateLbT1;
     private javax.swing.JLabel stateLbT2;
