@@ -493,6 +493,11 @@ public class ScannerView extends FrameView {
 
         databaseBtn.setText(resourceMap.getString("databaseBtn.text")); // NOI18N
         databaseBtn.setName("databaseBtn"); // NOI18N
+        databaseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                databaseBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout settingPanelLayout = new javax.swing.GroupLayout(settingPanel);
         settingPanel.setLayout(settingPanelLayout);
@@ -3339,6 +3344,21 @@ public class ScannerView extends FrameView {
         response = javax.swing.JOptionPane.showConfirmDialog(null, "Do you want to save?","Confirm, please",javax.swing.JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_saveBtnT3ActionPerformed
 
+    private void databaseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseBtnActionPerformed
+        // TODO add your handling code here:
+         //Handle open button action.
+        if (evt.getSource() == databaseBtn) {
+            dbChooser.addChoosableFileFilter(new DBFileFilter());
+            dbChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = dbChooser.showOpenDialog(settingPanel);
+
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = dbChooser.getSelectedFile();
+            } else {
+            }
+       }
+    }//GEN-LAST:event_databaseBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
     private javax.swing.JPanel addNewGroupPanelT5;
@@ -3646,6 +3666,9 @@ public class ScannerView extends FrameView {
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
+
+    //file chooser
+    final javax.swing.JFileChooser dbChooser = new javax.swing.JFileChooser();
 
     private JDialog aboutBox;
 }
