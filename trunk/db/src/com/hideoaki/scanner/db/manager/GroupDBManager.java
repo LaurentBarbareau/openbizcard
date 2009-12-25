@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.model.Group;
 
 public class GroupDBManager {
@@ -57,5 +58,15 @@ public class GroupDBManager {
 		tx.commit();
 		em.close();
 		// emf.close();
+	}
+	public static Group getDBGroupById(long id) {
+		Group retCard = null;
+		// Start EntityManagerFactory
+		// First unit of work
+		EntityManager em = CardDBManager.emf.createEntityManager();
+		retCard = em.find(Group.class, id);
+		em.close();
+		// emf.close();
+		return retCard;
 	}
 }

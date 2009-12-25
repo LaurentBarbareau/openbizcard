@@ -2,14 +2,13 @@ package com.hideoaki.scanner.db.model.test;
 
 import java.util.List;
 
-import com.hideoaki.scanner.db.manager.CardDBManager;
+import junit.framework.TestCase;
+
 import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.model.Group;
 import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
-
-import junit.framework.TestCase;
 
 public class TestCardManagerLocal extends TestCase {
 	public static final String DEFAULT_TEST_CARD_FILE = "defaulttestcard.csv";

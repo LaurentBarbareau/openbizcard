@@ -2,18 +2,16 @@ package com.hideoaki.scanner.db.model.test;
 
 import junit.framework.TestCase;
 
-public class TestAuthManagerDB extends TestCase {
+public class TestUserManagerDB extends TestCase {
 	public static final String DEFAULT_TEST_CARD_FILE = "defaulttestcard.csv";
 
-	public TestAuthManagerDB(String name) {
+	public TestUserManagerDB(String name) {
 		super(name);
 	}
 
 	public static void main(String[] args) {
-		junit.textui.TestRunner.run(TestAuthManagerDB.class);
+		junit.textui.TestRunner.run(TestUserManagerDB.class);
 	}
 
-	public static void testLogin() throws Exception {
-		
-	}
+	
 }
