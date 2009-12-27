@@ -1710,6 +1710,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="searchT2.text"/>
                         <Property name="name" type="java.lang.String" value="searchT2" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchT2ActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                           <GridBagConstraints gridX="4" gridY="7" gridWidth="1" gridHeight="1" fill="0" ipadX="33" ipadY="2" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -2169,7 +2172,7 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane4" pref="268" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="259" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2189,17 +2192,16 @@
                             <Component class="javax.swing.JTable" name="importTableT5">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="10" rowCount="4">
-                                    <Column editable="true" title="Name" type="java.lang.Object"/>
-                                    <Column editable="true" title="Lastname" type="java.lang.Object"/>
-                                    <Column editable="true" title="Title" type="java.lang.Object"/>
-                                    <Column editable="true" title="E-mail" type="java.lang.Object"/>
-                                    <Column editable="true" title="Company" type="java.lang.Object"/>
-                                    <Column editable="true" title="Web" type="java.lang.Object"/>
-                                    <Column editable="true" title="Mobile" type="java.lang.Object"/>
-                                    <Column editable="true" title="Phone" type="java.lang.Object"/>
-                                    <Column editable="true" title="Fax" type="java.lang.Object"/>
-                                    <Column editable="true" title="Country" type="java.lang.Object"/>
+                                  <Table columnCount="9" rowCount="0">
+                                    <Column editable="true" title="selected" type="java.lang.Boolean"/>
+                                    <Column editable="false" title="Name" type="java.lang.String"/>
+                                    <Column editable="false" title="Lastname" type="java.lang.String"/>
+                                    <Column editable="false" title="Title" type="java.lang.String"/>
+                                    <Column editable="false" title="E-mail" type="java.lang.String"/>
+                                    <Column editable="false" title="Company" type="java.lang.String"/>
+                                    <Column editable="false" title="Mobile" type="java.lang.String"/>
+                                    <Column editable="false" title="Phone" type="java.lang.String"/>
+                                    <Column editable="false" title="Country" type="java.lang.String"/>
                                   </Table>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="importTableT5" noResource="true"/>
@@ -3344,7 +3346,7 @@
                             <Component class="javax.swing.JTable" name="importTableT4">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="10" rowCount="4">
+                                  <Table columnCount="10" rowCount="0">
                                     <Column editable="true" title="Name" type="java.lang.Object"/>
                                     <Column editable="true" title="Lastname" type="java.lang.Object"/>
                                     <Column editable="true" title="Title" type="java.lang.Object"/>
@@ -3660,7 +3662,7 @@
                             <Component class="javax.swing.JTable" name="resultTableT5">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="1" rowCount="4">
+                                  <Table columnCount="1" rowCount="0">
                                     <Column editable="true" title="Group" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
@@ -4240,7 +4242,7 @@
                             <Component class="javax.swing.JTable" name="editUserTbT6">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="3" rowCount="4">
+                                  <Table columnCount="3" rowCount="0">
                                     <Column editable="true" title="Username" type="java.lang.Object"/>
                                     <Column editable="true" title="Group" type="java.lang.Object"/>
                                     <Column editable="true" title="Last Accessed" type="java.lang.Object"/>
