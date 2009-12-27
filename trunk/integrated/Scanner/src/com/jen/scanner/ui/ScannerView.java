@@ -30,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * The application's main frame.
@@ -40,8 +41,12 @@ public class ScannerView extends FrameView {
         super(app);
   
         initComponents();
-
-       // setDbBtn.setText("set reference");
+        
+        try {
+            localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
+        } catch (ScannerDBException ex) {
+            Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
 
@@ -1604,6 +1609,11 @@ public class ScannerView extends FrameView {
 
         searchT2.setText(resourceMap.getString("searchT2.text")); // NOI18N
         searchT2.setName("searchT2"); // NOI18N
+        searchT2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchT2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 7;
@@ -1880,15 +1890,27 @@ public class ScannerView extends FrameView {
 
         importTableT5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Name", "Lastname", "Title", "E-mail", "Company", "Web", "Mobile", "Phone", "Fax", "Country"
+                "selected", "Name", "Lastname", "Title", "E-mail", "Company", "Mobile", "Phone", "Country"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         importTableT5.setName("importTableT5"); // NOI18N
         importTableT5.setRowSelectionAllowed(false);
         jScrollPane4.setViewportView(importTableT5);
@@ -1905,7 +1927,7 @@ public class ScannerView extends FrameView {
         tablePanelT2Layout.setVerticalGroup(
             tablePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tablePanelT2Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addGap(11, 11, 11))
         );
 
@@ -2671,10 +2693,7 @@ public class ScannerView extends FrameView {
 
         importTableT4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Name", "Lastname", "Title", "E-mail", "Company", "Web", "Mobile", "Phone", "Fax", "Country"
@@ -2851,10 +2870,7 @@ public class ScannerView extends FrameView {
 
         resultTableT5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Group"
@@ -3220,10 +3236,7 @@ public class ScannerView extends FrameView {
 
         editUserTbT6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Username", "Group", "Last Accessed"
@@ -3448,6 +3461,16 @@ public class ScannerView extends FrameView {
             }
        }
     }//GEN-LAST:event_backBtnT1ActionPerformed
+
+    private void searchT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchT2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) importTableT5.getModel();
+        for(Card card:localCardList){
+            model.addRow(new Object[]{false,card.getFirstName(),card.getLastName(),card.getPosition(),
+                             card.getEmail(),card.getCompany(),card.getMobile(),card.getTelephone(),
+                             card.getCountry()});
+        }
+    }//GEN-LAST:event_searchT2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
