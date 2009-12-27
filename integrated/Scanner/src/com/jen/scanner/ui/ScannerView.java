@@ -4,6 +4,15 @@
 
 package com.jen.scanner.ui;
 
+import com.hideoaki.scanner.db.manager.CardLocalManager;
+import com.hideoaki.scanner.db.model.Card;
+import com.hideoaki.scanner.db.model.Group;
+import com.hideoaki.scanner.db.utils.ScannerDBException;
+import com.jen.scanner.ui.util.DBFileFilter;
+import com.jen.scanner.ui.util.JPGFileFilter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -11,10 +20,14 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
 
@@ -27,7 +40,7 @@ public class ScannerView extends FrameView {
         super(app);
   
         initComponents();
-        
+
        // setDbBtn.setText("set reference");
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -134,7 +147,6 @@ public class ScannerView extends FrameView {
         cityLbT1 = new javax.swing.JLabel();
         countryLbT1 = new javax.swing.JLabel();
         phoneLbT1 = new javax.swing.JLabel();
-        attachLb = new javax.swing.JLabel();
         noteLbT1 = new javax.swing.JLabel();
         nameTfT1 = new javax.swing.JTextField();
         titleTfT1 = new javax.swing.JTextField();
@@ -156,8 +168,6 @@ public class ScannerView extends FrameView {
         adsScr1 = new javax.swing.JScrollPane();
         noteTaT1 = new javax.swing.JTextArea();
         attachPanel = new javax.swing.JPanel();
-        noteChbT1 = new javax.swing.JCheckBox();
-        otherChbT1 = new javax.swing.JCheckBox();
         blankPanel0 = new javax.swing.JPanel();
         blankPanel1 = new javax.swing.JPanel();
         blankPanel2 = new javax.swing.JPanel();
@@ -182,13 +192,13 @@ public class ScannerView extends FrameView {
         frontPanelT1 = new javax.swing.JPanel();
         frontTfT1 = new javax.swing.JTextField();
         frontBtnT1 = new javax.swing.JButton();
-        javax.swing.ImageIcon frontT1 = new javax.swing.ImageIcon("C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg");
-        frontSpT1 = new javax.swing.JScrollPane(new JLabel(frontT1));
+        frontLbT1 = new JLabel();
+        frontSpT1 = new javax.swing.JScrollPane(frontLbT1);
         lowRightT1 = new javax.swing.JPanel();
         backTfT1 = new javax.swing.JTextField();
         backBtnT1 = new javax.swing.JButton();
-        javax.swing.ImageIcon backT1 = new javax.swing.ImageIcon("C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg");
-        backSpT1 = new javax.swing.JScrollPane(new JLabel(backT1));
+        backLbT1 = new JLabel();
+        backSpT1 = new javax.swing.JScrollPane(backLbT1);
         queryTab = new javax.swing.JPanel();
         upLeftT2 = new javax.swing.JPanel();
         nameLbT2 = new javax.swing.JLabel();
@@ -258,17 +268,13 @@ public class ScannerView extends FrameView {
         thBtn8T2 = new javax.swing.JToggleButton();
         thBtn7T2 = new javax.swing.JToggleButton();
         thBtn6T2 = new javax.swing.JToggleButton();
-        jPanel2 = new javax.swing.JPanel();
-        lowLeftT2 = new javax.swing.JPanel();
-        frontTfT2 = new javax.swing.JTextField();
-        frontBtnT2 = new javax.swing.JButton();
-        javax.swing.ImageIcon frontT2 = new javax.swing.ImageIcon("C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg");
-        frontSpT2 = new javax.swing.JScrollPane(new JLabel(frontT2));
-        lowRightT2 = new javax.swing.JPanel();
-        backTfT2 = new javax.swing.JTextField();
-        backBtnT2 = new javax.swing.JButton();
-        javax.swing.ImageIcon backT2 = new javax.swing.ImageIcon("C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg");
-        backSpT2 = new javax.swing.JScrollPane(new JLabel(backT2));
+        lowPanelT2 = new javax.swing.JPanel();
+        tablePanelT2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        importTableT5 = new javax.swing.JTable();
+        deleteEditPanelT2 = new javax.swing.JPanel();
+        deletedBtnT2 = new javax.swing.JButton();
+        editBtnT2 = new javax.swing.JButton();
         resutlTab = new javax.swing.JPanel();
         upLeftT3 = new javax.swing.JPanel();
         nameLbT3 = new javax.swing.JLabel();
@@ -285,7 +291,6 @@ public class ScannerView extends FrameView {
         cityLbT3 = new javax.swing.JLabel();
         countryLbT3 = new javax.swing.JLabel();
         phoneLbT3 = new javax.swing.JLabel();
-        attachLb1 = new javax.swing.JLabel();
         noteLbT2 = new javax.swing.JLabel();
         nameTfT3 = new javax.swing.JTextField();
         titleTfT3 = new javax.swing.JTextField();
@@ -307,8 +312,6 @@ public class ScannerView extends FrameView {
         adsScr4 = new javax.swing.JScrollPane();
         noteTaT2 = new javax.swing.JTextArea();
         attachPanel1 = new javax.swing.JPanel();
-        noteChbT3 = new javax.swing.JCheckBox();
-        otherChbT3 = new javax.swing.JCheckBox();
         blankPanel5 = new javax.swing.JPanel();
         blankPanel6 = new javax.swing.JPanel();
         blankPanel7 = new javax.swing.JPanel();
@@ -536,7 +539,7 @@ public class ScannerView extends FrameView {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         settingPanel.add(setRefBtn, gridBagConstraints);
@@ -684,15 +687,6 @@ public class ScannerView extends FrameView {
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(phoneLbT1, gridBagConstraints);
-
-        attachLb.setText(resourceMap.getString("attachLb.text")); // NOI18N
-        attachLb.setName("attachLb"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        upLeftT1.add(attachLb, gridBagConstraints);
 
         noteLbT1.setText(resourceMap.getString("noteLbT1.text")); // NOI18N
         noteLbT1.setName("noteLbT1"); // NOI18N
@@ -911,29 +905,15 @@ public class ScannerView extends FrameView {
         attachPanel.setName("attachPanel"); // NOI18N
         attachPanel.setPreferredSize(new java.awt.Dimension(125, 20));
 
-        noteChbT1.setText(resourceMap.getString("noteChbT1.text")); // NOI18N
-        noteChbT1.setName("noteChbT1"); // NOI18N
-
-        otherChbT1.setText(resourceMap.getString("otherChbT1.text")); // NOI18N
-        otherChbT1.setName("otherChbT1"); // NOI18N
-
         javax.swing.GroupLayout attachPanelLayout = new javax.swing.GroupLayout(attachPanel);
         attachPanel.setLayout(attachPanelLayout);
         attachPanelLayout.setHorizontalGroup(
             attachPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attachPanelLayout.createSequentialGroup()
-                .addComponent(noteChbT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(otherChbT1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 125, Short.MAX_VALUE)
         );
         attachPanelLayout.setVerticalGroup(
             attachPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attachPanelLayout.createSequentialGroup()
-                .addGroup(attachPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(noteChbT1)
-                    .addComponent(otherChbT1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1132,6 +1112,11 @@ public class ScannerView extends FrameView {
 
         saveToDbBtnT1.setText(resourceMap.getString("saveToDbBtnT1.text")); // NOI18N
         saveToDbBtnT1.setName("saveToDbBtnT1"); // NOI18N
+        saveToDbBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveToDbBtnT1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -1184,6 +1169,11 @@ public class ScannerView extends FrameView {
 
         frontBtnT1.setText(resourceMap.getString("frontBtnT1.text")); // NOI18N
         frontBtnT1.setName("frontBtnT1"); // NOI18N
+        frontBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontBtnT1ActionPerformed(evt);
+            }
+        });
 
         frontSpT1.setName("frontSpT1"); // NOI18N
         frontSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
@@ -1233,6 +1223,11 @@ public class ScannerView extends FrameView {
 
         backBtnT1.setText(resourceMap.getString("backBtnT1.text")); // NOI18N
         backBtnT1.setName("backBtnT1"); // NOI18N
+        backBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnT1ActionPerformed(evt);
+            }
+        });
 
         backSpT1.setName("backSpT1"); // NOI18N
         backSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
@@ -1607,6 +1602,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 8;
         upLeftT2.add(blankPanel4, gridBagConstraints);
 
+        searchT2.setText(resourceMap.getString("searchT2.text")); // NOI18N
         searchT2.setName("searchT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -1872,99 +1868,91 @@ public class ScannerView extends FrameView {
 
         queryTab.add(upRightT2, new java.awt.GridBagConstraints());
 
-        jPanel2.setName("jPanel2"); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(650, 300));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        lowPanelT2.setName("lowPanelT2"); // NOI18N
+        lowPanelT2.setPreferredSize(new java.awt.Dimension(650, 340));
+        lowPanelT2.setLayout(new java.awt.GridBagLayout());
 
-        lowLeftT2.setName("lowLeftT2"); // NOI18N
+        tablePanelT2.setMinimumSize(new java.awt.Dimension(640, 270));
+        tablePanelT2.setName("tablePanelT2"); // NOI18N
+        tablePanelT2.setPreferredSize(new java.awt.Dimension(640, 270));
 
-        frontTfT2.setName("frontTfT2"); // NOI18N
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
 
-        frontBtnT2.setText(resourceMap.getString("frontBtnT2.text")); // NOI18N
-        frontBtnT2.setName("frontBtnT2"); // NOI18N
+        importTableT5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Lastname", "Title", "E-mail", "Company", "Web", "Mobile", "Phone", "Fax", "Country"
+            }
+        ));
+        importTableT5.setName("importTableT5"); // NOI18N
+        importTableT5.setRowSelectionAllowed(false);
+        jScrollPane4.setViewportView(importTableT5);
 
-        frontSpT2.setName("frontSpT2"); // NOI18N
-        frontSpT2.setPreferredSize(new java.awt.Dimension(100, 260));
-
-        javax.swing.GroupLayout lowLeftT2Layout = new javax.swing.GroupLayout(lowLeftT2);
-        lowLeftT2.setLayout(lowLeftT2Layout);
-        lowLeftT2Layout.setHorizontalGroup(
-            lowLeftT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowLeftT2Layout.createSequentialGroup()
-                .addGroup(lowLeftT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lowLeftT2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(frontTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(frontBtnT2))
-                    .addGroup(lowLeftT2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(frontSpT2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout tablePanelT2Layout = new javax.swing.GroupLayout(tablePanelT2);
+        tablePanelT2.setLayout(tablePanelT2Layout);
+        tablePanelT2Layout.setHorizontalGroup(
+            tablePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablePanelT2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        lowLeftT2Layout.setVerticalGroup(
-            lowLeftT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowLeftT2Layout.createSequentialGroup()
-                .addGroup(lowLeftT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frontTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontBtnT2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        tablePanelT2Layout.setVerticalGroup(
+            tablePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablePanelT2Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        jPanel2.add(lowLeftT2, gridBagConstraints);
+        lowPanelT2.add(tablePanelT2, gridBagConstraints);
 
-        lowRightT2.setName("lowRightT2"); // NOI18N
+        deleteEditPanelT2.setName("deleteEditPanelT2"); // NOI18N
+        deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(250, 35));
 
-        backTfT2.setName("backTfT2"); // NOI18N
+        deletedBtnT2.setText(resourceMap.getString("deletedBtnT2.text")); // NOI18N
+        deletedBtnT2.setName("deletedBtnT2"); // NOI18N
 
-        backBtnT2.setText(resourceMap.getString("backBtnT2.text")); // NOI18N
-        backBtnT2.setName("backBtnT2"); // NOI18N
+        editBtnT2.setText(resourceMap.getString("editBtnT2.text")); // NOI18N
+        editBtnT2.setName("editBtnT2"); // NOI18N
 
-        backSpT2.setName("backSpT2"); // NOI18N
-        backSpT2.setPreferredSize(new java.awt.Dimension(100, 260));
-
-        javax.swing.GroupLayout lowRightT2Layout = new javax.swing.GroupLayout(lowRightT2);
-        lowRightT2.setLayout(lowRightT2Layout);
-        lowRightT2Layout.setHorizontalGroup(
-            lowRightT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowRightT2Layout.createSequentialGroup()
-                .addGroup(lowRightT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lowRightT2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(backTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backBtnT2))
-                    .addGroup(lowRightT2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backSpT2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout deleteEditPanelT2Layout = new javax.swing.GroupLayout(deleteEditPanelT2);
+        deleteEditPanelT2.setLayout(deleteEditPanelT2Layout);
+        deleteEditPanelT2Layout.setHorizontalGroup(
+            deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(deletedBtnT2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(editBtnT2)
+                .addGap(33, 33, 33))
         );
-        lowRightT2Layout.setVerticalGroup(
-            lowRightT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowRightT2Layout.createSequentialGroup()
-                .addGroup(lowRightT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtnT2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        deleteEditPanelT2Layout.setVerticalGroup(
+            deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
+                .addGroup(deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deletedBtnT2)
+                    .addComponent(editBtnT2))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        jPanel2.add(lowRightT2, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        lowPanelT2.add(deleteEditPanelT2, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
-        queryTab.add(jPanel2, gridBagConstraints);
+        queryTab.add(lowPanelT2, gridBagConstraints);
 
         menuTab.addTab(resourceMap.getString("queryTab.TabConstraints.tabTitle"), queryTab); // NOI18N
 
@@ -2099,15 +2087,6 @@ public class ScannerView extends FrameView {
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(phoneLbT3, gridBagConstraints);
-
-        attachLb1.setText(resourceMap.getString("attachLb1.text")); // NOI18N
-        attachLb1.setName("attachLb1"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        upLeftT3.add(attachLb1, gridBagConstraints);
 
         noteLbT2.setText(resourceMap.getString("noteLbT2.text")); // NOI18N
         noteLbT2.setName("noteLbT2"); // NOI18N
@@ -2319,29 +2298,15 @@ public class ScannerView extends FrameView {
         attachPanel1.setName("attachPanel1"); // NOI18N
         attachPanel1.setPreferredSize(new java.awt.Dimension(125, 20));
 
-        noteChbT3.setText(resourceMap.getString("noteChbT3.text")); // NOI18N
-        noteChbT3.setName("noteChbT3"); // NOI18N
-
-        otherChbT3.setText(resourceMap.getString("otherChbT3.text")); // NOI18N
-        otherChbT3.setName("otherChbT3"); // NOI18N
-
         javax.swing.GroupLayout attachPanel1Layout = new javax.swing.GroupLayout(attachPanel1);
         attachPanel1.setLayout(attachPanel1Layout);
         attachPanel1Layout.setHorizontalGroup(
             attachPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attachPanel1Layout.createSequentialGroup()
-                .addComponent(noteChbT3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(otherChbT3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 125, Short.MAX_VALUE)
         );
         attachPanel1Layout.setVerticalGroup(
             attachPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attachPanel1Layout.createSequentialGroup()
-                .addGroup(attachPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(noteChbT3)
-                    .addComponent(otherChbT3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3320,7 +3285,20 @@ public class ScannerView extends FrameView {
         databaseLb.setName("databaseLb"); // NOI18N
 
         databaseNameLb.setText(resourceMap.getString("databaseNameLb.text")); // NOI18N
+        databaseNameLb.setMaximumSize(new java.awt.Dimension(800, 15));
+        databaseNameLb.setMinimumSize(new java.awt.Dimension(50, 15));
         databaseNameLb.setName("databaseNameLb"); // NOI18N
+        databaseNameLb.setPreferredSize(new java.awt.Dimension(800, 15));
+        defaultcard = new File("defaultcard.csv");
+
+        if(!defaultcard.exists()){
+            try {
+                defaultcard.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        databaseNameLb.setText(defaultcard.getAbsolutePath());
 
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
@@ -3334,8 +3312,8 @@ public class ScannerView extends FrameView {
                     .addGroup(statusPanelLayout.createSequentialGroup()
                         .addComponent(databaseLb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(databaseNameLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 462, Short.MAX_VALUE)
+                        .addComponent(databaseNameLb, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(statusAnimationLabel)))
@@ -3355,7 +3333,7 @@ public class ScannerView extends FrameView {
                         .addGap(3, 3, 3))
                     .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(databaseLb)
-                        .addComponent(databaseNameLb))))
+                        .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         setComponent(mainPanel);
@@ -3386,7 +3364,15 @@ public class ScannerView extends FrameView {
 
             if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
                 java.io.File file = dbChooser.getSelectedFile();
-                databaseTf.setText(file.getAbsolutePath());
+                String path = file.getAbsolutePath();
+                databaseTf.setText(path);
+
+                try {
+                    localCardList = CardLocalManager.loadLocalCard(path);
+                } catch (ScannerDBException ex) {
+                    Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             } else {
             }
        }
@@ -3394,8 +3380,74 @@ public class ScannerView extends FrameView {
 
     private void setRefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setRefBtnActionPerformed
         // TODO add your handling code here:
-        databaseNameLb.setText(databaseTf.getText());
+        String defaultPath = databaseTf.getText();
+        defaultcard = new File(defaultPath);
+        databaseNameLb.setText(defaultPath);
     }//GEN-LAST:event_setRefBtnActionPerformed
+
+    private void saveToDbBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToDbBtnT1ActionPerformed
+        // TODO add your handling code here:
+         int response;//0 = yes, 1 = no
+        response = javax.swing.JOptionPane.showConfirmDialog(null, "Do you want to save?","Confirm, please",javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if(response==0){
+            try {
+                String name = nameTfT1.getText();
+                String lastName = lastnameTfT1.getText();
+                String title = titleTfT1.getText();
+                String email = emailTfT1.getText();
+                String company = companyTfT1.getText();
+                String web = webTfT1.getText();
+                String state = stateTfT1.getText();
+                String city = cityTfT1.getText();
+                String code = codeTfT1.getText();
+                String country = countryTfT1.getText();
+                String mobile = mobileTfT1.getText();
+                String phone = phoneTfT1.getText();
+                String fax = faxTfT1.getText();
+                String ads = adsTaT1.getText();
+                String note = noteTaT1.getText();
+                String imgFront = frontTfT1.getText();
+                String imgBack = backTfT1.getText();
+                Card newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note, imgFront, imgBack, new Group(), 0);
+                CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
+            } catch (ScannerDBException ex) {
+                Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
+
+    private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
+        // TODO add your handling code here:
+                if (evt.getSource() == frontBtnT1) {
+            imgChooser.addChoosableFileFilter(new JPGFileFilter());
+            imgChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = imgChooser.showOpenDialog(null);
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = imgChooser.getSelectedFile();
+                String path = file.getAbsolutePath();
+                frontTfT1.setText(path);
+                frontLbT1.setIcon(new ImageIcon(path));
+            } else {
+            }
+       }
+    }//GEN-LAST:event_frontBtnT1ActionPerformed
+
+    private void backBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnT1ActionPerformed
+        // TODO add your handling code here:
+            if (evt.getSource() == backBtnT1) {
+            imgChooser.addChoosableFileFilter(new JPGFileFilter());
+            imgChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = imgChooser.showOpenDialog(null);
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = imgChooser.getSelectedFile();
+                String path = file.getAbsolutePath();
+                backTfT1.setText(path);
+                backLbT1.setIcon(new ImageIcon(path));
+            } else {
+            }
+       }
+    }//GEN-LAST:event_backBtnT1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
@@ -3415,18 +3467,13 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextArea adsTaT1;
     private javax.swing.JTextArea adsTaT2;
     private javax.swing.JTextArea adsTaT3;
-    private javax.swing.JLabel attachLb;
-    private javax.swing.JLabel attachLb1;
     private javax.swing.JPanel attachPanel;
     private javax.swing.JPanel attachPanel1;
     private javax.swing.JButton backBtnT1;
-    private javax.swing.JButton backBtnT2;
     private javax.swing.JButton backBtnT3;
     private javax.swing.JScrollPane backSpT1;
-    private javax.swing.JScrollPane backSpT2;
     private javax.swing.JScrollPane backSpT3;
     private javax.swing.JTextField backTfT1;
-    private javax.swing.JTextField backTfT2;
     private javax.swing.JTextField backTfT3;
     private javax.swing.JToggleButton blackWhiteBtn;
     private javax.swing.JToggleButton blackWhiteBtnT3;
@@ -3482,7 +3529,10 @@ public class ScannerView extends FrameView {
     private javax.swing.JLabel databaseLb;
     private javax.swing.JLabel databaseNameLb;
     private javax.swing.JTextField databaseTf;
+    private javax.swing.JPanel deleteEditPanelT2;
+    private javax.swing.JButton deletedBtnT2;
     private javax.swing.JToggleButton doubleSideBtnT1;
+    private javax.swing.JButton editBtnT2;
     private javax.swing.JPanel editGroupPanelT5;
     private javax.swing.JPanel editUserPanelT6;
     private javax.swing.JTable editUserTbT6;
@@ -3528,14 +3578,11 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField faxTfT2;
     private javax.swing.JTextField faxTfT3;
     private javax.swing.JButton frontBtnT1;
-    private javax.swing.JButton frontBtnT2;
     private javax.swing.JButton frontBtnT3;
     private javax.swing.JPanel frontPanelT1;
     private javax.swing.JScrollPane frontSpT1;
-    private javax.swing.JScrollPane frontSpT2;
     private javax.swing.JScrollPane frontSpT3;
     private javax.swing.JTextField frontTfT1;
-    private javax.swing.JTextField frontTfT2;
     private javax.swing.JTextField frontTfT3;
     private javax.swing.JLabel genSearchLbT2;
     private javax.swing.JPanel genSearchPanelT2;
@@ -3563,13 +3610,13 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel importPanelT4;
     private javax.swing.JPanel importPanelT5;
     private javax.swing.JTable importTableT4;
+    private javax.swing.JTable importTableT5;
     private javax.swing.JTextField importTfT4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -3578,6 +3625,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lastnameLbT1;
     private javax.swing.JLabel lastnameLbT2;
@@ -3590,10 +3638,9 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel loginTab;
     private javax.swing.JPanel low;
     private javax.swing.JPanel lowLeftT1;
-    private javax.swing.JPanel lowLeftT2;
     private javax.swing.JPanel lowLeftT3;
+    private javax.swing.JPanel lowPanelT2;
     private javax.swing.JPanel lowRightT1;
-    private javax.swing.JPanel lowRightT2;
     private javax.swing.JPanel lowRightT3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTabbedPane menuTab;
@@ -3609,16 +3656,12 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField nameTfT1;
     private javax.swing.JTextField nameTfT2;
     private javax.swing.JTextField nameTfT3;
-    private javax.swing.JCheckBox noteChbT1;
-    private javax.swing.JCheckBox noteChbT3;
     private javax.swing.JLabel noteLbT1;
     private javax.swing.JLabel noteLbT2;
     private javax.swing.JPanel notePanel;
     private javax.swing.JPanel notePanel1;
     private javax.swing.JTextArea noteTaT1;
     private javax.swing.JTextArea noteTaT2;
-    private javax.swing.JCheckBox otherChbT1;
-    private javax.swing.JCheckBox otherChbT3;
     private javax.swing.JLabel phoneLbT1;
     private javax.swing.JLabel phoneLbT2;
     private javax.swing.JLabel phoneLbT3;
@@ -3659,6 +3702,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JPanel tablePanelT2;
     private javax.swing.JToggleButton thBtn0T2;
     private javax.swing.JToggleButton thBtn0T3;
     private javax.swing.JToggleButton thBtn1T2;
@@ -3710,6 +3754,11 @@ public class ScannerView extends FrameView {
 
     //file chooser
     final javax.swing.JFileChooser dbChooser = new javax.swing.JFileChooser();
-
+    final javax.swing.JFileChooser imgChooser = new javax.swing.JFileChooser();
+    private JLabel frontLbT1;
+    private JLabel backLbT1;
+    //card local manager
+    private ArrayList<Card> localCardList;
+    private File defaultcard;
     private JDialog aboutBox;
 }

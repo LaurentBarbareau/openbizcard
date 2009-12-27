@@ -281,7 +281,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="6" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                              <GridBagConstraints gridX="0" gridY="2" gridWidth="2" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="6" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -474,17 +474,6 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                           <GridBagConstraints gridX="3" gridY="5" gridWidth="1" gridHeight="1" fill="0" ipadX="4" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="17" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="attachLb">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="attachLb.text"/>
-                        <Property name="name" type="java.lang.String" value="attachLb" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="3" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="4" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="17" weightX="0.0" weightY="0.0"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -780,40 +769,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="noteChbT1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="otherChbT1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="125" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="noteChbT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="otherChbT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JCheckBox" name="noteChbT1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="noteChbT1.text"/>
-                            <Property name="name" type="java.lang.String" value="noteChbT1" noResource="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="otherChbT1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="otherChbT1.text"/>
-                            <Property name="name" type="java.lang.String" value="otherChbT1" noResource="true"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="blankPanel0">
                       <Properties>
@@ -1087,6 +1051,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="saveToDbBtnT1.text"/>
                         <Property name="name" type="java.lang.String" value="saveToDbBtnT1" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveToDbBtnT1ActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                           <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="7" ipadY="0" insetsTop="1" insetsLeft="0" insetsBottom="1" insetsRight="0" anchor="17" weightX="0.0" weightY="0.0"/>
@@ -1210,6 +1177,9 @@
                                 <Property name="text" type="java.lang.String" resourceKey="frontBtnT1.text"/>
                                 <Property name="name" type="java.lang.String" value="frontBtnT1" noResource="true"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="frontBtnT1ActionPerformed"/>
+                              </Events>
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="frontSpT1">
                               <Properties>
@@ -1219,8 +1189,8 @@
                                 </Property>
                               </Properties>
                               <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(new JLabel(frontT1));"/>
-                                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="javax.swing.ImageIcon frontT1 = new javax.swing.ImageIcon(&quot;C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg&quot;);"/>
+                                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(frontLbT1);"/>
+                                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="frontLbT1 = new JLabel();"/>
                               </AuxValues>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -1280,6 +1250,9 @@
                             <Property name="text" type="java.lang.String" resourceKey="backBtnT1.text"/>
                             <Property name="name" type="java.lang.String" value="backBtnT1" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnT1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="backSpT1">
                           <Properties>
@@ -1289,8 +1262,8 @@
                             </Property>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(new JLabel(backT1));"/>
-                            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="javax.swing.ImageIcon backT1 = new javax.swing.ImageIcon(&quot;C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg&quot;);"/>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(backLbT1);"/>
+                            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="backLbT1 = new JLabel();"/>
                           </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -1734,6 +1707,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="searchT2">
                       <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="searchT2.text"/>
                         <Property name="name" type="java.lang.String" value="searchT2" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2151,11 +2125,11 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel2">
+                <Container class="javax.swing.JPanel" name="lowPanelT2">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="jPanel2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="lowPanelT2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[650, 300]"/>
+                      <Dimension value="[650, 340]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2166,9 +2140,15 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="lowLeftT2">
+                    <Container class="javax.swing.JPanel" name="tablePanelT2">
                       <Properties>
-                        <Property name="name" type="java.lang.String" value="lowLeftT2" noResource="true"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[640, 270]"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="tablePanelT2" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[640, 270]"/>
+                        </Property>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2180,71 +2160,66 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="frontTfT2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="frontBtnT2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="frontSpT2" min="-2" pref="290" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="620" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="frontTfT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="frontBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="frontSpT2" min="-2" pref="265" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="268" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JTextField" name="frontTfT2">
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
                           <Properties>
-                            <Property name="name" type="java.lang.String" value="frontTfT2" noResource="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="frontBtnT2">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="frontBtnT2.text"/>
-                            <Property name="name" type="java.lang.String" value="frontBtnT2" noResource="true"/>
-                          </Properties>
-                        </Component>
-                        <Container class="javax.swing.JScrollPane" name="frontSpT2">
-                          <Properties>
-                            <Property name="name" type="java.lang.String" value="frontSpT2" noResource="true"/>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[100, 260]"/>
-                            </Property>
+                            <Property name="name" type="java.lang.String" value="jScrollPane4" noResource="true"/>
                           </Properties>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(new JLabel(frontT2));"/>
-                            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="javax.swing.ImageIcon frontT2 = new javax.swing.ImageIcon(&quot;C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg&quot;);"/>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                           </AuxValues>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="importTableT5">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                  <Table columnCount="10" rowCount="4">
+                                    <Column editable="true" title="Name" type="java.lang.Object"/>
+                                    <Column editable="true" title="Lastname" type="java.lang.Object"/>
+                                    <Column editable="true" title="Title" type="java.lang.Object"/>
+                                    <Column editable="true" title="E-mail" type="java.lang.Object"/>
+                                    <Column editable="true" title="Company" type="java.lang.Object"/>
+                                    <Column editable="true" title="Web" type="java.lang.Object"/>
+                                    <Column editable="true" title="Mobile" type="java.lang.Object"/>
+                                    <Column editable="true" title="Phone" type="java.lang.Object"/>
+                                    <Column editable="true" title="Fax" type="java.lang.Object"/>
+                                    <Column editable="true" title="Country" type="java.lang.Object"/>
+                                  </Table>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="importTableT5" noResource="true"/>
+                                <Property name="rowSelectionAllowed" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="lowRightT2">
+                    <Container class="javax.swing.JPanel" name="deleteEditPanelT2">
                       <Properties>
-                        <Property name="name" type="java.lang.String" value="lowRightT2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="deleteEditPanelT2" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[250, 35]"/>
+                        </Property>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
                         </Constraint>
                       </Constraints>
 
@@ -2252,19 +2227,11 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="backTfT2" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="backBtnT2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="backSpT2" min="-2" pref="290" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="deletedBtnT2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                                  <Component id="editBtnT2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2272,42 +2239,27 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="backTfT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="backBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deletedBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="editBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="backSpT2" min="-2" pref="265" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="12" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JTextField" name="backTfT2">
+                        <Component class="javax.swing.JButton" name="deletedBtnT2">
                           <Properties>
-                            <Property name="name" type="java.lang.String" value="backTfT2" noResource="true"/>
+                            <Property name="text" type="java.lang.String" resourceKey="deletedBtnT2.text"/>
+                            <Property name="name" type="java.lang.String" value="deletedBtnT2" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="backBtnT2">
+                        <Component class="javax.swing.JButton" name="editBtnT2">
                           <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="backBtnT2.text"/>
-                            <Property name="name" type="java.lang.String" value="backBtnT2" noResource="true"/>
+                            <Property name="text" type="java.lang.String" resourceKey="editBtnT2.text"/>
+                            <Property name="name" type="java.lang.String" value="editBtnT2" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Container class="javax.swing.JScrollPane" name="backSpT2">
-                          <Properties>
-                            <Property name="name" type="java.lang.String" value="backSpT2" noResource="true"/>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[100, 260]"/>
-                            </Property>
-                          </Properties>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(new JLabel(backT2));"/>
-                            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="javax.swing.ImageIcon backT2 = new javax.swing.ImageIcon(&quot;C:\\Documents and Settings\\Jenchote\\Desktop\\com.jen.scanner.ui\\scannerPage.jpg&quot;);"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                        </Container>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -2494,17 +2446,6 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                           <GridBagConstraints gridX="3" gridY="5" gridWidth="1" gridHeight="1" fill="0" ipadX="4" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="17" weightX="0.0" weightY="0.0"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="attachLb1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="attachLb1.text"/>
-                        <Property name="name" type="java.lang.String" value="attachLb1" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                          <GridBagConstraints gridX="3" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="4" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="17" weightX="0.0" weightY="0.0"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2793,40 +2734,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="noteChbT3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="otherChbT3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="125" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="noteChbT3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="otherChbT3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JCheckBox" name="noteChbT3">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="noteChbT3.text"/>
-                            <Property name="name" type="java.lang.String" value="noteChbT3" noResource="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="otherChbT3">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" resourceKey="otherChbT3.text"/>
-                            <Property name="name" type="java.lang.String" value="otherChbT3" noResource="true"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="blankPanel5">
                       <Properties>
@@ -4365,8 +4281,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="databaseLb" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="databaseNameLb" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="462" max="32767" attributes="0"/>
+                          <Component id="databaseNameLb" pref="453" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
@@ -4431,8 +4347,20 @@
         <Component class="javax.swing.JLabel" name="databaseNameLb">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="databaseNameLb.text"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 15]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[50, 15]"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="databaseNameLb" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 15]"/>
+            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="defaultcard = new File(&quot;defaultcard.csv&quot;);&#xa;&#xa;if(!defaultcard.exists()){&#xa;            try {&#xa;                defaultcard.createNewFile();&#xa;            } catch (IOException ex) {&#xa;                Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);&#xa;            }&#xa;}&#xa; databaseNameLb.setText(defaultcard.getAbsolutePath());&#xa;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
