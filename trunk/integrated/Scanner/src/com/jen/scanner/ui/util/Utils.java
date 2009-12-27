@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.jen.scanner.ui;
+package com.jen.scanner.ui.util;
 
 import java.io.File;
 
@@ -15,6 +15,8 @@ public class Utils {
 
     public final static String csv = "csv";
     public final static String sql = "sql";
+    public final static String jpg = "jpg";
+    public final static String jpeg = "jpeg";
 
     /*
      * Get the extension of a file.
