@@ -435,16 +435,12 @@ public class ScannerView extends FrameView {
         mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(704, 660));
 
-        menuTab.setMaximumSize(new java.awt.Dimension(704, 660));
-        menuTab.setMinimumSize(new java.awt.Dimension(350, 250));
+        menuTab.setMaximumSize(null);
         menuTab.setName("menuTab"); // NOI18N
-        menuTab.setPreferredSize(new java.awt.Dimension(350, 250));
+        menuTab.setPreferredSize(new java.awt.Dimension(704, 660));
 
         loginTab.setToolTipText(""); // NOI18N
-        loginTab.setMaximumSize(new java.awt.Dimension(350, 250));
-        loginTab.setMinimumSize(new java.awt.Dimension(350, 250));
         loginTab.setName("loginTab"); // NOI18N
-        loginTab.setPreferredSize(new java.awt.Dimension(350, 250));
         loginTab.setLayout(new java.awt.GridBagLayout());
 
         loginP.setMaximumSize(new java.awt.Dimension(350, 300));
@@ -567,7 +563,6 @@ public class ScannerView extends FrameView {
         menuTab.addTab(resourceMap.getString("loginTab.TabConstraints.tabTitle"), loginTab); // NOI18N
         loginTab.getAccessibleContext().setAccessibleDescription(resourceMap.getString("loginTab.AccessibleContext.accessibleDescription")); // NOI18N
 
-        scannerTab.setMaximumSize(new java.awt.Dimension(704, 674));
         scannerTab.setName("scannerTab"); // NOI18N
         scannerTab.setLayout(new java.awt.GridBagLayout());
 
@@ -1139,6 +1134,11 @@ public class ScannerView extends FrameView {
 
         scanBtn.setText(resourceMap.getString("scanBtn.text")); // NOI18N
         scanBtn.setName("scanBtn"); // NOI18N
+        scanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanBtnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -1166,12 +1166,15 @@ public class ScannerView extends FrameView {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         scannerTab.add(upRightT1, gridBagConstraints);
 
+        low.setMaximumSize(null);
         low.setName("low"); // NOI18N
         low.setPreferredSize(new java.awt.Dimension(200, 300));
         low.setLayout(new java.awt.GridLayout(1, 2));
 
+        lowLeftT1.setMaximumSize(null);
         lowLeftT1.setName("lowLeftT1"); // NOI18N
 
+        frontPanelT1.setMaximumSize(null);
         frontPanelT1.setMinimumSize(new java.awt.Dimension(100, 50));
         frontPanelT1.setName("frontPanelT1"); // NOI18N
         frontPanelT1.setPreferredSize(new java.awt.Dimension(300, 50));
@@ -1228,6 +1231,7 @@ public class ScannerView extends FrameView {
 
         low.add(lowLeftT1);
 
+        lowRightT1.setMaximumSize(null);
         lowRightT1.setName("lowRightT1"); // NOI18N
 
         backTfT1.setText(resourceMap.getString("backTfT1.text")); // NOI18N
@@ -1283,7 +1287,6 @@ public class ScannerView extends FrameView {
         menuTab.addTab(resourceMap.getString("scannerTab.TabConstraints.tabTitle"), scannerTab); // NOI18N
 
         queryTab.setName("queryTab"); // NOI18N
-        queryTab.setPreferredSize(new java.awt.Dimension(800, 600));
         queryTab.setLayout(new java.awt.GridBagLayout());
 
         upLeftT2.setName("upLeftT2"); // NOI18N
@@ -2703,9 +2706,7 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("resutlTab.TabConstraints.tabTitle"), resutlTab); // NOI18N
 
-        importExportTab.setMaximumSize(new java.awt.Dimension(679, 635));
         importExportTab.setName("importExportTab"); // NOI18N
-        importExportTab.setPreferredSize(new java.awt.Dimension(679, 600));
         importExportTab.setLayout(new java.awt.GridBagLayout());
 
         importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
@@ -3092,7 +3093,6 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("groupTab.TabConstraints.tabTitle"), groupTab); // NOI18N
 
-        userEditTab.setMaximumSize(new java.awt.Dimension(650, 600));
         userEditTab.setName("userEditTab"); // NOI18N
         userEditTab.setLayout(new java.awt.GridBagLayout());
 
@@ -3709,6 +3709,17 @@ public class ScannerView extends FrameView {
             CardLocalManager.saveLocalCard(localCardList, exportTfT4.getText());
         }catch(Exception e){}
     }//GEN-LAST:event_exportBtnT4ActionPerformed
+
+    private void scanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanBtnActionPerformed
+        // TODO add your handling code here:
+        String path = "C:/Documents and Settings/Jenchote/Desktop/scanner/jenCard.jpg";
+        frontTfT1.setText(path);
+        frontLbT1.setIcon(new ImageIcon(path));
+
+        String path1 = "C:/Documents and Settings/Jenchote/Desktop/scanner/oakCard.jpg";
+        backTfT1.setText(path1);
+        backLbT1.setIcon(new ImageIcon(path1));
+    }//GEN-LAST:event_scanBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
