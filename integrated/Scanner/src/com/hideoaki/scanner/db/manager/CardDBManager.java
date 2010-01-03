@@ -23,26 +23,35 @@ public class CardDBManager {
 	public static final String SQL_SELECT_CARD = "SELECT c from Card c";
 
 	public static void main(String[] args) {
-		Card card5 = new Card("krissada13", "chalermsook", "Project LEader",
+                		Card card12 = new Card("krissada3", "chalermsook", "Project LEader",
 				"hideoaki@gmail.com", "Crie Company Limited",
 				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
-				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
+				"test", "d", "a", "025894821", "ssss", "0805511559", "aa",
 				"sss", "sss", new Group("Test"), Privacy.GROUP);
+		//List<Card> newCards = CardDBManager.loadDBCard();
+		//int before = newCards.size();
+		CardDBManager.addCard(card12);
+		//newCards =  CardDBManager.loadDBCard();
+//		Card card5 = new Card("krissada13", "chalermsook", "Project LEader",
+//				"hideoaki@gmail.com", "Crie Company Limited",
+//				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+//				"ไทย", "d", "a", "025894821", "ssss", "0805511559", "aa",
+//				"sss", "sss", new Group("Test"), Privacy.GROUP);
 		// addCard(card1);
 		// Card c = getCardById(2);
 		// List<Card> cards = searchCardDB("chalerm");
-		List<Card> cards = loadDBCard();
-		Card card0 = cards.get(0);
-		card0.setAddress("Change Address");
-		Card card1 = cards.get(1);
-		card1.setFirstName("hideoak2i2");
-		Card card2 = cards.get(2);
-		card2.setLastName("hideo2");
-		// cards.clear();
-		cards.add(card5);
-		System.out.println(cards.size());
-		saveDBAllCard(cards);
-		closeEntityManagerFactory();
+//		List<Card> cards = loadDBCard();
+//		Card card0 = cards.get(0);
+//		card0.setAddress("Change Address");
+//		Card card1 = cards.get(1);
+//		card1.setFirstName("hideoak2i2");
+//		Card card2 = cards.get(2);
+//		card2.setLastName("hideo2");
+//		// cards.clear();
+//		cards.add(card5);
+//		System.out.println(cards.size());
+//		saveDBAllCard(cards);
+//		closeEntityManagerFactory();
 	}
 
 	/*

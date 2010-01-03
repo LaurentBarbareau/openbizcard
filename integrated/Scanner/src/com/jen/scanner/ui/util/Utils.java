@@ -14,7 +14,6 @@ import java.io.File;
 public class Utils {
 
     public final static String csv = "csv";
-    public final static String sql = "sql";
     public final static String jpg = "jpg";
     public final static String jpeg = "jpeg";
 

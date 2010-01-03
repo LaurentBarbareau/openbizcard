@@ -69,7 +69,6 @@ public class Config {
 			config.rememberPassword = Boolean.getBoolean(prop
 					.getProperty(REMEMBERPASS_PROP));
 			config.csvPath = prop.getProperty(CSV_PATH_PROP);
-			;
 			return config;
 		} catch (IOException e) {
 			throw new ScannerDBException(e);

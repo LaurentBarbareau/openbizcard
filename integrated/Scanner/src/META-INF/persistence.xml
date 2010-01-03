@@ -52,6 +52,8 @@
 			auto-detection even in JSE. <class>hello.Message</class>
 		-->
 
+                <class>com.hideoaki.scanner.db.model.Card</class>
+                <class>com.hideoaki.scanner.db.model.Group</class>
 		<properties>
 			<!-- Scan for annotated classes and Hibernate mapping XML files -->
 			<property name="hibernate.archive.autodetection" value="class, hbm" />
@@ -63,7 +65,7 @@
 			-->
 
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/test?characterEncoding=UTF-8" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/openscanner?characterEncoding=UTF-8" />
 			<property name="hibernate.connection.username" value="root" />
 
 			<property name="hibernate.c3p0.min_size" value="5" />
@@ -72,7 +74,7 @@
 			<property name="hibernate.c3p0.max_statements" value="50" />
 			<property name="hibernate.c3p0.idle_test_period" value="3000" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
 			<property name="hibernate.dialect" value="com.hideoaki.scanner.db.utils.CustomMysqlDialect" />
 

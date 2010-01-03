@@ -18,8 +18,7 @@ public class DBFileFilter extends FileFilter {
 
         String extension = Utils.getExtension(f);
         if (extension != null) {
-            if (extension.toLowerCase().equals(Utils.csv) ||
-                extension.toLowerCase().equals(Utils.sql))  {
+            if (extension.toLowerCase().equals(Utils.csv) )  {
                     return true;
             } else {
                 return false;
@@ -31,6 +30,6 @@ public class DBFileFilter extends FileFilter {
 
     //The description of this filter
     public String getDescription() {
-        return "csv or sql extension";
+        return "csv extension";
     }
 }
