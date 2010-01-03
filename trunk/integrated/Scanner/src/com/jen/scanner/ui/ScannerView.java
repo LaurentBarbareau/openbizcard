@@ -29,6 +29,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
@@ -2406,7 +2407,6 @@ public class ScannerView extends FrameView {
         upLeftT3.add(blankPanel7, gridBagConstraints);
 
         blankPanel0T3.setName("blankPanel0T3"); // NOI18N
-        blankPanel0T3.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel0T3Layout = new javax.swing.GroupLayout(blankPanel0T3);
         blankPanel0T3.setLayout(blankPanel0T3Layout);
@@ -2826,9 +2826,19 @@ public class ScannerView extends FrameView {
 
         browseExportBtnT4.setText(resourceMap.getString("browseExportBtnT4.text")); // NOI18N
         browseExportBtnT4.setName("browseExportBtnT4"); // NOI18N
+        browseExportBtnT4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                browseExportBtnT4ActionPerformed(evt);
+            }
+        });
 
         exportBtnT4.setText(resourceMap.getString("exportBtnT4.text")); // NOI18N
         exportBtnT4.setName("exportBtnT4"); // NOI18N
+        exportBtnT4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportBtnT4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -3674,6 +3684,31 @@ public class ScannerView extends FrameView {
             }
        }
     }//GEN-LAST:event_frontBtnT3ActionPerformed
+
+    private void browseExportBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseExportBtnT4ActionPerformed
+        // TODO add your handling code here:
+        String wd = System.getProperty("user.dir");
+        String filename = "";
+        JFileChooser fc = new JFileChooser(wd);
+        fc.addChoosableFileFilter(new DBFileFilter());
+
+        int rc = fc.showDialog(null, "Select");
+        if (rc == JFileChooser.APPROVE_OPTION)
+        {
+            File file = fc.getSelectedFile();
+            filename = file.getAbsolutePath();
+
+            exportTfT4.setText(filename);
+        // call your function here
+        }
+    }//GEN-LAST:event_browseExportBtnT4ActionPerformed
+
+    private void exportBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportBtnT4ActionPerformed
+        // TODO add your handling code here:
+        try{
+            CardLocalManager.saveLocalCard(localCardList, exportTfT4.getText());
+        }catch(Exception e){}
+    }//GEN-LAST:event_exportBtnT4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
