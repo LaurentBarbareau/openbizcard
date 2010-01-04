@@ -119,40 +119,50 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="usernameLb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="pwdLb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="pwdLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="usernameLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="usernameTf" alignment="0" pref="103" max="32767" attributes="1"/>
+                                              <Component id="pwdTf" alignment="0" pref="103" max="32767" attributes="1"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="usernameTf" alignment="0" max="32767" attributes="1"/>
-                                      <Component id="pwdTf" alignment="0" min="-2" max="-2" attributes="1"/>
-                                  </Group>
-                                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="usernameTf" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="usernameLb" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="pwdLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pwdTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="pwdTf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pwdLb" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="loginBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="logoutBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                                  <EmptySpace pref="25" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -183,6 +193,25 @@
                             <Property name="text" type="java.lang.String" resourceKey="pwdLb.text"/>
                             <Property name="name" type="java.lang.String" value="pwdLb" noResource="true"/>
                           </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="loginBtn">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" resourceKey="loginBtn.text"/>
+                            <Property name="name" type="java.lang.String" value="loginBtn" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="logoutBtn">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" resourceKey="logoutBtn.text"/>
+                            <Property name="enabled" type="boolean" value="false"/>
+                            <Property name="name" type="java.lang.String" value="logoutBtn" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutBtnActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2270,14 +2299,14 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="resutlTab">
+            <Container class="javax.swing.JPanel" name="resultTab">
               <Properties>
-                <Property name="name" type="java.lang.String" value="resutlTab" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="resultTab" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Result">
-                    <Property name="tabTitle" type="java.lang.String" resourceKey="resutlTab.TabConstraints.tabTitle"/>
+                    <Property name="tabTitle" type="java.lang.String" resourceKey="resultTab.TabConstraints.tabTitle"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

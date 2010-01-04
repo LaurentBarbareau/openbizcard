@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import javax.swing.Timer;
 import javax.swing.Icon;
@@ -33,6 +34,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -44,7 +46,14 @@ public class ScannerView extends FrameView {
         super(app);
   
         initComponents();
-
+        
+        menuTab.remove(6);
+        menuTab.remove(5);
+        menuTab.remove(4);
+        menuTab.remove(3);
+        menuTab.remove(2);
+        menuTab.remove(1);
+        
         try {
             localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
         } catch (ScannerDBException ex) {
@@ -135,6 +144,8 @@ public class ScannerView extends FrameView {
         pwdTf = new javax.swing.JPasswordField();
         usernameLb = new javax.swing.JLabel();
         pwdLb = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         settingPanel = new javax.swing.JPanel();
         databaseTf = new javax.swing.JTextField();
         databaseBtn = new javax.swing.JButton();
@@ -283,7 +294,7 @@ public class ScannerView extends FrameView {
         deleteEditPanelT2 = new javax.swing.JPanel();
         deletedBtnT2 = new javax.swing.JButton();
         editBtnT2 = new javax.swing.JButton();
-        resutlTab = new javax.swing.JPanel();
+        resultTab = new javax.swing.JPanel();
         upLeftT3 = new javax.swing.JPanel();
         nameLbT3 = new javax.swing.JLabel();
         titleLbT3 = new javax.swing.JLabel();
@@ -470,36 +481,61 @@ public class ScannerView extends FrameView {
         pwdLb.setText(resourceMap.getString("pwdLb.text")); // NOI18N
         pwdLb.setName("pwdLb"); // NOI18N
 
+        loginBtn.setText(resourceMap.getString("loginBtn.text")); // NOI18N
+        loginBtn.setName("loginBtn"); // NOI18N
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
+
+        logoutBtn.setText(resourceMap.getString("logoutBtn.text")); // NOI18N
+        logoutBtn.setEnabled(false);
+        logoutBtn.setName("logoutBtn"); // NOI18N
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addComponent(usernameLb)
-                        .addGap(11, 11, 11))
+                        .addContainerGap()
+                        .addComponent(loginBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(logoutBtn))
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addComponent(pwdLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(usernameTf, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pwdTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pwdLb)
+                            .addComponent(usernameLb))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(pwdTf, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))))
+                .addGap(38, 38, 38))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameLb))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pwdLb)
+                    .addComponent(pwdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pwdTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwdLb))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(loginBtn)
+                    .addComponent(logoutBtn))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1997,8 +2033,8 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("queryTab.TabConstraints.tabTitle"), queryTab); // NOI18N
 
-        resutlTab.setName("resutlTab"); // NOI18N
-        resutlTab.setLayout(new java.awt.GridBagLayout());
+        resultTab.setName("resultTab"); // NOI18N
+        resultTab.setLayout(new java.awt.GridBagLayout());
 
         upLeftT3.setName("upLeftT3"); // NOI18N
         upLeftT3.setPreferredSize(new java.awt.Dimension(350, 250));
@@ -2431,7 +2467,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        resutlTab.add(upLeftT3, gridBagConstraints);
+        resultTab.add(upLeftT3, gridBagConstraints);
 
         upRightT3.setMaximumSize(new java.awt.Dimension(250, 250));
         upRightT3.setMinimumSize(new java.awt.Dimension(250, 250));
@@ -2561,7 +2597,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        resutlTab.add(upRightT3, gridBagConstraints);
+        resultTab.add(upRightT3, gridBagConstraints);
 
         lowT3.setName("lowT3"); // NOI18N
         lowT3.setPreferredSize(new java.awt.Dimension(650, 300));
@@ -2660,7 +2696,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        resutlTab.add(lowT3, gridBagConstraints);
+        resultTab.add(lowT3, gridBagConstraints);
 
         upLabelT3.setMinimumSize(new java.awt.Dimension(200, 25));
         upLabelT3.setName("upLabelT3"); // NOI18N
@@ -2702,9 +2738,9 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
-        resutlTab.add(upLabelT3, gridBagConstraints);
+        resultTab.add(upLabelT3, gridBagConstraints);
 
-        menuTab.addTab(resourceMap.getString("resutlTab.TabConstraints.tabTitle"), resutlTab); // NOI18N
+        menuTab.addTab(resourceMap.getString("resultTab.TabConstraints.tabTitle"), resultTab); // NOI18N
 
         importExportTab.setName("importExportTab"); // NOI18N
         importExportTab.setLayout(new java.awt.GridBagLayout());
@@ -3445,6 +3481,55 @@ public class ScannerView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addTab(String user,JTabbedPane tab){
+        tab.addTab("Scanner", scannerTab);
+        tab.addTab("Query", queryTab);
+        tab.addTab("Result", resultTab);
+        tab.addTab("Import & Export", importExportTab);
+        tab.addTab("Group", groupTab);
+        if(user.equals("admin")){
+            tab.addTab("User Edit", userEditTab);
+        }
+    }
+
+    private void removeTab(String user,JTabbedPane tab){
+        if(user.equals("admin")){
+            tab.remove(6);
+        }
+        tab.remove(5);
+        tab.remove(4);
+        tab.remove(3);
+        tab.remove(2);
+        tab.remove(1);
+    }
+
+    private boolean isPasswordCorrect(String usr,char[] input) {
+        boolean isCorrect = true;
+        char[] adminPassword = { 'a', 'd', 'm', 'i', 'n' };
+        char[] usrPassword = {'u','s','e','r'};
+
+        if(usr.equals("admin")){
+            if (input.length != adminPassword.length) {
+                isCorrect = false;
+            } else {
+                isCorrect = Arrays.equals (input, adminPassword);
+            }
+            //Zero out the password.
+            Arrays.fill(adminPassword,'0');
+        }
+    
+        if(usr.equals("user")){
+            if (input.length != usrPassword.length) {
+                isCorrect = false;
+            } else {
+                isCorrect = Arrays.equals (input, usrPassword);
+            }
+            //Zero out the password.
+            Arrays.fill(usrPassword,'0');
+        }
+        return isCorrect;
+    }
+
     private String validatePath(String path){
         String newPath = "";
         String[] temp = path.split("\\\\");
@@ -3721,6 +3806,38 @@ public class ScannerView extends FrameView {
         backLbT1.setIcon(new ImageIcon(path1));
     }//GEN-LAST:event_scanBtnActionPerformed
 
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        if(isPasswordCorrect("admin",pwdTf.getPassword())){
+            usernameTf.setEditable(false);
+            pwdTf.setEditable(false);
+            loginBtn.setEnabled(false);
+            logoutBtn.setEnabled(true);
+            addTab("admin",menuTab);
+        }else{
+            if(isPasswordCorrect("user", pwdTf.getPassword())){
+                usernameTf.setEditable(false);
+                pwdTf.setEditable(false);
+                loginBtn.setEnabled(false);
+                logoutBtn.setEnabled(true);
+                addTab("user",menuTab);
+            }else{
+                JOptionPane.showMessageDialog(null,"Wrong Username or Password, Please try again");
+            }
+        }
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        removeTab(usernameTf.getText(),menuTab);
+        usernameTf.setText("");
+        pwdTf.setText("");
+        usernameTf.setEditable(true);
+        pwdTf.setEditable(true);
+        loginBtn.setEnabled(true);
+        logoutBtn.setEnabled(false);
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtnT6;
     private javax.swing.JPanel addNewGroupPanelT5;
@@ -3907,9 +4024,11 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField lastnameTfT1;
     private javax.swing.JTextField lastnameTfT2;
     private javax.swing.JTextField lastnameTfT3;
+    private javax.swing.JButton loginBtn;
     private javax.swing.JPanel loginP;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel loginTab;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel low;
     private javax.swing.JPanel lowLeftT1;
     private javax.swing.JPanel lowLeftT3;
@@ -3951,8 +4070,8 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel queryTab;
     private javax.swing.JPanel quickPanelT2;
     private javax.swing.JLabel resultLbT5;
+    private javax.swing.JPanel resultTab;
     private javax.swing.JTable resultTableT5;
-    private javax.swing.JPanel resutlTab;
     private javax.swing.JButton rotateBtnT1;
     private javax.swing.JButton rotateBtnT3;
     private javax.swing.JButton saveBtn;
