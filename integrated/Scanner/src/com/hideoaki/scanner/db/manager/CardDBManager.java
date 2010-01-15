@@ -149,4 +149,19 @@ public class CardDBManager {
 		emf.close();
 	}
 
+    public void persist(Object object) {
+        javax.persistence.EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("helloworld");
+        javax.persistence.EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+
 }
