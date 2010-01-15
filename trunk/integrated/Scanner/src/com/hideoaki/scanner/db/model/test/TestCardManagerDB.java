@@ -26,7 +26,7 @@ public class TestCardManagerDB extends TestCase {
 		Card card1 = new Card("krissada3", "chalermsook", "Project LEader",
 				"hideoaki@gmail.com", "Crie Company Limited",
 				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
-				"ä·Â", "d", "a", "025894821", "ssss", "0805511559", "aa",
+				"à¹„à¸—à¸¢", "d", "a", "025894821", "ssss", "0805511559", "aa",
 				"sss", "sss", new Group("Test"), Privacy.GROUP);
 		List<Card> newCards = CardDBManager.loadDBCard();
 		int before = newCards.size();
