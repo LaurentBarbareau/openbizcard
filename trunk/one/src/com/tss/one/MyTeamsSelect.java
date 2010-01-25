@@ -67,7 +67,7 @@ public class MyTeamsSelect extends MyActivity {
 		leagueSpinner.setAdapter(leagueAdapter);
 		teamSpinner.setAdapter(teamsAdapter);
 		leagueSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
+			
 			public void onItemSelected(AdapterView<?> parentView,
 					View selectedItemView, int position, long id) {
 				// your code here
@@ -81,7 +81,6 @@ public class MyTeamsSelect extends MyActivity {
 				teamsAdapter.notifyDataSetChanged();
 			}
 
-			@Override
 			public void onNothingSelected(AdapterView<?> parentView) {
 				System.out.println("aa");
 			}
@@ -97,7 +96,7 @@ public class MyTeamsSelect extends MyActivity {
 		final Spinner myTeamSpinner = teamSpinner;
 		final Activity myAct = this;
 		addButton.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View v) {
 				m_ProgressDialog.show();
 				final Team selectedTeam = (leaguesList.get(myLeageSpinner
@@ -106,7 +105,6 @@ public class MyTeamsSelect extends MyActivity {
 
 				Thread thread = new Thread(new Runnable() {
 
-					@Override
 					public void run() {
 						Looper.prepare();
 						Log.i("AddingTeam", "add");
