@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,11 +26,16 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object>{
 	private HashMap<Integer,View> chkListT1 = new HashMap<Integer,View>();
 	private Context context;
 	private ArrayList<Object> items;
+
+	private LayoutInflater vi; 
+	private Typeface face; 
 	
 	public ScoreBoardAdapter(Context context, int textViewResourceId,ArrayList<Object> items) {
 		super(context, textViewResourceId, items);
 		this.context = context;
 		this.items = items;
+		this.vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.face =  Typeface.createFromAsset(context.getAssets(),"fonts/Arial.ttf");
 	}
 	
 	public void setList(ArrayList<Object> i){
@@ -47,10 +51,6 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object>{
 			System.out.println("enter View");
 				
 			View v = convertView;
-			LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	
-			Typeface face = Typeface.createFromAsset(context.getAssets(),"fonts/Arial.ttf");
-			
 			TextView subject;
 			TextView minute;
 			TextView team1,team2;
@@ -108,6 +108,8 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object>{
 					team2.setText(game.getGuestTeam());
 					score.setText(game.getHomeScore()+":"+game.getGuestScore());
 					
+					System.out.println("url = "+game.getHomeIcon());
+					
 					ImageLoaderFactory.createImageLoader((ListActivity)context).setTask(game.getHomeIcon(),homeIcon);
 					ImageLoaderFactory.createImageLoader((ListActivity)context).setTask(game.getGuestIcon(),guestIcon);
 					ImageLoaderFactory.createImageLoader((ListActivity)context).go();
@@ -126,13 +128,13 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object>{
 				
 			}else{			
 				Game game = (Game)i;
-				v = vi.inflate(R.layout.score_board_match, null);
-				minute = (TextView) v.findViewById(R.id.score_board_schedule_minute);
-				team1 = (TextView) v.findViewById(R.id.score_board_schedule_name1);
-				team2 = (TextView) v.findViewById(R.id.score_board_schedule_name2);
-				score = (TextView) v.findViewById(R.id.score_board_schedule_score);
-				ImageView homeIcon = (ImageView) v.findViewById(R.id.score_board_schedule_logo1);
-				ImageView guestIcon = (ImageView) v.findViewById(R.id.score_board_schedule_logo2);
+				v = vi.inflate(R.layout.score_board_live_match, null);
+				minute = (TextView) v.findViewById(R.id.score_board_live_minute);
+				team1 = (TextView) v.findViewById(R.id.score_board_live_name1);
+				team2 = (TextView) v.findViewById(R.id.score_board_live_name2);
+				score = (TextView) v.findViewById(R.id.score_board_live_score);
+				ImageView homeIcon = (ImageView) v.findViewById(R.id.score_board_live_logo1);
+				ImageView guestIcon = (ImageView) v.findViewById(R.id.score_board_live_logo2);
 				
 				minute.setTypeface(face);
 				team1.setTypeface(face);
@@ -161,13 +163,13 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object>{
 				
 			}else{			
 				Game game = (Game)i;
-				v = vi.inflate(R.layout.score_board_match, null);
-				minute = (TextView) v.findViewById(R.id.score_board_schedule_minute);
-				team1 = (TextView) v.findViewById(R.id.score_board_schedule_name1);
-				team2 = (TextView) v.findViewById(R.id.score_board_schedule_name2);
-				score = (TextView) v.findViewById(R.id.score_board_schedule_score);
-				ImageView homeIcon = (ImageView) v.findViewById(R.id.score_board_schedule_logo1);
-				ImageView guestIcon = (ImageView) v.findViewById(R.id.score_board_schedule_logo2);
+				v = vi.inflate(R.layout.score_board_league, null);
+				minute = (TextView) v.findViewById(R.id.score_board_league_minute);
+				team1 = (TextView) v.findViewById(R.id.score_board_league_name1);
+				team2 = (TextView) v.findViewById(R.id.score_board_league_name2);
+				score = (TextView) v.findViewById(R.id.score_board_league_score);
+				ImageView homeIcon = (ImageView) v.findViewById(R.id.score_board_league_logo1);
+				ImageView guestIcon = (ImageView) v.findViewById(R.id.score_board_league_logo2);
 				
 				minute.setTypeface(face);
 				team1.setTypeface(face);

@@ -245,7 +245,6 @@ public class Utils {
 		
 		act.runOnUiThread(new Runnable() {
 
-			@Override
 			public void run() {
 				AlertDialog alertDialog = new AlertDialog.Builder(myact).create();
 				alertDialog.setTitle("Error");
