@@ -174,7 +174,6 @@ public class MyTeamsList extends MyListActivity {
 			this.position = position;
 		}
 
-		@Override
 		public void onClick(View v) {
 			AlertDialog alertDialog = new AlertDialog.Builder(list).create();
 			alertDialog.setTitle("Confirm");
@@ -194,7 +193,6 @@ public class MyTeamsList extends MyListActivity {
 					});
 					new Thread(new Runnable() {
 
-						@Override
 						public void run() {
 							WebServiceReaderMyTeam.removeUserTeam(
 									WebServiceReaderMyTeam.getDeviceId(list),

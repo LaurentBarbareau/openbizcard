@@ -200,7 +200,6 @@ public class ScoreBoard extends MyListActivity {
 
 	public Runnable viewLeagueGame = new Runnable() {
 		public void run() {
-			System.out.println("l run lready");
 			try {
 				ArrayList<GameBySubject> gbs = WebServiceReaderScoreBoard
 						.getUserGames(spinnerId);
@@ -224,21 +223,22 @@ public class ScoreBoard extends MyListActivity {
 
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
-			if (currentTab == TODAY_GAME_TAB) {
-				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-					scoreBoardAdapter.notifyDataSetChanged();
-				}
-			}
-			if (currentTab == LIVE_GAME_TAB) {
-				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-					scoreBoardAdapter.notifyDataSetChanged();
-				}
-			}
-			if (currentTab == LEAGUE_TAB) {
-				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-					scoreBoardAdapter.notifyDataSetChanged();
-				}
-			}
+//			if (currentTab == TODAY_GAME_TAB) {
+//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
+//					scoreBoardAdapter.notifyDataSetChanged();
+//				}
+//			}
+//			if (currentTab == LIVE_GAME_TAB) {
+//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
+//					scoreBoardAdapter.notifyDataSetChanged();
+//				}
+//			}
+//			if (currentTab == LEAGUE_TAB) {
+//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
+//					scoreBoardAdapter.notifyDataSetChanged();
+//				}
+//			}
+			scoreBoardAdapter.notifyDataSetChanged();
 			m_ProgressDialog.dismiss();
 
 		}

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 
 public class ImageLoader extends Thread {
 
-	public boolean isRunning = true;
+	public boolean isRunning = false;
 	ArrayList<String> urls = new ArrayList<String>();
 	ArrayList<ImageView> imgViews = new ArrayList<ImageView>();
 	// public static ImageLoader instance;
@@ -41,6 +41,7 @@ public class ImageLoader extends Thread {
 	@Override
 	public synchronized void run() {
 		Looper.prepare();
+		isRunning = true;
 		while (isRunning) {
 			if (urls.size() > 0) {// upload
 				String link = urls.remove(0);
