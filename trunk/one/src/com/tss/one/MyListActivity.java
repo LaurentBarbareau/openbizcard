@@ -3,7 +3,6 @@ package com.tss.one;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -46,7 +45,7 @@ public class MyListActivity extends ListActivity{
 		icon3.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent newsListIntent = new Intent(view.getContext(),
-						ScoreBoardSelect.class);
+						ScoreBoard.class);
 				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivityForResult(newsListIntent, 0);
 			}
