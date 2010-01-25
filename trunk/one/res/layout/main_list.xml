@@ -2,12 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
+<ImageView android:id="@+id/news_header"
+				   android:layout_width="320px"
+				   android:layout_height="480px"
+				   android:src="@drawable/splash_page" android:visibility="invisible"/>
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:orientation="vertical"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"   
-		    >
+		    android:id="@+id/linear_layout" android:visibility="visible">
 			<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			       android:layout_width="320px"
 				   android:layout_height="47px">
@@ -40,7 +43,7 @@
     		android:layout_width="fill_parent"
     		android:layout_height="fill_parent"
     		android:layout_gravity="center_horizontal|bottom"  
-    		>
+    		 android:id="@+id/relative_layout" android:visibility="visible">
     			
 				<ImageButton android:id="@+id/main_button"
 		        android:layout_width="80px"

@@ -1,7 +1,10 @@
 package com.tss.one;
 
 import java.net.UnknownHostException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import android.app.ListActivity;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.tss.one.adapter.ScoreBoardAdapter;
 import com.tss.one.listener.ScoreBoardTabCL;
@@ -36,7 +40,7 @@ public class ScoreBoard extends MyListActivity {
 	private ScoreBoardTabCL tabClickListener = null;
 	private ProgressDialog m_ProgressDialog = null;
 
-	private String dayOffset = "0";
+	private int dayOffset = 0;
 	private int currentTab = TODAY_GAME_TAB;
 	private String spinnerId = "";
 
@@ -103,7 +107,7 @@ public class ScoreBoard extends MyListActivity {
 
 		scoreBoardList = new ArrayList<Object>();
 
-		scoreBoardAdapter = new ScoreBoardAdapter(ScoreBoard.this,
+		scoreBoardAdapter = new ScoreBoardAdapter(this,
 				R.layout.score_board_tab, scoreBoardList);
 		setListAdapter(scoreBoardAdapter);
 
@@ -122,12 +126,12 @@ public class ScoreBoard extends MyListActivity {
 		return currentTab;
 	}
 
-	public void setDayOffset(String dayOffset) {
+	public void setDayOffset(int dayOffset) {
 		this.dayOffset = dayOffset;
 		scoreBoardList.clear();
 	}
 
-	public String getDayOffset() {
+	public int getDayOffset() {
 		return dayOffset;
 	}
 
@@ -139,6 +143,10 @@ public class ScoreBoard extends MyListActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		spinnerId = ScoreBoardSelect.leagueId;
+		setCurrentTab(ScoreBoard.LEAGUE_TAB);
+		((ScoreBoardAdapter) scoreBoardAdapter).clearItem();
+		scoreBoardList.clear();
+		setLeagueGame();
 	}
 
 	public void setScoreBoard() {
@@ -166,10 +174,34 @@ public class ScoreBoard extends MyListActivity {
 
 	}
 
+	public String cDate = null;
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-ddHH:mm:ssZ");
 	private Runnable viewScoreBoard = new Runnable() {
 		public void run() {
+			if (cDate == null) {
+				cDate = WebServiceReaderScoreBoard.getCurrentDate();
+				cDate = cDate.replace("T", "");
+				try {
+					Date d = formatter.parse(cDate);
+					// next and prev
+					SimpleDateFormat newformatter = new SimpleDateFormat(
+							"HH:mm dd/MM/yyyy");
+					final String s = newformatter.format(d);
+					runOnUiThread( new Runnable(){
+
+						@Override
+						public void run() {
+							TextView textView = (TextView) findViewById(R.id.score_board_title);
+							textView.setText(s);
+						}});
+				
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			ArrayList<GameBySubject> gbs = WebServiceReaderScoreBoard
-					.getGamesByDay(dayOffset);
+					.getGamesByDay(dayOffset + "");
 			for (GameBySubject g : gbs) {
 				scoreBoardList.add(g.subject);
 				scoreBoardList.addAll(g.games);
@@ -201,43 +233,39 @@ public class ScoreBoard extends MyListActivity {
 	public Runnable viewLeagueGame = new Runnable() {
 		public void run() {
 			try {
-				ArrayList<GameBySubject> gbs = WebServiceReaderScoreBoard
-						.getUserGames(spinnerId);
-		
-				for (GameBySubject g : gbs) {
-					scoreBoardList.add(g.subject);
-					scoreBoardList.addAll(g.games);
-				}
-			} catch (UnknownHostException e) {
+				GameBySubject gbs = WebServiceReaderScoreBoard
+						.getGamesBySubject(spinnerId);
+				scoreBoardList.add(gbs.subject);
+				scoreBoardList.addAll(gbs.games);
+			} catch (Exception e) {
 				Log.e("Dont have internet ", e.getMessage());
-//				Utils.showAlert(this, "No Internet Connection.");
+				// Utils.showAlert(this, "No Internet Connection.");
 			}
-				runOnUiThread(displayChanged);
-				if (!ImageLoaderFactory.createImageLoader(ScoreBoard.this).isRunning) {
-					ImageLoaderFactory.createImageLoader(ScoreBoard.this)
-							.start();
-				}
-			
+			runOnUiThread(displayChanged);
+			if (!ImageLoaderFactory.createImageLoader(ScoreBoard.this).isRunning) {
+				ImageLoaderFactory.createImageLoader(ScoreBoard.this).start();
+			}
+
 		}
 	};
 
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
-//			if (currentTab == TODAY_GAME_TAB) {
-//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-//					scoreBoardAdapter.notifyDataSetChanged();
-//				}
-//			}
-//			if (currentTab == LIVE_GAME_TAB) {
-//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-//					scoreBoardAdapter.notifyDataSetChanged();
-//				}
-//			}
-//			if (currentTab == LEAGUE_TAB) {
-//				if (scoreBoardList != null && scoreBoardList.size() > 0) {
-//					scoreBoardAdapter.notifyDataSetChanged();
-//				}
-//			}
+			// if (currentTab == TODAY_GAME_TAB) {
+			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
+			// scoreBoardAdapter.notifyDataSetChanged();
+			// }
+			// }
+			// if (currentTab == LIVE_GAME_TAB) {
+			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
+			// scoreBoardAdapter.notifyDataSetChanged();
+			// }
+			// }
+			// if (currentTab == LEAGUE_TAB) {
+			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
+			// scoreBoardAdapter.notifyDataSetChanged();
+			// }
+			// }
 			scoreBoardAdapter.notifyDataSetChanged();
 			m_ProgressDialog.dismiss();
 

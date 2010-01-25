@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
@@ -33,12 +35,25 @@ public class MainList extends MyListActivity {
 	private ArrayList<Object> mainArticleList = null;
 	private MainAdapter mainAdapter;
 	private Runnable viewMain;
+	public static boolean firstTime = true;
 	private Runnable displayChanged = new Runnable() {
 		public synchronized void run() {
 			if (mainArticleList != null && mainArticleList.size() > 0) {
 				mainAdapter.notifyDataSetChanged();
 			}
-			m_ProgressDialog.dismiss();
+			if (m_ProgressDialog != null) {
+				m_ProgressDialog.dismiss();
+			}
+			if (firstTime) {
+				((RelativeLayout) findViewById(R.id.relative_layout))
+						.setVisibility(RelativeLayout.VISIBLE);
+				((LinearLayout) findViewById(R.id.linear_layout))
+						.setVisibility(RelativeLayout.VISIBLE);
+				((ImageView) findViewById(R.id.news_header))
+						.setVisibility(ImageView.INVISIBLE);
+				firstTime = false;
+
+			}
 		}
 	};
 
@@ -47,6 +62,15 @@ public class MainList extends MyListActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_list);
+		if (firstTime) {
+
+			((RelativeLayout) findViewById(R.id.relative_layout))
+					.setVisibility(RelativeLayout.INVISIBLE);
+			((LinearLayout) findViewById(R.id.linear_layout))
+					.setVisibility(RelativeLayout.INVISIBLE);
+			((ImageView) findViewById(R.id.news_header))
+					.setVisibility(ImageView.VISIBLE);
+		}
 		super.buildMenu(this);
 
 		System.setErr(new PrintStream(new LogTool("System.err")));
@@ -89,6 +113,7 @@ public class MainList extends MyListActivity {
 		thread.start();
 		m_ProgressDialog = ProgressDialog.show(MainList.this, "Please wait...",
 				"Retrieving data ...", true);
+
 	}
 
 	private void getMain() {
@@ -173,8 +198,7 @@ public class MainList extends MyListActivity {
 				headline.setTypeface(face);
 				headline.setText((String) i);
 
-			}
-			else if (i instanceof Game) {
+			} else if (i instanceof Game) {
 
 				Game game = (Game) i;
 				v = vi.inflate(R.layout.my_teams_score_element, null);
