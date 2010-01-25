@@ -42,10 +42,7 @@ public class ScoreBoardTabCL extends TabClickListener{
 		if(thisViewId ==R.id.score_board_tab1){	
 			//CHANGE TO APPROPRIATE ADAPTER
 			sb.getValueFromSpinner(v);
-			sb.setCurrentTab(ScoreBoard.LEAGUE_TAB);
-			((ScoreBoardAdapter)sb.scoreBoardAdapter).clearItem();
-			sb.scoreBoardList.clear();
-			sb.setLeagueGame();
+			
 	}
 	}
 }

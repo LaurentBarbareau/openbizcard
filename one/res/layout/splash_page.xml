@@ -8,7 +8,7 @@
 				   android:layout_height="480px"
 				   android:src="@drawable/splash_page"
 				   />
-        
+        <!-- 
  		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     		android:layout_width="fill_parent"
     		android:layout_height="fill_parent"
@@ -54,6 +54,6 @@
 		        android:src="@drawable/blank"  
 		        android:background="@drawable/score_board_rollover"   
 		        /> 
- 	    </RelativeLayout>
+ 	    </RelativeLayout> -->
   
 </merge>

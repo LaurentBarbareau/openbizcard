@@ -3,6 +3,8 @@ package com.tss.one;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 
 import com.tss.one.listener.TabClickListener;
 import com.tssoft.one.utils.Utils;
+import com.tssoft.one.webservice.ImageLoader;
 import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.WebServiceReaderMyTeam;
 import com.tssoft.one.webservice.model.Team;
@@ -43,7 +46,9 @@ public class MyTeamsList extends MyListActivity {
 			if (teamsList != null && teamsList.size() > 0) {
 				teamsAdapter.notifyDataSetChanged();
 			}
-			m_ProgressDialog.dismiss();
+			if (m_ProgressDialog != null) {
+				m_ProgressDialog.dismiss();
+			}
 		}
 	};
 
@@ -104,7 +109,7 @@ public class MyTeamsList extends MyListActivity {
 		setListAdapter(this.teamsAdapter);
 		viewMyTeam = new Runnable() {
 			public void run() {
-				getMyteam();
+				getMyteam(false);
 			}
 		};
 		Thread thread = new Thread(null, viewMyTeam, "MagentoBackground");
@@ -152,11 +157,13 @@ public class MyTeamsList extends MyListActivity {
 			headline.setTypeface(face);
 
 			headline.setText(team.getName());
+			try {
+				ImageLoaderFactory.createImageLoader(MyTeamsList.this).setTask(
+						team.getImageURL(), imgView);
+				ImageLoaderFactory.createImageLoader(MyTeamsList.this).go();
+			} catch (Exception e) {
 
-			ImageLoaderFactory.createImageLoader(MyTeamsList.this).setTask(
-					team.getImageURL(), imgView);
-			ImageLoaderFactory.createImageLoader(MyTeamsList.this).go();
-
+			}
 			chkList.put(position, v);
 
 			return v;
@@ -181,22 +188,35 @@ public class MyTeamsList extends MyListActivity {
 			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 
-					runOnUiThread(new Runnable() {
-						public void run() {
-							teamsList.remove(position);
-
-							// int a = teamsList.size();
-							// int b= teamsAdapter.items.size();
-
-							teamsAdapter.notifyDataSetChanged();
-						}
-					});
+					// runOnUiThread(new Runnable() {
+					// public void run() {
+					teamsList.remove(position);
+					chkList.clear();
+					// // int a = teamsList.size();
+					// // int b= teamsAdapter.items.size();
+					//
+					ImageLoader loader = ImageLoaderFactory
+							.getImageLoader(current);
+					loader.isRunning = false;
+					ImageLoaderFactory.clear(current);
+					try {
+						ImageLoaderFactory.createImageLoader(current).start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					teamsAdapter.notifyDataSetChanged();
+					// }
+					// });
+					// m_ProgressDialog = ProgressDialog.show(MyTeamsList.this,
+					// "Please wait...", "Deleting data ...", true);
 					new Thread(new Runnable() {
 
 						public void run() {
 							WebServiceReaderMyTeam.removeUserTeam(
 									WebServiceReaderMyTeam.getDeviceId(list),
 									id);
+							// finish();
+							// getMyteam(true);
 						}
 					}).start();
 
@@ -224,8 +244,10 @@ public class MyTeamsList extends MyListActivity {
 		// }
 	}
 
-	private void getMyteam() {
+	private void getMyteam(boolean clear) {
 		try {
+			teamsList.clear();
+			chkList.clear();
 			ArrayList<Team> abs = WebServiceReaderMyTeam
 					.getUserTeam(WebServiceReaderMyTeam.getDeviceId(this));
 			for (Team a : abs) {
