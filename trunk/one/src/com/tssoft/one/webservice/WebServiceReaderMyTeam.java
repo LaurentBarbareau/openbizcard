@@ -230,8 +230,8 @@ public class WebServiceReaderMyTeam {
 	public static ArrayList<ArticleBySubject> getUserArrticles(String userId)
 			throws UnknownHostException {
 		String TAG = "SOAPConnected";
-		String SOAP_ACTION = "http://tempuri.org/GetArticles";
-		String METHOD_NAME = "GetArticles";
+		String SOAP_ACTION = "http://tempuri.org/GetUserArticles";
+		String METHOD_NAME = "GetUserArticles";
 		String NAMESPACE = "http://tempuri.org/";
 		String URL = WebServiceReader.ENDPOINT_URL;
 		SoapObject resultRequestSOAP = null;
