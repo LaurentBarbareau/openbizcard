@@ -1,0 +1,189 @@
+package com.tss.one;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.tssoft.one.webservice.ImageLoader;
+import com.tssoft.one.webservice.ImageLoaderFactory;
+import com.tssoft.one.webservice.WebServiceReader;
+import com.tssoft.one.webservice.model.Article;
+import com.tssoft.one.webservice.model.ArticleBySubject;
+
+public class NewsList extends MyListActivity {
+
+	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
+	private ProgressDialog m_ProgressDialog = null;
+	private ArrayList<Object> newsList = null;
+	private NewsAdapter newsAdapter;
+	private Runnable viewNews;
+
+	private Runnable displayNews = new Runnable() {
+		public void run() {
+			if (newsList != null && newsList.size() > 0) {
+				newsAdapter.notifyDataSetChanged();
+			}
+			m_ProgressDialog.dismiss();
+		}
+	};
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.news_list);
+		super.buildMenu(this);
+		
+//		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
+//		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
+//		ImageButton icon3 = (ImageButton) findViewById(R.id.score_board_button);
+
+//		icon0.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View view) {
+//				Intent mainDetailIntent = new Intent(view.getContext(),
+//						MainList.class);
+//				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//				startActivityForResult(mainDetailIntent, 0);
+//			}
+//		});
+//
+//		icon1.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View view) {
+//				Intent myTeamsTabIntent = new Intent(view.getContext(),
+//						MyTeamsTab.class);
+//				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//				startActivityForResult(myTeamsTabIntent, 0);
+//			}
+//		});
+
+		newsList = new ArrayList<Object>();
+		this.newsAdapter = new NewsAdapter(this, R.layout.news_list, newsList);
+		setListAdapter(this.newsAdapter);
+
+		viewNews = new Runnable() {
+			public void run() {
+				getNews();
+			}
+		};
+		Thread thread = new Thread(null, viewNews, "MagentoBackground");
+		thread.start();
+		m_ProgressDialog = ProgressDialog.show(NewsList.this, "Please wait...",
+				"Retrieving data ...", true);
+	}
+
+	@Override
+	public void startActivityForResult(Intent intent, int requestCode) {
+		// TODO Auto-generated method stub
+		super.startActivityForResult(intent, requestCode);
+		// overridePendingTransition(0, 0);
+	}
+
+	@Override
+	public void finish() {
+		// TODO Auto-generated method stub
+		super.finish();
+		// overridePendingTransition(0, 0);
+	}
+
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Object o = newsList.get(position);
+		if (o instanceof Article) {
+			NewsDetail.currentArticle = (Article) newsList.get(position);
+			Intent newsDetailIndent = new Intent(v.getContext(),
+					NewsDetail.class);
+			startActivityForResult(newsDetailIndent, 0);
+		}
+	}
+
+	private void getNews() {
+		try {
+			ArrayList<ArticleBySubject> abs = WebServiceReader.getNews();
+			for (ArticleBySubject a : abs) {
+				newsList.add(a.subject);
+				newsList.addAll(a.articles);
+			}
+			Log.i("ARRAY", "" + newsList.size());
+		} catch (Exception e) {
+			Log.e("BACKGROUND_PROC", e.getMessage());
+		}
+		runOnUiThread(displayNews);
+		try{
+		ImageLoaderFactory.createImageLoader(this).start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private class NewsAdapter extends ArrayAdapter<Object> {
+
+		private ArrayList<Object> items;
+
+		public NewsAdapter(Context context, int textViewResourceId,
+				ArrayList<Object> items) {
+			super(context, textViewResourceId, items);
+			this.items = items;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (chkList.containsKey(position))
+				return chkList.get(position);
+
+			View v = convertView;
+			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			Typeface face = Typeface.createFromAsset(getAssets(),
+					"fonts/Arial.ttf");
+
+			TextView headline;
+			TextView sc;
+			Object i = items.get(position);
+
+			if (i instanceof String) {
+				v = vi.inflate(R.layout.red_list, null);
+				headline = (TextView) v.findViewById(R.id.subject_title);
+				headline.setTypeface(face);
+				headline.setText((String) i);
+			} else {
+				Article article = (Article) i;
+
+				v = vi.inflate(R.layout.white_list, null);
+				ImageView imgView = (ImageView) v
+						.findViewById(R.id.small_main_image);
+				headline = (TextView) v.findViewById(R.id.small_main_headline);
+				sc = (TextView) v.findViewById(R.id.small_main_sc);
+				headline.setTypeface(face);
+				sc.setTypeface(face);
+
+				headline.setText(article.getTitle());
+				sc.setText(article.getScTitle());
+
+				ImageLoaderFactory.createImageLoader(NewsList.this).setTask(
+						article.getImageUrl(), imgView);
+				ImageLoaderFactory.createImageLoader(NewsList.this).go();
+
+			}
+			chkList.put(position, v);
+
+			return v;
+		}
+	}
+}

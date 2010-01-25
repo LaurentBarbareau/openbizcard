@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:layout_width="320px"
+			    android:layout_height="25px"
+			    android:background="@drawable/head_tab_bar_blank">	
+				<TextView android:id="@+id/subject_title"
+					android:layout_width="fill_parent"
+		    		android:layout_height="fill_parent"   
+		    		android:layout_gravity="right"
+		    		android:textColor="#000"
+		    		android:textStyle="normal"
+		    		android:textSize="16sp"
+		    		android:text=""
+			    	android:paddingRight="15dip"
+		    		></TextView>
+		   
+</LinearLayout>

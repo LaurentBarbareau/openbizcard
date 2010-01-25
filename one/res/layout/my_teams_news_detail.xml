@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="#ffffff">
+		<ImageView android:id="@+id/news_header"
+			android:layout_width="320px" android:layout_height="47px"
+			android:src="@drawable/head_bar" android:layout_alignParentTop="true" />
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="25px"
+			android:layout_below="@id/news_header" android:id="@+id/news_frame_header">
+			<ImageView android:id="@+id/news_red_header"
+				android:layout_width="320px" android:layout_height="25px"
+				android:layout_margin="0dip" android:src="@drawable/blank"
+				android:background="@drawable/head_tab_bar" />
+			<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="320px" android:layout_height="25px">
+				<ImageButton android:id="@+id/next_button"
+					android:layout_width="54px" android:layout_height="25px"
+					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
+					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+					android:background="@drawable/next_rollover" />
+				<ImageButton android:id="@+id/previous_button"
+					android:layout_width="54px" android:layout_height="25px"
+					android:layout_toRightOf="@id/next_button"
+					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
+					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+					android:background="@drawable/previous_rollover" />
+			</RelativeLayout> -->
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="320px" android:layout_height="25px">
+					<!-- <ImageButton android:id="@+id/back_button"
+					android:layout_width="54px" android:layout_height="25px"
+					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
+					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+					android:background="@drawable/next_rollover" /> -->
+				<ImageButton android:id="@+id/next_button"
+					android:layout_width="54px" android:layout_height="25px"
+					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
+					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+					android:background="@drawable/next_rollover" />
+				<ImageButton android:id="@+id/previous_button"
+					android:layout_width="54px" android:layout_height="25px"
+					android:layout_toRightOf="@id/next_button"
+					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
+					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+					android:background="@drawable/previous_rollover" />
+			</RelativeLayout> 
+		</FrameLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="fill_parent"
+			android:layout_below="@+id/news_frame_header" android:id="@+id/news2_frame_header">
+			<WebView android:id="@+id/news_detail_webview"
+				android:layout_width="fill_parent" android:layout_height="fill_parent">
+			</WebView>
+		</FrameLayout>
+	</RelativeLayout>
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="320px" android:layout_height="77px"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageButton android:id="@+id/main_button"
+			android:layout_width="80px" android:layout_height="77px"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true" android:drawSelectorOnTop="true"
+			android:src="@drawable/blank" android:background="@drawable/main_rollover" />
+
+		<ImageButton android:id="@+id/my_teams_button"
+			android:layout_width="80px" android:layout_height="77px"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/main_button" android:src="@drawable/blank" android:background="@drawable/minibar_over_02"/>
+
+		<ImageButton android:id="@+id/news_button"
+			android:layout_width="80px" android:layout_height="77px"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/my_teams_button" android:src="@drawable/blank" android:background="@drawable/news_rollover"/>
+
+		<ImageButton android:id="@+id/score_board_button"
+			android:layout_width="80px" android:layout_height="77px"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/news_button" android:src="@drawable/blank"
+			android:background="@drawable/score_board_rollover" />
+	</RelativeLayout>
+</FrameLayout>
+	    
+	    

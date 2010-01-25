@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"   
+		    >
+			<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			       android:layout_width="320px"
+				   android:layout_height="47px">
+		    	<ImageView android:id="@+id/news_header"
+				   android:layout_width="320px"
+				   android:layout_height="47px"
+				   android:src="@drawable/head_bar"
+				   />
+			</FrameLayout>	
+			<TextView android:id="@+id/league__sel_title_text"
+			  		android:layout_width="fill_parent"
+		  			android:layout_height="60px"
+		    		android:textColor="#0033cc"
+		    		android:textStyle="bold"
+		    		android:textSize="16sp"
+		    		android:text="בחר ליגה"
+		    		android:gravity="center"
+			></TextView>
+		    <Spinner 
+			        android:id="@+id/league_select"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:drawSelectorOnTop="true"
+			        android:prompt="@string/league_prompt"
+    		/>
+    		<TextView android:id="@+id/team__sel_title_text"
+			  		android:layout_width="fill_parent"
+			  		android:layout_height="60px"
+		    		android:textColor="#0033cc"
+		    		android:textStyle="bold"
+		    		android:textSize="16sp"
+		    		android:text="בחר צוות"
+		    		android:gravity="center"
+			></TextView>
+        	<Spinner 
+			        android:id="@+id/team_select"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:drawSelectorOnTop="true"
+			        android:prompt="@string/team_prompt"
+			    />
+			<ImageButton android:id="@+id/team_select_btn"
+					android:layout_width="320px"
+			        android:layout_height="60px"
+					android:layout_gravity="center"  
+					android:background="@drawable/my_teams_sel_rollover"
+		        /> 
+	    </LinearLayout>
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    		android:layout_width="fill_parent"
+    		android:layout_height="fill_parent"
+    		android:layout_gravity="center_horizontal|bottom"  
+    		>
+    			
+				<ImageButton android:id="@+id/main_button"
+		        android:layout_width="80px"
+		        android:layout_height="77px"
+		        android:layout_marginBottom="0dip"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentLeft="true"
+				android:drawSelectorOnTop="true"
+		        android:src="@drawable/blank" android:background="@drawable/main_rollover"/>
+	        	
+		       <ImageButton android:id="@+id/my_teams_button"
+		        android:layout_width="80px"
+		        android:layout_height="77px"
+		        android:layout_marginBottom="0dip"
+		        android:layout_alignParentBottom="true"
+		        android:layout_toRightOf="@id/main_button"   
+		        android:src="@drawable/blank" android:background="@drawable/minibar_over_02"/> 	   
+		        
+		        <ImageButton android:id="@+id/news_button"
+		        android:layout_width="80px"
+		        android:layout_height="77px"
+		        android:layout_marginBottom="0dip"
+		        android:layout_alignParentBottom="true"
+		        android:layout_toRightOf="@id/my_teams_button"   
+		        android:src="@drawable/blank"  
+		        android:background="@drawable/news_rollover"   
+		        /> 
+		        
+		        <ImageButton android:id="@+id/score_board_button"
+		        android:layout_width="80px"
+		        android:layout_height="77px"
+		        android:layout_marginBottom="0dip"
+		        android:layout_alignParentBottom="true"
+		        android:layout_toRightOf="@id/news_button"   
+		        android:src="@drawable/blank"  
+		        android:background="@drawable/score_board_rollover"   
+		        /> 
+ 	    </RelativeLayout>
+ 		
+</FrameLayout>

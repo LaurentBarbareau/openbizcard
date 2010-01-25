@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="320px"
+  android:layout_height="60px"
+  android:orientation="horizontal"
+  android:background="@drawable/my_teams_element">
+  	<ImageButton android:id="@+id/my_teams_element_remove"
+  					android:layout_width="55px"
+			        android:layout_height="60px"
+					android:layout_alignParentTop="true"
+					android:layout_alignParentLeft="true"
+					android:layout_gravity="left|top"  
+					android:drawSelectorOnTop="true"
+			        android:src="@drawable/blank" 
+			        android:background="@drawable/my_teams_remove_button"    
+  	/>
+	<TextView android:id="@+id/my_teams_element_text"
+	  		android:layout_width="205px"
+  			android:layout_height="60px"
+    		android:textColor="#ffffff"
+    		android:textStyle="bold"
+    		android:textSize="16sp"
+    		android:text=""
+    		android:gravity="center"
+	></TextView>
+	<ImageView android:id="@+id/my_teams_logo"
+						android:layout_width="60px"
+						android:layout_height="40px"
+			    		android:layout_gravity="right"
+			    		android:src="@drawable/loading_sub"
+		    		></ImageView>
+</LinearLayout>
