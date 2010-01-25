@@ -170,6 +170,12 @@ public class Game {
 			String penaltyHomeScore, String penaltyGuestScore, String homeIcon,
 			String guestIcon, String startTime, String homeTeam,
 			String guestTeam, String gameDate, String hasEvent) {
+		if(condition.equals("Active")){
+			startTime = gameMinute;
+		}
+		if(condition.equals("Ended")){
+			startTime = "Ended";
+		}
 		this.id = id;
 		this.gameMinute = gameMinute;
 		this.condition = condition;
