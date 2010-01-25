@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="55px"   
+		    >
+			<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			       android:layout_width="320px"
+				   android:layout_height="30px">
+		    	<TextView android:id="@+id/day_header"
+				   android:layout_width="320px"
+				   android:layout_height="30px"
+				   android:gravity="center"
+				   android:text="Today"
+				   android:background="@drawable/day_bar"
+				   />
+				<ImageButton android:id="@+id/next_day"
+			        android:layout_width="40px"
+			        android:layout_height="25px"
+			        android:layout_marginTop="1dip"
+			        android:layout_marginLeft="10dip"
+					android:layout_alignParentLeft="true"
+					android:layout_gravity="left"  
+					android:drawSelectorOnTop="true"
+			        android:src="@drawable/blank" 
+			        android:background="@drawable/next_btn_rollover"   
+		        />  
+		       	<ImageButton android:id="@+id/previous_day"
+			        android:layout_width="40px"
+			        android:layout_height="25px"
+			        android:layout_marginTop="1dip"
+			        android:layout_marginRight="10dip"
+					android:layout_alignParentRight="true"
+					android:layout_gravity="right"  
+					android:drawSelectorOnTop="true"
+			        android:src="@drawable/blank" 
+			        android:background="@drawable/previous_btn_rollover"   
+		        />  
+			</FrameLayout>	
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+						    android:layout_width="320px"
+						    android:layout_height="25px"
+						    android:background="@drawable/head_tab_bar_blank">	
+							<TextView android:id="@+id/subject_title"
+								android:layout_width="fill_parent"
+					    		android:layout_height="fill_parent"   
+					    		android:layout_gravity="right"
+					    		android:textColor="#000"
+					    		android:textStyle="normal"
+					    		android:textSize="16sp"
+					    		android:text=""
+						    	android:paddingRight="15dip"
+					    		></TextView>		   
+			</LinearLayout>
+	    </LinearLayout>
+
+ 		
