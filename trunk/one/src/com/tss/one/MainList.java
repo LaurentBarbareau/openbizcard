@@ -87,7 +87,6 @@ public class MainList extends MyListActivity {
 		final MainList act = this;
 		refreshIcon.setOnClickListener(new OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				finish();
 				Intent mainDetailIntent = new Intent(act, MainList.class);
