@@ -161,7 +161,6 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 						v.setOnClickListener(new OnClickListener() {
 
-							@Override
 							public void onClick(View v) {
 								GameDetail.gameId = game.getId();
 								Intent mainDetailIntent = new Intent(scoreBoard,
@@ -229,7 +228,6 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 					v.setOnClickListener(new OnClickListener() {
 
-						@Override
 						public void onClick(View v) {
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(scoreBoard,
@@ -287,7 +285,6 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 					v.setOnClickListener(new OnClickListener() {
 
-						@Override
 						public void onClick(View v) {
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(scoreBoard,
