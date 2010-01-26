@@ -8,11 +8,12 @@
   <TextView android:id="@+id/my_teams_minute"
 	  		android:layout_width="30px"
   			android:layout_height="20px"
+  			android:paddingLeft="2dip"
     		android:textColor="#ffffff"
     		android:textStyle="normal"
     		android:textSize="10sp"
     		android:text="mm.ss"
-    		android:gravity="left|bottom"
+    		android:gravity="center|bottom"
 	></TextView>
 	<ImageView android:id="@+id/my_teams_logo2"
 						android:layout_gravity="center"

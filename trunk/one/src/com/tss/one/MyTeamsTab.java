@@ -58,9 +58,7 @@ public class MyTeamsTab extends MyListActivity {
 	};
 	private Runnable displayScores = new Runnable() {
 		public void run() {
-			if (newsList != null && newsList.size() > 0) {
-				newsAdapter.notifyDataSetChanged();
-			}
+			newsAdapter.notifyDataSetChanged();			
 			m_ProgressDialog.dismiss();
 		}
 	};
