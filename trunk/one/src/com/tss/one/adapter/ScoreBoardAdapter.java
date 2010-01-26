@@ -156,16 +156,22 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 
 					final Game game = (Game) i;
 					v = vi.inflate(R.layout.score_board_match, null);
-					v.setOnClickListener(new OnClickListener() {
-
-						public void onClick(View v) {
-							GameDetail.gameId = game.getId();
-							Intent mainDetailIntent = new Intent(scoreBoard,
-									GameDetail.class);
-							scoreBoard.startActivity(mainDetailIntent);
-						}
-					});
 					
+					if(game.getHasEvent().equals("true")){
+						(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
+						v.setOnClickListener(new OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								GameDetail.gameId = game.getId();
+								Intent mainDetailIntent = new Intent(scoreBoard,
+										GameDetail.class);
+								scoreBoard.startActivity(mainDetailIntent);
+							}
+						});
+	
+					}
+										
 					minute = (TextView) v
 							.findViewById(R.id.score_board_schedule_minute);
 					teamG = (TextView) v
@@ -217,9 +223,22 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				subject.setText((String) i);
 
 			} else {
-				Game game = (Game) i;
+				final Game game = (Game) i;
 				v = vi.inflate(R.layout.score_board_live_match, null);
-				
+				if(game.getHasEvent().equals("true")){
+					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
+					v.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							GameDetail.gameId = game.getId();
+							Intent mainDetailIntent = new Intent(scoreBoard,
+									GameDetail.class);
+							scoreBoard.startActivity(mainDetailIntent);
+						}
+					});
+
+				}
 				minute = (TextView) v
 						.findViewById(R.id.score_board_live_minute);
 				teamH = (TextView) v.findViewById(R.id.score_board_live_name1);
@@ -262,8 +281,22 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				subject.setText((String) i);
 
 			} else {
-				Game game = (Game) i;
+				final Game game = (Game) i;
 				v = vi.inflate(R.layout.score_board_league, null);
+				if(game.getHasEvent().equals("true")){
+					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
+					v.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							GameDetail.gameId = game.getId();
+							Intent mainDetailIntent = new Intent(scoreBoard,
+									GameDetail.class);
+							scoreBoard.startActivity(mainDetailIntent);
+						}
+					});
+
+				}
 				minute = (TextView) v
 						.findViewById(R.id.score_board_league_minute);
 				teamH = (TextView) v
