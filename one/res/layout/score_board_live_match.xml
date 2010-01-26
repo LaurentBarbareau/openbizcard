@@ -14,12 +14,13 @@
     		android:text="mm.ss"
     		android:gravity="left|bottom"
 	></TextView>
-	<ImageView android:id="@+id/score_board_live_logo1"
-					android:layout_width="50px"
-					android:layout_height="60px"
+	<ImageView android:id="@+id/score_board_live_logo2"
+						android:layout_gravity="center"
+						android:layout_width="30px"
+						android:layout_height="30px"
 					android:src="@drawable/team_loading"
 	    		></ImageView>  
-	<TextView android:id="@+id/score_board_live_name1"
+	<TextView android:id="@+id/score_board_live_name2"
 	  		android:layout_width="60px"
   			android:layout_height="60px"
     		android:textColor="#ffffff"
@@ -37,7 +38,7 @@
     		android:text="0-0"
     		android:gravity="center"
 	></TextView>
-	<TextView android:id="@+id/score_board_live_name2"
+	<TextView android:id="@+id/score_board_live_name1"
 	  		android:layout_width="60px"
   			android:layout_height="60px"
     		android:textColor="#ffffff"
@@ -46,9 +47,10 @@
     		android:text="team"
     		android:gravity="center"
 	></TextView>
-	<ImageView android:id="@+id/score_board_live_logo2"
-						android:layout_width="50px"
-						android:layout_height="60px"
+	<ImageView android:id="@+id/score_board_live_logo1"
+						android:layout_gravity="center"
+						android:layout_width="30px"
+						android:layout_height="30px"
 						android:src="@drawable/team_loading"
 		    		></ImageView>
 </LinearLayout>
