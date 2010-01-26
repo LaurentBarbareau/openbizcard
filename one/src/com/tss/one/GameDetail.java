@@ -43,7 +43,6 @@ public class GameDetail extends MyListActivity {
 						System.out.println("Num 3");
 						runOnUiThread(new Runnable() {
 
-							@Override
 							public void run() {
 
 								TextView gameDetailScoreTV = (TextView) findViewById(R.id.game_detail_score);
