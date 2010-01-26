@@ -3,12 +3,12 @@ package com.tss.one.adapter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +17,11 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tss.one.GameDetail;
+import com.tss.one.MainDetail;
 import com.tss.one.R;
 import com.tss.one.ScoreBoard;
 import com.tssoft.one.webservice.ImageLoaderFactory;
@@ -92,6 +95,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 			if (position == 0) {
 				View todayGame = vi.inflate(R.layout.score_board_today_game,
 						null);
+				
 				TextView todayTitle = (TextView) todayGame
 						.findViewById(R.id.day_header);
 				subject = (TextView) todayGame.findViewById(R.id.subject_title);
@@ -150,8 +154,19 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 
 				} else {
 
-					Game game = (Game) i;
+					final Game game = (Game) i;
 					v = vi.inflate(R.layout.score_board_match, null);
+					v.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							GameDetail.gameId = game.getId();
+							Intent mainDetailIntent = new Intent(scoreBoard,
+									GameDetail.class);
+							scoreBoard.startActivity(mainDetailIntent);
+						}
+					});
+					
 					minute = (TextView) v
 							.findViewById(R.id.score_board_schedule_minute);
 					team2 = (TextView) v

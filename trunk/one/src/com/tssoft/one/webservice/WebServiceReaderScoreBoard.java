@@ -374,4 +374,48 @@ public class WebServiceReaderScoreBoard {
 
 	}
 
+	public static ArrayList<Game> getGameByID(String gameId) {
+		String TAG = "SOAPConnected";
+		String SOAP_ACTION = "http://tempuri.org/GetGame";
+		String METHOD_NAME = "GetGame";
+		String NAMESPACE = "http://tempuri.org/";
+		String URL = WebServiceReader.ENDPOINT_URL;
+		SoapObject resultRequestSOAP = null;
+		SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+
+		// SoapObject
+		PropertyInfo arinfo = new PropertyInfo();
+		arinfo.setNamespace(NAMESPACE);
+		arinfo.setName(":i_LiveID");
+		arinfo.setValue(gameId);
+
+		request.addProperty(arinfo);
+
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+				SoapEnvelope.VER11);
+		envelope.setOutputSoapObject(request);
+		Log.v(TAG, "Request" + request.toString());
+		AndroidHttpTransport androidHttpTransport = new AndroidHttpTransport(
+				URL);
+		ArrayList<Game> articlesArr = new ArrayList<Game>();
+		try {
+			androidHttpTransport.call(SOAP_ACTION, envelope);
+			resultRequestSOAP = (SoapObject) envelope.getResponse();
+
+			SoapObject articles = (SoapObject) resultRequestSOAP
+					.getProperty("Games");
+
+			for (int j = 0; j < articles.getPropertyCount(); j++) {
+
+				SoapObject article = (SoapObject) articles.getProperty(j);
+				Game game = getGameFromSoapObj(article);
+				articlesArr.add(game);
+			}
+		} catch (Exception aE) {
+			Log.d(TAG, "Error", aE);
+			aE.printStackTrace();
+		}
+		return articlesArr;
+
+	}
 }
