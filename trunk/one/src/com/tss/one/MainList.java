@@ -253,10 +253,16 @@ public class MainList extends MyListActivity {
 							ARTICLE_KEY).go();
 
 				} else {
-
-					v = vi.inflate(R.layout.white_list, null);
+					
+					if((position % 2) ==0){
+						v = vi.inflate(R.layout.white_list, null);
+					}else{
+						v = vi.inflate(R.layout.gray_list, null);
+					}
+					
 					ImageView imgView = (ImageView) v
-							.findViewById(R.id.small_main_image);
+					.findViewById(R.id.small_main_image);
+					
 					headline = (TextView) v
 							.findViewById(R.id.small_main_headline);
 					sc = (TextView) v.findViewById(R.id.small_main_sc);
