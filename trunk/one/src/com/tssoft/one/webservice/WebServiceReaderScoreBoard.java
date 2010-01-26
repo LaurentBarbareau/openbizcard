@@ -17,6 +17,7 @@ import com.tssoft.one.webservice.model.Article;
 import com.tssoft.one.webservice.model.ArticleBySubject;
 import com.tssoft.one.webservice.model.Game;
 import com.tssoft.one.webservice.model.GameBySubject;
+import com.tssoft.one.webservice.model.GameEvent;
 import com.tssoft.one.webservice.model.LiveSubject;
 
 public class WebServiceReaderScoreBoard {
@@ -300,6 +301,7 @@ public class WebServiceReaderScoreBoard {
 
 				SoapObject article = (SoapObject) games.getProperty(i);
 				Game game = getGameFromSoapObj(article);
+
 				gamesArr.add(game);
 			}
 			GameBySubject gameBySubject = new GameBySubject(subject.toString(),
@@ -351,6 +353,7 @@ public class WebServiceReaderScoreBoard {
 				.getProperty("GameDate");
 		SoapPrimitive hasEvents = (SoapPrimitive) article
 				.getProperty("HasEvents");
+
 		Game game = new Game(
 				id.toString() == null ? null : id.toString(),
 				gameMinute == null ? null : gameMinute.toString(),
@@ -370,7 +373,46 @@ public class WebServiceReaderScoreBoard {
 				guestTeam == null ? null : guestTeam.toString(),
 				gameDate == null ? null : gameDate.toString(),
 				hasEvents == null ? null : hasEvents.toString());
+		try {
+			Object homeEvent = article.getProperty("HomeEvents");
+			if (homeEvent != null && homeEvent instanceof SoapObject) {
+				SoapObject homeSoap = (SoapObject) homeEvent;
+				ArrayList<GameEvent> events = new ArrayList<GameEvent>();
+				for (int j = 0; j < homeSoap.getPropertyCount(); j++) {
+					SoapObject gameEvent = (SoapObject) homeSoap.getProperty(j);
+					events.add(getGameEventFromSoapObj(gameEvent));
+				}
+				game.homeEvents = events;
+			}
+		} catch (Exception e) {
+
+		}
+		try {
+			Object guestEvent = article.getProperty("GuestEvents");
+			if (guestEvent != null && guestEvent instanceof SoapObject) {
+				SoapObject guestSoap = (SoapObject) guestEvent;
+				ArrayList<GameEvent> events = new ArrayList<GameEvent>();
+				for (int j = 0; j < guestSoap.getPropertyCount(); j++) {
+					SoapObject gameEvent = (SoapObject) guestSoap
+							.getProperty(j);
+					events.add(getGameEventFromSoapObj(gameEvent));
+				}
+				game.guestEvents = events;
+			}
+		} catch (Exception e) {
+
+		}
 		return game;
+
+	}
+
+	public static GameEvent getGameEventFromSoapObj(SoapObject article) {
+		SoapPrimitive eventType = (SoapPrimitive) article
+				.getProperty("EventType");
+		SoapPrimitive desc = (SoapPrimitive) article.getProperty("Description");
+		GameEvent event = new GameEvent(eventType.toString() == null ? null
+				: eventType.toString(), desc == null ? null : desc.toString());
+		return event;
 
 	}
 
@@ -386,7 +428,7 @@ public class WebServiceReaderScoreBoard {
 		// SoapObject
 		PropertyInfo arinfo = new PropertyInfo();
 		arinfo.setNamespace(NAMESPACE);
-		arinfo.setName(":i_LiveID");
+		arinfo.setName("i_LiveID");
 		arinfo.setValue(gameId);
 
 		request.addProperty(arinfo);

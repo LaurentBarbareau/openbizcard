@@ -202,23 +202,23 @@ public class MainList extends MyListActivity {
 						.findViewById(R.id.my_teams_minute);
 				ImageView teamLogo1 = (ImageView) v
 						.findViewById(R.id.my_teams_logo1);
-				TextView name1 = (TextView) v.findViewById(R.id.my_teams_name1);
+				TextView nameHome = (TextView) v.findViewById(R.id.my_teams_name1);
 				TextView score = (TextView) v.findViewById(R.id.my_teams_score);
-				TextView name2 = (TextView) v.findViewById(R.id.my_teams_name2);
+				TextView nameGuest = (TextView) v.findViewById(R.id.my_teams_name2);
 				ImageView teamLogo2 = (ImageView) v
 						.findViewById(R.id.my_teams_logo2);
 
 				// set Value
 				minute.setTypeface(face);
-				name1.setTypeface(face);
-				name2.setTypeface(face);
+				nameHome.setTypeface(face);
+				nameGuest.setTypeface(face);
 				score.setTypeface(face);
 
 				minute.setText(game.getStartTime());
-				name1.setText(game.getGuestTeam());
+				nameHome.setText(game.getHomeTeam());
 				score.setText(game.getGuestScore() + " - "
 						+ game.getHomeScore());
-				name2.setText(game.getHomeTeam());
+				nameGuest.setText(game.getGuestTeam());
 				ImageLoaderStringFactory.createImageLoader(MainList.this,
 						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo1);
 				ImageLoaderStringFactory.createImageLoader(MainList.this,

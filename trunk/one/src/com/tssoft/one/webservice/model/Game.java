@@ -1,5 +1,7 @@
 package com.tssoft.one.webservice.model;
 
+import java.util.ArrayList;
+
 public class Game {
 	private String id = "";
 	private String gameMinute = "";
@@ -19,7 +21,10 @@ public class Game {
 	private String guestTeam = "";
 	private String gameDate = "";
 	private String hasEvent = "";
-
+	public ArrayList<GameEvent> guestEvents = new ArrayList<GameEvent>();
+	public ArrayList<GameEvent> homeEvents= new ArrayList<GameEvent>();
+	
+	
 	public String getId() {
 		return id;
 	}
