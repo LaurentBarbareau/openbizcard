@@ -40,7 +40,7 @@ public class ImageLoader extends Thread {
 
 	@Override
 	public synchronized void run() {
-		Looper.prepare();
+//		Looper.prepare();
 		isRunning = true;
 		while (isRunning) {
 			if (urls.size() > 0) {// upload
@@ -52,16 +52,18 @@ public class ImageLoader extends Thread {
 					final ImageView myImgView = imgView;
 					final Bitmap myBmp = bmp;
 
-					OakHandler hand = new OakHandler() {
-						public void doJob() {
+//					OakHandler hand = new OakHandler() {
+//						public void doJob() {
 							act.runOnUiThread(new Runnable() {
 								public void run() {
+									if(isRunning){
 									myImgView.setImageBitmap(myBmp);
+									}
 								}
 							});
-						}
-					};
-					hand.doJob();
+//						}
+//					};
+//					hand.doJob();
 				}
 
 			} else {// wait
@@ -75,7 +77,7 @@ public class ImageLoader extends Thread {
 			}
 			System.gc();
 		}
-		Looper.loop();
+//		Looper.loop();
 	}
 
 	private Bitmap convertByteToBitmap(byte[] data) {

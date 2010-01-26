@@ -14,8 +14,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tss.one.adapter.ScoreBoardAdapter;
@@ -51,41 +53,27 @@ public class ScoreBoard extends MyListActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.score_board_tab);
 		super.buildMenu(this);
-		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
-		ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
+//		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
+//		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
+//		ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
 
 		ImageButton tab1 = (ImageButton) findViewById(R.id.score_board_tab1);
 		ImageButton tab2 = (ImageButton) findViewById(R.id.score_board_tab2);
 		ImageButton tab3 = (ImageButton) findViewById(R.id.score_board_tab3);
 
-		icon0.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent mainDetailIntent = new Intent(view.getContext(),
-						MainList.class);
+		ImageView refreshIcon = ((ImageView) findViewById(R.id.refrest_icon));
+		final ScoreBoard act = this;
+		refreshIcon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent mainDetailIntent = new Intent(act, ScoreBoard.class);
 				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(mainDetailIntent, 0);
+				startActivity(mainDetailIntent);
+
 			}
 		});
-
-		icon1.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent myTeamsTabIntent = new Intent(view.getContext(),
-						MyTeamsTab.class);
-				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(myTeamsTabIntent, 0);
-			}
-		});
-
-		icon2.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				Intent newsListIntent = new Intent(view.getContext(),
-						NewsList.class);
-				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(newsListIntent, 0);
-			}
-		});
-
 		// add Tab's Listener to change tab
 
 		ElementState e1 = new ElementState(R.drawable.score_board_tab1_over,
@@ -187,13 +175,14 @@ public class ScoreBoard extends MyListActivity {
 					SimpleDateFormat newformatter = new SimpleDateFormat(
 							"HH:mm dd/MM/yyyy");
 					final String s = newformatter.format(d);
-					runOnUiThread( new Runnable(){
+					runOnUiThread(new Runnable() {
 
 						public void run() {
 							TextView textView = (TextView) findViewById(R.id.score_board_title);
 							textView.setText(s);
-						}});
-				
+						}
+					});
+
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -237,7 +226,10 @@ public class ScoreBoard extends MyListActivity {
 				scoreBoardList.add(gbs.subject);
 				scoreBoardList.addAll(gbs.games);
 			} catch (Exception e) {
-				Log.e("Dont have internet ", e.getMessage());
+				if (e != null && e.getMessage() != null) {
+					Log.e("Dont have internet ", e.getMessage());
+				}
+
 				// Utils.showAlert(this, "No Internet Connection.");
 			}
 			runOnUiThread(displayChanged);

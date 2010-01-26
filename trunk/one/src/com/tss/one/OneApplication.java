@@ -11,9 +11,10 @@ public class OneApplication extends Activity {
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_page);
+	
 		Intent mainDetailIntent = new Intent(this, MainList.class);
 		startActivityForResult(mainDetailIntent, 0);
-
+		
 		// super.buildMenu(this);
 		// ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
 		// ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
@@ -61,6 +62,7 @@ public class OneApplication extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		System.out.println("aaaaaa" + data);
 		super.onActivityResult(requestCode, resultCode, data);
+//		finish();
 	}
 
 }

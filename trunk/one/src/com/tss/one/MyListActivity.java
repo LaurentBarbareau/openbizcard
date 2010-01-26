@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 public class MyListActivity extends ListActivity{
 
 	protected void buildMenu(Activity act) {
+		final Activity myAct = act;
 		ImageButton icon0 = (ImageButton) act.findViewById(R.id.main_button);
 		ImageButton icon1 = (ImageButton) act
 				.findViewById(R.id.my_teams_button);
@@ -18,36 +19,40 @@ public class MyListActivity extends ListActivity{
 
 		icon0.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				myAct.finish();
 				Intent mainDetailIntent = new Intent(view.getContext(),
 						MainList.class);
 				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(mainDetailIntent, 0);
+				startActivity(mainDetailIntent);
 			}
 		});
 
 		icon1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				myAct.finish();
 				Intent myTeamsTabIntent = new Intent(view.getContext(),
 						MyTeamsTab.class);
 				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(myTeamsTabIntent, 0);
+				startActivity(myTeamsTabIntent);
 			}
 		});
 
 		icon2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				myAct.finish();
 				Intent newsListIntent = new Intent(view.getContext(),
 						NewsList.class);
 				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(newsListIntent, 0);
+				startActivity(newsListIntent);
 			}
 		});
 		icon3.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				myAct.finish();
 				Intent newsListIntent = new Intent(view.getContext(),
 						ScoreBoard.class);
 				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(newsListIntent, 0);
+				startActivity(newsListIntent);
 			}
 		});
 	}

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
+import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.WebServiceText;
@@ -76,33 +78,24 @@ public class MainList extends MyListActivity {
 		System.setErr(new PrintStream(new LogTool("System.err")));
 		System.setOut(new PrintStream(new LogTool("System.out")));
 
-		// ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
-		// ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
-		// ImageButton icon3 = (ImageButton)
-		// findViewById(R.id.score_board_button);
-
-		// icon1.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent myTeamsTabIntent = new Intent(view.getContext(),
-		// MyTeamsTab.class);
-		// // mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(myTeamsTabIntent, 0);
-		// }
-		// });
-		//
-		// icon2.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent newsListIntent = new Intent(view.getContext(),
-		// NewsList.class);
-		// // newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(newsListIntent, 0);
-		// }
-		// });
-
 		mainArticleList = new ArrayList<Object>();
 		this.mainAdapter = new MainAdapter(this, R.layout.main_list,
 				mainArticleList);
 		setListAdapter(this.mainAdapter);
+		// Refresh icon
+		ImageView refreshIcon = ((ImageView) findViewById(R.id.refrest_icon));
+		final MainList act = this;
+		refreshIcon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent mainDetailIntent = new Intent(act, MainList.class);
+				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(mainDetailIntent);
+
+			}
+		});
 
 		viewMain = new Runnable() {
 			public void run() {
@@ -111,8 +104,10 @@ public class MainList extends MyListActivity {
 		};
 		Thread thread = new Thread(null, viewMain, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(MainList.this, "Please wait...",
-				"Retrieving data ...", true);
+		if (!firstTime) {
+			m_ProgressDialog = ProgressDialog.show(MainList.this,
+					"Please wait...", "Retrieving data ...", true);
+		}
 
 	}
 
@@ -159,7 +154,7 @@ public class MainList extends MyListActivity {
 			MainDetail.article = (Article) mainArticleList.get(position);
 			Intent mainDetailIndent = new Intent(v.getContext(),
 					MainDetail.class);
-			startActivityForResult(mainDetailIndent, 0);
+			startActivity(mainDetailIndent);
 		}
 	}
 
@@ -253,16 +248,16 @@ public class MainList extends MyListActivity {
 							ARTICLE_KEY).go();
 
 				} else {
-					
-					if((position % 2) ==0){
+
+					if ((position % 2) == 0) {
 						v = vi.inflate(R.layout.white_list, null);
-					}else{
+					} else {
 						v = vi.inflate(R.layout.gray_list, null);
 					}
-					
+
 					ImageView imgView = (ImageView) v
-					.findViewById(R.id.small_main_image);
-					
+							.findViewById(R.id.small_main_image);
+
 					headline = (TextView) v
 							.findViewById(R.id.small_main_headline);
 					sc = (TextView) v.findViewById(R.id.small_main_sc);
