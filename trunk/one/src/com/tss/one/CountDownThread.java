@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimerTask;
 
+import android.graphics.Typeface;
 import android.widget.TextView;
 
 import com.tssoft.one.webservice.WebServiceReaderScoreBoard;
@@ -19,6 +20,7 @@ public class CountDownThread extends TimerTask{
 	private SimpleDateFormat oriFormat = new SimpleDateFormat("yyyy-MM-ddHH:mm:ssZ");
 	private SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 	private SimpleDateFormat dayFormat = new SimpleDateFormat("dd/MM/yyyy");
+	private Typeface face;
 	private String timeString = "";
 	private String dayString = "";
 	
@@ -28,6 +30,7 @@ public class CountDownThread extends TimerTask{
 		secTv = (TextView)sb.findViewById(R.id.score_board_sec);
 		timeTv = (TextView)sb.findViewById(R.id.score_board_next);
 		dayTv = (TextView)sb.findViewById(R.id.score_board_date);
+		face = Typeface.createFromAsset(sb.getAssets(),"fonts/Arial.ttf");
 		startCount = s;
 		sec = s;
 		scoreBoard = sb;
@@ -58,8 +61,13 @@ public class CountDownThread extends TimerTask{
 	
 	private Runnable updateDisplay = new Runnable(){
 		public void run(){
+			secTv.setTypeface(face);
 			secTv.setText(sec+"");
+			
+			timeTv.setTypeface(face);
 			timeTv.setText(timeString);
+			
+			dayTv.setTypeface(face);
 			dayTv.setTag(dayString);
 		}
 	};
