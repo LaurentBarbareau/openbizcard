@@ -22,7 +22,7 @@
 					android:layout_marginLeft="30px"></ImageView>
 				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 					android:orientation="vertical" android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:layout_gravity="center">
+					android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginLeft="10px">
 					<TextView android:id="@+id/game_detail_score"
 						android:layout_width="wrap_content" android:layout_height="wrap_content"
 						android:layout_gravity="center" android:textColor="#ffffff"
@@ -38,7 +38,7 @@
 				</LinearLayout>
 				<ImageView android:id="@+id/game_detail_logo1"
 					android:layout_gravity="center" android:layout_width="90px"
-					android:layout_height="90px" android:src="@drawable/team_big_loading"></ImageView>
+					android:layout_height="90px" android:src="@drawable/team_big_loading" android:layout_marginLeft="10px"></ImageView>
 			</LinearLayout>
 			<ListView android:id="@+id/android:list"
 				android:layout_width="wrap_content" android:layout_height="200px"
