@@ -8,6 +8,7 @@
   <TextView android:id="@+id/score_board_league_minute"
 	  		android:layout_width="30px"
   			android:layout_height="20px"
+  			android:paddingLeft="2dip"
     		android:textColor="#ffffff"
     		android:textStyle="normal"
     		android:textSize="10sp"

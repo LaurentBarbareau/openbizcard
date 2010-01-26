@@ -37,8 +37,8 @@
     		
         	
 			<ImageButton android:id="@+id/team_select_btn"
-					android:layout_width="320px"
-			        android:layout_height="60px"
+					android:layout_width="71px"
+			        android:layout_height="30px"
 					android:layout_gravity="center"  
 					android:background="@drawable/my_teams_sel_rollover"
 		        /> 

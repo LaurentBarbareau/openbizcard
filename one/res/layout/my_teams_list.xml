@@ -35,7 +35,7 @@
 					android:layout_gravity="left|top"  
 					android:drawSelectorOnTop="true"
 			        android:src="@drawable/blank" 
-			        android:background="@drawable/my_teams_back_btn_rollover"   
+			        android:background="@drawable/my_teams_done_btn_rollover"   
 		        />  
 		    <ImageButton android:id="@+id/my_teams_add"
 			        android:layout_width="68px"

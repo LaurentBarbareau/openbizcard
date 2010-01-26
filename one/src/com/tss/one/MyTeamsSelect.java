@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -49,12 +50,13 @@ public class MyTeamsSelect extends MyActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_teams_select);
 		super.buildMenu(this);
-		
+		 
 		// Get dropdown
 		Spinner leagueSpinner = (Spinner) findViewById(R.id.league_select);
 		Spinner teamSpinner = (Spinner) findViewById(R.id.team_select);
 
 		ImageButton addButton = (ImageButton) findViewById(R.id.team_select_btn);
+		ImageButton cancelButton = (ImageButton) findViewById(R.id.team_select_cancel_btn);
 
 		leagueAdapter = new ArrayAdapter(this,
 				android.R.layout.simple_spinner_item);
@@ -124,6 +126,14 @@ public class MyTeamsSelect extends MyActivity {
 					}
 				});
 				thread.start();
+			}
+		});
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				Intent myTeamsListIntent = new Intent(view.getContext(),
+						MyTeamsList.class);
+				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivityForResult(myTeamsListIntent, 0);
 			}
 		});
 		Thread thread = new Thread(null, viewNews, "MagentoBackground");

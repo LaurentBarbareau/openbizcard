@@ -40,7 +40,7 @@
 		    		android:textColor="#0033cc"
 		    		android:textStyle="bold"
 		    		android:textSize="16sp"
-		    		android:text="בחר צוות"
+		    		android:text="בחר קבוצה"
 		    		android:gravity="center"
 			></TextView>
         	<Spinner 
@@ -50,12 +50,25 @@
 			        android:drawSelectorOnTop="true"
 			        android:prompt="@string/team_prompt"
 			    />
-			<ImageButton android:id="@+id/team_select_btn"
-					android:layout_width="320px"
-			        android:layout_height="60px"
-					android:layout_gravity="center"  
-					android:background="@drawable/my_teams_sel_rollover"
-		        /> 
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:orientation="horizontal"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"   
+			    android:gravity="center" 
+    		>
+    			<ImageButton android:id="@+id/team_select_cancel_btn"
+						android:layout_width="77px"
+				        android:layout_height="31px"
+						android:layout_gravity="center"
+						android:background="@drawable/my_teams_sel_cancel_rollover"
+			        /> 
+				<ImageButton android:id="@+id/team_select_btn"
+						android:layout_width="77px"
+				        android:layout_height="31px"
+						android:layout_gravity="center"  
+						android:background="@drawable/my_teams_sel_rollover"
+			        /> 
+		      </LinearLayout>
 	    </LinearLayout>
 		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     		android:layout_width="fill_parent"

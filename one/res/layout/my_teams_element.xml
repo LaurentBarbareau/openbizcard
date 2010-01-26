@@ -25,9 +25,9 @@
     		android:gravity="center"
 	></TextView>
 	<ImageView android:id="@+id/my_teams_logo"
-						android:layout_width="60px"
-						android:layout_height="40px"
-			    		android:layout_gravity="right"
+						android:layout_width="30px"
+						android:layout_height="30px"
+			    		android:layout_gravity="center"
 			    		android:src="@drawable/loading_sub"
 		    		></ImageView>
 </LinearLayout>

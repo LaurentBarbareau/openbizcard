@@ -37,6 +37,7 @@
 			<TextView android:id="@+id/score_board_title"
 						android:layout_width="fill_parent"
 						android:layout_height="25px"
+						android:layout_gravity="right|center"
 						android:background="@drawable/navigation_bar"/>
 			</FrameLayout>
 			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
