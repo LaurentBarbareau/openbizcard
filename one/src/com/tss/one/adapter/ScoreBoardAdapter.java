@@ -158,7 +158,6 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					v = vi.inflate(R.layout.score_board_match, null);
 					v.setOnClickListener(new OnClickListener() {
 
-						@Override
 						public void onClick(View v) {
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(scoreBoard,

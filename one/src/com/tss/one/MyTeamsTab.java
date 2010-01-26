@@ -112,7 +112,6 @@ public class MyTeamsTab extends MyListActivity {
 		final MyTeamsTab act = this;
 		refreshIcon.setOnClickListener(new OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				finish();
 				Intent mainDetailIntent = new Intent(act, MyTeamsTab.class);
