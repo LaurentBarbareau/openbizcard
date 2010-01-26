@@ -33,12 +33,57 @@
 			</FrameLayout>	
 			<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			       android:layout_width="320px"
-				   android:layout_height="25px">
-			<TextView android:id="@+id/score_board_title"
-						android:layout_width="fill_parent"
-						android:layout_height="25px"
-						android:layout_gravity="right|center"
-						android:background="@drawable/navigation_bar"/>
+				   android:layout_height="25px"				   
+				   android:background="@drawable/navigation_bar">
+				<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="horizontal"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"  
+				    android:layout_gravity="center" 		
+				    android:background="#000000"	    
+				    >
+					<TextView android:id="@+id/score_board_sec_label"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+								android:text="שניות"
+					/>
+					<TextView android:id="@+id/score_board_sec"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+					/>
+					<TextView android:id="@+id/score_board_next_label"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+								android:text="העדכון הבא בעוד"
+					/>
+					<TextView android:id="@+id/score_board_next"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+					/>
+					<TextView android:id="@+id/score_board_date_label2"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+								android:text="שעה"
+					/>
+					<TextView android:id="@+id/score_board_date"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+					/>
+					<TextView android:id="@+id/score_board_date_label1"
+								android:layout_width="wrap_content"
+								android:layout_height="fill_parent"
+								android:layout_gravity="center"
+								android:text="מעודכן ל- "
+					/>
+							
+				</LinearLayout>
+				
 			</FrameLayout>
 			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:orientation="horizontal"
