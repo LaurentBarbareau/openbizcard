@@ -1,13 +1,12 @@
 package com.tss.one;
 
-import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Timer;
 
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,10 +22,8 @@ import android.widget.TextView;
 import com.tss.one.adapter.ScoreBoardAdapter;
 import com.tss.one.listener.ScoreBoardTabCL;
 import com.tssoft.one.utils.ElementState;
-import com.tssoft.one.utils.Utils;
 import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.WebServiceReaderScoreBoard;
-import com.tssoft.one.webservice.model.Game;
 import com.tssoft.one.webservice.model.GameBySubject;
 
 public class ScoreBoard extends MyListActivity {
@@ -39,12 +36,15 @@ public class ScoreBoard extends MyListActivity {
 	public ArrayList<Object> liveList = null;
 	public ArrayAdapter<Object> scoreBoardAdapter = null;
 
+	private Timer timer=null;
 	private ScoreBoardTabCL tabClickListener = null;
 	private ProgressDialog m_ProgressDialog = null;
 
 	private int dayOffset = 0;
 	private int currentTab = TODAY_GAME_TAB;
 	private String spinnerId = "";
+	
+	public CountDownThread ct = new CountDownThread(this,59);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ public class ScoreBoard extends MyListActivity {
 		final ScoreBoard act = this;
 		refreshIcon.setOnClickListener(new OnClickListener() {
 
-			@Override
 			public void onClick(View v) {
 				finish();
 				Intent mainDetailIntent = new Intent(act, ScoreBoard.class);
@@ -98,12 +97,16 @@ public class ScoreBoard extends MyListActivity {
 		scoreBoardAdapter = new ScoreBoardAdapter(this,
 				R.layout.score_board_tab, scoreBoardList);
 		setListAdapter(scoreBoardAdapter);
-
+		
+		timer = new Timer();
+		
+		timer.scheduleAtFixedRate(ct, 0, 1000);
+		
 		Thread thread = new Thread(null, viewScoreBoard, "MagentoBackground");
 		thread.start();
 		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
-				"Please wait...", "Retrieving data ...", true);
-
+				"Please wait...", "Retrieving data ...", true);		
+		
 	}
 
 	public void setCurrentTab(int t) {
@@ -137,6 +140,24 @@ public class ScoreBoard extends MyListActivity {
 		setLeagueGame();
 	}
 
+	public void updateScore(){
+		if(currentTab == TODAY_GAME_TAB){
+			scoreBoardList.clear();
+			scoreBoardAdapter.clear();
+			setScoreBoard();
+		}
+		if(currentTab == LIVE_GAME_TAB){
+			scoreBoardList.clear();
+			scoreBoardAdapter.clear();
+			setLiveGame();
+		}
+		if(currentTab == LEAGUE_TAB){
+			scoreBoardList.clear();
+			scoreBoardAdapter.clear();
+			setLeagueGame();
+		}
+	}
+	
 	public void setScoreBoard() {
 		Thread t = new Thread(viewScoreBoard);
 		t.start();
@@ -155,7 +176,7 @@ public class ScoreBoard extends MyListActivity {
 
 	public void setLeagueGame() {
 
-		Thread t = new Thread(null,viewLeagueGame,"" + System.currentTimeMillis());
+		Thread t = new Thread(viewLeagueGame);
 		t.start();
 		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
 				"Please wait...", "Retrieving data ...", true);
@@ -172,14 +193,17 @@ public class ScoreBoard extends MyListActivity {
 				try {
 					Date d = formatter.parse(cDate);
 					// next and prev
-					SimpleDateFormat newformatter = new SimpleDateFormat(
-							"HH:mm dd/MM/yyyy");
-					final String s = newformatter.format(d);
+					SimpleDateFormat newformatter = new SimpleDateFormat("dd/MM/yyy");
+					final String date = newformatter.format(d);
+					newformatter = new SimpleDateFormat("HH:mm");
+					final String time = newformatter.format(d);
 					runOnUiThread(new Runnable() {
 
 						public void run() {
-//							TextView textView = (TextView) findViewById(R.id.score_board_title);
-//							textView.setText(s);
+							TextView dateTv = (TextView) findViewById(R.id.score_board_date);
+							dateTv.setText(date);
+							TextView timeTv = (TextView) findViewById(R.id.score_board_next);
+							timeTv.setText(time);							
 						}
 					});
 
@@ -220,8 +244,6 @@ public class ScoreBoard extends MyListActivity {
 
 	public Runnable viewLeagueGame = new Runnable() {
 		public void run() {
-			Log.e("viewLeagueGame", "viewLeagueGame");
-			System.out.println("viewLeagueGame");
 			try {
 				GameBySubject gbs = WebServiceReaderScoreBoard
 						.getGamesBySubject(spinnerId);
