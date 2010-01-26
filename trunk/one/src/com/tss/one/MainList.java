@@ -202,7 +202,6 @@ public class MainList extends MyListActivity {
 					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 					v.setOnClickListener(new OnClickListener() {
 
-						@Override
 						public void onClick(View v) {
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(context,
