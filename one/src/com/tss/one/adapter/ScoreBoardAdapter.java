@@ -84,7 +84,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 		View v = convertView;
 		TextView subject;
 		TextView minute;
-		TextView team1, team2;
+		TextView teamH, teamG;
 		TextView score;
 		Object i = items.get(position);
 
@@ -169,36 +169,38 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					
 					minute = (TextView) v
 							.findViewById(R.id.score_board_schedule_minute);
-					team2 = (TextView) v
+					teamG = (TextView) v
 							.findViewById(R.id.score_board_schedule_name1);
-					team1 = (TextView) v
+					teamH = (TextView) v
 							.findViewById(R.id.score_board_schedule_name2);
 					score = (TextView) v
 							.findViewById(R.id.score_board_schedule_score);
-					ImageView guestIcon = (ImageView) v
+					ImageView hIcon = (ImageView) v
 							.findViewById(R.id.score_board_schedule_logo1);
-					ImageView homeIcon = (ImageView) v
+					ImageView gIcon = (ImageView) v
 							.findViewById(R.id.score_board_schedule_logo2);
 
 					minute.setTypeface(face);
-					team1.setTypeface(face);
-					team2.setTypeface(face);
+					teamH.setTypeface(face);
+					teamG.setTypeface(face);
 					score.setTypeface(face);
 
 					minute.setText(game.getStartTime());
-					team1.setText(game.getHomeTeam());
-					team2.setText(game.getGuestTeam());
-					score.setText(game.getGuestScore() + " - "
-							+ game.getHomeScore());
+					teamH.setText(game.getGuestTeam());
+					teamG.setText(game.getHomeTeam());
+					String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
+							+ game.getHomeScore();
+					
+					score.setText(scoreStr);
 
 					System.out.println("url = " + game.getHomeIcon());
 
 					ImageLoaderFactory.createImageLoader(
 							(ListActivity) scoreBoard).setTask(
-							game.getHomeIcon(), homeIcon);
+							game.getHomeIcon(), hIcon);
 					ImageLoaderFactory.createImageLoader(
 							(ListActivity) scoreBoard).setTask(
-							game.getGuestIcon(), guestIcon);
+							game.getGuestIcon(), gIcon);
 					ImageLoaderFactory.createImageLoader(
 							(ListActivity) scoreBoard).go();
 				}
@@ -218,10 +220,11 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 			} else {
 				Game game = (Game) i;
 				v = vi.inflate(R.layout.score_board_live_match, null);
+				
 				minute = (TextView) v
 						.findViewById(R.id.score_board_live_minute);
-				team1 = (TextView) v.findViewById(R.id.score_board_live_name1);
-				team2 = (TextView) v.findViewById(R.id.score_board_live_name2);
+				teamH = (TextView) v.findViewById(R.id.score_board_live_name1);
+				teamG = (TextView) v.findViewById(R.id.score_board_live_name2);
 				score = (TextView) v.findViewById(R.id.score_board_live_score);
 				ImageView homeIcon = (ImageView) v
 						.findViewById(R.id.score_board_live_logo1);
@@ -229,15 +232,17 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						.findViewById(R.id.score_board_live_logo2);
 
 				minute.setTypeface(face);
-				team1.setTypeface(face);
-				team2.setTypeface(face);
+				teamH.setTypeface(face);
+				teamG.setTypeface(face);
 				score.setTypeface(face);
 
 				minute.setText(game.getGameMinute());
-				team1.setText(game.getHomeTeam());
-				team2.setText(game.getGuestTeam());
-				score.setText(game.getHomeScore() + ":" + game.getGuestScore());
-
+				teamH.setText(game.getHomeTeam());
+				teamG.setText(game.getGuestTeam());
+				String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
+						+ game.getHomeScore();
+				
+				score.setText(scoreStr);
 				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)
 						.setTask(game.getHomeIcon(), homeIcon);
 				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)
@@ -262,9 +267,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				v = vi.inflate(R.layout.score_board_league, null);
 				minute = (TextView) v
 						.findViewById(R.id.score_board_league_minute);
-				team1 = (TextView) v
+				teamH = (TextView) v
 						.findViewById(R.id.score_board_league_name1);
-				team2 = (TextView) v
+				teamG = (TextView) v
 						.findViewById(R.id.score_board_league_name2);
 				score = (TextView) v
 						.findViewById(R.id.score_board_league_score);
@@ -274,15 +279,17 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						.findViewById(R.id.score_board_league_logo2);
 
 				minute.setTypeface(face);
-				team1.setTypeface(face);
-				team2.setTypeface(face);
+				teamH.setTypeface(face);
+				teamG.setTypeface(face);
 				score.setTypeface(face);
 
 				minute.setText(game.getGameMinute());
-				team1.setText(game.getHomeTeam());
-				team2.setText(game.getGuestTeam());
-				score.setText(game.getHomeScore() + ":" + game.getGuestScore());
-
+				teamH.setText(game.getHomeTeam());
+				teamG.setText(game.getGuestTeam());
+				String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
+						+ game.getHomeScore();
+				
+				score.setText(scoreStr);
 				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)
 						.setTask(game.getHomeIcon(), homeIcon);
 				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)

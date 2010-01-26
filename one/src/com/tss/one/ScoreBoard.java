@@ -155,7 +155,7 @@ public class ScoreBoard extends MyListActivity {
 
 	public void setLeagueGame() {
 
-		Thread t = new Thread(viewLeagueGame);
+		Thread t = new Thread(null,viewLeagueGame,"" + System.currentTimeMillis());
 		t.start();
 		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
 				"Please wait...", "Retrieving data ...", true);
@@ -178,8 +178,8 @@ public class ScoreBoard extends MyListActivity {
 					runOnUiThread(new Runnable() {
 
 						public void run() {
-							TextView textView = (TextView) findViewById(R.id.score_board_title);
-							textView.setText(s);
+//							TextView textView = (TextView) findViewById(R.id.score_board_title);
+//							textView.setText(s);
 						}
 					});
 
@@ -220,6 +220,8 @@ public class ScoreBoard extends MyListActivity {
 
 	public Runnable viewLeagueGame = new Runnable() {
 		public void run() {
+			Log.e("viewLeagueGame", "viewLeagueGame");
+			System.out.println("viewLeagueGame");
 			try {
 				GameBySubject gbs = WebServiceReaderScoreBoard
 						.getGamesBySubject(spinnerId);
