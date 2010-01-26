@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	  xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:background="#16329e">
+	 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			       android:layout_width="320px"
+				   android:layout_height="127px"
+				   android:layout_gravity="center"   
+				   android:background="@drawable/head_game_detail"
+				   >
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:orientation="horizontal"
+			    android:layout_width="130px"
+			    android:layout_height="127px"   
+			    android:layout_gravity="center"   
+			    >
+			    <ImageView android:id="@+id/game_detail_logo2"
+						android:layout_gravity="center"
+						android:layout_width="90px"
+						android:layout_height="90px"
+					android:src="@drawable/team_big_loading"
+	    		></ImageView>  
+			    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical"
+			  			android:layout_width="wrap_content"
+			  			android:layout_height="wrap_content"   
+				    android:layout_gravity="center"    
+			    >
+			    	<TextView android:id="@+id/game_detail_score"
+			  			android:layout_width="wrap_content"
+			  			android:layout_height="wrap_content"
+			  			android:layout_gravity="center" 	
+			  			android:textColor="#ffffff"
+			  			android:textSize="28sp"
+			  			android:textStyle="bold"
+			  			android:text="0-0"			  					  			
+			  		/>
+			  		<TextView android:id="@+id/game_detail_1st_half_score"
+			  			android:layout_width="wrap_content"
+			  			android:layout_height="wrap_content"
+			  			android:layout_gravity="center" 	
+			  			android:textColor="#ffffff"
+			  			android:textSize="12sp"
+			  			android:textStyle="normal"
+			  			android:text="1st half score"			  					  			
+			  		/>
+			  		<TextView android:id="@+id/game_detail_minute"
+			  			android:layout_width="wrap_content"
+			  			android:layout_height="wrap_content"
+			  			android:layout_gravity="center" 	
+			  			android:textColor="#1ffb3e"
+			  			android:textSize="13sp"
+			  			android:textStyle="bold"
+			  			android:text="minute"			  					  			
+			  		/>
+			    </LinearLayout>
+			  	<ImageView android:id="@+id/game_detail_logo1"
+						android:layout_gravity="center"
+						android:layout_width="90px"
+						android:layout_height="90px"
+					android:src="@drawable/team_big_loading"
+	    		></ImageView>  
+			  </LinearLayout>		
+	</FrameLayout>
+	<ListView
+	    android:id="@+id/android:list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="350px"
+	/> 
+</LinearLayout>
