@@ -157,7 +157,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					final Game game = (Game) i;
 					v = vi.inflate(R.layout.score_board_match, null);
 					
-					if(game.getHasEvent().equals("true")){
+//					if(game.getHasEvent().equals("true")){
 						(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 						v.setOnClickListener(new OnClickListener() {
 
@@ -169,7 +169,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 							}
 						});
 	
-					}
+//					}
 										
 					minute = (TextView) v
 							.findViewById(R.id.score_board_schedule_minute);

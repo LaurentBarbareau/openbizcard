@@ -44,7 +44,7 @@ public class ScoreBoard extends MyListActivity {
 	private int currentTab = TODAY_GAME_TAB;
 	private String spinnerId = "";
 	
-	public CountDownThread ct = new CountDownThread(this,59);
+	public CountDownThread ct ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class ScoreBoard extends MyListActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.score_board_tab);
+		ct = new CountDownThread(this,59);
 		super.buildMenu(this);
 //		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
 //		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
