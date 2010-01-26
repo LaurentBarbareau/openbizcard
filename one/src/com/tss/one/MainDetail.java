@@ -64,21 +64,21 @@ public class MainDetail extends MyActivity {
 //				loadArticle(article);
 //			}
 //		});
-		ImageButton zoominIcon = (ImageButton) findViewById(R.id.zoom_in_button);
-		ImageButton zoomoutIcon = (ImageButton) findViewById(R.id.zoom_out_button);
-		zoominIcon.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
-				webview.zoomIn();
-			
-			}
-		});
-		zoomoutIcon.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
-				webview.zoomOut();
-			}
-		});
+//		ImageButton zoominIcon = (ImageButton) findViewById(R.id.zoom_in_button);
+//		ImageButton zoomoutIcon = (ImageButton) findViewById(R.id.zoom_out_button);
+//		zoominIcon.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View view) {
+//				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
+//				webview.zoomIn();
+//			
+//			}
+//		});
+//		zoomoutIcon.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View view) {
+//				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
+//				webview.zoomOut();
+//			}
+//		});
 //		//
 
 //		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
