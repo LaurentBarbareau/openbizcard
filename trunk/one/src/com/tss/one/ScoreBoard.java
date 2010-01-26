@@ -189,7 +189,6 @@ public class ScoreBoard extends MyListActivity {
 					final String s = newformatter.format(d);
 					runOnUiThread( new Runnable(){
 
-						@Override
 						public void run() {
 							TextView textView = (TextView) findViewById(R.id.score_board_title);
 							textView.setText(s);
