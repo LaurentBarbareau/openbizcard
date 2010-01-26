@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -163,10 +164,11 @@ public class MainList extends MyListActivity {
 	private class MainAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
-
+		Context context;
 		public MainAdapter(Context context, int textViewResourceId,
 				ArrayList<Object> items) {
 			super(context, textViewResourceId, items);
+			this.context = context;
 			this.items = items;
 		}
 
@@ -194,8 +196,22 @@ public class MainList extends MyListActivity {
 
 			} else if (i instanceof Game) {
 
-				Game game = (Game) i;
+				final Game game = (Game) i;
 				v = vi.inflate(R.layout.my_teams_score_element, null);
+				if(game.getHasEvent().equals("true")){
+					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
+					v.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							GameDetail.gameId = game.getId();
+							Intent mainDetailIntent = new Intent(context,
+									GameDetail.class);
+							context.startActivity(mainDetailIntent);
+						}
+					});
+
+				}
 				// / All prop
 				TextView minute = (TextView) v
 						.findViewById(R.id.my_teams_minute);

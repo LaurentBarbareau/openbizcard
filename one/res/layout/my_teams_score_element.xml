@@ -54,4 +54,9 @@
 						android:layout_height="30px"
 						android:src="@drawable/team_loading"
 		    		></ImageView>
+		    			<ImageView android:id="@+id/arrow_detail"
+						android:layout_gravity="right|center_vertical"
+						android:layout_width="21px"
+						android:layout_height="80px"
+						android:src="@drawable/arrow_detail" android:visibility="invisible"></ImageView>
 </LinearLayout>
