@@ -29,11 +29,11 @@ public class WebServiceReaderMyTeam {
 	private static String deviceId = "oakoakoak";
 
 	public static String getDeviceId(Activity act) {
-//		 if (mTelephonyMgr == null) {
-//		 mTelephonyMgr = (TelephonyManager) act
-//		 .getSystemService(Activity.TELEPHONY_SERVICE);
-//		 deviceId = mTelephonyMgr.getDeviceId();
-//		 }
+		 if (mTelephonyMgr == null) {
+		 mTelephonyMgr = (TelephonyManager) act
+		 .getSystemService(Activity.TELEPHONY_SERVICE);
+		 deviceId = mTelephonyMgr.getDeviceId();
+		 }
 		return deviceId;
 	}
 
