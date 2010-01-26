@@ -37,14 +37,14 @@
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/next_rollover" /> -->
 					<ImageButton android:id="@+id/next_button"
-					android:layout_width="54px" android:layout_height="25px"
-					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
+					android:layout_width="37px" android:layout_height="30px"
+					 android:layout_marginLeft="10dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/next_rollover" />
 				<ImageButton android:id="@+id/previous_button"
-					android:layout_width="54px" android:layout_height="25px"
+					android:layout_width="37px" android:layout_height="30px"
 					android:layout_toRightOf="@id/next_button"
-					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
+					android:layout_marginLeft="225dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/previous_rollover" />
 			</RelativeLayout> 
