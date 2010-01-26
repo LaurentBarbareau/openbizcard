@@ -20,14 +20,15 @@ public class ImageLoaderFactory {
 
 	public static void clear(Activity act) {
 		if (factory.containsKey(act)) {
+			factory.get(act).isRunning = false;
 			factory.remove(act);
 		}
 	}
 
-	public static ImageLoader getImageLoader(Activity act) {
-		if (factory.containsKey(act)) {
-			return factory.get(act);
-		}
-		return null;
-	}
+//	public static ImageLoader getImageLoader(Activity act) {
+//		if (factory.containsKey(act)) {
+//			return factory.get(act);
+//		}
+//		return null;
+//	}
 }

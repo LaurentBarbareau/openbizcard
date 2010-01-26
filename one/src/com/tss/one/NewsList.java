@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -50,28 +51,6 @@ public class NewsList extends MyListActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.news_list);
 		super.buildMenu(this);
-		
-//		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-//		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
-//		ImageButton icon3 = (ImageButton) findViewById(R.id.score_board_button);
-
-//		icon0.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				Intent mainDetailIntent = new Intent(view.getContext(),
-//						MainList.class);
-//				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(mainDetailIntent, 0);
-//			}
-//		});
-//
-//		icon1.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				Intent myTeamsTabIntent = new Intent(view.getContext(),
-//						MyTeamsTab.class);
-//				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(myTeamsTabIntent, 0);
-//			}
-//		});
 
 		newsList = new ArrayList<Object>();
 		this.newsAdapter = new NewsAdapter(this, R.layout.news_list, newsList);
@@ -82,6 +61,20 @@ public class NewsList extends MyListActivity {
 				getNews();
 			}
 		};
+		// Refresh icon
+		ImageView refreshIcon = ((ImageView) findViewById(R.id.refrest_icon));
+		final NewsList act = this;
+		refreshIcon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent mainDetailIntent = new Intent(act, NewsList.class);
+				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(mainDetailIntent);
+
+			}
+		});
 		Thread thread = new Thread(null, viewNews, "MagentoBackground");
 		thread.start();
 		m_ProgressDialog = ProgressDialog.show(NewsList.this, "Please wait...",
@@ -125,8 +118,8 @@ public class NewsList extends MyListActivity {
 			Log.e("BACKGROUND_PROC", e.getMessage());
 		}
 		runOnUiThread(displayNews);
-		try{
-		ImageLoaderFactory.createImageLoader(this).start();
+		try {
+			ImageLoaderFactory.createImageLoader(this).start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

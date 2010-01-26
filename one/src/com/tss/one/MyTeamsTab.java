@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -107,7 +108,19 @@ public class MyTeamsTab extends MyListActivity {
 				startActivityForResult(myTeamsListIntent, 0);
 			}
 		});
+		ImageView refreshIcon = ((ImageView) findViewById(R.id.refrest_icon));
+		final MyTeamsTab act = this;
+		refreshIcon.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent mainDetailIntent = new Intent(act, MyTeamsTab.class);
+				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(mainDetailIntent);
+
+			}
+		});
 		// add Tab's Listener to change tab
 
 		newsState = new ElementState(R.drawable.my_teams_tab1,

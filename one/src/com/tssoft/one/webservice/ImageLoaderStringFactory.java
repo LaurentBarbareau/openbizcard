@@ -16,4 +16,10 @@ public class ImageLoaderStringFactory {
 		}
 		return result;
 	}
+	public static void clear( String str) {
+		if (factory.containsKey(str)) {
+			factory.get(str).isRunning = false;
+			factory.remove(str);
+		}
+	}
 }

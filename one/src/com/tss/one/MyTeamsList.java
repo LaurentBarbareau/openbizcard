@@ -85,7 +85,7 @@ public class MyTeamsList extends MyListActivity {
 		// startActivityForResult(newsListIntent, 0);
 		// }
 		// });
-
+		
 		addTeam.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				Intent myTeamsSelectIntent = new Intent(view.getContext(),
@@ -195,9 +195,9 @@ public class MyTeamsList extends MyListActivity {
 					// // int a = teamsList.size();
 					// // int b= teamsAdapter.items.size();
 					//
-					ImageLoader loader = ImageLoaderFactory
-							.getImageLoader(current);
-					loader.isRunning = false;
+//					ImageLoader loader = ImageLoaderFactory
+//							.getImageLoader(current);
+//					loader.isRunning = false;
 					ImageLoaderFactory.clear(current);
 					try {
 						ImageLoaderFactory.createImageLoader(current).start();
