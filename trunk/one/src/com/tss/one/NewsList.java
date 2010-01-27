@@ -127,11 +127,13 @@ public class NewsList extends MyListActivity {
 	private class NewsAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
-
+		LayoutInflater vi;
+		
 		public NewsAdapter(Context context, int textViewResourceId,
 				ArrayList<Object> items) {
 			super(context, textViewResourceId, items);
 			this.items = items;
+			this.vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 
 		@Override
@@ -139,8 +141,7 @@ public class NewsList extends MyListActivity {
 			if (chkList.containsKey(position))
 				return chkList.get(position);
 
-			View v = convertView;
-			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View v = convertView;			
 
 			Typeface face = Typeface.createFromAsset(getAssets(),
 					"fonts/Arial.ttf");

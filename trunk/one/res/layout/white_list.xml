@@ -4,10 +4,10 @@
 			    android:layout_height="80px"
 			    android:background="@drawable/white_bar">	
 			    <TableRow	android:layout_width="320px"
-							android:layout_height="15px">
+							android:layout_height="wrap_content">
 					<TextView android:id="@+id/small_main_headline"
 						android:layout_width="320px"
-						android:layout_height="15px"
+						android:layout_height="wrap_content"
 			    		android:layout_gravity="right"
 			    		android:paddingRight="20dip"
 			    		android:textColor="#000"

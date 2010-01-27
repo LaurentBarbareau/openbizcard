@@ -2,12 +2,12 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			    android:layout_width="320px"
 			    android:layout_height="127px"
-			    android:paddingRight="10dip"
+			    android:layout_marginRight="5px"
 			    android:background="@drawable/blue_main_bar">	
 			    <TableRow>
 					<TextView android:id="@+id/main_headline"
 						android:layout_width="320px"
-						android:layout_height="40px"
+						android:layout_height="wrap_content"
 			    		android:layout_gravity="right"    		
 			    		android:textColor="#ffffff"
 			    		android:textStyle="bold"
@@ -16,11 +16,11 @@
 			    		android:layout_span="2"
 			    		></TextView>
 		    	</TableRow>
-		    	<TableRow 	android:layout_width="160px"
-							android:layout_height="120px">
+		    	<TableRow 	android:layout_width="320px"
+							android:layout_height="wrap_content">
 		    		 <ImageView android:id="@+id/main_image"
-						android:layout_width="160px"
-						android:layout_height="82px"
+						android:layout_width="120px"
+						android:layout_height="wrap_content"
 			    		android:layout_gravity="center"
 			    		android:paddingBottom="4dip"	
 			    		android:src="@drawable/loading_main"
@@ -34,11 +34,10 @@
 			    		android:src="@drawable/loading_main" android:layout_marginLeft="5px" android:layout_height="fill_parent"></ImageView>
 			    		-->
 					<TextView android:id="@+id/main_sc"
-						android:layout_width="160px"
-						android:layout_height="87px"
+						android:layout_width="200px"
+						android:layout_height="wrap_content"
 			    		android:layout_gravity="right"
 			    		android:paddingBottom="4dip"	
-			    		android:paddingRight="10dip"
 			    		android:textColor="#ffffff"
 			    		android:textStyle="normal"
 			    		android:textSize="14sp"
