@@ -21,9 +21,9 @@
 				    android:layout_gravity="center_vertical|right"  
 				    >
 					
-				    <ImageButton android:id="@+id/my_teams_add"
-					        android:layout_width="38px"
-					        android:layout_height="38px"
+				    <ImageButton android:id="@+id/my_teams_back"
+				    		android:layout_width="38px"
+				    		android:layout_height="38px"
 					        android:layout_marginRight="5dip"
 							android:layout_alignParentTop="true"
 							android:layout_alignParentRight="true"
@@ -32,8 +32,8 @@
 					        android:src="@drawable/blank" 
 					        android:background="@drawable/my_teams_done_btn_rollover"  
 				        />  	
-				        
-				    <ImageButton android:id="@+id/my_teams_back"
+				       
+				    <ImageButton android:id="@+id/my_teams_add"
 					        android:layout_width="38px"
 					        android:layout_height="38px"
 					        android:layout_marginLeft="5dip"
