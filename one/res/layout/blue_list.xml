@@ -17,14 +17,20 @@
 			    		></TextView>
 		    	</TableRow>
 		    	<TableRow 	android:layout_width="160px"
-							android:layout_height="87px">
-		    		<ImageView android:id="@+id/main_image"
+							android:layout_height="120px">
+		    		<!-- <ImageView android:id="@+id/main_image"
 						android:layout_width="160px"
 						android:layout_height="82px"
 			    		android:layout_gravity="center"
 			    		android:paddingBottom="4dip"	
 			    		android:src="@drawable/loading_main"
 			    		></ImageView>
+			    		-->
+			    		<ImageView android:id="@+id/main_image"
+						
+			    		android:layout_gravity="center"
+			    		android:paddingBottom="4dip"	
+			    		android:src="@drawable/loading_main" android:layout_marginLeft="5px"></ImageView>
 					<TextView android:id="@+id/main_sc"
 						android:layout_width="160px"
 						android:layout_height="87px"
