@@ -30,7 +30,7 @@
 							android:layout_gravity="right|center"  
 							android:drawSelectorOnTop="true"
 					        android:src="@drawable/blank" 
-					        android:background="@drawable/my_teams_add_btn_rollover"   
+					        android:background="@drawable/my_teams_done_btn_rollover"  
 				        />  	
 				        
 				    <ImageButton android:id="@+id/my_teams_back"
@@ -43,7 +43,8 @@
 							android:layout_gravity="left|center"  
 							android:drawSelectorOnTop="true"
 					        android:src="@drawable/blank" 
-					        android:background="@drawable/my_teams_done_btn_rollover"   
+					         android:background="@drawable/my_teams_add_btn_rollover"   
+					        
 				        />  			    
 				</LinearLayout>
 			</FrameLayout>

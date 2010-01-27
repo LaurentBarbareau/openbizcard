@@ -63,7 +63,7 @@
 						android:background="@drawable/my_teams_sel_cancel_rollover"
 			        /> 
 				<ImageButton android:id="@+id/team_select_btn"
-						android:layout_width="77px"
+						android:layout_width="50px"
 				        android:layout_height="31px"
 						android:layout_gravity="center"  
 						android:background="@drawable/my_teams_sel_rollover"

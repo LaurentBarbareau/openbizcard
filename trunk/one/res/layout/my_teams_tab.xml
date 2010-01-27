@@ -71,7 +71,7 @@
 			</LinearLayout>
 			<ListView android:id="@+id/android:list"
 						android:layout_width="320px"
-						android:layout_height="255px"
+						android:layout_height="230px"
 			/>
 	    </LinearLayout>
 		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
