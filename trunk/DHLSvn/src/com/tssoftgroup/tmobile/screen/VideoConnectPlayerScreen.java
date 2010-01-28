@@ -395,6 +395,15 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 				}
 			});
 
+		}else if (btnField.getLabel().equals("Back")) {
+			try {
+			player.stop();
+			_timerUpdateThread.stop();
+			UiApplication.getUiApplication().popScreen(
+					UiApplication.getUiApplication().getActiveScreen());
+			} catch (MediaException pe) {
+				System.out.println(pe.toString());
+			}
 		}
 	}
 
@@ -518,7 +527,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		MyButtonField backButton = new MyButtonField("Back",
 				ButtonField.ELLIPSIS, true);
 		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		backButton.setChangeListener(new ButtonListener(20));
+		backButton.setChangeListener(this);
 		buttonHorizontalManager.add(backButton);
 		edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2, 25 * Display
 				.getWidth() / 480);
