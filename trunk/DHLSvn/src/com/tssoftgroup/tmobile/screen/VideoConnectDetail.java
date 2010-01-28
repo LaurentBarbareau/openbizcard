@@ -109,12 +109,11 @@ public class VideoConnectDetail extends FixMainScreen implements
 					LabelField.NON_FOCUSABLE);
 			descDurationPlayManager.setMargin(0, 25, 0, 10);
 //			descriptionLabel.setMargin(0, 25, 0, 0);
+			descDurationPlayManager.add(descriptionLabel);
 			descriptionLabel.isFix = true;
 			descriptionLabel.otherMinusWidth = thumbWidth
 					+ descriptionLabel.getManager().getMarginLeft()
 					+ descriptionLabel.getManager().getMarginRight();
-			
-			descDurationPlayManager.add(descriptionLabel);
 			descDurationPlayManager.add(durationPlayManager);
 			thumnailDescDurationPlayManager.add(descDurationPlayManager);
 			thumnailDescDurationPlayManager.setMargin(edge);

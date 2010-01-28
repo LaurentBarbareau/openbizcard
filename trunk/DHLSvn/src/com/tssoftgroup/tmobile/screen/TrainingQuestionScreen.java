@@ -40,6 +40,7 @@ import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.model.Choice;
 import com.tssoftgroup.tmobile.model.Question;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
+import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -57,8 +58,7 @@ public class TrainingQuestionScreen extends FixMainScreen implements
 	Img imgstock = Img.getInstance();
 	private MainItem _mainMenuItem = new MainItem();
 	LabelField titleLabel = new LabelFieldWithFullBG("Question",
-			MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Display.getWidth()
-					- 50 * Display.getWidth() / 480);
+			MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Const.LABEL_WIDTH);
 	CrieLabelField questionLabel = new CrieLabelField("", 0x00,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 			LabelField.NON_FOCUSABLE);
