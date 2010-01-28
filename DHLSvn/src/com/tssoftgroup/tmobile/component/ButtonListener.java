@@ -432,6 +432,7 @@ public class ButtonListener implements FieldChangeListener {
 				comment.setComment(editField.getText());
 				comment.setTime("a moment ago");
 				comment.setUser(ProfileEntry.getInstance().name);
+				Engine.comment = comment;
 				picInfo.comments.addElement(comment);
 				Engine.getInstance().addComment(picInfo.getId(), Engine.userId,
 						editField.getText(), picInfo.isMCast());

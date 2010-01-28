@@ -67,8 +67,7 @@ public class DownloadCombiner extends Thread {
 								+ conn.getResponseCode());
 						break;
 					}
-					final String r = "Retreived Range: "
-							+ conn.getHeaderField("Content-Range");
+					final String r =conn.getHeaderField("Content-Range");
 					if (r != null) {
 						try {
 							int indMinus = r.indexOf("-");
@@ -112,7 +111,7 @@ public class DownloadCombiner extends Thread {
 //						} else {
 //							break;
 //						}
-
+						break;
 					}
 
 					System.out.println(r);

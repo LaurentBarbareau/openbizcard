@@ -16,8 +16,8 @@ public class Const {
 	public static String videoToUpload = "";
 	public static String fileName = "";
 
-	public static int VIDEO_WIDTH = 300 * Display.getWidth() / 480;// 3
-	public static int VIDEO_HEIGHT = 200 * Display.getWidth() / 480; // 2
+	public static int VIDEO_WIDTH = 270 * Display.getWidth() / 480;// 3
+	public static int VIDEO_HEIGHT = 180 * Display.getWidth() / 480; // 2
 
 	public static int LABEL_WIDTH = 432 * Display.getWidth() / 480;
 	public static final String url_list = "http://64.150.181.241/tmobile/List";

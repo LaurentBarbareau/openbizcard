@@ -44,6 +44,7 @@ import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
 import com.tssoftgroup.tmobile.utils.Const;
@@ -184,7 +185,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 		// / Play button
 		MyButtonField nextButton = new MyButtonField("Next",
 				ButtonField.ELLIPSIS, true);
-		nextButton.setChangeListener(new ButtonListener(traininfo, 34));
+		nextButton.setChangeListener(this);
 		buttonHorizontalManager.add(nextButton);
 
 		// edge = new XYEdges(206, 5, 6, 5);
@@ -236,52 +237,46 @@ public class TrainingPlayerScreen extends MainScreen implements
 	}
 	boolean resumeFromFull = false;
 	protected boolean keyDown(int arg0, int arg1) {
-		System.out.println("Key keyDown");
 		// TODO Auto-generated method stub
+
+		return super.keyDown(arg0, arg1);
+	}
+
+	public boolean keyChar(char c, int status, int time) {
+		boolean bool = false;
 		try {
 			// player.stop();
 			// VideoControl videoControl = (VideoControl)
 			// player.getControl("VideoControl");
-			if (player != null && player.getState() == player.STARTED) {
-				videoControl.setDisplayFullScreen(false);
+			if (player != null && player.getState() == player.STARTED && isFullScreen) {
+				bool = true;
 				isFullScreen = false;
-				resumeFromFull = true;
-			}
-			switch (arg0) {
-			case 1179648:
-				close();
-				break;
+				videoControl.setDisplayFullScreen(false);
 			}
 			// player.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return super.keyDown(arg0, arg1);
-	}
-
-	public boolean keyChar(char c, int status, int time) {
-		System.out.println("Key keyChar");
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
 		case Characters.BACKSPACE:
 			return true;
 		case Characters.ESCAPE:
-			if(!resumeFromFull){
+			if (!bool) {
+
 				try {
 					player.stop();
-					player.deallocate();
-					player.close();
+					// player.deallocate();
+					// player.close();
 					_timerUpdateThread.stop();
 				} catch (Exception e) {
 					System.out.println("" + e.toString());
 				}
 				UiApplication.getUiApplication().popScreen(
 						UiApplication.getUiApplication().getActiveScreen());
-			}else{
-				resumeFromFull = false;
 			}
-			
+
 			return true;
 		default:
 			return super.keyChar(c, status, time);
@@ -374,6 +369,17 @@ public class TrainingPlayerScreen extends MainScreen implements
 				player.stop();
 				_timerUpdateThread.stop();
 				btnField.setLabel("Start");
+			} catch (MediaException pe) {
+				System.out.println(pe.toString());
+			}
+		}else if (btnField.getLabel().equals("Next")) {
+			try {
+				// Stop/pause the media player.
+				player.stop();
+				_timerUpdateThread.stop();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().getTrainingAns(traininfo);
 			} catch (MediaException pe) {
 				System.out.println(pe.toString());
 			}
