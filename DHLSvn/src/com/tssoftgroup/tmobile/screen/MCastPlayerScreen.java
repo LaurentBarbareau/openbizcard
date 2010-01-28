@@ -447,7 +447,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				ButtonField.ELLIPSIS, true);
 		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 
-		backButton.setChangeListener(new ButtonListener(20));
+		backButton.setChangeListener(this);
 		buttonHorizontalManager.add(backButton);
 		buttonHorizontalManager.setMargin(edge);
 		// buttonHorizontalManager.setMargin(0, 0, 0, 150 * Display.getWidth() /
@@ -608,7 +608,16 @@ public class MCastPlayerScreen extends MainScreen implements
 
 				}
 			});
-		}
+		}else if (btnField.getLabel().equals("Back")) {
+			try {
+				player.stop();
+				_timerUpdateThread.stop();
+				UiApplication.getUiApplication().popScreen(
+						UiApplication.getUiApplication().getActiveScreen());
+				} catch (MediaException pe) {
+					System.out.println(pe.toString());
+				}
+			}
 	}
 
 	public void playerUpdate(Player _player, final String event,
