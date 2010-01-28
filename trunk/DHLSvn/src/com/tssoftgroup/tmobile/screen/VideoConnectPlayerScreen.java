@@ -48,6 +48,7 @@ import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
@@ -70,7 +71,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 	private VideoControl videoControl = null;
 	private VolumeControl volumeControl = null;
 	Img imgStock = Img.getInstance();
-	PicInfo picinfo;
+	public PicInfo picinfo;
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	boolean isFullScreen = false;
 
@@ -248,43 +249,45 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 
 	protected boolean keyDown(int arg0, int arg1) {
 		// TODO Auto-generated method stub
+
+		return super.keyDown(arg0, arg1);
+	}
+
+	public boolean keyChar(char c, int status, int time) {
+		boolean bool = false;
 		try {
 			// player.stop();
 			// VideoControl videoControl = (VideoControl)
 			// player.getControl("VideoControl");
-			if (player != null && player.getState() == player.STARTED) {
+			if (player != null && player.getState() == player.STARTED && isFullScreen) {
+				bool = true;
 				isFullScreen = false;
 				videoControl.setDisplayFullScreen(false);
-			}
-			switch (arg0) {
-			case 1179648:
-				close();
-				break;
 			}
 			// player.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return super.keyDown(arg0, arg1);
-	}
-
-	public boolean keyChar(char c, int status, int time) {
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
 		case Characters.BACKSPACE:
 			return true;
 		case Characters.ESCAPE:
-			try {
-				player.stop();
-				player.deallocate();
-				player.close();
-				_timerUpdateThread.stop();
-			} catch (Exception e) {
-				System.out.println("" + e.toString());
+			if (!bool) {
+
+				try {
+					player.stop();
+					// player.deallocate();
+					// player.close();
+					_timerUpdateThread.stop();
+				} catch (Exception e) {
+					System.out.println("" + e.toString());
+				}
+				UiApplication.getUiApplication().popScreen(
+						UiApplication.getUiApplication().getActiveScreen());
 			}
-			UiApplication.getUiApplication().popScreen(
-					UiApplication.getUiApplication().getActiveScreen());
+
 			return true;
 		default:
 			return super.keyChar(c, status, time);
@@ -407,7 +410,31 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 					- 50 * Display.getWidth() / 480);
 
 	EditField postCommentTF = new EditField("", "");
-
+	public void addComment() {
+		postCommentTF.setText("");
+		CrieLabelField commentLabel = new CrieLabelField("By "
+				+ Engine.comment.getUser() + " at " + Engine.comment.getTime()
+				+ ": ", MyColor.LIST_DESC_FONT,
+				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+						- (Display.getWidth() > 350 ? 8 : 2),
+				LabelField.FOCUSABLE);
+		commentLabel.isFix = true;
+		XYEdges edge;
+		edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2, 35 * Display
+				.getWidth() / 480);
+		commentLabel.setMargin(edge);
+		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
+		// Border.STYLE_TRANSPARENT));
+		commentsManager.add(commentLabel);
+		commentLabel = new CrieLabelField(Engine.comment.getComment(), 0x00,
+				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
+				LabelField.FOCUSABLE);
+		commentLabel.setMargin(edge);
+		commentLabel.isFix = true;
+		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
+		// Border.STYLE_TRANSPARENT));
+		commentsManager.add(commentLabel);
+	}
 	public void addCommentMoreInfo() {
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 		commentLabelField.setFont(Scale.FONT_DETAIL_TITLE);

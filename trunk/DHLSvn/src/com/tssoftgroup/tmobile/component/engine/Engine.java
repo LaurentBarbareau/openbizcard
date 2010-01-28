@@ -72,7 +72,7 @@ public class Engine implements HTTPHandler {
 
 	TrainingInfo trainingInfo;
 	PollInfo pollInfo;
-
+	public static Comment comment;
 	int returnItem = 0;
 
 	public void registerStatus(BitmapFieldWithStatus bmp) {
@@ -366,13 +366,25 @@ public class Engine implements HTTPHandler {
 								new MCastDetail(Engine.commnetPicInfo));
 					}
 					if (current instanceof MCastPlayerScreen) {
-						UiApplication.getUiApplication().popScreen(current);
-						MCastPlayerScreen scr = new MCastPlayerScreen(
-								Engine.commnetPicInfo);
-						scr.addCommentMoreInfo();
-						scr.isAlreadyAddComment = true;
-						scr.commentLabelField.setFocus();
-						UiApplication.getUiApplication().pushScreen(scr);
+//						UiApplication.getUiApplication().popScreen(current);
+//						MCastPlayerScreen scr = new MCastPlayerScreen(
+//								Engine.commnetPicInfo);
+//						scr.addCommentMoreInfo();
+//						scr.isAlreadyAddComment = true;
+//						scr.commentLabelField.setFocus();
+//						UiApplication.getUiApplication().pushScreen(scr);
+
+						MCastPlayerScreen cur = (MCastPlayerScreen)current;
+//						UiApplication.getUiApplication().popScreen(current);
+//						MCastPlayerScreen scr = new MCastPlayerScreen(
+//								Engine.commnetPicInfo);
+						cur.picinfo = Engine.commnetPicInfo;
+						cur.addComment();
+						cur.isAlreadyAddComment = true;
+						cur.commentLabelField.setFocus();
+//						UiApplication.getUiApplication().pushScreen(scr);
+
+					
 
 					}
 					if (current instanceof VideoConnectDetail) {
@@ -381,13 +393,21 @@ public class Engine implements HTTPHandler {
 								new VideoConnectDetail(Engine.commnetPicInfo));
 					}
 					if (current instanceof VideoConnectPlayerScreen) {
-						UiApplication.getUiApplication().popScreen(current);
-						VideoConnectPlayerScreen scr = new VideoConnectPlayerScreen(
-								Engine.commnetPicInfo);
-						scr.addCommentMoreInfo();
-						scr.isAlreadyAddComment = true;
-						scr.commentLabelField.setFocus();
-						UiApplication.getUiApplication().pushScreen(scr);
+//						UiApplication.getUiApplication().popScreen(current);
+//						VideoConnectPlayerScreen scr = new VideoConnectPlayerScreen(
+//								Engine.commnetPicInfo);
+//						scr.addCommentMoreInfo();
+//						scr.isAlreadyAddComment = true;
+//						scr.commentLabelField.setFocus();
+//						UiApplication.getUiApplication().pushScreen(scr);
+						VideoConnectPlayerScreen cur = (VideoConnectPlayerScreen)current;
+//						UiApplication.getUiApplication().popScreen(current);
+//						MCastPlayerScreen scr = new MCastPlayerScreen(
+//								Engine.commnetPicInfo);
+						cur.picinfo = Engine.commnetPicInfo;
+						cur.addComment();
+						cur.isAlreadyAddComment = true;
+						cur.commentLabelField.setFocus();
 					}
 					Dialog.alert("Your Comment is sent");
 				}
