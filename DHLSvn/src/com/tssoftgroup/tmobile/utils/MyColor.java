@@ -18,11 +18,11 @@ public class MyColor {
 //	public static final Font FONT_CHOICE = Font.getDefault().derive(Font.PLAIN,
 //			15 * Display.getWidth() / 480);
 	public static final Font COMMENT_LABEL_FONT = Font.getDefault().derive(
-			Font.BOLD, 20 );
+			Font.BOLD, 20 * Display.getWidth() / 480);
 	public static final Font FONT_SEARCH = Font.getDefault().derive(Font.BOLD,
 			25 * Display.getWidth() / 480);
 	public static final Font FONT_TOPIC = Font.getDefault().derive(Font.BOLD,
 			25 * Display.getWidth() / 480 );
 	public static final Font FONT_CHOICE = Font.getDefault().derive(Font.PLAIN,
-			15);
+			15* Display.getWidth() / 480);
 }

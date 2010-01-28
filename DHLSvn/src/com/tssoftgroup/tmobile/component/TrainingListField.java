@@ -172,7 +172,7 @@ public class TrainingListField extends ListField implements ListFieldCallback {
 				Font docfont = g.getFont().derive(
 						Font.PLAIN,
 						g.getFont().getHeight()
-								- (Display.getWidth() > 350 ? 7 : 5));
+								- (Display.getWidth() > 350 ? 7 : Display.getWidth() > 300?5:0));
 				g.setFont(docfont);
 				String filename = CrieUtils.cutString(docfont, "File : "
 						+ temp.getFileName(), remain);
