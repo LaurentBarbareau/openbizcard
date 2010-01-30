@@ -28,6 +28,7 @@ public class MyMainScreen extends FixMainScreen {
 	}
 
 	private MyMainScreen() {
+		super(MODE_MCAST);
 		int firstUp = Display.getWidth() < 400 ? 0 : 24;
 		XYEdges edge = new XYEdges(firstUp, 0, 2, 0);
 		Bitmap img = imgStock.getHeader();

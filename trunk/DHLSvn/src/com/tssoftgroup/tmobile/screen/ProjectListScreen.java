@@ -75,12 +75,14 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 	}
 
 	private ProjectListScreen() {
+		super(MODE_CONTACT);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 		createVideoMain();
 	}
 
 	public ProjectListScreen(String topic) {
+		super(MODE_CONTACT);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 		this.topic = topic;
@@ -202,8 +204,8 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 			videoManager.add(topicLabel);
 			_list = new TrainingListField();
 			videoManager.add(_list);
-			previousNextManager.setMargin(edge);
-			videoManager.add(previousNextManager);
+			pagingManager.setMargin(edge);
+			videoManager.add(pagingManager);
 			add(videoManager);
 
 		} catch (Exception e) {
@@ -290,6 +292,10 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 	}
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
+		if(!(field instanceof MyButtonField)){
+			super.fieldChanged(field, context);
+			return;
+		}
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField == nextBT) {
 //			Dialog.alert("next");

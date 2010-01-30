@@ -59,7 +59,7 @@ public class LoginScreen {
 		 * Creating an object of the main screen class to use its
 		 * functionalities
 		 */
-		FixMainScreen mainScreen = new FixMainScreen();
+		FixMainScreen mainScreen = new FixMainScreen(FixMainScreen.MODE_MCAST);
 
 		// setting title of the main screen
 		// mainScreen.setTitle(new LabelField(Wording.WELCOME_MESSAGE));

@@ -108,7 +108,7 @@ public class MyMovieShare extends FixMainScreen {
 	}
 	
 	private MyMovieShare() {
-		
+		super(MODE_MCAST);
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 
 		Bitmap img = imgstock.getHeader();

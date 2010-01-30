@@ -72,6 +72,7 @@ public class TrainingQuestionScreen extends FixMainScreen implements
 	int currentQuestion = 0;
 
 	public TrainingQuestionScreen(TrainingInfo info) {
+		super(MODE_TRAIN);
 		this.info = info;
 		allQuestion = info.questions.size();
 		createVideoMain();

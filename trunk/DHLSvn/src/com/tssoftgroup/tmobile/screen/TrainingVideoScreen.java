@@ -60,6 +60,7 @@ public class TrainingVideoScreen extends FixMainScreen implements
 	MyButtonField nextButton = new MyButtonField("Next", ButtonField.ELLIPSIS);
 
 	public TrainingVideoScreen(TrainingInfo info) {
+		super(MODE_TRAIN);
 		this.info = info;
 		createVideoMain();
 	}

@@ -95,6 +95,7 @@ class MyTrainingMain extends FixMainScreen {
     private MainItem _mainMenuItem = new MainItem();
     Img imgstock = Img.getInstance();
 	public MyTrainingMain() {
+		super(MODE_TRAIN);
         XYEdges edge = new XYEdges(24, 25, 8, 25);
 
         Bitmap img = imgstock.getHeader();

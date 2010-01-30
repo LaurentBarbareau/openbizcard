@@ -102,6 +102,7 @@ public class MyDocumentShare extends FixMainScreen {
     	return instance;
     }
 	private MyDocumentShare() {
+		super(MODE_DOC);
         XYEdges edge = new XYEdges(24, 25, 8, 25);
 
         Bitmap img = imgstock.getHeader();

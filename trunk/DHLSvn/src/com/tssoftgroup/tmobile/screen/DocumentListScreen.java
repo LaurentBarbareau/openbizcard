@@ -50,6 +50,7 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 	}
 
 	private DocumentListScreen() {
+		super (MODE_DOC);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 		runMain();
@@ -165,8 +166,8 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 			mainManager.add(topicLabel);
 			_list = new TrainingListField();
 			mainManager.add(_list);
-			previousNextManager.setMargin(edge);
-			mainManager.add(previousNextManager);
+			pagingManager.setMargin(edge);
+			mainManager.add(pagingManager);
 			add(mainManager);
 		} catch (Exception e) {
 			System.out.println("" + e.toString());
@@ -251,6 +252,10 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 	}
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
+		if(!(field instanceof MyButtonField)){
+			super.fieldChanged(field, context);
+			return;
+		}
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField == nextBT) {
 //			Dialog.alert("next");

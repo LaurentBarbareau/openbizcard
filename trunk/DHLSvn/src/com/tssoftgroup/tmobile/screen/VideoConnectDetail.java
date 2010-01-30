@@ -62,6 +62,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 
 	public VideoConnectDetail(PicInfo picinfo) {
+		super(MODE_VIDEOCONNECT);
 		this.videoPath = picinfo.getVideoUrl();
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 
