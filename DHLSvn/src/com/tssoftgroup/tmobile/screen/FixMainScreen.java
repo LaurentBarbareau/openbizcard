@@ -1,5 +1,7 @@
 package com.tssoftgroup.tmobile.screen;
 
+import java.util.Vector;
+
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
@@ -11,17 +13,24 @@ import net.rim.device.api.ui.component.ButtonField;
 import net.rim.device.api.ui.component.ChoiceField;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
-import net.rim.device.api.ui.component.ObjectChoiceField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
+import com.tssoftgroup.tmobile.component.CommmentNextPrevListener;
+import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.NewVerticalFieldManager;
+import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.engine.Engine;
+import com.tssoftgroup.tmobile.model.Comment;
+import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.MyColor;
+import com.tssoftgroup.tmobile.utils.Scale;
+import com.tssoftgroup.tmobile.utils.Wording;
 
-/* package */class FixMainScreen extends MainScreen implements
+/* package */public class FixMainScreen extends MainScreen implements
 		FieldChangeListener {
 	NewVerticalFieldManager manager = new NewVerticalFieldManager();
 	boolean haveNext = false;
@@ -29,15 +38,11 @@ import com.tssoftgroup.tmobile.utils.Const;
 	int currentIndex = 0;
 	VerticalFieldManager pagingManager = new VerticalFieldManager();
 	HorizontalFieldManager previousNextManager = new HorizontalFieldManager();
-	HorizontalFieldManager commentPreviousNextManager = new HorizontalFieldManager();
 	MyButtonField nextBT = new MyButtonField(Const.NEXT_LABEL,
 			ButtonField.ELLIPSIS);
 	MyButtonField previousBT = new MyButtonField(Const.PREVIOUS_LABEL,
 			ButtonField.ELLIPSIS);
-	MyButtonField commentNextBT = new MyButtonField(Const.NEXT_LABEL,
-			ButtonField.ELLIPSIS);
-	MyButtonField commentPreviousBT = new MyButtonField(Const.PREVIOUS_LABEL,
-			ButtonField.ELLIPSIS);
+
 	// Vector of label field
 	LabelField numPage = new LabelField();
 	private Font pageFont = getFont().derive(Font.PLAIN,
@@ -47,7 +52,7 @@ import com.tssoftgroup.tmobile.utils.Const;
 	// String[] teststr = {"a", "b","c"};
 	// private ObjectChoiceField testChoice = new ObjectChoiceField("sss"
 	// ,teststr);
-	XYEdges edge = new XYEdges(5, 25 * Display.getWidth() / 480, 5,
+	static XYEdges edge = new XYEdges(5, 25 * Display.getWidth() / 480, 5,
 			25 * Display.getWidth() / 480);
 	public static final int MODE_MCAST = 0;
 	public static final int MODE_VIDEOCONNECT = 1;
@@ -56,6 +61,7 @@ import com.tssoftgroup.tmobile.utils.Const;
 	public static final int MODE_CONTACT = 4;
 	public static final int MODE_POLL = 5;
 	int mode;
+	int currentComment = 0;
 
 	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
@@ -123,8 +129,102 @@ import com.tssoftgroup.tmobile.utils.Const;
 		pagingManager.add(pageChoice);
 	}
 
-	public void processHaveComment(int numComment) {
+	static int allComment = 0;
 
+	public static void processHaveComment(VerticalFieldManager commentManager,
+			PicInfo picinfo,  ScreenWithComment scr) {
+		Vector commentList = new Vector();
+		allComment = picinfo.comments.size();
+		commentManager.deleteAll();
+		for (int i = scr.getCurrentCommentInd(); i < picinfo.comments.size(); i++) {
+			if (i >= Const.NUM_LIST +  scr.getCurrentCommentInd()) {
+				break;
+			}
+			Comment commment = (Comment) picinfo.comments.elementAt(i);
+			String[] comment = { commment.getComment(), commment.getTime(),
+					commment.getUser() };
+			commentList.addElement(comment);
+		}
+		if (commentList != null && commentList.size() > 0) {
+			for (int i = 0; i < commentList.size(); i++) {
+				String[] commentArr = (String[]) commentList.elementAt(i);
+				CrieLabelField commentLabel = new CrieLabelField("By "
+						+ commentArr[2] + " at " + commentArr[1] + ": ",
+						MyColor.LIST_DESC_FONT,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+								- (Display.getWidth() > 350 ? 8 : 2),
+						LabelField.FOCUSABLE);
+				commentLabel.isFix = true;
+				// commentLabel.setBorder(BorderFactory.createSimpleBorder(
+				// edge, Border.STYLE_TRANSPARENT));
+				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
+						35 * Display.getWidth() / 480);
+				commentLabel.setMargin(edge);
+				commentManager.add(commentLabel);
+				commentLabel = new CrieLabelField(commentArr[0], 0x00,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
+						LabelField.FOCUSABLE);
+				commentLabel.isFix = true;
+				// commentLabel.setBorder(BorderFactory.createSimpleBorder(
+				// edge, Border.STYLE_TRANSPARENT));
+				commentLabel.setMargin(edge);
+				commentManager.add(commentLabel);
+			}
+		} else if (commentList.size() == 0) {
+			CrieLabelField commentLabel = new CrieLabelField(
+					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT,
+					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+							- (Display.getWidth() > 350 ? 8 : 2),
+					LabelField.FOCUSABLE);
+			commentLabel.isFix = true;
+			edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
+					35 * Display.getWidth() / 480);
+			commentLabel.setMargin(edge);
+			commentManager.add(commentLabel);
+		}
+		int numItemIndex = picinfo.comments.size() - 1;
+		boolean haveNext;
+		boolean havePrevious;
+		if (numItemIndex > scr.getCurrentCommentInd() + Const.NUM_LIST - 1) {
+			haveNext = true;
+		} else {
+			haveNext = false;
+		}
+		if (scr.getCurrentCommentInd() >= Const.NUM_LIST) {
+			havePrevious = true;
+		} else {
+			havePrevious = false;
+		}
+		// Add Remove previous next Button
+		HorizontalFieldManager commentPreviousNextManager = new HorizontalFieldManager();
+
+		commentPreviousNextManager.deleteAll();
+		commentPreviousNextManager.setMargin(edge);
+		MyButtonField commentNextBT ;
+		MyButtonField commentPreviousBT;
+		if(scr instanceof VideoConnectPlayerScreen || scr instanceof MCastPlayerScreen ){
+			 commentNextBT = new MyButtonField(Const.NEXT_LABEL,
+						ButtonField.ELLIPSIS, true);
+				 commentPreviousBT = new MyButtonField(
+						Const.PREVIOUS_LABEL, ButtonField.ELLIPSIS, true);
+		}else{
+			 commentNextBT = new MyButtonField(Const.NEXT_LABEL,
+						ButtonField.ELLIPSIS);
+				 commentPreviousBT = new MyButtonField(
+						Const.PREVIOUS_LABEL, ButtonField.ELLIPSIS);
+		}
+		
+		CommmentNextPrevListener listener = new CommmentNextPrevListener(
+				commentManager, picinfo,scr);
+		if (havePrevious) {
+			commentPreviousBT.setChangeListener(listener);
+			commentPreviousNextManager.add(commentPreviousBT);
+		}
+		if (haveNext) {
+			commentNextBT.setChangeListener(listener);
+			commentPreviousNextManager.add(commentNextBT);
+		}
+		commentManager.add(commentPreviousNextManager);
 	}
 
 	int allPage;
