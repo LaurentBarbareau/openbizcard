@@ -48,6 +48,7 @@ import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
+import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.Comment;
@@ -59,7 +60,7 @@ import com.tssoftgroup.tmobile.utils.Scale;
 import com.tssoftgroup.tmobile.utils.Wording;
 
 public class VideoConnectPlayerScreen extends MainScreen implements
-		FieldChangeListener, PlayerListener, MyPlayer {
+		FieldChangeListener, PlayerListener, MyPlayer,ScreenWithComment {
 	private MainItem _mainMenuItem = new MainItem();
 	private MovieItem _videoItem = new MovieItem();
 	private CrieLabelField _currentTime = null;
@@ -78,7 +79,14 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 	public void setFullScreen(boolean bool) {
 		isFullScreen = bool;
 	}
-
+	int currentComment;
+	
+	public int getCurrentCommentInd() {
+		return currentComment;
+	}
+	public void setCurrentCommentInd(int currentComment) {
+		this.currentComment = currentComment;
+	}
 	public VideoConnectPlayerScreen(PicInfo picInfo) {
 		this.picinfo = picInfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -443,6 +451,8 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		commentsManager.add(commentLabel);
+		FixMainScreen.processHaveComment(commentsManager, picinfo,
+				this);
 	}
 	public void addCommentMoreInfo() {
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
@@ -507,6 +517,8 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 			commentLabel.isFix = true;
 			commentsManager.add(commentLabel);
 		}
+		FixMainScreen.processHaveComment(commentsManager, picinfo,
+				this);
 		add(commentsManager);
 		// Post Comment Tf
 		add(postCommentLabel);

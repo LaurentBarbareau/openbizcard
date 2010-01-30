@@ -40,6 +40,7 @@ import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
+import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.MoreInfo;
 import com.tssoftgroup.tmobile.model.PicInfo;
@@ -48,7 +49,8 @@ import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
 import com.tssoftgroup.tmobile.utils.Wording;
 
-public class MCastDetail extends FixMainScreen implements FieldChangeListener {
+public class MCastDetail extends FixMainScreen implements FieldChangeListener,
+		ScreenWithComment {
 	private MainItem _mainMenuItem = new MainItem();
 	private Vector commentList = null;
 	private Vector moreinfoList = null;
@@ -128,7 +130,6 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 					.getDescription(), 0x00,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 					LabelField.NON_FOCUSABLE);
-			
 
 			// descriptionLabel.setMargin(0, 25 * Display.getWidth() / 480, 0,
 			// 25
@@ -141,7 +142,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 			descriptionLabel.otherMinusWidth = thumbWidth
 					+ descriptionLabel.getManager().getMarginLeft()
 					+ descriptionLabel.getManager().getMarginRight();
-//			descriptionLabel.otherMinusWidth = 200;
+			// descriptionLabel.otherMinusWidth = 200;
 			descDurationPlayManager.add(durationPlayManager);
 			thumnailDescDurationPlayManager.add(descDurationPlayManager);
 			thumnailDescDurationPlayManager.setMargin(edge);
@@ -160,7 +161,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 					Scale.EDGE, 25 * Display.getWidth() / 480);
 			commentLB.setMargin(edge);
 			commentLB.setFont(Scale.FONT_DETAIL_TITLE);
-			commentsManager.add(commentLB);
+			// commentsManager.add(commentLB);
 			if (commentList != null && commentList.size() > 0) {
 				for (int i = 0; i < commentList.size(); i++) {
 					String[] commentArr = (String[]) commentList.elementAt(i);
@@ -198,6 +199,8 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
 			}
+			FixMainScreen.processHaveComment(commentsManager, picinfo,
+					this);
 			// Deal with more info
 			VerticalFieldManager listVerticalManager = new VerticalFieldManager();
 			// LabelField moreinfoLB = new LabelField("More Info:");
@@ -219,7 +222,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 							moreinfoArr[0], 0x00,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 							LabelField.NON_FOCUSABLE);
-//					commentLabel.isFix = true;
+					// commentLabel.isFix = true;
 					// commentLabel.setBorder(BorderFactory.createSimpleBorder(
 					// edge, Border.STYLE_TRANSPARENT));
 					// / Button
@@ -257,6 +260,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 			 * label.setBorder(BorderFactory.createSimpleBorder(edge,Border.
 			 * STYLE_TRANSPARENT)); listVerticalManager.add(label);
 			 */
+			mainManager.add(commentLB);
 			mainManager.add(commentsManager);
 			mainManager.add(listVerticalManager);
 
@@ -359,5 +363,12 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 				// new VideoConnectDetail());
 			}
 		}
+	}
+
+	public int getCurrentCommentInd() {
+		return currentComment;
+	}
+	public void setCurrentCommentInd(int currentComment) {
+		this.currentComment = currentComment;
 	}
 }

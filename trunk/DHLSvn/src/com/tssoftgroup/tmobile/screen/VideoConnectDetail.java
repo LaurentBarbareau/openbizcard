@@ -40,6 +40,7 @@ import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
+import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.utils.Img;
@@ -48,7 +49,7 @@ import com.tssoftgroup.tmobile.utils.Scale;
 import com.tssoftgroup.tmobile.utils.Wording;
 
 public class VideoConnectDetail extends FixMainScreen implements
-		FieldChangeListener {
+		FieldChangeListener,ScreenWithComment {
 	private MainItem _mainMenuItem = new MainItem();
 	private Vector commentList = null;
 
@@ -131,7 +132,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 					25 * Display.getWidth() / 480);
 			commentLB.setMargin(edge);
 			commentLB.setFont(Scale.FONT_DETAIL_TITLE);
-			commentsManager.add(commentLB);
+//			commentsManager.add(commentLB);
 			edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 					35 * Display.getWidth() / 480);
 			// Deal with Comment
@@ -183,7 +184,8 @@ public class VideoConnectDetail extends FixMainScreen implements
 				commentLabel.isFix = true;
 				commentsManager.add(commentLabel);
 			}
-
+			FixMainScreen.processHaveComment(commentsManager, picinfo,
+					this);
 			/*
 			 * label = new
 			 * LabelField("Posted By Sunny at 2009-02-09: This is great!");
@@ -193,6 +195,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			 * label.setBorder(BorderFactory.createSimpleBorder(edge,Border.
 			 * STYLE_TRANSPARENT)); listVerticalManager.add(label);
 			 */
+			mainManager.add(commentLB);
 			mainManager.add(commentsManager);
 
 			LabelField postCommentLabel = new LabelFieldWithFullBG(
@@ -308,5 +311,11 @@ public class VideoConnectDetail extends FixMainScreen implements
 				// new VideoConnectDetail());
 			}
 		}
+	}
+	public int getCurrentCommentInd() {
+		return currentComment;
+	}
+	public void setCurrentCommentInd(int currentComment) {
+		this.currentComment = currentComment;
 	}
 }

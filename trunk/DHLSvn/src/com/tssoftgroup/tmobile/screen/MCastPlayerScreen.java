@@ -48,6 +48,7 @@ import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
+import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.Comment;
@@ -60,7 +61,7 @@ import com.tssoftgroup.tmobile.utils.Scale;
 import com.tssoftgroup.tmobile.utils.Wording;
 
 public class MCastPlayerScreen extends MainScreen implements
-		FieldChangeListener, PlayerListener, MyPlayer {
+		FieldChangeListener, PlayerListener, MyPlayer, ScreenWithComment {
 	private MainItem _mainMenuItem = new MainItem();
 	private MovieItem _videoItem = new MovieItem();
 	private CrieLabelField _currentTime = null;
@@ -75,11 +76,17 @@ public class MCastPlayerScreen extends MainScreen implements
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	public PicInfo picinfo;
 	boolean isFullScreen = false;
-
+	int currentComment;
+	
+	public int getCurrentCommentInd() {
+		return currentComment;
+	}
+	public void setCurrentCommentInd(int currentComment) {
+		this.currentComment = currentComment;
+	}
 	public void setFullScreen(boolean bool) {
 		isFullScreen = bool;
 	}
-
 	public MCastPlayerScreen(PicInfo picinfo) {
 		this.picinfo = picinfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -298,6 +305,8 @@ public class MCastPlayerScreen extends MainScreen implements
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		commentsManager.add(commentLabel);
+		FixMainScreen.processHaveComment(commentsManager, picinfo,
+				this);
 	}
 
 	public void addCommentMoreInfo() {
@@ -370,6 +379,8 @@ public class MCastPlayerScreen extends MainScreen implements
 			commentLabel.setMargin(edge);
 			commentsManager.add(commentLabel);
 		}
+		FixMainScreen.processHaveComment(commentsManager, picinfo,
+				this);
 		add(commentsManager);
 		// More info
 		// moreinfoList = new Vector();
