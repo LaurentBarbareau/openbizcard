@@ -73,12 +73,14 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 	}
 
 	private PollListScreen() {
+		super(MODE_POLL);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 		createVideoMain();
 	}
 
 	public PollListScreen(String topic) {
+		super(MODE_POLL);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 		this.topic = topic;
@@ -200,8 +202,8 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 			videoManager.add(topicLabel);
 			_list = new TrainingListField();
 			videoManager.add(_list);
-			previousNextManager.setMargin(edge);
-			videoManager.add(previousNextManager);
+			pagingManager.setMargin(edge);
+			videoManager.add(pagingManager);
 			add(videoManager);
 
 		} catch (Exception e) {
@@ -277,6 +279,10 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 	}
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
+		if(!(field instanceof MyButtonField)){
+			super.fieldChanged(field, context);
+			return;
+		}
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField == nextBT) {
 //			Dialog.alert("next");

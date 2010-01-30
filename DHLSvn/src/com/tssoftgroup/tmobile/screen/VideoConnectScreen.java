@@ -89,6 +89,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 	
 
 	private VideoConnectScreen() {
+		super(MODE_VIDEOCONNECT);
 		nextBT.setChangeListener(this);
 		previousBT.setChangeListener(this);
 
@@ -98,6 +99,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 	}
 
 	private VideoConnectScreen(String topic) {
+		super(MODE_VIDEOCONNECT);
 		UiApplication.getUiApplication().addFileSystemJournalListener(this);
 		_lastUSN = FileSystemJournal.getNextUSN();
 		this.topic = topic;
@@ -281,8 +283,8 @@ public class VideoConnectScreen extends FixMainScreen implements
 			videoManager.add(topicLabel);
 			_list = new VideoListField();
 			videoManager.add(_list);
-			previousNextManager.setMargin(edge);
-			videoManager.add(previousNextManager);
+			pagingManager.setMargin(edge);
+			videoManager.add(pagingManager);
 			edge = new XYEdges(2, 25, 2, 25);
 			// RadioButtonField (must be part of group)
 
@@ -465,6 +467,10 @@ public class VideoConnectScreen extends FixMainScreen implements
 
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
+		if(!(field instanceof MyButtonField)){
+			super.fieldChanged(field, context);
+			return;
+		}
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField == nextBT) {
 //			Dialog.alert("next");

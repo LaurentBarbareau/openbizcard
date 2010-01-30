@@ -74,6 +74,7 @@ public class PollQuestionScreen extends FixMainScreen implements
 	int currentQuestion = 0;
 
 	public PollQuestionScreen(PollInfo info) {
+		super(MODE_POLL);
 		this.info = info;
 		allQuestion = info.questions.size();
 		createVideoMain();

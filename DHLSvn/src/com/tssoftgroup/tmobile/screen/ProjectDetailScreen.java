@@ -58,6 +58,7 @@ public class ProjectDetailScreen extends FixMainScreen implements
 	public VerticalFieldManager contactsManager = new VerticalFieldManager();
 
 	public ProjectDetailScreen(ProjectInfo projectInfo) {
+		super(MODE_CONTACT);
 		XYEdges edge = new XYEdges(5, 25 * Display.getWidth() / 480, 5,
 				25 * Display.getWidth() / 480);
 		Bitmap img = imgStock.getHeader();

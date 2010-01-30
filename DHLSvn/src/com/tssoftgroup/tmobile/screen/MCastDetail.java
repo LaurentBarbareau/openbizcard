@@ -64,6 +64,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 
 	public MCastDetail(PicInfo picinfo) {
+		super(MODE_MCAST);
 		this.videoPath = picinfo.getVideoUrl();
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 
@@ -108,7 +109,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener {
 				BitmapField thumb = new BitmapField(picinfo.getThumbnail());
 				thumb.setMargin(5, 0, 0, 0);
 				thumnailDescDurationPlayManager.add(thumb);
-				thumbWidth = thumb.getWidth() + 10;
+				thumbWidth = thumb.getWidth() + 20;
 			}
 
 			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();

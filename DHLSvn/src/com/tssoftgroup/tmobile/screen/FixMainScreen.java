@@ -1,37 +1,83 @@
 package com.tssoftgroup.tmobile.screen;
 
+import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
+import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Font;
 import net.rim.device.api.ui.Manager;
+import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.ButtonField;
+import net.rim.device.api.ui.component.ChoiceField;
 import net.rim.device.api.ui.component.Dialog;
+import net.rim.device.api.ui.component.LabelField;
+import net.rim.device.api.ui.component.ObjectChoiceField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
+import net.rim.device.api.ui.container.VerticalFieldManager;
 
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.NewVerticalFieldManager;
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.utils.Const;
 
-/* package */class FixMainScreen extends MainScreen {
+/* package */class FixMainScreen extends MainScreen implements
+		FieldChangeListener {
 	NewVerticalFieldManager manager = new NewVerticalFieldManager();
 	boolean haveNext = false;
 	boolean havePrevious = false;
 	int currentIndex = 0;
+	VerticalFieldManager pagingManager = new VerticalFieldManager();
 	HorizontalFieldManager previousNextManager = new HorizontalFieldManager();
+	HorizontalFieldManager commentPreviousNextManager = new HorizontalFieldManager();
 	MyButtonField nextBT = new MyButtonField(Const.NEXT_LABEL,
 			ButtonField.ELLIPSIS);
 	MyButtonField previousBT = new MyButtonField(Const.PREVIOUS_LABEL,
 			ButtonField.ELLIPSIS);
-	/**
-	 * HelloWorldScreen constructor.
-	 */
-	FixMainScreen() {
+	MyButtonField commentNextBT = new MyButtonField(Const.NEXT_LABEL,
+			ButtonField.ELLIPSIS);
+	MyButtonField commentPreviousBT = new MyButtonField(Const.PREVIOUS_LABEL,
+			ButtonField.ELLIPSIS);
+	// Vector of label field
+	LabelField numPage = new LabelField();
+	private Font pageFont = getFont().derive(Font.PLAIN,
+			17 * Display.getWidth() / 480);
+	String[] pageString = { "1", "2", "3" };
+	private ChoiceField pageChoice = null;
+	// String[] teststr = {"a", "b","c"};
+	// private ObjectChoiceField testChoice = new ObjectChoiceField("sss"
+	// ,teststr);
+	XYEdges edge = new XYEdges(5, 25 * Display.getWidth() / 480, 5,
+			25 * Display.getWidth() / 480);
+	public static final int MODE_MCAST = 0;
+	public static final int MODE_VIDEOCONNECT = 1;
+	public static final int MODE_DOC = 2;
+	public static final int MODE_TRAIN = 3;
+	public static final int MODE_CONTACT = 4;
+	public static final int MODE_POLL = 5;
+	int mode;
+
+	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
 		super.add(manager);
+		this.mode = mode;
+		pagingManager.add(previousNextManager);
+		pageChoice = new ChoiceField("Go to :", pageString.length, 0) {
+			public Object getChoice(int index) throws IllegalArgumentException {
+				return pageString[index];
+			}
+		};
+		pageChoice.setPadding(0, 350 * Display.getWidth() / 480, 0, 0);
+		// testChoice.setPadding(0, 450 * Display.getWidth() / 480, 0, 0);
 
+		pagingManager.add(pageChoice);
 	}
+
 	public void processHaveNext(int numItem) {
+
+		calculateNumpageLabel(currentIndex, numItem);
 		int numItemIndex = numItem - 1;
-		if (numItemIndex > currentIndex + Const.NUM_LIST -1) {
+		if (numItemIndex > currentIndex + Const.NUM_LIST - 1) {
 			haveNext = true;
 		} else {
 			haveNext = false;
@@ -46,10 +92,52 @@ import com.tssoftgroup.tmobile.utils.Const;
 		if (havePrevious) {
 			previousNextManager.add(previousBT);
 		}
+		numPage.setMargin(6, 0, 0, 0);
+		numPage.setFont(pageFont);
+
 		if (haveNext) {
 			previousNextManager.add(nextBT);
 		}
+		// set listener
+		// pageChoice.setChangeListener(this);
+		//
+		previousNextManager.add(numPage);
+		// / Set new Choice Field
+		if (pageChoice != null) {
+			pagingManager.delete(pageChoice);
+		}
+		pageString = new String[allPage];
+		for (int i = 0; i < pageString.length; i++) {
+			pageString[i] = "" + (i + 1);
+		}
+		pageChoice = new ChoiceField("Go to :", pageString.length, 0) {
+			public Object getChoice(int index) throws IllegalArgumentException {
+				return pageString[index];
+			}
+		};
+		pageChoice.setPadding(0, 350 * Display.getWidth() / 480, 0, 0);
+		pageChoice.setSelectedIndex(currentPage - 1);
+		pageChoice.setFont(pageFont);
+		// pageChoice.setMargin(edge);
+		pageChoice.setChangeListener(this);
+		pagingManager.add(pageChoice);
 	}
+
+	public void processHaveComment(int numComment) {
+
+	}
+
+	int allPage;
+	int currentPage;
+
+	private void calculateNumpageLabel(int currentIndex, int numItem) {
+		allPage = numItem / Const.NUM_LIST;
+		allPage = allPage + (numItem % Const.NUM_LIST == 0 ? 0 : 1);
+		currentPage = (currentIndex / Const.NUM_LIST) + 1;
+		String pageString = " " + currentPage + "/" + allPage + " ";
+		numPage.setText(pageString);
+	}
+
 	public void add(Field field) {
 		manager.add(field);
 	}
@@ -66,5 +154,46 @@ import com.tssoftgroup.tmobile.utils.Const;
 		System.exit(0);
 
 		super.close();
+	}
+
+	public void fieldChanged(Field field, int context) {
+		if (field == pageChoice) {
+			if (mode == MODE_MCAST) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().viewVideoMCast(currentIndex);
+			}
+			if (mode == MODE_VIDEOCONNECT) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().viewVideoConnect(currentIndex);
+			}
+			if (mode == MODE_TRAIN) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().getTraining(currentIndex);
+			}
+			if (mode == MODE_DOC) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().getDocument(currentIndex);
+			}
+			if (mode == MODE_CONTACT) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().getProject(currentIndex);
+			}
+			if (mode == MODE_POLL) {
+				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
+				UiApplication.getUiApplication().pushScreen(
+						WaitScreen.getInstance());
+				Engine.getInstance().getPoll(currentIndex);
+			}
+		}
 	}
 }

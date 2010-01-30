@@ -64,6 +64,7 @@ public class DocumentDetailScreen extends FixMainScreen implements
 			BitmapField.FIELD_HCENTER | BitmapField.USE_ALL_WIDTH, "");
 
 	public DocumentDetailScreen(DocumentInfo docInfo) {
+		super (MODE_DOC);
 		this.docInfo = docInfo;
 		XYEdges edge = new XYEdges(10, 25, 10, 25);
 		add(bf);
