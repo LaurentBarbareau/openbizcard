@@ -68,6 +68,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
 		super.add(manager);
+		searchBT.setMargin(10, 0, 0, 0);
 		searchBT.setChangeListener(this);
 		this.mode = mode;
 		pagingManager.add(previousNextManager);
@@ -113,8 +114,12 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			previousNextManager.add(numPage);
 		}
 		// / Set new Choice Field
-		if (pageChoice != null) {
+		if (pageChoice != null  ) {
+			try{
 			pagingManager.delete(pageChoice);
+			}catch(IllegalArgumentException e){
+				// Delete item that is not belong to 
+			}
 		}
 		pageString = new String[allPage];
 		for (int i = 0; i < pageString.length; i++) {

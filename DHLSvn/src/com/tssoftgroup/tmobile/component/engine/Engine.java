@@ -535,9 +535,11 @@ public class Engine implements HTTPHandler {
 								Choice ch = new Choice();
 								ch.key = raw.choiceChar;
 								ch.value = raw.str;
+								if(!ch.value.equals("")){
 								question.choices.addElement(ch);
+								}
 							}
-							if (raw.type.equals("2")) {
+							if (raw.type.equals("2") && question.answer.equals("") ) {
 								question.answer = raw.choiceChar;
 							}
 						}
