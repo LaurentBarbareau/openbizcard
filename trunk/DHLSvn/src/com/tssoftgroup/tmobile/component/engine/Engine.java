@@ -929,7 +929,7 @@ public class Engine implements HTTPHandler {
 	}
 
 	// start from 0
-	public void viewVideoConnect(int start) {
+	public void viewVideoConnect(int start, String search) {
 
 		// WaitScreen waitScr = WaitScreen.getInstance();
 		// waitScr.setText("Logging in");
@@ -937,13 +937,13 @@ public class Engine implements HTTPHandler {
 		// UiApplication.getUiApplication().pushScreen(waitScr);
 		// }
 		String url = Const.URL_VIEW_VIDEO;
-		String body = "type=1&start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "type=1&start=" + start + "&num=" + Const.NUM_LIST + "&search=" + search;
 		url = Const.URL_VIEW_VIDEO;
 		thread.setTask(url, body, MODE_VIEW_VIDEO_CONNECT);
 		thread.go();
 	}
 
-	public void viewVideoMCast(int start) {
+	public void viewVideoMCast(int start, String search) {
 
 		// WaitScreen waitScr = WaitScreen.getInstance();
 		// waitScr.setText("Logging in");
@@ -951,7 +951,7 @@ public class Engine implements HTTPHandler {
 		// UiApplication.getUiApplication().pushScreen(waitScr);
 		// }
 		String url = Const.URL_VIEW_VIDEO;
-		String body = "type=0&start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "type=0&start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEW_MCAST);
 		thread.go();
 	}
@@ -987,10 +987,10 @@ public class Engine implements HTTPHandler {
 		thread.go();
 	}
 
-	public void getTraining(int start) {
+	public void getTraining(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_TRAINING;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEWTRAINING);
 		thread.go();
 	}
@@ -1015,26 +1015,26 @@ public class Engine implements HTTPHandler {
 		thread.go();
 	}
 
-	public void getProject(int start) {
+	public void getProject(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_PROJECT;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEW_PROJECT);
 		thread.go();
 	}
 
-	public void getDocument(int start) {
+	public void getDocument(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_DOCUMENT;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEW_DOCUMENT);
 		thread.go();
 	}
 
-	public void getPoll(int start) {
+	public void getPoll(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_POLL;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEW_POLL);
 		thread.go();
 	}

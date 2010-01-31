@@ -190,6 +190,7 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 			// edit.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 			// add(edit);
 			mainHorizontalManager.add(searchTextField);
+			mainHorizontalManager.add(searchBT);
 
 			// Topic Photo and List field
 			MainListVerticalFieldManager videoManager = new MainListVerticalFieldManager();
@@ -301,12 +302,16 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getProject(currentIndex);
+			Engine.getInstance().getProject(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getProject(currentIndex);
+			Engine.getInstance().getProject(currentIndex,search);
+		}else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().getProject(currentIndex, search);
 		}
 	}
 

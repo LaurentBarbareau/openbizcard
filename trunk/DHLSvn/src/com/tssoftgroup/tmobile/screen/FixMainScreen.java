@@ -62,10 +62,13 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	public static final int MODE_POLL = 5;
 	int mode;
 	int currentComment = 0;
+	public String search = "";
+	MyButtonField searchBT = new MyButtonField("Search", ButtonField.ELLIPSIS);
 
 	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
 		super.add(manager);
+		searchBT.setChangeListener(this);
 		this.mode = mode;
 		pagingManager.add(previousNextManager);
 		pageChoice = new ChoiceField("Go to :", pageString.length, 0) {
@@ -80,7 +83,6 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	}
 
 	public void processHaveNext(int numItem) {
-
 		calculateNumpageLabel(currentIndex, numItem);
 		int numItemIndex = numItem - 1;
 		if (numItemIndex > currentIndex + Const.NUM_LIST - 1) {
@@ -107,7 +109,9 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		// set listener
 		// pageChoice.setChangeListener(this);
 		//
-		previousNextManager.add(numPage);
+		if (haveNext || havePrevious) {
+			previousNextManager.add(numPage);
+		}
 		// / Set new Choice Field
 		if (pageChoice != null) {
 			pagingManager.delete(pageChoice);
@@ -126,18 +130,20 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		pageChoice.setFont(pageFont);
 		// pageChoice.setMargin(edge);
 		pageChoice.setChangeListener(this);
+		if (haveNext || havePrevious) {
 		pagingManager.add(pageChoice);
+		}
 	}
 
 	static int allComment = 0;
 
 	public static void processHaveComment(VerticalFieldManager commentManager,
-			PicInfo picinfo,  ScreenWithComment scr) {
+			PicInfo picinfo, ScreenWithComment scr) {
 		Vector commentList = new Vector();
 		allComment = picinfo.comments.size();
 		commentManager.deleteAll();
 		for (int i = scr.getCurrentCommentInd(); i < picinfo.comments.size(); i++) {
-			if (i >= Const.NUM_LIST +  scr.getCurrentCommentInd()) {
+			if (i >= Const.NUM_LIST + scr.getCurrentCommentInd()) {
 				break;
 			}
 			Comment commment = (Comment) picinfo.comments.elementAt(i);
@@ -200,22 +206,23 @@ import com.tssoftgroup.tmobile.utils.Wording;
 
 		commentPreviousNextManager.deleteAll();
 		commentPreviousNextManager.setMargin(edge);
-		MyButtonField commentNextBT ;
+		MyButtonField commentNextBT;
 		MyButtonField commentPreviousBT;
-		if(scr instanceof VideoConnectPlayerScreen || scr instanceof MCastPlayerScreen ){
-			 commentNextBT = new MyButtonField(Const.NEXT_LABEL,
-						ButtonField.ELLIPSIS, true);
-				 commentPreviousBT = new MyButtonField(
-						Const.PREVIOUS_LABEL, ButtonField.ELLIPSIS, true);
-		}else{
-			 commentNextBT = new MyButtonField(Const.NEXT_LABEL,
-						ButtonField.ELLIPSIS);
-				 commentPreviousBT = new MyButtonField(
-						Const.PREVIOUS_LABEL, ButtonField.ELLIPSIS);
+		if (scr instanceof VideoConnectPlayerScreen
+				|| scr instanceof MCastPlayerScreen) {
+			commentNextBT = new MyButtonField(Const.NEXT_LABEL,
+					ButtonField.ELLIPSIS, true);
+			commentPreviousBT = new MyButtonField(Const.PREVIOUS_LABEL,
+					ButtonField.ELLIPSIS, true);
+		} else {
+			commentNextBT = new MyButtonField(Const.NEXT_LABEL,
+					ButtonField.ELLIPSIS);
+			commentPreviousBT = new MyButtonField(Const.PREVIOUS_LABEL,
+					ButtonField.ELLIPSIS);
 		}
-		
+
 		CommmentNextPrevListener listener = new CommmentNextPrevListener(
-				commentManager, picinfo,scr);
+				commentManager, picinfo, scr);
 		if (havePrevious) {
 			commentPreviousBT.setChangeListener(listener);
 			commentPreviousNextManager.add(commentPreviousBT);
@@ -262,37 +269,37 @@ import com.tssoftgroup.tmobile.utils.Wording;
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().viewVideoMCast(currentIndex);
+				Engine.getInstance().viewVideoMCast(currentIndex, "");
 			}
 			if (mode == MODE_VIDEOCONNECT) {
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().viewVideoConnect(currentIndex);
+				Engine.getInstance().viewVideoConnect(currentIndex, "");
 			}
 			if (mode == MODE_TRAIN) {
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getTraining(currentIndex);
+				Engine.getInstance().getTraining(currentIndex, "");
 			}
 			if (mode == MODE_DOC) {
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getDocument(currentIndex);
+				Engine.getInstance().getDocument(currentIndex, "");
 			}
 			if (mode == MODE_CONTACT) {
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getProject(currentIndex);
+				Engine.getInstance().getProject(currentIndex, "");
 			}
 			if (mode == MODE_POLL) {
 				currentIndex = Const.NUM_LIST * pageChoice.getSelectedIndex();
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getPoll(currentIndex);
+				Engine.getInstance().getPoll(currentIndex, "");
 			}
 		}
 	}

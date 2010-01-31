@@ -196,7 +196,7 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 			// edit.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 			// add(edit);
 			mainHorizontalManager.add(searchTextField);
-
+			mainHorizontalManager.add(searchBT);
 			// MyButtonField searchButton = new MyButtonField("Search",
 			// ButtonField.ELLIPSIS);
 			// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
@@ -307,12 +307,16 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().viewVideoMCast(currentIndex);
+			Engine.getInstance().viewVideoMCast(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().viewVideoMCast(currentIndex);
+			Engine.getInstance().viewVideoMCast(currentIndex,search);
+		} else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().viewVideoMCast(currentIndex, search);
 		}
 	}
 }

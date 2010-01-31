@@ -180,6 +180,7 @@ public class TrainingListScreen extends FixMainScreen implements FieldChangeList
 				}
 			};
 			mainHorizontalManager.add(searchTextField);
+			mainHorizontalManager.add(searchBT);
 			// edit.setMaxSize(35);
 			// edit.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 			// add(edit);
@@ -291,12 +292,16 @@ public class TrainingListScreen extends FixMainScreen implements FieldChangeList
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getTraining(currentIndex);
+			Engine.getInstance().getTraining(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getTraining(currentIndex);
+			Engine.getInstance().getTraining(currentIndex,search);
+		}else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().getTraining(currentIndex, search);
 		}
 	}
 }
