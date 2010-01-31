@@ -111,7 +111,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				BitmapField thumb = new BitmapField(picinfo.getThumbnail());
 				thumb.setMargin(5, 0, 0, 0);
 				thumnailDescDurationPlayManager.add(thumb);
-				thumbWidth = thumb.getWidth() + 20;
+				thumbWidth = thumb.getWidth() + 10 * Display.getWidth() / 480;
 			}
 
 			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();

@@ -152,12 +152,12 @@ public class ButtonListener implements FieldChangeListener {
 				// MyVideoMain() );
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().viewVideoMCast(0);
+				Engine.getInstance().viewVideoMCast(0, "");
 				break;
 			case 4:// HelloWorld.Document
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getDocument(0);
+				Engine.getInstance().getDocument(0, "");
 				break;
 			case 5:// Press Training at Main Screen
 				// UiApplication.getUiApplication().pushScreen(TrainingVideoScreen.getInstance());
@@ -179,12 +179,12 @@ public class ButtonListener implements FieldChangeListener {
 				// UiApplication.getUiApplication().pushScreen(scr);
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getTraining(0);
+				Engine.getInstance().getTraining(0, "");
 				break;
 			case 6:// HelloWorld.Contact
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getProject(0);
+				Engine.getInstance().getProject(0, "");
 				break;
 			case 7:// MyVideoScreen.Play
 				if (player.getState() == player.STARTED) {
@@ -363,14 +363,14 @@ public class ButtonListener implements FieldChangeListener {
 			case 24:// HelloWorld.Movie
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().viewVideoConnect(0);
+				Engine.getInstance().viewVideoConnect(0, "");
 				break;
 			case 25:// HelloWorld.Poll
 //				UiApplication.getUiApplication().pushModalScreen(
 //						new MyPollMain());
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
-				Engine.getInstance().getPoll(0);
+				Engine.getInstance().getPoll(0, "");
 				break;
 			case 26:// MyMovieMain.Play
 				// String[] arr = (String[])

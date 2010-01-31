@@ -229,7 +229,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 			// add(edit);
 			mainHorizontalManager.setMargin(edge);
 			mainHorizontalManager.add(searchTextField);
-
+			mainHorizontalManager.add(searchBT);
 			// MyButtonField searchButton = new MyButtonField("Search",
 			// ButtonField.ELLIPSIS);
 			// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
@@ -476,12 +476,16 @@ public class VideoConnectScreen extends FixMainScreen implements
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().viewVideoConnect(currentIndex);
+			Engine.getInstance().viewVideoConnect(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().viewVideoConnect(currentIndex);
+			Engine.getInstance().viewVideoConnect(currentIndex,search);
+		}else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().viewVideoConnect(currentIndex, search);
 		}
 	}
 }

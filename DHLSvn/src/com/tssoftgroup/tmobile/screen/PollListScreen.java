@@ -187,6 +187,7 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 			// Topic Photo and List field
 			MainListVerticalFieldManager videoManager = new MainListVerticalFieldManager();
 			mainHorizontalManager.add(searchTextField);
+			mainHorizontalManager.add(searchBT);
 			mainHorizontalManager.setMargin(edge);
 			videoManager.add(mainHorizontalManager);
 			// bf = new BitmapField(img, BitmapField.NON_FOCUSABLE);
@@ -288,12 +289,16 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getPoll(currentIndex);
+			Engine.getInstance().getPoll(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getPoll(currentIndex);
+			Engine.getInstance().getPoll(currentIndex,search);
+		}else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().getPoll(currentIndex, search);
 		}
 	}
 

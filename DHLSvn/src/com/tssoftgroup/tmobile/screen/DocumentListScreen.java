@@ -153,6 +153,7 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 			mainManager.add(button);
 //			searchTextField.setMargin(edge);
 			mainHorizontalManager.add(searchTextField);
+			mainHorizontalManager.add(searchBT);
 			mainHorizontalManager.setMargin(edge);
 			mainManager.add(mainHorizontalManager);
 			// BitmapField bff = new BitmapField(img,
@@ -261,12 +262,16 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 //			Dialog.alert("next");
 			currentIndex = currentIndex + Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getDocument(currentIndex);
+			Engine.getInstance().getDocument(currentIndex,search);
 		} else if (btnField == previousBT) {
 //			Dialog.alert("prev");
 			currentIndex = currentIndex - Const.NUM_LIST;
 			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
-			Engine.getInstance().getDocument(currentIndex);
+			Engine.getInstance().getDocument(currentIndex,search);
+		}else if (btnField == searchBT) {
+			search = searchTextField.getText();
+			UiApplication.getUiApplication().pushScreen(WaitScreen.getInstance());
+			Engine.getInstance().getDocument(currentIndex, search);
 		}
 	}
 }
