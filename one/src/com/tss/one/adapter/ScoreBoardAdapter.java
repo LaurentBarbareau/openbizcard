@@ -17,11 +17,9 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tss.one.GameDetail;
-import com.tss.one.MainDetail;
 import com.tss.one.R;
 import com.tss.one.ScoreBoard;
 import com.tssoft.one.webservice.ImageLoaderFactory;
@@ -162,6 +160,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						v.setOnClickListener(new OnClickListener() {
 
 							public void onClick(View v) {
+								GameDetail.isShow = true;
 								GameDetail.gameId = game.getId();
 								Intent mainDetailIntent = new Intent(scoreBoard,
 										GameDetail.class);
@@ -229,6 +228,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					v.setOnClickListener(new OnClickListener() {
 
 						public void onClick(View v) {
+							GameDetail.isShow = true;
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(scoreBoard,
 									GameDetail.class);
@@ -286,6 +286,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					v.setOnClickListener(new OnClickListener() {
 
 						public void onClick(View v) {
+							GameDetail.isShow = true;
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(scoreBoard,
 									GameDetail.class);

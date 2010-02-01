@@ -7,13 +7,13 @@ import android.content.res.Configuration;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class MyListActivity extends ListActivity{
+public class MyListActivity extends ListActivity {
 
-	@Override 
+	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig); 
+		super.onConfigurationChanged(newConfig);
 	}
-	
+
 	protected void buildMenu(Activity act) {
 		final Activity myAct = act;
 		ImageButton icon0 = (ImageButton) act.findViewById(R.id.main_button);
@@ -25,6 +25,9 @@ public class MyListActivity extends ListActivity{
 
 		icon0.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (GameDetail.isShow) {
+					GameDetail.isShow = false;
+				}
 				myAct.finish();
 				Intent mainDetailIntent = new Intent(view.getContext(),
 						MainList.class);
@@ -35,6 +38,9 @@ public class MyListActivity extends ListActivity{
 
 		icon1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (GameDetail.isShow) {
+					GameDetail.isShow = false;
+				}
 				myAct.finish();
 				Intent myTeamsTabIntent = new Intent(view.getContext(),
 						MyTeamsTab.class);
@@ -45,6 +51,9 @@ public class MyListActivity extends ListActivity{
 
 		icon2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (GameDetail.isShow) {
+					GameDetail.isShow = false;
+				}
 				myAct.finish();
 				Intent newsListIntent = new Intent(view.getContext(),
 						NewsList.class);
@@ -54,6 +63,11 @@ public class MyListActivity extends ListActivity{
 		});
 		icon3.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (GameDetail.isShow) {
+					GameDetail.isShow = false;
+					myAct.finish();
+					return;
+				}
 				myAct.finish();
 				Intent newsListIntent = new Intent(view.getContext(),
 						ScoreBoard.class);

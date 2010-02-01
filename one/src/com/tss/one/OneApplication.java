@@ -3,25 +3,38 @@ package com.tss.one;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.ImageView;
 
 public class OneApplication extends Activity {
-	
-	@Override 
+
+	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig); 
+		super.onConfigurationChanged(newConfig);
 	}
-	
+//	AnimationDrawable rocketAnimation;
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+//		rocketAnimation.start();
+	}
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_page);
+//		ImageView rocketImage = (ImageView) findViewById(R.id.loading);
+//		rocketImage.setBackgroundResource(R.anim.loading);
+//		rocketAnimation = (AnimationDrawable) rocketImage.getBackground();
+
 		MainList.splashScreen = this;
 		Intent mainDetailIntent = new Intent(this, MainList.class);
 		startActivity(mainDetailIntent);
-		
+
 		// super.buildMenu(this);
 		// ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
 		// ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
@@ -64,12 +77,13 @@ public class OneApplication extends Activity {
 		// }
 		// });
 	}
-//
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		System.out.println("aaaaaa" + data);
-//		super.onActivityResult(requestCode, resultCode, data);
-////		finish();
-//	}
+	//
+	// @Override
+	// protected void onActivityResult(int requestCode, int resultCode, Intent
+	// data) {
+	// System.out.println("aaaaaa" + data);
+	// super.onActivityResult(requestCode, resultCode, data);
+	// // finish();
+	// }
 
 }

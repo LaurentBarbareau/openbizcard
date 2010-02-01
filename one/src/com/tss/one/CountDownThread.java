@@ -41,6 +41,7 @@ public class CountDownThread extends TimerTask{
 		if (sec<=0){
 			Date dateDisplay = null;
 			String date = WebServiceReaderScoreBoard.getCurrentDate();
+			date = date.replace("T", "");
 			try {
 				dateDisplay = oriFormat.parse(date);
 			} catch (ParseException e) {				
