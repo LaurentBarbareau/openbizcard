@@ -10,13 +10,13 @@
 			<ImageView android:id="@+id/news_header"
 				android:layout_width="320px" android:layout_height="47px"
 				android:src="@drawable/head_bar" />
-			<ImageButton android:id="@+id/refrest_icon"
-				android:layout_width="42px" android:layout_height="42px"
-				android:layout_marginTop="2dip" android:layout_marginRight="2dip"
+			<ImageButton android:id="@+id/back_icon"
+				android:layout_width="50px" android:layout_height="38px"
+				android:layout_marginTop="4dip" android:layout_marginRight="4dip"
 				android:layout_alignParentTop="true"
 				android:layout_alignParentRight="true" android:layout_gravity="right|top"
 				android:drawSelectorOnTop="true" android:src="@drawable/blank"
-				android:background="@drawable/refrest_icon_rollover" />
+				android:background="@drawable/main_detail_back_rollover" />
 		</FrameLayout>
 		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent" android:layout_height="350px"
