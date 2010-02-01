@@ -2,7 +2,9 @@ package com.tssoft.one.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +27,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 public class Utils {
@@ -242,11 +246,12 @@ public class Utils {
 	public static void showAlert(Activity act, String msg) {
 		final Activity myact = act;
 		final String mymsg = msg;
-		
+
 		act.runOnUiThread(new Runnable() {
 
 			public void run() {
-				AlertDialog alertDialog = new AlertDialog.Builder(myact).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(myact)
+						.create();
 				alertDialog.setTitle("Error");
 				alertDialog.setMessage(mymsg);
 				alertDialog.setButton("OK",
@@ -260,14 +265,16 @@ public class Utils {
 			}
 		});
 	}
+
 	public static void showAlertWithExitProgram(Activity act, String msg) {
 		final Activity myact = act;
 		final String mymsg = msg;
-		
+
 		act.runOnUiThread(new Runnable() {
 
 			public void run() {
-				AlertDialog alertDialog = new AlertDialog.Builder(myact).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(myact)
+						.create();
 				alertDialog.setTitle("Error");
 				alertDialog.setMessage(mymsg);
 				alertDialog.setButton("OK",
@@ -281,5 +288,46 @@ public class Utils {
 				alertDialog.show();
 			}
 		});
+	}
+
+	public static final String SAVEPIC_FOLDER = "temp";
+
+	public static void saveFileOnSD(Activity act, byte[] b, String fileName) {
+
+		try {
+			FileOutputStream stream = act.openFileOutput(fileName, 0);
+			stream.write(b);
+			Log.e("savePicOnSDCard", "Current file name: " + fileName);
+			stream.flush();
+			stream.close();
+		} catch (Exception e) {
+			Log.e("error", "exception while writing image", e);
+		}
+
+	}
+
+	public static byte[] getByteData(Activity act, String filename) {
+		// Auto-generated method stub
+		try {
+			FileInputStream fs = act.openFileInput(filename);
+			// FileInputStream fs = new
+			// FileInputStream(CrieConstant.getCurrentPhotoName());
+			int size = fs.available();
+			byte[] data = new byte[size];
+			int result = fs.read(data);
+			fs.close();
+			Log.e("getByteData", "result: " + result + "," + size);
+			if (result == size) {// OK
+				return data;
+			} else {
+				return new byte[1024];
+			}
+
+		} catch (FileNotFoundException e) {
+			return null;
+		} catch (IOException e) {
+			// Auto-generated catch block
+			return null;
+		}
 	}
 }

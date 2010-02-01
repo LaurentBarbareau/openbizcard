@@ -42,6 +42,7 @@ public class MainList extends MyListActivity {
 	private MainAdapter mainAdapter;
 	private Runnable viewMain;
 	public static boolean firstTime = true;
+	public static boolean isShowDetail = false;
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
 			try{
@@ -167,6 +168,7 @@ public class MainList extends MyListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Object o = mainArticleList.get(position);
 		if (o instanceof Article) {
+			isShowDetail = true;
 			MainDetail.article = (Article) mainArticleList.get(position);
 			Intent mainDetailIndent = new Intent(v.getContext(),
 					MainDetail.class);
@@ -219,6 +221,7 @@ public class MainList extends MyListActivity {
 					v.setOnClickListener(new OnClickListener() {
 
 						public void onClick(View v) {
+							
 							GameDetail.gameId = game.getId();
 							Intent mainDetailIntent = new Intent(context,
 									GameDetail.class);

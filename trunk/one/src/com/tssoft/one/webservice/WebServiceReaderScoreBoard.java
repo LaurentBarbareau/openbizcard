@@ -316,43 +316,117 @@ public class WebServiceReaderScoreBoard {
 	}
 
 	public static Game getGameFromSoapObj(SoapObject article) {
-		SoapPrimitive id = (SoapPrimitive) article.getProperty("LiveID");
-		SoapPrimitive gameMinute = (SoapPrimitive) article
-				.getProperty("GameMinute");
-		SoapPrimitive condition = (SoapPrimitive) article
-				.getProperty("Condition");
-		SoapPrimitive periodType = (SoapPrimitive) article
-				.getProperty("PeriodType");
-		SoapPrimitive gameType = (SoapPrimitive) article
-				.getProperty("GameType");
-		SoapPrimitive homeScore = (SoapPrimitive) article
-				.getProperty("HomeScore");
-		SoapPrimitive guestScore = (SoapPrimitive) article
-				.getProperty("GuestScore");
-		SoapPrimitive homeHalfScore = (SoapPrimitive) article
-				.getProperty("HomeHalfScore");
-		SoapPrimitive guestHalfScore = (SoapPrimitive) article
-				.getProperty("GuestHalfScore");
-		SoapPrimitive penaltyHomeScore = (SoapPrimitive) article
-				.getProperty("PenaltyHomeScore");
-		SoapPrimitive penaltyGuestScore = (SoapPrimitive) article
-				.getProperty("PenaltyGuestScore");
-		SoapPrimitive homeIcon = (SoapPrimitive) article
-				.getProperty("HomeIcon");
-		SoapPrimitive guestIcon = (SoapPrimitive) article
-				.getProperty("GuestIcon");
+		SoapPrimitive id = null;
+		SoapPrimitive gameMinute = null;
+		SoapPrimitive condition = null;
+		SoapPrimitive periodType = null;
+		SoapPrimitive gameType = null;
+		SoapPrimitive homeScore = null;
+		SoapPrimitive guestScore = null;
+		SoapPrimitive homeHalfScore = null;
+		SoapPrimitive guestHalfScore = null;
+		SoapPrimitive penaltyHomeScore = null;
+		SoapPrimitive penaltyGuestScore = null;
+		SoapPrimitive homeIcon = null;
+		SoapPrimitive guestIcon = null;
+		SoapPrimitive homeTeam = null;
+		SoapPrimitive guestTeam = null;
+		SoapPrimitive gameDate = null;
+		SoapPrimitive hasEvents = null;
+		try {
+			id = (SoapPrimitive) article.getProperty("LiveID");
+		} catch (Exception e) {
+
+		}
+
+		try {
+			gameMinute = (SoapPrimitive) article.getProperty("GameMinute");
+		} catch (Exception e) {
+
+		}
+		try {
+			condition = (SoapPrimitive) article.getProperty("Condition");
+		} catch (Exception e) {
+
+		}
+		try {
+			periodType = (SoapPrimitive) article.getProperty("PeriodType");
+		} catch (Exception e) {
+
+		}
+		try {
+			gameType = (SoapPrimitive) article.getProperty("GameType");
+		} catch (Exception e) {
+
+		}
+		try {
+			homeScore = (SoapPrimitive) article.getProperty("HomeScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			guestScore = (SoapPrimitive) article.getProperty("GuestScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			homeHalfScore = (SoapPrimitive) article
+					.getProperty("HomeHalfScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			guestHalfScore = (SoapPrimitive) article
+					.getProperty("GuestHalfScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			penaltyHomeScore = (SoapPrimitive) article
+					.getProperty("PenaltyHomeScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			penaltyGuestScore = (SoapPrimitive) article
+					.getProperty("PenaltyGuestScore");
+		} catch (Exception e) {
+
+		}
+		try {
+			homeIcon = (SoapPrimitive) article.getProperty("HomeIcon");
+		} catch (Exception e) {
+
+		}
+		try {
+			guestIcon = (SoapPrimitive) article.getProperty("GuestIcon");
+		} catch (Exception e) {
+
+		}
 		SoapPrimitive startTime = null;
 		if (article.getProperty("StartTime") instanceof SoapPrimitive) {
 			startTime = (SoapPrimitive) article.getProperty("StartTime");
 		}
-		SoapPrimitive homeTeam = (SoapPrimitive) article
-				.getProperty("HomeTeam");
-		SoapPrimitive guestTeam = (SoapPrimitive) article
-				.getProperty("GuestTeam");
-		SoapPrimitive gameDate = (SoapPrimitive) article
-				.getProperty("GameDate");
-		SoapPrimitive hasEvents = (SoapPrimitive) article
-				.getProperty("HasEvents");
+		try {
+			homeTeam = (SoapPrimitive) article.getProperty("HomeTeam");
+		} catch (Exception e) {
+
+		}
+		try {
+			guestTeam = (SoapPrimitive) article.getProperty("GuestTeam");
+		} catch (Exception e) {
+
+		}
+		try {
+			gameDate = (SoapPrimitive) article.getProperty("GameDate");
+		} catch (Exception e) {
+
+		}
+		try {
+			hasEvents = (SoapPrimitive) article.getProperty("HasEvents");
+		} catch (Exception e) {
+
+		}
 
 		Game game = new Game(
 				id.toString() == null ? null : id.toString(),

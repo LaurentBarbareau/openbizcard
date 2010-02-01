@@ -9,11 +9,11 @@ import android.widget.ImageButton;
 
 public class MyActivity extends Activity {
 
-	@Override 
+	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig); 
-	}	
-	
+		super.onConfigurationChanged(newConfig);
+	}
+
 	protected void buildMenu(Activity act) {
 		final Activity myAct = act;
 		ImageButton icon0 = (ImageButton) act.findViewById(R.id.main_button);
@@ -25,16 +25,25 @@ public class MyActivity extends Activity {
 
 		icon0.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (MainList.isShowDetail) {
+					myAct.finish();
+					MainList.isShowDetail = false;
+					return;
+				}
 				myAct.finish();
 				Intent mainDetailIntent = new Intent(view.getContext(),
 						MainList.class);
 				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(mainDetailIntent);
+
 			}
 		});
 
 		icon1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (MainList.isShowDetail) {
+					MainList.isShowDetail = false;
+				}
 				myAct.finish();
 				Intent myTeamsTabIntent = new Intent(view.getContext(),
 						MyTeamsTab.class);
@@ -45,6 +54,9 @@ public class MyActivity extends Activity {
 
 		icon2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				if (MainList.isShowDetail) {
+					MainList.isShowDetail = false;
+				}
 				myAct.finish();
 				Intent newsListIntent = new Intent(view.getContext(),
 						NewsList.class);
@@ -53,13 +65,17 @@ public class MyActivity extends Activity {
 			}
 		});
 		icon3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-            	myAct.finish();
-                Intent scoreBoardIntent = new Intent(view.getContext(), ScoreBoard.class);
-//                newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(scoreBoardIntent);
-            }
-        });
+			public void onClick(View view) {
+				if (MainList.isShowDetail) {
+					MainList.isShowDetail = false;
+				}
+				myAct.finish();
+				Intent scoreBoardIntent = new Intent(view.getContext(),
+						ScoreBoard.class);
+				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(scoreBoardIntent);
+			}
+		});
 	}
 
 }

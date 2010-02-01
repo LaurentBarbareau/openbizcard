@@ -65,43 +65,6 @@ public class MainDetail extends MyActivity {
 		
 		// Oak add
 		loadArticle(article);
-//		ImageButton refreshIcon = (ImageButton) findViewById(R.id.refrest_icon);
-//		refreshIcon.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				loadArticle(article);
-//			}
-//		});
-//		ImageButton zoominIcon = (ImageButton) findViewById(R.id.zoom_in_button);
-//		ImageButton zoomoutIcon = (ImageButton) findViewById(R.id.zoom_out_button);
-//		zoominIcon.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
-//				webview.zoomIn();
-//			
-//			}
-//		});
-//		zoomoutIcon.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				WebView webview = (WebView) findViewById(R.id.main_detail_webview);
-//				webview.zoomOut();
-//			}
-//		});
-//		//
-
-//		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-//		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
-//		ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
-//		ImageButton icon3 = (ImageButton) findViewById(R.id.score_board_button);
-//		// Oak Add This part
-//		// loadArticle(article);
-//		icon2.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				Intent newsListIntent = new Intent(view.getContext(),
-//						NewsList.class);
-////				newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(newsListIntent, 0);
-//			}
-//		});
 
 	}
 

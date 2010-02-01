@@ -28,15 +28,16 @@ public class GameDetail extends MyListActivity {
 	public static ProgressDialog dig;
 
 	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
-//	private ProgressDialog m_ProgressDialog = null;
+	// private ProgressDialog m_ProgressDialog = null;
 	private ArrayList<GameEvent> eventsList = new ArrayList<GameEvent>();
 	private ScorerAdapter adapter;
+	public static boolean isShow = false;
 
-	@Override 
+	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig); 
+		super.onConfigurationChanged(newConfig);
 	}
-	
+
 	public void loadGame(String gameId) {
 		if (gameId != null) {
 			GameDetail.dig = ProgressDialog.show(this, "Please wait...",
@@ -62,9 +63,13 @@ public class GameDetail extends MyListActivity {
 								ImageView homeLogo = (ImageView) findViewById(R.id.game_detail_logo1);
 								gameDetailScoreTV.setText(game.getGuestScore()
 										+ " - " + game.getHomeScore());
-								gameDetailFirstHalfScoreTV.setText(game
-										.getGuestHalfScore()
-										+ " - " + game.getHomeHalfScore());
+								if (!(game.getGuestHalfScore().equals("-1"))) {
+									gameDetailFirstHalfScoreTV.setText(game
+											.getGuestHalfScore()
+											+ " - " + game.getHomeHalfScore());
+								} else {
+									gameDetailFirstHalfScoreTV.setText("");
+								}
 								gameDetailMinuteTV
 										.setText(game.getGameMinute());
 								for (int i = 0; i < game.guestEvents.size(); i++) {
@@ -77,18 +82,21 @@ public class GameDetail extends MyListActivity {
 									temp.isHome = true;
 									eventsList.add(temp);
 								}
-//								// Dummy 
-//								GameEvent e = new GameEvent("score" , "oak");
-//								GameEvent e2 = new GameEvent("score" , "oak2");
-//								GameEvent e3 = new GameEvent("score" , "oak3");
-//								GameEvent e4 = new GameEvent("score" , "oak4");
-//								e3.isHome = false;
-//								e4.isHome = false;
-//								eventsList.add(e);
-//								eventsList.add(e2);
-//								eventsList.add(e3);
-//								eventsList.add(e4);
-//								// End Dummy
+								// // Dummy
+								// GameEvent e = new GameEvent("score" , "oak");
+								// GameEvent e2 = new GameEvent("score" ,
+								// "oak2");
+								// GameEvent e3 = new GameEvent("score" ,
+								// "oak3");
+								// GameEvent e4 = new GameEvent("score" ,
+								// "oak4");
+								// e3.isHome = false;
+								// e4.isHome = false;
+								// eventsList.add(e);
+								// eventsList.add(e2);
+								// eventsList.add(e3);
+								// eventsList.add(e4);
+								// // End Dummy
 								adapter.notifyDataSetChanged();
 								loader.setTask(game.getGuestIcon(), guestLogo);
 								loader.setTask(game.getHomeIcon(), homeLogo);
@@ -97,7 +105,7 @@ public class GameDetail extends MyListActivity {
 							}
 						});
 					}
-				
+
 				}
 			}).start();
 
@@ -163,20 +171,20 @@ public class GameDetail extends MyListActivity {
 					((TextView) v.findViewById(R.id.home_scorer))
 							.setText(game.description);
 					((ImageView) v.findViewById(R.id.guest_ball))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 					((ImageView) v.findViewById(R.id.guest_line))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 					((TextView) v.findViewById(R.id.guest_scorer))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 				} else {
 					((TextView) v.findViewById(R.id.guest_scorer))
 							.setText(game.description);
 					((ImageView) v.findViewById(R.id.home_ball))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 					((ImageView) v.findViewById(R.id.home_line))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 					((TextView) v.findViewById(R.id.home_scorer))
-					.setVisibility(TextView.INVISIBLE);
+							.setVisibility(TextView.INVISIBLE);
 				}
 
 			}
