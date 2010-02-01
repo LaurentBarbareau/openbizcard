@@ -54,6 +54,20 @@ public class NewsDetail extends MyActivity {
 						};
 						hand.doJob();
 						
+					}else{
+						OakHandler hand = new OakHandler() {
+							public void doJob() {
+								act.runOnUiThread(new Runnable() {
+
+									public void run() {
+										ImageButton prevBtn = (ImageButton) findViewById(R.id.previous_button);
+										prevBtn
+												.setVisibility(ImageButton.VISIBLE);
+									}
+								});
+							}
+						};
+						hand.doJob();
 					}
 					if (currentArticle.getNextId() == null) {
 
@@ -70,6 +84,23 @@ public class NewsDetail extends MyActivity {
 							}
 						};
 						hand.doJob();
+					}else{
+
+
+						OakHandler hand = new OakHandler() {
+							public void doJob() {
+								act.runOnUiThread(new Runnable() {
+
+									public void run() {
+										ImageButton nextBtn = (ImageButton) findViewById(R.id.next_button);
+										nextBtn
+												.setVisibility(ImageButton.VISIBLE);
+									}
+								});
+							}
+						};
+						hand.doJob();
+					
 					}
 					System.out.println("Num 3");
 
