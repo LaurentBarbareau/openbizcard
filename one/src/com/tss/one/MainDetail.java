@@ -3,6 +3,7 @@ package com.tss.one;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,12 @@ import com.tssoft.one.webservice.model.cons.ArticleIndex;
 public class MainDetail extends MyActivity {
 	public static Article article = new Article("151154", "", "", "", "");
 	public static ProgressDialog dig;
+	
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	public void loadArticle(Article article) {
 		if (article != null) {
 			MainDetail.dig = ProgressDialog.show(this,    

@@ -11,19 +11,25 @@
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="320px" android:layout_height="25px"
 			android:layout_below="@id/news_header" android:id="@+id/news_frame_header">
-			<ImageView android:id="@+id/news_red_header"
-				android:layout_width="320px" android:layout_height="25px"
-				android:layout_margin="0dip" android:src="@drawable/blank"
-				android:background="@drawable/head_tab_bar" />
+			<TextView android:id="@+id/news_red_header"
+				android:layout_width="320px" 
+				android:layout_height="25px"
+				android:layout_margin="0dip" 
+				android:background="@drawable/head_tab_bar_blank"
+				android:gravity="center"
+				android:textColor="#ffffff"
+				android:textSize="14sp"
+				android:textStyle="bold"
+				android:text="חדשות" />
 			<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="320px" android:layout_height="25px">
 				<ImageButton android:id="@+id/next_button"
-					android:layout_width="54px" android:layout_height="25px"
+					android:layout_width="80px" android:layout_height="39px"
 					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/next_rollover" />
 				<ImageButton android:id="@+id/previous_button"
-					android:layout_width="54px" android:layout_height="25px"
+					android:layout_width="80px" android:layout_height="39px"
 					android:layout_toRightOf="@id/next_button"
 					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
@@ -36,15 +42,20 @@
 					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/next_rollover" /> -->
-					<ImageButton android:id="@+id/next_button"
-					android:layout_width="37px" android:layout_height="30px"
-					 android:layout_marginLeft="10dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				<ImageButton android:id="@+id/next_button"
+					android:layout_width="45px" 
+					android:layout_height="22px"
+					android:layout_marginTop="1dip"
+					android:layout_marginLeft="10dip"
+					android:drawSelectorOnTop="true" 
+					android:src="@drawable/blank"
 					android:background="@drawable/next_rollover" />
 				<ImageButton android:id="@+id/previous_button"
-					android:layout_width="37px" android:layout_height="30px"
+					android:layout_width="45px" 
+					android:layout_height="22px"	
+					android:layout_marginTop="1dip"	
+					 android:layout_marginLeft="212dip"			
 					android:layout_toRightOf="@id/next_button"
-					android:layout_marginLeft="225dip"
 					android:drawSelectorOnTop="true" android:src="@drawable/blank"
 					android:background="@drawable/previous_rollover" />
 			</RelativeLayout> 

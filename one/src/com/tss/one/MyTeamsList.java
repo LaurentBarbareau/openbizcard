@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +52,11 @@ public class MyTeamsList extends MyListActivity {
 			}
 		}
 	};
+	
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
 
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

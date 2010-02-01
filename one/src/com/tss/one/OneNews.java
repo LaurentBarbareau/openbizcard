@@ -8,11 +8,17 @@ import com.tssoft.one.webservice.model.ArticleBySubject;
 import com.tssoft.one.webservice.model.cons.ArticleIndex;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 public class OneNews extends Activity {
 	/** Called when the activity is first created. */
-	@Override
+	
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		ArrayList<Article> arr = WebServiceReader.getMain();

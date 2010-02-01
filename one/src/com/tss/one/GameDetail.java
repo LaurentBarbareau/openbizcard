@@ -6,7 +6,7 @@ import java.util.HashMap;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +32,11 @@ public class GameDetail extends MyListActivity {
 	private ArrayList<GameEvent> eventsList = new ArrayList<GameEvent>();
 	private ScorerAdapter adapter;
 
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	public void loadGame(String gameId) {
 		if (gameId != null) {
 			GameDetail.dig = ProgressDialog.show(this, "Please wait...",

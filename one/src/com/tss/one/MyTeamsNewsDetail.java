@@ -3,6 +3,7 @@ package com.tss.one;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
@@ -19,6 +20,11 @@ public class MyTeamsNewsDetail extends MyActivity {
 	public static Article currentArticle = new Article("151154", "", "", "", "");
 	public static ProgressDialog dig;
 
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	public void loadArticle(Article article) {
 		if (article != null) {
 			MyTeamsNewsDetail.dig = ProgressDialog.show(this, "Please wait...",

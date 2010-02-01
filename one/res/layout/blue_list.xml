@@ -7,6 +7,7 @@
 				<TextView android:id="@+id/main_headline"
 					android:layout_width="320px"
 					android:layout_height="20px"
+					android:layout_marginLeft="5px"
 					android:layout_marginRight="5px"
 		    		android:layout_gravity="center"    		
 		    		android:textColor="#ffffff"
