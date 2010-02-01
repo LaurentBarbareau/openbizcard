@@ -1,5 +1,6 @@
 package com.tssoft.one.webservice;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,7 +21,7 @@ import com.tssoft.one.webservice.model.GameBySubject;
 public class WebServiceReader {
 	public static final String ENDPOINT_URL = "http://one.mobile1.co.il/webservices/appservices.asmx";
 
-	public static ArrayList<Object> getMain() {
+	public static ArrayList<Object> getMain() throws UnknownHostException{
 		WebServiceText.mainStr.clear();
 		String TAG = "SOAPConnected";
 		String SOAP_ACTION = "http://tempuri.org/GetFirstPage";
@@ -61,7 +62,8 @@ public class WebServiceReader {
 					gamesArr.add(game);
 					articlesArr.add(game);
 				}
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 			SoapObject articles = (SoapObject) resultRequestSOAP
@@ -99,7 +101,9 @@ public class WebServiceReader {
 
 			Log.v(TAG, "Response from servcer:" + resultRequestSOAP.toString());
 
-		} catch (Exception aE) {
+		}  catch (UnknownHostException ae) {
+			throw ae;
+		}catch (Exception aE) {
 			Log.d(TAG, "Error", aE);
 			aE.printStackTrace();
 		}

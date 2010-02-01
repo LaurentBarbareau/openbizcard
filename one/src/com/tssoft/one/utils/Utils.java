@@ -259,6 +259,27 @@ public class Utils {
 				alertDialog.show();
 			}
 		});
+	}
+	public static void showAlertWithExitProgram(Activity act, String msg) {
+		final Activity myact = act;
+		final String mymsg = msg;
+		
+		act.runOnUiThread(new Runnable() {
 
+			public void run() {
+				AlertDialog alertDialog = new AlertDialog.Builder(myact).create();
+				alertDialog.setTitle("Error");
+				alertDialog.setMessage(mymsg);
+				alertDialog.setButton("OK",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								myact.finish();
+								return;
+							}
+						});
+				alertDialog.show();
+			}
+		});
 	}
 }
