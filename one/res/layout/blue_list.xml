@@ -7,8 +7,8 @@
 				<TextView android:id="@+id/main_headline"
 					android:layout_width="320px"
 					android:layout_height="20px"
-					android:layout_marginLeft="5px"
 					android:layout_marginRight="5px"
+					android:layout_marginLeft="5px"
 		    		android:layout_gravity="center"    		
 		    		android:textColor="#ffffff"
 		    		android:textStyle="bold"
@@ -20,15 +20,28 @@
 				android:orientation="horizontal"
 			    android:layout_width="320px"
 			    android:layout_height="100px">	
-		    	
+			    
+		    	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+					android:layout_width="120px" 
+					android:layout_marginTop="7px"
+			    	android:layout_marginLeft="10px"
+					android:layout_height="91px"> 
+					
 		    		 <ImageView android:id="@+id/main_image"
 						android:layout_width="120px"
-						android:layout_height="107px"
-			    		android:layout_gravity="left"
-			    		android:layout_marginLeft="10px"	
+						android:layout_height="91px"
+			    		android:layout_gravity="left"	
 			    		android:src="@drawable/loading_main"
 			    		></ImageView>
-			    		 
+			    	
+			  		<ImageView android:id="@+id/rounded_corner"
+						android:layout_width="120px"
+						android:layout_height="91px"
+			    		android:layout_gravity="left"	
+			    		android:src="@drawable/rounded_corner"
+			    		></ImageView>
+			    		
+			    </FrameLayout> 
 			    		<!--
 			    		<ImageView android:id="@+id/main_image"
 						
@@ -38,7 +51,7 @@
 			    		-->
 					<TextView android:id="@+id/main_sc"
 						android:layout_width="200px"
-						android:layout_height="110px"
+						android:layout_height="100px"
 			    		android:layout_gravity="right"
 			    		android:paddingRight="15px"
 			    		android:textColor="#ffffff"
