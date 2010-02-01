@@ -2,23 +2,27 @@ package com.tssoft.one.webservice;
 
 import java.util.ArrayList;
 
-import com.tss.one.R;
-import com.tssoft.one.utils.Utils;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Looper;
-import android.util.Log;
-import android.widget.ImageButton;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
 import android.widget.ImageView;
+
+import com.tss.one.R;
+import com.tssoft.one.utils.Utils;
 
 public class ImageLoader extends Thread {
 
+//	private Bitmap rounder;
+//	private Canvas canvas;
 	public boolean isRunning = false;
 	ArrayList<String> urls = new ArrayList<String>();
 	ArrayList<ImageView> imgViews = new ArrayList<ImageView>();
-	// public static ImageLoader instance;
 	Activity act;
 
 	public void setTask(String str, ImageView view) {
@@ -26,21 +30,13 @@ public class ImageLoader extends Thread {
 		imgViews.add(view);
 	}
 
-	// public static ImageLoader getInstance(Activity act) {
-	// if (instance == null) {
-	// instance = new ImageLoader();
-	// }
-	// instance.act = act;
-	// return instance;
-	// }
-
 	public ImageLoader(Activity act) {
 		this.act = act;
 	}
 
 	@Override
 	public synchronized void run() {
-//		Looper.prepare();
+		
 		isRunning = true;
 		while (isRunning) {
 			if (urls.size() > 0) {// upload
@@ -52,18 +48,31 @@ public class ImageLoader extends Thread {
 					final ImageView myImgView = imgView;
 					final Bitmap myBmp = bmp;
 
-//					OakHandler hand = new OakHandler() {
-//						public void doJob() {
-							act.runOnUiThread(new Runnable() {
-								public void run() {
-									if(isRunning){
-									myImgView.setImageBitmap(myBmp);
-									}
-								}
-							});
-//						}
-//					};
-//					hand.doJob();
+					act.runOnUiThread(new Runnable() {
+						public void run() {
+							if(isRunning){
+//								if(myImgView.findViewById(R.id.main_image)!=null){
+//									int w = myBmp.getWidth();
+//									int h = myBmp.getHeight();
+//									rounder = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);
+//									canvas = new Canvas(rounder);  
+//									
+//									Paint xferPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+//									xferPaint.setColor(Color.RED);
+//
+//									canvas.drawRoundRect(new RectF(0,0,w,h), 20.0f, 20.0f, xferPaint);
+//
+//									xferPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+//									
+//									canvas.drawBitmap(myBmp, 0,0, null);
+//									canvas.drawBitmap(rounder, 0, 0, xferPaint);
+//								}
+								
+								myImgView.setImageBitmap(myBmp);
+								
+							}
+						}
+					});
 				}
 
 			} else {// wait
@@ -71,13 +80,10 @@ public class ImageLoader extends Thread {
 					waiting = true;
 					wait();
 				} catch (Exception e) {
-					// System.out.println("ConnectURL : " + e + " " +
-					// e.getMessage());
 				}
 			}
 			System.gc();
 		}
-//		Looper.loop();
 	}
 
 	private Bitmap convertByteToBitmap(byte[] data) {
@@ -88,13 +94,10 @@ public class ImageLoader extends Thread {
 	boolean waiting = false;
 
 	public void go() {
-		// System.out.println("Start Go");
 		if (waiting) {
-			// System.out.println("In Go");
 			mynotify();
 			waiting = false;
 		}
-		// System.out.println("End Go");
 	}
 
 	private synchronized void mynotify() {

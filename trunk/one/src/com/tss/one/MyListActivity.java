@@ -3,11 +3,17 @@ package com.tss.one;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.View;
 import android.widget.ImageButton;
 
 public class MyListActivity extends ListActivity{
 
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	protected void buildMenu(Activity act) {
 		final Activity myAct = act;
 		ImageButton icon0 = (ImageButton) act.findViewById(R.id.main_button);

@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,11 @@ public class NewsList extends MyListActivity {
 	private NewsAdapter newsAdapter;
 	private Runnable viewNews;
 
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	private Runnable displayNews = new Runnable() {
 		public void run() {
 			if (newsList != null && newsList.size() > 0) {

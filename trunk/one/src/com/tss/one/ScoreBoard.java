@@ -9,6 +9,7 @@ import java.util.Timer;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,11 @@ public class ScoreBoard extends MyListActivity {
 	
 	public CountDownThread ct ;
 
+	@Override 
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig); 
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
