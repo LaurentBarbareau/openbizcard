@@ -1,6 +1,7 @@
 package com.tss.one;
 
 import java.io.PrintStream;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
+import com.tssoft.one.utils.Utils;
 import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
@@ -32,7 +34,7 @@ import com.tssoft.one.webservice.model.Article;
 import com.tssoft.one.webservice.model.Game;
 
 public class MainList extends MyListActivity {
-
+	public static OneApplication splashScreen;
 	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
 	private ProgressDialog m_ProgressDialog = null;
 	private ArrayList<Object> mainArticleList = null;
@@ -40,7 +42,12 @@ public class MainList extends MyListActivity {
 	private Runnable viewMain;
 	public static boolean firstTime = true;
 	private Runnable displayChanged = new Runnable() {
-		public synchronized void run() {
+		public void run() {
+			try{
+				MainList.splashScreen.finish();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 			if (mainArticleList != null && mainArticleList.size() > 0) {
 				mainAdapter.notifyDataSetChanged();
 			}
@@ -55,7 +62,7 @@ public class MainList extends MyListActivity {
 				((ImageView) findViewById(R.id.news_header))
 						.setVisibility(ImageView.INVISIBLE);
 				firstTime = false;
-
+				
 			}
 		}
 	};
@@ -116,7 +123,10 @@ public class MainList extends MyListActivity {
 			mainArticleList.addAll(WebServiceReader.getMain());
 			mainArticleList.addAll(WebServiceText.mainStr);
 			Log.i("ARRAY", "" + mainArticleList.size());
-		} catch (Exception e) {
+		} catch (UnknownHostException e) {
+			Utils.showAlertWithExitProgram(this, "No internet connection. Please try again.");
+		}
+		catch (Exception e) {
 			Log.e("BACKGROUND_PROC", e.getMessage());
 		}
 		runOnUiThread(displayChanged);

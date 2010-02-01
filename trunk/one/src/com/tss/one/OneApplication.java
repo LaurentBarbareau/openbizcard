@@ -11,9 +11,9 @@ public class OneApplication extends Activity {
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_page);
-	
+		MainList.splashScreen = this;
 		Intent mainDetailIntent = new Intent(this, MainList.class);
-		startActivityForResult(mainDetailIntent, 0);
+		startActivity(mainDetailIntent);
 		
 		// super.buildMenu(this);
 		// ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
@@ -57,12 +57,12 @@ public class OneApplication extends Activity {
 		// }
 		// });
 	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		System.out.println("aaaaaa" + data);
-		super.onActivityResult(requestCode, resultCode, data);
-//		finish();
-	}
+//
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		System.out.println("aaaaaa" + data);
+//		super.onActivityResult(requestCode, resultCode, data);
+////		finish();
+//	}
 
 }
