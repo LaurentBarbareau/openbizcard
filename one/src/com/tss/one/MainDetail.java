@@ -28,6 +28,7 @@ public class MainDetail extends MyActivity {
 		if (article != null) {
 			MainDetail.dig = ProgressDialog.show(this,    
 		              "Please wait...", "Retrieving data ...", true);
+			
 			final Article myArticle = article;
 			final WebView webview = (WebView) findViewById(R.id.main_detail_webview);
 			webview.loadData("Loading", "text/html", "utf-8");	
@@ -43,9 +44,9 @@ public class MainDetail extends MyActivity {
 					String summary = newArticle.getBody();
 					webview.loadDataWithBaseURL (null, summary, "text/html", "utf-8", 
 					"about:blank"); 
-	
 					MainDetail.dig.dismiss();
-				}}).start();
+				}}).start();		
+			
 			
 		} else {
 			WebView webview = (WebView) findViewById(R.id.main_detail_webview);
@@ -59,7 +60,7 @@ public class MainDetail extends MyActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);		
 		setContentView(R.layout.main_detail);
 		super.buildMenu(this);
 		
