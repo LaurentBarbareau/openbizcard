@@ -31,10 +31,10 @@ public class MyActivity extends Activity {
 					return;
 				}
 				myAct.finish();
-				Intent mainDetailIntent = new Intent(view.getContext(),
+				Intent mainListIntent = new Intent(view.getContext(),
 						MainList.class);
 				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(mainDetailIntent);
+				startActivity(mainListIntent);
 
 			}
 		});

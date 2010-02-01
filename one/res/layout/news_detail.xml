@@ -19,8 +19,8 @@
 				android:gravity="center"
 				android:textColor="#ffffff"
 				android:textSize="14sp"
-				android:textStyle="bold"
-				android:text="חדשות" />
+				android:textStyle="bold" 
+				android:text="תושדח" />
 			<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="320px" android:layout_height="25px">
 				<ImageButton android:id="@+id/next_button"
