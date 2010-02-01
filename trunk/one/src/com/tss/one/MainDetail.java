@@ -65,7 +65,19 @@ public class MainDetail extends MyActivity {
 		
 		// Oak add
 		loadArticle(article);
+		//Jen add
+		ImageButton backBtn = (ImageButton) findViewById(R.id.main_detail_back);
+		
+		backBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {				
+				Intent mainListIntent = new Intent(view.getContext(),
+						MainList.class);
+				// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(mainListIntent);
 
+			}
+		});
+		
 	}
 
 	@Override

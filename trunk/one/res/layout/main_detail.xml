@@ -10,7 +10,7 @@
 			<ImageView android:id="@+id/news_header"
 				android:layout_width="320px" android:layout_height="47px"
 				android:src="@drawable/head_bar" />
-			<ImageButton android:id="@+id/back_icon"
+			<ImageButton android:id="@+id/main_detail_back"
 				android:layout_width="50px" android:layout_height="38px"
 				android:layout_marginTop="4dip" android:layout_marginRight="4dip"
 				android:layout_alignParentTop="true"
