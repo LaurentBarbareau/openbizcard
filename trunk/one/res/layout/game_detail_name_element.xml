@@ -2,7 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			    android:layout_width="320px"
 			    android:layout_height="25px"
-			    android:background="#16329e">	
+			    android:background="#2f4e9b">	
 			    <TableRow	android:layout_width="320px"
 							android:layout_height="15px">
 					<TextView android:id="@+id/guest_name"
