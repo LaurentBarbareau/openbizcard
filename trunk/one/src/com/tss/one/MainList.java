@@ -250,9 +250,9 @@ public class MainList extends MyListActivity {
 						+ game.getHomeScore());
 				nameGuest.setText(game.getGuestTeam());
 				ImageLoaderStringFactory.createImageLoader(MainList.this,
-						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo1);
+						SCORE_KEY).setTask(game.getHomeIcon(), teamLogo1);
 				ImageLoaderStringFactory.createImageLoader(MainList.this,
-						SCORE_KEY).setTask(game.getHomeIcon(), teamLogo2);
+						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo2);
 				ImageLoaderStringFactory.createImageLoader(MainList.this,
 						SCORE_KEY).go();
 
