@@ -5,7 +5,7 @@
 			    android:layout_height="80px"		
 			    android:layout_marginRight="23px"	
 			    android:background="@drawable/white_bar">	
-				<TextView android:id="@+id/small_main_headline"
+				<TextView android:id="@+id/small_main_headline_w"
 					android:layout_width="wrap_content"
 					android:layout_height="18px"
 		    		android:layout_gravity="right"
@@ -19,7 +19,7 @@
 					android:orientation="horizontal"
 				    android:layout_width="320px"
 				    android:layout_height="65px">	
-					<TextView android:id="@+id/small_main_sc"
+					<TextView android:id="@+id/small_main_sc_w"
 						android:layout_width="235px"
 						android:layout_height="65px"
 			    		android:layout_gravity="right"
@@ -28,7 +28,7 @@
 			    		android:textSize="13sp" 
 			    		android:text=""			    		
 			    		></TextView>
-		    		<ImageView android:id="@+id/small_main_image"
+		    		<ImageView android:id="@+id/small_main_image_w"
 		    			android:paddingRight="8dip"
 						android:layout_width="85px"
 						android:layout_height="62px"

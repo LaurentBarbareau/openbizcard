@@ -43,6 +43,8 @@ public class MainList extends MyListActivity {
 	public static boolean firstTime = true;
 	public static boolean isShowDetail = false;
 	private ProgressBar progressBar;
+	private boolean score = false;
+	
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
 			try{
@@ -85,13 +87,13 @@ public class MainList extends MyListActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_list);
-		
+				
 		if (firstTime) {
 			((RelativeLayout) findViewById(R.id.relative_layout)).setVisibility(RelativeLayout.INVISIBLE);
 			((LinearLayout) findViewById(R.id.linear_layout)).setVisibility(RelativeLayout.INVISIBLE);
 			((ImageView) findViewById(R.id.news_header)).setVisibility(ImageView.VISIBLE);
 		}
-		super.buildMenu(this);
+		super.buildMenu(this); 
 
 		System.setErr(new PrintStream(new LogTool("System.err")));
 		System.setOut(new PrintStream(new LogTool("System.out")));
@@ -200,30 +202,65 @@ public class MainList extends MyListActivity {
 	String SCORE_KEY = "scoremain";
 
 	private class MainAdapter extends ArrayAdapter<Object> {
-
+		
+		private HashMap<Integer,Integer> viewType = new HashMap<Integer,Integer>();
 		private ArrayList<Object> items;
+		private LayoutInflater vi; 
 		Context context;
+		Typeface face;
+		private TextView headline;
+		private TextView sc;
+		private View whiteList;
+		
 		public MainAdapter(Context context, int textViewResourceId,
 				ArrayList<Object> items) {
 			super(context, textViewResourceId, items);
 			this.context = context;
 			this.items = items;
+			this.vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			this.face = Typeface.createFromAsset(getAssets(),"fonts/Arial.ttf");
 		}
-
+	
+//		@Override
+//		public int getViewTypeCount() {
+//			// TODO Auto-generated method stub
+//			return 5;
+//		}
+//		
+//		@Override
+//		public int getItemViewType(int position) {
+//			Object item = mainArticleList.get(position);
+//			
+//			if(item instanceof String){
+//				return 4;
+//			}
+//			if(item instanceof Game){
+//				return 3;
+//			}
+//			if(item instanceof Article){
+//				Article a = (Article) item;
+//				if(a.getIsHighlight().equals("true")){
+//					return 0;
+//				}else{
+//					if(position%2==0){
+//						return 1;
+//					}else{
+//						return 2;
+//					}
+//				}
+//			}
+//			return -1;
+//		}
+		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
 			if (chkList.containsKey(position))
 				return chkList.get(position);
 
-			View v = convertView;
-			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-			Typeface face = Typeface.createFromAsset(getAssets(),
-					"fonts/Arial.ttf");
-
-			TextView headline;
-			TextView sc;
+			View v = convertView;		
+			System.out.println("convert view is "+v);
+					
 			Object i = items.get(position);
 
 			if (i instanceof String) {
@@ -234,8 +271,9 @@ public class MainList extends MyListActivity {
 
 			} else if (i instanceof Game) {
 
-				final Game game = (Game) i;
+				final Game game = (Game) i;		
 				v = vi.inflate(R.layout.my_teams_score_element, null);
+				viewType.put(position, 1);
 				if(game.getHasEvent().equals("true")){
 					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
 					v.setOnClickListener(new OnClickListener() {
@@ -251,15 +289,12 @@ public class MainList extends MyListActivity {
 
 				}
 				// / All prop
-				TextView minute = (TextView) v
-						.findViewById(R.id.my_teams_minute);
-				ImageView teamLogo1 = (ImageView) v
-						.findViewById(R.id.my_teams_logo1);
+				TextView minute = (TextView) v.findViewById(R.id.my_teams_minute);
+				ImageView teamLogo1 = (ImageView) v.findViewById(R.id.my_teams_logo1);
 				TextView nameHome = (TextView) v.findViewById(R.id.my_teams_name1);
 				TextView score = (TextView) v.findViewById(R.id.my_teams_score);
 				TextView nameGuest = (TextView) v.findViewById(R.id.my_teams_name2);
-				ImageView teamLogo2 = (ImageView) v
-						.findViewById(R.id.my_teams_logo2);
+				ImageView teamLogo2 = (ImageView) v.findViewById(R.id.my_teams_logo2);
 
 				// set Value
 				minute.setTypeface(face);
@@ -282,8 +317,9 @@ public class MainList extends MyListActivity {
 			} else {
 				Article article = (Article) i;
 				if (article.getIsHighlight().equals("true")) {
-
-					v = vi.inflate(R.layout.blue_list, null);
+					if(v==null){
+						v = vi.inflate(R.layout.blue_list, null);
+					}
 					ImageView imgView = (ImageView) v
 							.findViewById(R.id.main_image);
 					headline = (TextView) v.findViewById(R.id.main_headline);
@@ -302,29 +338,47 @@ public class MainList extends MyListActivity {
 
 				} else {
 
-					if ((position % 2) == 0) {
-						v = vi.inflate(R.layout.white_list, null);
+					if ((position % 2) == 0) {			
+						if(v==null){
+							v = vi.inflate(R.layout.white_list, null);
+						}
+						ImageView imgView = (ImageView) v.findViewById(R.id.small_main_image_w);
+						
+						headline = (TextView) v.findViewById(R.id.small_main_headline_w);
+						sc = (TextView) v.findViewById(R.id.small_main_sc_w);
+						
+						headline.setTypeface(face);
+						sc.setTypeface(face);
+	
+						headline.setText(article.getTitle());
+						sc.setText(article.getScTitle());
+	
+						ImageLoaderStringFactory.createImageLoader(MainList.this,
+								ARTICLE_KEY)
+								.setTask(article.getImageUrl(), imgView);
+						ImageLoaderStringFactory.createImageLoader(MainList.this,
+								ARTICLE_KEY).go();
 					} else {
-						v = vi.inflate(R.layout.gray_list, null);
+						if(v==null){
+							v = vi.inflate(R.layout.gray_list, null);
+						}						
+						ImageView imgView = (ImageView) v.findViewById(R.id.small_main_image);
+	
+						headline = (TextView) v.findViewById(R.id.small_main_headline);
+						sc = (TextView) v.findViewById(R.id.small_main_sc);
+						
+						headline.setTypeface(face);
+						sc.setTypeface(face);
+	
+						headline.setText(article.getTitle());
+						sc.setText(article.getScTitle());
+	
+						ImageLoaderStringFactory.createImageLoader(MainList.this,
+								ARTICLE_KEY)
+								.setTask(article.getImageUrl(), imgView);
+						ImageLoaderStringFactory.createImageLoader(MainList.this,
+								ARTICLE_KEY).go();
 					}
-
-					ImageView imgView = (ImageView) v
-							.findViewById(R.id.small_main_image);
-
-					headline = (TextView) v
-							.findViewById(R.id.small_main_headline);
-					sc = (TextView) v.findViewById(R.id.small_main_sc);
-					headline.setTypeface(face);
-					sc.setTypeface(face);
-
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
-
-					ImageLoaderStringFactory.createImageLoader(MainList.this,
-							ARTICLE_KEY)
-							.setTask(article.getImageUrl(), imgView);
-					ImageLoaderStringFactory.createImageLoader(MainList.this,
-							ARTICLE_KEY).go();
 				}
 			}
 			chkList.put(position, v);

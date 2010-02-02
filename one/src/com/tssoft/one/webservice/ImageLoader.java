@@ -5,25 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
 import android.widget.ImageView;
 
-import com.tss.one.R;
 import com.tss.one.ScoreBoard;
 import com.tssoft.one.utils.Utils;
 
 public class ImageLoader extends Thread {
 
-	// private Bitmap rounder;
-	// private Canvas canvas;
-	private Bitmap rounder;
-	private Bitmap bmp;
-	private Canvas canvas;
 	public boolean isRunning = false;
 	ArrayList<String> urls = new ArrayList<String>();
 	ArrayList<ImageView> imgViews = new ArrayList<ImageView>();
@@ -33,7 +21,7 @@ public class ImageLoader extends Thread {
 		urls.add(str);
 		imgViews.add(view);
 	}
-
+	
 	public ImageLoader(Activity act) {
 		this.act = act;
 	}
