@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
 import com.tssoft.one.utils.Utils;
+import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.WebServiceText;
@@ -179,12 +180,11 @@ public class MainList extends MyListActivity {
 		// overridePendingTransition(0, 0);
 	}
 
-	@Override
-	public void finish() {
-		// TODO Auto-generated method stub
-		super.finish();
-		// overridePendingTransition(0, 0);
-	}
+//	@Override
+//	public void finish() {
+//		super.finish();
+//		ImageLoaderFactory.clear(this);
+//	}
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -317,9 +317,9 @@ public class MainList extends MyListActivity {
 			} else {
 				Article article = (Article) i;
 				if (article.getIsHighlight().equals("true")) {
-					if(v==null){
+//					if(v==null){
 						v = vi.inflate(R.layout.blue_list, null);
-					}
+//					}
 					ImageView imgView = (ImageView) v
 							.findViewById(R.id.main_image);
 					headline = (TextView) v.findViewById(R.id.main_headline);
@@ -339,9 +339,9 @@ public class MainList extends MyListActivity {
 				} else {
 
 					if ((position % 2) == 0) {			
-						if(v==null){
+//						if(v==null){
 							v = vi.inflate(R.layout.white_list, null);
-						}
+//						}
 						ImageView imgView = (ImageView) v.findViewById(R.id.small_main_image_w);
 						
 						headline = (TextView) v.findViewById(R.id.small_main_headline_w);
@@ -359,9 +359,9 @@ public class MainList extends MyListActivity {
 						ImageLoaderStringFactory.createImageLoader(MainList.this,
 								ARTICLE_KEY).go();
 					} else {
-						if(v==null){
+//						if(v==null){
 							v = vi.inflate(R.layout.gray_list, null);
-						}						
+//						}						
 						ImageView imgView = (ImageView) v.findViewById(R.id.small_main_image);
 	
 						headline = (TextView) v.findViewById(R.id.small_main_headline);
