@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;

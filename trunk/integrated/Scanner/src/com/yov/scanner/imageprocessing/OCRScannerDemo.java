@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 // OCRScannerDemo.java
 // Copyright (c) 2003-2009 Ronald B. Cemer
 // All rights reserved.

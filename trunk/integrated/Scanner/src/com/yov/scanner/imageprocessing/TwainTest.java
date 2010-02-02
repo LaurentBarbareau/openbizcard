@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 import uk.co.mmscomputing.device.twain.*;
 
 import java.io.File;

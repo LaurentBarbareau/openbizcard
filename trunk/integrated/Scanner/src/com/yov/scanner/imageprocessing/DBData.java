@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 
 public class DBData {
 	
