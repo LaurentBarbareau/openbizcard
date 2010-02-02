@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tssoft.one.webservice.ImageLoader;
@@ -32,6 +33,7 @@ public class GameDetail extends MyListActivity {
 	private ArrayList<GameEvent> eventsList = new ArrayList<GameEvent>();
 	private ScorerAdapter adapter;
 	public static boolean isShow = false;
+	private ProgressBar progressBar;
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -40,8 +42,8 @@ public class GameDetail extends MyListActivity {
 
 	public void loadGame(String gameId) {
 		if (gameId != null) {
-			GameDetail.dig = ProgressDialog.show(this, "Please wait...",
-					"Retrieving data ...", true);
+//			GameDetail.dig = ProgressDialog.show(this, "Please wait...",
+//					"Retrieving data ...", true);
 			final String myGameId = gameId;
 			new Thread(new Runnable() {
 
@@ -101,7 +103,13 @@ public class GameDetail extends MyListActivity {
 								loader.setTask(game.getGuestIcon(), guestLogo);
 								loader.setTask(game.getHomeIcon(), homeLogo);
 								loader.go();
-								GameDetail.dig.dismiss();
+//								GameDetail.dig.dismiss();
+								runOnUiThread(new Runnable(){
+									public void run(){
+										progressBar.setVisibility(8);
+									}						
+								});// jen added
+								
 							}
 						});
 					}
@@ -121,6 +129,9 @@ public class GameDetail extends MyListActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.game_detail);
 		super.buildMenu(this);
+		
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		
 		try {
 			loader = ImageLoaderFactory.createImageLoader(this);
 			loader.start();

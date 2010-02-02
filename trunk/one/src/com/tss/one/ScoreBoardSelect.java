@@ -2,31 +2,25 @@ package com.tss.one;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.tssoft.one.webservice.WebServiceReaderMyTeam;
 import com.tssoft.one.webservice.WebServiceReaderScoreBoard;
 import com.tssoft.one.webservice.model.LiveSubject;
-import com.tssoft.one.webservice.model.Table;
-import com.tssoft.one.webservice.model.Team;
 
 public class ScoreBoardSelect extends MyActivity {
 	private ArrayList<LiveSubject> leaguesList = new ArrayList<LiveSubject>();
-	private ArrayAdapter leagueAdapter;
-	private ProgressDialog m_ProgressDialog = null;
+	private ArrayAdapter<Object> leagueAdapter;
+//	private ProgressDialog m_ProgressDialog = null;
+	private ProgressBar progressBar;
 	public static String leagueId = "";
 	private Runnable displayLeague = new Runnable() {
 		public void run() {
@@ -36,7 +30,7 @@ public class ScoreBoardSelect extends MyActivity {
 				i++;
 			}
 			leagueAdapter.notifyDataSetChanged();
-			m_ProgressDialog.dismiss();
+			progressBar.setVisibility(8);
 		}
 	};
 
@@ -57,7 +51,7 @@ public class ScoreBoardSelect extends MyActivity {
 
 		ImageButton addButton = (ImageButton) findViewById(R.id.team_select_btn);
 
-		leagueAdapter = new ArrayAdapter(this,
+		leagueAdapter = new ArrayAdapter<Object>(this,
 				android.R.layout.simple_spinner_item);
 		leagueAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -71,7 +65,6 @@ public class ScoreBoardSelect extends MyActivity {
 			}
 		};
 		final Spinner myLeageSpinner = leagueSpinner;
-		final Activity myAct = this;
 		addButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				//m_ProgressDialog.show();
@@ -83,8 +76,7 @@ public class ScoreBoardSelect extends MyActivity {
 		});
 		Thread thread = new Thread(null, viewNews, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(ScoreBoardSelect.this,
-				"Please wait...", "Retrieving data ...", true);
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
 	}
 
 	private void getTeam() {

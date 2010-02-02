@@ -3,7 +3,6 @@ package com.tss.one;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -24,9 +24,10 @@ import com.tssoft.one.webservice.model.Team;
 
 public class MyTeamsSelect extends MyActivity {
 	private ArrayList<Table> leaguesList = new ArrayList<Table>();
-	private ArrayAdapter leagueAdapter;
-	private ArrayAdapter teamsAdapter;
-	private ProgressDialog m_ProgressDialog = null;
+	private ArrayAdapter<Object> leagueAdapter;
+	private ArrayAdapter<Object> teamsAdapter;
+	//private ProgressDialog m_ProgressDialog = null;
+	private ProgressBar progressBar;
 	private Runnable displayLeague = new Runnable() {
 		public void run() {
 			int i = 0;
@@ -41,7 +42,14 @@ public class MyTeamsSelect extends MyActivity {
 			}
 			leagueAdapter.notifyDataSetChanged();
 			teamsAdapter.notifyDataSetChanged();
-			m_ProgressDialog.dismiss();
+//			m_ProgressDialog.dismiss();
+			
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(8);
+				}						
+			});// jen added
+			
 		}
 	};
 
@@ -64,11 +72,11 @@ public class MyTeamsSelect extends MyActivity {
 		ImageButton addButton = (ImageButton) findViewById(R.id.team_select_btn);
 		ImageButton cancelButton = (ImageButton) findViewById(R.id.team_select_cancel_btn);
 
-		leagueAdapter = new ArrayAdapter(this,
+		leagueAdapter = new ArrayAdapter<Object>(this,
 				android.R.layout.simple_spinner_item);
 		leagueAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		teamsAdapter = new ArrayAdapter(this,
+		teamsAdapter = new ArrayAdapter<Object>(this,
 				android.R.layout.simple_spinner_item);
 		leagueAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,7 +114,17 @@ public class MyTeamsSelect extends MyActivity {
 		addButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				m_ProgressDialog.show();
+				
+				if(progressBar!=null){
+					runOnUiThread(new Runnable(){
+						public void run(){
+							progressBar.setVisibility(0);
+						}						
+					});// jen added
+				}else{
+					progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+				}
+
 				final Team selectedTeam = (leaguesList.get(myLeageSpinner
 						.getSelectedItemPosition())).teams.get(myTeamSpinner
 						.getSelectedItemPosition());
@@ -120,7 +138,14 @@ public class MyTeamsSelect extends MyActivity {
 								WebServiceReaderMyTeam.getDeviceId(myAct),
 								selectedTeam.getId());
 						Log.i("AddingTeam", "finish add");
-						m_ProgressDialog.dismiss();
+//						m_ProgressDialog.dismiss();
+						
+						runOnUiThread(new Runnable(){
+							public void run(){
+								progressBar.setVisibility(8);
+							}						
+						});// jen added
+						
 						myAct.finish();
 						Log.i("AddingTeam", "show dialog");
 						if (success) {
@@ -144,8 +169,20 @@ public class MyTeamsSelect extends MyActivity {
 		});
 		Thread thread = new Thread(null, viewNews, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(MyTeamsSelect.this,
-				"Please wait...", "Retrieving data ...", true);
+		
+//		m_ProgressDialog = ProgressDialog.show(MyTeamsSelect.this,
+//				"Please wait...", "Retrieving data ...", true);
+		
+		if(progressBar!=null){			
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
+
 	}
 
 	private void getTeam() {

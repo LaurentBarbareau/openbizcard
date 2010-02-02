@@ -4,7 +4,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tss.one.listener.MyTeamTabClickListener;
@@ -42,7 +42,8 @@ public class MyTeamsTab extends MyListActivity {
 	// private NewsAdapter newsAdapter;
 	private HashMap<Integer, View> chkListNews = new HashMap<Integer, View>();
 	private HashMap<Integer, View> chkListGame = new HashMap<Integer, View>();
-	private ProgressDialog m_ProgressDialog = null;
+	//private ProgressDialog m_ProgressDialog = null;
+	private ProgressBar progressBar;
 	private ArrayList<Object> newsList = new ArrayList<Object>();
 	// private ArrayList<Object> scoreList = new ArrayList<Object>();
 	public boolean isGame = true;
@@ -55,13 +56,15 @@ public class MyTeamsTab extends MyListActivity {
 			if (newsList != null && newsList.size() > 0) {
 				newsAdapter.notifyDataSetChanged();
 			}
-			m_ProgressDialog.dismiss();
+//			m_ProgressDialog.dismiss();
+			progressBar.setVisibility(8);// jen added
 		}
 	};
 	private Runnable displayScores = new Runnable() {
 		public void run() {
 			newsAdapter.notifyDataSetChanged();			
-			m_ProgressDialog.dismiss();
+//			m_ProgressDialog.dismiss();
+			progressBar.setVisibility(8); //jen added
 		}
 	};
 	ElementState newsState;
@@ -78,33 +81,10 @@ public class MyTeamsTab extends MyListActivity {
 		setContentView(R.layout.my_teams_tab);
 		super.buildMenu(this);
 
-		// ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-		// ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
-		// ImageButton icon3 = (ImageButton)
-		// findViewById(R.id.score_board_button);
-
 		ImageButton tab1 = (ImageButton) findViewById(R.id.my_teams_tab1);
 		ImageButton tab2 = (ImageButton) findViewById(R.id.my_teams_tab2);
 
 		ImageButton editTeam = (ImageButton) findViewById(R.id.my_teams_edit);
-
-		// icon0.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent mainDetailIntent = new Intent(view.getContext(),
-		// MainList.class);
-		// // mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(mainDetailIntent, 0);
-		// }
-		// });
-		//
-		// icon2.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent newsListIntent = new Intent(view.getContext(),
-		// NewsList.class);
-		// // newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(newsListIntent, 0);
-		// }
-		// });
 
 		editTeam.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -128,23 +108,22 @@ public class MyTeamsTab extends MyListActivity {
 		});
 		// add Tab's Listener to change tab
 
-		newsState = new ElementState(R.drawable.my_teams_tab1,
-				R.drawable.my_teams_tab1_over, true);
-		gameScoreState = new ElementState(R.drawable.my_teams_tab2,
-				R.drawable.my_teams_tab2_over, false);
+		gameScoreState = new ElementState(R.drawable.my_teams_tab1,	R.drawable.my_teams_tab1_over, false);
+		newsState = new ElementState(R.drawable.my_teams_tab2,R.drawable.my_teams_tab2_over, true);
+		
 		HashMap<View, ElementState> elements = new HashMap<View, ElementState>();
-		elements.put(findViewById(R.id.my_teams_tab1), newsState);
-		elements.put(findViewById(R.id.my_teams_tab2), gameScoreState);
+		elements.put(findViewById(R.id.my_teams_tab1), gameScoreState);
+		elements.put(findViewById(R.id.my_teams_tab2), newsState);
+		
 		tabClickListener = new MyTeamTabClickListener(elements, this);
 		tab1.setOnClickListener(tabClickListener);
 		tab2.setOnClickListener(tabClickListener);
 		// Load data
 
-		this.newsAdapter = new NewsAdapter(this, R.layout.my_teams_tab,
-				newsList);
+		this.newsAdapter = new NewsAdapter(this, R.layout.my_teams_tab,	newsList);
 		setListAdapter(this.newsAdapter);
-		setGameScore();
-		// setArticles();
+//		setGameScore();
+		setArticles();
 	}
 
 	private class NewsAdapter extends ArrayAdapter<Object> {
@@ -248,72 +227,6 @@ public class MyTeamsTab extends MyListActivity {
 		}
 	}
 
-	// private class ScoreAdapter extends ArrayAdapter<Object> {
-	//
-	// private ArrayList<Object> items;
-	//
-	// public ScoreAdapter(Context context, int textViewResourceId,
-	// ArrayList<Object> items) {
-	// super(context, textViewResourceId, items);
-	// this.items = items;
-	// }
-	//
-	// @Override
-	// public View getView(int position, View convertView, ViewGroup parent) {
-	// if (chkList.containsKey(position))
-	// return chkList.get(position);
-	//
-	// View v = convertView;
-	// LayoutInflater vi = (LayoutInflater)
-	// getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	//
-	// Typeface face = Typeface.createFromAsset(getAssets(),
-	// "fonts/Arial.ttf");
-	// Object i = items.get(position);
-	// if (i instanceof String) {
-	// v = vi.inflate(R.layout.red_list, null);
-	// TextView headline = (TextView) v
-	// .findViewById(R.id.subject_title);
-	// headline.setTypeface(face);
-	// headline.setText((String) i);
-	// } else {
-	//
-	// Game game = (Game) i;
-	// v = vi.inflate(R.layout.my_teams_score_element, null);
-	// // / All prop
-	// TextView minute = (TextView) v
-	// .findViewById(R.id.my_teams_minute);
-	// ImageView teamLogo1 = (ImageView) v
-	// .findViewById(R.id.my_teams_logo1);
-	// TextView name1 = (TextView) v.findViewById(R.id.my_teams_name1);
-	// TextView score = (TextView) v.findViewById(R.id.my_teams_score);
-	// TextView name2 = (TextView) v.findViewById(R.id.my_teams_name2);
-	// ImageView teamLogo2 = (ImageView) v
-	// .findViewById(R.id.my_teams_logo2);
-	//
-	// // set Value
-	// minute.setTypeface(face);
-	// name1.setTypeface(face);
-	// name2.setTypeface(face);
-	// score.setTypeface(face);
-	//
-	// minute.setText(game.getStartTime());
-	// name1.setText(game.getGuestTeam());
-	// score.setText(game.getGuestScore() + " - "
-	// + game.getHomeScore());
-	// name2.setText(game.getHomeTeam());
-	// ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,SCORE_KEY).setTask(
-	// game.getGuestIcon(), teamLogo1);
-	// ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,SCORE_KEY).setTask(
-	// game.getHomeIcon(), teamLogo2);
-	// ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,SCORE_KEY).go();
-	//
-	// }
-	// chkList.put(position, v);
-	// return v;
-	// }
-	// }
-
 	public void getMyteamArticles() {
 		try {
 			ArrayList<ArticleBySubject> abs = WebServiceReaderMyTeam
@@ -321,7 +234,6 @@ public class MyTeamsTab extends MyListActivity {
 			for (ArticleBySubject a : abs) {
 				newsList.add(a.subject);
 				newsList.addAll(a.articles);
-				// newsList.add("aaa");
 			}
 			Log.i("ARRAY", "" + newsList.size());
 		} catch (UnknownHostException ex) {
@@ -402,8 +314,17 @@ public class MyTeamsTab extends MyListActivity {
 
 		Thread thread = new Thread(viewNews);
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
-				"Please wait...", "Retrieving data ...", true);
+//		m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
+//				"Please wait...", "Retrieving data ...", true);
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
 	}
 
 	public void setGameScore() {
@@ -421,8 +342,18 @@ public class MyTeamsTab extends MyListActivity {
 
 		Thread thread = new Thread(viewNews);
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
-				"Please wait...", "Retrieving data ...", true);
+//		m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
+//				"Please wait...", "Retrieving data ...", true);
+		
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
 
 	}
 }

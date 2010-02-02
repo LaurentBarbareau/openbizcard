@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tss.one.adapter.ScoreBoardAdapter;
@@ -39,7 +40,8 @@ public class ScoreBoard extends MyListActivity {
 
 	private Timer timer=null;
 	private ScoreBoardTabCL tabClickListener = null;
-	private ProgressDialog m_ProgressDialog = null;
+//	private ProgressDialog m_ProgressDialog = null;
+	private ProgressBar progressBar;
 
 	private int dayOffset = 0;
 	private int currentTab = TODAY_GAME_TAB;
@@ -111,8 +113,15 @@ public class ScoreBoard extends MyListActivity {
 		
 		Thread thread = new Thread(null, viewScoreBoard, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
-				"Please wait...", "Retrieving data ...", true);		
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}	
 		
 	}
 
@@ -168,16 +177,30 @@ public class ScoreBoard extends MyListActivity {
 	public void setScoreBoard() {
 		Thread t = new Thread(viewScoreBoard);
 		t.start();
-		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
-				"Please wait...", "Retrieving data ...", true);
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
 	}
 
 	public void setLiveGame() {
 
 		Thread t = new Thread(viewLiveGame);
 		t.start();
-		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
-				"Please wait...", "Retrieving data ...", true);
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
 
 	}
 
@@ -185,9 +208,15 @@ public class ScoreBoard extends MyListActivity {
 
 		Thread t = new Thread(viewLeagueGame);
 		t.start();
-		m_ProgressDialog = ProgressDialog.show(ScoreBoard.this,
-				"Please wait...", "Retrieving data ...", true);
-
+		if(progressBar!=null){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added
+		}else{
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		}
 	}
 
 	public String cDate = null;
@@ -273,24 +302,8 @@ public class ScoreBoard extends MyListActivity {
 
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
-			// if (currentTab == TODAY_GAME_TAB) {
-			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
-			// scoreBoardAdapter.notifyDataSetChanged();
-			// }
-			// }
-			// if (currentTab == LIVE_GAME_TAB) {
-			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
-			// scoreBoardAdapter.notifyDataSetChanged();
-			// }
-			// }
-			// if (currentTab == LEAGUE_TAB) {
-			// if (scoreBoardList != null && scoreBoardList.size() > 0) {
-			// scoreBoardAdapter.notifyDataSetChanged();
-			// }
-			// }
 			scoreBoardAdapter.notifyDataSetChanged();
-			m_ProgressDialog.dismiss();
-
+			progressBar.setVisibility(8);
 		}
 	};
 }

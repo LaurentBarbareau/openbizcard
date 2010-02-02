@@ -15,27 +15,10 @@
 				android:layout_width="320px" android:layout_height="25px"
 				android:layout_margin="0dip" android:src="@drawable/blank"
 				android:background="@drawable/head_tab_bar" />
-			<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="320px" android:layout_height="25px">
-				<ImageButton android:id="@+id/next_button"
-					android:layout_width="54px" android:layout_height="25px"
-					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/next_rollover" />
-				<ImageButton android:id="@+id/previous_button"
-					android:layout_width="54px" android:layout_height="25px"
-					android:layout_toRightOf="@id/next_button"
-					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/previous_rollover" />
-			</RelativeLayout> -->
+			
 			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="320px" android:layout_height="25px">
-					<!-- <ImageButton android:id="@+id/back_button"
-					android:layout_width="54px" android:layout_height="25px"
-					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/next_rollover" /> -->
+					
 				<ImageButton android:id="@+id/next_button"
 					android:layout_width="54px" android:layout_height="25px"
 					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
@@ -52,9 +35,17 @@
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="320px" android:layout_height="fill_parent"
 			android:layout_below="@+id/news_frame_header" android:id="@+id/news2_frame_header">
+			
 			<WebView android:id="@+id/news_detail_webview"
 				android:layout_width="fill_parent" android:layout_height="fill_parent">
 			</WebView>
+			
+			<ProgressBar android:id="@+id/progressbar"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"  
+		        android:layout_gravity="center"       
+        	/>
+        	
 		</FrameLayout>
 	</RelativeLayout>
 
