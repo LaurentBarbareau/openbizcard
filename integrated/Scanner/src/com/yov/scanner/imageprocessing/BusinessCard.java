@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 
 import java.awt.Component;
 import java.awt.image.BufferedImage;

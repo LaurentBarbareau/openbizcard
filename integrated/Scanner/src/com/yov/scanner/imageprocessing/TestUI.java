@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
