@@ -1,7 +1,6 @@
 package com.tss.one;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.tssoft.one.webservice.OakHandler;
 import com.tssoft.one.webservice.WebServiceReader;
@@ -18,7 +18,7 @@ import com.tssoft.one.webservice.model.cons.ArticleIndex;
 
 public class MyTeamsNewsDetail extends MyActivity {
 	public static Article currentArticle = new Article("151154", "", "", "", "");
-	public static ProgressDialog dig;
+	private ProgressBar progressBar;
 
 	@Override 
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -27,8 +27,9 @@ public class MyTeamsNewsDetail extends MyActivity {
 	
 	public void loadArticle(Article article) {
 		if (article != null) {
-			MyTeamsNewsDetail.dig = ProgressDialog.show(this, "Please wait...",
-					"Retrieving data ...", true);
+			
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+			
 			final Article myArticle = article;
 			final WebView webview = (WebView) findViewById(R.id.news_detail_webview);
 			final Activity act = this;
@@ -73,11 +74,16 @@ public class MyTeamsNewsDetail extends MyActivity {
 					}
 					System.out.println("Num 3");
 
-					// setContentView(webview);
 					String summary = currentArticle.getBody();
 					webview.loadDataWithBaseURL (null, summary, "text/html", "utf-8", 
 					"about:blank"); 
-					MyTeamsNewsDetail.dig.dismiss();
+					
+					runOnUiThread(new Runnable(){
+						public void run(){
+							progressBar.setVisibility(8);
+						}						
+					});// jen added
+					
 					Looper.loop();
 				}
 			}).start();
@@ -101,34 +107,6 @@ public class MyTeamsNewsDetail extends MyActivity {
 		super.buildMenu(this);
 		
 		loadArticle(currentArticle);
-//		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-//		ImageButton icon1 = (ImageButton) findViewById(R.id.my_teams_button);
-//		ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
-//		ImageButton icon3 = (ImageButton) findViewById(R.id.score_board_button);
-//		ImageButton backicon = (ImageButton) findViewById(R.id.back_button);
-//		backicon.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				finish();
-//			}
-//		});
-//		icon0.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				// MainDetail.article = article;
-//				Intent mainDetailIntent = new Intent(view.getContext(),
-//						MainDetail.class);
-////				mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(mainDetailIntent, 0);
-//			}
-//		});
-//
-//		icon2.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View view) {
-//				Intent newsListIntent = new Intent(view.getContext(),
-//						NewsList.class);
-////				newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(newsListIntent, 0);
-//			}
-//		});
 		
 		// / Icon Next and Previous
 		ImageButton nextBtn = (ImageButton) findViewById(R.id.next_button);
@@ -147,8 +125,6 @@ public class MyTeamsNewsDetail extends MyActivity {
 		});
 		prevBtn.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				// currentArticle.setNextId("151146");
-				// currentArticle.setPrevId("151166");
 				if (currentArticle.getPrevId() != null) {
 					currentArticle = new Article(currentArticle.getPrevId(),
 							"", "", "", "");

@@ -1,6 +1,5 @@
 package com.tss.one;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.model.Article;
@@ -17,7 +17,8 @@ import com.tssoft.one.webservice.model.cons.ArticleIndex;
 
 public class MainDetail extends MyActivity {
 	public static Article article = new Article("151154", "", "", "", "");
-	public static ProgressDialog dig;
+	//public static ProgressDialog dig;
+	private ProgressBar progressBar;
 	
 	@Override 
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -26,9 +27,7 @@ public class MainDetail extends MyActivity {
 	
 	public void loadArticle(Article article) {
 		if (article != null) {
-			MainDetail.dig = ProgressDialog.show(this,    
-		              "Please wait...", "Retrieving data ...", true);
-			
+						
 			final Article myArticle = article;
 			final WebView webview = (WebView) findViewById(R.id.main_detail_webview);
 			webview.loadData("Loading", "text/html", "utf-8");	
@@ -44,7 +43,13 @@ public class MainDetail extends MyActivity {
 					String summary = newArticle.getBody();
 					webview.loadDataWithBaseURL (null, summary, "text/html", "utf-8", 
 					"about:blank"); 
-					MainDetail.dig.dismiss();
+					
+					runOnUiThread(new Runnable(){
+						public void run(){
+							progressBar.setVisibility(8);
+						}						
+					});// jen added
+					
 				}}).start();		
 			
 			
@@ -63,6 +68,8 @@ public class MainDetail extends MyActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);		
 		setContentView(R.layout.main_detail);
 		super.buildMenu(this);
+		
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
 		
 		// Oak add
 		loadArticle(article);

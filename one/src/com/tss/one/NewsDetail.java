@@ -1,7 +1,6 @@
 package com.tss.one;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.tssoft.one.webservice.OakHandler;
 import com.tssoft.one.webservice.WebServiceReader;
@@ -18,7 +18,8 @@ import com.tssoft.one.webservice.model.cons.ArticleIndex;
 
 public class NewsDetail extends MyActivity {
 	public static Article currentArticle = new Article("151154", "", "", "", "");
-	public static ProgressDialog dig;
+	//public static ProgressDialog dig;
+	private ProgressBar progressBar;
 
 	@Override 
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -27,8 +28,8 @@ public class NewsDetail extends MyActivity {
 	
 	public void loadArticle(Article article) {
 		if (article != null) {
-			NewsDetail.dig = ProgressDialog.show(this, "Please wait...",
-					"Retrieving data ...", true);
+//			NewsDetail.dig = ProgressDialog.show(this, "Please wait...",
+//					"Retrieving data ...", true);
 			final Article myArticle = article;
 			final WebView webview = (WebView) findViewById(R.id.news_detail_webview);
 			final Activity act = this;
@@ -108,7 +109,14 @@ public class NewsDetail extends MyActivity {
 					String summary = currentArticle.getBody();
 					webview.loadDataWithBaseURL (null, summary, "text/html", "utf-8", 
 					"about:blank"); 
-					NewsDetail.dig.dismiss();
+//					NewsDetail.dig.dismiss();
+					
+					runOnUiThread(new Runnable(){
+						public void run(){
+							progressBar.setVisibility(8);
+						}						
+					});// jen added
+										
 					Looper.loop();
 				}
 			}).start();
@@ -130,6 +138,8 @@ public class NewsDetail extends MyActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.news_detail);
 		super.buildMenu(this);
+		
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
 		
 		loadArticle(currentArticle);
 //		ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);

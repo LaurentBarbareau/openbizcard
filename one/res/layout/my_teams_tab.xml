@@ -60,19 +60,28 @@
 					   android:layout_width="160px"
 					   android:layout_height="60px"
 					   android:src="@drawable/blank"
-					   android:background="@drawable/my_teams_tab1_over" 
+					   android:background="@drawable/my_teams_tab1" 
 					   />
 				<ImageButton android:id="@+id/my_teams_tab2"
 					   android:layout_width="160px"
 					   android:layout_height="60px"
 					   android:src="@drawable/blank"
-					   android:background="@drawable/my_teams_tab2" 
+					   android:background="@drawable/my_teams_tab2_over" 
 					   />
 			</LinearLayout>
-			<ListView android:id="@+id/android:list"
-						android:layout_width="320px"
-						android:layout_height="255px"
-			/>
+			<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" 
+				android:layout_height="255px">
+				<ListView android:id="@+id/android:list"
+							android:layout_width="320px"
+							android:layout_height="255px"
+				/>
+				<ProgressBar android:id="@+id/progressbar"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"  
+		        android:layout_gravity="center"       
+        	/>
+		</FrameLayout>
 	    </LinearLayout>
 		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     		android:layout_width="fill_parent"

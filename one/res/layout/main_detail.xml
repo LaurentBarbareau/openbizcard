@@ -3,57 +3,88 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent">
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="vertical" android:layout_width="fill_parent"
+		android:orientation="vertical" 
+		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="320px" android:layout_height="47px">
+			android:layout_width="320px" 
+			android:layout_height="47px">
 			<ImageView android:id="@+id/news_header"
-				android:layout_width="320px" android:layout_height="47px"
+				android:layout_width="320px" 
+				android:layout_height="47px"
 				android:src="@drawable/head_bar" />
 			<ImageButton android:id="@+id/main_detail_back"
-				android:layout_width="50px" android:layout_height="38px"
-				android:layout_marginTop="4dip" android:layout_marginRight="4dip"
+				android:layout_width="50px" 
+				android:layout_height="38px"
+				android:layout_marginTop="4dip" 
+				android:layout_marginRight="4dip"
 				android:layout_alignParentTop="true"
-				android:layout_alignParentRight="true" android:layout_gravity="right|top"
-				android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				android:layout_alignParentRight="true" 
+				android:layout_gravity="right|top"
+				android:drawSelectorOnTop="true" 
+				android:src="@drawable/blank"
 				android:background="@drawable/main_detail_back_rollover" />
 		</FrameLayout>
-		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="fill_parent" android:layout_height="350px"
-			android:background="#ffffff">
-			<WebView android:id="@+id/main_detail_webview">
-
-			</WebView>
-		</TableLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" 
+			android:layout_height="350px">
+			<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" 
+				android:layout_height="350px"
+				android:background="#ffffff">
+				<WebView android:id="@+id/main_detail_webview">
+	
+				</WebView>
+				
+			</TableLayout>
+			<ProgressBar android:id="@+id/progressbar"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"  
+		        android:layout_gravity="center"       
+        	/>
+		</FrameLayout>
 	</LinearLayout>
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
 		android:layout_gravity="center_horizontal|bottom">
 
 		<ImageButton android:id="@+id/main_button"
-			android:layout_width="80px" android:layout_height="77px"
-			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
-			android:layout_alignParentLeft="true" android:drawSelectorOnTop="true"
-			android:src="@drawable/blank" android:background="@drawable/minibar_over_01" />
+			android:layout_width="80px" 
+			android:layout_height="77px"
+			android:layout_marginBottom="0dip" 
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true" 
+			android:drawSelectorOnTop="true"
+			android:src="@drawable/blank" 
+			android:background="@drawable/minibar_over_01" />
 
 		<ImageButton android:id="@+id/my_teams_button"
-			android:layout_width="80px" android:layout_height="77px"
-			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
-			android:layout_toRightOf="@id/main_button" android:src="@drawable/blank"
+			android:layout_width="80px" 
+			android:layout_height="77px"
+			android:layout_marginBottom="0dip" 
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/main_button" 
+			android:src="@drawable/blank"
 			android:background="@drawable/my_teams_rollover" />
 
 		<ImageButton android:id="@+id/news_button"
-			android:layout_width="80px" android:layout_height="77px"
-			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
-			android:layout_toRightOf="@id/my_teams_button" android:src="@drawable/blank"
+			android:layout_width="80px" 
+			android:layout_height="77px"
+			android:layout_marginBottom="0dip" 
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/my_teams_button" 
+			android:src="@drawable/blank"
 			android:background="@drawable/news_rollover" />
 
 		<ImageButton android:id="@+id/score_board_button"
-			android:layout_width="80px" android:layout_height="77px"
-			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
-			android:layout_toRightOf="@id/news_button" android:src="@drawable/blank"
+			android:layout_width="80px" 
+			android:layout_height="77px"
+			android:layout_marginBottom="0dip" 
+			android:layout_alignParentBottom="true"
+			android:layout_toRightOf="@id/news_button" 
+			android:src="@drawable/blank"
 			android:background="@drawable/score_board_rollover" />
-
 	</RelativeLayout>
 
 </FrameLayout>

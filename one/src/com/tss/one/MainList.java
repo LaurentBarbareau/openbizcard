@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -22,12 +21,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
 import com.tssoft.one.utils.Utils;
-import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.WebServiceText;
@@ -37,12 +36,13 @@ import com.tssoft.one.webservice.model.Game;
 public class MainList extends MyListActivity {
 	public static OneApplication splashScreen;
 	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
-	private ProgressDialog m_ProgressDialog = null;
+//	private ProgressDialog m_ProgressDialog = null;
 	private ArrayList<Object> mainArticleList = null;
 	private MainAdapter mainAdapter;
 	private Runnable viewMain;
 	public static boolean firstTime = true;
 	public static boolean isShowDetail = false;
+	private ProgressBar progressBar;
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
 			try{
@@ -53,9 +53,16 @@ public class MainList extends MyListActivity {
 			if (mainArticleList != null && mainArticleList.size() > 0) {
 				mainAdapter.notifyDataSetChanged();
 			}
-			if (m_ProgressDialog != null) {
-				m_ProgressDialog.dismiss();
-			}
+//			if (m_ProgressDialog != null) {
+//				m_ProgressDialog.dismiss();
+//			}
+			
+			runOnUiThread(new Runnable(){
+					public void run(){
+						progressBar.setVisibility(8);
+					}						
+				});// jen added	
+			
 			if (firstTime) {
 				((RelativeLayout) findViewById(R.id.relative_layout))
 						.setVisibility(RelativeLayout.VISIBLE);
@@ -63,8 +70,7 @@ public class MainList extends MyListActivity {
 						.setVisibility(RelativeLayout.VISIBLE);
 				((ImageView) findViewById(R.id.news_header))
 						.setVisibility(ImageView.INVISIBLE);
-				firstTime = false;
-				
+				firstTime = false;				
 			}
 		}
 	};
@@ -79,14 +85,11 @@ public class MainList extends MyListActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_list);
+		
 		if (firstTime) {
-
-			((RelativeLayout) findViewById(R.id.relative_layout))
-					.setVisibility(RelativeLayout.INVISIBLE);
-			((LinearLayout) findViewById(R.id.linear_layout))
-					.setVisibility(RelativeLayout.INVISIBLE);
-			((ImageView) findViewById(R.id.news_header))
-					.setVisibility(ImageView.VISIBLE);
+			((RelativeLayout) findViewById(R.id.relative_layout)).setVisibility(RelativeLayout.INVISIBLE);
+			((LinearLayout) findViewById(R.id.linear_layout)).setVisibility(RelativeLayout.INVISIBLE);
+			((ImageView) findViewById(R.id.news_header)).setVisibility(ImageView.VISIBLE);
 		}
 		super.buildMenu(this);
 
@@ -118,11 +121,28 @@ public class MainList extends MyListActivity {
 		};
 		Thread thread = new Thread(null, viewMain, "MagentoBackground");
 		thread.start();
-		if (!firstTime) {
-			m_ProgressDialog = ProgressDialog.show(MainList.this,
-					"Please wait...", "Retrieving data ...", true);
+//		if (!firstTime) {
+//			m_ProgressDialog = ProgressDialog.show(MainList.this,
+//					"Please wait...", "Retrieving data ...", true);
+//		}
+		
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		
+		
+		if(firstTime){
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(4);
+				}						
+			});// jen added		
+		}else{
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(0);
+				}						
+			});// jen added	
 		}
-
+		
 	}
 
 	private void getMain() {

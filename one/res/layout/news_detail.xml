@@ -21,27 +21,9 @@
 				android:textSize="14sp"
 				android:textStyle="bold" 
 				android:text="תושדח" />
-			<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				android:layout_width="320px" android:layout_height="25px">
-				<ImageButton android:id="@+id/next_button"
-					android:layout_width="80px" android:layout_height="39px"
-					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/next_rollover" />
-				<ImageButton android:id="@+id/previous_button"
-					android:layout_width="80px" android:layout_height="39px"
-					android:layout_toRightOf="@id/next_button"
-					android:layout_marginTop="3dip" android:layout_marginLeft="192dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/previous_rollover" />
-			</RelativeLayout> -->
+
 			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="320px" android:layout_height="25px">
-					<!-- <ImageButton android:id="@+id/back_button"
-					android:layout_width="54px" android:layout_height="25px"
-					android:layout_marginTop="3dip" android:layout_marginLeft="10dip"
-					android:drawSelectorOnTop="true" android:src="@drawable/blank"
-					android:background="@drawable/next_rollover" /> -->
 				<ImageButton android:id="@+id/next_button"
 					android:layout_width="45px" 
 					android:layout_height="22px"
@@ -61,11 +43,19 @@
 			</RelativeLayout> 
 		</FrameLayout>
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="320px" android:layout_height="fill_parent"
+			android:layout_width="320px" android:layout_height="wrap_content"
 			android:layout_below="@+id/news_frame_header" android:id="@+id/news2_frame_header">
+			
 			<WebView android:id="@+id/news_detail_webview"
 				android:layout_width="fill_parent" android:layout_height="290px">
 			</WebView>
+			
+			<ProgressBar android:id="@+id/progressbar"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"  
+		        android:layout_gravity="center"       
+        	/>
+			
 		</FrameLayout>
 	</RelativeLayout>
 

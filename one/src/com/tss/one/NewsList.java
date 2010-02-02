@@ -3,8 +3,6 @@ package com.tss.one;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,12 +15,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.tssoft.one.webservice.ImageLoader;
 import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.model.Article;
@@ -31,10 +28,10 @@ import com.tssoft.one.webservice.model.ArticleBySubject;
 public class NewsList extends MyListActivity {
 
 	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
-	private ProgressDialog m_ProgressDialog = null;
 	private ArrayList<Object> newsList = null;
 	private NewsAdapter newsAdapter;
 	private Runnable viewNews;
+	private ProgressBar progressBar;
 
 	@Override 
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -46,7 +43,11 @@ public class NewsList extends MyListActivity {
 			if (newsList != null && newsList.size() > 0) {
 				newsAdapter.notifyDataSetChanged();
 			}
-			m_ProgressDialog.dismiss();
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(8);
+				}						
+			});// jen added
 		}
 	};
 
@@ -82,8 +83,9 @@ public class NewsList extends MyListActivity {
 		});
 		Thread thread = new Thread(null, viewNews, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(NewsList.this, "Please wait...",
-				"Retrieving data ...", true);
+		
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		
 	}
 
 	@Override

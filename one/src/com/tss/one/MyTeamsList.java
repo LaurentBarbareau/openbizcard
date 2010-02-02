@@ -3,11 +3,8 @@ package com.tss.one;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,11 +21,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tss.one.listener.TabClickListener;
 import com.tssoft.one.utils.Utils;
-import com.tssoft.one.webservice.ImageLoader;
 import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.WebServiceReaderMyTeam;
 import com.tssoft.one.webservice.model.Team;
@@ -39,7 +36,9 @@ public class MyTeamsList extends MyListActivity {
 	private EditTeamAdapter teamsAdapter;
 	// private NewsAdapter newsAdapter;
 	private HashMap<Integer, View> chkList = new HashMap<Integer, View>();
-	public ProgressDialog m_ProgressDialog = null;
+	
+	private ProgressBar progressBar;
+	
 	private ArrayList<Team> teamsList = new ArrayList<Team>();
 	private Runnable viewMyTeam;
 	private Runnable displayNews = new Runnable() {
@@ -47,9 +46,13 @@ public class MyTeamsList extends MyListActivity {
 			if (teamsList != null && teamsList.size() > 0) {
 				teamsAdapter.notifyDataSetChanged();
 			}
-			if (m_ProgressDialog != null) {
-				m_ProgressDialog.dismiss();
-			}
+			
+			runOnUiThread(new Runnable(){
+				public void run(){
+					progressBar.setVisibility(8);
+				}						
+			});// jen added
+			
 		}
 	};
 	
@@ -66,31 +69,8 @@ public class MyTeamsList extends MyListActivity {
 		setContentView(R.layout.my_teams_list);
 		super.buildMenu(this);
 
-		// ImageButton icon0 = (ImageButton) findViewById(R.id.main_button);
-		// ImageButton icon2 = (ImageButton) findViewById(R.id.news_button);
-		// ImageButton icon3 = (ImageButton)
-		// findViewById(R.id.score_board_button);
-
 		ImageButton addTeam = (ImageButton) findViewById(R.id.my_teams_add);
 		ImageButton back2Tab = (ImageButton) findViewById(R.id.my_teams_back);
-
-		// icon0.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent mainDetailIntent = new Intent(view.getContext(),
-		// MainList.class);
-		// // mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(mainDetailIntent, 0);
-		// }
-		// });
-		//
-		// icon2.setOnClickListener(new View.OnClickListener() {
-		// public void onClick(View view) {
-		// Intent newsListIntent = new Intent(view.getContext(),
-		// NewsList.class);
-		// // newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-		// startActivityForResult(newsListIntent, 0);
-		// }
-		// });
 		
 		addTeam.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
@@ -120,8 +100,9 @@ public class MyTeamsList extends MyListActivity {
 		};
 		Thread thread = new Thread(null, viewMyTeam, "MagentoBackground");
 		thread.start();
-		m_ProgressDialog = ProgressDialog.show(MyTeamsList.this,
-				"Please wait...", "Retrieving data ...", true);
+
+		progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		
 	}
 
 	private class EditTeamAdapter extends ArrayAdapter<Team> {
@@ -194,16 +175,8 @@ public class MyTeamsList extends MyListActivity {
 			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 
-					// runOnUiThread(new Runnable() {
-					// public void run() {
 					teamsList.remove(position);
 					chkList.clear();
-					// // int a = teamsList.size();
-					// // int b= teamsAdapter.items.size();
-					//
-//					ImageLoader loader = ImageLoaderFactory
-//							.getImageLoader(current);
-//					loader.isRunning = false;
 					ImageLoaderFactory.clear(current);
 					try {
 						ImageLoaderFactory.createImageLoader(current).start();
@@ -211,18 +184,12 @@ public class MyTeamsList extends MyListActivity {
 						e.printStackTrace();
 					}
 					teamsAdapter.notifyDataSetChanged();
-					// }
-					// });
-					// m_ProgressDialog = ProgressDialog.show(MyTeamsList.this,
-					// "Please wait...", "Deleting data ...", true);
 					new Thread(new Runnable() {
 
 						public void run() {
 							WebServiceReaderMyTeam.removeUserTeam(
 									WebServiceReaderMyTeam.getDeviceId(list),
 									id);
-							// finish();
-							// getMyteam(true);
 						}
 					}).start();
 
@@ -241,13 +208,6 @@ public class MyTeamsList extends MyListActivity {
 
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		System.out.println("Aaaaa");
-		// Object o = teamsList.get(position);
-		// if (o instanceof Article) {
-		// MyTeamsNewsDetail.currentArticle = (Article) teamsList.get(position);
-		// Intent newsDetailIndent = new Intent(v.getContext(),
-		// MyTeamsNewsDetail.class);
-		// startActivityForResult(newsDetailIndent, 0);
-		// }
 	}
 
 	private void getMyteam(boolean clear) {
@@ -294,7 +254,9 @@ public class MyTeamsList extends MyListActivity {
 			if (teamsList != null && teamsList.size() > 0) {
 				teamsAdapter.notifyDataSetChanged();
 			}
-			m_ProgressDialog.dismiss();
+			
+			progressBar.setVisibility(8);
+			
 		}
 	};
 }
