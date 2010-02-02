@@ -57,6 +57,7 @@ public class ImageLoader extends Thread {
 					act.runOnUiThread(new Runnable() {
 						public void run() {
 							if (isRunning) {
+								if(myImgView != null && myBmp !=null)
 								myImgView.setImageBitmap(myBmp);
 						}
 					}});

@@ -26,6 +26,7 @@ import com.tss.one.listener.MyTeamTabClickListener;
 import com.tssoft.one.utils.ElementState;
 import com.tssoft.one.utils.Utils;
 import com.tssoft.one.webservice.ImageLoader;
+import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReaderMyTeam;
 import com.tssoft.one.webservice.WebServiceReaderScoreBoard;
@@ -125,7 +126,10 @@ public class MyTeamsTab extends MyListActivity {
 //		setGameScore();
 		setArticles();
 	}
-
+//	public void finish() {
+//		super.finish();
+//		ImageLoaderFactory.clear(this);
+//	}
 	private class NewsAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
@@ -203,8 +207,8 @@ public class MyTeamsTab extends MyListActivity {
 				v = vi.inflate(R.layout.white_list, null);
 				ImageView imgView = (ImageView) v
 						.findViewById(R.id.small_main_image);
-				headline = (TextView) v.findViewById(R.id.small_main_headline);
-				sc = (TextView) v.findViewById(R.id.small_main_sc);
+				headline = (TextView) v.findViewById(R.id.small_main_headline_w);
+				sc = (TextView) v.findViewById(R.id.small_main_sc_w);
 				headline.setTypeface(face);
 				sc.setTypeface(face);
 

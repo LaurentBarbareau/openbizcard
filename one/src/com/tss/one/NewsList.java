@@ -95,12 +95,11 @@ public class NewsList extends MyListActivity {
 		// overridePendingTransition(0, 0);
 	}
 
-	@Override
-	public void finish() {
-		// TODO Auto-generated method stub
-		super.finish();
-		// overridePendingTransition(0, 0);
-	}
+//	@Override
+//	public void finish() {
+//		super.finish();
+//		ImageLoaderFactory.clear(this);
+//	}
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {

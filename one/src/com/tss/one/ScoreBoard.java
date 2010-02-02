@@ -155,7 +155,10 @@ public class ScoreBoard extends MyListActivity {
 		scoreBoardList.clear();
 		setLeagueGame();
 	}
-
+//	public void finish() {
+//		super.finish();
+//		ImageLoaderFactory.clear(this);
+//	}
 	public void updateScore(){
 		if(currentTab == TODAY_GAME_TAB){
 			scoreBoardList.clear();
