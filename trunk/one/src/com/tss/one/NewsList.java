@@ -135,6 +135,7 @@ public class NewsList extends MyListActivity {
 	private class NewsAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
+		private View whiteList;
 		LayoutInflater vi;
 		
 		public NewsAdapter(Context context, int textViewResourceId,
@@ -149,7 +150,7 @@ public class NewsList extends MyListActivity {
 			if (chkList.containsKey(position))
 				return chkList.get(position);
 
-			View v = convertView;			
+			View v = convertView;		
 
 			Typeface face = Typeface.createFromAsset(getAssets(),
 					"fonts/Arial.ttf");
@@ -165,12 +166,13 @@ public class NewsList extends MyListActivity {
 				headline.setText((String) i);
 			} else {
 				Article article = (Article) i;
-
+				
 				v = vi.inflate(R.layout.white_list, null);
+				
 				ImageView imgView = (ImageView) v
-						.findViewById(R.id.small_main_image);
-				headline = (TextView) v.findViewById(R.id.small_main_headline);
-				sc = (TextView) v.findViewById(R.id.small_main_sc);
+						.findViewById(R.id.small_main_image_w);
+				headline = (TextView) v.findViewById(R.id.small_main_headline_w);
+				sc = (TextView) v.findViewById(R.id.small_main_sc_w);
 				headline.setTypeface(face);
 				sc.setTypeface(face);
 

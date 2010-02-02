@@ -1,9 +1,10 @@
 package com.tss.one;
 
+import com.tssoft.one.webservice.ImageLoaderFactory;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
