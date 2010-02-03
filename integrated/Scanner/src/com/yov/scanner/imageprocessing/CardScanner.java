@@ -87,16 +87,16 @@ public class CardScanner implements ScannerListener{
 	
 	// - Get Method(s) - //
 	public String getName(){
-		System.out.println("CardScanner.getName()");
-		
-		return name;
+            return name;
 	}
 	
 	public String getTargetFileName(){
-		System.out.println("CardScanner.getTargetFileName()");
-		
-		return targetFileName;
+            return targetFileName;
 	}
+
+        public int getFileNameIndex(){
+            return fileNameIndex;
+        }
 	
 	// - Set Method(s) - //
 	public String setName(String newName){
