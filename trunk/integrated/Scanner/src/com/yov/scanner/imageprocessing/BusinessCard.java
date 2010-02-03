@@ -80,11 +80,12 @@ public class BusinessCard { // DONE - But not tested yet
 		primaryImage.exportPDF(fileNameBC);
 	}
 	
-	public void retrieveData(){
-		System.out.println("BusinessCard.retrieveData()");
+	public String retrieveData(String trainingFolder){
+		String cardText = "";
 		
 		//primaryDBData = primaryImage.retrieveData();
-		simpleOCR.run(primaryImage.getFileName(), null);
+		cardText = simpleOCR.run(primaryImage.getFileName(), trainingFolder);
+                return cardText;
 	}
 	
 	public void confirmChange(){

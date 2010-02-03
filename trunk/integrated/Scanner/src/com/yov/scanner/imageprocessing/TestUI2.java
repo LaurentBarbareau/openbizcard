@@ -261,7 +261,7 @@ public class TestUI2 implements ActionListener{
 			scannedBCard.setImageFileName(filename + index + ".jpg");
 			scannedBCard.initRonCemerOCR(imagePane);
 			
-			scannedBCard.retrieveData();
+			scannedBCard.retrieveData("");
 		}
 	}
 
