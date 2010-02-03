@@ -123,8 +123,17 @@ public class ScannerView extends FrameView {
         resultBCardBack = null;
         // ! Should be changed to scanned image folder
         //scannedImageFileName = System.getProperty("user.home")+"\\My Documents\\scannedImage";
-        scannedImageFileName = "./scanedImages/scannedBCard";
-        scannedImageFileNameBack = "./scanedImages/scannedBCardBack";
+        scannedImageFileName = "";
+        scannedImageFileNameBack = "";
+        trainingImgFolder = "";
+        File curDir = new File(".");
+        try{
+            scannedImageFileName = curDir.getCanonicalPath() + "scannedBCard";
+            scannedImageFileNameBack = curDir.getCanonicalPath() + "scannedBCardBack";
+            trainingImgFolder = curDir.getCanonicalPath() + "\\src\\com\\yov\\scanner\\images\\trainingImages";
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         bcScanner = new CardScanner(scannedImageFileName);
 
         isFrontSelected = true;
@@ -2931,30 +2940,31 @@ public class ScannerView extends FrameView {
         upRightT3Layout.setHorizontalGroup(
             upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upRightT3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(sideLbT3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(frontSideRdT3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(backSideRdT3)
-                .addGap(86, 86, 86))
-            .addGroup(upRightT3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addComponent(cropBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(sideLbT3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(frontSideRdT3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(backSideRdT3))
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rotateBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(undoBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(29, 29, 29)
                         .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(confirmBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(upRightT3Layout.createSequentialGroup()
+                                .addComponent(cropBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
+                                .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(upRightT3Layout.createSequentialGroup()
+                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rotateBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(undoBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(confirmBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         upRightT3Layout.setVerticalGroup(
@@ -4506,15 +4516,32 @@ public class ScannerView extends FrameView {
 
     private void readCardBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readCardBtnT1ActionPerformed
         // Yov is working Here
+        //System.out.println("TrainingImageFolder: " + trainingImgFolder);
+
         if(isFrontSelected){
             if(scannedBCard != null){
                 if(scannedImageFileName.contains(".jpg")){
                     scannedBCard.setImageFileName(scannedImageFileName);
-
+                }else{
+                    scannedBCard.setImageFileName(scannedImageFileName +
+                            bcScanner.getFileNameIndex() + ".jpg");
                 }
+
+                scannedBCard.initRonCemerOCR(new JTabbedPane());
+                noteTaT1.setText( scannedBCard.retrieveData(trainingImgFolder) );
             }
         }else{
+             if(scannedBCardBack != null){
+                if(scannedImageFileName.contains(".jpg")){
+                    scannedBCardBack.setImageFileName(scannedImageFileNameBack);
+                }else{
+                    scannedBCardBack.setImageFileName(scannedImageFileNameBack +
+                            bcScanner.getFileNameIndex() + ".jpg");
+                }
 
+                scannedBCardBack.initRonCemerOCR(new JTabbedPane());
+                noteTaT1.setText( scannedBCardBack.retrieveData(trainingImgFolder) );
+            }
         }
     }//GEN-LAST:event_readCardBtnT1ActionPerformed
 
@@ -5087,4 +5114,6 @@ public class ScannerView extends FrameView {
     private BusinessCard resultBCard, resultBCardBack;
     private BufferedImage resultImage;
     private boolean isFrontSelectedResult;
+
+    private String trainingImgFolder;
 }
