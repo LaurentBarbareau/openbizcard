@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+MIDlet-Version: 1.0
+MIDlet-Jar-Size: 562116
+RIM-COD-URL-3: TMobile-3.cod
+RIM-COD-SHA1-3: 7c 0c 8c f7 3d 23 93 71 ac 7d a7 6c ca ed 0e 86 9e 27 7e 3a
+RIM-COD-URL-2: TMobile-2.cod
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Jar-URL: TMobile.jar
+RIM-COD-Module-Dependencies: net_rim_cldc,net_rim_os,net_rim_bbapi_invoke,net_rim_bb_framework_api,net_rim_bbapi_browser
+RIM-COD-SHA1-2: f5 6a 55 83 d5 52 38 e7 95 74 55 e5 01 3e 8d 59 b7 a5 d2 49
+RIM-COD-URL-1: TMobile-1.cod
+RIM-COD-SHA1-1: 87 99 5d 90 01 88 37 ff 90 99 72 3e 0b 7b b6 4f 84 6c 7d 4e
+RIM-COD-Size-3: 30380
+RIM-COD-Size-2: 66364
+RIM-MIDlet-Flags-1: 0
+RIM-COD-Size-1: 70036
+RIM-COD-Module-Name: TMobile
+MIDlet-Name: TMobile
+RIM-COD-Size: 62304
+RIM-COD-Creation-Time: 1265431634
+MIDlet-1: TMobile,,
+RIM-COD-URL: TMobile.cod
+MIDlet-Description: sdsa
+RIM-COD-SHA1: 11 fd 89 05 d3 6a 26 72 5d 01 7f ff 16 72 c9 f4 6d 7a 82 d8
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Vendor: 3View
