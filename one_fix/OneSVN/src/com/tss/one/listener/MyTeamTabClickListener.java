@@ -38,7 +38,7 @@ public class MyTeamTabClickListener implements OnClickListener {
 				if (tab.getId() == R.id.my_teams_tab1) {
 					pabIndex = 1;
 					if(act.getTeamList() == null | act.getTeamList().size() == 0 ){
-						act.displayNoTeamDialog();
+						act.displayNoGamesDialog();
 					}
 					else{
 						tab.setBackgroundResource(es.getFocusedIcon());
