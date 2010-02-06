@@ -9,7 +9,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 public class OneApplication extends Activity {
-
+	public static OneApplication instance;
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -27,6 +27,7 @@ public class OneApplication extends Activity {
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash_page);
+		instance = this;
 //		ImageView rocketImage = (ImageView) findViewById(R.id.loading);
 //		rocketImage.setBackgroundResource(R.anim.loading);
 //		rocketAnimation = (AnimationDrawable) rocketImage.getBackground();

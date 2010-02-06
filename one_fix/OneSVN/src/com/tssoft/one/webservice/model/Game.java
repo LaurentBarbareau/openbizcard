@@ -200,5 +200,12 @@ public class Game {
 		this.gameDate = gameDate;
 		this.hasEvent = hasEvent;
 	}
-	
+	public boolean isEnded(){
+		if(condition.equals("Ended")){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

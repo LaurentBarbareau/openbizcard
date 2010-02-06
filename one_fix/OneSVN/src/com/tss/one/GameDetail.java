@@ -79,20 +79,20 @@ public class GameDetail extends MyListActivity {
 								gameDetailScoreTV.setText(game.getGuestScore()
 										+ " - " + game.getHomeScore());
 								if (!(game.getGuestHalfScore().equals("-1"))) {
-									gameDetailFirstHalfScoreTV.setText(game
+									gameDetailFirstHalfScoreTV.setText( "("+ getText(R.string.result) +" "+game
 											.getGuestHalfScore()
-											+ " - " + game.getHomeHalfScore());
+											+ " - " + game.getHomeHalfScore() + ")");
 								} else {
 									gameDetailFirstHalfScoreTV.setText("");
 								}
 								
 								System.out.println("game.getGameMinute() = >>>>>>>>>>>>>>> " + game.getGameMinute());
-								if(Utils.isEndGame(game.getGameMinute()) || game.getGameMinute().equalsIgnoreCase("0")){
+								if(Utils.isEndGame(game.getStartTime()) || game.getGameMinute().equalsIgnoreCase("0")){
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 									gameDetailMinuteTV.setText(getText(R.string.end));
 								}else{
-									gameDetailMinuteTV.setText(Utils.toEndedHebrew(GameDetail.this, game.getGameMinute()));
+									gameDetailMinuteTV.setText(Utils.toEndedHebrew(GameDetail.this, game.getStartTime()));
 								}
 								
 								
