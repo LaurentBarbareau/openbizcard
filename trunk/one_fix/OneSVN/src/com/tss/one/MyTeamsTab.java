@@ -77,7 +77,7 @@ public class MyTeamsTab extends MyListActivity {
 	private Runnable displayScores = new Runnable() {
 		public void run() {
 			if (gameList == null || gameList.size() == 0) {
-				displayNoGamesDialog();
+				displayNoTeamDialog();
 				setNewsFocus();
 			} else
 				newsAdapter.notifyDataSetChanged();
@@ -462,7 +462,7 @@ public class MyTeamsTab extends MyListActivity {
 	 * Display dialog No news.
 	 */
 	private void displayNoNewsDialog() {
-		noNewsTextView.setVisibility(TextView.VISIBLE);
+//		noNewsTextView.setVisibility(TextView.VISIBLE);
 
 		// display dialog box
 		// when no news
@@ -483,7 +483,7 @@ public class MyTeamsTab extends MyListActivity {
 	 * Display dialog No teams.
 	 */
 	public void displayNoTeamDialog() {
-		noNewsTextView.setVisibility(TextView.VISIBLE);
+//		noNewsTextView.setVisibility(TextView.VISIBLE);
 
 		// display dialog box
 		// when no news
