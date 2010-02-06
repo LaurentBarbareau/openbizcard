@@ -483,14 +483,14 @@ public class MyTeamsTab extends MyListActivity {
 	 * Display dialog No teams.
 	 */
 	public void displayNoTeamDialog() {
-		// noNewsTextView.setVisibility(TextView.VISIBLE);
+		noNewsTextView.setVisibility(TextView.VISIBLE);
 
 		// display dialog box
 		// when no news
 		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this)
 				.create();
 		alertDialog.setTitle(getText(R.string.noteam_alert_title));
-		alertDialog.setMessage(getText(R.string.noteam_alert_body_click_1tab));
+		alertDialog.setMessage(getText(R.string.noteam_alert_body));
 		alertDialog.setButton(getText(R.string.noteam_alert_button),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -510,9 +510,9 @@ public class MyTeamsTab extends MyListActivity {
 		// when no news
 		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this)
 				.create();
-		alertDialog.setTitle(getText(R.string.navi_myteam));
-		alertDialog.setMessage(getText(R.string.no_game_popup));
-		alertDialog.setButton(getText(R.string.ok),
+		alertDialog.setTitle(getText(R.string.noteam_alert_title));
+		alertDialog.setMessage(getText(R.string.noteam_alert_body_click_1tab));
+		alertDialog.setButton(getText(R.string.noteam_alert_button),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						return;
