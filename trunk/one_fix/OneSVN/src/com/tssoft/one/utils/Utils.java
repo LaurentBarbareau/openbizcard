@@ -18,6 +18,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -34,17 +36,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.tss.one.R;
-import com.tss.one.ScoreBoard;
 
 public class Utils {
+	
+	public static String NUMBER_PATTERN = "\\d*";
+	
 	public static final String[] splitString(String original, String separator) {
 		Vector nodes = new Vector();
 
@@ -492,5 +493,30 @@ public class Utils {
 					}
 				});
 		alertDialog.show();			
+	}
+	
+	public static String reverseStringByPattern(String strPattern, String oldString){
+		
+		String txt = oldString;
+		String subTxt = txt;
+		char[] c;
+		
+		Pattern pattern = Pattern.compile(strPattern);
+		Matcher matcher = pattern.matcher(subTxt);
+		
+		while(matcher.find()){
+			if(matcher.group().length()>1){
+				int start = matcher.start();
+				int end = matcher.end();
+				subTxt = txt.substring(start,end);
+				c = subTxt.toCharArray();
+				subTxt = "";
+				for(int j = c.length-1 ;j>=0 ;j--){
+					subTxt += c[j];
+				}
+				txt = txt.substring(0,start) + subTxt + txt.substring(end,txt.length());
+			}
+		}
+		return txt;
 	}
 }

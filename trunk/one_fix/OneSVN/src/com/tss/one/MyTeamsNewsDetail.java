@@ -110,7 +110,6 @@ public class MyTeamsNewsDetail extends MyActivity {
 						hand.doJob();
 					} else {
 						runOnUiThread(new Runnable() {
-							@Override
 							public void run() {
 								// TODO Auto-generated method stub
 								ImageButton prevBtn = (ImageButton) findViewById(R.id.previous_button);
@@ -137,7 +136,6 @@ public class MyTeamsNewsDetail extends MyActivity {
 						hand.doJob();
 					}else {
 						runOnUiThread(new Runnable() {
-							@Override
 							public void run() {
 								// TODO Auto-generated method stub
 								ImageButton nextBtn = (ImageButton) findViewById(R.id.next_button);

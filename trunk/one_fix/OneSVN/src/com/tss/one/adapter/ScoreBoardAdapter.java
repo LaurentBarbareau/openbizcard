@@ -9,7 +9,6 @@ import java.util.HashMap;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
@@ -38,7 +37,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 
 	private LayoutInflater vi;
 	private Typeface face;
-
+		
 	public int currentDate = 0; // can be 0 -1 1
 
 	public ScoreBoardAdapter(ScoreBoard context, int textViewResourceId,
@@ -151,9 +150,13 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 //			else {
 				if (i instanceof String) {
 					v = vi.inflate(R.layout.score_board_red_list, null);
+					
+					String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String)i);
+					
 					subject = (TextView) v.findViewById(R.id.subject_title);
 					subject.setTypeface(face, Typeface.BOLD);
-					subject.setText((String) i);
+					subject.setText(txt);
+					
 				} else {
 					final Game game = (Game) i;
 					v = vi.inflate(R.layout.score_board_match, null);
@@ -191,9 +194,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					minute = (TextView) v
 							.findViewById(R.id.score_board_schedule_minute);
 					teamG = (TextView) v
-							.findViewById(R.id.score_board_schedule_name1);
-					teamH = (TextView) v
 							.findViewById(R.id.score_board_schedule_name2);
+					teamH = (TextView) v
+							.findViewById(R.id.score_board_schedule_name1);
 					score = (TextView) v
 							.findViewById(R.id.score_board_schedule_score);
 					ImageView hIcon = (ImageView) v
@@ -220,8 +223,13 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					else{
 						minute.setText(game.getStartTime());
 					}
-					teamH.setText(game.getGuestTeam());
-					teamG.setText(game.getHomeTeam());
+					
+					String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+					String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+					
+					teamH.setText(hTxt);
+					teamG.setText(gTxt);
+					
 					String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
 							+ game.getHomeScore();
 					
@@ -274,9 +282,10 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				return chkListT2.get(position);
 			if (i instanceof String) {
 				v = vi.inflate(R.layout.score_board_red_list, null);
+				String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String) i );
 				subject = (TextView) v.findViewById(R.id.subject_title);
 				subject.setTypeface(face);
-				subject.setText((String) i);
+				subject.setText(txt);
 
 			} else {
 				final Game game = (Game) i;
@@ -340,8 +349,11 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					minute.setText(game.getGameMinute() + " " + scoreBoard.getText(R.string.minute));
 				}
 				
-				teamH.setText(game.getHomeTeam());
-				teamG.setText(game.getGuestTeam());
+				String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+				String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+				
+				teamH.setText(hTxt);
+				teamG.setText(gTxt);
 				String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
 						+ game.getHomeScore();
 				
@@ -390,9 +402,12 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				return chkListT1.get(position);
 			if (i instanceof String) {
 				v = vi.inflate(R.layout.score_board_red_list, null);
+				
+				String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String)i);
+				
 				subject = (TextView) v.findViewById(R.id.subject_title);
 				subject.setTypeface(face);
-				subject.setText((String) i);
+				subject.setText(txt);
 
 			} else {
 				final Game game = (Game) i;
@@ -455,8 +470,13 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				else{
 					minute.setText(game.getStartTime());
 				}
-				teamH.setText(game.getHomeTeam());
-				teamG.setText(game.getGuestTeam());
+				
+				String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+				String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+				
+				teamH.setText(hTxt);
+				teamG.setText(gTxt);
+				
 				String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
 						+ game.getHomeScore();
 				

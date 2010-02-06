@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 import com.tssoft.one.utils.Utils;
 import com.tssoft.one.webservice.ImageLoaderFactory;
-import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.model.Article;
 import com.tssoft.one.webservice.model.ArticleBySubject;
@@ -142,7 +141,6 @@ public class NewsList extends MyListActivity {
 	private class NewsAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
-		private View whiteList;
 		LayoutInflater vi;
 		
 		public NewsAdapter(Context context, int textViewResourceId,
@@ -166,9 +164,12 @@ public class NewsList extends MyListActivity {
 
 			if (i instanceof String) {
 				v = vi.inflate(R.layout.red_list, null);
+				
+				String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String)i);
+				
 				headline = (TextView) v.findViewById(R.id.subject_title);
 				headline.setTypeface(face);
-				headline.setText((String) i);
+				headline.setText(txt);
 			} else {
 				Article article = (Article) i;
 				if ((position % 2) == 1) {
@@ -182,8 +183,11 @@ public class NewsList extends MyListActivity {
 					headline.setTextSize(headline.getTextSize() + 1);
 					sc.setTypeface(face);
 
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
+					String hdTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle());
+					String scTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle());
+					
+					headline.setText(hdTxt);
+					sc.setText(scTxt);
 					
 					// if start with English unicode
 					// toggle alignment
@@ -205,8 +209,11 @@ public class NewsList extends MyListActivity {
 					headline.setTextSize(headline.getTextSize() + 1);
 					sc.setTypeface(face);
 
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
+					String hdTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle());
+					String scTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle());
+					
+					headline.setText(hdTxt);
+					sc.setText(scTxt);
 					
 					// if start with English unicode
 					// toggle alignment

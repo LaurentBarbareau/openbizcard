@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +30,6 @@ public class MyListActivity extends ListActivity {
 	protected String bannerImageUrl;
 	protected String targetUrl;
 	protected Runnable bannerR = new Runnable() {
-		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			System.out.println("===============================>>>>>>>>>> ===== "
@@ -161,7 +159,6 @@ public class MyListActivity extends ListActivity {
 		banner = (ImageView) findViewById(R.id.bannerIView);
 		if (banner != null) {
 			banner.setOnClickListener(new OnClickListener() {
-				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					if (targetUrl.startsWith("http://"))

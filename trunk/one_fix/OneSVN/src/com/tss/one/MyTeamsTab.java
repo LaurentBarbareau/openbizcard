@@ -304,7 +304,6 @@ public class MyTeamsTab extends MyListActivity {
 			if (teamList != null && teamList.size() > 0) {
 				runOnUiThread(new Runnable(){
 
-					@Override
 					public void run() {
 						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
 						textNoteam.setVisibility(TextView.INVISIBLE);	
@@ -321,7 +320,6 @@ public class MyTeamsTab extends MyListActivity {
 			} else {
 				runOnUiThread(new Runnable(){
 
-					@Override
 					public void run() {
 						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
 						textNoteam.setVisibility(TextView.VISIBLE);

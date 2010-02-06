@@ -47,7 +47,6 @@ public class MainList extends MyListActivity {
 	public static boolean firstTime = true;
 	public static boolean isShowDetail = false;
 	private ProgressBar progressBar;
-	private boolean score = false;
 	
 	private Runnable displayChanged = new Runnable() {
 		public void run() {
@@ -209,7 +208,6 @@ public class MainList extends MyListActivity {
 		Typeface face;
 		private TextView headline;
 		private TextView sc;
-		private View whiteList;
 		
 		public MainAdapter(Context context, int textViewResourceId,
 				ArrayList<Object> items) {
@@ -265,9 +263,10 @@ public class MainList extends MyListActivity {
 
 			if (i instanceof String) {
 				v = vi.inflate(R.layout.ads_list, null);
+				String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String)i);
 				headline = (TextView) v.findViewById(R.id.main_ads);
 				headline.setTypeface(face, Typeface.BOLD);
-				headline.setText((String) i);
+				headline.setText(txt);
 			} 
 			else if (i instanceof Game) {
 				final Game game = (Game) i;		
@@ -327,11 +326,13 @@ public class MainList extends MyListActivity {
 					minute.setText(game.getStartTime());
 				}
 				
-				
-				nameHome.setText(game.getHomeTeam());
+				String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+				String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+							
+				nameHome.setText(hTxt);
 				score.setText(game.getGuestScore() + " - "
 						+ game.getHomeScore());
-				nameGuest.setText(game.getGuestTeam());
+				nameGuest.setText(gTxt);
 				
 				//== add team icon
 				String fileName = "";
@@ -382,8 +383,11 @@ public class MainList extends MyListActivity {
 					headline.setTypeface(face, Typeface.BOLD);
 					sc.setTypeface(face);
 
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
+					String hdTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle());
+					String scTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle());
+					
+					headline.setText(hdTxt);
+					sc.setText(scTxt);
 
 					ImageLoaderStringFactory.createImageLoader(MainList.this,
 							ARTICLE_KEY)
@@ -404,8 +408,11 @@ public class MainList extends MyListActivity {
 						headline.setTextSize(headline.getTextSize()+1);
 						sc.setTypeface(face);
 	
-						headline.setText(article.getTitle());
-						sc.setText(article.getScTitle());
+						String hdTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle());
+						String scTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle());
+						
+						headline.setText(hdTxt);
+						sc.setText(scTxt);
 						
 						// if start with english unicode
 						// toggle alignment
@@ -430,8 +437,11 @@ public class MainList extends MyListActivity {
 						headline.setTextSize(headline.getTextSize()+1);
 						sc.setTypeface(face);
 	
-						headline.setText(article.getTitle());
-						sc.setText(article.getScTitle());
+						String hdTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle());
+						String scTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle());
+						
+						headline.setText(hdTxt);
+						sc.setText(scTxt);
 						
 						// if start with english unicode
 						// toggle alignment

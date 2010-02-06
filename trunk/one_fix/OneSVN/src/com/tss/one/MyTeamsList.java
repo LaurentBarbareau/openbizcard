@@ -119,12 +119,14 @@ public class MyTeamsList extends MyListActivity {
 
 		private ArrayList<Team> items;
 		MyTeamsList myTeamList;
+		LayoutInflater vi;
 
 		public EditTeamAdapter(MyTeamsList context, int textViewResourceId,
 				ArrayList<Team> items) {
 			super(context, textViewResourceId, items);
 			this.myTeamList = context;
 			this.items = items;
+			this.vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 
 		@Override
@@ -133,7 +135,6 @@ public class MyTeamsList extends MyListActivity {
 				return chkList.get(position);
 
 			View v = convertView;
-			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 			Typeface face = Typeface.createFromAsset(getAssets(),
 					"fonts/Arial.ttf");
@@ -159,7 +160,9 @@ public class MyTeamsList extends MyListActivity {
 			headline.setTypeface(face, Typeface.BOLD);
 			headline.setTextSize(headline.getTextSize() + 1);
 
-			headline.setText(team.getName());
+			String txt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, team.getName());
+			
+			headline.setText(txt);
 //			try {
 //				ImageLoaderFactory.createImageLoader(MyTeamsList.this).setTask(
 //						team.getImageURL(), imgView);

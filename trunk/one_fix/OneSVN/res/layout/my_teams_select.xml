@@ -36,7 +36,7 @@
 			android:layout_height="fill_parent" android:gravity="center">
 			<ImageButton android:id="@+id/team_select_btn"
 				android:layout_width="100px" android:layout_height="35px"
-				android:layout_gravity="center" android:background="@drawable/my_teams_sel_rollover" />
+				android:layout_gravity="center" android:background="@drawable/my_teams_sel2_rollover" />
 		</LinearLayout>
 	</LinearLayout>
 
