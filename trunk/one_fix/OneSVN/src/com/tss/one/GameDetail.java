@@ -79,9 +79,9 @@ public class GameDetail extends MyListActivity {
 								gameDetailScoreTV.setText(game.getGuestScore()
 										+ " - " + game.getHomeScore());
 								if (!(game.getGuestHalfScore().equals("-1"))) {
-									gameDetailFirstHalfScoreTV.setText( "("+ getText(R.string.result) +" "+game
-											.getGuestHalfScore()
-											+ " - " + game.getHomeHalfScore() + ")");
+									gameDetailFirstHalfScoreTV.setText( "("+game
+											.getHomeHalfScore()
+											+ " - " + game.getGuestHalfScore()+ " "+ getText(R.string.result) +" " + ")");
 								} else {
 									gameDetailFirstHalfScoreTV.setText("");
 								}
@@ -91,8 +91,12 @@ public class GameDetail extends MyListActivity {
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 									gameDetailMinuteTV.setText(getText(R.string.end));
-								}else{
-									gameDetailMinuteTV.setText(Utils.toEndedHebrew(GameDetail.this, game.getStartTime()));
+								}else if(game.getCondition().equals("Active")){
+									gameDetailMinuteTV.setTextColor(Color.GREEN);
+									gameDetailMinuteTV.setText(getText(R.string.minute) + " " + game.getStartTime() );
+								}
+								else{
+									gameDetailMinuteTV.setText(game.getStartTime());
 								}
 								
 								
