@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_main" android:title="@string/main"
+		android:icon="@drawable/icon_main" />
+	<item android:id="@+id/menu_team" android:title="@string/team"
+		android:icon="@drawable/icon_my_team" />
+	<item android:id="@+id/menu_news" android:title="@string/news"
+		android:icon="@drawable/icon_news" />
+	<item android:id="@+id/menu_score" android:title="@string/score"
+		android:icon="@drawable/icon_live_score" />
+	<item android:id="@+id/menu_exit" android:title="@string/exit"
+		android:icon="@drawable/ic_menu_close_clear_cancel" />
+</menu>

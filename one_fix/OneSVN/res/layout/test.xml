@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:gravity="center_vertical" android:layout_height="wrap_content"
+		android:background="@drawable/head_bar">
+
+		<ImageButton android:id="@+id/my_teams_back"
+			android:layout_width="38px" android:layout_height="38px"
+			android:layout_marginLeft="2dip" android:layout_alignParentTop="true"
+			android:drawSelectorOnTop="true" android:layout_alignParentLeft="true"
+			android:src="@drawable/blank" android:background="@drawable/my_teams_done_btn_rollover" />
+
+		<ImageButton android:id="@+id/my_teams_back"
+			android:layout_width="38px" android:layout_height="38px"
+			android:layout_marginRight="2dip" android:layout_alignParentTop="true"
+			android:drawSelectorOnTop="true" android:layout_alignParentRight="true"
+			android:src="@drawable/blank" android:background="@drawable/my_teams_add_button" />
+	</RelativeLayout>
+</LinearLayout>

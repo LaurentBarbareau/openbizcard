@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      android:versionCode="1"
+      android:versionName="1.0" package="com.tss.one">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".OneApplication"
+                  android:label="@string/app_name" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainList" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MainDetail" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MyTeamsTab" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MyTeamsList" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MyTeamsSelect" android:screenOrientation="portrait"></activity>
+        <activity android:name=".NewsList" android:screenOrientation="portrait"></activity>
+		<activity android:name=".NewsDetail" android:screenOrientation="portrait"></activity>
+		<activity android:name=".MyTeamsList" android:screenOrientation="portrait"></activity>
+		<activity android:name=".MyTeamsNewsDetail" android:screenOrientation="portrait"></activity>
+		<activity android:name=".ScoreBoard" android:screenOrientation="portrait"></activity>
+		<activity android:name=".ScoreBoardSelect" android:screenOrientation="portrait"></activity>
+    <activity android:name=".ScoreBoardSelect" android:screenOrientation="portrait"></activity>
+      <activity android:name=".GameDetail" android:screenOrientation="portrait"></activity>
+</application>
+    <uses-sdk android:minSdkVersion="3" />
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+</manifest> 

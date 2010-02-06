@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="47px">
+			<ImageView android:id="@+id/news_header"
+				android:layout_width="320px" android:layout_height="47px"
+				android:src="@drawable/head_bar" />
+			<ImageButton android:id="@+id/refrest_icon"
+				android:layout_width="42px" android:layout_height="42px"
+				android:layout_marginTop="2dip" android:layout_marginRight="2dip"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentRight="true" android:layout_gravity="right|top"
+				android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				android:background="@drawable/refrest_icon_rollover" />
+		</FrameLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="360px">
+			<ListView android:id="@+id/android:list"
+				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+			<ProgressBar android:id="@+id/progressbar"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center" />
+		</FrameLayout>
+	</LinearLayout>
+
+
+
+	<!-- ################ [ Start banner ] ################ -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView android:layout_width="fill_parent" android:id="@+id/bannerIView"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:background="@drawable/banner_bg" android:layout_height="wrap_content">
+		</ImageView>
+	</RelativeLayout>
+	<!-- ################ [ End banner ] ################ -->
+</FrameLayout>

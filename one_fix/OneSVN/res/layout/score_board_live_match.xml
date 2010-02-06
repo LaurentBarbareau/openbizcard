@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="320px" android:layout_height="60px"
+	android:orientation="horizontal" android:background="@drawable/my_teams_element">
+	<TextView android:id="@+id/score_board_live_minute"
+		android:layout_width="40px" android:layout_height="20px"
+		android:paddingLeft="5px" android:textColor="#ffffff"
+		android:textStyle="normal" android:textSize="10sp" android:text="mm.ss"
+		android:layout_gravity="left|bottom" android:gravity="center_vertical"></TextView>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content" android:layout_height="60px"
+		android:paddingLeft="10px" android:orientation="horizontal"
+		android:layout_gravity="center_vertical|right">
+		<ImageView android:id="@+id/score_board_live_logo2"
+			android:layout_gravity="center" android:layout_width="30px"
+			android:layout_height="30px" android:src="@drawable/team_loading"></ImageView>
+		<TextView android:id="@+id/score_board_live_name2"
+			android:layout_width="60px" android:layout_height="60px"
+			android:textColor="#ffffff" android:textStyle="bold"
+			android:textSize="12sp" android:text="team"
+			android:gravity="center_vertical|center_horizontal"
+			android:layout_gravity="center_vertical|center_horizontal"></TextView>
+		<TextView android:id="@+id/score_board_live_score"
+			android:layout_width="70px" android:layout_height="60px"
+			android:textColor="#ffffff" android:textStyle="bold"
+			android:textSize="16sp" android:text="0-0"
+			android:gravity="center_vertical|center_horizontal"
+			android:layout_gravity="center_vertical|center_horizontal"></TextView>
+		<TextView android:id="@+id/score_board_live_name1"
+			android:layout_width="60px" android:layout_height="60px"
+			android:textColor="#ffffff" android:textStyle="bold"
+			android:textSize="12sp" android:text="team"
+			android:gravity="center_vertical|center_horizontal"
+			android:layout_gravity="center_vertical|center_horizontal"></TextView>
+		<ImageView android:id="@+id/score_board_live_logo1"
+			android:layout_gravity="center" android:layout_width="30px"
+			android:layout_height="30px" android:src="@drawable/team_loading"></ImageView>
+		<ImageView android:id="@+id/arrow_detail"
+			android:layout_gravity="right|center_vertical" android:layout_width="21px"
+			android:layout_height="80px" android:src="@drawable/arrow_detail"
+			android:visibility="invisible"></ImageView>
+	</LinearLayout>
+</LinearLayout>

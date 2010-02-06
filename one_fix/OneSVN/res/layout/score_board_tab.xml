@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ffffff">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:background="#ffffff">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="47px">
+			<ImageView android:id="@+id/news_header"
+				android:layout_width="320px" android:layout_height="47px"
+				android:src="@drawable/head_bar" />
+			<ImageButton android:id="@+id/refrest_icon"
+				android:layout_width="42px" android:layout_height="42px"
+				android:layout_marginTop="2dip" android:layout_marginRight="2dip"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentRight="true" android:layout_gravity="right|top"
+				android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				android:background="@drawable/refrest_icon_rollover" />
+		</FrameLayout>
+
+
+		<!-- ################## [ START REFRESH TEXT ] ################### -->
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="25px"
+			android:background="@drawable/navigation_bar">
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:orientation="horizontal" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="center">
+				<TextView android:id="@+id/score_board_sec_label"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:textColor="#000000" android:layout_gravity="center"
+					android:layout_marginLeft="2px" android:layout_marginRight="2px"
+					android:text="שניות" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_sec"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:textColor="#000000" android:layout_marginLeft="2px"
+					android:layout_marginRight="2px" android:text="00"
+					android:layout_gravity="center" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_next_label"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:textColor="#000000" android:layout_marginLeft="2px"
+					android:layout_marginRight="2px" android:layout_gravity="center"
+					android:text="העדכון הבא בעוד" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_next"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:textColor="#000000" android:layout_marginLeft="2px"
+					android:text="16:25" android:layout_marginRight="2px"
+					android:layout_gravity="center" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_date_label2"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:layout_gravity="center" android:layout_marginLeft="2px"
+					android:layout_marginRight="2px" android:textColor="#000000"
+					android:text="שעה" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_date"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:textColor="#000000" android:layout_marginLeft="2px"
+					android:text="00/00/00" android:layout_marginRight="2px"
+					android:layout_gravity="center" android:textSize="10sp" />
+				<TextView android:id="@+id/score_board_date_label1"
+					android:layout_width="wrap_content" android:layout_height="fill_parent"
+					android:layout_gravity="center" android:textColor="#000000"
+					android:layout_marginLeft="2px" android:layout_marginRight="2px"
+					android:text="מעודכן ל-" android:textSize="10sp" />
+			</LinearLayout>
+		</FrameLayout>
+		<!-- ################## [ END REFRESH TEXT ] ################### -->
+
+
+		<!-- ################## [ START TABHOST ] ################### -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="horizontal" android:layout_width="320px"
+			android:layout_height="60px" android:background="#ffffff">
+			<ImageButton android:id="@+id/score_board_tab1"
+				android:layout_width="108px" android:layout_height="60px"
+				android:src="@drawable/blank" android:background="@drawable/score_board_tab1_over" />
+			<ImageButton android:id="@+id/score_board_tab2"
+				android:layout_width="105px" android:layout_height="60px"
+				android:src="@drawable/blank" android:background="@drawable/score_board_tab2_over" />
+			<ImageButton android:id="@+id/score_board_tab3"
+				android:layout_width="107px" android:layout_height="60px"
+				android:src="@drawable/blank" android:background="@drawable/score_board_tab3" />
+		</LinearLayout>
+		<!-- ################## [ END TABHOST ] ################### -->
+
+
+		<!-- ################## [ START DATE ] ################### -->
+		<include layout="@layout/score_board_today_game" android:id="@+id/includeToday" />
+		<!-- ################## [ END DATE ] ################### -->
+
+
+		<!-- 224 276-->
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="224px"
+			android:id="@+id/score_list_frame_layout">
+			<ListView android:id="@+id/android:list"
+				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+			<ProgressBar android:id="@+id/progressbar"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center" />
+		</FrameLayout>
+	</LinearLayout>
+
+
+	<!-- ################ [ Start banner ] ################ -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView android:layout_width="fill_parent" android:id="@+id/bannerIView"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:background="@drawable/banner_bg" android:layout_height="wrap_content">
+		</ImageView>
+	</RelativeLayout>
+	<!-- ################ [ End banner ] ################ -->
+
+</FrameLayout>
