@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ffffff">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="47px">
+			<ImageView android:id="@+id/news_header"
+				android:layout_width="320px" android:layout_height="47px"
+				android:src="@drawable/head_bar" />
+			<ImageButton android:id="@+id/refrest_icon"
+				android:layout_width="42px" android:layout_height="42px"
+				android:layout_marginTop="2dip" android:layout_marginRight="2dip"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentRight="true" android:layout_gravity="right|top"
+				android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				android:background="@drawable/refrest_icon_rollover" />
+			<ImageButton android:id="@+id/my_teams_edit"
+				android:layout_width="50px" android:layout_height="40px"
+				android:layout_marginLeft="2dip" android:layout_alignParentTop="true"
+				android:layout_alignParentLeft="true" android:layout_gravity="left|center_vertical"
+				android:drawSelectorOnTop="true" android:src="@drawable/blank"
+				android:background="@drawable/main_detail_back_rollover" />
+		</FrameLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="25px">
+			<TextView android:id="@+id/navi_bar" android:layout_width="320px" 
+				android:gravity="center_horizontal" android:layout_height="25px"
+				android:background="@drawable/my_teams_element" android:textColor="@color/WHITE" />
+		</FrameLayout>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="horizontal" android:layout_width="320px"
+			android:layout_height="60px" android:background="#ffffff">
+			<ImageButton android:id="@+id/my_teams_tab1"
+				android:layout_width="160px" android:layout_height="60px"
+				android:src="@drawable/blank" android:background="@drawable/my_teams_tab1" />
+			<ImageButton android:id="@+id/my_teams_tab2"
+				android:layout_width="160px" android:layout_height="60px"
+				android:src="@drawable/blank" android:background="@drawable/my_teams_tab2_over" />
+		</LinearLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="276px">
+			<ListView android:id="@+id/android:list"
+				android:layout_width="320px" android:layout_height="wrap_content" />
+			<TextView android:layout_width="fill_parent" android:id="@+id/no_news_text"
+				android:layout_height="wrap_content" android:layout_gravity="center_horizontal|center_vertical"
+				android:gravity="center_vertical|center_horizontal"
+				android:textColor="@color/BLACK" android:textStyle="bold"
+				android:text="@string/no_team_popup">
+			</TextView>
+			<ProgressBar android:id="@+id/progressbar"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center" />
+		</FrameLayout>
+
+	</LinearLayout>
+
+
+
+	<!-- ################ [ Start banner ] ################ -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView android:layout_width="fill_parent" android:id="@+id/bannerIView"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:background="@drawable/banner_bg" android:layout_height="wrap_content">
+		</ImageView>
+	</RelativeLayout>
+	<!-- ################ [ End banner ] ################ -->
+
+</FrameLayout>

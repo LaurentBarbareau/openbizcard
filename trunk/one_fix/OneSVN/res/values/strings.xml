@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello"></string>
+    <string name="app_name">OneApplication</string>
+    <string name="league_prompt">בחר ליגה</string>
+    <string name="team_prompt">בחר צוות</string>
+    <string name="navi_myteam">הקבוצה שלי</string>
+    <string name="confirm">אשר‬‬</string>
+    <string name="delete_ask">האם ברצונך למחוק קבוצה זו‬</string>
+    
+    <string name="end">הסתיים</string>
+    <string name="main">ראשי</string>
+    <string name="team">הקבוצה שלי</string>
+    <string name="news">חדשות</string>
+    <string name="score">תוצאות</string>
+    <string name="ok">אישור</string>
+    <string name="cancel">לבטל</string>	
+    <string name="exit">יציאה</string>	
+    
+    <string name="no_news_popup">לא נמצאו משחקים או חדשות לקבוצות שנבחרו‬</string>
+    <string name="no_team_popup">לחץ עריכה לבחירת הקבוצות שלך‬</string>
+    <string name="no_game_popup">לא נמצאו משחקים עבור הקבוצות שנבחרו‬</string>
+    <string name="no_live_game_title">LIVE תוצאות</string>
+    <string name="no_live_game_popup">אין כעת משחקים פעילים</string>
+    <string name="no_game_desc_title">אין אירועים</string>
+    <string name="no_game_desc_not_start_popup">המשחק טרם החל</string>
+    <string name="no_game_desc_button">אישור</string>
+    <string name="no_game_detail_popup">לא קיימים אירועים למשחק</string>
+    
+    
+    <string name="font_tricker">12px</string>
+</resources>

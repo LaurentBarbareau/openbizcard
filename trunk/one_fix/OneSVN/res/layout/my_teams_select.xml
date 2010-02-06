@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ffffff">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="47px">
+
+			<ImageView android:id="@+id/news_header"
+				android:layout_width="320px" android:layout_height="47px"
+				android:src="@drawable/head_bar" />
+			<ImageButton android:id="@+id/team_select_cancel_btn" android:paddingLeft="2dip"
+				android:layout_width="40px" android:layout_height="40px"
+				android:layout_gravity="left|center_vertical" android:background="@drawable/my_teams_sel_cancel_rollover" />
+
+		</FrameLayout>
+		<TextView android:id="@+id/league__sel_title_text"
+			android:layout_width="fill_parent" android:layout_height="60px"
+			android:textColor="#0033cc" android:textStyle="bold"
+			android:textSize="16sp" android:text="בחר ליגה" android:gravity="center"></TextView>
+		<Spinner android:id="@+id/league_select" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:drawSelectorOnTop="true"
+			android:prompt="@string/league_prompt" />
+		<TextView android:id="@+id/team__sel_title_text"
+			android:layout_width="fill_parent" android:layout_height="60px"
+			android:textColor="#0033cc" android:textStyle="bold"
+			android:textSize="16sp" android:text="בחר קבוצה" android:gravity="center"></TextView>
+		<Spinner android:id="@+id/team_select" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:drawSelectorOnTop="true"
+			android:prompt="@string/team_prompt" />
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="horizontal" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:gravity="center">
+			<ImageButton android:id="@+id/team_select_btn"
+				android:layout_width="100px" android:layout_height="35px"
+				android:layout_gravity="center" android:background="@drawable/my_teams_sel_rollover" />
+		</LinearLayout>
+	</LinearLayout>
+
+
+	<!-- ################ [ Start banner ] ################ -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView android:layout_width="fill_parent" android:id="@+id/bannerIView"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:background="@drawable/banner_bg" android:layout_height="wrap_content">
+		</ImageView>
+	</RelativeLayout>
+	<!-- ################ [ End banner ] ################ -->
+
+
+	<ProgressBar android:id="@+id/progressbar"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center" />
+</FrameLayout>

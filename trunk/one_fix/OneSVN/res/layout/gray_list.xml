@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="320px"
+	android:layout_height="wrap_content" android:paddingTop="0px"
+	android:paddingBottom="4px" android:background="@drawable/white_bar_over">
+	<TextView android:id="@+id/small_main_headline"
+		android:layout_width="wrap_content" android:layout_height="18px"
+		android:layout_gravity="right" android:paddingRight="12px"
+		android:textColor="#445ea1" android:textStyle="bold" android:textSize="14sp"
+		android:text="Article : title"></TextView>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="320px"
+		android:gravity="center_vertical" android:layout_height="65px"
+		android:paddingTop="4px" android:paddingBottom="4px">
+		<TextView android:id="@+id/small_main_sc"
+			android:layout_width="235px" android:layout_height="65px"
+			android:layout_gravity="right|center_vertical" android:gravity="center_vertical"
+			android:textColor="#333" android:textStyle="normal" android:textSize="13sp"
+			android:text="Article : Description"></TextView>
+		<ImageView android:id="@+id/small_main_image"
+			android:paddingRight="10px" android:layout_width="85px"
+			android:layout_height="62px" android:layout_gravity="center_horizontal"
+			android:src="@drawable/loading_sub"></ImageView>
+	</LinearLayout>
+</LinearLayout>

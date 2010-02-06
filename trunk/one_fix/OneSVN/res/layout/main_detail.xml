@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:background="@color/WHITE">
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="320px" android:layout_height="47px">
+			<ImageView android:id="@+id/news_header"
+				android:layout_width="320px" android:layout_height="47px"
+				android:src="@drawable/head_bar" />
+			<ImageButton android:id="@+id/main_detail_back"
+				android:layout_width="50px" android:layout_height="38px"
+				android:layout_marginLeft="5px"
+				android:layout_gravity="center_vertical" android:drawSelectorOnTop="true"
+				android:src="@drawable/blank" android:background="@drawable/main_detail_back_rollover" />
+		</FrameLayout>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="360px">
+			<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:background="#ffffff">
+				<WebView android:id="@+id/main_detail_webview">
+
+				</WebView>
+
+			</TableLayout>
+			<ProgressBar android:id="@+id/progressbar"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center" />
+		</FrameLayout>
+
+	</LinearLayout>
+
+
+	<!-- ################ [ Start banner ] ################ -->
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView android:layout_width="fill_parent" android:id="@+id/bannerIView"
+			android:layout_marginBottom="0dip" android:layout_alignParentBottom="true"
+			android:background="@drawable/banner_bg" android:layout_height="wrap_content">
+		</ImageView>
+	</RelativeLayout>
+	<!-- ################ [ End banner ] ################ -->
+
+</FrameLayout>
