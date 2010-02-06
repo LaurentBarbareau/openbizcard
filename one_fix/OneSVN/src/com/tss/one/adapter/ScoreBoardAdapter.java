@@ -212,8 +212,14 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					if(Utils.isEndGame(game.getStartTime())){
 						minute.setTextColor(Color.GREEN);
 						minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+						minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+					}else if(game.getCondition().equals("Active")){
+						minute.setTextColor(Color.GREEN);
+						minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
 					}
-					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+					else{
+						minute.setText(game.getStartTime());
+					}
 					teamH.setText(game.getGuestTeam());
 					teamG.setText(game.getHomeTeam());
 					String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "
@@ -441,8 +447,14 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				if(Utils.isEndGame(game.getStartTime())){
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+				}else if(game.getCondition().equals("Active")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
 				}
-				minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+				else{
+					minute.setText(game.getStartTime());
+				}
 				teamH.setText(game.getHomeTeam());
 				teamG.setText(game.getGuestTeam());
 				String scoreStr = game.getCondition().equals("NotStarted")?"":game.getGuestScore() + " - "

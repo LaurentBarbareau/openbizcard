@@ -318,8 +318,15 @@ public class MainList extends MyListActivity {
 				if(Utils.isEndGame(game.getStartTime())){
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+					minute.setText(Utils.toEndedHebrew(instance, game.getStartTime()));
+				}else if(game.getCondition().equals("Active")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(getText(R.string.minute) + " " + game.getStartTime() );
 				}
-				minute.setText(Utils.toEndedHebrew(instance, game.getStartTime()));
+				else{
+					minute.setText(game.getStartTime());
+				}
+				
 				
 				nameHome.setText(game.getHomeTeam());
 				score.setText(game.getGuestScore() + " - "
