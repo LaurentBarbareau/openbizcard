@@ -19,11 +19,11 @@
 				android:drawSelectorOnTop="true" android:src="@drawable/blank"
 				android:background="@drawable/refrest_icon_rollover" />
 			<ImageButton android:id="@+id/my_teams_edit"
-				android:layout_width="50px" android:layout_height="40px"
-				android:layout_marginLeft="2dip" android:layout_alignParentTop="true"
+				android:layout_width="38px" android:layout_height="38px"
+				android:layout_marginLeft="4dip" android:layout_alignParentTop="true"
 				android:layout_alignParentLeft="true" android:layout_gravity="left|center_vertical"
 				android:drawSelectorOnTop="true" android:src="@drawable/blank"
-				android:background="@drawable/main_detail_back_rollover" />
+				android:background="@drawable/my_team_btn_rollover" />
 		</FrameLayout>
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="320px" android:layout_height="25px">

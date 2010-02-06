@@ -28,7 +28,6 @@ public class MyActivity extends Activity {
 	protected String bannerImageUrl;
 	protected String targetUrl;
 	protected Runnable bannerR = new Runnable() {
-		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			System.out.println("===============================>>>>>>>>>> ===== "
@@ -158,7 +157,6 @@ public class MyActivity extends Activity {
 		banner = (ImageView) findViewById(R.id.bannerIView);
 		if (banner != null) {
 			banner.setOnClickListener(new OnClickListener() {
-				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					if (targetUrl.startsWith("http://"))
