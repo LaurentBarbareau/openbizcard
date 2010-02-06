@@ -491,8 +491,8 @@ public class MCastPlayerScreen extends MainScreen implements
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
-		case Characters.BACKSPACE:
-			return true;
+//		case Characters.BACKSPACE:
+//			return true;
 		case Characters.ESCAPE:
 			if (!bool) {
 
