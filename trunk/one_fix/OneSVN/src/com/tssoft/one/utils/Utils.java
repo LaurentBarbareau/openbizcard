@@ -430,7 +430,7 @@ public class Utils {
 	
 	public static String toEndedHebrew(Context context, String gameMinute){
 		if(gameMinute.toLowerCase().indexOf("end") > -1)
-			gameMinute = context.getText(R.string.end).toString();
+			gameMinute = context.getText(R.string.finishminute).toString();
 		return gameMinute;
 	}
 	

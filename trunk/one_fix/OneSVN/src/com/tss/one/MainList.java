@@ -5,14 +5,11 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,7 +29,6 @@ import android.widget.TextView;
 
 import com.tss.one.debug.LogTool;
 import com.tssoft.one.utils.Utils;
-import com.tssoft.one.webservice.ImageLoaderFactory;
 import com.tssoft.one.webservice.ImageLoaderStringFactory;
 import com.tssoft.one.webservice.WebServiceReader;
 import com.tssoft.one.webservice.WebServiceText;
@@ -319,8 +315,12 @@ public class MainList extends MyListActivity {
 				nameHome.setTypeface(face);
 				nameGuest.setTypeface(face);
 				score.setTypeface(face);
-
-				minute.setText(game.getStartTime());
+				if(Utils.isEndGame(game.getStartTime())){
+					minute.setTextColor(Color.GREEN);
+					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+				}
+				minute.setText(Utils.toEndedHebrew(instance, game.getStartTime()));
+				
 				nameHome.setText(game.getHomeTeam());
 				score.setText(game.getGuestScore() + " - "
 						+ game.getHomeScore());

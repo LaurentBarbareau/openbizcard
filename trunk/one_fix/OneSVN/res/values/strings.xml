@@ -27,6 +27,14 @@
     <string name="no_game_desc_button">אישור</string>
     <string name="no_game_detail_popup">לא קיימים אירועים למשחק</string>
     
+     <string name="minute">דקה</string>
+     <string name="finishminute">מחצית</string>
     
     <string name="font_tricker">12px</string>
+<string name="result">מחצית</string>
+<string name="noregiestmsg">מכבי? הפועל? בית\&quot;ר? ומה בליגת האלופות? ברוכים הבאים לאזור האישי שלכם - הקבוצות שלי. כאן תוכלו להתעדכן במשחקים וחדשות של הקבוצות האהודות עליכם בארץ ובחו\&quot;ל. באמצעות לחיצה על כפתור \&quot;ערוך\&quot; תוכלו בכל עת להוסיף קבוצות נוספות שיהיה בהצלחה לקבוצות שלכם !</string>
+<string name="noteam_alert_title">הקבוצות שלי</string>
+<string name="noteam_alert_body">ברוכים הבאים למסך הקבוצות שלי</string>
+<string name="noteam_alert_button">אישור</string>
+<string name="noteam_alert_body_click_1tab">לא נמצאו משחקים עבור הקבוצות שנבחרו</string>
 </resources>

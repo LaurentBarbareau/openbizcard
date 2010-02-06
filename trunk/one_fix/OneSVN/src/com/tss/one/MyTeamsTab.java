@@ -46,7 +46,7 @@ public class MyTeamsTab extends MyListActivity {
 	// private NewsAdapter newsAdapter;
 	private HashMap<Integer, View> chkListNews = new HashMap<Integer, View>();
 	private HashMap<Integer, View> chkListGame = new HashMap<Integer, View>();
-	//private ProgressDialog m_ProgressDialog = null;
+	// private ProgressDialog m_ProgressDialog = null;
 	private ProgressBar progressBar;
 	private ArrayList<Object> newsList = new ArrayList<Object>();
 	private ArrayList<Object> gameList = new ArrayList<Object>();
@@ -56,66 +56,64 @@ public class MyTeamsTab extends MyListActivity {
 	private Runnable viewNews;
 	String ARTICLE_KEY = "article";
 	String SCORE_KEY = "score";
-	
-	
+
 	private TextView noNewsTextView;
 
 	private Runnable displayNews = new Runnable() {
 		public void run() {
-			System.out.println(tabClickListener.getTabIndex() + " " + teamList.size() + " " + gameList.size());
-			if(teamList == null || teamList.size() == 0){
+			System.out.println(tabClickListener.getTabIndex() + " "
+					+ teamList.size() + " " + gameList.size());
+			if (teamList == null || teamList.size() == 0) {
 				displayNoTeamDialog();
-			}
-			else if (newsList != null && newsList.size() > 0){
+			} else if (newsList != null && newsList.size() > 0) {
 				newsAdapter.notifyDataSetChanged();
-			}else{
-				displayNoNewsDialog();	
+			} else {
+				displayNoNewsDialog();
 			}
-			
+
 			progressBar.setVisibility(8);// jen added
 		}
 	};
 	private Runnable displayScores = new Runnable() {
 		public void run() {
-			if(gameList == null || gameList.size() == 0){
+			if (gameList == null || gameList.size() == 0) {
 				displayNoGamesDialog();
 				setNewsFocus();
-			}
-			else
-				newsAdapter.notifyDataSetChanged();			
-			progressBar.setVisibility(8); //jen added
+			} else
+				newsAdapter.notifyDataSetChanged();
+			progressBar.setVisibility(8); // jen added
 		}
 	};
 	ElementState newsState;
 	ElementState gameScoreState;
 
-	@Override 
+	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig); 
+		super.onConfigurationChanged(newConfig);
 	}
-	
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_teams_tab);
-		
+
 		instance = this;
-		
+
 		super.buildMenu(this, 2);
 
 		// navigate bar
-		TextView navTView = (TextView)findViewById(R.id.navi_bar);
-		Typeface face = Typeface.createFromAsset(getAssets(),"fonts/Arial.ttf");
+		TextView navTView = (TextView) findViewById(R.id.navi_bar);
+		Typeface face = Typeface
+				.createFromAsset(getAssets(), "fonts/Arial.ttf");
 		navTView.setTypeface(face, Typeface.BOLD);
 		navTView.setText(getText(R.string.navi_myteam));
 		navTView.setTextColor(Color.WHITE);
-		
+
 		// no news text
-		noNewsTextView = (TextView)findViewById(R.id.no_news_text);
+		noNewsTextView = (TextView) findViewById(R.id.no_news_text);
 		noNewsTextView.setTypeface(face, Typeface.BOLD);
 		noNewsTextView.setVisibility(TextView.GONE);
-		
-		
+
 		ImageButton tab1 = (ImageButton) findViewById(R.id.my_teams_tab1);
 		ImageButton tab2 = (ImageButton) findViewById(R.id.my_teams_tab2);
 		ImageButton editTeam = (ImageButton) findViewById(R.id.my_teams_edit);
@@ -140,28 +138,31 @@ public class MyTeamsTab extends MyListActivity {
 		});
 		// add Tab's Listener to change tab
 
-		gameScoreState = new ElementState(R.drawable.my_teams_tab1,	R.drawable.my_teams_tab1_over, false);
-		newsState = new ElementState(R.drawable.my_teams_tab2,R.drawable.my_teams_tab2_over, true);
-		
+		gameScoreState = new ElementState(R.drawable.my_teams_tab1,
+				R.drawable.my_teams_tab1_over, false);
+		newsState = new ElementState(R.drawable.my_teams_tab2,
+				R.drawable.my_teams_tab2_over, true);
+
 		HashMap<View, ElementState> elements = new HashMap<View, ElementState>();
 		elements.put(findViewById(R.id.my_teams_tab1), gameScoreState);
 		elements.put(findViewById(R.id.my_teams_tab2), newsState);
-		
+
 		tabClickListener = new MyTeamTabClickListener(elements, this);
 		tab1.setOnClickListener(tabClickListener);
 		tab2.setOnClickListener(tabClickListener);
 
-		
 		// Load data
-		this.newsAdapter = new NewsAdapter(this, R.layout.my_teams_tab,	newsList);
+		this.newsAdapter = new NewsAdapter(this, R.layout.my_teams_tab,
+				newsList);
 		setListAdapter(this.newsAdapter);
-//		setGameScore();
+		// setGameScore();
 		setArticles();
 	}
-//	public void finish() {
-//		super.finish();
-//		ImageLoaderFactory.clear(this);
-//	}
+
+	// public void finish() {
+	// super.finish();
+	// ImageLoaderFactory.clear(this);
+	// }
 	private class NewsAdapter extends ArrayAdapter<Object> {
 
 		private ArrayList<Object> items;
@@ -188,14 +189,15 @@ public class MyTeamsTab extends MyListActivity {
 			View v = convertView;
 			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-			Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Arial.ttf");
+			Typeface face = Typeface.createFromAsset(getAssets(),
+					"fonts/Arial.ttf");
 
 			TextView headline;
 			TextView sc;
 			Object i = null;
-			try{
+			try {
 				i = items.get(position);
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				return v;
 			}
 
@@ -209,12 +211,15 @@ public class MyTeamsTab extends MyListActivity {
 				Game game = (Game) i;
 				v = vi.inflate(R.layout.my_teams_score_element, null);
 				// / All prop
-				TextView minute = (TextView) v.findViewById(R.id.my_teams_minute);
-				ImageView teamLogo1 = (ImageView) v.findViewById(R.id.my_teams_logo1);
+				TextView minute = (TextView) v
+						.findViewById(R.id.my_teams_minute);
+				ImageView teamLogo1 = (ImageView) v
+						.findViewById(R.id.my_teams_logo1);
 				TextView name1 = (TextView) v.findViewById(R.id.my_teams_name1);
 				TextView score = (TextView) v.findViewById(R.id.my_teams_score);
 				TextView name2 = (TextView) v.findViewById(R.id.my_teams_name2);
-				ImageView teamLogo2 = (ImageView) v.findViewById(R.id.my_teams_logo2);
+				ImageView teamLogo2 = (ImageView) v
+						.findViewById(R.id.my_teams_logo2);
 
 				// set Value
 				minute.setTypeface(face);
@@ -224,7 +229,8 @@ public class MyTeamsTab extends MyListActivity {
 
 				minute.setText(game.getStartTime());
 				name1.setText(game.getGuestTeam());
-				score.setText(game.getGuestScore() + " - "+ game.getHomeScore());
+				score.setText(game.getGuestScore() + " - "
+						+ game.getHomeScore());
 				name2.setText(game.getHomeTeam());
 				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
 						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo1);
@@ -294,8 +300,16 @@ public class MyTeamsTab extends MyListActivity {
 			ArrayList<Team> userTeamList = WebServiceReaderMyTeam
 					.getUserTeam(WebServiceReaderMyTeam.getDeviceId(this));
 			teamList = userTeamList;
-			
+
 			if (teamList != null && teamList.size() > 0) {
+				runOnUiThread(new Runnable(){
+
+					@Override
+					public void run() {
+						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
+						textNoteam.setVisibility(TextView.INVISIBLE);	
+					}});
+				
 				ArrayList<ArticleBySubject> abs = WebServiceReaderMyTeam
 						.getUserArrticles(WebServiceReaderMyTeam
 								.getDeviceId(this));
@@ -303,6 +317,16 @@ public class MyTeamsTab extends MyListActivity {
 					newsList.add(a.subject);
 					newsList.addAll(a.articles);
 				}
+				
+			} else {
+				runOnUiThread(new Runnable(){
+
+					@Override
+					public void run() {
+						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
+						textNoteam.setVisibility(TextView.VISIBLE);
+					}});
+			
 			}
 			Log.i("ARRAY", "" + newsList.size());
 		} catch (UnknownHostException ex) {
@@ -356,7 +380,7 @@ public class MyTeamsTab extends MyListActivity {
 
 	boolean isStartNews = false;
 	boolean isStartGames = false;
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		System.out.println("================ aaaaa " + position);
@@ -365,8 +389,10 @@ public class MyTeamsTab extends MyListActivity {
 			if (o instanceof Article) {
 				MyTeamsNewsDetail.position = position;
 				MyTeamsNewsDetail.newsList = newsList;
-				MyTeamsNewsDetail.currentArticle = (Article) newsList.get(position);
-				Intent newsDetailIndent = new Intent(v.getContext(), MyTeamsNewsDetail.class);
+				MyTeamsNewsDetail.currentArticle = (Article) newsList
+						.get(position);
+				Intent newsDetailIndent = new Intent(v.getContext(),
+						MyTeamsNewsDetail.class);
 				startActivityForResult(newsDetailIndent, 0);
 			}
 		}
@@ -385,16 +411,17 @@ public class MyTeamsTab extends MyListActivity {
 
 		Thread thread = new Thread(viewNews);
 		thread.start();
-//		m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
-//				"Please wait...", "Retrieving data ...", true);
-		if(progressBar!=null){
-			runOnUiThread(new Runnable(){
-				public void run(){
+		// m_ProgressDialog = ProgressDialog.show(MyTeamsTab.this,
+		// "Please wait...", "Retrieving data ...", true);
+		if (progressBar != null) {
+			runOnUiThread(new Runnable() {
+				public void run() {
 					progressBar.setVisibility(0);
-				}						
+				}
 			});// jen added
-		}else{
-			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		} else {
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen
+			// added
 		}
 	}
 
@@ -413,75 +440,76 @@ public class MyTeamsTab extends MyListActivity {
 
 		Thread thread = new Thread(viewNews);
 		thread.start();
-		
-		if(progressBar!=null){
-			runOnUiThread(new Runnable(){
-				public void run(){
+
+		if (progressBar != null) {
+			runOnUiThread(new Runnable() {
+				public void run() {
 					progressBar.setVisibility(0);
-				}						
+				}
 			});// jen added
-		}else{
-			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen added
+		} else {
+			progressBar = (ProgressBar) findViewById(R.id.progressbar);// jen
+			// added
 		}
 	}
-	
+
 	/**
-	 * ================================================================================
+	 * ========================================================================
+	 * ========
 	 */
 
-	
 	/**
-	 * Display dialog
-	 * No news.
+	 * Display dialog No news.
 	 */
-	private void displayNoNewsDialog(){
+	private void displayNoNewsDialog() {
 		noNewsTextView.setVisibility(TextView.VISIBLE);
-		
+
 		// display dialog box
 		// when no news
-		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this).create();
-		alertDialog.setTitle(getText(R.string.navi_myteam));
-		alertDialog.setMessage(getText(R.string.no_news_popup));
-		alertDialog.setButton(getText(R.string.ok),
+		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this)
+				.create();
+		alertDialog.setTitle(getText(R.string.noteam_alert_title));
+		alertDialog.setMessage(getText(R.string.noteam_alert_body));
+		alertDialog.setButton(getText(R.string.noteam_alert_button),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						return;
 					}
 				});
-		alertDialog.show();			
+		alertDialog.show();
 	}
-	
+
 	/**
-	 * Display dialog
-	 * No teams.
+	 * Display dialog No teams.
 	 */
-	public void displayNoTeamDialog(){
-//		noNewsTextView.setVisibility(TextView.VISIBLE);
-		
+	public void displayNoTeamDialog() {
+		// noNewsTextView.setVisibility(TextView.VISIBLE);
+
 		// display dialog box
 		// when no news
-		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this).create();
-		alertDialog.setTitle(getText(R.string.navi_myteam));
-		alertDialog.setMessage(getText(R.string.no_team_popup));
-		alertDialog.setButton(getText(R.string.ok),
+		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this)
+				.create();
+		alertDialog.setTitle(getText(R.string.noteam_alert_title));
+		alertDialog.setMessage(getText(R.string.noteam_alert_body_click_1tab));
+		alertDialog.setButton(getText(R.string.noteam_alert_button),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						return;
 					}
 				});
-		alertDialog.show();			
+		alertDialog.show();
 	}
-	
+
 	/**
-	 * Display dialog
-	 * No games.
+	 * Display dialog No games.
 	 */
-	public void displayNoGamesDialog(){
-//		noNewsTextView.setVisibility(TextView.VISIBLE);
-		
+	public void displayNoGamesDialog() {
+		// noNewsTextView.setVisibility(TextView.VISIBLE);
+
 		// display dialog box
 		// when no news
-		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(MyTeamsTab.this)
+				.create();
 		alertDialog.setTitle(getText(R.string.navi_myteam));
 		alertDialog.setMessage(getText(R.string.no_game_popup));
 		alertDialog.setButton(getText(R.string.ok),
@@ -490,18 +518,18 @@ public class MyTeamsTab extends MyListActivity {
 						return;
 					}
 				});
-		alertDialog.show();			
+		alertDialog.show();
 	}
-	
-	public void setNewsFocus(){
+
+	public void setNewsFocus() {
 		ImageButton tab1 = (ImageButton) findViewById(R.id.my_teams_tab1);
 		ImageButton tab2 = (ImageButton) findViewById(R.id.my_teams_tab2);
-		
+
 		progressBar.setVisibility(View.VISIBLE);
 		tabClickListener.onClick(tab2);
 	}
-	
-	public ArrayList<Team> getTeamList(){
+
+	public ArrayList<Team> getTeamList() {
 		return teamList;
 	}
 }

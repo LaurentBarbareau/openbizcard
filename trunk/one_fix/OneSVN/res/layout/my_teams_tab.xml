@@ -27,7 +27,7 @@
 		</FrameLayout>
 		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="320px" android:layout_height="25px">
-			<TextView android:id="@+id/navi_bar" android:layout_width="320px" 
+			<TextView android:id="@+id/navi_bar" android:layout_width="320px"
 				android:gravity="center_horizontal" android:layout_height="25px"
 				android:background="@drawable/my_teams_element" android:textColor="@color/WHITE" />
 		</FrameLayout>
@@ -45,6 +45,7 @@
 			android:layout_width="fill_parent" android:layout_height="276px">
 			<ListView android:id="@+id/android:list"
 				android:layout_width="320px" android:layout_height="wrap_content" />
+
 			<TextView android:layout_width="fill_parent" android:id="@+id/no_news_text"
 				android:layout_height="wrap_content" android:layout_gravity="center_horizontal|center_vertical"
 				android:gravity="center_vertical|center_horizontal"
@@ -54,6 +55,16 @@
 			<ProgressBar android:id="@+id/progressbar"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:layout_gravity="center" />
+			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent" android:layout_height="fill_parent" >
+				<TextView android:layout_width="fill_parent" android:id="@+id/noteam"
+					android:layout_height="fill_parent" android:textColor="@color/BLACK"
+					android:textStyle="bold" android:text="@string/noregiestmsg"
+					android:visibility="invisible" android:layout_marginBottom="30px"
+					android:layout_marginLeft="10px" android:layout_marginRight="10px"
+					android:layout_marginTop="5px">
+				</TextView>
+			</RelativeLayout>
 		</FrameLayout>
 
 	</LinearLayout>
