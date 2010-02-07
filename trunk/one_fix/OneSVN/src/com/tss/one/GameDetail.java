@@ -180,7 +180,7 @@ public class GameDetail extends MyListActivity {
 					Intent mainListIntent = new Intent(view.getContext(),
 							MainList.class);
 					startActivity(mainListIntent);
-				} else if (screenId == 4) {
+				} else if (screenId == 4 || screenId == 7) {
 					instance.finish();
 //					Intent mainListIntent = new Intent(view.getContext(),
 //							ScoreBoard.class);
