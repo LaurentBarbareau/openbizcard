@@ -529,7 +529,13 @@ public class Utils {
 				} else {
 					String first = subTxt.substring(0, subTxt.indexOf(":"));
 					String second= subTxt.substring( subTxt.indexOf(":") +1 , subTxt.length());
-					txt =  txt.substring(0, start)+  second +":" + first  + txt.substring(end, txt.length());
+					String temp = "";
+					if(!first.equals("") && !second.equals("")){
+						temp = second +":" + first;
+					}else{
+						temp = first +":" + second;
+					}
+					txt =  txt.substring(0, start)+ temp  + txt.substring(end, txt.length());
 				}
 				// score pattern
 			}
