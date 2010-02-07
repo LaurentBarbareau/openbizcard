@@ -67,7 +67,7 @@
 				android:layout_width="320px" android:layout_height="25px"
 				android:layout_margin="0dip" android:background="@drawable/head_tab_bar_blank"
 				android:gravity="center" android:textColor="#ffffff"
-				android:textSize="14sp" android:textStyle="bold" android:text="תושדח" />
+				android:textSize="14sp" android:textStyle="bold" android:text="@string/my_team_news_detail" />
 
 			<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				android:layout_width="320px" android:layout_height="25px">
