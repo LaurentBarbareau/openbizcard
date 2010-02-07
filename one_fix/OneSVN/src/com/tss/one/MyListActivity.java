@@ -263,6 +263,7 @@ public class MyListActivity extends ListActivity {
 				System.out.println("===========>>> " + ex.getMessage());
 			}
 			this.finish();
+			  System.exit(0);
 			return true;
 		}
 		return super.onMenuItemSelected(featureId, item);

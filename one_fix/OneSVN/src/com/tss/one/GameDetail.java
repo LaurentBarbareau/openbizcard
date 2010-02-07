@@ -96,6 +96,9 @@ public class GameDetail extends MyListActivity {
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 									gameDetailMinuteTV.setText(getText(R.string.end));
+								}else if(game.getPerioidType().equals("HalfTimeBreak")){
+									gameDetailMinuteTV.setTextColor(Color.GREEN);
+									gameDetailMinuteTV.setText(R.string.result);
 								}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setText(getText(R.string.minute) + " " + game.getStartTime() );
@@ -236,8 +239,8 @@ public class GameDetail extends MyListActivity {
 				System.out.println("=====================>> " + game.isHome+ " " + game.eventType + " " + game.description);
 				v = vi.inflate(R.layout.game_detail_score_element, null);
 
-				String desTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.description);
-				
+//				String desTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.description);
+				String desTxt = game.description;
 				if (game.isHome) {
 					
 					((TextView) v.findViewById(R.id.home_scorer)).setText(desTxt);

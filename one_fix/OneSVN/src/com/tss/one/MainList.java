@@ -319,6 +319,9 @@ public class MainList extends MyListActivity {
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 					minute.setText(Utils.toEndedHebrew(instance, game.getStartTime()));
+				}else if(game.getPerioidType().equals("HalfTimeBreak")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(R.string.result);
 				}else if(game.getCondition().equals("Active")  && !game.getGameType().equals("Basketball")){
 					minute.setTextColor(Color.GREEN);
 					minute.setText(getText(R.string.minute) + " " + game.getStartTime() );
