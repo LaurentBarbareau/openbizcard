@@ -135,6 +135,7 @@ public class MyTeamsSelect extends MyActivity {
 					public void run() {
 						Looper.prepare();
 						Log.i("AddingTeam", "add");
+						MyTeamsTab.needRefresh = true;
 						boolean success = WebServiceReaderMyTeam.addUserTeam(
 								WebServiceReaderMyTeam.getDeviceId(myAct),
 								selectedTeam.getId());

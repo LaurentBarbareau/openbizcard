@@ -206,6 +206,7 @@ public class MyTeamsList extends MyListActivity {
 		}
 
 		public void onClick(View v) {
+			MyTeamsTab.needRefresh = true;
 			teamsList.remove(position);
 			chkList.clear();
 			ImageLoaderFactory.clear(current);

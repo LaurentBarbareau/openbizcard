@@ -49,7 +49,7 @@ public class MyTeamsTab extends MyListActivity {
 	// private ProgressDialog m_ProgressDialog = null;
 	private ProgressBar progressBar;
 	private ArrayList<Object> newsList = new ArrayList<Object>();
-	private ArrayList<Object> gameList = new ArrayList<Object>();
+//	private ArrayList<Object> gameList = new ArrayList<Object>();
 	private ArrayList<Team> teamList = new ArrayList<Team>();
 	// private ArrayList<Object> scoreList = new ArrayList<Object>();
 	public boolean isGame = true;
@@ -58,11 +58,24 @@ public class MyTeamsTab extends MyListActivity {
 	String SCORE_KEY = "score";
 
 	private TextView noNewsTextView;
+	public static boolean needRefresh = false;
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (needRefresh) {
+			needRefresh = false;
+			finish();
+			Intent mainDetailIntent = new Intent(this, MyTeamsTab.class);
+			// mainDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(mainDetailIntent);
+		}
+	}
 
 	private Runnable displayNews = new Runnable() {
 		public void run() {
 			System.out.println(tabClickListener.getTabIndex() + " "
-					+ teamList.size() + " " + gameList.size());
+					+ teamList.size() + " " + newsList.size());
 			if (teamList == null || teamList.size() == 0) {
 				displayNoTeamDialog();
 			} else if (newsList != null && newsList.size() > 0) {
@@ -76,7 +89,7 @@ public class MyTeamsTab extends MyListActivity {
 	};
 	private Runnable displayScores = new Runnable() {
 		public void run() {
-			if (gameList == null || gameList.size() == 0) {
+			if (newsList == null || newsList.size() == 0) {
 				displayNoTeamDialog();
 				setNewsFocus();
 			} else
@@ -302,13 +315,15 @@ public class MyTeamsTab extends MyListActivity {
 			teamList = userTeamList;
 
 			if (teamList != null && teamList.size() > 0) {
-				runOnUiThread(new Runnable(){
+				runOnUiThread(new Runnable() {
 
 					public void run() {
-						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
-						textNoteam.setVisibility(TextView.INVISIBLE);	
-					}});
-				
+						TextView textNoteam = (TextView) instance
+								.findViewById(R.id.noteam);
+						textNoteam.setVisibility(TextView.INVISIBLE);
+					}
+				});
+
 				ArrayList<ArticleBySubject> abs = WebServiceReaderMyTeam
 						.getUserArrticles(WebServiceReaderMyTeam
 								.getDeviceId(this));
@@ -316,15 +331,17 @@ public class MyTeamsTab extends MyListActivity {
 					newsList.add(a.subject);
 					newsList.addAll(a.articles);
 				}
-				
+
 			} else {
-				runOnUiThread(new Runnable(){
+				runOnUiThread(new Runnable() {
 
 					public void run() {
-						TextView textNoteam = (TextView) instance.findViewById(R.id.noteam);
+						TextView textNoteam = (TextView) instance
+								.findViewById(R.id.noteam);
 						textNoteam.setVisibility(TextView.VISIBLE);
-					}});
-			
+					}
+				});
+
 			}
 			Log.i("ARRAY", "" + newsList.size());
 		} catch (UnknownHostException ex) {
@@ -351,11 +368,11 @@ public class MyTeamsTab extends MyListActivity {
 					.getUserGames(WebServiceReaderMyTeam.getDeviceId(this));
 			System.out.println("===================>>>>>>>>>>>>> " + abs);
 			for (GameBySubject a : abs) {
-				gameList.add(a.subject);
-				gameList.addAll(a.games);
+				newsList.add(a.subject);
+				newsList.addAll(a.games);
 			}
 
-			Log.i("ARRAY", "" + newsList.size());
+			Log.i("ARRAY gameList", "" + newsList.size());
 		} catch (UnknownHostException ex) {
 			Log.e("Dont have internet ", ex.getMessage());
 			Utils.showAlert(this, "No Internet Connection.");
@@ -460,7 +477,7 @@ public class MyTeamsTab extends MyListActivity {
 	 * Display dialog No news.
 	 */
 	private void displayNoNewsDialog() {
-//		noNewsTextView.setVisibility(TextView.VISIBLE);
+		// noNewsTextView.setVisibility(TextView.VISIBLE);
 
 		// display dialog box
 		// when no news
@@ -481,7 +498,7 @@ public class MyTeamsTab extends MyListActivity {
 	 * Display dialog No teams.
 	 */
 	public void displayNoTeamDialog() {
-//		noNewsTextView.setVisibility(TextView.VISIBLE);
+		// noNewsTextView.setVisibility(TextView.VISIBLE);
 
 		// display dialog box
 		// when no news
