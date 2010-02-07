@@ -344,6 +344,8 @@ public class MainList extends MyListActivity {
 				//== add team icon
 				String fileName = "";
 				fileName = game.getHomeIcon();
+				if(fileName != null){
+					
 				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 				fileName = "icon_"+fileName;
 //				teamLogo1.setImageResource(Utils.getResourceIdFromPath(MainList.this, fileName));
@@ -356,9 +358,11 @@ public class MainList extends MyListActivity {
 				}else{
 					teamLogo1.setImageResource(rId);
 				}
-				
+				}
 				
 				fileName = game.getGuestIcon();
+				if(fileName != null){
+					
 				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 				fileName = "icon_"+fileName;
 //				teamLogo2.setImageResource(Utils.getResourceIdFromPath(MainList.this, fileName));
@@ -371,7 +375,7 @@ public class MainList extends MyListActivity {
 				}else{
 					teamLogo2.setImageResource(rId_);
 				}
-				
+				}
 //				ImageLoaderStringFactory.createImageLoader(MainList.this,
 //						SCORE_KEY).setTask(game.getHomeIcon(), teamLogo1);
 //				ImageLoaderStringFactory.createImageLoader(MainList.this,
