@@ -528,7 +528,7 @@ public class Utils {
 					 beforeStart= start-1;
 					 afterEnd = end + 1;
 					if(beforeStart<0)beforeStart = 0;
-					if(afterEnd>= length)afterEnd = length;
+					if(afterEnd>= length)afterEnd = length-1;
 					
 					engMatBefore = engPatt.matcher(txt.charAt(beforeStart)+"");
 					engMatAfter = engPatt.matcher(txt.charAt(afterEnd)+"");
