@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -222,36 +223,129 @@ public class MyTeamsTab extends MyListActivity {
 				headline.setText( Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String) i) );
 			} else if (i instanceof Game) {
 
-				Game game = (Game) i;
+				final Game game = (Game) i;
 				v = vi.inflate(R.layout.my_teams_score_element, null);
+				if(game.getHasEvent().equals("true")){
+					(v.findViewById(R.id.arrow_detail)).setVisibility(ImageButton.VISIBLE);
+					v.setOnClickListener(new OnClickListener() {
+
+						public void onClick(View v) {
+							GameDetail.gameId = game.getId();
+							GameDetail.screenId = 7;
+							Intent mainDetailIntent = new Intent(MyTeamsTab.this,GameDetail.class);
+							MyTeamsTab.this.startActivity(mainDetailIntent);
+						}
+					});
+				}
+				else {
+					// game does not start
+					if (game.getHomeScore().equalsIgnoreCase("") || game.getGuestScore().equalsIgnoreCase("")) {
+						v.setOnClickListener(new OnClickListener() {
+							public void onClick(View v) {
+								Utils.displayNoGameDetailNow(instance);
+							}
+						});
+					}else{
+						v.setOnClickListener(new OnClickListener() {
+							public void onClick(View v) {
+								Utils.displayNoGameDetail(instance);
+							}
+						});
+					}
+				}
 				// / All prop
 				TextView minute = (TextView) v
 						.findViewById(R.id.my_teams_minute);
 				ImageView teamLogo1 = (ImageView) v
 						.findViewById(R.id.my_teams_logo1);
-				TextView name1 = (TextView) v.findViewById(R.id.my_teams_name1);
+				TextView nameHome = (TextView) v.findViewById(R.id.my_teams_name1);
 				TextView score = (TextView) v.findViewById(R.id.my_teams_score);
-				TextView name2 = (TextView) v.findViewById(R.id.my_teams_name2);
+				TextView nameGuest = (TextView) v.findViewById(R.id.my_teams_name2);
 				ImageView teamLogo2 = (ImageView) v
 						.findViewById(R.id.my_teams_logo2);
-
 				// set Value
 				minute.setTypeface(face);
-				name1.setTypeface(face);
-				name2.setTypeface(face);
-				score.setTypeface(face, Typeface.BOLD);
-
-				minute.setText(game.getStartTime());
-				name1.setText(game.getGuestTeam());
+				nameHome.setTypeface(face);
+				nameGuest.setTypeface(face);
+				score.setTypeface(face);
+				if(Utils.isEndGame(game.getStartTime())){
+					minute.setTextColor(Color.GREEN);
+					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+					minute.setText(Utils.toEndedHebrew(instance, game.getStartTime()));
+				}else if(game.getPerioidType().equals("HalfTimeBreak")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(R.string.result);
+				}else if(game.getCondition().equals("Active")  && !game.getGameType().equals("Basketball")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(getText(R.string.minute) + " " + game.getStartTime() );
+				}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(game.getStartTime());
+				}
+				else{
+					minute.setText(game.getStartTime());
+				}
+				
+				String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+				String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+							
+				nameHome.setText(hTxt);
 				score.setText(game.getGuestScore() + " - "
 						+ game.getHomeScore());
-				name2.setText(game.getHomeTeam());
-				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
-						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo1);
-				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
-						SCORE_KEY).setTask(game.getHomeIcon(), teamLogo2);
-				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
-						SCORE_KEY).go();
+				nameGuest.setText(gTxt);
+				
+				//== add team icon
+				String fileName = "";
+				fileName = game.getHomeIcon();
+				if(fileName != null){
+					
+				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
+				fileName = "icon_"+fileName;
+//				teamLogo1.setImageResource(Utils.getResourceIdFromPath(MainList.this, fileName));
+				int rId = Utils.getResourceIdFromPath(MyTeamsTab.this, fileName);
+				if(rId == -1){
+					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+					SCORE_KEY).setTask(game.getHomeIcon(), teamLogo1);
+					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+					SCORE_KEY).go();
+				}else{
+					teamLogo1.setImageResource(rId);
+				}
+				}
+				
+				fileName = game.getGuestIcon();
+				if(fileName != null){
+					
+				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
+				fileName = "icon_"+fileName;
+//				teamLogo2.setImageResource(Utils.getResourceIdFromPath(MainList.this, fileName));
+				int rId_ = Utils.getResourceIdFromPath(MyTeamsTab.this, fileName);
+				if(rId_ == -1){
+					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+					SCORE_KEY).setTask(game.getGuestIcon(), teamLogo2);
+					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+					SCORE_KEY).go();
+				}else{
+					teamLogo2.setImageResource(rId_);
+				}
+				}
+//				// set Value
+//				minute.setTypeface(face);
+//				name1.setTypeface(face);
+//				name2.setTypeface(face);
+//				score.setTypeface(face, Typeface.BOLD);
+//
+//				minute.setText(game.getStartTime());
+//				name1.setText(game.getGuestTeam());
+//				score.setText(game.getGuestScore() + " - "
+//						+ game.getHomeScore());
+//				name2.setText(game.getHomeTeam());
+//				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+//						SCORE_KEY).setTask(game.getGuestIcon(), teamLogo1);
+//				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+//						SCORE_KEY).setTask(game.getHomeIcon(), teamLogo2);
+//				ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
+//						SCORE_KEY).go();
 
 			} else {
 				Article article = (Article) i;
