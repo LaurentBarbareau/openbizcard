@@ -44,7 +44,7 @@ import com.tss.one.R;
 
 public class Utils {
 
-	public static String NUMBER_PATTERN = "\\d*";
+	public static String NUMBER_PATTERN = "[[\\p{InHebrew}]&&\\d*]";
 	public static String SCORE_PATTERN = "\\d*:\\d*";
 
 	public static final String[] splitString(String original, String separator) {

@@ -92,11 +92,14 @@ public class MyTeamsList extends MyListActivity {
 
 		back2Tab.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-//				Intent myTeamsTabIntent = new Intent(view.getContext(),
-//						MyTeamsTab.class);
-//				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//				startActivityForResult(myTeamsTabIntent, 0);
+				
 				current.finish();
+				
+				Intent myTeamsTabIntent = new Intent(view.getContext(),
+						MyTeamsTab.class);
+				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivityForResult(myTeamsTabIntent, 0);
+				
 			}
 		});
 		// / Init User Team List

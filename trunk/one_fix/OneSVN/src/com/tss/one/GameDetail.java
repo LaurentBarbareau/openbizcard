@@ -68,8 +68,13 @@ public class GameDetail extends MyListActivity {
 								TextView awayTitelTView = (TextView) findViewById(R.id.game_away_title);
 								homeTitelTView.setTypeface(face, Typeface.BOLD);
 								awayTitelTView.setTypeface(face, Typeface.BOLD);
-								homeTitelTView.setText(game.getHomeTeam());
-								awayTitelTView.setText(game.getGuestTeam());
+								
+								
+								String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
+								String gTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getGuestTeam());
+								
+								homeTitelTView.setText(hTxt);
+								awayTitelTView.setText(gTxt);
 								
 								TextView gameDetailScoreTV = (TextView) findViewById(R.id.game_detail_score);
 								TextView gameDetailFirstHalfScoreTV = (TextView) findViewById(R.id.game_detail_1st_half_score);
@@ -85,7 +90,7 @@ public class GameDetail extends MyListActivity {
 								} else {
 									gameDetailFirstHalfScoreTV.setText("");
 								}
-								
+																
 								System.out.println("game.getGameMinute() = >>>>>>>>>>>>>>> " + game.getGameMinute());
 								if(Utils.isEndGame(game.getStartTime()) || game.getGameMinute().equalsIgnoreCase("0")){
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
@@ -228,8 +233,11 @@ public class GameDetail extends MyListActivity {
 				System.out.println("=====================>> " + game.isHome+ " " + game.eventType + " " + game.description);
 				v = vi.inflate(R.layout.game_detail_score_element, null);
 
+				String desTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.description);
+				
 				if (game.isHome) {
-					((TextView) v.findViewById(R.id.home_scorer)).setText(game.description);
+					
+					((TextView) v.findViewById(R.id.home_scorer)).setText(desTxt);
 					
 					ImageView imageView = (ImageView) v.findViewById(R.id.home_ball);
 					String eventType = game.eventType.toLowerCase();
@@ -247,7 +255,8 @@ public class GameDetail extends MyListActivity {
 					((ImageView) v.findViewById(R.id.guest_line)).setVisibility(TextView.INVISIBLE);
 					((TextView) v.findViewById(R.id.guest_scorer)).setVisibility(TextView.INVISIBLE);
 				} else {
-					((TextView) v.findViewById(R.id.guest_scorer)).setText(game.description);
+					
+					((TextView) v.findViewById(R.id.guest_scorer)).setText(desTxt);
 					
 					ImageView imageView = (ImageView) v.findViewById(R.id.guest_ball);
 					String eventType = game.eventType.toLowerCase();
