@@ -261,6 +261,7 @@ public class MyActivity extends Activity {
 				System.out.println("===========>>> " + ex.getMessage());
 			}
 			this.finish();
+			  System.exit(0);
 			return true;
 		}
 		

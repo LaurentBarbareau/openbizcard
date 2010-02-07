@@ -219,7 +219,7 @@ public class MyTeamsTab extends MyListActivity {
 				v = vi.inflate(R.layout.red_list, null);
 				headline = (TextView) v.findViewById(R.id.subject_title);
 				headline.setTypeface(face);
-				headline.setText((String) i);
+				headline.setText( Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, (String) i) );
 			} else if (i instanceof Game) {
 
 				Game game = (Game) i;
@@ -268,8 +268,8 @@ public class MyTeamsTab extends MyListActivity {
 					headline.setTextSize(headline.getTextSize() + 1);
 					sc.setTypeface(face);
 
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
+					headline.setText(Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle()) );
+					sc.setText(Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle()) );
 
 					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
 							ARTICLE_KEY)
@@ -289,8 +289,8 @@ public class MyTeamsTab extends MyListActivity {
 					headline.setTextSize(headline.getTextSize() + 1);
 					sc.setTypeface(face);
 
-					headline.setText(article.getTitle());
-					sc.setText(article.getScTitle());
+					headline.setText(Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getTitle()) );
+					sc.setText(Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, article.getScTitle()) );
 
 					ImageLoaderStringFactory.createImageLoader(MyTeamsTab.this,
 							ARTICLE_KEY)

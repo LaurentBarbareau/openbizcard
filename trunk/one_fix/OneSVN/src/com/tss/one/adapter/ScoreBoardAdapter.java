@@ -216,7 +216,11 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						minute.setTextColor(Color.GREEN);
 						minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 						minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
-					}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
+					}else if(game.getPerioidType().equals("HalfTimeBreak")){
+						minute.setTextColor(Color.GREEN);
+						minute.setText(R.string.result);
+					}
+					else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 						minute.setTextColor(Color.GREEN);
 						minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
 					}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
@@ -347,6 +351,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+				}else if(game.getPerioidType().equals("HalfTimeBreak")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(R.string.result);
 				}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 					minute.setTextColor(Color.GREEN);
 					minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
@@ -472,6 +479,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+				}else if(game.getPerioidType().equals("HalfTimeBreak")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(R.string.result);
 				}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 					minute.setTextColor(Color.GREEN);
 					minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );

@@ -2,6 +2,8 @@ package com.tssoft.one.webservice.model;
 
 import java.util.ArrayList;
 
+import com.tssoft.one.utils.Utils;
+
 public class Game {
 	private String id = "";
 	private String gameMinute = "";
@@ -176,7 +178,7 @@ public class Game {
 			String guestIcon, String startTime, String homeTeam,
 			String guestTeam, String gameDate, String hasEvent) {
 		if(condition.equals("Active") && !gameType.equals("Basketball")){
-			startTime = gameMinute;
+			startTime = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, gameMinute) ;
 		}
 		if(condition.equals("Ended")){
 			startTime = "Ended";
