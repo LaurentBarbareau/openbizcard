@@ -43,9 +43,10 @@ import android.widget.Toast;
 import com.tss.one.R;
 
 public class Utils {
-	
+
 	public static String NUMBER_PATTERN = "\\d*";
-	
+	public static String SCORE_PATTERN = "\\d*:\\d*";
+
 	public static final String[] splitString(String original, String separator) {
 		Vector nodes = new Vector();
 
@@ -344,7 +345,7 @@ public class Utils {
 			return null;
 		}
 	}
-	
+
 	public static InputStream getBitmap_(String fileUrl) {
 		InputStream is = null;
 		URL myFileUrl = null;
@@ -355,22 +356,23 @@ public class Utils {
 			e.printStackTrace();
 		}
 		try {
-			HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
+			HttpURLConnection conn = (HttpURLConnection) myFileUrl
+					.openConnection();
 			conn.setDoInput(true);
 			conn.connect();
 			int length = conn.getContentLength();
 			// int[] bitmapData = new int[length];
 			// byte[] bitmapData2 = new byte[length];
 			is = conn.getInputStream();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			// e.printStackTrace();
 			System.out.println("Error getBitmap_ : " + e.getMessage());
 		}
 		return is;
 	}
-	
+
 	public static String getHttpConn(String url) {
 		String responseStr = null;
 		try {
@@ -388,22 +390,23 @@ public class Utils {
 		}
 		return responseStr;
 	}
-	
-	public static String toJSONString(String result){
+
+	public static String toJSONString(String result) {
 		String res = result;
-		if(result.startsWith("("))
-			res =  result.substring(1);
-		if(result.indexOf("});") > -1)
-			res = res.substring(0, res.lastIndexOf("});")+3);
-		
+		if (result.startsWith("("))
+			res = result.substring(1);
+		if (result.indexOf("});") > -1)
+			res = res.substring(0, res.lastIndexOf("});") + 3);
+
 		return res;
 	}
-	
-	public static void openBrowser(Context ct, String url){
-		Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse(url));  
-		ct.startActivity(viewIntent); 
+
+	public static void openBrowser(Context ct, String url) {
+		Intent viewIntent = new Intent("android.intent.action.VIEW", Uri
+				.parse(url));
+		ct.startActivity(viewIntent);
 	}
-	
+
 	public static boolean isStartWithEnglishUnicode(String str) {
 		str = str.toLowerCase();
 		String abc = "abcdefghijklmnopqrstuvwxyz";
@@ -414,13 +417,15 @@ public class Utils {
 		}
 		return false;
 	}
-	
-	public static int getResourceIdFromPath(Context context, String fileName){
+
+	public static int getResourceIdFromPath(Context context, String fileName) {
 		int rId = -1;
 		try {
-			rId = context.getResources().getIdentifier(fileName, "drawable", "com.tss.one");
-//			Bitmap image = BitmapFactory.decodeResource(Resources.getSystem() , rId);
-//			System.out.println("image ::: " + image);
+			rId = context.getResources().getIdentifier(fileName, "drawable",
+					"com.tss.one");
+			// Bitmap image = BitmapFactory.decodeResource(Resources.getSystem()
+			// , rId);
+			// System.out.println("image ::: " + image);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			rId = -1;
@@ -428,44 +433,44 @@ public class Utils {
 		}
 		return rId;
 	}
-	
-	public static String toEndedHebrew(Context context, String gameMinute){
-		if(gameMinute.toLowerCase().indexOf("end") > -1)
+
+	public static String toEndedHebrew(Context context, String gameMinute) {
+		if (gameMinute.toLowerCase().indexOf("end") > -1)
 			gameMinute = context.getText(R.string.finishminute).toString();
 		return gameMinute;
 	}
-	
+
 	public static boolean isEndGame(String gameMinute) {
 		if (gameMinute.toLowerCase().indexOf("end") > -1)
 			return true;
 		else
 			return false;
 	}
-	
+
 	public static String timenow(String dateFormat) {
-	    Calendar cal = Calendar.getInstance();
-	    cal.get(Calendar.MINUTE);
-	    SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);	
-	    return sdf.format(cal.getTime());
+		Calendar cal = Calendar.getInstance();
+		cal.get(Calendar.MINUTE);
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		return sdf.format(cal.getTime());
 	}
-	
+
 	public static String getCurrentMinute() {
 		Calendar cal = Calendar.getInstance();
-		String minute = cal.get(Calendar.MINUTE)+"";
-		if(minute.length() == 1)
-			minute = "0"+minute;
+		String minute = cal.get(Calendar.MINUTE) + "";
+		if (minute.length() == 1)
+			minute = "0" + minute;
 		return minute;
 	}
-	
+
 	public static String getCurrentHour() {
 		Calendar cal = Calendar.getInstance();
-		String hour = cal.get(Calendar.HOUR_OF_DAY)+"";
-		if(hour.length() == 1)
-			hour = "0"+hour;
+		String hour = cal.get(Calendar.HOUR_OF_DAY) + "";
+		if (hour.length() == 1)
+			hour = "0" + hour;
 		return hour;
 	}
 
-	public static  void displayNoGameDetail(Context context){
+	public static void displayNoGameDetail(Context context) {
 		// display dialog box
 		// when no news
 		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
@@ -477,46 +482,62 @@ public class Utils {
 						return;
 					}
 				});
-		alertDialog.show();			
+		alertDialog.show();
 	}
-	
-	public static void displayNoGameDetailNow(Context context){
+
+	public static void displayNoGameDetailNow(Context context) {
 		// display dialog box
 		// when no news
 		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 		alertDialog.setTitle(context.getText(R.string.no_game_desc_title));
-		alertDialog.setMessage(context.getText(R.string.no_game_desc_not_start_popup));
+		alertDialog.setMessage(context
+				.getText(R.string.no_game_desc_not_start_popup));
 		alertDialog.setButton(context.getText(R.string.ok),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						return;
 					}
 				});
-		alertDialog.show();			
+		alertDialog.show();
 	}
-	
-	public static String reverseStringByPattern(String strPattern, String oldString){
-		
+
+	public static String reverseStringByPattern(String strPattern,
+			String oldString) {
+
 		String txt = oldString;
 		String subTxt = txt;
 		char[] c;
-		
+
 		Pattern pattern = Pattern.compile(strPattern);
 		Matcher matcher = pattern.matcher(subTxt);
-		
-		while(matcher.find()){
-			if(matcher.group().length()>1){
+
+		while (matcher.find()) {
+			if (matcher.group().length() > 1) {
 				int start = matcher.start();
 				int end = matcher.end();
-				subTxt = txt.substring(start,end);
-				c = subTxt.toCharArray();
-				subTxt = "";
-				for(int j = c.length-1 ;j>=0 ;j--){
-					subTxt += c[j];
+				subTxt = txt.substring(start, end);
+				// number pattern
+				if (!strPattern.equals(SCORE_PATTERN)) {
+					c = subTxt.toCharArray();
+					subTxt = "";
+					for (int j = c.length - 1; j >= 0; j--) {
+						subTxt += c[j];
+					}
+					txt = txt.substring(0, start) + subTxt
+							+ txt.substring(end, txt.length());
+				} else {
+					String first = subTxt.substring(0, subTxt.indexOf(":"));
+					String second= subTxt.substring( subTxt.indexOf(":") +1 , subTxt.length());
+					txt =  txt.substring(0, start)+  second +":" + first  + txt.substring(end, txt.length());
 				}
-				txt = txt.substring(0,start) + subTxt + txt.substring(end,txt.length());
+				// score pattern
 			}
 		}
-		return txt;
+		if (strPattern.equals(SCORE_PATTERN)) {
+			return txt;
+		} else {
+			return reverseStringByPattern(SCORE_PATTERN, txt);
+		}
 	}
+	
 }
