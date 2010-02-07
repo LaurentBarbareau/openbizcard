@@ -96,9 +96,12 @@ public class GameDetail extends MyListActivity {
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 									gameDetailMinuteTV.setText(getText(R.string.end));
-								}else if(game.getCondition().equals("Active")){
+								}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 									gameDetailMinuteTV.setTextColor(Color.GREEN);
 									gameDetailMinuteTV.setText(getText(R.string.minute) + " " + game.getStartTime() );
+								}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
+									gameDetailMinuteTV.setTextColor(Color.GREEN);
+									gameDetailMinuteTV.setText(game.getStartTime());
 								}
 								else{
 									gameDetailMinuteTV.setText(game.getStartTime());

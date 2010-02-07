@@ -175,7 +175,7 @@ public class Game {
 			String penaltyHomeScore, String penaltyGuestScore, String homeIcon,
 			String guestIcon, String startTime, String homeTeam,
 			String guestTeam, String gameDate, String hasEvent) {
-		if(condition.equals("Active")){
+		if(condition.equals("Active") && !gameType.equals("Basketball")){
 			startTime = gameMinute;
 		}
 		if(condition.equals("Ended")){

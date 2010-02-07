@@ -353,6 +353,9 @@ public class ScoreBoard extends MyListActivity {
 			else if (tabClickListener.tabId == 3) {
 				scoreBoardAdapter.notifyDataSetChanged();
 				progressBar.setVisibility(View.GONE);
+			}else if (tabClickListener.tabId == 1) {
+				scoreBoardAdapter.notifyDataSetChanged();
+				progressBar.setVisibility(View.GONE);
 			}
 		}
 	};
