@@ -246,6 +246,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					
 					String fileName = "";
 					fileName = game.getHomeIcon();
+					if(fileName != null){
 					fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 					fileName = "icon_"+fileName;
 					int rId = Utils.getResourceIdFromPath(scoreBoard, fileName);
@@ -257,8 +258,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						System.out.println("yyyyyyyyyyyyyy " + fileName);
 						hIcon.setImageResource(rId);
 					}
-					if(fileName != null){
+					}
 					fileName = game.getGuestIcon();
+					if(fileName != null){
 					fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 					fileName = "icon_"+fileName;
 					int rId_ = Utils.getResourceIdFromPath(scoreBoard, fileName);
@@ -269,6 +271,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						gIcon.setImageResource(rId_);
 					}
 					}
+					
 					
 //				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)
 //						.setTask(game.getHomeIcon(), hIcon);
@@ -378,6 +381,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				
 				String fileName = "";
 				fileName = game.getHomeIcon();
+				if(fileName != null){
 				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 				fileName = "icon_"+fileName;
 
@@ -388,9 +392,10 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				}else{
 					homeIcon.setImageResource(rId);
 				}
-				
+				}
 				
 				fileName = game.getGuestIcon();
+				if(fileName != null){
 				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 				fileName = "icon_"+fileName;
 //				guestIcon.setImageResource(Utils.getResourceIdFromPath(scoreBoard, fileName));
@@ -401,7 +406,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 				}else{
 					guestIcon.setImageResource(rId_);
 				}
-				
+				}
 				
 //				ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard)
 //						.setTask(game.getHomeIcon(), homeIcon);
@@ -513,8 +518,9 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 //						.go();
 				
 				String fileName = "";
-				if(fileName != null){
 				fileName = game.getHomeIcon();
+				if(fileName != null){
+					
 				fileName = fileName.substring(fileName.lastIndexOf("/")+1, fileName.lastIndexOf("."));
 				fileName = "icon_"+fileName;
 //				homeIcon.setImageResource(Utils.getResourceIdFromPath(scoreBoard, fileName));
