@@ -45,8 +45,8 @@ import com.tss.one.R;
 public class Utils {
 
 //	public static String NUMBER_PATTERN = "[[\\p{InHebrew}]&&\\d*]";
-	public static String NUMBER_PATTERN = "\\d*";
-	private static String SCORE_PATTERN = "\\d*:\\d*";
+	public static String NUMBER_PATTERN = "\\d{2,}";
+	private static String SCORE_PATTERN = "\\d{2,}:\\d{2,}";
 
 	public static final String[] splitString(String original, String separator) {
 		Vector nodes = new Vector();
@@ -511,21 +511,39 @@ public class Utils {
 
 		Pattern pattern = Pattern.compile(strPattern);
 		Matcher matcher = pattern.matcher(subTxt);
+		
+		Pattern engPatt = Pattern.compile("[A-Za-z]");
+		Matcher engMatBefore,engMatAfter;
+		int beforeStart,afterEnd;
+		int start,end,length;
 
 		while (matcher.find()) {
-			if (matcher.group().length() > 1) {
-				int start = matcher.start();
-				int end = matcher.end();
+			length = matcher.group().length();
+			if (length > 1) {
+				start = matcher.start();
+				end = matcher.end();
 				subTxt = txt.substring(start, end);
 				// number pattern
 				if (!strPattern.equals(SCORE_PATTERN)) {
-					c = subTxt.toCharArray();
-					subTxt = "";
-					for (int j = c.length - 1; j >= 0; j--) {
-						subTxt += c[j];
+					 beforeStart= start-1;
+					 afterEnd = end + 1;
+					if(beforeStart<0)beforeStart = 0;
+					if(afterEnd>= length)afterEnd = length;
+					
+					engMatBefore = engPatt.matcher(txt.charAt(beforeStart)+"");
+					engMatAfter = engPatt.matcher(txt.charAt(afterEnd)+"");
+					
+					if(!engMatBefore.find()&&!engMatAfter.find()){
+						c = subTxt.toCharArray();
+						System.out.println("before >>>>"+subTxt);
+						subTxt = "";
+						for (int j = c.length - 1; j >= 0; j--) {
+							subTxt += c[j];
+						}
+						System.out.println("after >>>>"+subTxt);
+						txt = txt.substring(0, start) + subTxt
+								+ txt.substring(end, txt.length());
 					}
-					txt = txt.substring(0, start) + subTxt
-							+ txt.substring(end, txt.length());
 				} else {
 					String first = subTxt.substring(0, subTxt.indexOf(":"));
 					String second= subTxt.substring( subTxt.indexOf(":") +1 , subTxt.length());
