@@ -239,8 +239,8 @@ public class GameDetail extends MyListActivity {
 				System.out.println("=====================>> " + game.isHome+ " " + game.eventType + " " + game.description);
 				v = vi.inflate(R.layout.game_detail_score_element, null);
 
-//				String desTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.description);
-				String desTxt = game.description;
+				String desTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.description);
+//				String desTxt = game.description;
 				if (game.isHome) {
 					
 					((TextView) v.findViewById(R.id.home_scorer)).setText(desTxt);
