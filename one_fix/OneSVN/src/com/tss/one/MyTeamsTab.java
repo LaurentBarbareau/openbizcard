@@ -133,6 +133,7 @@ public class MyTeamsTab extends MyListActivity {
 
 		editTeam.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				finish();
 				Intent myTeamsListIntent = new Intent(view.getContext(),
 						MyTeamsList.class);
 				// newsListIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

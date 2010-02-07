@@ -192,6 +192,7 @@ public class MainList extends MyListActivity {
 			isShowDetail = true;
 			MainDetail.article = (Article) mainArticleList.get(position);
 			Intent mainDetailIndent = new Intent(v.getContext(), MainDetail.class);
+			finish();
 			startActivity(mainDetailIndent);
 		}
 	}
