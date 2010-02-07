@@ -115,7 +115,7 @@ public class NewsList extends MyListActivity {
 		if (o instanceof Article) {
 			NewsDetail.currentArticle = (Article) newsList.get(position);
 			Intent newsDetailIndent = new Intent(v.getContext(), NewsDetail.class);
-			finish();
+//			finish();
 			startActivityForResult(newsDetailIndent, 0);
 		}
 	}

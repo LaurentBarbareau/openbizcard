@@ -255,6 +255,10 @@ public class MyListActivity extends ListActivity {
 					NewsList.instance.finish();
 				if(ScoreBoard.instance != null)
 					ScoreBoard.instance.finish();
+				if(OneApplication.instance != null)
+					OneApplication.instance.finish();
+				if(MyTeamsList.instance != null)
+					MyTeamsList.instance.finish();
 			}catch(Exception ex){
 				System.out.println("===========>>> " + ex.getMessage());
 			}

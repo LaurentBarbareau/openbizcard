@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.tssoft.one.utils.Utils;
 import com.tssoft.one.webservice.WebServiceReaderScoreBoard;
 import com.tssoft.one.webservice.model.LiveSubject;
 
@@ -30,7 +31,7 @@ public class ScoreBoardSelect extends MyActivity {
 		public void run() {
 			int i = 0;
 			for (LiveSubject a : leaguesList) {
-				leagueAdapter.add(a.getName());
+				leagueAdapter.add(Utils.reverseStringByPattern(Utils.NUMBER_PATTERN,  a.getName()));
 				i++;
 			}
 			leagueAdapter.notifyDataSetChanged();

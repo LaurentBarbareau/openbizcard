@@ -255,6 +255,8 @@ public class MyActivity extends Activity {
 					ScoreBoard.instance.finish();
 				if(OneApplication.instance != null)
 					OneApplication.instance.finish();
+				if(MyTeamsList.instance != null)
+					MyTeamsList.instance.finish();
 			}catch(Exception ex){
 				System.out.println("===========>>> " + ex.getMessage());
 			}

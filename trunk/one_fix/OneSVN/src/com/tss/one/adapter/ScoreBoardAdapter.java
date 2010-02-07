@@ -216,9 +216,12 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 						minute.setTextColor(Color.GREEN);
 						minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 						minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
-					}else if(game.getCondition().equals("Active")){
+					}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 						minute.setTextColor(Color.GREEN);
 						minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
+					}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
+						minute.setTextColor(Color.GREEN);
+						minute.setText(game.getStartTime());
 					}
 					else{
 						minute.setText(game.getStartTime());
@@ -340,13 +343,19 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 //				}
 //				
 //				minute.setText(Utils.toEndedHebrew(scoreBoard, game.getGameMinute()));
-				if(game.isEnded()){
+				if(Utils.isEndGame(game.getStartTime())){
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-					minute.setText(scoreBoard.getText(R.string.end));
+					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
+				}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
+				}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(game.getStartTime());
 				}
 				else{
-					minute.setText(game.getGameMinute() + " " + scoreBoard.getText(R.string.minute));
+					minute.setText(game.getStartTime());
 				}
 				
 				String hTxt = Utils.reverseStringByPattern(Utils.NUMBER_PATTERN, game.getHomeTeam());
@@ -383,7 +392,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard).setTask(game.getGuestIcon(), guestIcon);
 					ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard).go();
 				}else{
-					homeIcon.setImageResource(rId_);
+					guestIcon.setImageResource(rId_);
 				}
 				
 				
@@ -463,9 +472,12 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					minute.setTextColor(Color.GREEN);
 					minute.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
 					minute.setText(Utils.toEndedHebrew(scoreBoard, game.getStartTime()));
-				}else if(game.getCondition().equals("Active")){
+				}else if(game.getCondition().equals("Active") && !game.getGameType().equals("Basketball")){
 					minute.setTextColor(Color.GREEN);
 					minute.setText(scoreBoard.getText(R.string.minute) + " " + game.getStartTime() );
+				}else if(game.getCondition().equals("Active")  && game.getGameType().equals("Basketball")){
+					minute.setTextColor(Color.GREEN);
+					minute.setText(game.getStartTime());
 				}
 				else{
 					minute.setText(game.getStartTime());
@@ -513,7 +525,7 @@ public class ScoreBoardAdapter extends ArrayAdapter<Object> {
 					ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard).setTask(game.getGuestIcon(), guestIcon);
 					ImageLoaderFactory.createImageLoader((ListActivity) scoreBoard).go();
 				}else{
-					homeIcon.setImageResource(rId_);
+					guestIcon.setImageResource(rId_);
 				}
 			}
 			chkListT1.put(position, v);
