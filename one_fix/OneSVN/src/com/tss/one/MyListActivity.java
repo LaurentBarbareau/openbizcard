@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
 import com.tssoft.one.utils.Constants;
@@ -47,11 +48,12 @@ public class MyListActivity extends ListActivity {
 				banner.setBackgroundDrawable(bd);
 				banner.invalidate();
 			} catch (Exception e) {
-				// TODO: handle exception
+				// Will enter here if there is no image
 				System.out.println("[ Banner ] : InputStream is null");
+				banner.setVisibility(View.INVISIBLE);
 			}
 			if(bannerImageUrl == null)
-				banner.setVisibility(View.GONE);
+				banner.setVisibility(View.INVISIBLE);
 		}
 	};
 
@@ -74,6 +76,12 @@ public class MyListActivity extends ListActivity {
 					indexSrcTarget));
 			targetUrl = URLDecoder.decode(targetUrl);
 		} catch (Exception e) {
+			runOnUiThread(new Runnable(){
+
+				@Override
+				public void run() {
+					banner.setVisibility(View.INVISIBLE);
+				}});
 			e.printStackTrace();
 		}
 		runOnUiThread(bannerR);

@@ -49,9 +49,10 @@ public class MyActivity extends Activity {
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println("[ Banner ] : InputStream is null");
+				banner.setVisibility(View.INVISIBLE);
 			}
 			if(bannerImageUrl == null)
-				banner.setVisibility(View.GONE);
+				banner.setVisibility(View.INVISIBLE);
 		}
 	};
 
@@ -74,6 +75,12 @@ public class MyActivity extends Activity {
 					indexSrcTarget));
 			targetUrl = URLDecoder.decode(targetUrl);
 		} catch (Exception e) {
+			runOnUiThread(new Runnable(){
+
+				@Override
+				public void run() {
+					banner.setVisibility(View.INVISIBLE);
+				}});
 			e.printStackTrace();
 		}
 		runOnUiThread(bannerR);
