@@ -2,6 +2,7 @@ package com.tss.one;
 
 import java.io.InputStream;
 import java.net.URLDecoder;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Map.Entry;
@@ -267,11 +268,13 @@ public class MyActivity extends Activity {
 				System.out.println("===========>>> " + ex.getMessage());
 			}
 			this.finish();
-			
-			for(Entry<Integer,MyActivity> e: pool.entrySet()){
-				e.getValue().finish();
+			try{
+				for(Entry<Integer,MyActivity> e: pool.entrySet()){
+					e.getValue().finish();
+				}
+			}catch(ConcurrentModificationException c){
+				System.out.println("act shut down");
 			}
-			
 			  System.exit(0);
 			return true;
 		}
