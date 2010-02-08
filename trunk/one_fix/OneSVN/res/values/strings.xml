@@ -3,7 +3,7 @@
     <string name="hello"></string>
     <string name="app_name">OneApplication</string>
     <string name="league_prompt">בחר ליגה</string>
-    <string name="team_prompt">בחר צוות</string>
+    <string name="team_prompt">:בחר קבוצה</string>
     <string name="navi_myteam">הקבוצות שלי</string>
     <string name="confirm">אשר‬‬</string>
     <string name="delete_ask">האם ברצונך למחוק קבוצה זו‬</string>
@@ -31,14 +31,14 @@
      <string name="finishminute">מחצית</string>
     
     <string name="font_tricker">12px</string>
-<string name="result">מחצית</string>
-<string name="noregiestmsg">מכבי? הפועל? בית\&quot;ר? ומה בליגת האלופות? ברוכים הבאים לאזור האישי שלכם - הקבוצות שלי. כאן תוכלו להתעדכן במשחקים וחדשות של הקבוצות האהודות עליכם בארץ ובחו\&quot;ל. באמצעות לחיצה על כפתור \&quot;ערוך\&quot; תוכלו בכל עת להוסיף קבוצות נוספות שיהיה בהצלחה לקבוצות שלכם !</string>
-<string name="noteam_alert_title">הקבוצות שלי</string>
-<string name="noteam_alert_body">ברוכים הבאים למסך הקבוצות שלי
+	<string name="result">מחצית</string>
+	<string name="noregiestmsg">מכבי? הפועל? בית\&quot;ר? ומה בליגת האלופות? ברוכים הבאים לאזור האישי שלכם - הקבוצות שלי. כאן תוכלו להתעדכן במשחקים וחדשות של הקבוצות האהודות עליכם בארץ ובחו\&quot;ל. באמצעות לחיצה על כפתור \&quot;ערוך\&quot; תוכלו בכל עת להוסיף קבוצות נוספות שיהיה בהצלחה לקבוצות שלכם !</string>
+	<string name="noteam_alert_title">הקבוצות שלי</string>
+	<string name="noteam_alert_body">ברוכים הבאים למסך הקבוצות שלי
 . להוספת קבוצה למעקב לחץ על כפתור
  ערוך
-</string>
-<string name="noteam_alert_button">אישור</string>
-<string name="noteam_alert_body_click_1tab">לא נמצאו משחקים עבור הקבוצות שנבחרו</string>
-<string name="my_team_news_detail">תושדח</string>
+	</string>
+	<string name="noteam_alert_button">אישור</string>
+	<string name="noteam_alert_body_click_1tab">לא נמצאו משחקים עבור הקבוצות שנבחרו</string>
+	<string name="my_team_news_detail">תושדח</string>
 </resources>
