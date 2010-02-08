@@ -2,6 +2,9 @@ package com.tss.one;
 
 import java.io.InputStream;
 import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Map.Entry;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,6 +25,9 @@ public class MyActivity extends Activity {
 	public static MyActivity instance;
 	private Activity myAct;
 	private int menuId;
+	
+	private static HashMap<Integer,MyActivity> pool = new HashMap<Integer,MyActivity>();	
+	public int id;
 	
 	// ================= [ banner ] ==================//
 	protected ImageView banner;
@@ -261,10 +267,29 @@ public class MyActivity extends Activity {
 				System.out.println("===========>>> " + ex.getMessage());
 			}
 			this.finish();
+			
+			for(Entry<Integer,MyActivity> e: pool.entrySet()){
+				e.getValue().finish();
+			}
+			
 			  System.exit(0);
 			return true;
 		}
 		
 		return super.onMenuItemSelected(featureId, item);
+	}
+	@Override
+	public void startActivity(Intent intent) {
+		// TODO Auto-generated method stub
+		super.startActivity(intent);
+		Random r = new Random();
+		id = r.nextInt();
+		pool.put(id,this);
+	}
+	@Override
+	public void finish() {
+		// TODO Auto-generated method stub
+		pool.remove(id);
+		super.finish();
 	}
 }
