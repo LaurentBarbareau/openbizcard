@@ -76,8 +76,6 @@ public class MyActivity extends Activity {
 			targetUrl = URLDecoder.decode(targetUrl);
 		} catch (Exception e) {
 			runOnUiThread(new Runnable(){
-
-				@Override
 				public void run() {
 					banner.setVisibility(View.INVISIBLE);
 				}});
