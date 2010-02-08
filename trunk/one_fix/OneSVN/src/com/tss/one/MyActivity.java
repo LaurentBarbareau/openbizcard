@@ -58,7 +58,7 @@ public class MyActivity extends Activity {
 	protected void getJSON() {
 		try {
 			// read data
-			String result = Utils.getHttpConn(Constants.BANNER_URL);
+			String result = Utils.getHttpConn(Constants.getBannerURL(this));
 			result = Utils.toJSONString(result);
 			System.out.println("==========================================>>>>>>>>> :: "+ result);
 
