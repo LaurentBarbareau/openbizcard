@@ -74,7 +74,7 @@ public class DocumentDetailScreen extends FixMainScreen implements
 
 		// select a file label
 		LabelField titleLabel = new LabelFieldWithFullBG(docInfo.getTitle(),
-				MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Display
+				MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
 						.getWidth()
 						- 50 * Display.getWidth() / 480);
 		edge = new XYEdges(10, 25 * Display.getWidth() / 480, 10, 25 * Display

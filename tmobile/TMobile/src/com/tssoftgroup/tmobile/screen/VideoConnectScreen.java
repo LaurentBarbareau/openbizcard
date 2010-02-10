@@ -210,7 +210,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 					topic,
 					35,
 					BasicEditField.FIELD_HCENTER | BasicEditField.FIELD_VCENTER,
-					MyColor.FONT_SEARCH, MyColor.TOPIC_BG) {
+					MyColor.FONT_SEARCH, MyColor.SEARCH_COLOR) {
 				public void layout(int width, int height) {
 					super.layout(getPreferredWidth(), getPreferredHeight());
 					setExtent(getPreferredWidth(), getPreferredHeight());
@@ -275,7 +275,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 			// Border.STYLE_TRANSPARENT));
 			// videoManager.add(topicBitmap);
 			LabelField topicLabel = new LabelFieldWithFullBG("Video Connect",
-					MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG,
+					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG,
 					Const.LABEL_WIDTH);
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,
 					25 * Display.getWidth() / 480);

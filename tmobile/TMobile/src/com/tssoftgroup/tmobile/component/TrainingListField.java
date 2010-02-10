@@ -127,7 +127,11 @@ public class TrainingListField extends ListField implements ListFieldCallback {
 			String desc1 = CrieUtils.cutString(descFont, picInfo
 					.getDescription(), remain);
 			g.setFont(titleFont);
-			g.setColor(MyColor.LIST_TITLE_FONT);
+			if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+			g.setColor(MyColor.LIST_TITLE_FONT_UNFOCUS);
+			}else{
+				g.setColor(MyColor.LIST_TITLE_FONT_FOCUS);
+			}
 			int indentX = ((Display.getWidth() > 350) ? 5 : (pic == null ? -2
 					: 2));
 			g.drawText(title, Scale.INDENT_LEFT_RIGHT_TOPIC + wPic + indentX
@@ -168,7 +172,11 @@ public class TrainingListField extends ListField implements ListFieldCallback {
 			}
 			if (picInfo instanceof DocumentInfo) {
 				DocumentInfo temp = (DocumentInfo) picInfo;
-				g.setColor(0xcc1031);
+				if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+					g.setColor(MyColor.LIST_TITLE_FONT_UNFOCUS);
+					}else{
+						g.setColor(MyColor.LIST_TITLE_FONT_FOCUS);
+					}
 				Font docfont = g.getFont().derive(
 						Font.PLAIN,
 						g.getFont().getHeight()

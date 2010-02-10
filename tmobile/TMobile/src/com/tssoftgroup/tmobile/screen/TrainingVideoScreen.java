@@ -80,7 +80,7 @@ public class TrainingVideoScreen extends FixMainScreen implements
 			nextButton.setChangeListener(new ButtonListener(info, 34));
 			//
 			LabelField titleLabel = new LabelFieldWithFullBG(info.getTitle(),
-					MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Display
+					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
 							.getWidth()
 							- 50 * Display.getWidth() / 480);
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,

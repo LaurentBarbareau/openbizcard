@@ -58,7 +58,7 @@ public class TrainingQuestionScreen extends FixMainScreen implements
 	Img imgstock = Img.getInstance();
 	private MainItem _mainMenuItem = new MainItem();
 	LabelField titleLabel = new LabelFieldWithFullBG("Question",
-			MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Const.LABEL_WIDTH);
+			MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Const.LABEL_WIDTH);
 	CrieLabelField questionLabel = new CrieLabelField("", 0x00,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 			LabelField.NON_FOCUSABLE);

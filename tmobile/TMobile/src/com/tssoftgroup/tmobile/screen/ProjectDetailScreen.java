@@ -71,7 +71,7 @@ public class ProjectDetailScreen extends FixMainScreen implements
 
 		// select a file label
 		LabelField titleLabel = new LabelFieldWithFullBG(
-				projectInfo.getTitle(), MyColor.FONT_TOPIC, 0xffffff,
+				projectInfo.getTitle(), MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR,
 				MyColor.TOPIC_BG, Display.getWidth() - 50 * Display.getWidth()
 						/ 480);
 		titleLabel.setMargin(edge);
@@ -86,7 +86,7 @@ public class ProjectDetailScreen extends FixMainScreen implements
 		mainManager.add(descriptionLabel);
 
 		LabelField contactLB = new LabelFieldWithFullBG("contacts",
-				MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Display
+				MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
 						.getWidth()
 						- 50 * Display.getWidth() / 480);
 		contactLB.setMargin(edge);

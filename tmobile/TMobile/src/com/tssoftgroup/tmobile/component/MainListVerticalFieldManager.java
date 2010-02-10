@@ -4,12 +4,14 @@ import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
+import com.tssoftgroup.tmobile.screen.MyMainScreen;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.Img;
 
 public class MainListVerticalFieldManager extends VerticalFieldManager {
 	// Bitmap bkgrndBmp = Bitmap.getBitmapResource("TMobile.png");
 	Img img = Img.getInstance();
+
 	public MainListVerticalFieldManager() {
 		super(VerticalFieldManager.VERTICAL_SCROLL
 				| VerticalFieldManager.VERTICAL_SCROLLBAR);
@@ -22,8 +24,11 @@ public class MainListVerticalFieldManager extends VerticalFieldManager {
 		 * / 2) - (bkgrndBmp .getHeight() /2), bkgrndBmp .getWidth(), bkgrndBmp
 		 * .getHeight(), bkgrndBmp ,0,0); }
 		 */
-		g.setBackgroundColor(Const.BG_COLOR);
-
+		if (getScreen() instanceof MyMainScreen) {
+			g.setBackgroundColor(Const.BG_COLOR_MAIN);
+		} else {
+			g.setBackgroundColor(Const.BG_COLOR);
+		}
 		// Clears the entire graphic area to the current background
 		g.clear();
 
@@ -31,8 +36,9 @@ public class MainListVerticalFieldManager extends VerticalFieldManager {
 
 	protected void sublayout(int width, int height) {
 		super.sublayout(width, height);
-//		setExtent(width, Scale.VIDEO_CONNECT_SCREEN_LIST_HEIGHT);
-		setExtent(width, Display.getHeight() - img.getHeader().getHeight() - img.getFooter().getHeight() );
+		// setExtent(width, Scale.VIDEO_CONNECT_SCREEN_LIST_HEIGHT);
+		setExtent(width, Display.getHeight() - img.getHeader().getHeight()
+				- img.getFooter().getHeight());
 	}
 
 }

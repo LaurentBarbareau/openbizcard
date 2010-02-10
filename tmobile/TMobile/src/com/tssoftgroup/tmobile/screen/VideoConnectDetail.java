@@ -77,7 +77,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 
 			// select a file label
 			LabelField titleLabel = new LabelFieldWithFullBG(
-					picinfo.getTitle(), MyColor.FONT_TOPIC, 0xffffff,
+					picinfo.getTitle(), MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR,
 					MyColor.TOPIC_BG, Display.getWidth() - 50
 							* Display.getWidth() / 480);
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,

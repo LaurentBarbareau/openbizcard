@@ -66,8 +66,9 @@ public class Const {
 	public static final String URL_INCREASE_POLL_COUNT = "http://www.dhlknowledge.com/web/increasepollcount.php";
 	public static final String URL_EMAIL_DOC = "http://dhlknowledge.com/web/senddocemail.php";
 	public static final String DOCUMENT_PATH = "http://www.dhlknowledge.com/web/api/docs/";//Microfunding Proposal Template.doc
-	public static final int BG_COLOR = 0xcdcdcd;
-	public static final int LIST_BG_COLOR = 0xffd66b;
+	public static final int BG_COLOR = 0x414040;
+	public static final int BG_COLOR_MAIN = 0xcdcdcd;
+	public static final int LIST_BG_COLOR = 0xe7007b;
 	public static final int GRAY_COLOR = 0xcccccc;
 	public static final int BLUE_COLOR = 0x0000ff;
 
