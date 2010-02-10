@@ -255,7 +255,7 @@ public class ScannerView extends FrameView {
         brightPanelT1 = new javax.swing.JPanel();
         brightLbT1 = new javax.swing.JLabel();
         brightSldT1 = new javax.swing.JSlider();
-        doubleSideBtnT1 = new javax.swing.JButton();
+        doubleSideBtnT1 = new javax.swing.JToggleButton();
         blackWhiteBtn = new javax.swing.JToggleButton();
         cropBtnT1 = new javax.swing.JToggleButton();
         rotateBtnT1 = new javax.swing.JButton();

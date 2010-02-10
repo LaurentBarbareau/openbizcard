@@ -1270,7 +1270,6 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doubleSideBtnT1ActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
                         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="ScannerView_doubleSideBtnT1"/>
                         <AuxValue name="generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
                       </AuxValues>
