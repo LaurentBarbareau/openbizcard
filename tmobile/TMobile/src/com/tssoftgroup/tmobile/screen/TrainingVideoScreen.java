@@ -87,7 +87,7 @@ public class TrainingVideoScreen extends FixMainScreen implements
 					25 * Display.getWidth() / 480);
 			titleLabel.setMargin(edge);
 			CrieLabelField descriptionLabel = new CrieLabelField(info
-					.getDescription(), 0x00,
+					.getDescription(), MyColor.FONT_DESCRIPTION,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 					LabelField.NON_FOCUSABLE);
 			descriptionLabel.isFix = true;

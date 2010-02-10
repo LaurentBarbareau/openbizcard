@@ -23,7 +23,7 @@ public class VideoListField extends ListField implements ListFieldCallback {
 	private Vector _elements = new Vector();
 	int rowHeight = Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD + 5;
 	Font titleFont = Font.getDefault().derive(Font.BOLD,
-			(Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD / 4) +2);
+			(Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD / 4) + 2);
 	Font descFont = Font.getDefault().derive(Font.PLAIN,
 			(Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD / 4));
 
@@ -98,7 +98,7 @@ public class VideoListField extends ListField implements ListFieldCallback {
 			invalidate();
 		}
 
-		int yPic = y  + (getRowHeight() - pic.getHeight()) / 2;
+		int yPic = y + (getRowHeight() - pic.getHeight()) / 2;
 		int indent = (getRowHeight() - pic.getHeight()) / 2;
 		g.drawBitmap(Scale.INDENT_LEFT_RIGHT_TOPIC + indent, yPic, pic
 				.getWidth(), pic.getHeight(), pic, 0, 0);
@@ -117,19 +117,25 @@ public class VideoListField extends ListField implements ListFieldCallback {
 		g.setFont(titleFont);
 		if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
 			g.setColor(MyColor.LIST_TITLE_FONT_UNFOCUS);
-			}else{
-				g.setColor(MyColor.LIST_TITLE_FONT_FOCUS);
-			}
+		} else {
+			g.setColor(MyColor.LIST_TITLE_FONT_FOCUS);
+		}
 		g.drawText(title, Scale.INDENT_LEFT_RIGHT_TOPIC + pic.getWidth() + 5
 				+ indent, yPic);
-		g.setColor(MyColor.LIST_DESC_FONT);
+		if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+			g.setColor(MyColor.LIST_DESC_FONT_UNFOCUS);
+		} else {
+			g.setColor(MyColor.LIST_DESC_FONT_FOCUS);
+		}
+	
 		g.setFont(descFont);
 		g.drawText(desc1, Scale.INDENT_LEFT_RIGHT_TOPIC + pic.getWidth() + 5
-				+ indent, yPic + titleFont.getHeight() + (Display.getWidth() > 350 ? 10 : 2));
+				+ indent, yPic + titleFont.getHeight()
+				+ (Display.getWidth() > 350 ? 10 : 2));
 		if (picInfo.getDescription().length() > desc1.length()) {
 			int endIndex = picInfo.getDescription().length() - desc1.length() > desc1
-					.length() ? desc1.length() + desc1.length()  : picInfo
-					.getDescription().length() ;
+					.length() ? desc1.length() + desc1.length() : picInfo
+					.getDescription().length();
 			System.out.println("picInfo.getDescription().length() "
 					+ picInfo.getDescription().length());
 			System.out.println("desc1.length() " + desc1.length());
@@ -140,7 +146,9 @@ public class VideoListField extends ListField implements ListFieldCallback {
 						remain);
 				g.drawText(desc2, Scale.INDENT_LEFT_RIGHT_TOPIC
 						+ pic.getWidth() + 5 + indent, yPic
-						+ titleFont.getHeight() + (Display.getWidth() > 350 ? 10 : 3) + descFont.getHeight());
+						+ titleFont.getHeight()
+						+ (Display.getWidth() > 350 ? 10 : 3)
+						+ descFont.getHeight());
 			} catch (Exception e) {
 
 			}

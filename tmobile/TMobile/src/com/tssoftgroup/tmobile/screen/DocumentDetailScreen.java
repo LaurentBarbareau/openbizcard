@@ -83,7 +83,7 @@ public class DocumentDetailScreen extends FixMainScreen implements
 		mainManager.add(titleLabel);
 		// 
 		CrieLabelField descriptionLabel = new CrieLabelField(docInfo
-				.getDescription(), 0x00,
+				.getDescription(), MyColor.FONT_DESCRIPTION,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 				LabelField.NON_FOCUSABLE);
 		descriptionLabel.setMargin(edge);
@@ -101,7 +101,7 @@ public class DocumentDetailScreen extends FixMainScreen implements
 						| HorizontalFieldManager.USE_ALL_WIDTH);
 
 		CrieLabelField filenameLabel = new CrieLabelField(""
-				+ docInfo.getFileName(), 0x00,
+				+ docInfo.getFileName(), MyColor.FONT_DESCRIPTION,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 				LabelField.NON_FOCUSABLE);
 

@@ -96,7 +96,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();
 			///
 			CrieLabelField durLabel = new CrieLabelField("duration "
-					+ picinfo.getDuration(), MyColor.LIST_DESC_FONT,
+					+ picinfo.getDuration(), MyColor.LIST_DESC_FONT_FOCUS,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 5 : 0),
 					LabelField.NON_FOCUSABLE);
@@ -106,7 +106,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			playButtonImg.setMargin(0, 0, 0, 20);
 			durationPlayManager.add(playButtonImg);
 			CrieLabelField descriptionLabel = new CrieLabelField(picinfo
-					.getDescription(), 0x00,
+					.getDescription(), MyColor.FONT_DESCRIPTION,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 					LabelField.NON_FOCUSABLE);
 			descDurationPlayManager.setMargin(0, 25, 0, 10);
@@ -154,7 +154,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 					String[] commentArr = (String[]) commentList.elementAt(i);
 					CrieLabelField commentLabel = new CrieLabelField("By "
 							+ commentArr[2] + " at " + commentArr[1] + ": ",
-							MyColor.LIST_DESC_FONT,
+							MyColor.LIST_DESC_FONT_FOCUS,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 									- (Display.getWidth() > 350 ? 8 : 2),
 							LabelField.FOCUSABLE);
@@ -163,7 +163,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 					commentLabel.setMargin(edge);
 					commentLabel.isFix = true;
 					commentsManager.add(commentLabel);
-					commentLabel = new CrieLabelField(commentArr[0], 0x00,
+					commentLabel = new CrieLabelField(commentArr[0], MyColor.FONT_DESCRIPTION,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 							LabelField.FOCUSABLE);
 					// commentLabel.setBorder(BorderFactory.createSimpleBorder(
@@ -174,7 +174,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 				}
 			}else if (commentList.size() == 0) {
 				CrieLabelField commentLabel = new CrieLabelField(
-						Wording.NO_COMMENT, MyColor.LIST_DESC_FONT,
+						Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);

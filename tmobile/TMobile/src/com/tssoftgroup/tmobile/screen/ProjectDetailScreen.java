@@ -78,7 +78,7 @@ public class ProjectDetailScreen extends FixMainScreen implements
 		mainManager.add(titleLabel);
 		// 
 		CrieLabelField descriptionLabel = new CrieLabelField(projectInfo
-				.getDescription(), 0x00,
+				.getDescription(), MyColor.FONT_DESCRIPTION,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 				LabelField.NON_FOCUSABLE);
 		descriptionLabel.setMargin(edge);
@@ -118,19 +118,19 @@ public class ProjectDetailScreen extends FixMainScreen implements
 
 				nameLabel.setFont(nameLabel.getFont().derive(Font.BOLD));
 				contactsManager.add(nameLabel);
-				CrieLabelField emailLabel = new CrieLabelField( commentArr[1], 0x00,
+				CrieLabelField emailLabel = new CrieLabelField( commentArr[1], MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 4 : 2),
 						LabelField.FOCUSABLE);
 				contactsManager.add(emailLabel);
 				emailLabel.isFix = true;
-				CrieLabelField mobileLabel = new CrieLabelField(commentArr[2], 0x00,
+				CrieLabelField mobileLabel = new CrieLabelField(commentArr[2], MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 4 : 2),
 						LabelField.FOCUSABLE);
 				contactsManager.add(mobileLabel);
 				mobileLabel.isFix = true;
-				CrieLabelField phoneLabel = new CrieLabelField(commentArr[4], 0x00,
+				CrieLabelField phoneLabel = new CrieLabelField(commentArr[4], MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 4 : 2),
 						LabelField.FOCUSABLE);

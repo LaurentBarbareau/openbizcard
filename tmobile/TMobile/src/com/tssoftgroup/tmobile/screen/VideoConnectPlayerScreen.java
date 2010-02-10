@@ -431,7 +431,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		postCommentTF.setText("");
 		CrieLabelField commentLabel = new CrieLabelField("By "
 				+ Engine.comment.getUser() + " at " + Engine.comment.getTime()
-				+ ": ", MyColor.LIST_DESC_FONT,
+				+ ": ", MyColor.LIST_DESC_FONT_FOCUS,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 						- (Display.getWidth() > 350 ? 8 : 2),
 				LabelField.FOCUSABLE);
@@ -480,7 +480,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 				String[] commentArr = (String[]) commentList.elementAt(i);
 				CrieLabelField commentLabel = new CrieLabelField("By "
 						+ commentArr[2] + " at " + commentArr[1] + ": ",
-						MyColor.LIST_DESC_FONT,
+						MyColor.LIST_DESC_FONT_FOCUS,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
@@ -507,7 +507,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 			}
 		} else if (commentList.size() == 0) {
 			CrieLabelField commentLabel = new CrieLabelField(
-					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT,
+					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);

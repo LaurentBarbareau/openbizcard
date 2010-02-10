@@ -44,7 +44,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			ButtonField.ELLIPSIS);
 
 	// Vector of label field
-	LabelField numPage = new LabelField();
+	LabelField numPage = new CrieLabelField("",MyColor.LIST_TITLE_FONT_FOCUS);
 	private Font pageFont = getFont().derive(Font.PLAIN,
 			17 * Display.getWidth() / 480);
 	String[] pageString = { "1", "2", "3" };
@@ -161,7 +161,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 				String[] commentArr = (String[]) commentList.elementAt(i);
 				CrieLabelField commentLabel = new CrieLabelField("By "
 						+ commentArr[2] + " at " + commentArr[1] + ": ",
-						MyColor.LIST_DESC_FONT,
+						MyColor.LIST_DESC_FONT_FOCUS,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
@@ -172,7 +172,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 						35 * Display.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				commentManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0], 0x00,
+				commentLabel = new CrieLabelField(commentArr[0], MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				commentLabel.isFix = true;
@@ -183,7 +183,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			}
 		} else if (commentList.size() == 0) {
 			CrieLabelField commentLabel = new CrieLabelField(
-					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT,
+					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);

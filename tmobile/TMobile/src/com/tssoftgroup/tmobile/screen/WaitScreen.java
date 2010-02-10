@@ -10,10 +10,11 @@ import net.rim.device.api.ui.container.VerticalFieldManager;
 import com.tssoftgroup.tmobile.component.AnimatedGIFField;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.utils.Img;
+import com.tssoftgroup.tmobile.utils.MyColor;
 
 public class WaitScreen extends PopupScreen {
 	private static WaitScreen instance = null;
-	CrieLabelField label = new CrieLabelField("Waiting", 0x00ffffff,13 , Field.NON_FOCUSABLE);
+	CrieLabelField label = new CrieLabelField("Waiting", MyColor.FONT_WAIT,13 , Field.NON_FOCUSABLE);
 	HorizontalFieldManager gifManager;
 	HorizontalFieldManager textManager;
 	

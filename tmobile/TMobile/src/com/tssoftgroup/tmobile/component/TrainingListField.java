@@ -137,7 +137,11 @@ public class TrainingListField extends ListField implements ListFieldCallback {
 			g.drawText(title, Scale.INDENT_LEFT_RIGHT_TOPIC + wPic + indentX
 					+ indent, yPic);
 			g.setFont(descFont);
-			g.setColor(MyColor.LIST_DESC_FONT);
+			if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+				g.setColor(MyColor.LIST_DESC_FONT_UNFOCUS);
+			} else {
+				g.setColor(MyColor.LIST_DESC_FONT_FOCUS);
+			}
 			g
 					.drawText(
 							desc1,
