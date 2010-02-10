@@ -72,35 +72,5 @@
 
     -->
 
-    <!-- Added Code -->
-
-
-<!-- provide a path where executable distros should be saved  -->
-
-<property name="standalone.jar.name" value="IntegratedCardScanner"/>
-
-    <import file="one-jar-ant-task.xml" />
-    <target name="dist-all" depends="jar"
-            description="Bundles a stand-alone OneJAR distribution">
-        <echo>Bundling: OneJAR is copying natives to ${dist.jar.dir}/natives </echo>
-
-        <echo>Bundling: OneJAR is composing ${standalone.jar.name}-all.jar</echo>
-        <one-jar destfile="${dist.jar.dir}/${standalone.jar.name}-all.jar" manifest="one-jar.mf" update="true">
-            <main>
-                <fileset dir="${build.classes.dir}/" />
-            </main>
-            <lib>
-                <fileset file="${dist.jar.dir}/lib/*.*" />
-            </lib>
-            <fileset file="${basedir}/properties.cfg"></fileset><!-- optional -->
-        </one-jar>
-        <echo file="${dist.jar.dir}/README.txt" append="true">
-Run the stand-alone distribution from the command line using:
-        java -jar -Xmx256m ${standalone.jar.name}-all.jar</echo>
-
-    </target>
-
-
-    <!-- End of Added Code -->
-
+  
 </project>
