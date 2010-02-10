@@ -61,7 +61,7 @@ public class PollQuestionScreen extends FixMainScreen implements
 	LabelField titleLabel = new LabelFieldWithFullBG("Question",
 			MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display.getWidth()
 					- 50 * Display.getWidth() / 480);
-	CrieLabelField questionLabel = new CrieLabelField("", 0x00,
+	CrieLabelField questionLabel = new CrieLabelField("", MyColor.FONT_DESCRIPTION,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 			LabelField.NON_FOCUSABLE);
 	RadioButtonGroup radioGroup = new RadioButtonGroup();
