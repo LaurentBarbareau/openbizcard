@@ -1,7 +1,15 @@
 package com.hideoaki.scanner.db.model;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -409,7 +417,16 @@ public class Card {
 	}
 
 	public static void main(String arg[]) {
-		testDeleteLocalCard();
+		// testDeleteLocalCard();
+		// System.out.println("oak");
+//		Card card1 = new Card("krissada5", "chalermsook", "Project LEader",
+//				"hideoaki@gmail.com", "Crie Company Limited",
+//				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+//				"�", "d", "a", "025894821", "ssss", "0805511559", "aa",
+//				"sss", "sss", new Group("Test"), Privacy.GROUP);
+//		System.out.println(convertCardToXML(card1));
+		Card c = convertXMLToCard(testString);
+		System.out.println(c);
 	}
 
 	public static void testAddLocalCard() {
@@ -443,4 +460,34 @@ public class Card {
 			e.printStackTrace();
 		}
 	}
+
+	public static String convertCardToXML(Card card) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(out));
+		encoder.writeObject(card);
+		encoder.close();
+		String outStr = "";
+		try {
+			outStr = new String(out.toByteArray(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			outStr = new String(out.toByteArray());
+		}
+		return outStr;
+	}
+
+	public static Card convertXMLToCard(String xml) {
+		ByteArrayInputStream in = null;
+		try {
+			in = new ByteArrayInputStream(xml.getBytes("UTF-8"));
+		} catch (Exception e) {
+			in = new ByteArrayInputStream(xml.getBytes());
+		}
+		XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(in));
+		Card o = (Card) decoder.readObject();
+		decoder.close();
+		return o;
+	}
+	public static final String testString = "<?xml version='1.0' encoding='UTF-8'?><java version='1.5.0_21' class='java.beans.XMLDecoder'> <object class='com.hideoaki.scanner.db.model.Card'>  <void property='address'>   <string>&quot;400/107 &apos; Soi</string>  </void>  <void property='city'>   <string>Bangkok</string>  </void>  <void property='company'>   <string>Crie Company Limited</string>  </void>  <void property='country'>   <string>d</string>  </void>  <void property='email'>   <string>hideoaki@gmail.com</string>  </void>  <void property='fax'>   <string>ssss</string>  </void>  <void property='firstName'>   <string>krissada5</string>  </void>  <void property='group'>   <object class='com.hideoaki.scanner.db.model.Group'>     <void property='name'>     <string>Test</string>    </void>   </object>  </void>  <void property='imgBack'>   <string>sss</string>  </void>  <void property='imgFront'>   <string>sss</string>  </void>  <void property='lastName'>   <string>chalermsook</string>  </void>  <void property='mobile'>   <string>0805511559</string>  </void>  <void property='note'>   <string>aa</string>  </void>  <void property='position'>   <string>Project LEader</string>  </void>  <void property='privacy'>   <int>2</int>  </void>  <void property='state'>   <string>��ˡˡ</string>  </void>  <void property='telephone'>   <string>025894821</string>  </void>  <void property='website'>   <string>http://www.hideoaki.com</string>  </void>  <void property='zip'>   <string>a</string>  </void> </object></java> ";
+
 }
