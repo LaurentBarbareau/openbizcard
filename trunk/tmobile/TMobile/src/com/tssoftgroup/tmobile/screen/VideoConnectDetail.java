@@ -96,7 +96,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();
 			///
 			CrieLabelField durLabel = new CrieLabelField("duration "
-					+ picinfo.getDuration(), MyColor.LIST_DESC_FONT_FOCUS,
+					+ picinfo.getDuration(), MyColor.FONT_DESCRIPTION_TITLE,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 5 : 0),
 					LabelField.NON_FOCUSABLE);
@@ -154,7 +154,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 					String[] commentArr = (String[]) commentList.elementAt(i);
 					CrieLabelField commentLabel = new CrieLabelField("By "
 							+ commentArr[2] + " at " + commentArr[1] + ": ",
-							MyColor.LIST_DESC_FONT_FOCUS,
+							MyColor.FONT_DESCRIPTION_TITLE,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 									- (Display.getWidth() > 350 ? 8 : 2),
 							LabelField.FOCUSABLE);
@@ -174,7 +174,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 				}
 			}else if (commentList.size() == 0) {
 				CrieLabelField commentLabel = new CrieLabelField(
-						Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
+						Wording.NO_COMMENT, MyColor.FONT_DESCRIPTION_TITLE,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);

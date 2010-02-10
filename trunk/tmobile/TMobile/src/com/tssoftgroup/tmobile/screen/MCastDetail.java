@@ -24,6 +24,7 @@ import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.MenuItem;
+import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
@@ -64,7 +65,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 	HorizontalFieldManager thumnailDescDurationPlayManager = new HorizontalFieldManager();
 	VerticalFieldManager descDurationPlayManager = new VerticalFieldManager();
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
-
+	
 	public MCastDetail(PicInfo picinfo) {
 		super(MODE_MCAST);
 		this.videoPath = picinfo.getVideoUrl();
@@ -117,7 +118,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();
 			// /
 			CrieLabelField durLabel = new CrieLabelField("duration "
-					+ picinfo.getDuration(), MyColor.LIST_DESC_FONT_FOCUS,
+					+ picinfo.getDuration(), MyColor.FONT_DESCRIPTION_TITLE,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 5 : 0),
 					LabelField.NON_FOCUSABLE);
@@ -127,7 +128,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			playButtonImg.setMargin(0, 0, 0, 20);
 			durationPlayManager.add(playButtonImg);
 			CrieLabelField descriptionLabel = new CrieLabelField(picinfo
-					.getDescription(), MyColor.FONT_TOPIC_COLOR,
+					.getDescription(), MyColor.FONT_DESCRIPTION,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 					LabelField.NON_FOCUSABLE);
 
@@ -167,7 +168,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 					String[] commentArr = (String[]) commentList.elementAt(i);
 					CrieLabelField commentLabel = new CrieLabelField("By "
 							+ commentArr[2] + " at " + commentArr[1] + ": ",
-							MyColor.LIST_DESC_FONT_FOCUS,
+							MyColor.FONT_DESCRIPTION_TITLE,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 									- (Display.getWidth() > 350 ? 8 : 2),
 							LabelField.FOCUSABLE);
@@ -189,7 +190,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				}
 			} else if (commentList.size() == 0) {
 				CrieLabelField commentLabel = new CrieLabelField(
-						Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
+						Wording.NO_COMMENT, MyColor.FONT_DESCRIPTION_TITLE,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
@@ -241,7 +242,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				}
 			} else if (moreinfoList.size() == 0) {
 				CrieLabelField moreinfoLabel = new CrieLabelField(
-						Wording.NO_MORE_INFO, MyColor.LIST_DESC_FONT_FOCUS,
+						Wording.NO_MORE_INFO, MyColor.FONT_DESCRIPTION_TITLE,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
