@@ -10,7 +10,7 @@ import net.rim.device.api.ui.component.BitmapField;
 
 public class BitmapFieldWithStatus extends BitmapField {
 	String status;
-	int color = MyColor.LIST_TITLE_FONT;
+	int color = MyColor.LIST_TITLE_FONT_UNFOCUS;
 	Font font = Font.getDefault().derive(Font.ITALIC,
 			12 * Display.getWidth() / 480);
 

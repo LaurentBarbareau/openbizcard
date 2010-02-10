@@ -115,7 +115,11 @@ public class VideoListField extends ListField implements ListFieldCallback {
 		String desc1 = CrieUtils.cutString(descFont, picInfo.getDescription(),
 				remain);
 		g.setFont(titleFont);
-		g.setColor(MyColor.LIST_TITLE_FONT);
+		if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+			g.setColor(MyColor.LIST_TITLE_FONT_UNFOCUS);
+			}else{
+				g.setColor(MyColor.LIST_TITLE_FONT_FOCUS);
+			}
 		g.drawText(title, Scale.INDENT_LEFT_RIGHT_TOPIC + pic.getWidth() + 5
 				+ indent, yPic);
 		g.setColor(MyColor.LIST_DESC_FONT);

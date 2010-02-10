@@ -59,7 +59,7 @@ public class PollQuestionScreen extends FixMainScreen implements
 	private MainItem _mainMenuItem = new MainItem();
 
 	LabelField titleLabel = new LabelFieldWithFullBG("Question",
-			MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG, Display.getWidth()
+			MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display.getWidth()
 					- 50 * Display.getWidth() / 480);
 	CrieLabelField questionLabel = new CrieLabelField("", 0x00,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,

@@ -14,7 +14,7 @@ import net.rim.device.api.ui.component.ButtonField;
 public class MyButtonField extends Field {
 	private int backgroundColour = 0xffffff;
 	// private int highlightColour = 0xe20074;
-	private int highlightColour = 0xd71634;
+	private int highlightColour = Const.LIST_BG_COLOR;
 	private int fontColor = 0x333333;
 	private boolean _bIsFocusable = true;
 	private Font font = getFont().derive(Font.PLAIN,
@@ -56,7 +56,7 @@ public class MyButtonField extends Field {
 	}
 
 	protected void onUnfocus() {
-		backgroundColour = 0xffffff;
+		backgroundColour =0xffffff;
 		fontColor = 0x313131;
 		borderColor = 0x313131;
 		invalidate();

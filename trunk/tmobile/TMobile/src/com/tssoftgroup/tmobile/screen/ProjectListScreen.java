@@ -171,7 +171,7 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 					topic,
 					35,
 					BasicEditField.FIELD_HCENTER | BasicEditField.FIELD_VCENTER,
-					MyColor.FONT_SEARCH, MyColor.TOPIC_BG) {
+					MyColor.FONT_SEARCH, MyColor.SEARCH_COLOR) {
 				public void layout(int width, int height) {
 					super.layout(getPreferredWidth(), getPreferredHeight());
 					setExtent(getPreferredWidth(), getPreferredHeight());
@@ -199,7 +199,7 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 			// bf.setMargin(edge);
 			// videoManager.add(bf);
 			LabelField topicLabel = new LabelFieldWithFullBG("Contact Directory",
-					MyColor.FONT_TOPIC, 0xffffff, MyColor.TOPIC_BG,Const.LABEL_WIDTH);
+					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG,Const.LABEL_WIDTH);
 			edge = new XYEdges(2, 25* Display.getWidth() / 480, 2, 25* Display.getWidth() / 480);
 			topicLabel.setMargin(edge);
 			videoManager.add(topicLabel);
