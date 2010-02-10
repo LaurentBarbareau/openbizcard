@@ -386,7 +386,6 @@ public class ScannerView extends FrameView {
         blankPanel14 = new javax.swing.JPanel();
         upRightT2 = new javax.swing.JPanel();
         genSearchPanelT2 = new javax.swing.JPanel();
-        genSearchLbT2 = new javax.swing.JLabel();
         genSearchTfT2 = new javax.swing.JTextField();
         genSearchT2 = new javax.swing.JButton();
         quickPanelT2 = new javax.swing.JPanel();
@@ -1305,6 +1304,7 @@ public class ScannerView extends FrameView {
         scannerTab.add(upLeftScrollPaneT1, gridBagConstraints);
 
         blankPanel3.setName("blankPanel3"); // NOI18N
+        blankPanel3.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel3Layout = new javax.swing.GroupLayout(blankPanel3);
         blankPanel3.setLayout(blankPanel3Layout);
@@ -1511,14 +1511,6 @@ public class ScannerView extends FrameView {
                 .addGap(18, 18, 18)
                 .addComponent(saveToDbBtnT1)
                 .addGap(20, 20, 20))
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(sideLbT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(frontSideRdT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(backSideRdT1)
-                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(undoBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1533,6 +1525,14 @@ public class ScannerView extends FrameView {
                     .addComponent(emailBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(confirmBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
+            .addGroup(upRightT1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(sideLbT1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(frontSideRdT1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(backSideRdT1)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         upRightT1Layout.setVerticalGroup(
             upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1560,11 +1560,12 @@ public class ScannerView extends FrameView {
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanBtn)
                     .addComponent(saveToDbBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sideLbT1)
                     .addComponent(frontSideRdT1)
-                    .addComponent(backSideRdT1)))
+                    .addComponent(backSideRdT1))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1575,7 +1576,7 @@ public class ScannerView extends FrameView {
 
         low.setMaximumSize(null);
         low.setName("low"); // NOI18N
-        low.setPreferredSize(new java.awt.Dimension(300, 300));
+        low.setPreferredSize(new java.awt.Dimension(300, 340));
         low.setLayout(new java.awt.GridLayout(1, 2));
 
         lowLeftT1.setMaximumSize(null);
@@ -1610,12 +1611,12 @@ public class ScannerView extends FrameView {
             .addGroup(frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
-                        .addGap(2, 2, 2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontCropBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
                 .addContainerGap())
         );
         frontPanelT1Layout.setVerticalGroup(
@@ -1623,26 +1624,22 @@ public class ScannerView extends FrameView {
             .addGroup(frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(frontTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontCropBtnT1)
-                    .addComponent(frontBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(frontBtnT1)
+                    .addComponent(frontCropBtnT1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(frontSpT1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout lowLeftT1Layout = new javax.swing.GroupLayout(lowLeftT1);
         lowLeftT1.setLayout(lowLeftT1Layout);
         lowLeftT1Layout.setHorizontalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowLeftT1Layout.createSequentialGroup()
-                .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
         );
         lowLeftT1Layout.setVerticalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowLeftT1Layout.createSequentialGroup()
-                .addComponent(frontPanelT1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         low.add(lowLeftT1);
@@ -1672,16 +1669,16 @@ public class ScannerView extends FrameView {
         lowRightT1Layout.setHorizontalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowRightT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                    .addGroup(lowRightT1Layout.createSequentialGroup()
-                        .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lowRightT1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
-                        .addGap(2, 2, 2)
-                        .addComponent(backCropBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(backCropBtnT1, 0, 0, Short.MAX_VALUE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lowRightT1Layout.setVerticalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1691,8 +1688,8 @@ public class ScannerView extends FrameView {
                     .addComponent(backCropBtnT1)
                     .addComponent(backBtnT1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         low.add(lowRightT1);
@@ -1712,7 +1709,7 @@ public class ScannerView extends FrameView {
 
         upLeftScrollPaneT2.setMinimumSize(new java.awt.Dimension(350, 260));
         upLeftScrollPaneT2.setName("upLeftScrollPaneT2"); // NOI18N
-        upLeftScrollPaneT2.setPreferredSize(new java.awt.Dimension(350, 260));
+        upLeftScrollPaneT2.setPreferredSize(new java.awt.Dimension(390, 260));
 
         upLeftT2.setName("upLeftT2"); // NOI18N
         upLeftT2.setPreferredSize(new java.awt.Dimension(670, 250));
@@ -2469,11 +2466,11 @@ public class ScannerView extends FrameView {
         blankPanel14.setLayout(blankPanel14Layout);
         blankPanel14Layout.setHorizontalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel14Layout.setVerticalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2484,14 +2481,11 @@ public class ScannerView extends FrameView {
         upRightT2.setMaximumSize(new java.awt.Dimension(350, 250));
         upRightT2.setMinimumSize(new java.awt.Dimension(310, 250));
         upRightT2.setName("upRightT2"); // NOI18N
-        upRightT2.setPreferredSize(new java.awt.Dimension(310, 250));
+        upRightT2.setPreferredSize(new java.awt.Dimension(265, 250));
         upRightT2.setLayout(new java.awt.GridBagLayout());
 
         genSearchPanelT2.setName("genSearchT2"); // NOI18N
-        genSearchPanelT2.setPreferredSize(new java.awt.Dimension(310, 35));
-
-        genSearchLbT2.setText(resourceMap.getString("genSearchLbT2.text")); // NOI18N
-        genSearchLbT2.setName("genSearchLbT2"); // NOI18N
+        genSearchPanelT2.setPreferredSize(new java.awt.Dimension(250, 50));
 
         genSearchTfT2.setText(resourceMap.getString("genSearchTfT2.text")); // NOI18N
         genSearchTfT2.setName("genSearchTfT2"); // NOI18N
@@ -2505,21 +2499,19 @@ public class ScannerView extends FrameView {
             genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genSearchPanelT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(genSearchLbT2)
-                .addGap(16, 16, 16)
-                .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(genSearchT2)
-                .addGap(59, 59, 59))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         genSearchPanelT2Layout.setVerticalGroup(
             genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genSearchPanelT2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(genSearchT2)
-                    .addComponent(genSearchLbT2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(genSearchT2))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2529,7 +2521,7 @@ public class ScannerView extends FrameView {
 
         quickPanelT2.setMinimumSize(new java.awt.Dimension(330, 200));
         quickPanelT2.setName("quickPanelT2"); // NOI18N
-        quickPanelT2.setPreferredSize(new java.awt.Dimension(310, 200));
+        quickPanelT2.setPreferredSize(new java.awt.Dimension(250, 200));
         quickPanelT2.setLayout(new java.awt.GridBagLayout());
 
         quickLb.setText(resourceMap.getString("quickLb.text")); // NOI18N
@@ -2543,7 +2535,7 @@ public class ScannerView extends FrameView {
         btnPanel0T2.setMaximumSize(new java.awt.Dimension(280, 47));
         btnPanel0T2.setMinimumSize(new java.awt.Dimension(280, 47));
         btnPanel0T2.setName("btnPanel0T2"); // NOI18N
-        btnPanel0T2.setPreferredSize(new java.awt.Dimension(280, 47));
+        btnPanel0T2.setPreferredSize(new java.awt.Dimension(230, 47));
         btnPanel0T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn0T2.setActionCommand(resourceMap.getString("engBtn0T2.actionCommand")); // NOI18N
@@ -2591,7 +2583,7 @@ public class ScannerView extends FrameView {
         btnPanel1T2.setMaximumSize(new java.awt.Dimension(280, 47));
         btnPanel1T2.setMinimumSize(new java.awt.Dimension(280, 47));
         btnPanel1T2.setName("btnPanel1T2"); // NOI18N
-        btnPanel1T2.setPreferredSize(new java.awt.Dimension(280, 47));
+        btnPanel1T2.setPreferredSize(new java.awt.Dimension(230, 47));
         btnPanel1T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn3T2.setText(resourceMap.getString("engBtn3T2.text")); // NOI18N
@@ -2637,7 +2629,7 @@ public class ScannerView extends FrameView {
         btnPanel2T2.setMaximumSize(new java.awt.Dimension(280, 47));
         btnPanel2T2.setMinimumSize(new java.awt.Dimension(280, 47));
         btnPanel2T2.setName("btnPanel2T2"); // NOI18N
-        btnPanel2T2.setPreferredSize(new java.awt.Dimension(280, 47));
+        btnPanel2T2.setPreferredSize(new java.awt.Dimension(230, 47));
         btnPanel2T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn6T2.setText(resourceMap.getString("engBtn6T2.text")); // NOI18N
@@ -2764,7 +2756,7 @@ public class ScannerView extends FrameView {
         lowPanelT2.add(tablePanelT2, gridBagConstraints);
 
         deleteEditPanelT2.setName("deleteEditPanelT2"); // NOI18N
-        deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(250, 35));
+        deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(250, 30));
 
         deletedBtnT2.setText(resourceMap.getString("deletedBtnT2.text")); // NOI18N
         deletedBtnT2.setName("deletedBtnT2"); // NOI18N
@@ -2799,7 +2791,7 @@ public class ScannerView extends FrameView {
                 .addGroup(deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deletedBtnT2)
                     .addComponent(editBtnT2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2820,11 +2812,11 @@ public class ScannerView extends FrameView {
         blankPanel6.setLayout(blankPanel6Layout);
         blankPanel6Layout.setHorizontalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel6Layout.setVerticalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2843,7 +2835,7 @@ public class ScannerView extends FrameView {
         upRightT3.setMaximumSize(new java.awt.Dimension(230, 250));
         upRightT3.setMinimumSize(new java.awt.Dimension(230, 250));
         upRightT3.setName("upRightT3"); // NOI18N
-        upRightT3.setPreferredSize(new java.awt.Dimension(230, 250));
+        upRightT3.setPreferredSize(new java.awt.Dimension(230, 280));
 
         brightPanelT3.setMinimumSize(new java.awt.Dimension(242, 40));
         brightPanelT3.setName("brightPanelT3"); // NOI18N
@@ -2977,35 +2969,33 @@ public class ScannerView extends FrameView {
         upRightT3Layout.setHorizontalGroup(
             upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upRightT3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(11, 11, 11)
                         .addComponent(sideLbT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontSideRdT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backSideRdT3))
+                    .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(autoCropBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rotateBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(undoBtnT3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(upRightT3Layout.createSequentialGroup()
-                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(autoCropBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rotateBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(undoBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(20, 20, 20)
-                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(confirmBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                            .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(confirmBtnT3))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         upRightT3Layout.setVerticalGroup(
             upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upRightT3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(20, 20, 20)
                 .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -3026,7 +3016,7 @@ public class ScannerView extends FrameView {
                     .addComponent(sideLbT3)
                     .addComponent(frontSideRdT3)
                     .addComponent(backSideRdT3))
-                .addContainerGap())
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3036,10 +3026,12 @@ public class ScannerView extends FrameView {
         resultTab.add(upRightT3, gridBagConstraints);
 
         lowT3.setName("lowT3"); // NOI18N
-        lowT3.setPreferredSize(new java.awt.Dimension(650, 300));
+        lowT3.setPreferredSize(new java.awt.Dimension(650, 340));
         lowT3.setLayout(new java.awt.GridBagLayout());
 
+        lowLeftT3.setMinimumSize(new java.awt.Dimension(335, 335));
         lowLeftT3.setName("lowLeftT3"); // NOI18N
+        lowLeftT3.setPreferredSize(new java.awt.Dimension(337, 335));
 
         frontTfT3.setName("frontTfT3"); // NOI18N
 
@@ -3062,27 +3054,27 @@ public class ScannerView extends FrameView {
         lowLeftT3Layout.setHorizontalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lowLeftT3Layout.createSequentialGroup()
-                        .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontCropBtnT3))
-                    .addComponent(frontSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(frontSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         lowLeftT3Layout.setVerticalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
-                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontBtnT3)
-                    .addComponent(frontCropBtnT3))
+                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(frontCropBtnT3)
+                        .addComponent(frontBtnT3))
+                    .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3090,7 +3082,9 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         lowT3.add(lowLeftT3, gridBagConstraints);
 
+        lowRightT3.setMinimumSize(new java.awt.Dimension(350, 335));
         lowRightT3.setName("lowRightT3"); // NOI18N
+        lowRightT3.setPreferredSize(new java.awt.Dimension(340, 335));
 
         backTfT3.setName("backTfT3"); // NOI18N
 
@@ -3103,7 +3097,7 @@ public class ScannerView extends FrameView {
         });
 
         backSpT3.setName("backSpT3"); // NOI18N
-        backSpT3.setPreferredSize(new java.awt.Dimension(100, 260));
+        backSpT3.setPreferredSize(new java.awt.Dimension(305, 260));
 
         backCropBtnT3.setText(resourceMap.getString("backCropBtnT3.text")); // NOI18N
         backCropBtnT3.setName("backCropBtnT3"); // NOI18N
@@ -3112,17 +3106,17 @@ public class ScannerView extends FrameView {
         lowRightT3.setLayout(lowRightT3Layout);
         lowRightT3Layout.setHorizontalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowRightT3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(backSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backCropBtnT3))
-                    .addComponent(backSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(backCropBtnT3)))
+                .addGap(20, 20, 20))
         );
         lowRightT3Layout.setVerticalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3132,8 +3126,8 @@ public class ScannerView extends FrameView {
                     .addComponent(backBtnT3)
                     .addComponent(backCropBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3150,7 +3144,7 @@ public class ScannerView extends FrameView {
 
         upLeftScrollPaneT3.setMinimumSize(new java.awt.Dimension(350, 260));
         upLeftScrollPaneT3.setName("upLeftScrollPaneT3"); // NOI18N
-        upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(350, 260));
+        upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(390, 260));
 
         upLeftT3.setName("upLeftT3"); // NOI18N
         upLeftT3.setPreferredSize(new java.awt.Dimension(670, 250));
@@ -5167,7 +5161,6 @@ public class ScannerView extends FrameView {
     private javax.swing.JScrollPane frontSpT3;
     private javax.swing.JTextField frontTfT1;
     private javax.swing.JTextField frontTfT3;
-    private javax.swing.JLabel genSearchLbT2;
     private javax.swing.JPanel genSearchPanelT2;
     private javax.swing.JButton genSearchT2;
     private javax.swing.JTextField genSearchTfT2;
