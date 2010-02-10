@@ -1,17 +1,24 @@
 package com.yov.scanner.imageprocessing;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
 import uk.co.mmscomputing.device.scanner.Scanner;
 import uk.co.mmscomputing.device.scanner.ScannerDevice;
+import uk.co.mmscomputing.device.scanner.ScannerIOException;
 import uk.co.mmscomputing.device.scanner.ScannerIOMetadata;
 import uk.co.mmscomputing.device.scanner.ScannerListener;
 import uk.co.mmscomputing.device.scanner.ScannerIOMetadata.Type;
 
 
 public class CardScanner implements ScannerListener{
+
+        private final int SOURCE_UNDEFINED = 0;
+        private final int SOURCE_SCAN = 1;
+        private final int SOURCE_SELECT = 2;
 
 	private String name;
 	private Scanner cardScanner;
@@ -21,12 +28,19 @@ public class CardScanner implements ScannerListener{
 	
 	//private CardImage scanImage;
 	private BufferedImage scanImage;
+
+        private boolean isNotified, isWaiting;
+        private int waitSource;
 	
 	public CardScanner(){
 		System.out.println("CardScanner - Contructor");
 		
 		cardScanner = Scanner.getDevice();
 		cardScanner.addListener(this);
+
+                isNotified = false;
+                isWaiting = false;
+                waitSource = SOURCE_UNDEFINED;
 	}
 	
 	public CardScanner(String cardFileName){
@@ -36,6 +50,10 @@ public class CardScanner implements ScannerListener{
 		
 		cardScanner = Scanner.getDevice();
 		cardScanner.addListener(this);
+
+                isNotified = false;
+                isWaiting = false;
+                waitSource = SOURCE_UNDEFINED;
 	}
 	
 	/*
@@ -47,11 +65,27 @@ public class CardScanner implements ScannerListener{
 	public synchronized BufferedImage scan(){
 		scanImage = null;
 		System.out.println("CardScanner.scan()");
-		
+                
+                if(name == null){
+                    try {
+                        name = cardScanner.getSelectedDeviceName();
+                    } catch (ScannerIOException ex) {
+                        Logger.getLogger(CardScanner.class.getName()).log(Level.SEVERE, null, ex);
+                        ex.printStackTrace();
+                    }
+                }
+
 		try{
 			cardScanner.acquire();
-			
+                        System.out.println(" ---- Scanner Acquire -----");
+
+                        isWaiting = true;
+                        System.out.println("+++++++ Scanner Wait +++");
+                        waitSource = SOURCE_SCAN;
 			wait();
+                        
+                        isNotified = !isNotified;
+                        
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -66,8 +100,13 @@ public class CardScanner implements ScannerListener{
 		
 		try{
 			cardScanner.select();
-			
+
+                        isWaiting = true;
+                        System.out.println("+++++++ Select Wait +++");
+                        waitSource = SOURCE_SELECT;
 			wait();
+
+                        isNotified = !isNotified;
 			
 			scannerName = cardScanner.getSelectedDeviceName();
 		}catch(Exception e){
@@ -125,18 +164,20 @@ public class CardScanner implements ScannerListener{
 		if(type.equals(ScannerIOMetadata.ACQUIRED)){
 			System.out.println("  --  UPDATE - ACQUIRED");
 			
-			BufferedImage image = metadata.getImage();
-			
-			//scanImage.setImageData(image);
-			scanImage = image;
-			
+			scanImage = metadata.getImage();
+					
 			System.out.println("Have an image now!");
 			
-			notify();
+			if(!isNotified && isWaiting){
+                            notify();
+                            isNotified = true;
+                            isWaiting = false;
+                            System.out.println("+++++++ Update Notify +++");
+			}
 			//TestUI2.class.notifyAll();
 			
 			try{
-				ImageIO.write(image, "jpg", new File(targetFileName+fileNameIndex+".jpg"));
+				ImageIO.write(scanImage, "jpg", new File(targetFileName+fileNameIndex+".jpg"));
 				fileNameIndex++;
 
 				//	        new uk.co.mmscomputing.concurrent.Semaphore(0,true).tryAcquire(2000,null);
@@ -164,14 +205,29 @@ public class CardScanner implements ScannerListener{
 			
 		}else if(type.equals(ScannerIOMetadata.STATECHANGE)){
 			System.out.println("  --  UPDATE - STATECHANGE");
+
+                        System.out.println("metadata.getLastState() = " + metadata.getLastState());
+                        System.out.println("metadata.getState() = " + metadata.getState());
 			
 			// For the case that scan window popped up but cancel button is pushed
-			if((metadata.getLastState() == 4) && (metadata.getState() == 3) && (metadata.getImage() == null))
-				notify();
+			if((metadata.getLastState() == 4) && (metadata.getState() == 3) && (waitSource == SOURCE_SCAN)){
+				if(!isNotified && isWaiting){
+                                    notify();
+                                    isNotified = true;
+                                    isWaiting = false;
+                                    System.out.println("+++++++ Update Notify +++");
+                                }
+                        }
 			
 			// For the case that select window popped up but cancel or select button is pushed
-			if((metadata.getLastState() == 3) && (metadata.getState() == 3))
-				notify();
+			if((metadata.getLastState() == 3) && (metadata.getState() == 3) && (waitSource == SOURCE_SELECT)){
+				if(!isNotified && isWaiting){
+                                    notify();
+                                    isNotified = true;
+                                    isWaiting = false;
+                                    System.out.println("+++++++ Update Notify +++");
+                                }
+                        }
 			
 			System.err.println(metadata.getStateStr());
 		}else if(type.equals(ScannerIOMetadata.EXCEPTION)){
