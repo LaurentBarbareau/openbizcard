@@ -563,7 +563,7 @@ public class ScannerView extends FrameView {
         scannerTab.setLayout(new java.awt.GridBagLayout());
 
         upLeftScrollPaneT1.setName("upLeftScrollPaneT1"); // NOI18N
-        upLeftScrollPaneT1.setPreferredSize(new java.awt.Dimension(390, 260));
+        upLeftScrollPaneT1.setPreferredSize(new java.awt.Dimension(350, 260));
 
         upLeftT1.setName("upLeftT1"); // NOI18N
         upLeftT1.setPreferredSize(new java.awt.Dimension(670, 250));
@@ -1684,7 +1684,7 @@ public class ScannerView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backCropBtnT1))
                     .addComponent(backSpT1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lowRightT1Layout.setVerticalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2990,10 +2990,10 @@ public class ScannerView extends FrameView {
                         .addComponent(backSideRdT3))
                     .addGroup(upRightT3Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(upRightT3Layout.createSequentialGroup()
-<<<<<<< .mine
                                 .addComponent(autoCropBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -3006,23 +3006,6 @@ public class ScannerView extends FrameView {
                                     .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(confirmBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(24, Short.MAX_VALUE))
-=======
-                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(idPanelT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT3Layout.createSequentialGroup()
-                                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(cropBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(rotateBtnT3, 0, 0, Short.MAX_VALUE)
-                                            .addComponent(undoBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(confirmBtnT3)
-                                            .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                                .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))))
-                                .addGap(18, 18, 18)))))
-                .addContainerGap())
->>>>>>> .r155
         );
         upRightT3Layout.setVerticalGroup(
             upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3030,11 +3013,11 @@ public class ScannerView extends FrameView {
                 .addGap(31, 31, 31)
                 .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(autoCropBtnT3)
                     .addComponent(blackWhiteBtnT3))
                 .addGap(7, 7, 7)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rotateBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3172,7 +3155,7 @@ public class ScannerView extends FrameView {
 
         upLeftScrollPaneT3.setMinimumSize(new java.awt.Dimension(350, 260));
         upLeftScrollPaneT3.setName("upLeftScrollPaneT3"); // NOI18N
-        upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(390, 260));
+        upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(350, 260));
 
         upLeftT3.setName("upLeftT3"); // NOI18N
         upLeftT3.setPreferredSize(new java.awt.Dimension(670, 250));
@@ -4100,7 +4083,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4109,7 +4092,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4558,27 +4541,14 @@ public class ScannerView extends FrameView {
 
     private void scanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanBtnActionPerformed
         // TODO add your handling code here:
-<<<<<<< .mine
         //String path = "C:/Documents and Settings/Jenchote/Desktop/scanner/jenCard.jpg";
         //frontTfT1.setText(path);
         //frontLbT1.setIcon(new ImageIcon(path));
-=======
-//        String path = "C:/Documents and Settings/Jenchote/Desktop/scanner/jenCard.jpg";
-//        frontTfT1.setText(path);
-//        frontLbT1.setIcon(new ImageIcon(path));
-//
-//        String path1 = "C:/Documents and Settings/Jenchote/Desktop/scanner/oakCard.jpg";
-//        backTfT1.setText(path1);
-//        backLbT1.setIcon(new ImageIcon(path1));
->>>>>>> .r155
 
-<<<<<<< .mine
         //String path1 = "C:/Documents and Settings/Jenchote/Desktop/scanner/oakCard.jpg";
         //backTfT1.setText(path1);
         //backLbT1.setIcon(new ImageIcon(path1));
 
-=======
->>>>>>> .r155
         // Yov's part: Call scanner
         synchronized(this){
 
