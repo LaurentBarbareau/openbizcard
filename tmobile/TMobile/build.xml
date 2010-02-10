@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="DHLMCast" default="build" basedir=".">
+<project name="TMobileMCast" default="build" basedir=".">
 	<typedef resource="bb-ant-defs.xml" />
 	<property name="dest.dir" value="dist" />
 	<property name="src.dir" value="src" />
@@ -9,7 +9,7 @@
 			<target name="build" description="Build with bb-ant-tools">
 		 <delete dir="${dest.dir}"/>
 		<mkdir dir="${dest.dir}"/>
-				<rapc output="DHLMCast" destdir="${dest.dir}" quiet="true" jdehome="${jde.home}">
+				<rapc output="TMobileMCast" destdir="${dest.dir}" quiet="true" jdehome="${jde.home}">
 									<jdp type="cldc" file="default.properties">
 									</jdp>
 									<src>
@@ -18,8 +18,8 @@
 										</fileset>
 									</src>
 								</rapc>
-								<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/DHLMCast.cod" />
-								<jadtool input="${dest.dir}/DHLMCast.jad" destdir="final">
+								<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/TMobileMCast.cod" />
+								<jadtool input="${dest.dir}/TMobileMCast.jad" destdir="final">
 								   <fileset dir="dist" includes="*.cod" />
 								</jadtool>
 	
@@ -27,7 +27,7 @@
 	<target name="build4.7" description="Build with bb-ant-tools">
 			 <delete dir="${dest.dir}"/>
 			<mkdir dir="${dest.dir}"/>
-			<rapc output="DHLMCast" destdir="${dest.dir}" quiet="true" jdehome="${jde47}">
+			<rapc output="TMobileMCast" destdir="${dest.dir}" quiet="true" jdehome="${jde47}">
 						<jdp type="cldc" file="default.properties">
 						</jdp>
 						<src>
@@ -36,8 +36,8 @@
 							</fileset>
 						</src>
 					</rapc>
-					<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/DHLMCast.cod" />
-					<jadtool input="${dest.dir}/DHLMCast.jad" destdir="final">
+					<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/TMobileMCast.cod" />
+					<jadtool input="${dest.dir}/TMobileMCast.jad" destdir="final">
 					   <fileset dir="dist" includes="*.cod" />
 					</jadtool>
 		
