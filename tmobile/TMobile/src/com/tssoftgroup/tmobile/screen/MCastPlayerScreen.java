@@ -145,14 +145,14 @@ public class MCastPlayerScreen extends MainScreen implements
 							(Display.getWidth() - Const.VIDEO_WIDTH) / 2);
 					// videoField.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 					videoField.setMargin(edge);
-					_currentTime = new CrieLabelField("00:00", 0x00,
+					_currentTime = new CrieLabelField("00:00",MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 							Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.FOCUSABLE);
 					edge = new XYEdges(200 * Display.getWidth() / 480, 5, 0,
 							15 * Display.getWidth() / 480);
 					// _currentTime.setBorder(BorderFactory.createSimpleBorder(
 					// edge, Border.STYLE_TRANSPARENT));
 					// _currentTime.setMargin(edge);
-					_duration = new CrieLabelField("00:00", 0x00,
+					_duration = new CrieLabelField("00:00", MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 							Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.FOCUSABLE);
 					edge = new XYEdges(200 * Display.getWidth() / 480, 0, 0,
 							5 * Display.getWidth() / 480);
@@ -285,7 +285,7 @@ public class MCastPlayerScreen extends MainScreen implements
 		postCommentTF.setText("");
 		CrieLabelField commentLabel = new CrieLabelField("By "
 				+ Engine.comment.getUser() + " at " + Engine.comment.getTime()
-				+ ": ", MyColor.LIST_DESC_FONT_FOCUS,
+				+ ": ", MyColor.FONT_DESCRIPTION_PLAYER,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 						- (Display.getWidth() > 350 ? 8 : 2),
 				LabelField.FOCUSABLE);
@@ -297,7 +297,7 @@ public class MCastPlayerScreen extends MainScreen implements
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		commentsManager.add(commentLabel);
-		commentLabel = new CrieLabelField(Engine.comment.getComment(), MyColor.FONT_DESCRIPTION,
+		commentLabel = new CrieLabelField(Engine.comment.getComment(), MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 				LabelField.FOCUSABLE);
 		commentLabel.setMargin(edge);
@@ -342,7 +342,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				String[] commentArr = (String[]) commentList.elementAt(i);
 				CrieLabelField commentLabel = new CrieLabelField("By "
 						+ commentArr[2] + " at " + commentArr[1] + ": ",
-						MyColor.LIST_DESC_FONT_FOCUS,
+						MyColor.FONT_DESCRIPTION_PLAYER,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
@@ -353,7 +353,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
 				commentsManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0],MyColor.FONT_DESCRIPTION,
+				commentLabel = new CrieLabelField(commentArr[0],MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				commentLabel.setMargin(edge);
@@ -369,7 +369,7 @@ public class MCastPlayerScreen extends MainScreen implements
 			}
 		} else if (commentList.size() == 0) {
 			CrieLabelField commentLabel = new CrieLabelField(
-					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
+					Wording.NO_COMMENT, MyColor.FONT_DESCRIPTION_PLAYER,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);
@@ -402,7 +402,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				String[] moreinfoArr = (String[]) moreinfoList.elementAt(i);
 				// / Label
 				CrieLabelField commentLabel = new CrieLabelField(
-						moreinfoArr[0], MyColor.FONT_DESCRIPTION,
+						moreinfoArr[0], MyColor.FONT_DESCRIPTION_PLAYER,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
 				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
@@ -425,7 +425,7 @@ public class MCastPlayerScreen extends MainScreen implements
 			}
 		} else if (moreinfoList.size() == 0) {
 			CrieLabelField moreinfoLabel = new CrieLabelField(
-					Wording.NO_MORE_INFO, MyColor.LIST_DESC_FONT_FOCUS,
+					Wording.NO_MORE_INFO, MyColor.FONT_DESCRIPTION_PLAYER,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);

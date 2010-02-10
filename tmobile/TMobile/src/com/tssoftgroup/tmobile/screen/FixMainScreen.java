@@ -76,6 +76,13 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			public Object getChoice(int index) throws IllegalArgumentException {
 				return pageString[index];
 			}
+			protected void paint(net.rim.device.api.ui.Graphics g) {
+				g.setColor(MyColor.FONT_DESCRIPTION);
+				super.paint(g);
+			}
+			protected void paintBackground(net.rim.device.api.ui.Graphics g) {
+				g.setColor(MyColor.FONT_DESCRIPTION);
+			}
 		};
 		pageChoice.setPadding(0, 350 * Display.getWidth() / 480, 0, 0);
 		// testChoice.setPadding(0, 450 * Display.getWidth() / 480, 0, 0);
@@ -161,7 +168,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 				String[] commentArr = (String[]) commentList.elementAt(i);
 				CrieLabelField commentLabel = new CrieLabelField("By "
 						+ commentArr[2] + " at " + commentArr[1] + ": ",
-						MyColor.LIST_DESC_FONT_FOCUS,
+						MyColor.FONT_DESCRIPTION_TITLE,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
@@ -172,7 +179,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 						35 * Display.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				commentManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0], MyColor.FONT_DESCRIPTION,
+				commentLabel = new CrieLabelField(commentArr[0], MyColor.getFontColor(scr.getScreen()),
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				commentLabel.isFix = true;
@@ -183,7 +190,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			}
 		} else if (commentList.size() == 0) {
 			CrieLabelField commentLabel = new CrieLabelField(
-					Wording.NO_COMMENT, MyColor.LIST_DESC_FONT_FOCUS,
+					Wording.NO_COMMENT,MyColor.FONT_DESCRIPTION_TITLE,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);
