@@ -1079,11 +1079,11 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="doubleSideBtnT1" min="-2" pref="109" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="blackWhiteBtn" pref="115" max="32767" attributes="0"/>
+                                      <Component id="blackWhiteBtnT1" pref="115" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cropBtnT1" min="-2" pref="109" max="-2" attributes="0"/>
+                                      <Component id="autoCropBtnT1" min="-2" pref="109" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="readCardBtnT1" pref="116" max="32767" attributes="0"/>
                                   </Group>
@@ -1118,11 +1118,11 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="doubleSideBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="blackWhiteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="blackWhiteBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="2" pref="2" max="2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="autoCropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="readCardBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="7" pref="7" max="7" attributes="0"/>
@@ -1274,22 +1274,22 @@
                         <AuxValue name="generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="blackWhiteBtn">
+                    <Component class="javax.swing.JToggleButton" name="blackWhiteBtnT1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="blackWhiteBtn.text"/>
-                        <Property name="name" type="java.lang.String" value="blackWhiteBtn" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="blackWhiteBtnT1.text"/>
+                        <Property name="name" type="java.lang.String" value="blackWhiteBtnT1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blackWhiteBtnActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blackWhiteBtnT1ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="cropBtnT1">
+                    <Component class="javax.swing.JToggleButton" name="autoCropBtnT1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="cropBtnT1.text"/>
-                        <Property name="name" type="java.lang.String" value="cropBtnT1" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="autoCropBtnT1.text"/>
+                        <Property name="name" type="java.lang.String" value="autoCropBtnT1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cropBtnT1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="autoCropBtnT1ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="rotateBtnT1">
@@ -1449,10 +1449,12 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="frontTfT1" min="-2" pref="105" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="frontBtnT1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                                              <Component id="frontCropBtnT1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="frontSpT1" alignment="0" pref="290" max="32767" attributes="0"/>
                                       </Group>
@@ -1466,6 +1468,7 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="frontTfT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="frontBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="frontCropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="frontSpT1" min="-2" pref="265" max="-2" attributes="0"/>
@@ -1504,6 +1507,12 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                             </Container>
+                            <Component class="javax.swing.JButton" name="frontCropBtnT1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" resourceKey="frontCropBtnT1.text"/>
+                                <Property name="name" type="java.lang.String" value="frontCropBtnT1" noResource="true"/>
+                              </Properties>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1520,17 +1529,16 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="1">
                                           <Component id="backTfT1" min="-2" pref="105" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="backBtnT1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="backCropBtnT1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="backSpT1" min="-2" pref="290" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="backSpT1" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="25" max="32767" attributes="0"/>
                               </Group>
@@ -1540,8 +1548,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="backTfT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="backCropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="backBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="backTfT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="backSpT1" min="-2" pref="265" max="-2" attributes="0"/>
@@ -1580,6 +1589,12 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                         </Container>
+                        <Component class="javax.swing.JButton" name="backCropBtnT1">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" resourceKey="backCropBtnT1.text"/>
+                            <Property name="name" type="java.lang.String" value="backCropBtnT1" noResource="true"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -3257,6 +3272,15 @@
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="brightPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
+<<<<<<< .mine
+                                          <Component id="idPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="1">
+                                              <Component id="autoCropBtnT3" min="-2" pref="111" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                              <Component id="blackWhiteBtnT3" max="32767" attributes="0"/>
+                                          </Group>
+=======
+>>>>>>> .r155
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="idPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3291,9 +3315,15 @@
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="idPanelT3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="4" pref="4" max="4" attributes="0"/>
+<<<<<<< .mine
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="autoCropBtnT3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="blackWhiteBtnT3" min="-2" max="-2" attributes="0"/>
+=======
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="cropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="blackWhiteBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> .r155
                               </Group>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -3381,13 +3411,13 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blackWhiteBtnT3ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="cropBtnT3">
+                    <Component class="javax.swing.JToggleButton" name="autoCropBtnT3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="cropBtnT3.text"/>
-                        <Property name="name" type="java.lang.String" value="cropBtnT3" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="autoCropBtnT3.text"/>
+                        <Property name="name" type="java.lang.String" value="autoCropBtnT3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cropBtnT3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="autoCropBtnT3ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="rotateBtnT3">
@@ -3546,17 +3576,16 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="1">
                                           <Component id="frontTfT3" min="-2" pref="105" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="frontBtnT3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="frontCropBtnT3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="frontSpT3" min="-2" pref="290" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="frontSpT3" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -3568,6 +3597,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="frontTfT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="frontBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="frontCropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="frontSpT3" min="-2" pref="265" max="-2" attributes="0"/>
@@ -3605,6 +3635,12 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                         </Container>
+                        <Component class="javax.swing.JButton" name="frontCropBtnT3">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" resourceKey="frontCropBtnT3.text"/>
+                            <Property name="name" type="java.lang.String" value="frontCropBtnT3" noResource="true"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="lowRightT3">
@@ -3621,17 +3657,16 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="1">
                                           <Component id="backTfT3" min="-2" pref="105" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="backBtnT3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="backCropBtnT3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="backSpT3" min="-2" pref="290" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="backSpT3" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -3643,6 +3678,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="backTfT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="backBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="backCropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="backSpT3" min="-2" pref="265" max="-2" attributes="0"/>
@@ -3680,6 +3716,12 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                         </Container>
+                        <Component class="javax.swing.JButton" name="backCropBtnT3">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" resourceKey="backCropBtnT3.text"/>
+                            <Property name="name" type="java.lang.String" value="backCropBtnT3" noResource="true"/>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
