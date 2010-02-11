@@ -6,7 +6,6 @@ package com.jen.scanner.ui;
 
 import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
-import com.hideoaki.scanner.db.model.Group;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.jen.scanner.ui.util.DBFileFilter;
 import com.jen.scanner.ui.util.JPGFileFilter;
@@ -23,13 +22,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Hashtable;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
-import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;
@@ -41,7 +38,6 @@ import javax.swing.table.DefaultTableModel;
 import com.roncemer.ocr.*;
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 /**
@@ -1304,7 +1300,6 @@ public class ScannerView extends FrameView {
         scannerTab.add(upLeftScrollPaneT1, gridBagConstraints);
 
         blankPanel3.setName("blankPanel3"); // NOI18N
-        blankPanel3.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel3Layout = new javax.swing.GroupLayout(blankPanel3);
         blankPanel3.setLayout(blankPanel3Layout);
@@ -2492,6 +2487,11 @@ public class ScannerView extends FrameView {
 
         genSearchT2.setText(resourceMap.getString("genSearchT2.text")); // NOI18N
         genSearchT2.setName("genSearchT2"); // NOI18N
+        genSearchT2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genSearchT2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout genSearchPanelT2Layout = new javax.swing.GroupLayout(genSearchPanelT2);
         genSearchPanelT2.setLayout(genSearchPanelT2Layout);
@@ -4346,10 +4346,29 @@ public class ScannerView extends FrameView {
                 String fax = faxTfT1.getText();
                 String ads = adsTaT1.getText();
                 String note = noteTaT1.getText();
+                
                 String imgFront = validatePath(frontTfT1.getText());
                 String imgBack = validatePath(backTfT1.getText());
 
-                Card newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note, imgFront, imgBack, new Group(), 0);
+                String nameE = nameTfTE1.getText();
+                String lastNameE = lastnameTfTE1.getText();
+                String titleE = titleTfTE1.getText();
+                String companyE = companyTfTE1.getText();
+                String stateE = disTfTE1.getText();
+                String cityE = subDisTfTE1.getText();
+                String codeE = codeTfTE1.getText();
+                String countryE = provinceTfTE1.getText();
+                String mobileE = mobileTfTE1.getText();
+                String phoneE = phoneTfTE1.getText();
+                String faxE = faxTfTE1.getText();
+                String adsE = adsTaTE1.getText();
+                String noteE = noteTaTE1.getText();
+
+                Card newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note, 
+                                        imgFront, imgBack,
+                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+                //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
+
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
 
             } catch (ScannerDBException ex) {
@@ -4995,6 +5014,16 @@ public class ScannerView extends FrameView {
             }
         }
     }//GEN-LAST:event_blackWhiteBtnT3ActionPerformed
+
+    private void genSearchT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genSearchT2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if(localCardList!=null){
+            for(Card c : localCardList){
+                model.addRow(new Object[]{false,c.getFirstName(),c.getLastName(),c.getPosition(),c.getEmail(),c.getCompany(),c.getMobile(),c.getTelephone(),c.getCountry()});
+            }
+        }
+    }//GEN-LAST:event_genSearchT2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToLocalBtnT4;

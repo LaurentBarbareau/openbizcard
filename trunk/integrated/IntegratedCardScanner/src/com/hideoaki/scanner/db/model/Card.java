@@ -51,12 +51,25 @@ public class Card {
 	private String fax;
 	private String mobile;
 	private String note;
+
+        private String firstNameE;
+	private String lastNameE;
+	private String positionE;
+	private String companyE;
+	private String addressE;
+	private String cityE;
+	private String stateE;
+	private String countryE;
+	private String zipE;
+	private String telephoneE;
+	private String faxE;
+	private String mobileE;
+	private String noteE;
+
 	private String imgFront;
 	private String imgBack;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "GROUP_ID")
-	private Group group;
-	private int privacy;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -83,7 +96,12 @@ public class Card {
 			String email, String company, String website, String address,
 			String city, String state, String country, String zip,
 			String telephone, String fax, String mobile, String note,
-			String imgFront, String imgBack, Group group, int privacy) {
+                        String imgFront, String imgBack,
+                        String firstNameE, String lastNameE, String positionE,
+			String companyE, String addressE,
+			String cityE, String stateE, String countryE, String zipE,
+			String telephoneE, String faxE, String mobileE, String noteE
+			) {
 		id = -1L;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -100,10 +118,24 @@ public class Card {
 		this.fax = fax;
 		this.mobile = mobile;
 		this.note = note;
-		this.imgFront = imgFront;
+
+                this.imgFront = imgFront;
 		this.imgBack = imgBack;
-		this.group = group;
-		this.privacy = privacy;
+
+                this.firstNameE = firstNameE;
+		this.lastNameE = lastNameE;
+		this.positionE = positionE;
+		this.companyE = companyE;
+		this.addressE = addressE;
+		this.cityE = cityE;
+		this.stateE = stateE;
+		this.countryE = countryE;
+		this.zipE = zipE;
+		this.telephoneE = telephoneE;
+		this.faxE = faxE;
+		this.mobileE = mobileE;
+		this.noteE = noteE;
+
 	}
 
 	public Long getId() {
@@ -250,22 +282,6 @@ public class Card {
 		this.imgBack = imgBack;
 	}
 
-	public Group getGroup() {
-		return group;
-	}
-
-	public void setGroup(Group group) {
-		this.group = group;
-	}
-
-	public int getPrivacy() {
-		return privacy;
-	}
-
-	public void setPrivacy(int privacy) {
-		this.privacy = privacy;
-	}
-
 	@Override
 	public String toString() {
 		return "FNAME " + firstName + " LNAME " + lastName + " EMAIL " + email
@@ -290,15 +306,11 @@ public class Card {
 		this.mobile = card.mobile;
 		this.note = card.note;
 		this.imgFront = card.imgFront;
-		this.imgBack = card.imgBack;
-		if (this.group != null && card.group != null) {
-			this.group.copy(card.group);
-		}
-		this.privacy = card.privacy;
+		this.imgBack = card.imgBack;		
 	}
 
 	public String[] toArray() {
-		String[] arr = new String[20];
+		String[] arr = new String[31];
 		arr[0] = String.valueOf(id);
 		arr[1] = firstName;
 		arr[2] = lastName;
@@ -317,8 +329,20 @@ public class Card {
 		arr[15] = note;
 		arr[16] = imgFront;
 		arr[17] = imgBack;
-		arr[18] = group == null ? "" : group.getName();
-		arr[19] = String.valueOf(privacy);
+                arr[18] = firstNameE;
+		arr[19] = lastNameE;
+		arr[20] = positionE;
+		arr[21] = companyE;
+		arr[22] = addressE;
+		arr[23] = cityE;
+		arr[24] = stateE;
+		arr[25] = countryE;
+		arr[26] = zipE;
+		arr[27] = telephoneE;
+		arr[28] = faxE;
+		arr[29] = mobileE;
+		arr[30] = noteE;
+
 		return arr;
 	}
 
@@ -349,8 +373,21 @@ public class Card {
 				card.note = nextLine[15];
 				card.imgFront = nextLine[16];
 				card.imgBack = nextLine[17];
-				card.group = new Group(nextLine[18]);
-				card.privacy = Integer.parseInt(nextLine[19]);
+
+                                card.firstNameE = nextLine[18];
+				card.lastNameE = nextLine[19];
+				card.positionE = nextLine[20];
+				card.companyE = nextLine[21];
+				card.addressE = nextLine[22];
+				card.cityE = nextLine[23];
+				card.stateE = nextLine[24];
+				card.countryE = nextLine[25];
+				card.zipE = nextLine[26];
+				card.telephoneE = nextLine[27];
+				card.faxE = nextLine[28];
+				card.mobileE = nextLine[29];
+				card.noteE = nextLine[30];
+
 				// System.out.println("Name: [" + nextLine[0] + "]\nAddress: ["
 				// + nextLine[1] + "]\nEmail: [" + nextLine[2] + "]");
 				listCard.add(card);
@@ -429,52 +466,52 @@ public class Card {
 		System.out.println(c);
 	}
 
-	public static void testAddLocalCard() {
-
-		Card card1 = new Card("krissada5", "chalermsook", "Project LEader",
-				"hideoaki@gmail.com", "Crie Company Limited",
-				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
-				"��", "d", "a", "025894821", "ssss", "0805511559", "aa",
-				"sss", "sss", new Group("Test"), Privacy.GROUP);
-		Card card2 = new Card("krissada6", "chalermsook2", "Project LEader2",
-				"hideoaki@gmail.com2", "Crie Company Limited2",
-				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
-				"��", "d", "a", "025894821", "ssss", "0805511559", "aa",
-				"sss", "sss", new Group("Test"), Privacy.GROUP);
-		try {
-			addLocalCard(card1, DEFAULT_LOCAL_CARD_FILE);
-			addLocalCard(card2, DEFAULT_LOCAL_CARD_FILE);
-		} catch (ScannerDBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	public static void testDeleteLocalCard() {
-		try {
-			List<Card> c = deleteLocalCard(1, DEFAULT_LOCAL_CARD_FILE);
-			System.out.println("after " + c.size());
-		} catch (ScannerDBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static String convertCardToXML(Card card) {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(out));
-		encoder.writeObject(card);
-		encoder.close();
-		String outStr = "";
-		try {
-			outStr = new String(out.toByteArray(), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			outStr = new String(out.toByteArray());
-		}
-		return outStr;
-	}
+//	public static void testAddLocalCard() {
+//
+//		Card card1 = new Card("krissada5", "chalermsook", "Project LEader",
+//				"hideoaki@gmail.com", "Crie Company Limited",
+//				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+//				"��", "d", "a", "025894821", "ssss", "0805511559", "aa",
+//				"sss", "sss");
+//		Card card2 = new Card("krissada6", "chalermsook2", "Project LEader2",
+//				"hideoaki@gmail.com2", "Crie Company Limited2",
+//				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+//				"��", "d", "a", "025894821", "ssss", "0805511559", "aa",
+//				"sss", "sss");
+//		try {
+//			addLocalCard(card1, DEFAULT_LOCAL_CARD_FILE);
+//			addLocalCard(card2, DEFAULT_LOCAL_CARD_FILE);
+//		} catch (ScannerDBException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
+//	public static void testDeleteLocalCard() {
+//		try {
+//			List<Card> c = deleteLocalCard(1, DEFAULT_LOCAL_CARD_FILE);
+//			System.out.println("after " + c.size());
+//		} catch (ScannerDBException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	public static String convertCardToXML(Card card) {
+//		ByteArrayOutputStream out = new ByteArrayOutputStream();
+//		XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(out));
+//		encoder.writeObject(card);
+//		encoder.close();
+//		String outStr = "";
+//		try {
+//			outStr = new String(out.toByteArray(), "UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			outStr = new String(out.toByteArray());
+//		}
+//		return outStr;
+//	}
 
 	public static Card convertXMLToCard(String xml) {
 		ByteArrayInputStream in = null;
@@ -488,6 +525,6 @@ public class Card {
 		decoder.close();
 		return o;
 	}
-	public static final String testString = "<?xml version='1.0' encoding='UTF-8'?><java version='1.5.0_21' class='java.beans.XMLDecoder'> <object class='com.hideoaki.scanner.db.model.Card'>  <void property='address'>   <string>&quot;400/107 &apos; Soi</string>  </void>  <void property='city'>   <string>Bangkok</string>  </void>  <void property='company'>   <string>Crie Company Limited</string>  </void>  <void property='country'>   <string>d</string>  </void>  <void property='email'>   <string>hideoaki@gmail.com</string>  </void>  <void property='fax'>   <string>ssss</string>  </void>  <void property='firstName'>   <string>krissada5</string>  </void>  <void property='group'>   <object class='com.hideoaki.scanner.db.model.Group'>     <void property='name'>     <string>Test</string>    </void>   </object>  </void>  <void property='imgBack'>   <string>sss</string>  </void>  <void property='imgFront'>   <string>sss</string>  </void>  <void property='lastName'>   <string>chalermsook</string>  </void>  <void property='mobile'>   <string>0805511559</string>  </void>  <void property='note'>   <string>aa</string>  </void>  <void property='position'>   <string>Project LEader</string>  </void>  <void property='privacy'>   <int>2</int>  </void>  <void property='state'>   <string>��ˡˡ</string>  </void>  <void property='telephone'>   <string>025894821</string>  </void>  <void property='website'>   <string>http://www.hideoaki.com</string>  </void>  <void property='zip'>   <string>a</string>  </void> </object></java> ";
+	public static final String testString = "<?xml version='1.0' encoding='UTF-8'?><java version='1.5.0_21' class='java.beans.XMLDecoder'> <object class='com.hideoaki.scanner.db.model.Card'>  <void property='address'>   <string>&quot;400/107 &apos; Soi</string>  </void>  <void property='city'>   <string>Bangkok</string>  </void>  <void property='company'>   <string>Crie Company Limited</string>  </void>  <void property='country'>   <string>d</string>  </void>  <void property='email'>   <string>hideoaki@gmail.com</string>  </void>  <void property='fax'>   <string>ssss</string>  </void>  <void property='firstName'>   <string>krissada5</string>  </void>  <void property='group'>   <object class='com.hideoaki.scanner.db.model.Group'>     <void property='name'>     <string>Test</string>    </void>   </object>  </void>  <void property='imgBack'>   <string>sss</string>  </void>  <void property='imgFront'>   <string>sss</string>  </void>  <void property='lastName'>   <string>chalermsook</string>  </void>  <void property='mobile'>   <string>0805511559</string>  </void>  <void property='note'>   <string>aa</string>  </void>  <void property='position'>   <string>Project LEader</string>  </void>  <void property='privacy'>   <int>2</int>  </void>  <void property='state'>   <string>��ˡˡ</string>  </void>  <void property='telephone'>   <string>025894821</string>  </void>  <void property='website'>   <string>http://www.hideoaki.com</string>  </void>  <void property='zip'>   <string>a</string>  </void> </object></java> ";
 
 }

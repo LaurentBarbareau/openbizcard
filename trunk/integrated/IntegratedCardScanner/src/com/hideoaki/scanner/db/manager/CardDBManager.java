@@ -23,14 +23,14 @@ public class CardDBManager {
 	public static final String SQL_SELECT_CARD = "SELECT c from Card c";
 
 	public static void main(String[] args) {
-                		Card card12 = new Card("krissada3", "chalermsook", "Project LEader",
-				"hideoaki@gmail.com", "Crie Company Limited",
-				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
-				"test", "d", "a", "025894821", "ssss", "0805511559", "aa",
-				"sss", "sss", new Group("Test"), Privacy.GROUP);
+//                		Card card12 = new Card("krissada3", "chalermsook", "Project LEader",
+//				"hideoaki@gmail.com", "Crie Company Limited",
+//				"http://www.hideoaki.com", "\"400/107 \' Soi", "Bangkok",
+//				"test", "d", "a", "025894821", "ssss", "0805511559", "aa",
+//				"sss", "sss", new Group("Test"), Privacy.GROUP);
 		//List<Card> newCards = CardDBManager.loadDBCard();
 		//int before = newCards.size();
-		CardDBManager.addCard(card12);
+//		CardDBManager.addCard(card12);
 		//newCards =  CardDBManager.loadDBCard();
 //		Card card5 = new Card("krissada13", "chalermsook", "Project LEader",
 //				"hideoaki@gmail.com", "Crie Company Limited",
