@@ -4381,12 +4381,14 @@ public class ScannerView extends FrameView {
                         ( (imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5)) ||
                           (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)) ) ){
                     imgFile.renameTo(new File(".\\cardImages\\" + cardID + ".jpg"));
+                    newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
                 }
 
                 if(imgBackFile.isFile() &&
                         ( (imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5)) ||
                           (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)) ) ){
                     imgBackFile.renameTo(new File(".\\cardImages\\" + cardID + "Back.jpg"));
+                    newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
                 }
 
             } catch (ScannerDBException ex) {
