@@ -4371,6 +4371,24 @@ public class ScannerView extends FrameView {
 
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
 
+                Long cardID = newCard.getId();
+                String imgFileName = frontTfT1.getText();
+                String imgBackFileName = backTfT1.getText();
+                File imgFile = new File (imgFileName);
+                File imgBackFile = new File(imgBackFileName);
+
+                if(imgFile.isFile() &&
+                        ( (imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5)) ||
+                          (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)) ) ){
+                    imgFile.renameTo(new File(".\\cardImages\\" + cardID + ".jpg"));
+                }
+
+                if(imgBackFile.isFile() &&
+                        ( (imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5)) ||
+                          (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)) ) ){
+                    imgBackFile.renameTo(new File(".\\cardImages\\" + cardID + "Back.jpg"));
+                }
+
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
             }
