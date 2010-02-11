@@ -1020,9 +1020,6 @@
                 <Container class="javax.swing.JPanel" name="blankPanel3">
                   <Properties>
                     <Property name="name" type="java.lang.String" value="blankPanel3" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 10]"/>
-                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2673,6 +2670,9 @@
                             <Property name="text" type="java.lang.String" resourceKey="genSearchT2.text"/>
                             <Property name="name" type="java.lang.String" value="genSearchT2" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genSearchT2ActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
