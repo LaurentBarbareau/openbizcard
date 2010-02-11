@@ -44,7 +44,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			ButtonField.ELLIPSIS);
 
 	// Vector of label field
-	LabelField numPage = new CrieLabelField("",MyColor.LIST_TITLE_FONT_FOCUS);
+	LabelField numPage = new CrieLabelField("",0x00);
 	private Font pageFont = getFont().derive(Font.PLAIN,
 			17 * Display.getWidth() / 480);
 	String[] pageString = { "1", "2", "3" };

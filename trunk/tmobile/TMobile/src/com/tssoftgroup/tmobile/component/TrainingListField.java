@@ -97,6 +97,12 @@ public class TrainingListField extends ListField implements ListFieldCallback {
 			g.fillRect(0, y, Display.getWidth(), getRowHeight());
 			XYRect rect = new XYRect();
 			getFocusRect(rect);
+			if (!(Math.abs(rect.y - y) < getRowHeight() / 2 && isMyFocus)) {
+				g.setColor(Const.LIST_BG_COLOR_UNFOCUS);
+			} else {
+				g.setColor(Const.LIST_BG_COLOR);
+			}
+			g.fillRect(Scale.INDENT_LEFT_RIGHT_TOPIC, y, Display.getWidth()- 2 * Scale.INDENT_LEFT_RIGHT_TOPIC, getRowHeight());
 			if (isMyFocus) {
 				g.setColor(Const.LIST_BG_COLOR);
 				g.fillRect(rect.x + Scale.INDENT_LEFT_RIGHT_TOPIC, rect.y,

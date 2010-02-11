@@ -111,7 +111,7 @@ public class ProjectDetailScreen extends FixMainScreen implements
 				String positionStr = commentArr[3].equals("") ? "" : "("
 						+ commentArr[3] + ")";
 				LabelField nameLabel = new LabelFieldWithFullBG(commentArr[0]
-						+ positionStr, MyColor.COMMENT_LABEL_FONT, 0x00,
+						+ positionStr, MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
 						MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
 								* Display.getWidth() / 480);
 				// nameLabel.setMargin(edge);

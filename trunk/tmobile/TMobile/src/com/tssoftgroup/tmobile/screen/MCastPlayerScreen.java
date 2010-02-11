@@ -267,17 +267,17 @@ public class MCastPlayerScreen extends MainScreen implements
 
 	public boolean isAlreadyAddComment = false;
 	public LabelField commentLabelField = new LabelFieldWithFullBG("comments",
-			MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG, Display
+			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
 					- 50 * Display.getWidth() / 480);
 	LabelField postCommentLabel = new LabelFieldWithFullBG("post comment",
-			MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG, Display
+			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
 					- 50 * Display.getWidth() / 480);
 
 	EditField postCommentTF = new EditField("", "");
 	LabelField moreinfoLabelField = new LabelFieldWithFullBG("more info",
-			MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG, Display
+			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
 					- 50 * Display.getWidth() / 480);
 

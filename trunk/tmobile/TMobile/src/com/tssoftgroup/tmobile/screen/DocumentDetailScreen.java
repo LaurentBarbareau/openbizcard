@@ -90,7 +90,7 @@ public class DocumentDetailScreen extends FixMainScreen implements
 		mainManager.add(descriptionLabel);
 
 		LabelField fileInfoLB = new LabelFieldWithFullBG("file",
-				MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG,
+				MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 				Display.getWidth() - 50 * Display.getWidth() / 480);
 		fileInfoLB.setMargin(edge);
 		mainManager.add(fileInfoLB);
