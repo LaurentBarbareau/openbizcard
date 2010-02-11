@@ -154,7 +154,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			// CommentListVerticalFieldManager listVerticalManager = new
 			// CommentListVerticalFieldManager();
 			LabelField commentLB = new LabelFieldWithFullBG("comments",
-					MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG,
+					MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 
 			// LabelField commentLB = new LabelField("Comments:");
@@ -206,7 +206,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			VerticalFieldManager listVerticalManager = new VerticalFieldManager();
 			// LabelField moreinfoLB = new LabelField("More Info:");
 			LabelField moreinfoLB = new LabelFieldWithFullBG("more info",
-					MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG,
+					MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
 					Scale.EDGE, 25 * Display.getWidth() / 480);
@@ -267,7 +267,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 
 			// LabelField postCommentLabel = new LabelField("Post Comment: ");
 			LabelField postCommentLabel = new LabelFieldWithFullBG(
-					"post comment", MyColor.COMMENT_LABEL_FONT, 0x00,
+					"post comment", MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
 					MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
 							* Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,

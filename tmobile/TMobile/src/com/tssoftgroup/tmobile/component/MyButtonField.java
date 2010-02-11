@@ -1,6 +1,7 @@
 package com.tssoftgroup.tmobile.component;
 
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.MyColor;
 
 import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.Display;
@@ -14,7 +15,7 @@ import net.rim.device.api.ui.component.ButtonField;
 public class MyButtonField extends Field {
 	private int backgroundColour = 0xffffff;
 	// private int highlightColour = 0xe20074;
-	private int highlightColour = Const.LIST_BG_COLOR;
+	private int highlightColour = MyColor.FONT_DESCRIPTION;
 	private int fontColor = 0x333333;
 	private boolean _bIsFocusable = true;
 	private Font font = getFont().derive(Font.PLAIN,

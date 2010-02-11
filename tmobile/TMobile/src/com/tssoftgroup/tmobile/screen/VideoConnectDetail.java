@@ -126,7 +126,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			// CommentListVerticalFieldManager listVerticalManager = new
 			// CommentListVerticalFieldManager();
 			LabelField commentLB = new LabelFieldWithFullBG("comments",
-					MyColor.COMMENT_LABEL_FONT, 0x00, MyColor.COMMENT_LABEL_BG,
+					MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480, Scale.EDGE,
 					25 * Display.getWidth() / 480);
@@ -199,7 +199,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 			mainManager.add(commentsManager);
 
 			LabelField postCommentLabel = new LabelFieldWithFullBG(
-					"post comment", MyColor.COMMENT_LABEL_FONT, 0x00,
+					"post comment", MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
 					MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
 							* Display.getWidth() / 480);// postCommentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480, Scale.EDGE,
