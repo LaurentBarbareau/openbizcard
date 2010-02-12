@@ -2553,11 +2553,21 @@ public class ScannerView extends FrameView {
         engBtn1T2.setText(resourceMap.getString("engBtn1T2.text")); // NOI18N
         engBtn1T2.setName("engBtn1T2"); // NOI18N
         engBtn1T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn1T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn1T2ActionPerformed(evt);
+            }
+        });
         btnPanel0T2.add(engBtn1T2, new java.awt.GridBagConstraints());
 
         engBtn2T2.setText(resourceMap.getString("engBtn2T2.text")); // NOI18N
         engBtn2T2.setName("engBtn2T2"); // NOI18N
         engBtn2T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn2T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn2T2ActionPerformed(evt);
+            }
+        });
         btnPanel0T2.add(engBtn2T2, new java.awt.GridBagConstraints());
 
         thBtn0T2.setText(resourceMap.getString("thBtn0T2.text")); // NOI18N
@@ -2595,6 +2605,11 @@ public class ScannerView extends FrameView {
         engBtn3T2.setText(resourceMap.getString("engBtn3T2.text")); // NOI18N
         engBtn3T2.setName("engBtn3T2"); // NOI18N
         engBtn3T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn3T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn3T2ActionPerformed(evt);
+            }
+        });
         btnPanel1T2.add(engBtn3T2, new java.awt.GridBagConstraints());
 
         thBtn3T2.setText(resourceMap.getString("thBtn3T2.text")); // NOI18N
@@ -2605,6 +2620,11 @@ public class ScannerView extends FrameView {
 
         engBtn4T2.setText(resourceMap.getString("engBtn4T2.text")); // NOI18N
         engBtn4T2.setName("engBtn4T2"); // NOI18N
+        engBtn4T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn4T2ActionPerformed(evt);
+            }
+        });
         btnPanel1T2.add(engBtn4T2, new java.awt.GridBagConstraints());
 
         thBtn4T2.setText(resourceMap.getString("thBtn4T2.text")); // NOI18N
@@ -2617,6 +2637,11 @@ public class ScannerView extends FrameView {
         engBtn5T2.setText(resourceMap.getString("engBtn5T2.text")); // NOI18N
         engBtn5T2.setName("engBtn5T2"); // NOI18N
         engBtn5T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn5T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn5T2ActionPerformed(evt);
+            }
+        });
         btnPanel1T2.add(engBtn5T2, new java.awt.GridBagConstraints());
 
         thBtn5T2.setText(resourceMap.getString("thBtn5T2.text")); // NOI18N
@@ -2643,6 +2668,11 @@ public class ScannerView extends FrameView {
         engBtn6T2.setMinimumSize(new java.awt.Dimension(30, 23));
         engBtn6T2.setName("engBtn6T2"); // NOI18N
         engBtn6T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn6T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn6T2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -2650,6 +2680,11 @@ public class ScannerView extends FrameView {
 
         engBtn7T2.setText(resourceMap.getString("engBtn7T2.text")); // NOI18N
         engBtn7T2.setName("engBtn7T2"); // NOI18N
+        engBtn7T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn7T2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -2658,6 +2693,11 @@ public class ScannerView extends FrameView {
         engBtn8T2.setText(resourceMap.getString("engBtn8T2.text")); // NOI18N
         engBtn8T2.setName("engBtn8T2"); // NOI18N
         engBtn8T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn8T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn8T2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -2719,7 +2759,7 @@ public class ScannerView extends FrameView {
 
             },
             new String [] {
-                "selected", "Name", "Lastname", "Title", "E-mail", "Company", "Mobile", "Phone", "Country"
+                "เลือก", "ชื่อ", "นามสกุล", "ชื่อ (อังกฤษ)", "นามสกุล (อังกฤษ)", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"
             }
         ) {
             Class[] types = new Class [] {
@@ -4238,25 +4278,6 @@ public class ScannerView extends FrameView {
         return newPath;
     }
 
-    private Hashtable<Integer,Card> updateTable(DefaultTableModel model){
-        Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
-        try {
-            localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
-            CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
-            Object[][] tableArray = new Object[localCardList.size()][];
-            int row = 0;
-            for (Card card : localCardList) {
-                resultMapped.put(row, card);
-                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getPosition(), card.getEmail(), card.getCompany(), card.getMobile(), card.getTelephone(), card.getCountry()};
-                row++;
-            }
-            model.setDataVector(tableArray, new Object[]{"selected", "Name", "Lastname", "Position", "E-mail", "Company", "Mobile", "Telephone", "Country"});
-        } catch (ScannerDBException ex) {
-            Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return resultMapped;
-    }
-
     private Hashtable<Integer,Card> updateTable(ArrayList<Card> cardList,DefaultTableModel model){
         Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
 
@@ -4264,10 +4285,10 @@ public class ScannerView extends FrameView {
             int row = 0;
             for (Card card : cardList) {
                 resultMapped.put(row, card);
-                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getPosition(), card.getEmail(), card.getCompany(), card.getMobile(), card.getTelephone(), card.getCountry()};
+                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile()};
                 row++;
             }
-            model.setDataVector(tableArray, new Object[]{"selected", "Name", "Lastname", "Position", "E-mail", "Company", "Mobile", "Telephone", "Country"});
+            model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "ชื่อ (อังกฤษ)", "นามสกุล (อังกฤษ)", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"});
       
         return resultMapped;
     }
@@ -4464,13 +4485,14 @@ public class ScannerView extends FrameView {
                 if(((Boolean)model.getValueAt(i,0)).booleanValue()==true){
                     try {
                         CardLocalManager.deleteLocalCard(idMapped.get(i).getId(), defaultcard.getAbsolutePath());
+                        model.removeRow(i);
                     } catch (ScannerDBException ex) {
                         Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
         }
-        idMapped = updateTable(model);
+        //idMapped = updateTable(model);
     }//GEN-LAST:event_deletedBtnT2ActionPerformed
 
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
@@ -5031,26 +5053,187 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         Card criteria = getCardFromForm(2);
         String genCriteria = genSearchTfT2.getText();
-        ArrayList<Card> resultCard;
+        ArrayList<Card> resultCards;
 
         if(genCriteria.equals("")){
-            resultCard = Utils.searchCard(criteria, localCardList);
+            resultCards = Utils.searchCard(criteria, localCardList);
         }else{
             ArrayList<Card> temporal = Utils.searchGenCard(genCriteria, localCardList);
-            resultCard = Utils.searchCard(criteria, temporal);
+            resultCards = Utils.searchCard(criteria, temporal);
         }
         
-        System.out.println("size is "+resultCard.size());
+        System.out.println("size is "+resultCards.size());
         DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
-        if(resultCard!=null){
-            updateTable(resultCard,model);
+        if(resultCards!=null){
+           idMapped = updateTable(resultCards,model);
         }
     }//GEN-LAST:event_genSearchT2ActionPerformed
 
+    private void disableToggleExcept(int index){
+        if(index!=0)thBtn0T2.setSelected(false);
+        if(index!=1)thBtn1T2.setSelected(false);
+        if(index!=2)thBtn2T2.setSelected(false);
+        if(index!=3)thBtn3T2.setSelected(false);
+        if(index!=4)thBtn4T2.setSelected(false);
+        if(index!=5)thBtn5T2.setSelected(false);
+        if(index!=6)thBtn6T2.setSelected(false);
+        if(index!=7)thBtn7T2.setSelected(false);
+        if(index!=8)thBtn8T2.setSelected(false);
+        if(index!=9)engBtn0T2.setSelected(false);
+        if(index!=10)engBtn1T2.setSelected(false);
+        if(index!=11)engBtn2T2.setSelected(false);
+        if(index!=12)engBtn3T2.setSelected(false);
+        if(index!=13)engBtn4T2.setSelected(false);
+        if(index!=14)engBtn5T2.setSelected(false);
+        if(index!=15)engBtn6T2.setSelected(false);
+        if(index!=16)engBtn7T2.setSelected(false);
+        if(index!=17)engBtn8T2.setSelected(false);
+    }
+
     private void engBtn0T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn0T2ActionPerformed
         // TODO add your handling code here:
+        if(engBtn0T2.isSelected()){
+            disableToggleExcept(9);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("abc", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
     }//GEN-LAST:event_engBtn0T2ActionPerformed
+
+    private void engBtn1T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn1T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn1T2.isSelected()){
+            disableToggleExcept(10);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("def", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn1T2ActionPerformed
+
+    private void engBtn2T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn2T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn2T2.isSelected()){
+            disableToggleExcept(11);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("ghi", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+         }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn2T2ActionPerformed
+
+    private void engBtn3T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn3T2ActionPerformed
+        // TODO add your handling code here:
+       if(engBtn3T2.isSelected()){
+           disableToggleExcept(12);
+           ArrayList<Card> resultCards = new ArrayList<Card>();
+           resultCards = Utils.quickSearchCardE("jkl", localCardList);
+           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+           if(resultCards!=null){
+               idMapped = updateTable(resultCards,model);
+           }
+       }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn3T2ActionPerformed
+
+    private void engBtn4T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn4T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn4T2.isSelected()){
+            disableToggleExcept(13);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("mno", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn4T2ActionPerformed
+
+    private void engBtn5T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn5T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn5T2.isSelected()){
+            disableToggleExcept(14);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("pqr", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn5T2ActionPerformed
+
+    private void engBtn6T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn6T2ActionPerformed
+        // TODO add your handling code here:
+         if(engBtn6T2.isSelected()){
+            disableToggleExcept(15);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("stu", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn6T2ActionPerformed
+
+    private void engBtn7T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn7T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn7T2.isSelected()){
+            disableToggleExcept(16);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("vwx", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn7T2ActionPerformed
+
+    private void engBtn8T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn8T2ActionPerformed
+        // TODO add your handling code here:
+        if(engBtn8T2.isSelected()){
+            disableToggleExcept(17);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCardE("yz", localCardList);
+            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+
+            if(resultCards!=null){
+                idMapped = updateTable(resultCards,model);
+            }
+        }else{
+            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        }
+    }//GEN-LAST:event_engBtn8T2ActionPerformed
 
     private Card getCardFromForm(int index){
         Card newCard;

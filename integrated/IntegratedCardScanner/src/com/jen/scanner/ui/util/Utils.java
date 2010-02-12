@@ -37,28 +37,30 @@ public class Utils {
         return ext;
     }
 
-    public static ArrayList<Card> quickSearchCard(char c0,char c1,char c2,ArrayList<Card> allCard){
+    public static ArrayList<Card> quickSearchCard(String str,ArrayList<Card> allCard){
         ArrayList<Card> resultCards = new ArrayList<Card>();
-        boolean correct = true;
+        String[] s = str.split("");
         for(Card c : allCard){
-            if(!checkIfContains(c.getFirstName(),c0+""))correct = false;
-            if(!checkIfContains(c.getFirstName(),c1+""))correct = false;
-            if(!checkIfContains(c.getFirstName(),c2+""))correct = false;
-            if(correct)resultCards.add(c);
+            for(int i=1;i<s.length;i++){
+                if(isLeadBy(c.getFirstName(),s[i]))resultCards.add(c);
+            }
         }
         return resultCards;
     }
 
-    public static ArrayList<Card> quickSearchCardE(char c0,char c1,char c2,ArrayList<Card> allCard){
+    public static ArrayList<Card> quickSearchCardE(String str,ArrayList<Card> allCard){
         ArrayList<Card> resultCards = new ArrayList<Card>();
-        boolean correct = true;
+        String[] s = str.split("");
         for(Card c : allCard){
-            if(!checkIfContains(c.getFirstNameE(),c0+""))correct = false;
-            if(!checkIfContains(c.getFirstNameE(),c1+""))correct = false;
-            if(!checkIfContains(c.getFirstNameE(),c2+""))correct = false;
-            if(correct)resultCards.add(c);
+            for(int i=1;i<s.length;i++){
+                if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
+            }
         }
         return resultCards;
+    }
+
+    private static boolean isLeadBy(String s1,String s2){
+        return s1.indexOf(s2)==0;
     }
 
     public static ArrayList<Card> searchGenCard(String criteria,ArrayList<Card> allCard){
@@ -350,14 +352,8 @@ public class Utils {
     public static void main (String[] args){
         try {
             ArrayList<Card> test = CardLocalManager.loadLocalCard("C:\\netbeanProject\\integrated\\defaultcard.csv");
-            Card c = new Card();
-            c.setFirstName("เจน");
-            c.setLastName("");
-            test = searchCard(c, test);
-            System.out.println(">>>> size is "+test.size());
-            for(Card card:test){
-                System.out.println(card.getFirstName());
-            }
+            test = Utils.quickSearchCardE("abc", test);
+            System.out.println(test.size());
         } catch (ScannerDBException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
         }
