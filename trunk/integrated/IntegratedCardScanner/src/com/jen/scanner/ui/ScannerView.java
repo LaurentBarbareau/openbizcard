@@ -4376,23 +4376,29 @@ public class ScannerView extends FrameView {
                 String imgBackFileName = backTfT1.getText();
                 File imgFile = new File (imgFileName);
                 File imgBackFile = new File(imgBackFileName);
-
-                if(imgFile.isFile() &&
-                        ( (imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5)) ||
-                          (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)) ) ){
-                    imgFile.renameTo(new File(".\\cardImages\\" + cardID + ".jpg"));
-                    newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
+                File curDir = new File(".\\");
+                if(imgFileName != null){
+                    if ((imgFileName.length() > 0) && imgFile.isFile()
+                            && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5))
+                            || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)))) {
+                        imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
+                    }
                 }
 
-                if(imgBackFile.isFile() &&
-                        ( (imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5)) ||
-                          (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)) ) ){
-                    imgBackFile.renameTo(new File(".\\cardImages\\" + cardID + "Back.jpg"));
-                    newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
+                if(imgBackFileName != null){
+                    if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
+                            && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5))
+                            || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)))) {
+                        imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                        newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
+                    }
                 }
 
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ioEx){
+                ioEx.printStackTrace();
             }
         JOptionPane.showMessageDialog(null, "Already Added","information", JOptionPane.INFORMATION_MESSAGE);        
     }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
