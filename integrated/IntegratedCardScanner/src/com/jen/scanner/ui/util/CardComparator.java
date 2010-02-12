@@ -68,5 +68,6 @@ public class CardComparator implements Comparator{
       for(Card c : tree){
         System.out.println(c.getFirstName()+" "+c.getLastName());
       }
+      System.out.println("test".indexOf(""));
    }
 }

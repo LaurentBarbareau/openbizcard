@@ -66,6 +66,110 @@ public class Card {
 	private String mobileE;
 	private String noteE;
 
+    public String getAddressE() {
+        return addressE;
+    }
+
+    public void setAddressE(String addressE) {
+        this.addressE = addressE;
+    }
+
+    public String getCityE() {
+        return cityE;
+    }
+
+    public void setCityE(String cityE) {
+        this.cityE = cityE;
+    }
+
+    public String getCompanyE() {
+        return companyE;
+    }
+
+    public void setCompanyE(String companyE) {
+        this.companyE = companyE;
+    }
+
+    public String getCountryE() {
+        return countryE;
+    }
+
+    public void setCountryE(String countryE) {
+        this.countryE = countryE;
+    }
+
+    public String getFaxE() {
+        return faxE;
+    }
+
+    public void setFaxE(String faxE) {
+        this.faxE = faxE;
+    }
+
+    public String getFirstNameE() {
+        return firstNameE;
+    }
+
+    public void setFirstNameE(String firstNameE) {
+        this.firstNameE = firstNameE;
+    }
+
+    public String getLastNameE() {
+        return lastNameE;
+    }
+
+    public void setLastNameE(String lastNameE) {
+        this.lastNameE = lastNameE;
+    }
+
+    public String getMobileE() {
+        return mobileE;
+    }
+
+    public void setMobileE(String mobileE) {
+        this.mobileE = mobileE;
+    }
+
+    public String getNoteE() {
+        return noteE;
+    }
+
+    public void setNoteE(String noteE) {
+        this.noteE = noteE;
+    }
+
+    public String getPositionE() {
+        return positionE;
+    }
+
+    public void setPositionE(String positionE) {
+        this.positionE = positionE;
+    }
+
+    public String getStateE() {
+        return stateE;
+    }
+
+    public void setStateE(String stateE) {
+        this.stateE = stateE;
+    }
+
+    public String getTelephoneE() {
+        return telephoneE;
+    }
+
+    public void setTelephoneE(String telephoneE) {
+        this.telephoneE = telephoneE;
+    }
+
+    public String getZipE() {
+        return zipE;
+    }
+
+    public void setZipE(String zipE) {
+        this.zipE = zipE;
+    }
+
 	private String imgFront;
 	private String imgBack;
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -137,6 +241,41 @@ public class Card {
 		this.noteE = noteE;
 
 	}
+
+        public void setAllValue(String[] s){
+		this.firstName = s[1];
+		this.lastName = s[2];
+		this.position = s[3];
+		this.email = s[4];
+		this.company = s[5];
+		this.website = s[6];
+		this.address = s[7];
+		this.city = s[8];
+		this.state = s[9];
+		this.country = s[10];
+		this.zip = s[11];
+		this.telephone = s[12];
+		this.fax = s[13];
+		this.mobile = s[14];
+		this.note = s[15];
+
+                this.imgFront = s[16];
+		this.imgBack = s[17];
+
+                this.firstNameE = s[18];
+		this.lastNameE = s[19];
+		this.positionE = s[20];
+		this.companyE = s[21];
+		this.addressE = s[22];
+		this.cityE = s[23];
+		this.stateE = s[24];
+		this.countryE = s[25];
+		this.zipE = s[26];
+		this.telephoneE = s[27];
+		this.faxE = s[28];
+		this.mobileE = s[29];
+		this.noteE = s[30];
+        }
 
 	public Long getId() {
 		return id;
@@ -306,7 +445,21 @@ public class Card {
 		this.mobile = card.mobile;
 		this.note = card.note;
 		this.imgFront = card.imgFront;
-		this.imgBack = card.imgBack;		
+		this.imgBack = card.imgBack;
+
+                this.firstNameE = card.firstNameE;
+		this.lastNameE = card.lastNameE;
+		this.positionE = card.positionE;
+		this.companyE = card.companyE;
+		this.addressE = card.addressE;
+		this.cityE = card.cityE;
+		this.stateE = card.stateE;
+		this.countryE = card.countryE;
+		this.zipE = card.zipE;
+		this.telephoneE = card.telephoneE;
+		this.faxE = card.faxE;
+		this.mobileE = card.mobileE;
+		this.noteE = card.noteE;
 	}
 
 	public String[] toArray() {

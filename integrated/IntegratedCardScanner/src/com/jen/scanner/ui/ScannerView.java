@@ -9,6 +9,7 @@ import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.jen.scanner.ui.util.DBFileFilter;
 import com.jen.scanner.ui.util.JPGFileFilter;
+import com.jen.scanner.ui.util.Utils;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -2542,6 +2543,11 @@ public class ScannerView extends FrameView {
         engBtn0T2.setLabel(resourceMap.getString("engBtn0T2.label")); // NOI18N
         engBtn0T2.setName("engBtn0T2"); // NOI18N
         engBtn0T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn0T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engBtn0T2ActionPerformed(evt);
+            }
+        });
         btnPanel0T2.add(engBtn0T2, new java.awt.GridBagConstraints());
 
         engBtn1T2.setText(resourceMap.getString("engBtn1T2.text")); // NOI18N
@@ -4236,6 +4242,7 @@ public class ScannerView extends FrameView {
         Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
         try {
             localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
+            CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
             Object[][] tableArray = new Object[localCardList.size()][];
             int row = 0;
             for (Card card : localCardList) {
@@ -4247,6 +4254,21 @@ public class ScannerView extends FrameView {
         } catch (ScannerDBException ex) {
             Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return resultMapped;
+    }
+
+    private Hashtable<Integer,Card> updateTable(ArrayList<Card> cardList,DefaultTableModel model){
+        Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
+
+            Object[][] tableArray = new Object[cardList.size()][];
+            int row = 0;
+            for (Card card : cardList) {
+                resultMapped.put(row, card);
+                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getPosition(), card.getEmail(), card.getCompany(), card.getMobile(), card.getTelephone(), card.getCountry()};
+                row++;
+            }
+            model.setDataVector(tableArray, new Object[]{"selected", "Name", "Lastname", "Position", "E-mail", "Company", "Mobile", "Telephone", "Country"});
+      
         return resultMapped;
     }
 
@@ -4331,46 +4353,9 @@ public class ScannerView extends FrameView {
     private void saveToDbBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToDbBtnT1ActionPerformed
         // TODO add your handling code here:
             try {
-                String name = nameTfT1.getText();
-                String lastName = lastnameTfT1.getText();
-                String title = titleTfT1.getText();
-                String email = emailTfT1.getText();
-                String company = companyTfT1.getText();
-                String web = webTfT1.getText();
-                String state = disTfT1.getText();
-                String city = subDisTfT1.getText();
-                String code = codeTfT1.getText();
-                String country = provinceTfT1.getText();
-                String mobile = mobileTfT1.getText();
-                String phone = phoneTfT1.getText();
-                String fax = faxTfT1.getText();
-                String ads = adsTaT1.getText();
-                String note = noteTaT1.getText();
-                
-                String imgFront = validatePath(frontTfT1.getText());
-                String imgBack = validatePath(backTfT1.getText());
-
-                String nameE = nameTfTE1.getText();
-                String lastNameE = lastnameTfTE1.getText();
-                String titleE = titleTfTE1.getText();
-                String companyE = companyTfTE1.getText();
-                String stateE = disTfTE1.getText();
-                String cityE = subDisTfTE1.getText();
-                String codeE = codeTfTE1.getText();
-                String countryE = provinceTfTE1.getText();
-                String mobileE = mobileTfTE1.getText();
-                String phoneE = phoneTfTE1.getText();
-                String faxE = faxTfTE1.getText();
-                String adsE = adsTaTE1.getText();
-                String noteE = noteTaTE1.getText();
-
-                Card newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note, 
-                                        imgFront, imgBack,
-                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+                Card newCard = getCardFromForm(1);
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
-
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
-
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
@@ -4400,7 +4385,8 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx){
                 ioEx.printStackTrace();
             }
-        JOptionPane.showMessageDialog(null, "Already Added","information", JOptionPane.INFORMATION_MESSAGE);        
+        JOptionPane.showMessageDialog(null, "Already Added","information", JOptionPane.INFORMATION_MESSAGE);
+        clearTextT1();
     }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
 
     private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
@@ -5043,13 +5029,191 @@ public class ScannerView extends FrameView {
 
     private void genSearchT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genSearchT2ActionPerformed
         // TODO add your handling code here:
+        Card criteria = getCardFromForm(2);
+        String genCriteria = genSearchTfT2.getText();
+        ArrayList<Card> resultCard;
+
+        if(genCriteria.equals("")){
+            resultCard = Utils.searchCard(criteria, localCardList);
+        }else{
+            ArrayList<Card> temporal = Utils.searchGenCard(genCriteria, localCardList);
+            resultCard = Utils.searchCard(criteria, temporal);
+        }
+        
+        System.out.println("size is "+resultCard.size());
         DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
-        if(localCardList!=null){
-            for(Card c : localCardList){
-                model.addRow(new Object[]{false,c.getFirstName(),c.getLastName(),c.getPosition(),c.getEmail(),c.getCompany(),c.getMobile(),c.getTelephone(),c.getCountry()});
-            }
+
+        if(resultCard!=null){
+            updateTable(resultCard,model);
         }
     }//GEN-LAST:event_genSearchT2ActionPerformed
+
+    private void engBtn0T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn0T2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_engBtn0T2ActionPerformed
+
+    private Card getCardFromForm(int index){
+        Card newCard;
+        switch(index){
+            case 1 :newCard = getCardFromT1(); break;
+            case 2 :newCard = getCardFromT2(); break;
+            case 3 :newCard = getCardFromT3(); break;
+            default: newCard = new Card();
+            }
+        return newCard;
+    }
+ 
+    private Card getCardFromT1(){
+        Card newCard;
+
+        String name = nameTfT1.getText();
+        String lastName = lastnameTfT1.getText();
+        String title = titleTfT1.getText();
+        String email = emailTfT1.getText();
+        String company = companyTfT1.getText();
+        String web = webTfT1.getText();
+        String state = disTfT1.getText();
+        String city = subDisTfT1.getText();
+        String code = codeTfT1.getText();
+        String country = provinceTfT1.getText();
+        String mobile = mobileTfT1.getText();
+        String phone = phoneTfT1.getText();
+        String fax = faxTfT1.getText();
+        String ads = adsTaT1.getText();
+        String note = noteTaT1.getText();
+
+        String imgFront = validatePath(frontTfT1.getText());
+        String imgBack = validatePath(backTfT1.getText());
+
+        String nameE = nameTfTE1.getText();
+        String lastNameE = lastnameTfTE1.getText();
+        String titleE = titleTfTE1.getText();
+        String companyE = companyTfTE1.getText();
+        String stateE = disTfTE1.getText();
+        String cityE = subDisTfTE1.getText();
+        String codeE = codeTfTE1.getText();
+        String countryE = provinceTfTE1.getText();
+        String mobileE = mobileTfTE1.getText();
+        String phoneE = phoneTfTE1.getText();
+        String faxE = faxTfTE1.getText();
+        String adsE = adsTaTE1.getText();
+        String noteE = noteTaTE1.getText();
+
+        return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
+                                        imgFront, imgBack,
+                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+    }
+
+     private Card getCardFromT2(){
+        Card newCard;
+
+        String name = nameTfT2.getText();
+        String lastName = lastnameTfT2.getText();
+        String title = titleTfT2.getText();
+        String email = emailTfT2.getText();
+        String company = companyTfT2.getText();
+        String web = webTfT2.getText();
+        String state = disTfT2.getText();
+        String city = subDisTfT2.getText();
+        String code = codeTfT2.getText();
+        String country = provinceTfT2.getText();
+        String mobile = mobileTfT2.getText();
+        String phone = phoneTfT2.getText();
+        String fax = faxTfT2.getText();
+        String ads = adsTaT2.getText();
+        String note = noteTaT2.getText();
+
+        String nameE = nameTfTE2.getText();
+        String lastNameE = lastnameTfTE2.getText();
+        String titleE = titleTfTE2.getText();
+        String companyE = companyTfTE2.getText();
+        String stateE = disTfTE2.getText();
+        String cityE = subDisTfTE2.getText();
+        String codeE = codeTfTE2.getText();
+        String countryE = provinceTfTE2.getText();
+        String mobileE = mobileTfTE2.getText();
+        String phoneE = phoneTfTE2.getText();
+        String faxE = faxTfTE2.getText();
+        String adsE = adsTaTE2.getText();
+        String noteE = noteTaTE2.getText();
+
+        return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
+                                        "", "",
+                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+    }
+
+    private Card getCardFromT3(){
+        Card newCard;
+
+        String name = nameTfT3.getText();
+        String lastName = lastnameTfT3.getText();
+        String title = titleTfT3.getText();
+        String email = emailTfT3.getText();
+        String company = companyTfT3.getText();
+        String web = webTfT3.getText();
+        String state = disTfT3.getText();
+        String city = subDisTfT3.getText();
+        String code = codeTfT3.getText();
+        String country = provinceTfT3.getText();
+        String mobile = mobileTfT3.getText();
+        String phone = phoneTfT3.getText();
+        String fax = faxTfT3.getText();
+        String ads = adsTaT3.getText();
+        String note = noteTaT3.getText();
+
+        String nameE = nameTfTE3.getText();
+        String lastNameE = lastnameTfTE3.getText();
+        String titleE = titleTfTE3.getText();
+        String companyE = companyTfTE3.getText();
+        String stateE = disTfTE3.getText();
+        String cityE = subDisTfTE3.getText();
+        String codeE = codeTfTE3.getText();
+        String countryE = provinceTfTE3.getText();
+        String mobileE = mobileTfTE3.getText();
+        String phoneE = phoneTfTE3.getText();
+        String faxE = faxTfTE3.getText();
+        String adsE = adsTaTE3.getText();
+        String noteE = noteTaTE3.getText();
+
+        return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
+                                        "", "",
+                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+    }
+
+    private void clearTextT1(){
+        nameTfT1.setText("");
+        lastnameTfT1.setText("");
+        titleTfT1.setText("");
+        emailTfT1.setText("");
+        companyTfT1.setText("");
+        webTfT1.setText("");
+        disTfT1.setText("");
+        subDisTfT1.setText("");
+        codeTfT1.setText("");
+        provinceTfT1.setText("");
+        mobileTfT1.setText("");
+        phoneTfT1.setText("");
+        faxTfT1.setText("");
+        adsTaT1.setText("");
+        noteTaT1.setText("");
+
+        frontTfT1.setText("");
+        backTfT1.setText("");
+
+        nameTfTE1.setText("");
+        lastnameTfTE1.setText("");
+        titleTfTE1.setText("");
+        companyTfTE1.setText("");
+        disTfTE1.setText("");
+        subDisTfTE1.setText("");
+        codeTfTE1.setText("");
+        provinceTfTE1.setText("");
+        mobileTfTE1.setText("");
+        phoneTfTE1.setText("");
+        faxTfTE1.setText("");
+        adsTaTE1.setText("");
+        noteTaTE1.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToLocalBtnT4;
