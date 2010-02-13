@@ -63,7 +63,7 @@ public class TestUI2 implements ActionListener{
 		JPanel scannerPane = new JPanel();
 		JPanel nullNorthPane = new JPanel();
 		JPanel nullSouthPane = new JPanel();
-		imagePane = new ImagePanel();
+		imagePane = new ImagePanel("");
 		JPanel mainPane = new JPanel();
 		
 		JPanel scannerUpperPane = new JPanel();

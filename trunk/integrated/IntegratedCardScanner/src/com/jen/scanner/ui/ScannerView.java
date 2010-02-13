@@ -40,6 +40,7 @@ import com.roncemer.ocr.*;
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanel;
+import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.image.BufferedImage;
 
 /**
@@ -4597,6 +4598,22 @@ public class ScannerView extends FrameView {
         frontLbT3.setIcon(new ImageIcon(frontPath));
         backLbT3.setIcon(new ImageIcon(backPath));
 
+        // Yov's added code
+        frontUIStateResult = STATE_NO_IMAGE;
+        if((editCard.getImgFront() != null) && (editCard.getImgFront().length() > 0)){
+            ImageIcon frontResult = new ImageIcon(frontPath);
+            if ((frontResult != null) && (frontResult.getIconHeight() > 0) && (frontResult.getIconWidth() > 0)) {
+                frontUIStateResult = STATE_WITH_IMAGE;
+            }
+        }
+
+        backUIStateResult = STATE_NO_IMAGE;
+        if((editCard.getImgBack() != null) && (editCard.getImgBack().length() > 0)){
+            ImageIcon backResult = new ImageIcon(backPath);
+            if ((backResult != null) && (backResult.getIconHeight() > 0) && (backResult.getIconWidth() > 0)) {
+                backUIStateResult = STATE_WITH_IMAGE;
+            }
+        }
     }//GEN-LAST:event_editBtnT2ActionPerformed
 
     private void frontBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT3ActionPerformed
@@ -5311,39 +5328,20 @@ public class ScannerView extends FrameView {
         if(( (frontUIState == STATE_WITH_IMAGE) || (frontUIState == STATE_IMAGE_EDITED) )
                 && (frontTfT1.getText() != null) && (frontTfT1.getText().length() > 0) ){
 
-            //synchronized(this){
+            ImagePanelDialog frontImgDialog = new ImagePanelDialog(frontTfT1.getText());
 
-            ImagePanel frontImgPane = new ImagePanel(frontTfT1.getText());
+            frontImgDialog.init();
+            frontImgDialog.setVisible(true);
 
-            frontImgPane.cropImage();
-
-            //synchronized(this){
-            //try{
-            //   wait();
-            //}catch(Exception e){
-            //    e.printStackTrace();
-            //}
-        
-
-            if(frontImgPane.isCropped()){
+            if(frontImgDialog.isImageCropped()){
                 frontUIState = STATE_WITH_IMAGE;
-                scannedImage = frontImgPane.getCroppedImage();
-                //scannedBCard = new BusinessCard(scannedImage);
-                scannedBCard = new BusinessCard(frontImgPane.getCroppedImage());
-                
+                scannedImage = frontImgDialog.getCroppedImage();
+                scannedBCard = new BusinessCard(frontImgDialog.getCroppedImage());
 
-                frontLbT1.setIcon(null);
-                //frontLbT1.setIcon(new ImageIcon(frontTfT1.getText()));
                 frontLbT1.setIcon(new ImageIcon(scannedImage));
-                //backLbT1.setIcon(new ImageIcon(frontTfT1.getText()));
-                frontLbT1.repaint();
-                frontSpT1.repaint();
-                scannerTab.repaint();
 
-                System.out.println("Image is Cropped");
             }
 
-            //}
         }
     }//GEN-LAST:event_frontCropBtnT1ActionPerformed
 
@@ -5351,14 +5349,19 @@ public class ScannerView extends FrameView {
          if(( (backUIState == STATE_WITH_IMAGE) || (backUIState == STATE_IMAGE_EDITED) )
                 && (backTfT1.getText() != null) && (backTfT1.getText().length() > 0) ){
 
-            ImagePanel backImgPane = new ImagePanel(backTfT1.getText());
-            backImgPane.cropImage();
+            ImagePanelDialog backImgDialog = new ImagePanelDialog(backTfT1.getText());
 
-            if(backImgPane.isCropped()){
+            backImgDialog.init();
+            backImgDialog.setVisible(true);
+
+            if(backImgDialog.isImageCropped()){
                 backUIState = STATE_WITH_IMAGE;
-                scannedBCardBack = new BusinessCard(backImgPane.getCroppedImage());
-            }
+                scannedImage = backImgDialog.getCroppedImage();
+                scannedBCardBack = new BusinessCard(backImgDialog.getCroppedImage());
 
+                backLbT1.setIcon(new ImageIcon(scannedImage));
+
+            }
         }
     }//GEN-LAST:event_backCropBtnT1ActionPerformed
 
@@ -5366,14 +5369,19 @@ public class ScannerView extends FrameView {
          if(( (frontUIStateResult == STATE_WITH_IMAGE) || (frontUIStateResult == STATE_IMAGE_EDITED) )
                 && (frontTfT3.getText() != null) && (frontTfT3.getText().length() > 0) ){
 
-            ImagePanel frontImgPaneResult = new ImagePanel(frontTfT3.getText());
-            frontImgPaneResult.cropImage();
+            ImagePanelDialog frontImgDialogResult = new ImagePanelDialog(frontTfT3.getText());
 
-            if(frontImgPaneResult.isCropped()){
+            frontImgDialogResult.init();
+            frontImgDialogResult.setVisible(true);
+
+            if(frontImgDialogResult.isImageCropped()){
                 frontUIStateResult = STATE_WITH_IMAGE;
-                resultBCard = new BusinessCard(frontImgPaneResult.getCroppedImage());
-            }
+                resultImage = frontImgDialogResult.getCroppedImage();
+                resultBCard = new BusinessCard(frontImgDialogResult.getCroppedImage());
 
+                frontLbT3.setIcon(new ImageIcon(resultImage));
+
+            }
         }
     }//GEN-LAST:event_frontCropBtnT3ActionPerformed
 
@@ -5381,12 +5389,17 @@ public class ScannerView extends FrameView {
         if(( (backUIStateResult == STATE_WITH_IMAGE) || (backUIStateResult == STATE_IMAGE_EDITED) )
                 && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0) ){
 
-            ImagePanel backImgPaneResult = new ImagePanel(backTfT3.getText());
-            backImgPaneResult.cropImage();
+            ImagePanelDialog backImgDialogResult = new ImagePanelDialog(backTfT3.getText());
 
-            if(backImgPaneResult.isCropped()){
+            backImgDialogResult.init();
+            backImgDialogResult.setVisible(true);
+
+            if(backImgDialogResult.isImageCropped()){
                 backUIStateResult = STATE_WITH_IMAGE;
-                resultBCardBack = new BusinessCard(backImgPaneResult.getCroppedImage());
+                resultImage = backImgDialogResult.getCroppedImage();
+                resultBCardBack = new BusinessCard(backImgDialogResult.getCroppedImage());
+
+                backLbT3.setIcon(new ImageIcon(resultImage));
             }
 
         }
