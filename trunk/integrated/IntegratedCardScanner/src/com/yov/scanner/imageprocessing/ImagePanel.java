@@ -1,9 +1,10 @@
-package com.yov.scanner.imageprocessing;
+package yov;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -18,7 +19,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class ImagePanel extends Component implements MouseListener, MouseMotionListener, ActionListener {
+public class ImagePanel extends Component implements MouseListener, MouseMotionListener{
 
     private BufferedImage displayImage;
     private BufferedImage croppedImage;
@@ -28,14 +29,12 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
     private int clickX, clickY;
     private int dragX, dragY;
     private boolean isClicked, isDragged, isDragging, isFocused, isCropped;
+    
     private int imgWidth;
     private int imgHeight;
-    //private JFrame imgWin;
-    public JFrame imgWin;
-    private JButton confirmBtn;
-    private JButton cancelBtn;
-    private JButton focusBtn;
     private String imgFileName;
+    
+    private int dragWidth, dragHeight;
 
     public ImagePanel(BufferedImage newImage) {
         super();
@@ -108,14 +107,18 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         this.setPreferredSize(new Dimension(displayImage.getWidth(), displayImage.getHeight()));
     }
 
-    public ImagePanel() {
-        super();
-    }
-
     public void setImage(BufferedImage newImage) {
         displayImage = newImage;
         imgWidth = displayImage.getWidth();
         imgHeight = displayImage.getHeight();
+    }
+    
+    public int getImageWidth(){
+    	return imgWidth;
+    }
+    
+    public int getImageHeight(){
+    	return imgHeight;
     }
 
     public BufferedImage getCroppedImage(){
@@ -125,6 +128,55 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
     public boolean isCropped(){
         return isCropped;
     }
+    
+    public boolean isClicked(){
+        return isClicked;
+    }
+    
+    public boolean isDragged(){
+        return isDragged;
+    }
+    
+    public boolean isDragging(){
+        return isDragging;
+    }
+    
+    public boolean isFocused(){
+        return isFocused;
+    }
+    
+    public int getDragWidth(){
+        return dragWidth;
+    }
+    
+    public int getDragHeight(){
+    	return dragHeight;
+    }
+    
+    public boolean setIsClicked(boolean newIsClicked){
+    	boolean oldValue = isClicked;
+    	isClicked = newIsClicked;
+        return oldValue;
+    }
+    
+    public boolean setIsDragged(boolean newIsDragged){
+    	boolean oldValue = isDragged;
+    	isDragged = newIsDragged;
+        return oldValue;
+    }
+    
+    public boolean setIsDragging(boolean newIsDragging){
+    	boolean oldValue = isDragging;
+    	isDragging = newIsDragging;
+        return oldValue;
+    }
+    
+    public boolean setIsFocused(boolean newIsFocused){
+    	boolean oldValue = isFocused;
+    	isFocused = newIsFocused;
+        return oldValue;
+    }
+    
 
     @Override
     public void paint(Graphics g) {
@@ -144,9 +196,8 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
             int dispX = 0;
             int dispY = 0;
 
-            int dragWidth = dragX - clickX;
-            ;
-            int dragHeight = dragY - clickY;
+            dragWidth = dragX - clickX;
+            dragHeight = dragY - clickY;
 
             int paneHeight = this.getHeight();
             int paneWidth = this.getWidth();
@@ -167,65 +218,12 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
             if (!isFocused) {
 
-                int winWidth = imgWidth;
-                int winHeight = imgHeight;
-
-                if (imgWidth < 300) {
-                    winWidth = Math.max(2 * imgWidth, 200);
-                } else {
-                    if (imgWidth > 600) {
-                        winWidth = Math.min((int) (1.2 * imgWidth), 750);
-                    } else {
-                        winWidth = Math.min((int) (1.5 * imgWidth), 600);
-                    }
-                }
-
-                if (imgHeight < 200) {
-                    winHeight = Math.max(2 * imgHeight, 180);
-                } else {
-                    if (imgHeight > 400) {
-                        winHeight = Math.min((int) (1.2 * imgHeight), 550);
-                    } else {
-                        winHeight = Math.min((int) (1.5 * imgHeight), 400);
-                    }
-                }
-
-                imgWin.setSize(winWidth, winHeight);
-
                 g.drawImage(displayImage, 0, 0, null);
 
             } else {
 
-                int winWidth = (2 * dragWidth);
-                int winHeight = (2 * dragHeight);
-
-                if ((2 * dragWidth) < 300) {
-                    winWidth = Math.max(4 * dragWidth, 200);
-                } else {
-                    if ((2 * dragWidth) > 600) {
-                        winWidth = Math.min((int) (1.2 * (2 * dragWidth)), 750);
-                    } else {
-                        winWidth = Math.min((int) (1.5 * (2 * dragWidth)), 600);
-                    }
-                }
-
-                if ((2 * dragHeight) < 200) {
-                    winHeight = Math.max(4 * dragHeight, 180);
-                } else {
-                    if ((2 * dragHeight) > 400) {
-                        winHeight = Math.min((int) (1.2 * (2 * dragHeight)), 550);
-                    } else {
-                        winHeight = Math.min((int) (1.5 * (2 * dragHeight)), 400);
-                    }
-                }
-
-                imgWin.setSize(winWidth, winHeight);
-
                 g.drawImage(displayImage, 0, 0, 2 * dragWidth, 2 * dragHeight, clickX, clickY, dragX, dragY, null);
 
-                System.out.println("In Focus, winWidth = " + winWidth + ", winHeight = " + winHeight);
-
-                //isFocused = false;
             }
 
 
@@ -284,89 +282,51 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
     }
 
-    public synchronized void cropImage() {
+    public void cropImage() {
         //System.out.println("Start ImagePanel's main method");
 
         isCropped = false;
+        
         croppedImage = null;
 
-        int winWidth = 0, winHeight = 0;
+        dragWidth = dragX - clickX;
+        dragHeight = dragY - clickY;
 
-        imgWin = new JFrame("ImagePanel");
-        
-        Container contentPane = imgWin.getContentPane();
-        JPanel mainPane = new JPanel();
-
-        JPanel imgBackPane = new JPanel();
-        JPanel buttonPane = new JPanel();
-
-        confirmBtn = new JButton("Confirm");
-        cancelBtn = new JButton("Cancel");
-        focusBtn = new JButton("Focus");
-
-        imgWidth = displayImage.getWidth();
-        imgHeight = displayImage.getHeight();
-
-        if (imgWidth < 300) {
-            winWidth = 2 * imgWidth;
-        } else {
-            if (imgWidth > 600) {
-                winWidth = Math.min((int) (1.2 * imgWidth), 750);
-            } else {
-                winWidth = Math.min((int) (1.5 * imgWidth), 600);
-            }
+        if (dragWidth >= 0 && dragHeight >= 0) {
+            croppedImage = displayImage.getSubimage(clickX, clickY,
+                    dragWidth, dragHeight);
         }
 
-        if (imgHeight < 200) {
-            winHeight = 2 * imgHeight;
-        } else {
-            if (imgHeight > 400) {
-                winHeight = Math.min((int) (1.2 * imgHeight), 550);
-            } else {
-                winHeight = Math.min((int) (1.5 * imgHeight), 400);
-            }
+        if (dragWidth < 0 && dragHeight >= 0) {
+            croppedImage = displayImage.getSubimage(dragX, clickY,
+                    -dragWidth, dragHeight);
         }
 
-        System.out.println("winWidth = " + winWidth + ", winHeight = " + winHeight);
+        if (dragWidth >= 0 && dragHeight < 0) {
+            croppedImage = displayImage.getSubimage(clickX, dragY,
+                    dragWidth, -dragHeight);
+        }
 
-        imgWin.setSize(winWidth, winHeight);
-        imgWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        imgWin.setVisible(true);
-        imgWin.setAlwaysOnTop(true);
+        if (dragWidth < 0 && dragHeight < 0) {
+            croppedImage = displayImage.getSubimage(dragX, dragY,
+                    -dragWidth, -dragHeight);
+        }
 
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(mainPane, BorderLayout.CENTER);
+        if (croppedImage != null) {
+            
+            try {
+                ImageIO.write(
+                        croppedImage,
+                        "jpg",
+                        new File(imgFileName));
 
-        mainPane.setLayout(new BorderLayout());
-        mainPane.add(imgBackPane, BorderLayout.CENTER);
-        mainPane.add(buttonPane, BorderLayout.EAST);
+                isCropped = true;
+                
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
-        imgBackPane.setLayout(new BorderLayout());
-        imgBackPane.setBackground(new Color(100, 100, 100));
-        imgBackPane.add(this, BorderLayout.CENTER);
-
-        confirmBtn.addActionListener(this);
-        cancelBtn.addActionListener(this);
-        focusBtn.addActionListener(this);
-
-        int topSpace = (int) (0.1f * imgWin.getHeight());
-        int inSpace = (int) (0.05f * imgWin.getHeight());
-        buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.Y_AXIS));
-        buttonPane.add(Box.createRigidArea(new Dimension(1, topSpace)));
-        confirmBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        buttonPane.add(confirmBtn);
-        buttonPane.add(Box.createRigidArea(new Dimension(1, inSpace)));
-        cancelBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        buttonPane.add(cancelBtn);
-        buttonPane.add(Box.createRigidArea(new Dimension(1, inSpace)));
-        focusBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        buttonPane.add(focusBtn);
-
-        //try{
-        //    wait();
-        //}catch(Exception e){
-        //    e.printStackTrace();
-        //}
+        }
 
     }
 
@@ -375,6 +335,8 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         clickX = e.getX();
         clickY = e.getY();
         isClicked = true;
+        isDragging = false;
+        isDragged = false;
 
         //isExitedDuringDragging = false;
 
@@ -427,7 +389,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
         isDragging = true;
         isDragged = false;
-        //isExitedDuringDragging = false;
+        
     }
 
     @Override
@@ -450,6 +412,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         dragX = e.getX();
         dragY = e.getY();
 
+        isDragging = true;
         isClicked = false;
 
         if (isDragging) {
@@ -481,116 +444,5 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         // TODO Auto-generated method stub
     }
 
-    @Override
-    public synchronized void actionPerformed(ActionEvent e) {
-        if (e.getSource() == confirmBtn) {
-
-            if (isDragged) {
-
-                int n = JOptionPane.showConfirmDialog(
-                        new JFrame(),
-                        "Do you want to crop this image?",
-                        "Cropping Confirmation",
-                        JOptionPane.YES_NO_OPTION);
-
-                if (n == 0) {
-                    croppedImage = null;
-
-                    int dragWidth = dragX - clickX;
-                    int dragHeight = dragY - clickY;
-
-                    if (dragWidth >= 0 && dragHeight >= 0) {
-                        croppedImage = displayImage.getSubimage(clickX, clickY,
-                                dragWidth, dragHeight);
-                    }
-
-                    if (dragWidth < 0 && dragHeight >= 0) {
-                        croppedImage = displayImage.getSubimage(dragX, clickY,
-                                -dragWidth, dragHeight);
-                    }
-
-                    if (dragWidth >= 0 && dragHeight < 0) {
-                        croppedImage = displayImage.getSubimage(clickX, dragY,
-                                dragWidth, -dragHeight);
-                    }
-
-                    if (dragWidth < 0 && dragHeight < 0) {
-                        croppedImage = displayImage.getSubimage(dragX, dragY,
-                                -dragWidth, -dragHeight);
-                    }
-
-                    if (croppedImage != null) {
-                        //displayImage = croppedImage.getSubimage(0, 0,
-                        //		croppedImage.getWidth(), croppedImage
-                        //				.getHeight());
-                        //imgWidth = displayImage.getWidth();
-                        //imgHeight = displayImage.getHeight();
-
-
-                        try {
-                            ImageIO.write(
-                                    croppedImage,
-                                    "jpg",
-                                    new File(imgFileName));
-
-                            isCropped = true;
-                            
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-
-                        imgWin.dispose();
-                        //notify();
-                        //System.exit(0);
-                    }
-
-                    //isClicked = false;
-                    //isDragging = false;
-                    //isDragged = false;
-                    //isFocused = false;
-
-                    //imgWin.setVisible(true);
-
-                } else {
-
-                    imgWin.setVisible(true);
-
-                }
-            }
-        }
-
-        if (e.getSource() == cancelBtn) {
-
-            if (isClicked) {
-                isClicked = false;
-            }
-
-            if (isDragging) {
-                isDragging = false;
-            }
-
-            if (isDragged && !isFocused) {
-                isDragged = false;
-            }
-
-            if (isFocused) {
-                isFocused = false;
-            }
-
-            imgWin.setVisible(true);
-        }
-
-        if (e.getSource() == focusBtn) {
-
-            if (isDragged) {
-                isFocused = true;
-            }
-
-            isClicked = false;
-            isDragging = false;
-
-            imgWin.setVisible(true);
-        }
-
-    }
+   
 }
