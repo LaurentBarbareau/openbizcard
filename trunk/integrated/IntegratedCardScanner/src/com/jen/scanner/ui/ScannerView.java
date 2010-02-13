@@ -39,6 +39,7 @@ import javax.swing.table.DefaultTableModel;
 import com.roncemer.ocr.*;
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
+import com.yov.scanner.imageprocessing.ImagePanel;
 import java.awt.image.BufferedImage;
 
 /**
@@ -1599,6 +1600,11 @@ public class ScannerView extends FrameView {
 
         frontCropBtnT1.setText(resourceMap.getString("frontCropBtnT1.text")); // NOI18N
         frontCropBtnT1.setName("frontCropBtnT1"); // NOI18N
+        frontCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontCropBtnT1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout frontPanelT1Layout = new javax.swing.GroupLayout(frontPanelT1);
         frontPanelT1.setLayout(frontPanelT1Layout);
@@ -1659,6 +1665,11 @@ public class ScannerView extends FrameView {
 
         backCropBtnT1.setText(resourceMap.getString("backCropBtnT1.text")); // NOI18N
         backCropBtnT1.setName("backCropBtnT1"); // NOI18N
+        backCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backCropBtnT1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lowRightT1Layout = new javax.swing.GroupLayout(lowRightT1);
         lowRightT1.setLayout(lowRightT1Layout);
@@ -3094,6 +3105,11 @@ public class ScannerView extends FrameView {
 
         frontCropBtnT3.setText(resourceMap.getString("frontCropBtnT3.text")); // NOI18N
         frontCropBtnT3.setName("frontCropBtnT3"); // NOI18N
+        frontCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frontCropBtnT3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lowLeftT3Layout = new javax.swing.GroupLayout(lowLeftT3);
         lowLeftT3.setLayout(lowLeftT3Layout);
@@ -3147,6 +3163,11 @@ public class ScannerView extends FrameView {
 
         backCropBtnT3.setText(resourceMap.getString("backCropBtnT3.text")); // NOI18N
         backCropBtnT3.setName("backCropBtnT3"); // NOI18N
+        backCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backCropBtnT3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lowRightT3Layout = new javax.swing.GroupLayout(lowRightT3);
         lowRightT3.setLayout(lowRightT3Layout);
@@ -4118,7 +4139,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4127,7 +4148,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4333,6 +4354,30 @@ public class ScannerView extends FrameView {
                 break;
         }
 
+        switch(frontUIState){
+            case STATE_NO_IMAGE:
+                frontCropBtnT1.setEnabled(false);
+                break;
+            case STATE_WITH_IMAGE:
+                frontCropBtnT1.setEnabled(true);
+                break;
+            case STATE_IMAGE_EDITED:
+                frontCropBtnT1.setEnabled(true);
+                break;
+        }
+
+        switch(backUIState){
+            case STATE_NO_IMAGE:
+                backCropBtnT1.setEnabled(false);
+                break;
+            case STATE_WITH_IMAGE:
+                backCropBtnT1.setEnabled(true);
+                break;
+            case STATE_IMAGE_EDITED:
+                backCropBtnT1.setEnabled(true);
+                break;
+        }
+
     }
 
     private void setButtonsStateResult(int newButtonsState){
@@ -4366,6 +4411,30 @@ public class ScannerView extends FrameView {
                 undoBtnT3.setEnabled(true);
                 confirmBtnT3.setEnabled(true);
                 brightSldT3.setEnabled(true);
+                break;
+        }
+
+        switch(frontUIStateResult){
+            case STATE_NO_IMAGE:
+                frontCropBtnT3.setEnabled(false);
+                break;
+            case STATE_WITH_IMAGE:
+                frontCropBtnT3.setEnabled(true);
+                break;
+            case STATE_IMAGE_EDITED:
+                frontCropBtnT3.setEnabled(true);
+                break;
+        }
+
+        switch(backUIStateResult){
+            case STATE_NO_IMAGE:
+                backCropBtnT3.setEnabled(false);
+                break;
+            case STATE_WITH_IMAGE:
+                backCropBtnT3.setEnabled(true);
+                break;
+            case STATE_IMAGE_EDITED:
+                backCropBtnT3.setEnabled(true);
                 break;
         }
 
@@ -4412,7 +4481,10 @@ public class ScannerView extends FrameView {
 
     private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
         // TODO add your handling code here:
-                if (evt.getSource() == frontBtnT1) {
+
+        //imgChooser = new javax.swing.JFileChooser();
+
+        if (evt.getSource() == frontBtnT1) {
             imgChooser.addChoosableFileFilter(new JPGFileFilter());
             imgChooser.setAcceptAllFileFilterUsed(false);
             int returnVal = imgChooser.showOpenDialog(null);
@@ -5235,6 +5307,91 @@ public class ScannerView extends FrameView {
         }
     }//GEN-LAST:event_engBtn8T2ActionPerformed
 
+    private void frontCropBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontCropBtnT1ActionPerformed
+        if(( (frontUIState == STATE_WITH_IMAGE) || (frontUIState == STATE_IMAGE_EDITED) )
+                && (frontTfT1.getText() != null) && (frontTfT1.getText().length() > 0) ){
+
+            //synchronized(this){
+
+            ImagePanel frontImgPane = new ImagePanel(frontTfT1.getText());
+
+            frontImgPane.cropImage();
+
+            //synchronized(this){
+            //try{
+            //   wait();
+            //}catch(Exception e){
+            //    e.printStackTrace();
+            //}
+        
+
+            if(frontImgPane.isCropped()){
+                frontUIState = STATE_WITH_IMAGE;
+                scannedImage = frontImgPane.getCroppedImage();
+                //scannedBCard = new BusinessCard(scannedImage);
+                scannedBCard = new BusinessCard(frontImgPane.getCroppedImage());
+                
+
+                frontLbT1.setIcon(null);
+                //frontLbT1.setIcon(new ImageIcon(frontTfT1.getText()));
+                frontLbT1.setIcon(new ImageIcon(scannedImage));
+                //backLbT1.setIcon(new ImageIcon(frontTfT1.getText()));
+                frontLbT1.repaint();
+                frontSpT1.repaint();
+                scannerTab.repaint();
+
+                System.out.println("Image is Cropped");
+            }
+
+            //}
+        }
+    }//GEN-LAST:event_frontCropBtnT1ActionPerformed
+
+    private void backCropBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCropBtnT1ActionPerformed
+         if(( (backUIState == STATE_WITH_IMAGE) || (backUIState == STATE_IMAGE_EDITED) )
+                && (backTfT1.getText() != null) && (backTfT1.getText().length() > 0) ){
+
+            ImagePanel backImgPane = new ImagePanel(backTfT1.getText());
+            backImgPane.cropImage();
+
+            if(backImgPane.isCropped()){
+                backUIState = STATE_WITH_IMAGE;
+                scannedBCardBack = new BusinessCard(backImgPane.getCroppedImage());
+            }
+
+        }
+    }//GEN-LAST:event_backCropBtnT1ActionPerformed
+
+    private void frontCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontCropBtnT3ActionPerformed
+         if(( (frontUIStateResult == STATE_WITH_IMAGE) || (frontUIStateResult == STATE_IMAGE_EDITED) )
+                && (frontTfT3.getText() != null) && (frontTfT3.getText().length() > 0) ){
+
+            ImagePanel frontImgPaneResult = new ImagePanel(frontTfT3.getText());
+            frontImgPaneResult.cropImage();
+
+            if(frontImgPaneResult.isCropped()){
+                frontUIStateResult = STATE_WITH_IMAGE;
+                resultBCard = new BusinessCard(frontImgPaneResult.getCroppedImage());
+            }
+
+        }
+    }//GEN-LAST:event_frontCropBtnT3ActionPerformed
+
+    private void backCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCropBtnT3ActionPerformed
+        if(( (backUIStateResult == STATE_WITH_IMAGE) || (backUIStateResult == STATE_IMAGE_EDITED) )
+                && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0) ){
+
+            ImagePanel backImgPaneResult = new ImagePanel(backTfT3.getText());
+            backImgPaneResult.cropImage();
+
+            if(backImgPaneResult.isCropped()){
+                backUIStateResult = STATE_WITH_IMAGE;
+                resultBCardBack = new BusinessCard(backImgPaneResult.getCroppedImage());
+            }
+
+        }
+    }//GEN-LAST:event_backCropBtnT3ActionPerformed
+
     private Card getCardFromForm(int index){
         Card newCard;
         switch(index){
@@ -5754,8 +5911,8 @@ public class ScannerView extends FrameView {
     private int busyIconIndex = 0;
 
     //file chooser
-    final javax.swing.JFileChooser dbChooser = new javax.swing.JFileChooser();
-    final javax.swing.JFileChooser imgChooser = new javax.swing.JFileChooser();
+    private/*final*/ javax.swing.JFileChooser dbChooser = new javax.swing.JFileChooser();
+    private/*final*/ javax.swing.JFileChooser imgChooser = new javax.swing.JFileChooser();
     private JLabel frontLbT1;
     private JLabel backLbT1;
     private JLabel frontLbT3;
