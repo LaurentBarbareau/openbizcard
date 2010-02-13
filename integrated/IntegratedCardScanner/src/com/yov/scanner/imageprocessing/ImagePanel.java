@@ -1,4 +1,4 @@
-package yov;
+package com.yov.scanner.imageprocessing;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +19,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class ImagePanel extends Component implements MouseListener, MouseMotionListener{
+public class ImagePanel extends Component implements MouseListener, MouseMotionListener {
 
     private BufferedImage displayImage;
     private BufferedImage croppedImage;
@@ -29,11 +29,9 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
     private int clickX, clickY;
     private int dragX, dragY;
     private boolean isClicked, isDragged, isDragging, isFocused, isCropped;
-    
     private int imgWidth;
     private int imgHeight;
     private String imgFileName;
-    
     private int dragWidth, dragHeight;
 
     public ImagePanel(BufferedImage newImage) {
@@ -112,71 +110,70 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         imgWidth = displayImage.getWidth();
         imgHeight = displayImage.getHeight();
     }
-    
-    public int getImageWidth(){
-    	return imgWidth;
-    }
-    
-    public int getImageHeight(){
-    	return imgHeight;
+
+    public int getImageWidth() {
+        return imgWidth;
     }
 
-    public BufferedImage getCroppedImage(){
+    public int getImageHeight() {
+        return imgHeight;
+    }
+
+    public BufferedImage getCroppedImage() {
         return croppedImage;
     }
 
-    public boolean isCropped(){
+    public boolean isCropped() {
         return isCropped;
     }
-    
-    public boolean isClicked(){
+
+    public boolean isClicked() {
         return isClicked;
     }
-    
-    public boolean isDragged(){
+
+    public boolean isDragged() {
         return isDragged;
     }
-    
-    public boolean isDragging(){
+
+    public boolean isDragging() {
         return isDragging;
     }
-    
-    public boolean isFocused(){
+
+    public boolean isFocused() {
         return isFocused;
     }
-    
-    public int getDragWidth(){
+
+    public int getDragWidth() {
         return dragWidth;
     }
-    
-    public int getDragHeight(){
-    	return dragHeight;
+
+    public int getDragHeight() {
+        return dragHeight;
     }
-    
-    public boolean setIsClicked(boolean newIsClicked){
-    	boolean oldValue = isClicked;
-    	isClicked = newIsClicked;
+
+    public boolean setIsClicked(boolean newIsClicked) {
+        boolean oldValue = isClicked;
+        isClicked = newIsClicked;
         return oldValue;
     }
-    
-    public boolean setIsDragged(boolean newIsDragged){
-    	boolean oldValue = isDragged;
-    	isDragged = newIsDragged;
+
+    public boolean setIsDragged(boolean newIsDragged) {
+        boolean oldValue = isDragged;
+        isDragged = newIsDragged;
         return oldValue;
     }
-    
-    public boolean setIsDragging(boolean newIsDragging){
-    	boolean oldValue = isDragging;
-    	isDragging = newIsDragging;
+
+    public boolean setIsDragging(boolean newIsDragging) {
+        boolean oldValue = isDragging;
+        isDragging = newIsDragging;
         return oldValue;
     }
-    
-    public boolean setIsFocused(boolean newIsFocused){
-    	boolean oldValue = isFocused;
-    	isFocused = newIsFocused;
+
+    public boolean setIsFocused(boolean newIsFocused) {
+        boolean oldValue = isFocused;
+        isFocused = newIsFocused;
         return oldValue;
     }
-    
 
     @Override
     public void paint(Graphics g) {
@@ -286,7 +283,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         //System.out.println("Start ImagePanel's main method");
 
         isCropped = false;
-        
+
         croppedImage = null;
 
         dragWidth = dragX - clickX;
@@ -313,7 +310,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         }
 
         if (croppedImage != null) {
-            
+
             try {
                 ImageIO.write(
                         croppedImage,
@@ -321,7 +318,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
                         new File(imgFileName));
 
                 isCropped = true;
-                
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -389,7 +386,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
         isDragging = true;
         isDragged = false;
-        
+
     }
 
     @Override
@@ -443,6 +440,4 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
     public void mouseMoved(MouseEvent arg0) {
         // TODO Auto-generated method stub
     }
-
-   
 }
