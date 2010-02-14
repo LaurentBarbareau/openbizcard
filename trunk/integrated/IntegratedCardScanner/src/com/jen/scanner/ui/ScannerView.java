@@ -48,11 +48,15 @@ import java.awt.image.BufferedImage;
  */
 public class ScannerView extends FrameView {
 
+    org.jdesktop.application.ResourceMap myResourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
+
     public ScannerView(SingleFrameApplication app) {
         super(app);
-  
+
         initComponents();
-        
+
+        menuTab.setEnabledAt(RESULT_TAB,false);
+
         try {
             localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
         } catch (ScannerDBException ex) {
@@ -435,6 +439,7 @@ public class ScannerView extends FrameView {
         confirmBtnT3 = new javax.swing.JButton();
         autoCropBtnT3 = new javax.swing.JButton();
         blackWhiteBtnT3 = new javax.swing.JButton();
+        saveBtnT3 = new javax.swing.JButton();
         lowT3 = new javax.swing.JPanel();
         lowLeftT3 = new javax.swing.JPanel();
         frontTfT3 = new javax.swing.JTextField();
@@ -867,6 +872,7 @@ public class ScannerView extends FrameView {
 
         adsTaT1.setColumns(30);
         adsTaT1.setFont(resourceMap.getFont("adsTaT1.font")); // NOI18N
+        adsTaT1.setLineWrap(true);
         adsTaT1.setRows(3);
         adsTaT1.setAutoscrolls(false);
         adsTaT1.setName("adsTaT1"); // NOI18N
@@ -900,6 +906,7 @@ public class ScannerView extends FrameView {
 
         noteTaT1.setColumns(30);
         noteTaT1.setFont(resourceMap.getFont("noteTaT1.font")); // NOI18N
+        noteTaT1.setLineWrap(true);
         noteTaT1.setRows(3);
         noteTaT1.setAutoscrolls(false);
         noteTaT1.setName("noteTaT1"); // NOI18N
@@ -1308,11 +1315,11 @@ public class ScannerView extends FrameView {
         blankPanel3.setLayout(blankPanel3Layout);
         blankPanel3Layout.setHorizontalGroup(
             blankPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel3Layout.setVerticalGroup(
             blankPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1322,7 +1329,7 @@ public class ScannerView extends FrameView {
 
         upRightT1.setMinimumSize(new java.awt.Dimension(250, 250));
         upRightT1.setName("upRightT1"); // NOI18N
-        upRightT1.setPreferredSize(new java.awt.Dimension(250, 270));
+        upRightT1.setPreferredSize(new java.awt.Dimension(260, 270));
 
         scannerPanel.setName("scannerPanel"); // NOI18N
 
@@ -1350,15 +1357,15 @@ public class ScannerView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scannerTxtT1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scannerBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scannerBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
         scannerPanelLayout.setVerticalGroup(
             scannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(scannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(scannerLbT1)
-                .addComponent(scannerBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(scannerTxtT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scannerTxtT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scannerBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         brightPanelT1.setMinimumSize(new java.awt.Dimension(242, 40));
@@ -1499,16 +1506,8 @@ public class ScannerView extends FrameView {
             upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addComponent(brightPanelT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addComponent(scanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(saveToDbBtnT1)
-                .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(undoBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1516,21 +1515,31 @@ public class ScannerView extends FrameView {
                         .addComponent(rotateBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(doubleSideBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(autoCropBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(blackWhiteBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(readCardBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(confirmBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                    .addComponent(readCardBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emailBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(confirmBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
             .addGroup(upRightT1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(sideLbT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(frontSideRdT1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(backSideRdT1)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(sideLbT1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(frontSideRdT1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(backSideRdT1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(scanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saveToDbBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(brightPanelT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         upRightT1Layout.setVerticalGroup(
             upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1585,8 +1594,14 @@ public class ScannerView extends FrameView {
         frontPanelT1.setName("frontPanelT1"); // NOI18N
         frontPanelT1.setPreferredSize(new java.awt.Dimension(300, 50));
 
+        frontTfT1.setEditable(false);
         frontTfT1.setText(resourceMap.getString("frontTfT1.text")); // NOI18N
         frontTfT1.setName("frontTfT1"); // NOI18N
+        frontTfT1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                frontTfT1MouseClicked(evt);
+            }
+        });
 
         frontBtnT1.setText(resourceMap.getString("frontBtnT1.text")); // NOI18N
         frontBtnT1.setName("frontBtnT1"); // NOI18N
@@ -1650,8 +1665,14 @@ public class ScannerView extends FrameView {
         lowRightT1.setMaximumSize(null);
         lowRightT1.setName("lowRightT1"); // NOI18N
 
+        backTfT1.setEditable(false);
         backTfT1.setText(resourceMap.getString("backTfT1.text")); // NOI18N
         backTfT1.setName("backTfT1"); // NOI18N
+        backTfT1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backTfT1MouseClicked(evt);
+            }
+        });
 
         backBtnT1.setText(resourceMap.getString("backBtnT1.text")); // NOI18N
         backBtnT1.setName("backBtnT1"); // NOI18N
@@ -2015,6 +2036,7 @@ public class ScannerView extends FrameView {
 
         adsTaT2.setColumns(30);
         adsTaT2.setFont(resourceMap.getFont("adsTaT2.font")); // NOI18N
+        adsTaT2.setLineWrap(true);
         adsTaT2.setRows(3);
         adsTaT2.setAutoscrolls(false);
         adsTaT2.setName("adsTaT2"); // NOI18N
@@ -2048,6 +2070,7 @@ public class ScannerView extends FrameView {
 
         noteTaT2.setColumns(30);
         noteTaT2.setFont(resourceMap.getFont("noteTaT2.font")); // NOI18N
+        noteTaT2.setLineWrap(true);
         noteTaT2.setRows(3);
         noteTaT2.setAutoscrolls(false);
         noteTaT2.setName("noteTaT2"); // NOI18N
@@ -3022,32 +3045,40 @@ public class ScannerView extends FrameView {
             }
         });
 
+        saveBtnT3.setText(resourceMap.getString("saveBtnT3.text")); // NOI18N
+        saveBtnT3.setName("saveBtnT3"); // NOI18N
+
         javax.swing.GroupLayout upRightT3Layout = new javax.swing.GroupLayout(upRightT3);
         upRightT3.setLayout(upRightT3Layout);
         upRightT3Layout.setHorizontalGroup(
             upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upRightT3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addContainerGap()
+                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(upRightT3Layout.createSequentialGroup()
+                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(undoBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(autoCropBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rotateBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(confirmBtnT3)))
+                            .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(upRightT3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(sideLbT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontSideRdT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backSideRdT3))
-                    .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(autoCropBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rotateBtnT3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                            .addComponent(undoBtnT3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(confirmBtnT3))))
+                        .addGap(70, 70, 70)
+                        .addComponent(saveBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         upRightT3Layout.setVerticalGroup(
@@ -3065,16 +3096,18 @@ public class ScannerView extends FrameView {
                     .addComponent(emailBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(undoBtnT3)
-                    .addComponent(confirmBtnT3))
-                .addGap(18, 18, 18)
+                    .addComponent(confirmBtnT3)
+                    .addComponent(undoBtnT3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sideLbT3)
                     .addComponent(frontSideRdT3)
                     .addComponent(backSideRdT3))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(saveBtnT3)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3091,7 +3124,13 @@ public class ScannerView extends FrameView {
         lowLeftT3.setName("lowLeftT3"); // NOI18N
         lowLeftT3.setPreferredSize(new java.awt.Dimension(337, 335));
 
+        frontTfT3.setEditable(false);
         frontTfT3.setName("frontTfT3"); // NOI18N
+        frontTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                frontTfT3MouseClicked(evt);
+            }
+        });
 
         frontBtnT3.setText(resourceMap.getString("frontBtnT3.text")); // NOI18N
         frontBtnT3.setName("frontBtnT3"); // NOI18N
@@ -3149,7 +3188,13 @@ public class ScannerView extends FrameView {
         lowRightT3.setName("lowRightT3"); // NOI18N
         lowRightT3.setPreferredSize(new java.awt.Dimension(340, 335));
 
+        backTfT3.setEditable(false);
         backTfT3.setName("backTfT3"); // NOI18N
+        backTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backTfT3MouseClicked(evt);
+            }
+        });
 
         backBtnT3.setText(resourceMap.getString("backBtnT3.text")); // NOI18N
         backBtnT3.setName("backBtnT3"); // NOI18N
@@ -3510,6 +3555,7 @@ public class ScannerView extends FrameView {
 
         adsTaT3.setColumns(30);
         adsTaT3.setFont(resourceMap.getFont("adsTaT3.font")); // NOI18N
+        adsTaT3.setLineWrap(true);
         adsTaT3.setRows(3);
         adsTaT3.setAutoscrolls(false);
         adsTaT3.setName("adsTaT3"); // NOI18N
@@ -3543,6 +3589,7 @@ public class ScannerView extends FrameView {
 
         noteTaT3.setColumns(30);
         noteTaT3.setFont(resourceMap.getFont("noteTaT3.font")); // NOI18N
+        noteTaT3.setLineWrap(true);
         noteTaT3.setRows(3);
         noteTaT3.setAutoscrolls(false);
         noteTaT3.setName("noteTaT3"); // NOI18N
@@ -4140,7 +4187,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4149,7 +4196,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4443,10 +4490,12 @@ public class ScannerView extends FrameView {
 
     private void saveToDbBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToDbBtnT1ActionPerformed
         // TODO add your handling code here:
+        Card newCard = getCardFromForm(SCAN_TAB);
+        if(Utils.checkFirstName(newCard)){
             try {
-                Card newCard = getCardFromForm(1);
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
+                localCardList.add(newCard);
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
@@ -4470,14 +4519,14 @@ public class ScannerView extends FrameView {
                         newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
                     }
                 }
-
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ioEx){
                 ioEx.printStackTrace();
             }
-        JOptionPane.showMessageDialog(null, "Already Added","information", JOptionPane.INFORMATION_MESSAGE);
-        clearTextT1();
+            JOptionPane.showMessageDialog(null,myResourceMap.getString("addAlertT1.text"),"information", JOptionPane.INFORMATION_MESSAGE);
+            clearTextT1();
+        }
     }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
 
     private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
@@ -4571,7 +4620,8 @@ public class ScannerView extends FrameView {
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
         // TODO add your handling code here:
         Card editCard = idMapped.get(importTableT2.getSelectedRow());
-        menuTab.setSelectedIndex(3);
+        menuTab.setEnabledAt(RESULT_TAB, true);
+        menuTab.setSelectedIndex(RESULT_TAB);
 
         String frontPath = validatePath(editCard.getImgFront());
         String backPath = validatePath(editCard.getImgBack());
@@ -5140,7 +5190,7 @@ public class ScannerView extends FrameView {
 
     private void genSearchT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genSearchT2ActionPerformed
         // TODO add your handling code here:
-        Card criteria = getCardFromForm(2);
+        Card criteria = getCardFromForm(QUERY_TAB);
         String genCriteria = genSearchTfT2.getText();
         ArrayList<Card> resultCards;
 
@@ -5405,12 +5455,120 @@ public class ScannerView extends FrameView {
         }
     }//GEN-LAST:event_backCropBtnT3ActionPerformed
 
+    private void frontTfT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontTfT1MouseClicked
+        // TODO add your handling code here:
+            imgChooser.addChoosableFileFilter(new JPGFileFilter());
+            imgChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = imgChooser.showOpenDialog(null);
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = imgChooser.getSelectedFile();
+                String path = file.getAbsolutePath();
+                frontTfT1.setText(path);
+
+                ImageIcon cardIcon = new ImageIcon(path);
+                java.awt.Image cardImage = cardIcon.getImage();
+
+                frontLbT1.setIcon(cardIcon);
+
+                // Yov's added code
+                scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                        BufferedImage.TYPE_INT_ARGB);
+                scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
+                scannedBCard = new BusinessCard(scannedImage);
+
+                scannedImageFileName = path;
+
+                frontUIState = STATE_WITH_IMAGE;
+                setButtonsState(frontUIState);
+            }
+    }//GEN-LAST:event_frontTfT1MouseClicked
+
+    private void backTfT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backTfT1MouseClicked
+        // TODO add your handling code here:
+            imgChooser.addChoosableFileFilter(new JPGFileFilter());
+            imgChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = imgChooser.showOpenDialog(null);
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = imgChooser.getSelectedFile();
+                String path = file.getAbsolutePath();
+                backTfT1.setText(path);
+
+                ImageIcon cardIcon = new ImageIcon(path);
+                java.awt.Image cardImage = cardIcon.getImage();
+
+                backLbT1.setIcon(cardIcon);
+
+                // Yov's added code
+                scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                        BufferedImage.TYPE_INT_ARGB);
+                scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
+                scannedBCardBack = new BusinessCard(scannedImage);
+
+                scannedImageFileNameBack = path;
+
+                backUIState = STATE_WITH_IMAGE;
+                setButtonsState(backUIState);
+            } 
+    }//GEN-LAST:event_backTfT1MouseClicked
+
+    private void frontTfT3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontTfT3MouseClicked
+        // TODO add your handling code here:
+        imgChooser.addChoosableFileFilter(new JPGFileFilter());
+        imgChooser.setAcceptAllFileFilterUsed(false);
+        int returnVal = imgChooser.showOpenDialog(null);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = imgChooser.getSelectedFile();
+            String path = file.getAbsolutePath();
+            frontTfT3.setText(path);
+
+            ImageIcon cardIcon = new ImageIcon(path);
+            java.awt.Image cardImage = cardIcon.getImage();
+
+            frontLbT3.setIcon(cardIcon);
+
+            // Yov's added code
+            resultImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                    BufferedImage.TYPE_INT_ARGB);
+            resultImage.getGraphics().drawImage(cardImage, 0, 0, null);
+            resultBCard = new BusinessCard(resultImage);
+
+            frontUIStateResult = STATE_WITH_IMAGE;
+            setButtonsStateResult(frontUIStateResult);
+        }
+    }//GEN-LAST:event_frontTfT3MouseClicked
+
+    private void backTfT3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backTfT3MouseClicked
+        // TODO add your handling code here:
+        imgChooser.addChoosableFileFilter(new JPGFileFilter());
+        imgChooser.setAcceptAllFileFilterUsed(false);
+        int returnVal = imgChooser.showOpenDialog(null);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = imgChooser.getSelectedFile();
+            String path = file.getAbsolutePath();
+            backTfT3.setText(path);
+
+            ImageIcon cardIcon = new ImageIcon(path);
+            java.awt.Image cardImage = cardIcon.getImage();
+
+            backLbT3.setIcon(cardIcon);
+
+            // Yov's added code
+            resultImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                    BufferedImage.TYPE_INT_ARGB);
+            resultImage.getGraphics().drawImage(cardImage, 0, 0, null);
+            resultBCardBack = new BusinessCard(resultImage);
+
+            backUIStateResult = STATE_WITH_IMAGE;
+            setButtonsStateResult(backUIStateResult);
+        }
+    }//GEN-LAST:event_backTfT3MouseClicked
+
     private Card getCardFromForm(int index){
         Card newCard;
         switch(index){
-            case 1 :newCard = getCardFromT1(); break;
-            case 2 :newCard = getCardFromT2(); break;
-            case 3 :newCard = getCardFromT3(); break;
+            case 0 :newCard = getCardFromT1(); break;
+            case 1 :newCard = getCardFromT2(); break;
+            case 2 :newCard = getCardFromT3(); break;
             default: newCard = new Card();
             }
         return newCard;
@@ -5852,6 +6010,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel resultTab;
     private javax.swing.JButton rotateBtnT1;
     private javax.swing.JButton rotateBtnT3;
+    private javax.swing.JButton saveBtnT3;
     private javax.swing.JButton saveToDbBtnT1;
     private javax.swing.JButton scanBtn;
     private javax.swing.JButton scannerBtnT1;
@@ -5956,4 +6115,9 @@ public class ScannerView extends FrameView {
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;
     private final int STATE_IMAGE_EDITED = 2;
+
+    private final int SCAN_TAB = 0;
+    private final int QUERY_TAB = 1;
+    private final int RESULT_TAB = 2;
+    private final int IMPORT_EXPORT_TAB = 3;
 }
