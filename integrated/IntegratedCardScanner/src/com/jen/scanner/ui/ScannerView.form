@@ -472,6 +472,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaT1.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="adsTaT1" noResource="true"/>
@@ -531,6 +532,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaT1.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="noteTaT1" noResource="true"/>
@@ -1030,12 +1032,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -1047,7 +1049,7 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="upRightT1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 270]"/>
+                      <Dimension value="[260, 270]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1061,18 +1063,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scannerPanel" min="-2" pref="251" max="-2" attributes="0"/>
+                              <Component id="scannerPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="brightPanelT1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="scanBtn" min="-2" pref="110" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="saveToDbBtnT1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1083,23 +1075,37 @@
                                       <Component id="autoCropBtnT1" alignment="0" max="32767" attributes="1"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="blackWhiteBtnT1" max="32767" attributes="1"/>
                                   <Component id="readCardBtnT1" alignment="1" max="32767" attributes="1"/>
                                   <Component id="emailBtnT1" alignment="1" max="32767" attributes="1"/>
                                   <Component id="confirmBtnT1" alignment="1" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="sideLbT1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="frontSideRdT1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="backSideRdT1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="sideLbT1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="frontSideRdT1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="backSideRdT1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="1">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="scanBtn" min="-2" pref="112" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="saveToDbBtnT1" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="brightPanelT1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1159,8 +1165,8 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="scannerTxtT1" min="-2" pref="108" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="scannerBtnT1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="scannerBtnT1" pref="88" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1168,8 +1174,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="scannerLbT1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scannerBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="scannerTxtT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="scannerBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1468,9 +1474,13 @@
                           <SubComponents>
                             <Component class="javax.swing.JTextField" name="frontTfT1">
                               <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
                                 <Property name="text" type="java.lang.String" resourceKey="frontTfT1.text"/>
                                 <Property name="name" type="java.lang.String" value="frontTfT1" noResource="true"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="frontTfT1MouseClicked"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="frontBtnT1">
                               <Properties>
@@ -1553,9 +1563,13 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="backTfT1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" resourceKey="backTfT1.text"/>
                             <Property name="name" type="java.lang.String" value="backTfT1" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backTfT1MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="backBtnT1">
                           <Properties>
@@ -2014,6 +2028,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaT2.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="adsTaT2" noResource="true"/>
@@ -2073,6 +2088,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaT2.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="noteTaT2" noResource="true"/>
@@ -3274,31 +3290,39 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="idPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="undoBtnT3" max="32767" attributes="1"/>
+                                                  <Component id="autoCropBtnT3" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="rotateBtnT3" alignment="0" pref="112" max="32767" attributes="1"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="blackWhiteBtnT3" max="32767" attributes="1"/>
+                                                  <Component id="emailBtnT3" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="confirmBtnT3" alignment="0" min="-2" max="-2" attributes="1"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="brightPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                       <Component id="sideLbT3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="frontSideRdT3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="backSideRdT3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="brightPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idPanelT3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="autoCropBtnT3" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="rotateBtnT3" alignment="0" pref="112" max="32767" attributes="1"/>
-                                          <Component id="undoBtnT3" alignment="0" min="-2" max="-2" attributes="1"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="blackWhiteBtnT3" max="32767" attributes="1"/>
-                                          <Component id="emailBtnT3" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="confirmBtnT3" alignment="0" min="-2" max="-2" attributes="1"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                      <Component id="saveBtnT3" min="-2" pref="108" max="-2" attributes="1"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -3322,18 +3346,20 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="undoBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="confirmBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="undoBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="brightPanelT3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="sideLbT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="frontSideRdT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="backSideRdT3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="saveBtnT3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3535,6 +3561,12 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blackWhiteBtnT3ActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JButton" name="saveBtnT3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="saveBtnT3.text"/>
+                        <Property name="name" type="java.lang.String" value="saveBtnT3" noResource="true"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="lowT3">
@@ -3606,8 +3638,12 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="frontTfT3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="frontTfT3" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="frontTfT3MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="frontBtnT3">
                           <Properties>
@@ -3696,8 +3732,12 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="backTfT3">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="backTfT3" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backTfT3MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="backBtnT3">
                           <Properties>
@@ -4140,6 +4180,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaT3.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="adsTaT3" noResource="true"/>
@@ -4199,6 +4240,7 @@
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaT3.font"/>
+                                    <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="name" type="java.lang.String" value="noteTaT3" noResource="true"/>
@@ -4926,7 +4968,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="127" max="32767" attributes="0"/>
+                              <EmptySpace pref="121" max="32767" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                           </Group>
@@ -4937,7 +4979,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                              <EmptySpace pref="17" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

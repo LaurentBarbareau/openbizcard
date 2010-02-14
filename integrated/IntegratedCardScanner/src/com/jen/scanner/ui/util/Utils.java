@@ -8,10 +8,12 @@ package com.jen.scanner.ui.util;
 import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
+import com.jen.scanner.ui.ScannerView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +37,17 @@ public class Utils {
             ext = s.substring(i+1).toLowerCase();
         }
         return ext;
+    }
+
+    public static boolean checkFirstName(Card c){
+        boolean chk = false;
+        if(c.getFirstName()!=null && !c.getFirstName().equals("")) chk = true;
+        else{
+            org.jdesktop.application.ResourceMap myResourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
+            chk = false;
+            JOptionPane.showMessageDialog(null,myResourceMap.getString("missingName.text"),"information", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return chk;
     }
 
     public static ArrayList<Card> quickSearchCard(String str,ArrayList<Card> allCard){
@@ -348,6 +361,7 @@ public class Utils {
         if(s1!=null && s2!=null) return s1.indexOf(s2)>=0;
         else return false;
     }
+
 
     public static void main (String[] args){
         try {
