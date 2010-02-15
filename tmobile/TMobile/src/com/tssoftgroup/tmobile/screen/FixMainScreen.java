@@ -64,24 +64,17 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	int currentComment = 0;
 	public String search = "";
 	MyButtonField searchBT = new MyButtonField("Search", ButtonField.ELLIPSIS);
-
+	int numItem;
 	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
 		super.add(manager);
-		searchBT.setMargin(10, 0, 0, 0);
+		searchBT.setMargin(10, 15, 0, 0);
 		searchBT.setChangeListener(this);
 		this.mode = mode;
 		pagingManager.add(previousNextManager);
 		pageChoice = new ChoiceField("Go to :", pageString.length, 0) {
 			public Object getChoice(int index) throws IllegalArgumentException {
 				return pageString[index];
-			}
-			protected void paint(net.rim.device.api.ui.Graphics g) {
-				g.setColor(MyColor.FONT_DESCRIPTION);
-				super.paint(g);
-			}
-			protected void paintBackground(net.rim.device.api.ui.Graphics g) {
-				g.setColor(MyColor.FONT_DESCRIPTION);
 			}
 		};
 		pageChoice.setPadding(0, 350 * Display.getWidth() / 480, 0, 0);
@@ -91,6 +84,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	}
 
 	public void processHaveNext(int numItem) {
+		this.numItem = numItem;
 		calculateNumpageLabel(currentIndex, numItem);
 		int numItemIndex = numItem - 1;
 		if (numItemIndex > currentIndex + Const.NUM_LIST - 1) {
