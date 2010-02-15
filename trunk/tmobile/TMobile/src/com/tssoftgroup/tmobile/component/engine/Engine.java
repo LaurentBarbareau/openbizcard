@@ -104,6 +104,28 @@ public class Engine implements HTTPHandler {
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray array = null;
+				String status = json.optString("Status", "400");
+				if (status.equals("400")) {
+					final VideoConnectScreen videoShowScreen = VideoConnectScreen
+							.getInstance();
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+
+								public void run() {
+									if (WaitScreen.getInstance().isDisplayed()) {
+										UiApplication.getUiApplication()
+												.popScreen(
+														WaitScreen
+																.getInstance());
+									}
+									if (!videoShowScreen.isDisplayed()) {
+										UiApplication.getUiApplication()
+												.pushScreen(videoShowScreen);
+									}
+								}
+							});
+					return;
+				}
 				array = json.optJSONArray("videos");
 				String numItem = json.optString("NumItem", "no such key");
 				try {
@@ -194,6 +216,28 @@ public class Engine implements HTTPHandler {
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray array = null;
+				String status = json.optString("Status", "400");
+				if (status.equals("400")) {
+					final MCastScreen videoShowScreen = MCastScreen
+							.getInstance();
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+
+								public void run() {
+									if (WaitScreen.getInstance().isDisplayed()) {
+										UiApplication.getUiApplication()
+												.popScreen(
+														WaitScreen
+																.getInstance());
+									}
+									if (!videoShowScreen.isDisplayed()) {
+										UiApplication.getUiApplication()
+												.pushScreen(videoShowScreen);
+									}
+								}
+							});
+					return;
+				}
 				array = json.optJSONArray("videos");
 				String numItem = json.optString("NumItem", "no such key");
 				try {
@@ -217,6 +261,7 @@ public class Engine implements HTTPHandler {
 							"no such key"));
 					picInfo.setThumbnailURL(item.optString("thumbnail",
 							"no such key"));
+
 					// fix thumbnail url
 					// picInfo.setThumbnailURL("http://www.dhlknowledge.com/web/uploads/sample.png");
 					// Video Attach
@@ -366,25 +411,23 @@ public class Engine implements HTTPHandler {
 								new MCastDetail(Engine.commnetPicInfo));
 					}
 					if (current instanceof MCastPlayerScreen) {
-//						UiApplication.getUiApplication().popScreen(current);
-//						MCastPlayerScreen scr = new MCastPlayerScreen(
-//								Engine.commnetPicInfo);
-//						scr.addCommentMoreInfo();
-//						scr.isAlreadyAddComment = true;
-//						scr.commentLabelField.setFocus();
-//						UiApplication.getUiApplication().pushScreen(scr);
+						// UiApplication.getUiApplication().popScreen(current);
+						// MCastPlayerScreen scr = new MCastPlayerScreen(
+						// Engine.commnetPicInfo);
+						// scr.addCommentMoreInfo();
+						// scr.isAlreadyAddComment = true;
+						// scr.commentLabelField.setFocus();
+						// UiApplication.getUiApplication().pushScreen(scr);
 
-						MCastPlayerScreen cur = (MCastPlayerScreen)current;
-//						UiApplication.getUiApplication().popScreen(current);
-//						MCastPlayerScreen scr = new MCastPlayerScreen(
-//								Engine.commnetPicInfo);
+						MCastPlayerScreen cur = (MCastPlayerScreen) current;
+						// UiApplication.getUiApplication().popScreen(current);
+						// MCastPlayerScreen scr = new MCastPlayerScreen(
+						// Engine.commnetPicInfo);
 						cur.picinfo = Engine.commnetPicInfo;
 						cur.addComment();
 						cur.isAlreadyAddComment = true;
 						cur.commentLabelField.setFocus();
-//						UiApplication.getUiApplication().pushScreen(scr);
-
-					
+						// UiApplication.getUiApplication().pushScreen(scr);
 
 					}
 					if (current instanceof VideoConnectDetail) {
@@ -393,17 +436,18 @@ public class Engine implements HTTPHandler {
 								new VideoConnectDetail(Engine.commnetPicInfo));
 					}
 					if (current instanceof VideoConnectPlayerScreen) {
-//						UiApplication.getUiApplication().popScreen(current);
-//						VideoConnectPlayerScreen scr = new VideoConnectPlayerScreen(
-//								Engine.commnetPicInfo);
-//						scr.addCommentMoreInfo();
-//						scr.isAlreadyAddComment = true;
-//						scr.commentLabelField.setFocus();
-//						UiApplication.getUiApplication().pushScreen(scr);
-						VideoConnectPlayerScreen cur = (VideoConnectPlayerScreen)current;
-//						UiApplication.getUiApplication().popScreen(current);
-//						MCastPlayerScreen scr = new MCastPlayerScreen(
-//								Engine.commnetPicInfo);
+						// UiApplication.getUiApplication().popScreen(current);
+						// VideoConnectPlayerScreen scr = new
+						// VideoConnectPlayerScreen(
+						// Engine.commnetPicInfo);
+						// scr.addCommentMoreInfo();
+						// scr.isAlreadyAddComment = true;
+						// scr.commentLabelField.setFocus();
+						// UiApplication.getUiApplication().pushScreen(scr);
+						VideoConnectPlayerScreen cur = (VideoConnectPlayerScreen) current;
+						// UiApplication.getUiApplication().popScreen(current);
+						// MCastPlayerScreen scr = new MCastPlayerScreen(
+						// Engine.commnetPicInfo);
 						cur.picinfo = Engine.commnetPicInfo;
 						cur.addComment();
 						cur.isAlreadyAddComment = true;
@@ -451,7 +495,11 @@ public class Engine implements HTTPHandler {
 					}
 					trainInfo.setThumbnailUrl(item.optString("thumbnail",
 							"no such key"));
-					items.addElement(trainInfo);
+					trainInfo.setCat(item.optString("training_cat",
+							"no such key"));//
+					if (!trainInfo.getCat().equals("")) {
+						items.addElement(trainInfo);
+					}
 				}
 				final TrainingListScreen trainingScreen = TrainingListScreen
 						.getInstance();
@@ -460,7 +508,7 @@ public class Engine implements HTTPHandler {
 
 					public void run() {
 
-						trainingScreen.setList(myItems);
+						trainingScreen.setList(myItems, null);
 						trainingScreen.processHaveNext(returnItem);
 					}
 				});
@@ -535,11 +583,12 @@ public class Engine implements HTTPHandler {
 								Choice ch = new Choice();
 								ch.key = raw.choiceChar;
 								ch.value = raw.str;
-								if(!ch.value.equals("")){
-								question.choices.addElement(ch);
+								if (!ch.value.equals("")) {
+									question.choices.addElement(ch);
 								}
 							}
-							if (raw.type.equals("2") && question.answer.equals("") ) {
+							if (raw.type.equals("2")
+									&& question.answer.equals("")) {
 								question.answer = raw.choiceChar;
 							}
 						}
@@ -689,13 +738,12 @@ public class Engine implements HTTPHandler {
 					docInfo.setFileName(item.optString("filename",
 							"no such key"));
 					String fileName = item.optString("filename", "no such key");
-					
-					if(fileName.length() >0 && fileName.charAt(0) == '/'){
+
+					if (fileName.length() > 0 && fileName.charAt(0) == '/') {
 						fileName = fileName.substring(1);
 					}
 					fileName = StringUtil.urlEncode(fileName);
-					docInfo.setHTTPfilePath(Const.DOCUMENT_PATH
-							+ fileName );
+					docInfo.setHTTPfilePath(Const.DOCUMENT_PATH + fileName);
 					docInfo.setProductInfo(item.optString("title",
 							"no such key"));
 					items.addElement(docInfo);
@@ -939,7 +987,8 @@ public class Engine implements HTTPHandler {
 		// UiApplication.getUiApplication().pushScreen(waitScr);
 		// }
 		String url = Const.URL_VIEW_VIDEO;
-		String body = "type=1&start=" + start + "&num=" + Const.NUM_LIST + "&search=" + search;
+		String body = "type=1&start=" + start + "&num=" + Const.NUM_LIST
+				+ "&search=" + search;
 		url = Const.URL_VIEW_VIDEO;
 		thread.setTask(url, body, MODE_VIEW_VIDEO_CONNECT);
 		thread.go();
@@ -953,7 +1002,8 @@ public class Engine implements HTTPHandler {
 		// UiApplication.getUiApplication().pushScreen(waitScr);
 		// }
 		String url = Const.URL_VIEW_VIDEO;
-		String body = "type=0&start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
+		String body = "type=0&start=" + start + "&num=" + Const.NUM_LIST
+				+ "&search=" + search;
 		thread.setTask(url, body, MODE_VIEW_MCAST);
 		thread.go();
 	}
@@ -992,7 +1042,8 @@ public class Engine implements HTTPHandler {
 	public void getTraining(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_TRAINING;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST + "&search="
+				+ search;
 		thread.setTask(url, body, MODE_VIEWTRAINING);
 		thread.go();
 	}
@@ -1020,7 +1071,8 @@ public class Engine implements HTTPHandler {
 	public void getProject(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_PROJECT;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST + "&search="
+				+ search;
 		thread.setTask(url, body, MODE_VIEW_PROJECT);
 		thread.go();
 	}
@@ -1028,7 +1080,8 @@ public class Engine implements HTTPHandler {
 	public void getDocument(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_DOCUMENT;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST + "&search="
+				+ search;
 		thread.setTask(url, body, MODE_VIEW_DOCUMENT);
 		thread.go();
 	}
@@ -1036,7 +1089,8 @@ public class Engine implements HTTPHandler {
 	public void getPoll(int start, String search) {
 		// URL Encode comment
 		String url = Const.URL_VIEW_POLL;
-		String body = "start=" + start + "&num=" + Const.NUM_LIST+ "&search=" + search;
+		String body = "start=" + start + "&num=" + Const.NUM_LIST + "&search="
+				+ search;
 		thread.setTask(url, body, MODE_VIEW_POLL);
 		thread.go();
 	}

@@ -17,6 +17,16 @@ public class TrainingInfo implements TitleDescriptionObj{
 	
 	public Vector questions = new Vector(); // vector of Question
 	
+	private String cat;
+	
+	public String getCat() {
+		return cat;
+	}
+
+	public void setCat(String cat) {
+		this.cat = cat;
+	}
+
 	public Bitmap getThumbnail() {
 		return thumbnail;
 	}

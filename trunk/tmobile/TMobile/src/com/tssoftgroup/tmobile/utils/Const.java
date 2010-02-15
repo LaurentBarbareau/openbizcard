@@ -38,34 +38,25 @@ public class Const {
 	 * static final String url_download_name =
 	 * "http://203.142.17.217/tmobile/LookUpName";
 	 */
-
-	// public static final String URL_SEND_VIDEO_CHUNK =
-	// "http://www.dhlknowledge.com/demo/postvid.php";
-	// public static final String URL_SEND_VIDEO =
-	// "http://www.dhlknowledge.com/demo/postvid.php";
-	// public static final String URL_SEND_VIDEO_CHUNK =
-	// "http://www.dhlknowledge.com/web/api/postvid.php";
-	// public static final String URL_SEND_VIDEO =
-	// "http://www.dhlknowledge.com/web/api/postvid.php";
-	public static final String URL_SEND_VIDEO_CHUNK = "http://www.dhlknowledge.com/web/api/postvidnew.php";
-	public static final String URL_SEND_VIDEO = "http://www.dhlknowledge.com/web/api/postvidnew.php";
-	public static final String URL_SEND_DOC_CHUNK = "http://www.dhlknowledge.com/web/api/postdoc.php";
-	public static final String URL_SEND_DOC = "http://www.dhlknowledge.com/web/api/postdoc.php";
-	public static final String URL_VIEW_VIDEO = "http://www.dhlknowledge.com/web/viewmcast.php";
-	public static final String URL_LOGIN = "http://www.dhlknowledge.com/web/userlogin.php";
-	public static final String URL_COMMENT_VIDEOCONNECT = "http://www.dhlknowledge.com/web/addvideoconnectcomment.php";
-	public static final String URL_COMMENT_MCAST = "http://www.dhlknowledge.com/web/addmcastcomment.php";
-	public static final String URL_SEND_MOREINFO_EMAIL = "http://www.dhlknowledge.com/web/sendmoreinfoemail.php";
-	public static final String URL_VIEW_TRAINING = "http://www.dhlknowledge.com/web/gettraining.php";
-	public static final String URL_VIEW_TRAINING_ANS = "http://www.dhlknowledge.com/web/gettrainingans.php";
-	public static final String URL_ADD_TRAINING_RESULT = "http://www.dhlknowledge.com/web/addtraininghistory.php";
-	public static final String URL_VIEW_PROJECT = "http://www.dhlknowledge.com/web/getproject.php";
-	public static final String URL_VIEW_DOCUMENT = "http://www.dhlknowledge.com/web/getdocument.php";
-	public static final String URL_VIEW_POLL = "http://www.dhlknowledge.com/web/getpoll.php";
-	public static final String URL_VIEW_POLL_CHOICE = "http://www.dhlknowledge.com/web/getpollchoice.php";
-	public static final String URL_INCREASE_POLL_COUNT = "http://www.dhlknowledge.com/web/increasepollcount.php";
-	public static final String URL_EMAIL_DOC = "http://dhlknowledge.com/web/senddocemail.php";
-	public static final String DOCUMENT_PATH = "http://www.dhlknowledge.com/web/api/docs/";//Microfunding Proposal Template.doc
+	public static final String URL_SEND_VIDEO_CHUNK = "http://t-mobile.mcasthub.com/web/api/postvidnew.php";
+	public static final String URL_SEND_VIDEO = "http://t-mobile.mcasthub.com/web/api/postvidnew.php";
+	public static final String URL_SEND_DOC_CHUNK = "http://t-mobile.mcasthub.com/web/api/postdoc.php";
+	public static final String URL_SEND_DOC = "http://t-mobile.mcasthub.com/web/api/postdoc.php";
+	public static final String URL_VIEW_VIDEO = "http://t-mobile.mcasthub.com/web/viewmcast.php";
+	public static final String URL_LOGIN = "http://t-mobile.mcasthub.com/web/userlogin.php";
+	public static final String URL_COMMENT_VIDEOCONNECT = "http://t-mobile.mcasthub.com/web/addvideoconnectcomment.php";
+	public static final String URL_COMMENT_MCAST = "http://t-mobile.mcasthub.com/web/addmcastcomment.php";
+	public static final String URL_SEND_MOREINFO_EMAIL = "http://t-mobile.mcasthub.com/web/sendmoreinfoemail.php";
+	public static final String URL_VIEW_TRAINING = "http://t-mobile.mcasthub.com/web/gettraining.php";
+	public static final String URL_VIEW_TRAINING_ANS = "http://t-mobile.mcasthub.com/web/gettrainingans.php";
+	public static final String URL_ADD_TRAINING_RESULT = "http://t-mobile.mcasthub.com/web/addtraininghistory.php";
+	public static final String URL_VIEW_PROJECT = "http://t-mobile.mcasthub.com/web/getproject.php";
+	public static final String URL_VIEW_DOCUMENT = "http://t-mobile.mcasthub.com/web/getdocument.php";
+	public static final String URL_VIEW_POLL = "http://t-mobile.mcasthub.com/web/getpoll.php";
+	public static final String URL_VIEW_POLL_CHOICE = "http://t-mobile.mcasthub.com/web/getpollchoice.php";
+	public static final String URL_INCREASE_POLL_COUNT = "http://t-mobile.mcasthub.com/web/increasepollcount.php";
+	public static final String URL_EMAIL_DOC = "http://t-mobile.mcasthub.com/web/senddocemail.php";
+	public static final String DOCUMENT_PATH = "http://t-mobile.mcasthub.com/web/api/docs/";//Microfunding Proposal Template.doc
 	public static final int BG_COLOR = 0xeeeeee;
 	public static final int BG_COLOR_MAIN = 0xcdcdcd;
 	public static final int LIST_BG_COLOR = 0xffffff;

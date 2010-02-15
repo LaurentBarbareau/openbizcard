@@ -13,7 +13,7 @@ import javax.microedition.rms.RecordStoreNotFoundException;
 public class ProfileEntry {
 	private static ProfileEntry instance;
 
-	private final String PROFILE_NAME = "DHLKnowledge";
+	private final String PROFILE_NAME = "TMOBILEMCAST";
 
 	public String name = "";
 	public String email = "";
