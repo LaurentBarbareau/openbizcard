@@ -1,16 +1,6 @@
 package com.hideoaki.scanner.db.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "Groups")
 public class Group {
-	@Id @GeneratedValue
-    @Column(name = "ID")
     private Long id ;
 	private String name;
 	public Long getId() {

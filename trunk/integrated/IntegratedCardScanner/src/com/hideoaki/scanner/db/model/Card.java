@@ -13,14 +13,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -28,14 +20,9 @@ import au.com.bytecode.opencsv.CSVWriter;
 import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 
-@Entity
-@Table(name = "Card")
 public class Card {
 
     public static final String DEFAULT_LOCAL_CARD_FILE = "defaultcard.csv";
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
     private Long id;
     private String firstName;
     private String lastName;
@@ -172,9 +159,6 @@ public class Card {
     private String imgFront;
     private String imgBack;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "GROUP_ID")
-    @Override
     public boolean equals(Object obj) {
         // System.out.print("equal" + this.id + ":" + ((Card) obj).id);
         // System.out.print("minus " + (((Card) obj).id - this.id) );
