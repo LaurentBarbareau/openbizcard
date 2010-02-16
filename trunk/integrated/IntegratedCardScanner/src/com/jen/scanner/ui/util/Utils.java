@@ -56,21 +56,22 @@ public class Utils {
         for(Card c : allCard){
             for(int i=1;i<s.length;i++){
                 if(isLeadBy(c.getFirstName(),s[i]))resultCards.add(c);
-            }
-        }
-        return resultCards;
-    }
-
-    public static ArrayList<Card> quickSearchCardE(String str,ArrayList<Card> allCard){
-        ArrayList<Card> resultCards = new ArrayList<Card>();
-        String[] s = str.split("");
-        for(Card c : allCard){
-            for(int i=1;i<s.length;i++){
                 if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
             }
         }
         return resultCards;
     }
+
+//    public static ArrayList<Card> quickSearchCardE(String str,ArrayList<Card> allCard){
+//        ArrayList<Card> resultCards = new ArrayList<Card>();
+//        String[] s = str.split("");
+//        for(Card c : allCard){
+//            for(int i=1;i<s.length;i++){
+//                if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
+//            }
+//        }
+//        return resultCards;
+//    }
 
     private static boolean isLeadBy(String s1,String s2){
         return s1.indexOf(s2)==0;
@@ -366,7 +367,7 @@ public class Utils {
     public static void main (String[] args){
         try {
             ArrayList<Card> test = CardLocalManager.loadLocalCard("C:\\netbeanProject\\integrated\\defaultcard.csv");
-            test = Utils.quickSearchCardE("abc", test);
+            test = Utils.quickSearchCard("abc", test);
             System.out.println(test.size());
         } catch (ScannerDBException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
