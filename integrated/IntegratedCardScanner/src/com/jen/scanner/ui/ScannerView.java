@@ -42,6 +42,7 @@ import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanel;
 import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.image.BufferedImage;
+import sun.security.util.PendingException;
 
 /**
  * The application's main frame.
@@ -56,6 +57,7 @@ public class ScannerView extends FrameView {
         initComponents();
 
         menuTab.setEnabledAt(RESULT_TAB,false);
+        saveBtnT3.setEnabled(false);
 
         try {
             localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
@@ -536,8 +538,7 @@ public class ScannerView extends FrameView {
         jPanel1 = new javax.swing.JPanel();
         replaceBtnT4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        addToLocalBtnT4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        pendingBtnT4 = new javax.swing.JButton();
         exportPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         exportLbT4 = new javax.swing.JLabel();
@@ -4125,9 +4126,9 @@ public class ScannerView extends FrameView {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(replaceBtnT4)
-                .addGap(32, 32, 32))
+                .addContainerGap()
+                .addComponent(replaceBtnT4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4145,23 +4146,23 @@ public class ScannerView extends FrameView {
         jPanel2.setMinimumSize(new java.awt.Dimension(140, 40));
         jPanel2.setName("jPanel2"); // NOI18N
 
-        addToLocalBtnT4.setText(resourceMap.getString("addToLocalBtnT4.text")); // NOI18N
-        addToLocalBtnT4.setName("addToLocalBtnT4"); // NOI18N
+        pendingBtnT4.setText(resourceMap.getString("pendingBtnT4.text")); // NOI18N
+        pendingBtnT4.setName("pendingBtnT4"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(addToLocalBtnT4)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(pendingBtnT4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addToLocalBtnT4)
+                .addComponent(pendingBtnT4)
                 .addContainerGap())
         );
 
@@ -4170,19 +4171,11 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         importPanel.add(jPanel2, gridBagConstraints);
 
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        importPanel.add(jLabel1, new java.awt.GridBagConstraints());
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         importExportTab.add(importPanel, gridBagConstraints);
+        importPanel.getAccessibleContext().setAccessibleName(resourceMap.getString("importPanel.AccessibleContext.accessibleName")); // NOI18N
 
         exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
         exportPanel.setName("exportPanel"); // NOI18N
@@ -4694,6 +4687,8 @@ public class ScannerView extends FrameView {
         Card editCard = idMapped.get(importTableT2.getSelectedRow());
         menuTab.setEnabledAt(RESULT_TAB, true);
         menuTab.setSelectedIndex(RESULT_TAB);
+
+        saveBtnT3.setEnabled(true);
 
         String frontPath = validatePath(editCard.getImgFront());
         String backPath = validatePath(editCard.getImgBack());
@@ -5828,10 +5823,6 @@ public class ScannerView extends FrameView {
         }
     }//GEN-LAST:event_thBtn8T2ActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-}//GEN-LAST:event_jLabel1MouseClicked
-
     private void langaugeChangeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langaugeChangeBtnActionPerformed
         // TODO add your handling code here:
         if(languageLb.getText().equals(myResourceMap.getString("languageLb.text"))){
@@ -5889,6 +5880,48 @@ public class ScannerView extends FrameView {
 
         frontCropBtnT1.setText(myResourceMap.getString("frontCropBtnT1"+s+".text"));
         backCropBtnT1.setText(myResourceMap.getString("backCropBtnT1"+s+".text"));
+
+        //set language for Query tab
+        genSearchT2.setText(myResourceMap.getString("genSearchT2"+s+".text"));
+        quickLb.setText(myResourceMap.getString("quickLb"+s+".text"));
+
+        deletedBtnT2.setText(myResourceMap.getString("deletedBtnT2"+s+".text"));
+        editBtnT2.setText(myResourceMap.getString("editBtnT2"+s+".text"));
+
+        //set language for Result tab
+        idLbT3.setText(myResourceMap.getString("idLbT3"+s+".text"));
+        blackWhiteBtnT3.setText(myResourceMap.getString("blackWhiteBtnT3"+s+".text"));
+        autoCropBtnT3.setText(myResourceMap.getString("autoCropBtnT3"+s+".text"));
+        rotateBtnT3.setText(myResourceMap.getString("rotateBtnT3"+s+".text"));
+        emailBtnT3.setText(myResourceMap.getString("emailBtnT3"+s+".text"));
+        undoBtnT3.setText(myResourceMap.getString("undoBtnT3"+s+".text"));
+        confirmBtnT3.setText(myResourceMap.getString("confirmBtnT3"+s+".text"));
+        brightLbT3.setText(myResourceMap.getString("brightLbT3"+s+".text"));
+
+        saveBtnT3.setText(myResourceMap.getString("saveBtnT3"+s+".text"));
+
+        sideLbT3.setText(myResourceMap.getString("sideLbT3"+s+".text"));
+        frontSideRdT3.setText(myResourceMap.getString("frontSideRdT3"+s+".text"));
+        backSideRdT3.setText(myResourceMap.getString("backSideRdT3"+s+".text"));
+
+        frontBtnT3.setText(myResourceMap.getString("frontBtnT3"+s+".text"));
+        backBtnT3.setText(myResourceMap.getString("backBtnT3"+s+".text"));
+
+        frontCropBtnT3.setText(myResourceMap.getString("frontCropBtnT3"+s+".text"));
+        backCropBtnT3.setText(myResourceMap.getString("backCropBtnT3"+s+".text"));
+
+        //set language for Import Export tab
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("importPanel.border.title"+s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("exportPanel.border.title"+s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+
+        importLbT4.setText(myResourceMap.getString("importLbT4"+s+".text"));
+        importBrowseBtnT4.setText(myResourceMap.getString("importBrowseBtnT4"+s+".text"));
+        replaceBtnT4.setText(myResourceMap.getString("replaceBtnT4"+s+".text"));
+        pendingBtnT4.setText(myResourceMap.getString("pendingBtnT4"+s+".text"));
+
+        exportLbT4.setText(myResourceMap.getString("exportLbT4"+s+".text"));
+        browseExportBtnT4.setText(myResourceMap.getString("browseExportBtnT4"+s+".text"));
+        exportBtnT4.setText(myResourceMap.getString("exportBtnT4"+s+".text"));
     }
 
     private Card getCardFromForm(int index){
@@ -6090,7 +6123,6 @@ public class ScannerView extends FrameView {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addToLocalBtnT4;
     private javax.swing.JLabel adsLbT1;
     private javax.swing.JLabel adsLbT2;
     private javax.swing.JLabel adsLbT3;
@@ -6267,7 +6299,6 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel importPanelT4;
     private javax.swing.JTable importTableT2;
     private javax.swing.JTextField importTfT4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
@@ -6343,6 +6374,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextArea noteTaTE1;
     private javax.swing.JTextArea noteTaTE2;
     private javax.swing.JTextArea noteTaTE3;
+    private javax.swing.JButton pendingBtnT4;
     private javax.swing.JLabel phoneLbT1;
     private javax.swing.JLabel phoneLbT2;
     private javax.swing.JLabel phoneLbT3;
