@@ -2,9 +2,12 @@ package com.yov.scanner.imageprocessing;
 
 import java.awt.Component;
 import java.awt.image.BufferedImage;
+import javax.swing.SwingUtilities;
 
-import com.roncemer.ocr.*;
-
+import com.yov.scanner.ocr.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class BusinessCard { // DONE - But not tested yet
 
@@ -15,7 +18,7 @@ public class BusinessCard { // DONE - But not tested yet
 	private boolean isBrightnessChanged = false;
 	private CardImage tempImage;
 	
-	private RonCemerOCR simpleOCR;
+	//private RonCemerOCR simpleOCR;
 	
 	public BusinessCard(CardImage scannedImage){
 		primaryImage = new CardImage(scannedImage.getImageData());
@@ -81,11 +84,97 @@ public class BusinessCard { // DONE - But not tested yet
 	}
 	
 	public String retrieveData(String trainingFolder){
-		String cardText = "";
-		
-		//primaryDBData = primaryImage.retrieveData();
-		cardText = simpleOCR.run(primaryImage.getFileName(), trainingFolder);
-                return cardText;
+
+            String cardText = "";
+
+            //primaryDBData = primaryImage.retrieveData();
+            //cardText = simpleOCR.run(primaryImage.getFileName(), trainingFolder);
+
+
+            try{
+            File tessExe = new File(".");
+
+
+
+                            OCR ocrEngine = new OCR("");
+
+
+
+                            //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+            /*
+            try {
+                //if (this.jComboBoxLang.getSelectedIndex() == -1) {
+                //    JOptionPane.showMessageDialog(this, "Please select a language.", APP_NAME, JOptionPane.INFORMATION_MESSAGE);
+                //    return;
+                //}
+                //if (this.jImageLabel.getIcon() == null) {
+                //    JOptionPane.showMessageDialog(this, "Please load an image.", APP_NAME, JOptionPane.INFORMATION_MESSAGE);
+                //    return;
+                //}
+
+                //getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                //getGlassPane().setVisible(true);
+
+                String imageFileName = primaryImage.getFileName();
+                final String imageFormat = imageFileName.substring(imageFileName.lastIndexOf('.') + 1);
+
+
+
+
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    public void run() {
+                        try {
+
+                            File tessExe = new File(".");
+
+
+        
+                            OCR ocrEngine = new OCR("");
+                            
+                            
+                            
+                            //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
+                            //jTextArea1.append(ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]));
+                            //jLabelStatus.setText("OCR completed.");
+                        } catch (OutOfMemoryError oome) {
+                            oome.printStackTrace();
+                            //JOptionPane.showMessageDialog(null, APP_NAME
+                            //        + myResources.getString("_has_run_out_of_memory.\nPlease_restart_") + APP_NAME
+                            //        + myResources.getString("_and_try_again."), myResources.getString("Out_of_Memory"), JOptionPane.ERROR_MESSAGE);
+                        } catch (FileNotFoundException fnfe) {
+                            fnfe.printStackTrace();
+                            //JOptionPane.showMessageDialog(null, "An exception occurred in Tesseract engine while recognizing this image.", APP_NAME, JOptionPane.ERROR_MESSAGE);
+                        } catch (IOException ioe) {
+                            ioe.printStackTrace();
+                            //JOptionPane.showMessageDialog(null, "Cannot find Tesseract. Please set its path.", APP_NAME, JOptionPane.ERROR_MESSAGE);
+                        } catch (RuntimeException re) {
+                            re.printStackTrace();
+                            //JOptionPane.showMessageDialog(null, re.getMessage(), APP_NAME, JOptionPane.ERROR_MESSAGE);
+                        } catch (Exception exc) {
+                            exc.printStackTrace();
+                        }
+                    }
+                });
+
+            } catch (Exception exc) {
+                System.err.println(exc.getMessage());
+            } finally {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    public void run() {
+                        //getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                        //getGlassPane().setVisible(false);
+                    }
+                });
+            }
+            */
+
+            return cardText;
 	}
 	
 	public void confirmChange(){
@@ -102,9 +191,7 @@ public class BusinessCard { // DONE - But not tested yet
 		isBrightnessChanged = false;
 	}
 	
-	public void initRonCemerOCR(Component newDisplayComponent){
-		simpleOCR = new RonCemerOCR(newDisplayComponent);
-	}
+	
 	
 	// - Get Method(s) - //
 	public CardImage getPrimaryImage(){

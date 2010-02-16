@@ -12,8 +12,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import com.roncemer.ocr.*;
-
 public class TestUI2 implements ActionListener{
 
 	JFrame testWindow;
@@ -33,7 +31,7 @@ public class TestUI2 implements ActionListener{
 	BufferedImage scannedImage;
 	BusinessCard scannedBCard;
 	
-	RonCemerOCR testOCR;
+	//RonCemerOCR testOCR;
 	
 	
 	public TestUI2(){
@@ -259,9 +257,9 @@ public class TestUI2 implements ActionListener{
 			System.out.println("RUN OCR");
 			
 			scannedBCard.setImageFileName(filename + index + ".jpg");
-			scannedBCard.initRonCemerOCR(imagePane);
+			//scannedBCard.initRonCemerOCR(imagePane);
 			
-			scannedBCard.retrieveData("");
+			//scannedBCard.retrieveData("");
 		}
 	}
 

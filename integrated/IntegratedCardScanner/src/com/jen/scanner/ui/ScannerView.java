@@ -36,7 +36,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 
 // From Yov's part
-import com.roncemer.ocr.*;
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanel;
@@ -4897,7 +4896,7 @@ public class ScannerView extends FrameView {
         //System.out.println("TrainingImageFolder: " + trainingImgFolder);
 
         if(isFrontSelected){
-            if(scannedBCard != null){
+            if((scannedBCard != null) && (scannedImageFileName != null)){
                 if(scannedImageFileName.contains(".jpg")){
                     scannedBCard.setImageFileName(scannedImageFileName);
                 }else{
@@ -4905,20 +4904,20 @@ public class ScannerView extends FrameView {
                             bcScanner.getFileNameIndex() + ".jpg");
                 }
 
-                scannedBCard.initRonCemerOCR(new JTabbedPane());
-                noteTaT1.setText( scannedBCard.retrieveData(trainingImgFolder) );
+                //cannedBCard.initRonCemerOCR(new JTabbedPane());
+                //noteTaT1.setText( scannedBCard.retrieveData(trainingImgFolder) );
             }
         }else{
-             if(scannedBCardBack != null){
-                if(scannedImageFileName.contains(".jpg")){
+             if((scannedBCardBack != null) && (scannedImageFileNameBack != null)){
+                if(scannedImageFileNameBack.contains(".jpg")){
                     scannedBCardBack.setImageFileName(scannedImageFileNameBack);
                 }else{
                     scannedBCardBack.setImageFileName(scannedImageFileNameBack +
                             bcScanner.getFileNameIndex() + ".jpg");
                 }
 
-                scannedBCardBack.initRonCemerOCR(new JTabbedPane());
-                noteTaT1.setText( scannedBCardBack.retrieveData(trainingImgFolder) );
+                //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
+                //noteTaT1.setText( scannedBCardBack.retrieveData(trainingImgFolder) );
             }
         }
     }//GEN-LAST:event_readCardBtnT1ActionPerformed
@@ -6493,7 +6492,6 @@ public class ScannerView extends FrameView {
     // For Yov's part: image processing and scanner variables
     private CardScanner bcScanner;
     private BusinessCard scannedBCard, scannedBCardBack;
-    private RonCemerOCR pixelBasedOCR;
     private BufferedImage scannedImage;
     private String scannedImageFileName, scannedImageFileNameBack;
     private boolean isFrontSelected;
