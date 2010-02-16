@@ -36,7 +36,11 @@ public class CardScanner implements ScannerListener{
 		System.out.println("CardScanner - Contructor");
 		
 		cardScanner = Scanner.getDevice();
+		 if(cardScanner != null){
 		cardScanner.addListener(this);
+                }else{
+                    System.out.print("Display dialog card Scanner is null");
+                }
 
                 isNotified = false;
                 isWaiting = false;
@@ -49,8 +53,11 @@ public class CardScanner implements ScannerListener{
 		targetFileName = cardFileName;
 		
 		cardScanner = Scanner.getDevice();
+                if(cardScanner != null){
 		cardScanner.addListener(this);
-
+                }else{
+                    System.out.print("Display dialog card Scanner is null");
+                }
                 isNotified = false;
                 isWaiting = false;
                 waitSource = SOURCE_UNDEFINED;
