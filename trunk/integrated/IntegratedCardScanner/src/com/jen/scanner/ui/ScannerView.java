@@ -4543,8 +4543,7 @@ public class ScannerView extends FrameView {
         if(Utils.checkFirstName(newCard)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
-                CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
-                localCardList.add(newCard);
+                
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
@@ -4568,6 +4567,10 @@ public class ScannerView extends FrameView {
                         newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
                     }
                 }
+
+                CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
+                localCardList.add(newCard);
+
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ioEx){
@@ -4575,6 +4578,8 @@ public class ScannerView extends FrameView {
             }
             JOptionPane.showMessageDialog(null,myResourceMap.getString("addAlertT1.text"),"information", JOptionPane.INFORMATION_MESSAGE);
             clearTextT1();
+            frontLbT1.setIcon(null);
+            backLbT1.setIcon(null);
         }
     }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
 
@@ -4713,6 +4718,10 @@ public class ScannerView extends FrameView {
                 backUIStateResult = STATE_WITH_IMAGE;
             }
         }
+
+        setButtonsStateResult(frontUIStateResult);
+        setButtonsStateResult(backUIStateResult);
+
     }//GEN-LAST:event_editBtnT2ActionPerformed
 
     private void frontBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT3ActionPerformed
@@ -5284,7 +5293,7 @@ public class ScannerView extends FrameView {
         if(engBtn0T2.isSelected()){
             disableToggleExcept(QUICK_EN_0);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("abc", localCardList);
+            resultCards = Utils.quickSearchCard("abc", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5300,7 +5309,7 @@ public class ScannerView extends FrameView {
         if(engBtn1T2.isSelected()){
             disableToggleExcept(QUICK_EN_1);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("def", localCardList);
+            resultCards = Utils.quickSearchCard("def", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5316,7 +5325,7 @@ public class ScannerView extends FrameView {
         if(engBtn2T2.isSelected()){
             disableToggleExcept(QUICK_EN_2);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("ghi", localCardList);
+            resultCards = Utils.quickSearchCard("ghi", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5332,7 +5341,7 @@ public class ScannerView extends FrameView {
        if(engBtn3T2.isSelected()){
            disableToggleExcept(QUICK_EN_3);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("jkl", localCardList);
+           resultCards = Utils.quickSearchCard("jkl", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5348,7 +5357,7 @@ public class ScannerView extends FrameView {
         if(engBtn4T2.isSelected()){
             disableToggleExcept(QUICK_EN_4);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("mno", localCardList);
+            resultCards = Utils.quickSearchCard("mno", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5364,7 +5373,7 @@ public class ScannerView extends FrameView {
         if(engBtn5T2.isSelected()){
             disableToggleExcept(QUICK_EN_5);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("pqr", localCardList);
+            resultCards = Utils.quickSearchCard("pqr", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5380,7 +5389,7 @@ public class ScannerView extends FrameView {
          if(engBtn6T2.isSelected()){
             disableToggleExcept(QUICK_EN_6);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("stu", localCardList);
+            resultCards = Utils.quickSearchCard("stu", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5396,7 +5405,7 @@ public class ScannerView extends FrameView {
         if(engBtn7T2.isSelected()){
             disableToggleExcept(QUICK_EN_7);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("vwx", localCardList);
+            resultCards = Utils.quickSearchCard("vwx", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5412,7 +5421,7 @@ public class ScannerView extends FrameView {
         if(engBtn8T2.isSelected()){
             disableToggleExcept(QUICK_EN_8);
             ArrayList<Card> resultCards = new ArrayList<Card>();
-            resultCards = Utils.quickSearchCardE("yz", localCardList);
+            resultCards = Utils.quickSearchCard("yz", localCardList);
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
@@ -5618,9 +5627,7 @@ public class ScannerView extends FrameView {
         if(Utils.checkFirstName(newCard)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
-                CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
-                int index = localCardList.indexOf(newCard);
-                localCardList.set(index, newCard);
+                
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT3.getText();
                 String imgBackFileName = backTfT3.getText();
@@ -5644,6 +5651,11 @@ public class ScannerView extends FrameView {
                         newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
                     }
                 }
+
+                CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
+                int index = localCardList.indexOf(newCard);
+                localCardList.set(index, newCard);
+
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ioEx){
@@ -5659,7 +5671,7 @@ public class ScannerView extends FrameView {
        if(thBtn0T2.isSelected()){
            disableToggleExcept(QUICK_TH_0);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("กขคฅ", localCardList);
+           resultCards = Utils.quickSearchCard("กขคฅ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5675,7 +5687,7 @@ public class ScannerView extends FrameView {
         if(thBtn1T2.isSelected()){
            disableToggleExcept(QUICK_TH_1);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("ฆงจฉ", localCardList);
+           resultCards = Utils.quickSearchCard("ฆงจฉ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5691,7 +5703,7 @@ public class ScannerView extends FrameView {
         if(thBtn2T2.isSelected()){
            disableToggleExcept(QUICK_TH_2);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("ชซฌญ", localCardList);
+           resultCards = Utils.quickSearchCard("ชซฌญ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5707,7 +5719,7 @@ public class ScannerView extends FrameView {
        if(thBtn3T2.isSelected()){
            disableToggleExcept(QUICK_TH_3);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("ฎฏฐฑฒณ", localCardList);
+           resultCards = Utils.quickSearchCard("ฎฏฐฑฒณ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5723,7 +5735,7 @@ public class ScannerView extends FrameView {
         if(thBtn4T2.isSelected()){
            disableToggleExcept(QUICK_TH_4);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("ดตถทธ", localCardList);
+           resultCards = Utils.quickSearchCard("ดตถทธ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5739,7 +5751,7 @@ public class ScannerView extends FrameView {
       if(thBtn5T2.isSelected()){
            disableToggleExcept(QUICK_TH_5);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("นบปผฝ", localCardList);
+           resultCards = Utils.quickSearchCard("นบปผฝ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5755,7 +5767,7 @@ public class ScannerView extends FrameView {
        if(thBtn6T2.isSelected()){
            disableToggleExcept(QUICK_TH_6);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("พฟภมย", localCardList);
+           resultCards = Utils.quickSearchCard("พฟภมย", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5771,7 +5783,7 @@ public class ScannerView extends FrameView {
         if(thBtn7T2.isSelected()){
            disableToggleExcept(QUICK_TH_7);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("รลวศษ", localCardList);
+           resultCards = Utils.quickSearchCard("รลวศษ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
@@ -5787,7 +5799,7 @@ public class ScannerView extends FrameView {
        if(thBtn8T2.isSelected()){
            disableToggleExcept(QUICK_TH_8);
            ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCardE("สหฬอฮ", localCardList);
+           resultCards = Utils.quickSearchCard("สหฬอฮ", localCardList);
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
