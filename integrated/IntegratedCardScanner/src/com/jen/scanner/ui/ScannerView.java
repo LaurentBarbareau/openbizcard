@@ -68,7 +68,7 @@ public class ScannerView extends FrameView {
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                statusMessageLabel.setText("");
+//                statusMessageLabel.setText("");
             }
         });
         messageTimer.setRepeats(false);
@@ -79,12 +79,12 @@ public class ScannerView extends FrameView {
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
-                statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
+//                statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
             }
         });
         idleIcon = resourceMap.getIcon("StatusBar.idleIcon");
-        statusAnimationLabel.setIcon(idleIcon);
-        progressBar.setVisible(false);
+//        statusAnimationLabel.setIcon(idleIcon);
+//        progressBar.setVisible(false);
 
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
@@ -93,26 +93,26 @@ public class ScannerView extends FrameView {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
                     if (!busyIconTimer.isRunning()) {
-                        statusAnimationLabel.setIcon(busyIcons[0]);
+//                        statusAnimationLabel.setIcon(busyIcons[0]);
                         busyIconIndex = 0;
                         busyIconTimer.start();
                     }
-                    progressBar.setVisible(true);
-                    progressBar.setIndeterminate(true);
+//                    progressBar.setVisible(true);
+//                    progressBar.setIndeterminate(true);
                 } else if ("done".equals(propertyName)) {
                     busyIconTimer.stop();
-                    statusAnimationLabel.setIcon(idleIcon);
-                    progressBar.setVisible(false);
-                    progressBar.setValue(0);
+//                    statusAnimationLabel.setIcon(idleIcon);
+//                    progressBar.setVisible(false);
+//                    progressBar.setValue(0);
                 } else if ("message".equals(propertyName)) {
                     String text = (String)(evt.getNewValue());
-                    statusMessageLabel.setText((text == null) ? "" : text);
+//                    statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
                     int value = (Integer)(evt.getNewValue());
-                    progressBar.setVisible(true);
-                    progressBar.setIndeterminate(false);
-                    progressBar.setValue(value);
+//                    progressBar.setVisible(true);
+//                    progressBar.setIndeterminate(false);
+//                    progressBar.setValue(value);
                 }
             }
         });
@@ -286,7 +286,7 @@ public class ScannerView extends FrameView {
         brightSldT1 = new javax.swing.JSlider();
         rotateBtnT1 = new javax.swing.JButton();
         emailBtnT1 = new javax.swing.JButton();
-        saveToDbBtnT1 = new javax.swing.JButton();
+        saveBtnT1 = new javax.swing.JButton();
         scanBtn = new javax.swing.JButton();
         undoBtnT1 = new javax.swing.JButton();
         confirmBtnT1 = new javax.swing.JButton();
@@ -537,6 +537,7 @@ public class ScannerView extends FrameView {
         replaceBtnT4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         addToLocalBtnT4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         exportPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         exportLbT4 = new javax.swing.JLabel();
@@ -546,11 +547,10 @@ public class ScannerView extends FrameView {
         blankPanelT4 = new javax.swing.JPanel();
         statusPanel = new javax.swing.JPanel();
         javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
-        statusMessageLabel = new javax.swing.JLabel();
-        statusAnimationLabel = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
         databaseLb = new javax.swing.JLabel();
         databaseNameLb = new javax.swing.JLabel();
+        languageLb = new javax.swing.JLabel();
+        langaugeChangeBtn = new javax.swing.JButton();
 
         mainPanel.setMaximumSize(new java.awt.Dimension(704, 616));
         mainPanel.setMinimumSize(new java.awt.Dimension(704, 616));
@@ -1329,7 +1329,7 @@ public class ScannerView extends FrameView {
 
         upRightT1.setMinimumSize(new java.awt.Dimension(250, 250));
         upRightT1.setName("upRightT1"); // NOI18N
-        upRightT1.setPreferredSize(new java.awt.Dimension(260, 270));
+        upRightT1.setPreferredSize(new java.awt.Dimension(268, 270));
 
         scannerPanel.setName("scannerPanel"); // NOI18N
 
@@ -1358,7 +1358,7 @@ public class ScannerView extends FrameView {
                 .addComponent(scannerTxtT1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scannerBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         scannerPanelLayout.setVerticalGroup(
             scannerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1417,11 +1417,11 @@ public class ScannerView extends FrameView {
         emailBtnT1.setText(resourceMap.getString("emailBtnT1.text")); // NOI18N
         emailBtnT1.setName("emailBtnT1"); // NOI18N
 
-        saveToDbBtnT1.setText(resourceMap.getString("saveToDbBtnT1.text")); // NOI18N
-        saveToDbBtnT1.setName("saveToDbBtnT1"); // NOI18N
-        saveToDbBtnT1.addActionListener(new java.awt.event.ActionListener() {
+        saveBtnT1.setText(resourceMap.getString("saveBtnT1.text")); // NOI18N
+        saveBtnT1.setName("saveBtnT1"); // NOI18N
+        saveBtnT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveToDbBtnT1ActionPerformed(evt);
+                saveBtnT1ActionPerformed(evt);
             }
         });
 
@@ -1433,7 +1433,7 @@ public class ScannerView extends FrameView {
             }
         });
 
-        undoBtnT1.setText(resourceMap.getString("undoBtn.text")); // NOI18N
+        undoBtnT1.setText(resourceMap.getString("undoBtnT1.text")); // NOI18N
         undoBtnT1.setName("undoBtn"); // NOI18N
         undoBtnT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1441,7 +1441,7 @@ public class ScannerView extends FrameView {
             }
         });
 
-        confirmBtnT1.setText(resourceMap.getString("confirmBtn.text")); // NOI18N
+        confirmBtnT1.setText(resourceMap.getString("confirmBtnT1.text")); // NOI18N
         confirmBtnT1.setName("confirmBtn"); // NOI18N
         confirmBtnT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1505,10 +1505,6 @@ public class ScannerView extends FrameView {
         upRightT1Layout.setHorizontalGroup(
             upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(undoBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1536,8 +1532,12 @@ public class ScannerView extends FrameView {
                             .addContainerGap()
                             .addComponent(scanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(saveToDbBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(saveBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(brightPanelT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(upRightT1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         upRightT1Layout.setVerticalGroup(
@@ -1565,7 +1565,7 @@ public class ScannerView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanBtn)
-                    .addComponent(saveToDbBtnT1))
+                    .addComponent(saveBtnT1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sideLbT1)
@@ -1628,12 +1628,12 @@ public class ScannerView extends FrameView {
             .addGroup(frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontCropBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
                 .addContainerGap())
         );
         frontPanelT1Layout.setVerticalGroup(
@@ -1652,7 +1652,7 @@ public class ScannerView extends FrameView {
         lowLeftT1.setLayout(lowLeftT1Layout);
         lowLeftT1Layout.setHorizontalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
         );
         lowLeftT1Layout.setVerticalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2838,7 +2838,7 @@ public class ScannerView extends FrameView {
 
             },
             new String [] {
-                "เลือก", "ชื่อ", "นามสกุล", "ชื่อ (อังกฤษ)", "นามสกุล (อังกฤษ)", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"
+                "เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"
             }
         ) {
             Class[] types = new Class [] {
@@ -4170,6 +4170,15 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         importPanel.add(jPanel2, gridBagConstraints);
 
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        importPanel.add(jLabel1, new java.awt.GridBagConstraints());
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -4293,13 +4302,6 @@ public class ScannerView extends FrameView {
         statusPanel.setName("statusPanel"); // NOI18N
         statusPanel.setPreferredSize(new java.awt.Dimension(700, 24));
 
-        statusMessageLabel.setName("statusMessageLabel"); // NOI18N
-
-        statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
-
-        progressBar.setName("progressBar"); // NOI18N
-
         databaseLb.setText(resourceMap.getString("databaseLb.text")); // NOI18N
         databaseLb.setName("databaseLb"); // NOI18N
 
@@ -4319,39 +4321,55 @@ public class ScannerView extends FrameView {
         }
         databaseNameLb.setText(defaultcard.getAbsolutePath());
 
+        languageLb.setText(resourceMap.getString("languageLb.text")); // NOI18N
+        languageLb.setName("languageLb"); // NOI18N
+
+        langaugeChangeBtn.setText(resourceMap.getString("langaugeChangeBtn.text")); // NOI18N
+        langaugeChangeBtn.setMaximumSize(new java.awt.Dimension(89, 25));
+        langaugeChangeBtn.setMinimumSize(new java.awt.Dimension(89, 25));
+        langaugeChangeBtn.setName("langaugeChangeBtn"); // NOI18N
+        langaugeChangeBtn.setPreferredSize(new java.awt.Dimension(89, 25));
+        langaugeChangeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                langaugeChangeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
+                .addComponent(databaseLb)
+                .addGap(2, 2, 2)
+                .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(languageLb)
                 .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(statusMessageLabel)
                     .addGroup(statusPanelLayout.createSequentialGroup()
-                        .addComponent(databaseLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(statusAnimationLabel)))
-                .addContainerGap())
+                        .addGap(143, 143, 143)
+                        .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE))
+                    .addGroup(statusPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(statusMessageLabel)
-                        .addComponent(statusAnimationLabel)
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(databaseLb)))
-                .addGap(1, 1, 1))
+                        .addComponent(languageLb)
+                        .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(statusPanelLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(databaseLb))
+                    .addGroup(statusPanelLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setComponent(mainPanel);
@@ -4537,7 +4555,7 @@ public class ScannerView extends FrameView {
 
     }
 
-    private void saveToDbBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToDbBtnT1ActionPerformed
+    private void saveBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT1ActionPerformed
         // TODO add your handling code here:
         Card newCard = getCardFromForm(SCAN_TAB);
         if(Utils.checkFirstName(newCard)){
@@ -4581,7 +4599,7 @@ public class ScannerView extends FrameView {
             frontLbT1.setIcon(null);
             backLbT1.setIcon(null);
         }
-    }//GEN-LAST:event_saveToDbBtnT1ActionPerformed
+    }//GEN-LAST:event_saveBtnT1ActionPerformed
 
     private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
         // TODO add your handling code here:
@@ -5810,6 +5828,69 @@ public class ScannerView extends FrameView {
         }
     }//GEN-LAST:event_thBtn8T2ActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+}//GEN-LAST:event_jLabel1MouseClicked
+
+    private void langaugeChangeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langaugeChangeBtnActionPerformed
+        // TODO add your handling code here:
+        if(languageLb.getText().equals(myResourceMap.getString("languageLb.text"))){
+            changeLanguageTo(TH);
+            
+        }else{
+            if(languageLb.getText().equals(myResourceMap.getString("languageLbTh.text"))){
+                changeLanguageTo(EN);
+            }
+        }
+    }//GEN-LAST:event_langaugeChangeBtnActionPerformed
+
+    private void changeLanguageTo(int lang){
+        switch(lang){
+            case EN:setLang("");break;
+            case TH:setLang("Th");break;
+            default:setLang("");break;
+        }
+    }
+    
+    private void setLang(String s){
+        //set langauge for general component
+        menuTab.setTitleAt(SCAN_TAB,myResourceMap.getString("scannerTab.TabConstraints.tabTitle"+s));
+        menuTab.setTitleAt(QUERY_TAB,myResourceMap.getString("queryTab.TabConstraints.tabTitle"+s));
+        menuTab.setTitleAt(RESULT_TAB,myResourceMap.getString("resultTab.TabConstraints.tabTitle"+s));
+        menuTab.setTitleAt(IMPORT_EXPORT_TAB,myResourceMap.getString("importExportTab.TabConstraints.tabTitle"+s));
+
+        languageLb.setText(myResourceMap.getString("languageLb"+s+".text"));
+        langaugeChangeBtn.setText(myResourceMap.getString("langaugeChangeBtn"+s+".text"));
+
+        databaseLb.setText(myResourceMap.getString("databaseLb"+s+".text"));
+
+        //set language for Scanner tab
+        scannerLbT1.setText(myResourceMap.getString("scannerLbT1"+s+".text"));
+        scannerBtnT1.setText(myResourceMap.getString("scannerBtnT1"+s+".text"));
+        blackWhiteBtnT1.setText(myResourceMap.getString("blackWhiteBtnT1"+s+".text"));
+        doubleSideBtnT1.setText(myResourceMap.getString("doubleSideBtnT1"+s+".text"));
+        autoCropBtnT1.setText(myResourceMap.getString("autoCropBtnT1"+s+".text"));
+        readCardBtnT1.setText(myResourceMap.getString("readCardBtnT1"+s+".text"));
+        rotateBtnT1.setText(myResourceMap.getString("rotateBtnT1"+s+".text"));
+        emailBtnT1.setText(myResourceMap.getString("emailBtnT1"+s+".text"));
+        undoBtnT1.setText(myResourceMap.getString("undoBtnT1"+s+".text"));
+        confirmBtnT1.setText(myResourceMap.getString("confirmBtnT1"+s+".text"));
+        brightLbT1.setText(myResourceMap.getString("brightLbT1"+s+".text"));
+
+        scanBtn.setText(myResourceMap.getString("scanBtn"+s+".text"));
+        saveBtnT1.setText(myResourceMap.getString("saveBtnT1"+s+".text"));
+
+        sideLbT1.setText(myResourceMap.getString("sideLbT1"+s+".text"));
+        frontSideRdT1.setText(myResourceMap.getString("frontSideRdT1"+s+".text"));
+        backSideRdT1.setText(myResourceMap.getString("backSideRdT1"+s+".text"));
+
+        frontBtnT1.setText(myResourceMap.getString("frontBtnT1"+s+".text"));
+        backBtnT1.setText(myResourceMap.getString("backBtnT1"+s+".text"));
+
+        frontCropBtnT1.setText(myResourceMap.getString("frontCropBtnT1"+s+".text"));
+        backCropBtnT1.setText(myResourceMap.getString("backCropBtnT1"+s+".text"));
+    }
+
     private Card getCardFromForm(int index){
         Card newCard;
         switch(index){
@@ -6186,10 +6267,13 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel importPanelT4;
     private javax.swing.JTable importTableT2;
     private javax.swing.JTextField importTfT4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton langaugeChangeBtn;
+    private javax.swing.JLabel languageLb;
     private javax.swing.JLabel lastnameLbT1;
     private javax.swing.JLabel lastnameLbT2;
     private javax.swing.JLabel lastnameLbT3;
@@ -6271,7 +6355,6 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField phoneTfTE1;
     private javax.swing.JTextField phoneTfTE2;
     private javax.swing.JTextField phoneTfTE3;
-    private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel provinceLbT1;
     private javax.swing.JLabel provinceLbT2;
     private javax.swing.JLabel provinceLbT3;
@@ -6292,8 +6375,8 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel resultTab;
     private javax.swing.JButton rotateBtnT1;
     private javax.swing.JButton rotateBtnT3;
+    private javax.swing.JButton saveBtnT1;
     private javax.swing.JButton saveBtnT3;
-    private javax.swing.JButton saveToDbBtnT1;
     private javax.swing.JButton scanBtn;
     private javax.swing.JButton scannerBtnT1;
     private javax.swing.JLabel scannerLbT1;
@@ -6302,8 +6385,6 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField scannerTxtT1;
     private javax.swing.JLabel sideLbT1;
     private javax.swing.JLabel sideLbT3;
-    private javax.swing.JLabel statusAnimationLabel;
-    private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     private javax.swing.JLabel subDisLbT1;
     private javax.swing.JLabel subDisLbT2;
@@ -6422,4 +6503,7 @@ public class ScannerView extends FrameView {
     private final int QUICK_EN_6 = 15;
     private final int QUICK_EN_7 = 16;
     private final int QUICK_EN_8 = 17;
+
+    private final int EN = 0;
+    private final int TH = 1;
 }
