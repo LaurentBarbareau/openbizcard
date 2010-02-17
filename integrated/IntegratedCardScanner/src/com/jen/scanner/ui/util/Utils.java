@@ -359,7 +359,7 @@ public class Utils {
     }
 
     private static boolean checkIfContains(String s1,String s2){
-        System.out.println("param = "+s1+" , "+s2);
+//        System.out.println("param = "+s1+" , "+s2);
         if(s1!=null && s2!=null) return s1.indexOf(s2)>=0;
         else return false;
     }
