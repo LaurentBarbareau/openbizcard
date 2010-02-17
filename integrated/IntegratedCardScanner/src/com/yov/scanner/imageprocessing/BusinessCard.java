@@ -112,6 +112,8 @@ public class BusinessCard { // DONE - But not tested yet
 
 
             // Post Process from string read by OCR
+            String EOL = System.getProperty("line.separator");
+            String[] lineString = cardText.split(EOL);
 
             return cardText;
 	}
