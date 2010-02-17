@@ -3170,7 +3170,7 @@
                             <Component class="javax.swing.JTable" name="importTableT2">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="9" rowCount="0">
+                                  <Table columnCount="10" rowCount="0">
                                     <Column editable="true" title="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;" type="java.lang.Boolean"/>
                                     <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;" type="java.lang.String"/>
                                     <Column editable="false" title="&#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;" type="java.lang.String"/>
@@ -3180,10 +3180,16 @@
                                     <Column editable="false" title="&#xe15;&#xe33;&#xe41;&#xe2b;&#xe19;&#xe48;&#xe07;" type="java.lang.String"/>
                                     <Column editable="false" title="&#xe42;&#xe17;&#xe23;&#xe28;&#xe31;&#xe1e;&#xe17;&#xe4c;" type="java.lang.String"/>
                                     <Column editable="false" title="&#xe42;&#xe17;&#xe23;&#xe28;&#xe31;&#xe1e;&#xe17;&#xe4c;&#xe21;&#xe37;&#xe2d;&#xe16;&#xe37;&#xe2d;" type="java.lang.String"/>
+                                    <Column editable="false" title="id" type="java.lang.Long"/>
                                   </Table>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="importTableT2" noResource="true"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="importTableT2.setColumnModel(xCol);"/>
+                                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="xCol = new XTableColumnModel();"/>
+                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableColumn col = importTableT2.getColumnModel().getColumn(9);&#xd;&#xa;xCol.setAllColumnsVisible();&#xd;&#xa;xCol.setColumnVisible(col, false);"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -3470,6 +3476,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="emailBtnT3.text"/>
                         <Property name="name" type="java.lang.String" value="emailBtnT3" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailBtnT3ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JPanel" name="idPanelT3">
                       <Properties>
@@ -4877,6 +4886,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="importTfT4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" resourceKey="importTfT4.text"/>
                             <Property name="name" type="java.lang.String" value="importTfT4" noResource="true"/>
                           </Properties>
@@ -4886,6 +4896,9 @@
                             <Property name="text" type="java.lang.String" resourceKey="importBrowseBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="importBrowseBtnT4" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="importBrowseBtnT4ActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -4931,6 +4944,9 @@
                             <Property name="text" type="java.lang.String" resourceKey="replaceBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="replaceBtnT4" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="replaceBtnT4ActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -4973,6 +4989,9 @@
                             <Property name="text" type="java.lang.String" resourceKey="pendingBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="pendingBtnT4" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pendingBtnT4ActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -5071,6 +5090,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="exportTfT4">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="exportTfT4" noResource="true"/>
                           </Properties>
                         </Component>

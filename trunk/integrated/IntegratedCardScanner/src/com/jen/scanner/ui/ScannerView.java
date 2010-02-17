@@ -36,7 +36,8 @@ import javax.swing.JOptionPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableColumn;
+import com.jen.scanner.ui.util.XTableColumnModel;
 // From Yov's part
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
@@ -418,7 +419,9 @@ public class ScannerView extends FrameView {
         lowPanelT2 = new javax.swing.JPanel();
         tablePanelT2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
+        xCol = new XTableColumnModel();
         importTableT2 = new javax.swing.JTable();
+        importTableT2.setColumnModel(xCol);
         deleteEditPanelT2 = new javax.swing.JPanel();
         deletedBtnT2 = new javax.swing.JButton();
         editBtnT2 = new javax.swing.JButton();
@@ -2843,14 +2846,14 @@ public class ScannerView extends FrameView {
 
             },
             new String [] {
-                "เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"
+                "เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ", "id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2862,6 +2865,9 @@ public class ScannerView extends FrameView {
             }
         });
         importTableT2.setName("importTableT2"); // NOI18N
+        TableColumn col = importTableT2.getColumnModel().getColumn(9);
+        xCol.setAllColumnsVisible();
+        xCol.setColumnVisible(col, false);
         jScrollPane4.setViewportView(importTableT2);
 
         javax.swing.GroupLayout tablePanelT2Layout = new javax.swing.GroupLayout(tablePanelT2);
@@ -3009,6 +3015,11 @@ public class ScannerView extends FrameView {
 
         emailBtnT3.setText(resourceMap.getString("emailBtnT3.text")); // NOI18N
         emailBtnT3.setName("emailBtnT3"); // NOI18N
+        emailBtnT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailBtnT3ActionPerformed(evt);
+            }
+        });
 
         idPanelT3.setMaximumSize(new java.awt.Dimension(150, 22));
         idPanelT3.setMinimumSize(new java.awt.Dimension(150, 22));
@@ -4081,11 +4092,17 @@ public class ScannerView extends FrameView {
         importLbT4.setText(resourceMap.getString("importLbT4.text")); // NOI18N
         importLbT4.setName("importLbT4"); // NOI18N
 
+        importTfT4.setEditable(false);
         importTfT4.setText(resourceMap.getString("importTfT4.text")); // NOI18N
         importTfT4.setName("importTfT4"); // NOI18N
 
         importBrowseBtnT4.setText(resourceMap.getString("importBrowseBtnT4.text")); // NOI18N
         importBrowseBtnT4.setName("importBrowseBtnT4"); // NOI18N
+        importBrowseBtnT4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importBrowseBtnT4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout importPanelT4Layout = new javax.swing.GroupLayout(importPanelT4);
         importPanelT4.setLayout(importPanelT4Layout);
@@ -4124,6 +4141,11 @@ public class ScannerView extends FrameView {
 
         replaceBtnT4.setText(resourceMap.getString("replaceBtnT4.text")); // NOI18N
         replaceBtnT4.setName("replaceBtnT4"); // NOI18N
+        replaceBtnT4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                replaceBtnT4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -4152,6 +4174,11 @@ public class ScannerView extends FrameView {
 
         pendingBtnT4.setText(resourceMap.getString("pendingBtnT4.text")); // NOI18N
         pendingBtnT4.setName("pendingBtnT4"); // NOI18N
+        pendingBtnT4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pendingBtnT4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -4192,6 +4219,7 @@ public class ScannerView extends FrameView {
         exportLbT4.setText(resourceMap.getString("exportLbT4.text")); // NOI18N
         exportLbT4.setName("exportLbT4"); // NOI18N
 
+        exportTfT4.setEditable(false);
         exportTfT4.setName("exportTfT4"); // NOI18N
 
         browseExportBtnT4.setText(resourceMap.getString("browseExportBtnT4.text")); // NOI18N
@@ -4418,11 +4446,13 @@ public class ScannerView extends FrameView {
             int row = 0;
             for (Card card : cardList) {
                 resultMapped.put(row, card);
-                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile()};
+                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(),10};
                 row++;
             }
-            model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "ชื่อ (อังกฤษ)", "นามสกุล (อังกฤษ)", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ"});
-      
+            model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ","id"});
+            xCol.setColumnVisible(importTableT2.getColumnModel().getColumn(9), false);
+            System.out.println(">>>>>>>>"+model.getValueAt(0, 9));
+           // System.out.println(((XTableColumnModel)importTableT2.getColumnModel()).getColumn(9, false));
         return resultMapped;
     }
 
@@ -4675,6 +4705,7 @@ public class ScannerView extends FrameView {
                     try {
                         CardLocalManager.deleteLocalCard(idMapped.get(i).getId(), defaultcard.getAbsolutePath());
                         model.removeRow(i);
+                        idMapped.remove(i);
                     } catch (ScannerDBException ex) {
                         Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -4792,7 +4823,6 @@ public class ScannerView extends FrameView {
             String fileName = exportTfT4.getText();
             if(fileName!=null && !fileName.equals("")){
                 ZipUtils.exportCards(localCardList, fileName+".zip");
-                System.out.println(">>>>>>>"+fileName+".zip");
             }
         }catch(Exception e){}
     }//GEN-LAST:event_exportBtnT4ActionPerformed
@@ -5844,8 +5874,52 @@ public class ScannerView extends FrameView {
     private void emailBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT1ActionPerformed
         // TODO add your handling code here:
         Card c = getCardFromForm(SCAN_TAB);
-        SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+        if(Utils.checkFirstName(c, MISSING_ALERT)){
+            SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+        }
     }//GEN-LAST:event_emailBtnT1ActionPerformed
+
+    private void replaceBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replaceBtnT4ActionPerformed
+        // TODO add your handling code here:
+        String fileName = importTfT4.getText();
+        if(fileName!=null && !fileName.equals("")){
+            localCardList.clear();
+            localCardList = ZipUtils.importCards(fileName);
+        }
+    }//GEN-LAST:event_replaceBtnT4ActionPerformed
+
+    private void pendingBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingBtnT4ActionPerformed
+        // TODO add your handling code here:
+        String fileName = importTfT4.getText();
+        if(fileName!=null && !fileName.equals("")){
+            localCardList.addAll(ZipUtils.importCards(fileName));
+        }
+    }//GEN-LAST:event_pendingBtnT4ActionPerformed
+
+    private void importBrowseBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importBrowseBtnT4ActionPerformed
+         // TODO add your handling code here:
+        String wd = System.getProperty("user.dir");
+        String filename = "";
+        JFileChooser fc = new JFileChooser(wd);
+        fc.addChoosableFileFilter(new ZipFileFilter());
+
+        int rc = fc.showDialog(null, "Select");
+        if (rc == JFileChooser.APPROVE_OPTION)
+        {
+            File file = fc.getSelectedFile();
+            filename = file.getAbsolutePath();
+
+            importTfT4.setText(filename);
+        // call your function here
+        }
+    }//GEN-LAST:event_importBrowseBtnT4ActionPerformed
+
+    private void emailBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT3ActionPerformed
+        Card c = getCardFromForm(RESULT_TAB);
+        if(Utils.checkFirstName(c, MISSING_ALERT)){
+            SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+        }
+    }//GEN-LAST:event_emailBtnT3ActionPerformed
 
     private void changeLanguageTo(int lang){
         switch(lang){
@@ -6564,4 +6638,6 @@ public class ScannerView extends FrameView {
 
     private final int EN = 0;
     private final int TH = 1;
+
+    private XTableColumnModel xCol;
 }
