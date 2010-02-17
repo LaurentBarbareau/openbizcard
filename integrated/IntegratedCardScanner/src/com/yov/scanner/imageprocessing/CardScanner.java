@@ -36,7 +36,7 @@ public class CardScanner implements ScannerListener{
 		System.out.println("CardScanner - Contructor");
 		
 		cardScanner = Scanner.getDevice();
-		 if(cardScanner != null){
+		if(cardScanner != null){
 		cardScanner.addListener(this);
                 }else{
                     System.out.print("Display dialog card Scanner is null");
@@ -45,6 +45,12 @@ public class CardScanner implements ScannerListener{
                 isNotified = false;
                 isWaiting = false;
                 waitSource = SOURCE_UNDEFINED;
+
+                try{
+                    name = cardScanner.getSelectedDeviceName();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
 	}
 	
 	public CardScanner(String cardFileName){
@@ -61,6 +67,12 @@ public class CardScanner implements ScannerListener{
                 isNotified = false;
                 isWaiting = false;
                 waitSource = SOURCE_UNDEFINED;
+
+                try{
+                    name = cardScanner.getSelectedDeviceName();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
 	}
 	
 	/*
@@ -125,8 +137,9 @@ public class CardScanner implements ScannerListener{
 		// Remove "TWAIN" or "SANE" from scanner's name
 		extStrPos = scannerName.lastIndexOf("TWAIN") + scannerName.lastIndexOf("SANE") + 1;
 		
-		if(extStrPos > -1)
+		if(extStrPos > -1){
 			scannerName = scannerName.substring(0, extStrPos - 1);
+                }
 		
 		return scannerName;
 	}

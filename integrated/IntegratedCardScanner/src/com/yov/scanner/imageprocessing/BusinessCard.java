@@ -87,7 +87,7 @@ public class BusinessCard { // DONE - But not tested yet
             try {
                 File tessExe = new File(".");
 
-                tessExe = new File(tessExe.getCanonicalPath() + "\\dis\\externalLib\\tesseract");
+                tessExe = new File(tessExe.getCanonicalPath() + "\\externalLib\\tesseract");
                 //System.out.println("Tesseract Path(Absolute) = " + tessExe.getAbsolutePath());
                 //System.out.println("Tesseract Path(Canonical) = " + tessExe.getCanonicalPath());
 
@@ -115,8 +115,52 @@ public class BusinessCard { // DONE - But not tested yet
             String EOL = System.getProperty("line.separator");
             String[] lineString = cardText.split(EOL);
 
+            for(int i = 0; i < lineString.length; i++){
+                processTextLine(lineString[i]);
+            }
+
             return cardText;
 	}
+
+        private String processTextLine(String line){
+            String result = "";
+
+            if (line != null) {
+                // Case of company's name
+
+
+                // Case of firstname and lastname
+
+
+                // Case of telephone number
+
+
+                // Case of fax number
+
+
+                // Case of address
+
+
+            }
+
+            return result;
+        }
+
+        private double numberRatio(String line){
+            double numberRatio = 0.0;
+            int numberCount = 0;
+            int stringCount = line.length();
+            String numberString = "0123456789";
+
+            for(int i = 0; i < stringCount; i++){
+                if(numberString.indexOf(line.charAt(i)) >= 0){
+                    numberCount++;
+                }
+            }
+
+            numberRatio = (double)numberCount / (double)stringCount;
+            return numberRatio;
+        }
 	
 	public void confirmChange(){
 		primaryImage = previewImage.clone();
