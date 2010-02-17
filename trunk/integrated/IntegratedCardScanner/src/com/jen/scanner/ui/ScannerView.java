@@ -180,6 +180,8 @@ public class ScannerView extends FrameView {
         frontUIStateResult = STATE_NO_IMAGE;
         backUIStateResult = STATE_NO_IMAGE;
         setButtonsStateResult(frontUIStateResult);
+
+        scannerTxtT1.setText(bcScanner.getName());
     }
 
     @Action
@@ -1361,7 +1363,7 @@ public class ScannerView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scannerTxtT1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scannerBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(scannerBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         scannerPanelLayout.setVerticalGroup(
@@ -4271,7 +4273,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4280,7 +4282,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4585,7 +4587,9 @@ public class ScannerView extends FrameView {
         if(Utils.checkFirstName(newCard,MISSING_ALERT)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
-                
+                CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
+
+                // Yov's added code
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
@@ -4594,23 +4598,25 @@ public class ScannerView extends FrameView {
                 File curDir = new File(".\\");
                 if(imgFileName != null){
                     if ((imgFileName.length() > 0) && imgFile.isFile()
-                            && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5))
-                            || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)))) {
+                            && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
+                            || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
+
                         imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
                         newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
+
                     }
                 }
 
                 if(imgBackFileName != null){
                     if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
-                            && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5))
-                            || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)))) {
+                            && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 4))
+                            || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
                         imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
                         newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
                     }
                 }
 
-                CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
+                CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
                 localCardList.add(newCard);
 
             } catch (ScannerDBException ex) {
@@ -4945,7 +4951,7 @@ public class ScannerView extends FrameView {
                 }
 
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
-                //noteTaT1.setText( scannedBCard.retrieveData(trainingImgFolder) );
+                noteTaT1.setText( scannedBCard.retrieveData() );
             }
         }else{
              if((scannedBCardBack != null) && (scannedImageFileNameBack != null)){
@@ -4957,7 +4963,7 @@ public class ScannerView extends FrameView {
                 }
 
                 //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
-                //noteTaT1.setText( scannedBCardBack.retrieveData(trainingImgFolder) );
+                noteTaT1.setText( scannedBCardBack.retrieveData() );
             }
         }
     }//GEN-LAST:event_readCardBtnT1ActionPerformed
