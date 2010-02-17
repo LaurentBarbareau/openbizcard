@@ -39,13 +39,13 @@ public class Utils {
         return ext;
     }
 
-    public static boolean checkFirstName(Card c){
+    public static boolean checkFirstName(Card c,String alert){
         boolean chk = false;
         if(c.getFirstName()!=null && !c.getFirstName().equals("")) chk = true;
         else{
             org.jdesktop.application.ResourceMap myResourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
             chk = false;
-            JOptionPane.showMessageDialog(null,myResourceMap.getString("missingName.text"),"information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,myResourceMap.getString(alert),"information", JOptionPane.INFORMATION_MESSAGE);
         }
         return chk;
     }
