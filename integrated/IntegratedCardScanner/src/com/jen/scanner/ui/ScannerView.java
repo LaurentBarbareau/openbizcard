@@ -7,6 +7,8 @@ package com.jen.scanner.ui;
 import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
+import com.hideoaki.scanner.db.utils.SendEmailUtil;
+import com.hideoaki.scanner.db.utils.ZipUtils;
 import com.jen.scanner.ui.util.DBFileFilter;
 import com.jen.scanner.ui.util.JPGFileFilter;
 import com.jen.scanner.ui.util.Utils;
@@ -32,16 +34,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;
 import javax.swing.JLabel;
-import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 
 // From Yov's part
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
-import com.yov.scanner.imageprocessing.ImagePanel;
 import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.image.BufferedImage;
-import sun.security.util.PendingException;
 
 /**
  * The application's main frame.
@@ -1416,6 +1415,11 @@ public class ScannerView extends FrameView {
 
         emailBtnT1.setText(resourceMap.getString("emailBtnT1.text")); // NOI18N
         emailBtnT1.setName("emailBtnT1"); // NOI18N
+        emailBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailBtnT1ActionPerformed(evt);
+            }
+        });
 
         saveBtnT1.setText(resourceMap.getString("saveBtnT1.text")); // NOI18N
         saveBtnT1.setName("saveBtnT1"); // NOI18N
@@ -4550,7 +4554,7 @@ public class ScannerView extends FrameView {
     private void saveBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT1ActionPerformed
         // TODO add your handling code here:
         Card newCard = getCardFromForm(SCAN_TAB);
-        if(Utils.checkFirstName(newCard)){
+        if(Utils.checkFirstName(newCard,MISSING_ALERT)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
                 
@@ -4586,10 +4590,8 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx){
                 ioEx.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null,myResourceMap.getString("addAlertT1.text"),"information", JOptionPane.INFORMATION_MESSAGE);
-            clearTextT1();
-            frontLbT1.setIcon(null);
-            backLbT1.setIcon(null);
+            JOptionPane.showMessageDialog(null,myResourceMap.getString(ADD_ALERT),"information", JOptionPane.INFORMATION_MESSAGE);
+            clearFormT1();
         }
     }//GEN-LAST:event_saveBtnT1ActionPerformed
 
@@ -4786,7 +4788,10 @@ public class ScannerView extends FrameView {
     private void exportBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportBtnT4ActionPerformed
         // TODO add your handling code here:
         try{
-            CardLocalManager.saveLocalCard(localCardList, exportTfT4.getText());
+            String fileName = exportTfT4.getText();
+            if(fileName!=null && fileName.equals("")){
+                ZipUtils.exportCards(localCardList, "export.zip");
+            }
         }catch(Exception e){}
     }//GEN-LAST:event_exportBtnT4ActionPerformed
 
@@ -5636,7 +5641,7 @@ public class ScannerView extends FrameView {
     private void saveBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT3ActionPerformed
         // TODO add your handling code here:
                 Card newCard = getCardFromForm(RESULT_TAB);
-        if(Utils.checkFirstName(newCard)){
+        if(Utils.checkFirstName(newCard,MISSING_ALERT)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
                 
@@ -5673,8 +5678,8 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx){
                 ioEx.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null,myResourceMap.getString("updateAlertT3.text"),"information", JOptionPane.INFORMATION_MESSAGE);
-            clearTextT3();
+            JOptionPane.showMessageDialog(null,myResourceMap.getString(UPDATE_ALERT),"information", JOptionPane.INFORMATION_MESSAGE);
+            clearFormT3();
         }
     }//GEN-LAST:event_saveBtnT3ActionPerformed
 
@@ -5834,6 +5839,12 @@ public class ScannerView extends FrameView {
         }
     }//GEN-LAST:event_langaugeChangeBtnActionPerformed
 
+    private void emailBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT1ActionPerformed
+        // TODO add your handling code here:
+        Card c = getCardFromForm(SCAN_TAB);
+        SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+    }//GEN-LAST:event_emailBtnT1ActionPerformed
+
     private void changeLanguageTo(int lang){
         switch(lang){
             case EN:setLang("");break;
@@ -5921,6 +5932,11 @@ public class ScannerView extends FrameView {
         exportLbT4.setText(myResourceMap.getString("exportLbT4"+s+".text"));
         browseExportBtnT4.setText(myResourceMap.getString("browseExportBtnT4"+s+".text"));
         exportBtnT4.setText(myResourceMap.getString("exportBtnT4"+s+".text"));
+
+        //set Alert language
+        ADD_ALERT = "addAlertT1"+s+".text";
+        UPDATE_ALERT = "updateAlertT3"+s+".text";
+        MISSING_ALERT = "missingName"+s+".text";
     }
 
     private Card getCardFromForm(int index){
@@ -6051,7 +6067,7 @@ public class ScannerView extends FrameView {
                                         nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
     }
 
-    private void clearTextT1(){
+    private void clearFormT1(){
         nameTfT1.setText("");
         lastnameTfT1.setText("");
         titleTfT1.setText("");
@@ -6084,9 +6100,12 @@ public class ScannerView extends FrameView {
         faxTfTE1.setText("");
         adsTaTE1.setText("");
         noteTaTE1.setText("");
+
+        frontLbT1.setIcon(null);
+        backLbT1.setIcon(null);
     }
 
-    private void clearTextT3(){
+    private void clearFormT3(){
         nameTfT3.setText("");
         lastnameTfT3.setText("");
         titleTfT3.setText("");
@@ -6119,6 +6138,9 @@ public class ScannerView extends FrameView {
         faxTfTE3.setText("");
         adsTaTE3.setText("");
         noteTaTE3.setText("");
+
+        frontLbT3.setIcon(null);
+        backLbT3.setIcon(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -6504,6 +6526,10 @@ public class ScannerView extends FrameView {
 
     private int frontUIState, backUIState;
     private int frontUIStateResult, backUIStateResult;
+
+    private String ADD_ALERT = "addAlertT1.text";
+    private String UPDATE_ALERT = "updateAlertT3.text";
+    private String MISSING_ALERT = "missingName.text";
 
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;
