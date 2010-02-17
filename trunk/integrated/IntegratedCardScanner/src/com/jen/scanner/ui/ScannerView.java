@@ -9,7 +9,7 @@ import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.hideoaki.scanner.db.utils.SendEmailUtil;
 import com.hideoaki.scanner.db.utils.ZipUtils;
-import com.jen.scanner.ui.util.DBFileFilter;
+import com.jen.scanner.ui.util.CardComparator;
 import com.jen.scanner.ui.util.JPGFileFilter;
 import com.jen.scanner.ui.util.Utils;
 import com.jen.scanner.ui.util.ZipFileFilter;
@@ -43,6 +43,7 @@ import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.image.BufferedImage;
+import java.util.Collections;
 
 /**
  * The application's main frame.
@@ -4443,15 +4444,15 @@ public class ScannerView extends FrameView {
         Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
 
             Object[][] tableArray = new Object[cardList.size()][];
+            Collections.sort(cardList, new CardComparator());
             int row = 0;
             for (Card card : cardList) {
                 resultMapped.put(row, card);
-                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(),10};
+                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(),card.getId()};
                 row++;
             }
             model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ","id"});
             xCol.setColumnVisible(importTableT2.getColumnModel().getColumn(9), false);
-            System.out.println(">>>>>>>>"+model.getValueAt(0, 9));
            // System.out.println(((XTableColumnModel)importTableT2.getColumnModel()).getColumn(9, false));
         return resultMapped;
     }
@@ -4698,21 +4699,24 @@ public class ScannerView extends FrameView {
         int response;//0 = yes, 1 = no
         response = javax.swing.JOptionPane.showConfirmDialog(null, "Do you delete?","Confirm, please",javax.swing.JOptionPane.YES_NO_OPTION);
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
-        
+        long temp;
+        Card tempCard = new Card();
+
         if(response ==0){            
-            for(int i = 0;i<model.getRowCount();i++){
+            for(int i = model.getRowCount()-1;i>=0;i--){
                 if(((Boolean)model.getValueAt(i,0)).booleanValue()==true){
                     try {
-                        CardLocalManager.deleteLocalCard(idMapped.get(i).getId(), defaultcard.getAbsolutePath());
+                        temp = (Long)model.getValueAt(i, 9);
+                        tempCard.setId(temp);
+                        CardLocalManager.deleteLocalCard(temp, defaultcard.getAbsolutePath());
+                        localCardList.remove(tempCard);
                         model.removeRow(i);
-                        idMapped.remove(i);
                     } catch (ScannerDBException ex) {
                         Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
         }
-        //idMapped = updateTable(model);
     }//GEN-LAST:event_deletedBtnT2ActionPerformed
 
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed

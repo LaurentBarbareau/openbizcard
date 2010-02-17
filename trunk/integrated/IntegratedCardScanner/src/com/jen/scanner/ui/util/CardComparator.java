@@ -26,12 +26,10 @@ public class CardComparator implements Comparator{
         Card c2 = (Card)o2;
 
         int result = 0;
-        int i = 0;
-        
-        while(i<4){
-            result = compareAt(c1,c2,i);
-            i++;
-        }
+        result = compareAt(c1,c2,0);
+        if(result==0)result = compareAt(c1,c2,1);
+        if(result==0)result = compareAt(c1,c2,2);
+        if(result==0)result = compareAt(c1,c2,3);
 
         return result;
     }
@@ -45,7 +43,6 @@ public class CardComparator implements Comparator{
                 case 3 : res = rule.compare(replaceNull(c1.getZip()), replaceNull(c2.getZip())); break;
                 default: res = 0; break;
             }
-        
         return res;
     }
 
@@ -56,18 +53,23 @@ public class CardComparator implements Comparator{
    public static void main (String[] args){
         Card c1 = new Card();
         Card c2 = new Card();
+        Card c3 = new Card();
+        Card c4 = new Card();
 
-        c1.setFirstName("aaa");
+        c1.setFirstName("andrew");
+        c4.setFirstName("เจนโชติ");
+        c3.setFirstName("กอๆ");
         c2.setFirstName("aaa");
 
         ArrayList<Card> tree = new ArrayList<Card>();
         tree.add(c1);
         tree.add(c2);
+        tree.add(c3);
+        tree.add(c4);
         Collections.sort(tree,new CardComparator());
      
       for(Card c : tree){
         System.out.println(c.getFirstName()+" "+c.getLastName());
       }
-      System.out.println("test".indexOf(""));
    }
 }

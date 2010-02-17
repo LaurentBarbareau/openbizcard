@@ -1,15 +1,7 @@
 package com.hideoaki.scanner.db.model;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +9,6 @@ import java.util.List;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
-import com.hideoaki.scanner.db.utils.Privacy;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 
 public class Card {
@@ -159,6 +150,7 @@ public class Card {
     private String imgFront;
     private String imgBack;
 
+    @Override
     public boolean equals(Object obj) {
         // System.out.print("equal" + this.id + ":" + ((Card) obj).id);
         // System.out.print("minus " + (((Card) obj).id - this.id) );
