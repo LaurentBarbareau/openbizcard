@@ -58,9 +58,9 @@ public class ZipUtils {
 //        System.out.println(convertCardsToXML(cards));
 //        ArrayList<Card> c1 = convertXMLToCards(testString);
 //        System.out.println(c1);
-//        exportCards(cards, ZIP_FILE_NAME);
-       ArrayList<Card> cas =   importCards(ZIP_FILE_NAME);
-       exportCards(cas, "newexport.zip");
+        exportCards(cards, ZIP_FILE_NAME);
+//       ArrayList<Card> cas =   importCards(ZIP_FILE_NAME);
+//       exportCards(cas, "newexport.zip");
     }
 
     public static void exportCards(ArrayList<Card> cards, String zipFileName) {
@@ -68,33 +68,42 @@ public class ZipUtils {
             ///// Get All Picture file and zip it and update Card Detail
             FileOutputStream outZipPic = new FileOutputStream(ZIP_PIC_FILE_NAME);
             ZipOutputStream zipOutPic = new ZipOutputStream(outZipPic);
-
+            int numPic = 0;
+            ArrayList<Card> newCards = new  ArrayList<Card>();
             for (Iterator<Card> it = cards.iterator(); it.hasNext();) {
                 try {
                     Card card = it.next();
+                     Card newCard = new Card();
+                     newCard.copy(card);
                     if (card.getImgFront() != null && !card.getImgFront().equals("")) {
                         File ff = new File(card.getImgFront());
                         if (ff.exists()) {
+                            numPic++;
                             String newFileName = addFile(ff, zipOutPic, null);
-                            card.setImgFront(newFileName);
+                            newCard.setImgFront(newFileName);
                         }
                     }
                     if (card.getImgBack() != null && !card.getImgBack().equals("")) {
                         File ff = new File(card.getImgBack());
                         if (ff.exists()) {
+                            numPic++;
                             String newFileName = addFile(ff, zipOutPic, null);
-                            card.setImgBack(newFileName);
+                            newCard.setImgBack(newFileName);
                         }
                     }
+                     newCards.add(newCard);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            zipOutPic.finish();
-            zipOutPic.close();
+            if (numPic > 0) {
+                zipOutPic.finish();
+                zipOutPic.close();
+
+            }
             outZipPic.close();
             ///
-            String xml = convertCardsToXML(cards);
+            String xml = convertCardsToXML(newCards);
 
 
 //            // Write XML Add Cards File
