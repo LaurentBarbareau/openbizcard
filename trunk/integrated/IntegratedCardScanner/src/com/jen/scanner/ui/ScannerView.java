@@ -4440,21 +4440,17 @@ public class ScannerView extends FrameView {
         return newPath;
     }
 
-    private Hashtable<Integer,Card> updateTable(ArrayList<Card> cardList,DefaultTableModel model){
-        Hashtable<Integer, Card> resultMapped = new Hashtable<Integer, Card>();
-
+    private void updateTable(ArrayList<Card> cardList,DefaultTableModel model){
             Object[][] tableArray = new Object[cardList.size()][];
             Collections.sort(cardList, new CardComparator());
             int row = 0;
             for (Card card : cardList) {
-                resultMapped.put(row, card);
                 tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(),card.getId()};
                 row++;
             }
             model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ","id"});
             xCol.setColumnVisible(importTableT2.getColumnModel().getColumn(9), false);
            // System.out.println(((XTableColumnModel)importTableT2.getColumnModel()).getColumn(9, false));
-        return resultMapped;
     }
 
     private void setButtonsState(int newButtonsState){
@@ -4721,7 +4717,10 @@ public class ScannerView extends FrameView {
 
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
         // TODO add your handling code here:
-        Card editCard = idMapped.get(importTableT2.getSelectedRow());
+        DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
+        long id = (Long)model.getValueAt(importTableT2.getSelectedRow(), 9);
+        Card editCard = getCardById(id,localCardList);
+//        editCard = localCardList.g
         menuTab.setEnabledAt(RESULT_TAB, true);
         menuTab.setSelectedIndex(RESULT_TAB);
 
@@ -5316,7 +5315,7 @@ public class ScannerView extends FrameView {
         DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
         if(resultCards!=null){
-           idMapped = updateTable(resultCards,model);
+           updateTable(resultCards,model);
         }
     }//GEN-LAST:event_genSearchT2ActionPerformed
 
@@ -5350,10 +5349,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn0T2ActionPerformed
 
@@ -5366,10 +5365,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn1T2ActionPerformed
 
@@ -5382,10 +5381,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
          }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn2T2ActionPerformed
 
@@ -5398,10 +5397,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn3T2ActionPerformed
 
@@ -5414,10 +5413,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn4T2ActionPerformed
 
@@ -5430,10 +5429,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn5T2ActionPerformed
 
@@ -5446,10 +5445,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn6T2ActionPerformed
 
@@ -5462,10 +5461,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn7T2ActionPerformed
 
@@ -5478,10 +5477,10 @@ public class ScannerView extends FrameView {
             DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
             if(resultCards!=null){
-                idMapped = updateTable(resultCards,model);
+                updateTable(resultCards,model);
             }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn8T2ActionPerformed
 
@@ -5676,7 +5675,8 @@ public class ScannerView extends FrameView {
 
     private void saveBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT3ActionPerformed
         // TODO add your handling code here:
-                Card newCard = getCardFromForm(RESULT_TAB);
+        Card newCard = getCardFromForm(RESULT_TAB);
+        newCard.setId(Long.parseLong(idNameLbT3.getText()));
         if(Utils.checkFirstName(newCard,MISSING_ALERT)){
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
@@ -5707,7 +5707,7 @@ public class ScannerView extends FrameView {
 
                 CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
                 int index = localCardList.indexOf(newCard);
-                localCardList.set(index, newCard);
+                localCardList.set(index,newCard);
 
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
@@ -5728,10 +5728,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn0T2ActionPerformed
 
@@ -5744,10 +5744,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn1T2ActionPerformed
 
@@ -5760,10 +5760,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn2T2ActionPerformed
 
@@ -5776,10 +5776,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn3T2ActionPerformed
 
@@ -5792,10 +5792,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
         }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn4T2ActionPerformed
 
@@ -5808,10 +5808,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn5T2ActionPerformed
 
@@ -5824,10 +5824,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn6T2ActionPerformed
 
@@ -5840,10 +5840,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+             updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn7T2ActionPerformed
 
@@ -5856,10 +5856,10 @@ public class ScannerView extends FrameView {
            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
            if(resultCards!=null){
-               idMapped = updateTable(resultCards,model);
+               updateTable(resultCards,model);
            }
        }else{
-            idMapped = updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn8T2ActionPerformed
 
@@ -5932,7 +5932,15 @@ public class ScannerView extends FrameView {
             default:setLang("");break;
         }
     }
-    
+
+    private Card getCardById(long l,ArrayList<Card> cards){
+        Card card = null;
+        for(Card c: cards){
+            if(c.getId()==l)card = c;
+        }
+        return card;
+    }
+
     private void setLang(String s){
         //set langauge for general component
         menuTab.setTitleAt(SCAN_TAB,myResourceMap.getString("scannerTab.TabConstraints.tabTitle"+s));
@@ -6186,6 +6194,9 @@ public class ScannerView extends FrameView {
     }
 
     private void clearFormT3(){
+
+        idNameLbT3.setText("");
+
         nameTfT3.setText("");
         lastnameTfT3.setText("");
         titleTfT3.setText("");
@@ -6587,7 +6598,6 @@ public class ScannerView extends FrameView {
     private JLabel backLbT3;
     //card local manager
     private ArrayList<Card> localCardList;
-    private Hashtable<Integer,Card> idMapped;
     private File defaultcard;
     private JDialog aboutBox;
 
