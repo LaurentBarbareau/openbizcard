@@ -25,6 +25,7 @@ import net.rim.device.api.system.KeypadListener;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.Font;
+import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.MenuItem;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
@@ -148,6 +149,8 @@ public class TrainingListScreen extends FixMainScreen implements
 				}
 				
 			}
+
+			
 		};
 		System.out.println("aaaa");
 		for (int i = 0; i < allCats.size(); i++) {
@@ -159,8 +162,8 @@ public class TrainingListScreen extends FixMainScreen implements
 		System.out.println("bbbb");
 		catChoice.setChangeListener(this);
 		System.out.println("cccc");
-		catChoice.setMargin(0, 25 * Display.getWidth() / 480, 0,25 * Display.getWidth() / 480 );
-		catChoice.setPadding(0, 25 * Display.getWidth() / 480, 0,0);
+		catChoice.setMargin(0, 50 * Display.getWidth() / 480, 0,25 * Display.getWidth() / 480 );
+		catChoice.setPadding(0, 50 * Display.getWidth() / 480, 0,0);
 		catChoice.setFont(MyColor.FONT_SEARCH);
 		System.out.println("ddddd");
 		catManager.add(catChoice);
