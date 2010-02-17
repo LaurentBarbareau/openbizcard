@@ -24,7 +24,7 @@ public class OCR {
         this.tessPath = tessPath;
     }
     
-    String recognizeText(File imageFile, int index, boolean all, String imageFormat, String lang) throws Exception {
+    public String recognizeText(File imageFile, int index, boolean all, String imageFormat, String lang) throws Exception {
         ArrayList<File> tempImages = ImageIOHelper.createImages(imageFile, index, all, imageFormat);
         
         File outputFile = new File(imageFile.getParentFile(), "output");

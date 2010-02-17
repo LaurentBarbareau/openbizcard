@@ -12,7 +12,6 @@ import java.io.IOException;
 public class BusinessCard { // DONE - But not tested yet
 
 	private CardImage primaryImage;
-	private DBData primaryDBData;
 	private CardImage previewImage;
 	
 	private boolean isBrightnessChanged = false;
@@ -24,14 +23,12 @@ public class BusinessCard { // DONE - But not tested yet
 		primaryImage = new CardImage(scannedImage.getImageData());
 		previewImage = new CardImage(scannedImage.getImageData());
 		tempImage = new CardImage(scannedImage.getImageData());
-		primaryDBData = new DBData();
 	}
 	
 	public BusinessCard(BufferedImage scannedImage){
 		primaryImage = new CardImage(scannedImage);
 		previewImage = new CardImage(scannedImage);
 		tempImage = new CardImage(scannedImage);
-		primaryDBData = new DBData();
 	}
 	
 	public boolean trim(){
@@ -83,96 +80,38 @@ public class BusinessCard { // DONE - But not tested yet
 		primaryImage.exportPDF(fileNameBC);
 	}
 	
-	public String retrieveData(String trainingFolder){
+	public String retrieveData(){
 
             String cardText = "";
 
-            //primaryDBData = primaryImage.retrieveData();
-            //cardText = simpleOCR.run(primaryImage.getFileName(), trainingFolder);
+            try {
+                File tessExe = new File(".");
 
+                tessExe = new File(tessExe.getCanonicalPath() + "\\dis\\externalLib\\tesseract");
+                //System.out.println("Tesseract Path(Absolute) = " + tessExe.getAbsolutePath());
+                //System.out.println("Tesseract Path(Canonical) = " + tessExe.getCanonicalPath());
 
-            try{
-            File tessExe = new File(".");
+                OCR ocrEngine = new OCR(tessExe.getCanonicalPath());
 
+                String imgFileName = primaryImage.getFileName();
+                File imgFile = new File(imgFileName);
+                String imgFormat = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);
 
+                //System.out.println("My imageFile = " + imgFile.getAbsolutePath());
+                //System.out.println("My imageFile's parent = " + imgFile.getParentFile().toString());
 
-                            OCR ocrEngine = new OCR("");
+                cardText = ocrEngine.recognizeText(imgFile, 0, false, imgFormat, "eng");
 
+                //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
 
-
-                            //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
-            }catch(Exception e){
+                //System.out.println("CardText = " + cardText);
+                
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            /*
-            try {
-                //if (this.jComboBoxLang.getSelectedIndex() == -1) {
-                //    JOptionPane.showMessageDialog(this, "Please select a language.", APP_NAME, JOptionPane.INFORMATION_MESSAGE);
-                //    return;
-                //}
-                //if (this.jImageLabel.getIcon() == null) {
-                //    JOptionPane.showMessageDialog(this, "Please load an image.", APP_NAME, JOptionPane.INFORMATION_MESSAGE);
-                //    return;
-                //}
 
-                //getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                //getGlassPane().setVisible(true);
-
-                String imageFileName = primaryImage.getFileName();
-                final String imageFormat = imageFileName.substring(imageFileName.lastIndexOf('.') + 1);
-
-
-
-
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    public void run() {
-                        try {
-
-                            File tessExe = new File(".");
-
-
-        
-                            OCR ocrEngine = new OCR("");
-                            
-                            
-                            
-                            //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
-                            //jTextArea1.append(ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]));
-                            //jLabelStatus.setText("OCR completed.");
-                        } catch (OutOfMemoryError oome) {
-                            oome.printStackTrace();
-                            //JOptionPane.showMessageDialog(null, APP_NAME
-                            //        + myResources.getString("_has_run_out_of_memory.\nPlease_restart_") + APP_NAME
-                            //        + myResources.getString("_and_try_again."), myResources.getString("Out_of_Memory"), JOptionPane.ERROR_MESSAGE);
-                        } catch (FileNotFoundException fnfe) {
-                            fnfe.printStackTrace();
-                            //JOptionPane.showMessageDialog(null, "An exception occurred in Tesseract engine while recognizing this image.", APP_NAME, JOptionPane.ERROR_MESSAGE);
-                        } catch (IOException ioe) {
-                            ioe.printStackTrace();
-                            //JOptionPane.showMessageDialog(null, "Cannot find Tesseract. Please set its path.", APP_NAME, JOptionPane.ERROR_MESSAGE);
-                        } catch (RuntimeException re) {
-                            re.printStackTrace();
-                            //JOptionPane.showMessageDialog(null, re.getMessage(), APP_NAME, JOptionPane.ERROR_MESSAGE);
-                        } catch (Exception exc) {
-                            exc.printStackTrace();
-                        }
-                    }
-                });
-
-            } catch (Exception exc) {
-                System.err.println(exc.getMessage());
-            } finally {
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    public void run() {
-                        //getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                        //getGlassPane().setVisible(false);
-                    }
-                });
-            }
-            */
+            // Post Process from string read by OCR
 
             return cardText;
 	}
@@ -200,12 +139,6 @@ public class BusinessCard { // DONE - But not tested yet
 		return primaryImage;
 	}
 	
-	public DBData getPrimaryDBData(){
-		System.out.println("BusinessCard.getPrimaryDBData()");
-		
-		return primaryDBData;
-	}
-	
 	public CardImage getPreviewImage(){
 		System.out.println("BusinessCard.getPreviewImage()");
 		
@@ -220,14 +153,6 @@ public class BusinessCard { // DONE - But not tested yet
 		previewImage = newPrimaryImage;
 		
 		return oldPrimaryImage;
-	}
-	
-	public DBData setPrimaryDBData(DBData newPrimaryDBData){
-		System.out.println("BusinessCard.setPrimaryDBData(newPrimaryDBData)");
-		DBData oldPrimaryDBData = primaryDBData;
-		primaryDBData = newPrimaryDBData;
-		
-		return oldPrimaryDBData;
 	}
 	
 	public CardImage setPreviewImage(CardImage newPreviewImage){
