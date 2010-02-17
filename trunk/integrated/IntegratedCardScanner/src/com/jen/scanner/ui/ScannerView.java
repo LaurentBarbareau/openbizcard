@@ -12,6 +12,7 @@ import com.hideoaki.scanner.db.utils.ZipUtils;
 import com.jen.scanner.ui.util.DBFileFilter;
 import com.jen.scanner.ui.util.JPGFileFilter;
 import com.jen.scanner.ui.util.Utils;
+import com.jen.scanner.ui.util.ZipFileFilter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -4772,7 +4773,7 @@ public class ScannerView extends FrameView {
         String wd = System.getProperty("user.dir");
         String filename = "";
         JFileChooser fc = new JFileChooser(wd);
-        fc.addChoosableFileFilter(new DBFileFilter());
+        fc.addChoosableFileFilter(new ZipFileFilter());
 
         int rc = fc.showDialog(null, "Select");
         if (rc == JFileChooser.APPROVE_OPTION)
@@ -4789,8 +4790,9 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         try{
             String fileName = exportTfT4.getText();
-            if(fileName!=null && fileName.equals("")){
-                ZipUtils.exportCards(localCardList, "export.zip");
+            if(fileName!=null && !fileName.equals("")){
+                ZipUtils.exportCards(localCardList, fileName+".zip");
+                System.out.println(">>>>>>>"+fileName+".zip");
             }
         }catch(Exception e){}
     }//GEN-LAST:event_exportBtnT4ActionPerformed

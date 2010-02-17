@@ -24,6 +24,7 @@ public class Utils {
     public final static String csv = "csv";
     public final static String jpg = "jpg";
     public final static String jpeg = "jpeg";
+    public final static String zip = "zip";
 
     /*
      * Get the extension of a file.
