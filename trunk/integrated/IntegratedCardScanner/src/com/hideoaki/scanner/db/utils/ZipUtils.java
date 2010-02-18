@@ -221,7 +221,7 @@ public class ZipUtils {
         if (!ext.equals("")) {
             ext = "." + ext;
         }
-        String newFilename = filename == null ? System.currentTimeMillis() + ext : filename;
+        String newFilename = filename == null ? System.currentTimeMillis() + ((int)(Math.random() * 100))+ ext : filename;
         ZipEntry entryPic = new ZipEntry(newFilename);
 //                        entryPic.setSize(pic.length);
         zipOutPic.putNextEntry(entryPic);
