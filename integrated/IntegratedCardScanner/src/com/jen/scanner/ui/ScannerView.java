@@ -5307,6 +5307,7 @@ public class ScannerView extends FrameView {
 
     private void genSearchT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genSearchT2ActionPerformed
         // TODO add your handling code here:
+        disableToggleExcept(QUICK_NONE);
         Card criteria = getCardFromForm(QUERY_TAB);
         String genCriteria = genSearchTfT2.getText();
         ArrayList<Card> resultCards;
@@ -5327,24 +5328,24 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_genSearchT2ActionPerformed
 
     private void disableToggleExcept(int index){
-        if(index!=QUICK_TH_0)thBtn0T2.setSelected(false);
-        if(index!=QUICK_TH_1)thBtn1T2.setSelected(false);
-        if(index!=QUICK_TH_2)thBtn2T2.setSelected(false);
-        if(index!=QUICK_TH_3)thBtn3T2.setSelected(false);
-        if(index!=QUICK_TH_4)thBtn4T2.setSelected(false);
-        if(index!=QUICK_TH_5)thBtn5T2.setSelected(false);
-        if(index!=QUICK_TH_6)thBtn6T2.setSelected(false);
-        if(index!=QUICK_TH_7)thBtn7T2.setSelected(false);
-        if(index!=QUICK_TH_8)thBtn8T2.setSelected(false);
-        if(index!=QUICK_EN_0)engBtn0T2.setSelected(false);
-        if(index!=QUICK_EN_1)engBtn1T2.setSelected(false);
-        if(index!=QUICK_EN_2)engBtn2T2.setSelected(false);
-        if(index!=QUICK_EN_3)engBtn3T2.setSelected(false);
-        if(index!=QUICK_EN_4)engBtn4T2.setSelected(false);
-        if(index!=QUICK_EN_5)engBtn5T2.setSelected(false);
-        if(index!=QUICK_EN_6)engBtn6T2.setSelected(false);
-        if(index!=QUICK_EN_7)engBtn7T2.setSelected(false);
-        if(index!=QUICK_EN_8)engBtn8T2.setSelected(false);
+        if(index!=QUICK_TH_0 || index == QUICK_NONE)thBtn0T2.setSelected(false);
+        if(index!=QUICK_TH_1 || index == QUICK_NONE)thBtn1T2.setSelected(false);
+        if(index!=QUICK_TH_2 || index == QUICK_NONE)thBtn2T2.setSelected(false);
+        if(index!=QUICK_TH_3 || index == QUICK_NONE)thBtn3T2.setSelected(false);
+        if(index!=QUICK_TH_4 || index == QUICK_NONE)thBtn4T2.setSelected(false);
+        if(index!=QUICK_TH_5 || index == QUICK_NONE)thBtn5T2.setSelected(false);
+        if(index!=QUICK_TH_6 || index == QUICK_NONE)thBtn6T2.setSelected(false);
+        if(index!=QUICK_TH_7 || index == QUICK_NONE)thBtn7T2.setSelected(false);
+        if(index!=QUICK_TH_8 || index == QUICK_NONE)thBtn8T2.setSelected(false);
+        if(index!=QUICK_EN_0 || index == QUICK_NONE)engBtn0T2.setSelected(false);
+        if(index!=QUICK_EN_1 || index == QUICK_NONE)engBtn1T2.setSelected(false);
+        if(index!=QUICK_EN_2 || index == QUICK_NONE)engBtn2T2.setSelected(false);
+        if(index!=QUICK_EN_3 || index == QUICK_NONE)engBtn3T2.setSelected(false);
+        if(index!=QUICK_EN_4 || index == QUICK_NONE)engBtn4T2.setSelected(false);
+        if(index!=QUICK_EN_5 || index == QUICK_NONE)engBtn5T2.setSelected(false);
+        if(index!=QUICK_EN_6 || index == QUICK_NONE)engBtn6T2.setSelected(false);
+        if(index!=QUICK_EN_7 || index == QUICK_NONE)engBtn7T2.setSelected(false);
+        if(index!=QUICK_EN_8 || index == QUICK_NONE)engBtn8T2.setSelected(false);
     }
 
     private void engBtn0T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn0T2ActionPerformed
@@ -6637,6 +6638,7 @@ public class ScannerView extends FrameView {
     private final int RESULT_TAB = 2;
     private final int IMPORT_EXPORT_TAB = 3;
 
+    private final int QUICK_NONE = -1;
     private final int QUICK_TH_0 = 0;
     private final int QUICK_TH_1 = 1;
     private final int QUICK_TH_2 = 2;
