@@ -4774,8 +4774,9 @@ public class ScannerView extends FrameView {
             }
         }
 
+        isFrontSelectedResult = true;
         setButtonsStateResult(frontUIStateResult);
-        setButtonsStateResult(backUIStateResult);
+   
 
     }//GEN-LAST:event_editBtnT2ActionPerformed
 
