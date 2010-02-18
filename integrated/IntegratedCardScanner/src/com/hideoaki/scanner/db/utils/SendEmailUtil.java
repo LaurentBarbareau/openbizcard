@@ -55,7 +55,7 @@ public class SendEmailUtil {
         Card c = new Card("Krissada", "Chalermsook", "Project Leader", "hideoaki@gmail.com", "Crie Company Limited", "http://www.hideoaki.com", "400/107", "bangkok", "cen", "Thailand", "10900", "025894284", "02555444455", "0805511559", "This is a note",
                 "", "",
                 "", "", "", "", "", "", "", "", "", "", "", "", "");
-        sendEmail("Test ", "Desc", c, "c:/001.jpg", "c:/002.jpg");
+        sendEmail("Test ", "Desc", c, "c:/001.jpg", "c:/001.jpg");
     }
 
     public static void sendEmail(String topic, String body, Card c, String pathToFrontImage, String pathToBackImage) {
