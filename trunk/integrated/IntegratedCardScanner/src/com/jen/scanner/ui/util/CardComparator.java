@@ -30,6 +30,8 @@ public class CardComparator implements Comparator{
         if(result==0)result = compareAt(c1,c2,1);
         if(result==0)result = compareAt(c1,c2,2);
         if(result==0)result = compareAt(c1,c2,3);
+        if(result==0)result = compareAt(c1,c2,4);
+        if(result==0)result = compareAt(c1,c2,5);
 
         return result;
     }
@@ -38,9 +40,11 @@ public class CardComparator implements Comparator{
         int res = 0;
             switch(index){
                 case 0 : res = rule.compare(replaceNull(c1.getFirstName()), replaceNull(c2.getFirstName())); break;
-                case 1 : res = rule.compare(replaceNull(c1.getLastName()),replaceNull( c2.getLastName())); break;
-                case 2 : res = rule.compare(replaceNull(c1.getCountry()), replaceNull(c2.getCountry())); break;
-                case 3 : res = rule.compare(replaceNull(c1.getZip()), replaceNull(c2.getZip())); break;
+                case 1 : res = rule.compare(replaceNull(c1.getFirstNameE()), replaceNull(c2.getFirstNameE())); break;
+                case 2 : res = rule.compare(replaceNull(c1.getLastName()),replaceNull( c2.getLastName())); break;
+                case 3 : res = rule.compare(replaceNull(c1.getLastNameE()),replaceNull( c2.getLastNameE())); break;
+                case 4 : res = rule.compare(replaceNull(c1.getCountry()), replaceNull(c2.getCountry())); break;
+                case 5 : res = rule.compare(replaceNull(c1.getZip()), replaceNull(c2.getZip())); break;
                 default: res = 0; break;
             }
         return res;
