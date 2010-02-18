@@ -5012,7 +5012,7 @@ public class ScannerView extends FrameView {
                 JFrame textWin = new JFrame("OCR-Read Text");
                 textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 textWin.setLocation(100, 100);
-                textWin.setSize(200, 200);
+                textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
                 JTextArea ocrTxt = new JTextArea();
@@ -5036,7 +5036,7 @@ public class ScannerView extends FrameView {
                 JFrame textWin = new JFrame("OCR-Read Text");
                 textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 textWin.setLocation(100, 100);
-                textWin.setSize(200, 200);
+                textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
                 JTextArea ocrTxt = new JTextArea();
@@ -6740,6 +6740,9 @@ public class ScannerView extends FrameView {
 
     private final int EN = 0;
     private final int TH = 1;
+
+    private final int WIN_WIDTH= 450;
+    private final int WIN_HEIGHT= 180;
 
     private XTableColumnModel xCol;
 }
