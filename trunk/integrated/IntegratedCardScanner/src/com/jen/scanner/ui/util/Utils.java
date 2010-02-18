@@ -56,7 +56,7 @@ public class Utils {
         String[] s = str.split("");
         for(Card c : allCard){
             for(int i=1;i<s.length;i++){
-                if(isLeadBy(c.getFirstName(),s[i]))resultCards.add(c);
+                if(isLeadByThai(c.getFirstName(),s[i]))resultCards.add(c);
                 else if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
             }
         }
@@ -76,6 +76,21 @@ public class Utils {
 
     private static boolean isLeadBy(String s1,String s2){
         return s1.toLowerCase().indexOf(s2.toLowerCase())==0;
+    }
+
+    private static boolean isLeadByThai(String s1,String s2){
+        int leadIndex = 0;
+        if(leadBySara(s1,"เไโใ")) leadIndex = 1;
+        return s1.toLowerCase().indexOf(s2.toLowerCase())== leadIndex;
+    }
+
+    private static boolean leadBySara(String s1, String s2){
+        boolean result = false;
+        String[] str = s2.split("");
+        for(int i =1;i<str.length;i++){
+            if(s1.indexOf(str[i])==0)result = true;
+        }
+        return result;
     }
 
     public static ArrayList<Card> searchGenCard(String criteria,ArrayList<Card> allCard){
