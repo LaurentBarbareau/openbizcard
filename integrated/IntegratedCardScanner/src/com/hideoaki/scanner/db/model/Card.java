@@ -535,6 +535,13 @@ public class Card {
             List<String[]> list = new ArrayList<String[]>();
             long i = 0;
             for (Card card : cards) {
+                if(card.imgBack != null && !card.imgBack.equals("")){
+                    
+                    card.imgBack.replaceAll("\\\\", "/");
+                }
+                 if(card.imgFront != null && !card.imgFront.equals("")){
+                    card.imgFront.replaceAll("\\\\", "/");
+                }
                 card.id = i;
                 list.add(card.toArray());
                 i = i + 1;
