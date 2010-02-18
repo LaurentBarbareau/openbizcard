@@ -5776,19 +5776,23 @@ public class ScannerView extends FrameView {
                 File curDir = new File(".\\");
                 if(imgFileName != null){
                     if ((imgFileName.length() > 0) && imgFile.isFile()
-                            && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 5))
-                            || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 6)))) {
-                        imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
-                        newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
+                            && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
+                            || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
+
+
+                        ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        newCard.setImgFront("./cardImages/" + cardID + ".jpg");
                     }
                 }
 
                 if(imgBackFileName != null){
                     if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
-                            && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 5))
-                            || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 6)))) {
-                        imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
-                        newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
+                            && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 4))
+                            || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
+
+
+                        ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                        newCard.setImgFront("./cardImages/" + cardID + "Back.jpg");
                     }
                 }
 
