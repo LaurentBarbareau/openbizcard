@@ -57,7 +57,7 @@ public class Utils {
         for(Card c : allCard){
             for(int i=1;i<s.length;i++){
                 if(isLeadBy(c.getFirstName(),s[i]))resultCards.add(c);
-                if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
+                else if(isLeadBy(c.getFirstNameE(),s[i]))resultCards.add(c);
             }
         }
         return resultCards;
@@ -75,7 +75,7 @@ public class Utils {
 //    }
 
     private static boolean isLeadBy(String s1,String s2){
-        return s1.indexOf(s2)==0;
+        return s1.toLowerCase().indexOf(s2.toLowerCase())==0;
     }
 
     public static ArrayList<Card> searchGenCard(String criteria,ArrayList<Card> allCard){
@@ -368,8 +368,13 @@ public class Utils {
     public static void main (String[] args){
         try {
             ArrayList<Card> test = CardLocalManager.loadLocalCard("C:\\netbeanProject\\integrated\\defaultcard.csv");
-            test = Utils.quickSearchCard("abc", test);
-            System.out.println(test.size());
+//            test = Utils.quickSearchCard("abc", test);
+//            System.out.println(test.size());
+        String[] s = "pqr".split("");
+            for(int i=0;i<s.length;i++){
+               System.out.println(s[i]);
+            }
+
         } catch (ScannerDBException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
         }
