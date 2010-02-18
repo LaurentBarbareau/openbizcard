@@ -42,8 +42,12 @@ import com.jen.scanner.ui.util.XTableColumnModel;
 import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanelDialog;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
+import javax.swing.JTextArea;
+import javax.imageio.ImageIO;
 
 /**
  * The application's main frame.
@@ -131,7 +135,6 @@ public class ScannerView extends FrameView {
         //scannedImageFileName = System.getProperty("user.home")+"\\My Documents\\scannedImage";
         scannedImageFileName = "";
         scannedImageFileNameBack = "";
-        trainingImgFolder = "";
 
         File curDir = new File(".");
         File imgFolder;
@@ -144,14 +147,12 @@ public class ScannerView extends FrameView {
 
             scannedImageFileName = curDir.getCanonicalPath() + "\\cardImages\\scannedBCard";
             scannedImageFileNameBack = curDir.getCanonicalPath() + "\\cardImages\\scannedBCardBack";
-            trainingImgFolder = curDir.getCanonicalPath() + "\\images\\trainingImages";
         }catch(Exception e){
             e.printStackTrace();
 
             try{
                 scannedImageFileName = curDir.getCanonicalPath() + "\\cardImages\\scannedBCard";
-                scannedImageFileNameBack = curDir.getCanonicalPath() + "\\cardImages\\scannedBCardBack";
-                trainingImgFolder = curDir.getCanonicalPath() + "\\src\\com\\yov\\scanner\\images\\trainingImages";
+                scannedImageFileNameBack = curDir.getCanonicalPath() + "\\cardImages\\scannedBCardBack";                
             }catch(Exception ex){
                 ex.printStackTrace();
             }
@@ -182,6 +183,9 @@ public class ScannerView extends FrameView {
         setButtonsStateResult(frontUIStateResult);
 
         scannerTxtT1.setText(bcScanner.getName());
+
+        isBrowsedFront = false;
+        isBrowsedBack = false;
     }
 
     @Action
@@ -4601,8 +4605,12 @@ public class ScannerView extends FrameView {
                             && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
 
-                        imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
-                        newCard.setImgFront(".\\cardImages\\" + cardID + ".jpg");
+                        if(isBrowsedFront){
+                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        }else{
+                            imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        }
+                        newCard.setImgFront("./cardImages/" + cardID + ".jpg");
 
                     }
                 }
@@ -4611,8 +4619,13 @@ public class ScannerView extends FrameView {
                     if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
                             && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 4))
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
-                        imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
-                        newCard.setImgFront(".\\cardImages\\" + cardID + "Back.jpg");
+
+                        if(isBrowsedBack){
+                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        }else{
+                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                        }
+                        newCard.setImgFront("./cardImages/" + cardID + "Back.jpg");
                     }
                 }
 
@@ -4658,6 +4671,8 @@ public class ScannerView extends FrameView {
 
                 frontUIState = STATE_WITH_IMAGE;
                 setButtonsState(frontUIState);
+
+                isBrowsedFront = true;
             } else {
 
             }
@@ -4690,6 +4705,8 @@ public class ScannerView extends FrameView {
 
                 backUIState = STATE_WITH_IMAGE;
                 setButtonsState(backUIState);
+
+                isBrowsedBack = true;
             } else {
 
             }
@@ -4751,8 +4768,42 @@ public class ScannerView extends FrameView {
         faxTfT3.setText(editCard.getFax());
         adsTaT3.setText(editCard.getAddress());
         noteTaT3.setText(editCard.getNote());
-        frontTfT3.setText(frontPath);
-        backTfT3.setText(backPath);
+
+
+        //frontTfT3.setText(frontPath);
+        //backTfT3.setText(backPath);
+        
+        
+        if((frontPath != null) && (frontPath.length() > 0) && (frontPath.charAt(0) == '.')){
+            File curDir = new File(".");
+            String curDirStr = "";
+            try{
+                curDirStr = curDir.getCanonicalPath();
+                System.out.println("cur dir = " + curDirStr);
+                curDirStr = curDirStr.replace('\\', '/');
+                frontTfT3.setText(frontPath.replaceFirst(".", curDirStr));
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            frontTfT3.setText(frontPath);
+        }
+
+        if((backPath != null) && (backPath.length() > 0) && (backPath.charAt(0) == '.')){
+            File curDir = new File(".");
+            String curDirStr = "";
+            try{
+                curDirStr = curDir.getCanonicalPath();
+                System.out.println("cur dir = " + curDirStr);
+                curDirStr = curDirStr.replace('\\', '/');
+                backTfT3.setText(backPath.replaceFirst(".", curDir.getAbsolutePath()));
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            backTfT3.setText(backPath);
+        }
+        
         
         frontLbT3.setIcon(new ImageIcon(frontPath));
         backLbT3.setIcon(new ImageIcon(backPath));
@@ -4869,6 +4920,8 @@ public class ScannerView extends FrameView {
 
                     frontUIState = STATE_WITH_IMAGE;
                     setButtonsState(frontUIState);
+
+                    isBrowsedFront = false;
                 }else{
                     scannedBCardBack = new BusinessCard(scannedImage);
 
@@ -4877,6 +4930,8 @@ public class ScannerView extends FrameView {
 
                     backUIState = STATE_WITH_IMAGE;
                     setButtonsState(backUIState);
+
+                    isBrowsedBack = false;
                 }
             }else{
                 System.err.println("!!! Scanned Image is NULL !!!");
@@ -4952,7 +5007,19 @@ public class ScannerView extends FrameView {
                 }
 
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
-                noteTaT1.setText( scannedBCard.retrieveData() );
+                //noteTaT1.setText( scannedBCard.retrieveData() );
+
+                JFrame textWin = new JFrame("OCR-Read Text");
+                textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                textWin.setLocation(100, 100);
+                textWin.setSize(200, 200);
+                Container contentPane = textWin.getContentPane();
+                contentPane.setLayout(new BorderLayout());
+                JTextArea ocrTxt = new JTextArea();
+                ocrTxt.setText( scannedBCard.retrieveData());
+                contentPane.add(ocrTxt, BorderLayout.CENTER);
+                textWin.setVisible(true);
+
             }
         }else{
              if((scannedBCardBack != null) && (scannedImageFileNameBack != null)){
@@ -4964,7 +5031,19 @@ public class ScannerView extends FrameView {
                 }
 
                 //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
-                noteTaT1.setText( scannedBCardBack.retrieveData() );
+                //noteTaT1.setText( scannedBCardBack.retrieveData() );
+
+                JFrame textWin = new JFrame("OCR-Read Text");
+                textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                textWin.setLocation(100, 100);
+                textWin.setSize(200, 200);
+                Container contentPane = textWin.getContentPane();
+                contentPane.setLayout(new BorderLayout());
+                JTextArea ocrTxt = new JTextArea();
+                ocrTxt.setText( scannedBCardBack.retrieveData());
+                contentPane.add(ocrTxt, BorderLayout.CENTER);
+                textWin.setVisible(true);
+
             }
         }
     }//GEN-LAST:event_readCardBtnT1ActionPerformed
@@ -6620,7 +6699,7 @@ public class ScannerView extends FrameView {
     private BufferedImage resultImage;
     private boolean isFrontSelectedResult;
 
-    private String trainingImgFolder;
+    private boolean isBrowsedFront, isBrowsedBack;
 
     private int frontUIState, backUIState;
     private int frontUIStateResult, backUIStateResult;
