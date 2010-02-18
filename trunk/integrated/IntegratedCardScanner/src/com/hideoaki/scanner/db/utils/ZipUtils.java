@@ -213,7 +213,7 @@ public class ZipUtils {
         }
         return cards;
     }
-
+    private static ArrayList<Integer> randomList = new ArrayList<Integer>();
     private static String addFile(File ff, ZipOutputStream zipOutPic, String filename) throws Exception {
 
         FileInputStream file = new FileInputStream(ff);
@@ -221,7 +221,13 @@ public class ZipUtils {
         if (!ext.equals("")) {
             ext = "." + ext;
         }
-        String newFilename = filename == null ? System.currentTimeMillis() + ((int)(Math.random() * 100))+ ext : filename;
+
+        int randomString  = ((int)(Math.random() * 1000000));
+        while(randomList.contains(randomString)){
+               randomString  = ((int)(Math.random() * 1000000));
+        }
+        randomList.add(randomString);
+        String newFilename = filename == null ? randomString+ ext : filename;
         ZipEntry entryPic = new ZipEntry(newFilename);
 //                        entryPic.setSize(pic.length);
         zipOutPic.putNextEntry(entryPic);
