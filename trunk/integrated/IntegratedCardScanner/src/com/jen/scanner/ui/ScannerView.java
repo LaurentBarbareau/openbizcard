@@ -61,7 +61,7 @@ public class ScannerView extends FrameView {
 
         initComponents();
 
-        menuTab.setEnabledAt(RESULT_TAB,false);
+        menuTab.setEnabledAt(RESULT_TAB,false);        
         saveBtnT3.setEnabled(false);
 
         try {
@@ -186,6 +186,10 @@ public class ScannerView extends FrameView {
 
         isBrowsedFront = false;
         isBrowsedBack = false;
+    }
+
+    public void showFirstTab(){
+        menuTab.setSelectedIndex(SCAN_TAB);
     }
 
     @Action
@@ -4277,7 +4281,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4286,7 +4290,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4716,7 +4720,11 @@ public class ScannerView extends FrameView {
     private void deletedBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedBtnT2ActionPerformed
         // TODO add your handling code here:
         int response;//0 = yes, 1 = no
-        response = javax.swing.JOptionPane.showConfirmDialog(null, "Do you delete?","Confirm, please",javax.swing.JOptionPane.YES_NO_OPTION);
+        String[] options = getOptionChoice();
+        response = JOptionPane.showOptionDialog(null, myResourceMap.getString(DELETE_ALERT),myResourceMap.getString(CONFIRM_ALERT),
+        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+        null, options, options[0]);
+//        response = javax.swing.JOptionPane.showConfirmDialog(null, DELETE_ALERT,CONFIRM_ALERT,javax.swing.JOptionPane.YES_NO_OPTION);
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
         long temp;
         Card tempCard = new Card();
@@ -4884,6 +4892,11 @@ public class ScannerView extends FrameView {
             String fileName = exportTfT4.getText();
             if(fileName!=null && !fileName.equals("")){
                 ZipUtils.exportCards(localCardList, fileName+".zip");
+                String[] options = getAcceptChoice();
+                String[] alert = myResourceMap.getString(EXPORT_ALERT).split(",");
+                JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                null, options, options[0]);
             }
         }catch(Exception e){}
     }//GEN-LAST:event_exportBtnT4ActionPerformed
@@ -5980,6 +5993,11 @@ public class ScannerView extends FrameView {
         if(fileName!=null && !fileName.equals("")){
             localCardList.clear();
             localCardList = ZipUtils.importCards(fileName);
+            String[] options = getAcceptChoice();
+            String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
+            JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
         }
     }//GEN-LAST:event_replaceBtnT4ActionPerformed
 
@@ -5987,7 +6005,14 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         String fileName = importTfT4.getText();
         if(fileName!=null && !fileName.equals("")){
+            int size = localCardList.size();
             localCardList.addAll(ZipUtils.importCards(fileName));
+            size = localCardList.size()-size;
+            String[] options = getAcceptChoice();
+            String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
+            JOptionPane.showOptionDialog(null, alert[0]+" "+size+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
         }
     }//GEN-LAST:event_pendingBtnT4ActionPerformed
 
@@ -6116,6 +6141,23 @@ public class ScannerView extends FrameView {
         ADD_ALERT = "addAlertT1"+s+".text";
         UPDATE_ALERT = "updateAlertT3"+s+".text";
         MISSING_ALERT = "missingName"+s+".text";
+        DELETE_ALERT = "deleteAlert"+s+".text";
+        CONFIRM_ALERT = "confirmAlert"+s+".text";
+        YES_CHOICE = "yesChoice"+s+".text";
+        NO_CHOICE = "noChoice"+s+".text";
+        IMPORT_ALERT = "importAlert"+s+".text";
+        EXPORT_ALERT = "exportAlert"+s+".text";
+        ACCEPT_CHOICE = "acceptChoice"+s+".text";
+    }
+
+    private String[] getOptionChoice(){
+        String[] option = new String[]{myResourceMap.getString(YES_CHOICE),myResourceMap.getString(NO_CHOICE)};
+        return option;
+    }
+
+    private String[] getAcceptChoice(){
+        String[] option = new String[]{myResourceMap.getString(ACCEPT_CHOICE)};
+        return option;
     }
 
     private Card getCardFromForm(int index){
@@ -6711,6 +6753,13 @@ public class ScannerView extends FrameView {
     private String ADD_ALERT = "addAlertT1.text";
     private String UPDATE_ALERT = "updateAlertT3.text";
     private String MISSING_ALERT = "missingName.text";
+    private String DELETE_ALERT = "deleteAlert.text";
+    private String CONFIRM_ALERT = "confirmAlert.text";
+    private String YES_CHOICE = "yesChoice.text";
+    private String NO_CHOICE = "noChoice.text";
+    private String IMPORT_ALERT = "importAlert.text";
+    private String EXPORT_ALERT = "exportAlert.text";
+    private String ACCEPT_CHOICE = "acceptChoice.text";
 
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;

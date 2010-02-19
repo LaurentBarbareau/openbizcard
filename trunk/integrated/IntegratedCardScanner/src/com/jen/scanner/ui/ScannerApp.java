@@ -16,7 +16,9 @@ public class ScannerApp extends SingleFrameApplication {
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new ScannerView(this));
+        ScannerView display = new ScannerView(this);
+        show(display);
+        display.showFirstTab();
     }
 
     /**
