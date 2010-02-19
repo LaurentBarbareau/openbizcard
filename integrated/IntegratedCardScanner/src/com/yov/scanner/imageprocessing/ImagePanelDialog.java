@@ -133,6 +133,13 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
 
     }
 
+    public void setAllText(String title, String confirm, String cancel, String focus){
+        this.setTitle(title);
+        confirmBtn.setText(confirm);
+        cancelBtn.setText(cancel);
+        focusBtn.setText(focus);
+    }
+
     private void resize() {
         if (!imgPane.isFocused()) {
             int winWidth = imgWidth;

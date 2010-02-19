@@ -554,6 +554,7 @@ public class ScannerView extends FrameView {
         replaceBtnT4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         pendingBtnT4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         exportPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         exportLbT4 = new javax.swing.JLabel();
@@ -4215,6 +4216,10 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         importPanel.add(jPanel2, gridBagConstraints);
 
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+        importPanel.add(jLabel1, new java.awt.GridBagConstraints());
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -5611,6 +5616,10 @@ public class ScannerView extends FrameView {
             ImagePanelDialog frontImgDialog = new ImagePanelDialog(frontTfT1.getText());
 
             frontImgDialog.init();
+            frontImgDialog.setAllText(myResourceMap.getString(CROP_PANEL_TITLE),
+                    myResourceMap.getString(CROP_CONFIRM),
+                    myResourceMap.getString(CROP_CANCEL),
+                    myResourceMap.getString(CROP_FOCUS));
             frontImgDialog.setVisible(true);
 
             if(frontImgDialog.isImageCropped()){
@@ -5632,6 +5641,10 @@ public class ScannerView extends FrameView {
             ImagePanelDialog backImgDialog = new ImagePanelDialog(backTfT1.getText());
 
             backImgDialog.init();
+            backImgDialog.setAllText(myResourceMap.getString(CROP_PANEL_TITLE),
+                    myResourceMap.getString(CROP_CONFIRM),
+                    myResourceMap.getString(CROP_CANCEL),
+                    myResourceMap.getString(CROP_FOCUS));
             backImgDialog.setVisible(true);
 
             if(backImgDialog.isImageCropped()){
@@ -5652,6 +5665,10 @@ public class ScannerView extends FrameView {
             ImagePanelDialog frontImgDialogResult = new ImagePanelDialog(frontTfT3.getText());
 
             frontImgDialogResult.init();
+            frontImgDialogResult.setAllText(myResourceMap.getString(CROP_PANEL_TITLE),
+                    myResourceMap.getString(CROP_CONFIRM),
+                    myResourceMap.getString(CROP_CANCEL),
+                    myResourceMap.getString(CROP_FOCUS));
             frontImgDialogResult.setVisible(true);
 
             if(frontImgDialogResult.isImageCropped()){
@@ -5670,8 +5687,12 @@ public class ScannerView extends FrameView {
                 && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0) ){
 
             ImagePanelDialog backImgDialogResult = new ImagePanelDialog(backTfT3.getText());
-
+            
             backImgDialogResult.init();
+            backImgDialogResult.setAllText(myResourceMap.getString(CROP_PANEL_TITLE),
+                    myResourceMap.getString(CROP_CONFIRM),
+                    myResourceMap.getString(CROP_CANCEL),
+                    myResourceMap.getString(CROP_FOCUS));
             backImgDialogResult.setVisible(true);
 
             if(backImgDialogResult.isImageCropped()){
@@ -6190,6 +6211,12 @@ public class ScannerView extends FrameView {
         EXPORT_ALERT = "exportAlert"+s+".text";
         ACCEPT_CHOICE = "acceptChoice"+s+".text";
         NOTIFICATION_ALERT = "notificationAlert"+s+".text";
+
+        //set crop panel
+        CROP_PANEL_TITLE = "cropPanelTitle"+s+".text";
+        CROP_CONFIRM = "cropConfirm"+s+".text";
+        CROP_CANCEL = "cropCancel"+s+".text";
+        CROP_FOCUS = "cropFocus"+s+".text";
     }
 
     private String[] getOptionChoice(){
@@ -6588,6 +6615,7 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel importPanelT4;
     private javax.swing.JTable importTableT2;
     private javax.swing.JTextField importTfT4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
@@ -6806,6 +6834,11 @@ public class ScannerView extends FrameView {
     private String IMPORT_ALERT = "importAlert.text";
     private String EXPORT_ALERT = "exportAlert.text";
     private String ACCEPT_CHOICE = "acceptChoice.text";
+
+    private String CROP_PANEL_TITLE = "cropPanelTitle.text";
+    private String CROP_CONFIRM = "cropConfirm.text";
+    private String CROP_CANCEL = "cropCancel.text";
+    private String CROP_FOCUS = "cropFocus.text";
 
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;
