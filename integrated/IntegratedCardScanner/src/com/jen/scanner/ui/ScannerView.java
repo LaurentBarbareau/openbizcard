@@ -5860,6 +5860,7 @@ public class ScannerView extends FrameView {
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
             null, options, options[0]);
             clearFormT3();
+            saveBtnT3.setEnabled(false);
         }
     }//GEN-LAST:event_saveBtnT3ActionPerformed
 
