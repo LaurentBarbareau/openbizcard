@@ -186,6 +186,8 @@ public class ScannerView extends FrameView {
 
         isBrowsedFront = false;
         isBrowsedBack = false;
+        isBrowsedFrontResult = false;
+        isBrowsedBackResult = false;
     }
 
     public void showFirstTab(){
@@ -4625,11 +4627,11 @@ public class ScannerView extends FrameView {
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
                         if(isBrowsedBack){
-                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
                         }else{
                             imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
                         }
-                        newCard.setImgFront("./cardImages/" + cardID + "Back.jpg");
+                        newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                     }
                 }
 
@@ -4816,6 +4818,22 @@ public class ScannerView extends FrameView {
         frontLbT3.setIcon(new ImageIcon(frontPath));
         backLbT3.setIcon(new ImageIcon(backPath));
 
+        if((frontPath != null) && (frontPath.length() > 0)){
+            try{
+                resultBCard = new BusinessCard(ImageIO.read(new File(frontPath)));
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        if((backPath != null) && (backPath.length() > 0)){
+            try{
+                resultBCardBack = new BusinessCard(ImageIO.read(new File(backPath)));
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
         // Yov's added code
         frontUIStateResult = STATE_NO_IMAGE;
         if((editCard.getImgFront() != null) && (editCard.getImgFront().length() > 0)){
@@ -4835,8 +4853,6 @@ public class ScannerView extends FrameView {
 
         isFrontSelectedResult = true;
         setButtonsStateResult(frontUIStateResult);
-   
-
     }//GEN-LAST:event_editBtnT2ActionPerformed
 
     private void frontBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT3ActionPerformed
@@ -4862,6 +4878,8 @@ public class ScannerView extends FrameView {
 
                 frontUIStateResult = STATE_WITH_IMAGE;
                 setButtonsStateResult(frontUIStateResult);
+
+                isBrowsedFrontResult = true;
             } else {
 
             }
@@ -5267,6 +5285,8 @@ public class ScannerView extends FrameView {
 
                 backUIStateResult = STATE_WITH_IMAGE;
                 setButtonsStateResult(backUIStateResult);
+
+                isBrowsedBackResult = true;
             } else {
 
             }
@@ -5793,7 +5813,14 @@ public class ScannerView extends FrameView {
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
 
 
-                        ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                        if (isBrowsedFrontResult) {
+
+                            File originalImage = new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg");
+                            originalImage.delete();
+                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                            
+                        }
+
                         newCard.setImgFront("./cardImages/" + cardID + ".jpg");
                     }
                 }
@@ -5804,14 +5831,24 @@ public class ScannerView extends FrameView {
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
 
-                        ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
-                        newCard.setImgFront("./cardImages/" + cardID + "Back.jpg");
+                        if (isBrowsedBackResult) {
+                            File originalImage = new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg");
+                            if (originalImage.isFile()) {
+                                originalImage.delete();
+                            }
+                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                            
+                        }
+                        newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                     }
                 }
 
                 CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
                 int index = localCardList.indexOf(newCard);
                 localCardList.set(index,newCard);
+
+                isBrowsedFrontResult = false;
+                isBrowsedBackResult = false;
 
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
@@ -6746,6 +6783,7 @@ public class ScannerView extends FrameView {
     private boolean isFrontSelectedResult;
 
     private boolean isBrowsedFront, isBrowsedBack;
+    private boolean isBrowsedFrontResult, isBrowsedBackResult;
 
     private int frontUIState, backUIState;
     private int frontUIStateResult, backUIStateResult;
