@@ -6340,6 +6340,7 @@ public class ScannerView extends FrameView {
         disTfT1.setText("");
         subDisTfT1.setText("");
         codeTfT1.setText("");
+        countryTfT1.setText("");
         provinceTfT1.setText("");
         mobileTfT1.setText("");
         phoneTfT1.setText("");
@@ -6381,6 +6382,7 @@ public class ScannerView extends FrameView {
         disTfT3.setText("");
         subDisTfT3.setText("");
         codeTfT3.setText("");
+        countryTfT3.setText("");
         provinceTfT3.setText("");
         mobileTfT3.setText("");
         phoneTfT3.setText("");
