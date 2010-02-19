@@ -4912,7 +4912,7 @@ public class ScannerView extends FrameView {
                 ZipUtils.exportCards(localCardList, fileName+".zip");
                 String[] options = getAcceptChoice();
                 String[] alert = myResourceMap.getString(EXPORT_ALERT).split(",");
-                JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+                JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                 null, options, options[0]);
             }
@@ -5855,7 +5855,10 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx){
                 ioEx.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null,myResourceMap.getString(UPDATE_ALERT),"information", JOptionPane.INFORMATION_MESSAGE);
+            String[] options = getAcceptChoice();
+            JOptionPane.showOptionDialog(null, myResourceMap.getString(UPDATE_ALERT),myResourceMap.getString(NOTIFICATION_ALERT),
+            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+            null, options, options[0]);
             clearFormT3();
         }
     }//GEN-LAST:event_saveBtnT3ActionPerformed
@@ -6032,7 +6035,7 @@ public class ScannerView extends FrameView {
             localCardList = ZipUtils.importCards(fileName);
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+            JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
             null, options, options[0]);
         }
@@ -6047,7 +6050,7 @@ public class ScannerView extends FrameView {
             size = localCardList.size()-size;
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0]+" "+size+" "+alert[1],myResourceMap.getString(CONFIRM_ALERT),
+            JOptionPane.showOptionDialog(null, alert[0]+" "+size+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
             null, options, options[0]);
         }
@@ -6185,6 +6188,7 @@ public class ScannerView extends FrameView {
         IMPORT_ALERT = "importAlert"+s+".text";
         EXPORT_ALERT = "exportAlert"+s+".text";
         ACCEPT_CHOICE = "acceptChoice"+s+".text";
+        NOTIFICATION_ALERT = "notificationAlert"+s+".text";
     }
 
     private String[] getOptionChoice(){
@@ -6790,6 +6794,7 @@ public class ScannerView extends FrameView {
 
     private String ADD_ALERT = "addAlertT1.text";
     private String UPDATE_ALERT = "updateAlertT3.text";
+    private String NOTIFICATION_ALERT = "notificationAlert.text";
     private String MISSING_ALERT = "missingName.text";
     private String DELETE_ALERT = "deleteAlert.text";
     private String CONFIRM_ALERT = "confirmAlert.text";
