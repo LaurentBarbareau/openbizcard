@@ -140,19 +140,19 @@ public class ScannerView extends FrameView {
         File imgFolder;
 
         try{
-            imgFolder = new File(".\\cardImages\\");
+            imgFolder = new File("."+File.separator+"cardImages"+File.separator);
             if(!imgFolder.isDirectory()){
                 imgFolder.mkdir();
             }
 
-            scannedImageFileName = curDir.getCanonicalPath() + "\\cardImages\\scannedBCard";
-            scannedImageFileNameBack = curDir.getCanonicalPath() + "\\cardImages\\scannedBCardBack";
+            scannedImageFileName = curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator+"scannedBCard";
+            scannedImageFileNameBack = curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator+"scannedBCardBack";
         }catch(Exception e){
             e.printStackTrace();
 
             try{
-                scannedImageFileName = curDir.getCanonicalPath() + "\\cardImages\\scannedBCard";
-                scannedImageFileNameBack = curDir.getCanonicalPath() + "\\cardImages\\scannedBCardBack";                
+                scannedImageFileName = curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator+"scannedBCard";
+                scannedImageFileNameBack = curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator+"scannedBCardBack";
             }catch(Exception ex){
                 ex.printStackTrace();
             }
@@ -4610,16 +4610,16 @@ public class ScannerView extends FrameView {
                 String imgBackFileName = backTfT1.getText();
                 File imgFile = new File (imgFileName);
                 File imgBackFile = new File(imgBackFileName);
-                File curDir = new File(".\\");
+                File curDir = new File("."+File.separator);
                 if(imgFileName != null){
                     if ((imgFileName.length() > 0) && imgFile.isFile()
                             && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
 
                         if(isBrowsedFront){
-                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + ".jpg"));
                         }else{
-                            imgFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                            imgFile.renameTo(new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + ".jpg"));
                         }
                         newCard.setImgFront("./cardImages/" + cardID + ".jpg");
 
@@ -4632,9 +4632,9 @@ public class ScannerView extends FrameView {
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
                         if(isBrowsedBack){
-                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + "Back.jpg"));
                         }else{
-                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + "Back.jpg"));
                         }
                         newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                     }
@@ -4944,10 +4944,14 @@ public class ScannerView extends FrameView {
             }
 
 
-            scannedImage = bcScanner.scan();
+            scannedImage = bcScanner.scan(this);
             scannerTxtT1.setText(bcScanner.getName());
-
-            if (scannedImage != null) {
+            setScannedImage();
+          
+        }
+    }//GEN-LAST:event_scanBtnActionPerformed
+    public void setScannedImage(){
+          if (scannedImage != null) {
                 if(isFrontSelected){
                     scannedBCard = new BusinessCard(scannedImage);
 
@@ -4972,9 +4976,7 @@ public class ScannerView extends FrameView {
             }else{
                 System.err.println("!!! Scanned Image is NULL !!!");
             }
-        }
-    }//GEN-LAST:event_scanBtnActionPerformed
-
+    }
     private void rotateBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotateBtnT1ActionPerformed
         if(isFrontSelected){
             if (scannedBCard != null) {
@@ -5025,7 +5027,7 @@ public class ScannerView extends FrameView {
 
     private void scannerBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scannerBtnT1ActionPerformed
         synchronized(this){
-            scannerTxtT1.setText(bcScanner.selectScanner());
+            scannerTxtT1.setText(bcScanner.selectScanner(scannerTxtT1));
         }
     }//GEN-LAST:event_scannerBtnT1ActionPerformed
 
@@ -5827,7 +5829,7 @@ public class ScannerView extends FrameView {
                 String imgBackFileName = backTfT3.getText();
                 File imgFile = new File (imgFileName);
                 File imgBackFile = new File(imgBackFileName);
-                File curDir = new File(".\\");
+                File curDir = new File("."+File.separator);
                 if(imgFileName != null){
                     if ((imgFileName.length() > 0) && imgFile.isFile()
                             && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
@@ -5836,9 +5838,9 @@ public class ScannerView extends FrameView {
 
                         if (isBrowsedFrontResult) {
 
-                            File originalImage = new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg");
+                            File originalImage = new File(curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator + cardID + ".jpg");
                             originalImage.delete();
-                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + ".jpg"));
+                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + ".jpg"));
                             
                         }
 
@@ -5853,11 +5855,11 @@ public class ScannerView extends FrameView {
 
 
                         if (isBrowsedBackResult) {
-                            File originalImage = new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg");
+                            File originalImage = new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + "Back.jpg");
                             if (originalImage.isFile()) {
                                 originalImage.delete();
                             }
-                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + "\\cardImages\\" + cardID + "Back.jpg"));
+                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator + cardID + "Back.jpg"));
                             
                         }
                         newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
@@ -6809,7 +6811,7 @@ public class ScannerView extends FrameView {
     // For Yov's part: image processing and scanner variables
     private CardScanner bcScanner;
     private BusinessCard scannedBCard, scannedBCardBack;
-    private BufferedImage scannedImage;
+    public BufferedImage scannedImage;
     private String scannedImageFileName, scannedImageFileNameBack;
     private boolean isFrontSelected;
 
