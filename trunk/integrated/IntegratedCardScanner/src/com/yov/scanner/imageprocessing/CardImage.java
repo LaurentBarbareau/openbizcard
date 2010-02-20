@@ -240,7 +240,8 @@ public class CardImage {
 		int imgWidth = imageData.getWidth();
 		int imgHeight = imageData.getHeight();
 		
-		BufferedImage rotatedImage = new BufferedImage(imgHeight, imgWidth, imageData.getType());
+//		BufferedImage rotatedImage = new BufferedImage(imgHeight, imgWidth, imageData.getType());
+		BufferedImage rotatedImage = new BufferedImage(imgHeight, imgWidth,BufferedImage.TYPE_INT_BGR);
 		Graphics2D rotatedGraphics = rotatedImage.createGraphics();
 		
 		double tranX = (imgHeight - imgWidth) / 2.0;
