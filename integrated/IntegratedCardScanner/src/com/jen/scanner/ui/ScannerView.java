@@ -1,7 +1,6 @@
 /*
  * ScannerView.java
  */
-
 package com.jen.scanner.ui;
 
 import com.hideoaki.scanner.db.manager.CardLocalManager;
@@ -61,7 +60,7 @@ public class ScannerView extends FrameView {
 
         initComponents();
 
-        menuTab.setEnabledAt(RESULT_TAB,false);        
+        menuTab.setEnabledAt(RESULT_TAB, false);
         saveBtnT3.setEnabled(false);
 
         try {
@@ -74,6 +73,7 @@ public class ScannerView extends FrameView {
 
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
 //                statusMessageLabel.setText("");
             }
@@ -84,6 +84,7 @@ public class ScannerView extends FrameView {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
 //                statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
@@ -96,6 +97,7 @@ public class ScannerView extends FrameView {
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
@@ -112,11 +114,11 @@ public class ScannerView extends FrameView {
 //                    progressBar.setVisible(false);
 //                    progressBar.setValue(0);
                 } else if ("message".equals(propertyName)) {
-                    String text = (String)(evt.getNewValue());
+                    String text = (String) (evt.getNewValue());
 //                    statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
-                    int value = (Integer)(evt.getNewValue());
+                    int value = (Integer) (evt.getNewValue());
 //                    progressBar.setVisible(true);
 //                    progressBar.setIndeterminate(false);
 //                    progressBar.setValue(value);
@@ -139,21 +141,21 @@ public class ScannerView extends FrameView {
         File curDir = new File(".");
         File imgFolder;
 
-        try{
-            imgFolder = new File("."+File.separator+"cardImages"+File.separator);
-            if(!imgFolder.isDirectory()){
+        try {
+            imgFolder = new File("." + File.separator + "cardImages" + File.separator);
+            if (!imgFolder.isDirectory()) {
                 imgFolder.mkdir();
             }
 
-            scannedImageFileName = curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator+"scannedBCard";
-            scannedImageFileNameBack = curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator+"scannedBCardBack";
-        }catch(Exception e){
+            scannedImageFileName = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + "scannedBCard";
+            scannedImageFileNameBack = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + "scannedBCardBack";
+        } catch (Exception e) {
             e.printStackTrace();
 
-            try{
-                scannedImageFileName = curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator+"scannedBCard";
-                scannedImageFileNameBack = curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator+"scannedBCardBack";
-            }catch(Exception ex){
+            try {
+                scannedImageFileName = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + "scannedBCard";
+                scannedImageFileNameBack = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + "scannedBCardBack";
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
@@ -190,7 +192,7 @@ public class ScannerView extends FrameView {
         isBrowsedBackResult = false;
     }
 
-    public void showFirstTab(){
+    public void showFirstTab() {
         menuTab.setSelectedIndex(SCAN_TAB);
     }
 
@@ -4419,58 +4421,60 @@ public class ScannerView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private boolean isPasswordCorrect(String usr,char[] input) {
+    private boolean isPasswordCorrect(String usr, char[] input) {
         boolean isCorrect = true;
-        char[] adminPassword = { 'a', 'd', 'm', 'i', 'n' };
-        char[] usrPassword = {'u','s','e','r'};
+        char[] adminPassword = {'a', 'd', 'm', 'i', 'n'};
+        char[] usrPassword = {'u', 's', 'e', 'r'};
 
-        if(usr.equals("admin")){
+        if (usr.equals("admin")) {
             if (input.length != adminPassword.length) {
                 isCorrect = false;
             } else {
-                isCorrect = Arrays.equals (input, adminPassword);
+                isCorrect = Arrays.equals(input, adminPassword);
             }
             //Zero out the password.
-            Arrays.fill(adminPassword,'0');
+            Arrays.fill(adminPassword, '0');
         }
-    
-        if(usr.equals("user")){
+
+        if (usr.equals("user")) {
             if (input.length != usrPassword.length) {
                 isCorrect = false;
             } else {
-                isCorrect = Arrays.equals (input, usrPassword);
+                isCorrect = Arrays.equals(input, usrPassword);
             }
             //Zero out the password.
-            Arrays.fill(usrPassword,'0');
+            Arrays.fill(usrPassword, '0');
         }
         return isCorrect;
     }
 
-    private String validatePath(String path){
+    private String validatePath(String path) {
         String newPath = "";
         String[] temp = path.split("\\\\");
-        for(int i=0;i<temp.length;i++){
-            if(i<temp.length-1) newPath += temp[i]+"/";
-            else newPath+=temp[i];
+        for (int i = 0; i < temp.length; i++) {
+            if (i < temp.length - 1) {
+                newPath += temp[i] + "/";
+            } else {
+                newPath += temp[i];
+            }
         }
         return newPath;
     }
 
-    private void updateTable(ArrayList<Card> cardList,DefaultTableModel model){
-            Object[][] tableArray = new Object[cardList.size()][];
-            Collections.sort(cardList, new CardComparator());
-            int row = 0;
-            for (Card card : cardList) {
-                tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(),card.getId()};
-                row++;
-            }
-            model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ","id"});
-            xCol.setColumnVisible(importTableT2.getColumnModel().getColumn(9), false);
-           // System.out.println(((XTableColumnModel)importTableT2.getColumnModel()).getColumn(9, false));
+    private void updateTable(ArrayList<Card> cardList, DefaultTableModel model) {
+        Object[][] tableArray = new Object[cardList.size()][];
+        Collections.sort(cardList, new CardComparator());
+        int row = 0;
+        for (Card card : cardList) {
+            tableArray[row] = new Object[]{false, card.getFirstName(), card.getLastName(), card.getFirstNameE(), card.getLastNameE(), card.getCompany(), card.getPosition(), card.getTelephone(), card.getMobile(), card.getId()};
+            row++;
+        }
+        model.setDataVector(tableArray, new Object[]{"เลือก", "ชื่อ", "นามสกุล", "Name", "Last Name", "บริษัท", "ตำแหน่ง", "โทรศัพท์", "โทรศัพท์มือถือ", "id"});
+        xCol.setColumnVisible(importTableT2.getColumnModel().getColumn(9), false);
+        // System.out.println(((XTableColumnModel)importTableT2.getColumnModel()).getColumn(9, false));
     }
 
-    private void setButtonsState(int newButtonsState){
+    private void setButtonsState(int newButtonsState) {
 
         switch (newButtonsState) {
             case STATE_NO_IMAGE:
@@ -4510,7 +4514,7 @@ public class ScannerView extends FrameView {
                 break;
         }
 
-        switch(frontUIState){
+        switch (frontUIState) {
             case STATE_NO_IMAGE:
                 frontCropBtnT1.setEnabled(false);
                 break;
@@ -4522,7 +4526,7 @@ public class ScannerView extends FrameView {
                 break;
         }
 
-        switch(backUIState){
+        switch (backUIState) {
             case STATE_NO_IMAGE:
                 backCropBtnT1.setEnabled(false);
                 break;
@@ -4536,7 +4540,7 @@ public class ScannerView extends FrameView {
 
     }
 
-    private void setButtonsStateResult(int newButtonsState){
+    private void setButtonsStateResult(int newButtonsState) {
 
         switch (newButtonsState) {
             case STATE_NO_IMAGE:
@@ -4570,7 +4574,7 @@ public class ScannerView extends FrameView {
                 break;
         }
 
-        switch(frontUIStateResult){
+        switch (frontUIStateResult) {
             case STATE_NO_IMAGE:
                 frontCropBtnT3.setEnabled(false);
                 break;
@@ -4582,7 +4586,7 @@ public class ScannerView extends FrameView {
                 break;
         }
 
-        switch(backUIStateResult){
+        switch (backUIStateResult) {
             case STATE_NO_IMAGE:
                 backCropBtnT3.setEnabled(false);
                 break;
@@ -4599,7 +4603,7 @@ public class ScannerView extends FrameView {
     private void saveBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT1ActionPerformed
         // TODO add your handling code here:
         Card newCard = getCardFromForm(SCAN_TAB);
-        if(Utils.checkFirstName(newCard,MISSING_ALERT)){
+        if (Utils.checkFirstName(newCard, MISSING_ALERT)) {
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
@@ -4608,33 +4612,33 @@ public class ScannerView extends FrameView {
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
-                File imgFile = new File (imgFileName);
+                File imgFile = new File(imgFileName);
                 File imgBackFile = new File(imgBackFileName);
-                File curDir = new File("."+File.separator);
-                if(imgFileName != null){
+                File curDir = new File("." + File.separator);
+                if (imgFileName != null) {
                     if ((imgFileName.length() > 0) && imgFile.isFile()
                             && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
 
-                        if(isBrowsedFront){
-                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + ".jpg"));
-                        }else{
-                            imgFile.renameTo(new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + ".jpg"));
+                        if (isBrowsedFront) {
+                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
+                        } else {
+                            imgFile.renameTo(new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
                         }
                         newCard.setImgFront("./cardImages/" + cardID + ".jpg");
 
                     }
                 }
 
-                if(imgBackFileName != null){
+                if (imgBackFileName != null) {
                     if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
                             && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 4))
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
-                        if(isBrowsedBack){
-                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + "Back.jpg"));
-                        }else{
-                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + "Back.jpg"));
+                        if (isBrowsedBack) {
+                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
+                        } else {
+                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
                         }
                         newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                     }
@@ -4645,10 +4649,10 @@ public class ScannerView extends FrameView {
 
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ioEx){
+            } catch (IOException ioEx) {
                 ioEx.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null,myResourceMap.getString(ADD_ALERT),"information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, myResourceMap.getString(ADD_ALERT), "information", JOptionPane.INFORMATION_MESSAGE);
             clearFormT1();
         }
     }//GEN-LAST:event_saveBtnT1ActionPerformed
@@ -4671,7 +4675,7 @@ public class ScannerView extends FrameView {
                 java.awt.Image cardImage = cardIcon.getImage();
 
                 frontLbT1.setIcon(cardIcon);
-                
+
                 // Yov's added code
                 scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
                         BufferedImage.TYPE_INT_ARGB);
@@ -4685,14 +4689,13 @@ public class ScannerView extends FrameView {
 
                 isBrowsedFront = true;
             } else {
-
             }
-       }
+        }
     }//GEN-LAST:event_frontBtnT1ActionPerformed
 
     private void backBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnT1ActionPerformed
         // TODO add your handling code here:
-            if (evt.getSource() == backBtnT1) {
+        if (evt.getSource() == backBtnT1) {
             imgChooser.addChoosableFileFilter(new JPGFileFilter());
             imgChooser.setAcceptAllFileFilterUsed(false);
             int returnVal = imgChooser.showOpenDialog(null);
@@ -4719,28 +4722,27 @@ public class ScannerView extends FrameView {
 
                 isBrowsedBack = true;
             } else {
-
             }
-       }
+        }
     }//GEN-LAST:event_backBtnT1ActionPerformed
 
     private void deletedBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletedBtnT2ActionPerformed
         // TODO add your handling code here:
         int response;//0 = yes, 1 = no
         String[] options = getOptionChoice();
-        response = JOptionPane.showOptionDialog(null, myResourceMap.getString(DELETE_ALERT),myResourceMap.getString(CONFIRM_ALERT),
-        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-        null, options, options[0]);
+        response = JOptionPane.showOptionDialog(null, myResourceMap.getString(DELETE_ALERT), myResourceMap.getString(CONFIRM_ALERT),
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                null, options, options[0]);
 //        response = javax.swing.JOptionPane.showConfirmDialog(null, DELETE_ALERT,CONFIRM_ALERT,javax.swing.JOptionPane.YES_NO_OPTION);
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
         long temp;
         Card tempCard = new Card();
 
-        if(response ==0){            
-            for(int i = model.getRowCount()-1;i>=0;i--){
-                if(((Boolean)model.getValueAt(i,0)).booleanValue()==true){
+        if (response == 0) {
+            for (int i = model.getRowCount() - 1; i >= 0; i--) {
+                if (((Boolean) model.getValueAt(i, 0)).booleanValue() == true) {
                     try {
-                        temp = (Long)model.getValueAt(i, 9);
+                        temp = (Long) model.getValueAt(i, 9);
                         tempCard.setId(temp);
                         CardLocalManager.deleteLocalCard(temp, defaultcard.getAbsolutePath());
                         localCardList.remove(tempCard);
@@ -4756,8 +4758,8 @@ public class ScannerView extends FrameView {
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
-        long id = (Long)model.getValueAt(importTableT2.getSelectedRow(), 9);
-        Card editCard = getCardById(id,localCardList);
+        long id = (Long) model.getValueAt(importTableT2.getSelectedRow(), 9);
+        Card editCard = getCardById(id, localCardList);
 //        editCard = localCardList.g
         menuTab.setEnabledAt(RESULT_TAB, true);
         menuTab.setSelectedIndex(RESULT_TAB);
@@ -4767,7 +4769,7 @@ public class ScannerView extends FrameView {
         String frontPath = validatePath(editCard.getImgFront());
         String backPath = validatePath(editCard.getImgBack());
 
-        idNameLbT3.setText(editCard.getId()+"");
+        idNameLbT3.setText(editCard.getId() + "");
         nameTfT3.setText(editCard.getFirstName());
         lastnameTfT3.setText(editCard.getLastName());
         titleTfT3.setText(editCard.getPosition());
@@ -4787,61 +4789,61 @@ public class ScannerView extends FrameView {
 
         //frontTfT3.setText(frontPath);
         //backTfT3.setText(backPath);
-        
-        
-        if((frontPath != null) && (frontPath.length() > 0) && (frontPath.charAt(0) == '.')){
+
+
+        if ((frontPath != null) && (frontPath.length() > 0) && (frontPath.charAt(0) == '.')) {
             File curDir = new File(".");
             String curDirStr = "";
-            try{
+            try {
                 curDirStr = curDir.getCanonicalPath();
                 System.out.println("cur dir = " + curDirStr);
                 curDirStr = curDirStr.replace('\\', '/');
                 frontTfT3.setText(frontPath.replaceFirst(".", curDirStr));
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             frontTfT3.setText(frontPath);
         }
 
-        if((backPath != null) && (backPath.length() > 0) && (backPath.charAt(0) == '.')){
+        if ((backPath != null) && (backPath.length() > 0) && (backPath.charAt(0) == '.')) {
             File curDir = new File(".");
             String curDirStr = "";
-            try{
+            try {
                 curDirStr = curDir.getCanonicalPath();
                 System.out.println("cur dir = " + curDirStr);
                 curDirStr = curDirStr.replace('\\', '/');
-                backTfT3.setText(backPath.replaceFirst(".", curDir.getAbsolutePath()));
-            }catch(Exception e){
+                backTfT3.setText(backPath.replaceFirst(".", curDirStr));
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             backTfT3.setText(backPath);
         }
-        
-        
+
+
         frontLbT3.setIcon(new ImageIcon(frontPath));
         backLbT3.setIcon(new ImageIcon(backPath));
 
-        if((frontPath != null) && (frontPath.length() > 0)){
-            try{
+        if ((frontPath != null) && (frontPath.length() > 0)) {
+            try {
                 resultBCard = new BusinessCard(ImageIO.read(new File(frontPath)));
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        if((backPath != null) && (backPath.length() > 0)){
-            try{
+        if ((backPath != null) && (backPath.length() > 0)) {
+            try {
                 resultBCardBack = new BusinessCard(ImageIO.read(new File(backPath)));
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         // Yov's added code
         frontUIStateResult = STATE_NO_IMAGE;
-        if((editCard.getImgFront() != null) && (editCard.getImgFront().length() > 0)){
+        if ((editCard.getImgFront() != null) && (editCard.getImgFront().length() > 0)) {
             ImageIcon frontResult = new ImageIcon(frontPath);
             if ((frontResult != null) && (frontResult.getIconHeight() > 0) && (frontResult.getIconWidth() > 0)) {
                 frontUIStateResult = STATE_WITH_IMAGE;
@@ -4849,7 +4851,7 @@ public class ScannerView extends FrameView {
         }
 
         backUIStateResult = STATE_NO_IMAGE;
-        if((editCard.getImgBack() != null) && (editCard.getImgBack().length() > 0)){
+        if ((editCard.getImgBack() != null) && (editCard.getImgBack().length() > 0)) {
             ImageIcon backResult = new ImageIcon(backPath);
             if ((backResult != null) && (backResult.getIconHeight() > 0) && (backResult.getIconWidth() > 0)) {
                 backUIStateResult = STATE_WITH_IMAGE;
@@ -4886,9 +4888,8 @@ public class ScannerView extends FrameView {
 
                 isBrowsedFrontResult = true;
             } else {
-
             }
-       }
+        }
     }//GEN-LAST:event_frontBtnT3ActionPerformed
 
     private void browseExportBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseExportBtnT4ActionPerformed
@@ -4899,29 +4900,29 @@ public class ScannerView extends FrameView {
         fc.addChoosableFileFilter(new ZipFileFilter());
 
         int rc = fc.showDialog(null, "Select");
-        if (rc == JFileChooser.APPROVE_OPTION)
-        {
+        if (rc == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             filename = file.getAbsolutePath();
 
             exportTfT4.setText(filename);
-        // call your function here
+            // call your function here
         }
     }//GEN-LAST:event_browseExportBtnT4ActionPerformed
 
     private void exportBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportBtnT4ActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             String fileName = exportTfT4.getText();
-            if(fileName!=null && !fileName.equals("")){
-                ZipUtils.exportCards(localCardList, fileName+".zip");
+            if (fileName != null && !fileName.equals("")) {
+                ZipUtils.exportCards(localCardList, fileName + ".zip");
                 String[] options = getAcceptChoice();
                 String[] alert = myResourceMap.getString(EXPORT_ALERT).split(",");
-                JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
-                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-                null, options, options[0]);
+                JOptionPane.showOptionDialog(null, alert[0] + " " + localCardList.size() + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                        null, options, options[0]);
             }
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_exportBtnT4ActionPerformed
 
     private void scanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanBtnActionPerformed
@@ -4935,11 +4936,11 @@ public class ScannerView extends FrameView {
         //backLbT1.setIcon(new ImageIcon(path1));
 
         // Yov's part: Call scanner
-        synchronized(this){
+        synchronized (this) {
 
-            if(isFrontSelected){
+            if (isFrontSelected) {
                 bcScanner.setTargetFileName(scannedImageFileName);
-            }else{
+            } else {
                 bcScanner.setTargetFileName(scannedImageFileNameBack);
             }
 
@@ -4947,38 +4948,38 @@ public class ScannerView extends FrameView {
             scannedImage = bcScanner.scan(this);
             scannerTxtT1.setText(bcScanner.getName());
             setScannedImage();
-          
+
         }
     }//GEN-LAST:event_scanBtnActionPerformed
-    public void setScannedImage(){
-          if (scannedImage != null) {
-                if(isFrontSelected){
-                    scannedBCard = new BusinessCard(scannedImage);
+    public void setScannedImage() {
+        if (scannedImage != null) {
+            if (isFrontSelected) {
+                scannedBCard = new BusinessCard(scannedImage);
 
-                    frontLbT1.setIcon(new ImageIcon(scannedImage));
-                    frontTfT1.setText(scannedImageFileName + bcScanner.getFileNameIndex() + ".jpg");
+                frontLbT1.setIcon(new ImageIcon(scannedImage));
+                frontTfT1.setText(scannedImageFileName + bcScanner.getFileNameIndex() + ".jpg");
 
-                    frontUIState = STATE_WITH_IMAGE;
-                    setButtonsState(frontUIState);
+                frontUIState = STATE_WITH_IMAGE;
+                setButtonsState(frontUIState);
 
-                    isBrowsedFront = false;
-                }else{
-                    scannedBCardBack = new BusinessCard(scannedImage);
+                isBrowsedFront = false;
+            } else {
+                scannedBCardBack = new BusinessCard(scannedImage);
 
-                    backLbT1.setIcon(new ImageIcon(scannedImage));
-                    backTfT1.setText(scannedImageFileNameBack + bcScanner.getFileNameIndex() + ".jpg");
+                backLbT1.setIcon(new ImageIcon(scannedImage));
+                backTfT1.setText(scannedImageFileNameBack + bcScanner.getFileNameIndex() + ".jpg");
 
-                    backUIState = STATE_WITH_IMAGE;
-                    setButtonsState(backUIState);
+                backUIState = STATE_WITH_IMAGE;
+                setButtonsState(backUIState);
 
-                    isBrowsedBack = false;
-                }
-            }else{
-                System.err.println("!!! Scanned Image is NULL !!!");
+                isBrowsedBack = false;
             }
+        } else {
+            System.err.println("!!! Scanned Image is NULL !!!");
+        }
     }
     private void rotateBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotateBtnT1ActionPerformed
-        if(isFrontSelected){
+        if (isFrontSelected) {
             if (scannedBCard != null) {
 
                 scannedBCard.rotate90();
@@ -4988,7 +4989,7 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_IMAGE_EDITED;
                 setButtonsState(frontUIState);
             }
-        }else{
+        } else {
             if (scannedBCardBack != null) {
 
                 scannedBCardBack.rotate90();
@@ -5002,7 +5003,7 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_rotateBtnT1ActionPerformed
 
     private void brightSldT1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_brightSldT1StateChanged
-        if(isFrontSelected){
+        if (isFrontSelected) {
             if ((!brightSldT1.getValueIsAdjusting()) && (scannedBCard != null)) {
 
                 scannedBCard.changeBrightness(brightSldT1.getValue());
@@ -5012,7 +5013,7 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_IMAGE_EDITED;
                 setButtonsState(frontUIState);
             }
-        }else{
+        } else {
             if ((!brightSldT1.getValueIsAdjusting()) && (scannedBCardBack != null)) {
 
                 scannedBCardBack.changeBrightness(brightSldT1.getValue());
@@ -5026,7 +5027,7 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_brightSldT1StateChanged
 
     private void scannerBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scannerBtnT1ActionPerformed
-        synchronized(this){
+        synchronized (this) {
             scannerTxtT1.setText(bcScanner.selectScanner(scannerTxtT1));
         }
     }//GEN-LAST:event_scannerBtnT1ActionPerformed
@@ -5035,13 +5036,13 @@ public class ScannerView extends FrameView {
         // Yov is working Here
         //System.out.println("TrainingImageFolder: " + trainingImgFolder);
 
-        if(isFrontSelected){
-            if((scannedBCard != null) && (scannedImageFileName != null)){
-                if(scannedImageFileName.contains(".jpg")){
+        if (isFrontSelected) {
+            if ((scannedBCard != null) && (scannedImageFileName != null)) {
+                if (scannedImageFileName.contains(".jpg")) {
                     scannedBCard.setImageFileName(scannedImageFileName);
-                }else{
-                    scannedBCard.setImageFileName(scannedImageFileName +
-                            bcScanner.getFileNameIndex() + ".jpg");
+                } else {
+                    scannedBCard.setImageFileName(scannedImageFileName
+                            + bcScanner.getFileNameIndex() + ".jpg");
                 }
 
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
@@ -5054,18 +5055,18 @@ public class ScannerView extends FrameView {
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
                 JTextArea ocrTxt = new JTextArea();
-                ocrTxt.setText( scannedBCard.retrieveData());
+                ocrTxt.setText(scannedBCard.retrieveData());
                 contentPane.add(ocrTxt, BorderLayout.CENTER);
                 textWin.setVisible(true);
 
             }
-        }else{
-             if((scannedBCardBack != null) && (scannedImageFileNameBack != null)){
-                if(scannedImageFileNameBack.contains(".jpg")){
+        } else {
+            if ((scannedBCardBack != null) && (scannedImageFileNameBack != null)) {
+                if (scannedImageFileNameBack.contains(".jpg")) {
                     scannedBCardBack.setImageFileName(scannedImageFileNameBack);
-                }else{
-                    scannedBCardBack.setImageFileName(scannedImageFileNameBack +
-                            bcScanner.getFileNameIndex() + ".jpg");
+                } else {
+                    scannedBCardBack.setImageFileName(scannedImageFileNameBack
+                            + bcScanner.getFileNameIndex() + ".jpg");
                 }
 
                 //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
@@ -5078,7 +5079,7 @@ public class ScannerView extends FrameView {
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
                 JTextArea ocrTxt = new JTextArea();
-                ocrTxt.setText( scannedBCardBack.retrieveData());
+                ocrTxt.setText(scannedBCardBack.retrieveData());
                 contentPane.add(ocrTxt, BorderLayout.CENTER);
                 textWin.setVisible(true);
 
@@ -5101,8 +5102,8 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_backSideRdT1ActionPerformed
 
     private void undoBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoBtnT1ActionPerformed
-        if(isFrontSelected){
-            if(scannedBCard != null){
+        if (isFrontSelected) {
+            if (scannedBCard != null) {
                 scannedBCard.undoChanges();
 
                 frontLbT1.setIcon(new ImageIcon(scannedBCard.getPreviewImage().getImageData()));
@@ -5110,8 +5111,8 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_WITH_IMAGE;
                 setButtonsState(frontUIState);
             }
-        }else{
-            if(scannedBCardBack != null){
+        } else {
+            if (scannedBCardBack != null) {
                 scannedBCardBack.undoChanges();
 
                 backLbT1.setIcon(new ImageIcon(scannedBCardBack.getPreviewImage().getImageData()));
@@ -5124,7 +5125,7 @@ public class ScannerView extends FrameView {
 
     private void frontSideRdT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontSideRdT3ActionPerformed
         isFrontSelectedResult = true;
-        
+
         backSideRdT3.setSelected(false);
 
         setButtonsStateResult(frontUIStateResult);
@@ -5132,15 +5133,15 @@ public class ScannerView extends FrameView {
 
     private void backSideRdT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSideRdT3ActionPerformed
         isFrontSelectedResult = false;
-        
+
         frontSideRdT3.setSelected(false);
 
         setButtonsStateResult(backUIStateResult);
     }//GEN-LAST:event_backSideRdT3ActionPerformed
 
     private void undoBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoBtnT3ActionPerformed
-        if(isFrontSelectedResult){
-            if(resultBCard != null){
+        if (isFrontSelectedResult) {
+            if (resultBCard != null) {
                 resultBCard.undoChanges();
 
                 frontLbT3.setIcon(new ImageIcon(resultBCard.getPreviewImage().getImageData()));
@@ -5148,8 +5149,8 @@ public class ScannerView extends FrameView {
                 frontUIStateResult = STATE_WITH_IMAGE;
                 setButtonsStateResult(frontUIStateResult);
             }
-        }else{
-            if(resultBCardBack != null){
+        } else {
+            if (resultBCardBack != null) {
                 resultBCardBack.undoChanges();
 
                 backLbT3.setIcon(new ImageIcon(resultBCardBack.getPreviewImage().getImageData()));
@@ -5163,8 +5164,8 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_undoBtnT3ActionPerformed
 
     private void confirmBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnT3ActionPerformed
-        if(isFrontSelectedResult){
-            if(resultBCard != null){
+        if (isFrontSelectedResult) {
+            if (resultBCard != null) {
                 resultBCard.confirmChange();
 
                 frontLbT3.setIcon(new ImageIcon(resultBCard.getPreviewImage().getImageData()));
@@ -5172,8 +5173,8 @@ public class ScannerView extends FrameView {
                 frontUIStateResult = STATE_WITH_IMAGE;
                 setButtonsStateResult(frontUIStateResult);
             }
-        }else{
-            if(resultBCardBack != null){
+        } else {
+            if (resultBCardBack != null) {
                 resultBCardBack.confirmChange();
 
                 backLbT3.setIcon(new ImageIcon(resultBCardBack.getPreviewImage().getImageData()));
@@ -5187,8 +5188,8 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_confirmBtnT3ActionPerformed
 
     private void confirmBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnT1ActionPerformed
-         if(isFrontSelected){
-            if(scannedBCard != null){
+        if (isFrontSelected) {
+            if (scannedBCard != null) {
                 scannedBCard.confirmChange();
 
                 frontLbT1.setIcon(new ImageIcon(scannedBCard.getPreviewImage().getImageData()));
@@ -5196,8 +5197,8 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_WITH_IMAGE;
                 setButtonsState(frontUIState);
             }
-        }else{
-            if(scannedBCard != null){
+        } else {
+            if (scannedBCard != null) {
                 scannedBCardBack.confirmChange();
 
                 backLbT1.setIcon(new ImageIcon(scannedBCardBack.getPreviewImage().getImageData()));
@@ -5209,7 +5210,7 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_confirmBtnT1ActionPerformed
 
     private void rotateBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotateBtnT3ActionPerformed
-        if(isFrontSelectedResult){
+        if (isFrontSelectedResult) {
             if (resultBCard != null) {
 
                 resultBCard.rotate90();
@@ -5219,7 +5220,7 @@ public class ScannerView extends FrameView {
                 frontUIStateResult = STATE_IMAGE_EDITED;
                 setButtonsStateResult(frontUIStateResult);
             }
-        }else{
+        } else {
             if (resultBCardBack != null) {
 
                 resultBCardBack.rotate90();
@@ -5233,7 +5234,7 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_rotateBtnT3ActionPerformed
 
     private void brightSldT3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_brightSldT3StateChanged
-        if(isFrontSelectedResult){
+        if (isFrontSelectedResult) {
             if ((!brightSldT3.getValueIsAdjusting()) && (resultBCard != null)) {
 
                 resultBCard.changeBrightness(brightSldT3.getValue());
@@ -5243,7 +5244,7 @@ public class ScannerView extends FrameView {
                 frontUIStateResult = STATE_IMAGE_EDITED;
                 setButtonsStateResult(frontUIStateResult);
             }
-        }else{
+        } else {
             if ((!brightSldT3.getValueIsAdjusting()) && (resultBCardBack != null)) {
 
                 resultBCardBack.changeBrightness(brightSldT3.getValue());
@@ -5295,35 +5296,38 @@ public class ScannerView extends FrameView {
 
                 isBrowsedBackResult = true;
             } else {
-
             }
-       }
+        }
     }//GEN-LAST:event_backBtnT3ActionPerformed
 
     private void doubleSideBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doubleSideBtnT1ActionPerformed
         // TODO add your handling code here:
-        if(isFrontSelected){
-            if(scannedBCard != null){
+        if (isFrontSelected) {
+            if (scannedBCard != null) {
                 scannedBCardBack = new BusinessCard(scannedBCard.getPreviewImage());
 
                 backLbT1.setIcon(new ImageIcon(scannedBCardBack.getPreviewImage().getImageData()));
 
                 backUIState = STATE_WITH_IMAGE;
+                // Oak Add
+                backTfT1.setText(frontTfT1.getText());
             }
-        }else{
-            if(scannedBCardBack != null){
+        } else {
+            if (scannedBCardBack != null) {
                 scannedBCard = new BusinessCard(scannedBCardBack.getPreviewImage());
 
                 frontLbT1.setIcon(new ImageIcon(scannedBCard.getPreviewImage().getImageData()));
 
                 frontUIState = STATE_WITH_IMAGE;
+                // Oak Add
+                frontTfT1.setText(backTfT1.getText());
             }
         }
     }//GEN-LAST:event_doubleSideBtnT1ActionPerformed
 
     private void blackWhiteBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blackWhiteBtnT1ActionPerformed
         // TODO add your handling code here:
-                if(isFrontSelected){
+        if (isFrontSelected) {
             if (scannedBCard != null) {
 
                 scannedBCard.turnToBlackAndWhite();
@@ -5333,7 +5337,7 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_IMAGE_EDITED;
                 setButtonsState(frontUIState);
             }
-        }else{
+        } else {
             if (scannedBCardBack != null) {
 
                 scannedBCardBack.turnToBlackAndWhite();
@@ -5349,7 +5353,7 @@ public class ScannerView extends FrameView {
     private void autoCropBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoCropBtnT1ActionPerformed
         // TODO add your handling code here:
 
-        if(isFrontSelected){
+        if (isFrontSelected) {
             if (scannedBCard != null) {
 
                 scannedBCard.trim();
@@ -5359,8 +5363,8 @@ public class ScannerView extends FrameView {
                 frontUIState = STATE_IMAGE_EDITED;
                 setButtonsState(frontUIState);
             }
-        }else{
-            if (scannedBCardBack != null){
+        } else {
+            if (scannedBCardBack != null) {
 
                 scannedBCardBack.trim();
 
@@ -5375,7 +5379,7 @@ public class ScannerView extends FrameView {
     private void autoCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoCropBtnT3ActionPerformed
         // TODO add your handling code here:
 
-         if(isFrontSelectedResult){
+        if (isFrontSelectedResult) {
             if (resultBCard != null) {
 
                 resultBCard.trim();
@@ -5385,8 +5389,8 @@ public class ScannerView extends FrameView {
                 frontUIStateResult = STATE_IMAGE_EDITED;
                 setButtonsStateResult(frontUIStateResult);
             }
-        }else{
-            if (resultBCardBack != null){
+        } else {
+            if (resultBCardBack != null) {
 
                 resultBCardBack.trim();
 
@@ -5431,189 +5435,225 @@ public class ScannerView extends FrameView {
         String genCriteria = genSearchTfT2.getText();
         ArrayList<Card> resultCards;
 
-        if(genCriteria.equals("")){
+        if (genCriteria.equals("")) {
             resultCards = Utils.searchCard(criteria, localCardList);
-        }else{
+        } else {
             ArrayList<Card> temporal = Utils.searchGenCard(genCriteria, localCardList);
             resultCards = Utils.searchCard(criteria, temporal);
         }
-        
-        System.out.println("size is "+resultCards.size());
-        DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
 
-        if(resultCards!=null){
-           updateTable(resultCards,model);
+        System.out.println("size is " + resultCards.size());
+        DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
+
+        if (resultCards != null) {
+            updateTable(resultCards, model);
         }
     }//GEN-LAST:event_genSearchT2ActionPerformed
 
-    private void disableToggleExcept(int index){
-        if(index!=QUICK_TH_0 || index == QUICK_NONE)thBtn0T2.setSelected(false);
-        if(index!=QUICK_TH_1 || index == QUICK_NONE)thBtn1T2.setSelected(false);
-        if(index!=QUICK_TH_2 || index == QUICK_NONE)thBtn2T2.setSelected(false);
-        if(index!=QUICK_TH_3 || index == QUICK_NONE)thBtn3T2.setSelected(false);
-        if(index!=QUICK_TH_4 || index == QUICK_NONE)thBtn4T2.setSelected(false);
-        if(index!=QUICK_TH_5 || index == QUICK_NONE)thBtn5T2.setSelected(false);
-        if(index!=QUICK_TH_6 || index == QUICK_NONE)thBtn6T2.setSelected(false);
-        if(index!=QUICK_TH_7 || index == QUICK_NONE)thBtn7T2.setSelected(false);
-        if(index!=QUICK_TH_8 || index == QUICK_NONE)thBtn8T2.setSelected(false);
-        if(index!=QUICK_EN_0 || index == QUICK_NONE)engBtn0T2.setSelected(false);
-        if(index!=QUICK_EN_1 || index == QUICK_NONE)engBtn1T2.setSelected(false);
-        if(index!=QUICK_EN_2 || index == QUICK_NONE)engBtn2T2.setSelected(false);
-        if(index!=QUICK_EN_3 || index == QUICK_NONE)engBtn3T2.setSelected(false);
-        if(index!=QUICK_EN_4 || index == QUICK_NONE)engBtn4T2.setSelected(false);
-        if(index!=QUICK_EN_5 || index == QUICK_NONE)engBtn5T2.setSelected(false);
-        if(index!=QUICK_EN_6 || index == QUICK_NONE)engBtn6T2.setSelected(false);
-        if(index!=QUICK_EN_7 || index == QUICK_NONE)engBtn7T2.setSelected(false);
-        if(index!=QUICK_EN_8 || index == QUICK_NONE)engBtn8T2.setSelected(false);
+    private void disableToggleExcept(int index) {
+        if (index != QUICK_TH_0 || index == QUICK_NONE) {
+            thBtn0T2.setSelected(false);
+        }
+        if (index != QUICK_TH_1 || index == QUICK_NONE) {
+            thBtn1T2.setSelected(false);
+        }
+        if (index != QUICK_TH_2 || index == QUICK_NONE) {
+            thBtn2T2.setSelected(false);
+        }
+        if (index != QUICK_TH_3 || index == QUICK_NONE) {
+            thBtn3T2.setSelected(false);
+        }
+        if (index != QUICK_TH_4 || index == QUICK_NONE) {
+            thBtn4T2.setSelected(false);
+        }
+        if (index != QUICK_TH_5 || index == QUICK_NONE) {
+            thBtn5T2.setSelected(false);
+        }
+        if (index != QUICK_TH_6 || index == QUICK_NONE) {
+            thBtn6T2.setSelected(false);
+        }
+        if (index != QUICK_TH_7 || index == QUICK_NONE) {
+            thBtn7T2.setSelected(false);
+        }
+        if (index != QUICK_TH_8 || index == QUICK_NONE) {
+            thBtn8T2.setSelected(false);
+        }
+        if (index != QUICK_EN_0 || index == QUICK_NONE) {
+            engBtn0T2.setSelected(false);
+        }
+        if (index != QUICK_EN_1 || index == QUICK_NONE) {
+            engBtn1T2.setSelected(false);
+        }
+        if (index != QUICK_EN_2 || index == QUICK_NONE) {
+            engBtn2T2.setSelected(false);
+        }
+        if (index != QUICK_EN_3 || index == QUICK_NONE) {
+            engBtn3T2.setSelected(false);
+        }
+        if (index != QUICK_EN_4 || index == QUICK_NONE) {
+            engBtn4T2.setSelected(false);
+        }
+        if (index != QUICK_EN_5 || index == QUICK_NONE) {
+            engBtn5T2.setSelected(false);
+        }
+        if (index != QUICK_EN_6 || index == QUICK_NONE) {
+            engBtn6T2.setSelected(false);
+        }
+        if (index != QUICK_EN_7 || index == QUICK_NONE) {
+            engBtn7T2.setSelected(false);
+        }
+        if (index != QUICK_EN_8 || index == QUICK_NONE) {
+            engBtn8T2.setSelected(false);
+        }
     }
 
     private void engBtn0T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn0T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn0T2.isSelected()){
+        if (engBtn0T2.isSelected()) {
             disableToggleExcept(QUICK_EN_0);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("abc", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn0T2ActionPerformed
 
     private void engBtn1T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn1T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn1T2.isSelected()){
+        if (engBtn1T2.isSelected()) {
             disableToggleExcept(QUICK_EN_1);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("def", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn1T2ActionPerformed
 
     private void engBtn2T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn2T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn2T2.isSelected()){
+        if (engBtn2T2.isSelected()) {
             disableToggleExcept(QUICK_EN_2);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("ghi", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-         }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn2T2ActionPerformed
 
     private void engBtn3T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn3T2ActionPerformed
         // TODO add your handling code here:
-       if(engBtn3T2.isSelected()){
-           disableToggleExcept(QUICK_EN_3);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("jkl", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (engBtn3T2.isSelected()) {
+            disableToggleExcept(QUICK_EN_3);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("jkl", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn3T2ActionPerformed
 
     private void engBtn4T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn4T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn4T2.isSelected()){
+        if (engBtn4T2.isSelected()) {
             disableToggleExcept(QUICK_EN_4);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("mno", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn4T2ActionPerformed
 
     private void engBtn5T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn5T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn5T2.isSelected()){
+        if (engBtn5T2.isSelected()) {
             disableToggleExcept(QUICK_EN_5);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("pqr", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn5T2ActionPerformed
 
     private void engBtn6T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn6T2ActionPerformed
         // TODO add your handling code here:
-         if(engBtn6T2.isSelected()){
+        if (engBtn6T2.isSelected()) {
             disableToggleExcept(QUICK_EN_6);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("stu", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn6T2ActionPerformed
 
     private void engBtn7T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn7T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn7T2.isSelected()){
+        if (engBtn7T2.isSelected()) {
             disableToggleExcept(QUICK_EN_7);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("vwx", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn7T2ActionPerformed
 
     private void engBtn8T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engBtn8T2ActionPerformed
         // TODO add your handling code here:
-        if(engBtn8T2.isSelected()){
+        if (engBtn8T2.isSelected()) {
             disableToggleExcept(QUICK_EN_8);
             ArrayList<Card> resultCards = new ArrayList<Card>();
             resultCards = Utils.quickSearchCard("yz", localCardList);
-            DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-            if(resultCards!=null){
-                updateTable(resultCards,model);
+            if (resultCards != null) {
+                updateTable(resultCards, model);
             }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_engBtn8T2ActionPerformed
 
     private void frontCropBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontCropBtnT1ActionPerformed
-        if(( (frontUIState == STATE_WITH_IMAGE) || (frontUIState == STATE_IMAGE_EDITED) )
-                && (frontTfT1.getText() != null) && (frontTfT1.getText().length() > 0) ){
+        if (((frontUIState == STATE_WITH_IMAGE) || (frontUIState == STATE_IMAGE_EDITED))
+                && (frontTfT1.getText() != null) && (frontTfT1.getText().length() > 0)) {
 
             ImagePanelDialog frontImgDialog = new ImagePanelDialog(frontTfT1.getText());
 
@@ -5624,21 +5664,24 @@ public class ScannerView extends FrameView {
                     myResourceMap.getString(CROP_FOCUS));
             frontImgDialog.setVisible(true);
 
-            if(frontImgDialog.isImageCropped()){
+            if (frontImgDialog.isImageCropped()) {
                 frontUIState = STATE_WITH_IMAGE;
                 scannedImage = frontImgDialog.getCroppedImage();
                 scannedBCard = new BusinessCard(frontImgDialog.getCroppedImage());
 
                 frontLbT1.setIcon(new ImageIcon(scannedImage));
-
+                if (backLbT1.getIcon() != null) {
+                    backLbT1.setIcon(new ImageIcon(scannedImage));
+                    scannedBCardBack = new BusinessCard(frontImgDialog.getCroppedImage());
+                }
             }
 
         }
     }//GEN-LAST:event_frontCropBtnT1ActionPerformed
 
     private void backCropBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCropBtnT1ActionPerformed
-         if(( (backUIState == STATE_WITH_IMAGE) || (backUIState == STATE_IMAGE_EDITED) )
-                && (backTfT1.getText() != null) && (backTfT1.getText().length() > 0) ){
+        if (((backUIState == STATE_WITH_IMAGE) || (backUIState == STATE_IMAGE_EDITED))
+                && (backTfT1.getText() != null) && (backTfT1.getText().length() > 0)) {
 
             ImagePanelDialog backImgDialog = new ImagePanelDialog(backTfT1.getText());
 
@@ -5649,20 +5692,23 @@ public class ScannerView extends FrameView {
                     myResourceMap.getString(CROP_FOCUS));
             backImgDialog.setVisible(true);
 
-            if(backImgDialog.isImageCropped()){
+            if (backImgDialog.isImageCropped()) {
                 backUIState = STATE_WITH_IMAGE;
                 scannedImage = backImgDialog.getCroppedImage();
                 scannedBCardBack = new BusinessCard(backImgDialog.getCroppedImage());
 
                 backLbT1.setIcon(new ImageIcon(scannedImage));
-
+                if (frontLbT1.getIcon() != null) {
+                    frontLbT1.setIcon(new ImageIcon(scannedImage));
+                    scannedBCard = new BusinessCard(backImgDialog.getCroppedImage());
+                }
             }
         }
     }//GEN-LAST:event_backCropBtnT1ActionPerformed
 
     private void frontCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontCropBtnT3ActionPerformed
-         if(( (frontUIStateResult == STATE_WITH_IMAGE) || (frontUIStateResult == STATE_IMAGE_EDITED) )
-                && (frontTfT3.getText() != null) && (frontTfT3.getText().length() > 0) ){
+        if (((frontUIStateResult == STATE_WITH_IMAGE) || (frontUIStateResult == STATE_IMAGE_EDITED))
+                && (frontTfT3.getText() != null) && (frontTfT3.getText().length() > 0)) {
 
             ImagePanelDialog frontImgDialogResult = new ImagePanelDialog(frontTfT3.getText());
 
@@ -5673,23 +5719,26 @@ public class ScannerView extends FrameView {
                     myResourceMap.getString(CROP_FOCUS));
             frontImgDialogResult.setVisible(true);
 
-            if(frontImgDialogResult.isImageCropped()){
+            if (frontImgDialogResult.isImageCropped()) {
                 frontUIStateResult = STATE_WITH_IMAGE;
                 resultImage = frontImgDialogResult.getCroppedImage();
                 resultBCard = new BusinessCard(frontImgDialogResult.getCroppedImage());
 
                 frontLbT3.setIcon(new ImageIcon(resultImage));
-
+                if (backLbT3.getIcon() != null) {
+                    backLbT3.setIcon(new ImageIcon(scannedImage));
+                    scannedBCardBack = new BusinessCard(frontImgDialogResult.getCroppedImage());
+                }
             }
         }
     }//GEN-LAST:event_frontCropBtnT3ActionPerformed
 
     private void backCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCropBtnT3ActionPerformed
-        if(( (backUIStateResult == STATE_WITH_IMAGE) || (backUIStateResult == STATE_IMAGE_EDITED) )
-                && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0) ){
-
+        if (((backUIStateResult == STATE_WITH_IMAGE) || (backUIStateResult == STATE_IMAGE_EDITED))
+                && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0)) {
+               System.out.println("backt3 : " +backTfT3.getText() );
             ImagePanelDialog backImgDialogResult = new ImagePanelDialog(backTfT3.getText());
-            
+
             backImgDialogResult.init();
             backImgDialogResult.setAllText(myResourceMap.getString(CROP_PANEL_TITLE),
                     myResourceMap.getString(CROP_CONFIRM),
@@ -5697,12 +5746,16 @@ public class ScannerView extends FrameView {
                     myResourceMap.getString(CROP_FOCUS));
             backImgDialogResult.setVisible(true);
 
-            if(backImgDialogResult.isImageCropped()){
+            if (backImgDialogResult.isImageCropped()) {
                 backUIStateResult = STATE_WITH_IMAGE;
                 resultImage = backImgDialogResult.getCroppedImage();
                 resultBCardBack = new BusinessCard(backImgDialogResult.getCroppedImage());
 
                 backLbT3.setIcon(new ImageIcon(resultImage));
+                 if (frontLbT3.getIcon() != null) {
+                    frontLbT3.setIcon(new ImageIcon(scannedImage));
+                    scannedBCard = new BusinessCard(backImgDialogResult.getCroppedImage());
+                }
             }
 
         }
@@ -5710,58 +5763,58 @@ public class ScannerView extends FrameView {
 
     private void frontTfT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontTfT1MouseClicked
         // TODO add your handling code here:
-            imgChooser.addChoosableFileFilter(new JPGFileFilter());
-            imgChooser.setAcceptAllFileFilterUsed(false);
-            int returnVal = imgChooser.showOpenDialog(null);
-            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
-                java.io.File file = imgChooser.getSelectedFile();
-                String path = file.getAbsolutePath();
-                frontTfT1.setText(path);
+        imgChooser.addChoosableFileFilter(new JPGFileFilter());
+        imgChooser.setAcceptAllFileFilterUsed(false);
+        int returnVal = imgChooser.showOpenDialog(null);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = imgChooser.getSelectedFile();
+            String path = file.getAbsolutePath();
+            frontTfT1.setText(path);
 
-                ImageIcon cardIcon = new ImageIcon(path);
-                java.awt.Image cardImage = cardIcon.getImage();
+            ImageIcon cardIcon = new ImageIcon(path);
+            java.awt.Image cardImage = cardIcon.getImage();
 
-                frontLbT1.setIcon(cardIcon);
+            frontLbT1.setIcon(cardIcon);
 
-                // Yov's added code
-                scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
-                        BufferedImage.TYPE_INT_ARGB);
-                scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
-                scannedBCard = new BusinessCard(scannedImage);
+            // Yov's added code
+            scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                    BufferedImage.TYPE_INT_ARGB);
+            scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
+            scannedBCard = new BusinessCard(scannedImage);
 
-                scannedImageFileName = path;
+            scannedImageFileName = path;
 
-                frontUIState = STATE_WITH_IMAGE;
-                setButtonsState(frontUIState);
-            }
+            frontUIState = STATE_WITH_IMAGE;
+            setButtonsState(frontUIState);
+        }
     }//GEN-LAST:event_frontTfT1MouseClicked
 
     private void backTfT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backTfT1MouseClicked
         // TODO add your handling code here:
-            imgChooser.addChoosableFileFilter(new JPGFileFilter());
-            imgChooser.setAcceptAllFileFilterUsed(false);
-            int returnVal = imgChooser.showOpenDialog(null);
-            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
-                java.io.File file = imgChooser.getSelectedFile();
-                String path = file.getAbsolutePath();
-                backTfT1.setText(path);
+        imgChooser.addChoosableFileFilter(new JPGFileFilter());
+        imgChooser.setAcceptAllFileFilterUsed(false);
+        int returnVal = imgChooser.showOpenDialog(null);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = imgChooser.getSelectedFile();
+            String path = file.getAbsolutePath();
+            backTfT1.setText(path);
 
-                ImageIcon cardIcon = new ImageIcon(path);
-                java.awt.Image cardImage = cardIcon.getImage();
+            ImageIcon cardIcon = new ImageIcon(path);
+            java.awt.Image cardImage = cardIcon.getImage();
 
-                backLbT1.setIcon(cardIcon);
+            backLbT1.setIcon(cardIcon);
 
-                // Yov's added code
-                scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
-                        BufferedImage.TYPE_INT_ARGB);
-                scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
-                scannedBCardBack = new BusinessCard(scannedImage);
+            // Yov's added code
+            scannedImage = new BufferedImage(cardImage.getWidth(null), cardImage.getHeight(null),
+                    BufferedImage.TYPE_INT_ARGB);
+            scannedImage.getGraphics().drawImage(cardImage, 0, 0, null);
+            scannedBCardBack = new BusinessCard(scannedImage);
 
-                scannedImageFileNameBack = path;
+            scannedImageFileNameBack = path;
 
-                backUIState = STATE_WITH_IMAGE;
-                setButtonsState(backUIState);
-            } 
+            backUIState = STATE_WITH_IMAGE;
+            setButtonsState(backUIState);
+        }
     }//GEN-LAST:event_backTfT1MouseClicked
 
     private void frontTfT3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frontTfT3MouseClicked
@@ -5820,17 +5873,17 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         Card newCard = getCardFromForm(RESULT_TAB);
         newCard.setId(Long.parseLong(idNameLbT3.getText()));
-        if(Utils.checkFirstName(newCard,MISSING_ALERT)){
+        if (Utils.checkFirstName(newCard, MISSING_ALERT)) {
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
-                
+
                 Long cardID = newCard.getId();
                 String imgFileName = frontTfT3.getText();
                 String imgBackFileName = backTfT3.getText();
-                File imgFile = new File (imgFileName);
+                File imgFile = new File(imgFileName);
                 File imgBackFile = new File(imgBackFileName);
-                File curDir = new File("."+File.separator);
-                if(imgFileName != null){
+                File curDir = new File("." + File.separator);
+                if (imgFileName != null) {
                     if ((imgFileName.length() > 0) && imgFile.isFile()
                             && ((imgFileName.lastIndexOf(".jpg") == (imgFileName.length() - 4))
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
@@ -5838,29 +5891,29 @@ public class ScannerView extends FrameView {
 
                         if (isBrowsedFrontResult) {
 
-                            File originalImage = new File(curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator + cardID + ".jpg");
+                            File originalImage = new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg");
                             originalImage.delete();
-                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator+"cardImages"+File.separator + cardID + ".jpg"));
-                            
+                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
+
                         }
 
                         newCard.setImgFront("./cardImages/" + cardID + ".jpg");
                     }
                 }
 
-                if(imgBackFileName != null){
+                if (imgBackFileName != null) {
                     if ((imgBackFileName.length() > 0) && imgBackFile.isFile()
                             && ((imgBackFileName.lastIndexOf(".jpg") == (imgBackFileName.length() - 4))
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
 
                         if (isBrowsedBackResult) {
-                            File originalImage = new File(curDir.getCanonicalPath() + File.separator+"cardImages" +File.separator+ cardID + "Back.jpg");
+                            File originalImage = new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg");
                             if (originalImage.isFile()) {
                                 originalImage.delete();
                             }
-                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() +File.separator+ "cardImages"+File.separator + cardID + "Back.jpg"));
-                            
+                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
+
                         }
                         newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                     }
@@ -5868,20 +5921,20 @@ public class ScannerView extends FrameView {
 
                 CardLocalManager.editLocalCard(newCard, defaultcard.getAbsolutePath());
                 int index = localCardList.indexOf(newCard);
-                localCardList.set(index,newCard);
+                localCardList.set(index, newCard);
 
                 isBrowsedFrontResult = false;
                 isBrowsedBackResult = false;
 
             } catch (ScannerDBException ex) {
                 Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ioEx){
+            } catch (IOException ioEx) {
                 ioEx.printStackTrace();
             }
             String[] options = getAcceptChoice();
-            JOptionPane.showOptionDialog(null, myResourceMap.getString(UPDATE_ALERT),myResourceMap.getString(NOTIFICATION_ALERT),
-            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-            null, options, options[0]);
+            JOptionPane.showOptionDialog(null, myResourceMap.getString(UPDATE_ALERT), myResourceMap.getString(NOTIFICATION_ALERT),
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]);
             clearFormT3();
             saveBtnT3.setEnabled(false);
         }
@@ -5889,155 +5942,155 @@ public class ScannerView extends FrameView {
 
     private void thBtn0T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn0T2ActionPerformed
         // TODO add your handling code here:
-       if(thBtn0T2.isSelected()){
-           disableToggleExcept(QUICK_TH_0);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("กขคฅ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn0T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_0);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("กขคฅ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn0T2ActionPerformed
 
     private void thBtn1T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn1T2ActionPerformed
         // TODO add your handling code here:
-        if(thBtn1T2.isSelected()){
-           disableToggleExcept(QUICK_TH_1);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("ฆงจฉ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn1T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_1);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("ฆงจฉ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn1T2ActionPerformed
 
     private void thBtn2T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn2T2ActionPerformed
         // TODO add your handling code here:
-        if(thBtn2T2.isSelected()){
-           disableToggleExcept(QUICK_TH_2);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("ชซฌญ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn2T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_2);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("ชซฌญ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn2T2ActionPerformed
 
     private void thBtn3T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn3T2ActionPerformed
         // TODO add your handling code here:
-       if(thBtn3T2.isSelected()){
-           disableToggleExcept(QUICK_TH_3);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("ฎฏฐฑฒณ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn3T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_3);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("ฎฏฐฑฒณ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn3T2ActionPerformed
 
     private void thBtn4T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn4T2ActionPerformed
         // TODO add your handling code here:
-        if(thBtn4T2.isSelected()){
-           disableToggleExcept(QUICK_TH_4);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("ดตถทธ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn4T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_4);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("ดตถทธ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-        }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn4T2ActionPerformed
 
     private void thBtn5T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn5T2ActionPerformed
         // TODO add your handling code here:
-      if(thBtn5T2.isSelected()){
-           disableToggleExcept(QUICK_TH_5);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("นบปผฝ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn5T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_5);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("นบปผฝ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn5T2ActionPerformed
 
     private void thBtn6T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn6T2ActionPerformed
         // TODO add your handling code here:
-       if(thBtn6T2.isSelected()){
-           disableToggleExcept(QUICK_TH_6);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("พฟภมย", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn6T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_6);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("พฟภมย", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn6T2ActionPerformed
 
     private void thBtn7T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn7T2ActionPerformed
         // TODO add your handling code here:
-        if(thBtn7T2.isSelected()){
-           disableToggleExcept(QUICK_TH_7);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("รลวศษ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn7T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_7);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("รลวศษ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-             updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn7T2ActionPerformed
 
     private void thBtn8T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thBtn8T2ActionPerformed
         // TODO add your handling code here:
-       if(thBtn8T2.isSelected()){
-           disableToggleExcept(QUICK_TH_8);
-           ArrayList<Card> resultCards = new ArrayList<Card>();
-           resultCards = Utils.quickSearchCard("สหฬอฮ", localCardList);
-           DefaultTableModel model = (DefaultTableModel)importTableT2.getModel();
+        if (thBtn8T2.isSelected()) {
+            disableToggleExcept(QUICK_TH_8);
+            ArrayList<Card> resultCards = new ArrayList<Card>();
+            resultCards = Utils.quickSearchCard("สหฬอฮ", localCardList);
+            DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
 
-           if(resultCards!=null){
-               updateTable(resultCards,model);
-           }
-       }else{
-            updateTable(new ArrayList<Card>(),(DefaultTableModel)importTableT2.getModel());
+            if (resultCards != null) {
+                updateTable(resultCards, model);
+            }
+        } else {
+            updateTable(new ArrayList<Card>(), (DefaultTableModel) importTableT2.getModel());
         }
     }//GEN-LAST:event_thBtn8T2ActionPerformed
 
     private void langaugeChangeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langaugeChangeBtnActionPerformed
         // TODO add your handling code here:
-        if(languageLb.getText().equals(myResourceMap.getString("languageLb.text"))){
+        if (languageLb.getText().equals(myResourceMap.getString("languageLb.text"))) {
             changeLanguageTo(TH);
-            
-        }else{
-            if(languageLb.getText().equals(myResourceMap.getString("languageLbTh.text"))){
+
+        } else {
+            if (languageLb.getText().equals(myResourceMap.getString("languageLbTh.text"))) {
                 changeLanguageTo(EN);
             }
         }
@@ -6046,203 +6099,217 @@ public class ScannerView extends FrameView {
     private void emailBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT1ActionPerformed
         // TODO add your handling code here:
         Card c = getCardFromForm(SCAN_TAB);
-        if(Utils.checkFirstName(c, MISSING_ALERT)){
-            SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+        if (Utils.checkFirstName(c, MISSING_ALERT)) {
+            SendEmailUtil.sendEmail("", "", c, c.getImgFront(), c.getImgBack());
         }
     }//GEN-LAST:event_emailBtnT1ActionPerformed
 
     private void replaceBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replaceBtnT4ActionPerformed
         // TODO add your handling code here:
         String fileName = importTfT4.getText();
-        if(fileName!=null && !fileName.equals("")){
+        if (fileName != null && !fileName.equals("")) {
             localCardList.clear();
             localCardList = ZipUtils.importCards(fileName);
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0]+" "+localCardList.size()+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
-            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-            null, options, options[0]);
+            JOptionPane.showOptionDialog(null, alert[0] + " " + localCardList.size() + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]);
         }
     }//GEN-LAST:event_replaceBtnT4ActionPerformed
 
     private void pendingBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingBtnT4ActionPerformed
         // TODO add your handling code here:
         String fileName = importTfT4.getText();
-        if(fileName!=null && !fileName.equals("")){
+        if (fileName != null && !fileName.equals("")) {
             int size = localCardList.size();
             localCardList.addAll(ZipUtils.importCards(fileName));
-            size = localCardList.size()-size;
+            size = localCardList.size() - size;
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0]+" "+size+" "+alert[1],myResourceMap.getString(NOTIFICATION_ALERT),
-            JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-            null, options, options[0]);
+            JOptionPane.showOptionDialog(null, alert[0] + " " + size + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                    null, options, options[0]);
         }
     }//GEN-LAST:event_pendingBtnT4ActionPerformed
 
     private void importBrowseBtnT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importBrowseBtnT4ActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         String wd = System.getProperty("user.dir");
         String filename = "";
         JFileChooser fc = new JFileChooser(wd);
         fc.addChoosableFileFilter(new ZipFileFilter());
 
         int rc = fc.showDialog(null, "Select");
-        if (rc == JFileChooser.APPROVE_OPTION)
-        {
+        if (rc == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             filename = file.getAbsolutePath();
 
             importTfT4.setText(filename);
-        // call your function here
+            // call your function here
         }
     }//GEN-LAST:event_importBrowseBtnT4ActionPerformed
 
     private void emailBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT3ActionPerformed
         Card c = getCardFromForm(RESULT_TAB);
-        if(Utils.checkFirstName(c, MISSING_ALERT)){
-            SendEmailUtil.sendEmail("", "", c,c.getImgFront(), c.getImgBack());
+        if (Utils.checkFirstName(c, MISSING_ALERT)) {
+            SendEmailUtil.sendEmail("", "", c, c.getImgFront(), c.getImgBack());
         }
     }//GEN-LAST:event_emailBtnT3ActionPerformed
 
-    private void changeLanguageTo(int lang){
-        switch(lang){
-            case EN:setLang("");break;
-            case TH:setLang("Th");break;
-            default:setLang("");break;
+    private void changeLanguageTo(int lang) {
+        switch (lang) {
+            case EN:
+                setLang("");
+                break;
+            case TH:
+                setLang("Th");
+                break;
+            default:
+                setLang("");
+                break;
         }
     }
 
-    private Card getCardById(long l,ArrayList<Card> cards){
+    private Card getCardById(long l, ArrayList<Card> cards) {
         Card card = null;
-        for(Card c: cards){
-            if(c.getId()==l)card = c;
+        for (Card c : cards) {
+            if (c.getId() == l) {
+                card = c;
+            }
         }
         return card;
     }
 
-    private void setLang(String s){
+    private void setLang(String s) {
         //set langauge for general component
-        menuTab.setTitleAt(SCAN_TAB,myResourceMap.getString("scannerTab.TabConstraints.tabTitle"+s));
-        menuTab.setTitleAt(QUERY_TAB,myResourceMap.getString("queryTab.TabConstraints.tabTitle"+s));
-        menuTab.setTitleAt(RESULT_TAB,myResourceMap.getString("resultTab.TabConstraints.tabTitle"+s));
-        menuTab.setTitleAt(IMPORT_EXPORT_TAB,myResourceMap.getString("importExportTab.TabConstraints.tabTitle"+s));
+        menuTab.setTitleAt(SCAN_TAB, myResourceMap.getString("scannerTab.TabConstraints.tabTitle" + s));
+        menuTab.setTitleAt(QUERY_TAB, myResourceMap.getString("queryTab.TabConstraints.tabTitle" + s));
+        menuTab.setTitleAt(RESULT_TAB, myResourceMap.getString("resultTab.TabConstraints.tabTitle" + s));
+        menuTab.setTitleAt(IMPORT_EXPORT_TAB, myResourceMap.getString("importExportTab.TabConstraints.tabTitle" + s));
 
-        languageLb.setText(myResourceMap.getString("languageLb"+s+".text"));
-        langaugeChangeBtn.setText(myResourceMap.getString("langaugeChangeBtn"+s+".text"));
+        languageLb.setText(myResourceMap.getString("languageLb" + s + ".text"));
+        langaugeChangeBtn.setText(myResourceMap.getString("langaugeChangeBtn" + s + ".text"));
 
-        databaseLb.setText(myResourceMap.getString("databaseLb"+s+".text"));
+        databaseLb.setText(myResourceMap.getString("databaseLb" + s + ".text"));
 
         //set language for Scanner tab
-        scannerLbT1.setText(myResourceMap.getString("scannerLbT1"+s+".text"));
-        scannerBtnT1.setText(myResourceMap.getString("scannerBtnT1"+s+".text"));
-        blackWhiteBtnT1.setText(myResourceMap.getString("blackWhiteBtnT1"+s+".text"));
-        doubleSideBtnT1.setText(myResourceMap.getString("doubleSideBtnT1"+s+".text"));
-        autoCropBtnT1.setText(myResourceMap.getString("autoCropBtnT1"+s+".text"));
-        readCardBtnT1.setText(myResourceMap.getString("readCardBtnT1"+s+".text"));
-        rotateBtnT1.setText(myResourceMap.getString("rotateBtnT1"+s+".text"));
-        emailBtnT1.setText(myResourceMap.getString("emailBtnT1"+s+".text"));
-        undoBtnT1.setText(myResourceMap.getString("undoBtnT1"+s+".text"));
-        confirmBtnT1.setText(myResourceMap.getString("confirmBtnT1"+s+".text"));
-        brightLbT1.setText(myResourceMap.getString("brightLbT1"+s+".text"));
+        scannerLbT1.setText(myResourceMap.getString("scannerLbT1" + s + ".text"));
+        scannerBtnT1.setText(myResourceMap.getString("scannerBtnT1" + s + ".text"));
+        blackWhiteBtnT1.setText(myResourceMap.getString("blackWhiteBtnT1" + s + ".text"));
+        doubleSideBtnT1.setText(myResourceMap.getString("doubleSideBtnT1" + s + ".text"));
+        autoCropBtnT1.setText(myResourceMap.getString("autoCropBtnT1" + s + ".text"));
+        readCardBtnT1.setText(myResourceMap.getString("readCardBtnT1" + s + ".text"));
+        rotateBtnT1.setText(myResourceMap.getString("rotateBtnT1" + s + ".text"));
+        emailBtnT1.setText(myResourceMap.getString("emailBtnT1" + s + ".text"));
+        undoBtnT1.setText(myResourceMap.getString("undoBtnT1" + s + ".text"));
+        confirmBtnT1.setText(myResourceMap.getString("confirmBtnT1" + s + ".text"));
+        brightLbT1.setText(myResourceMap.getString("brightLbT1" + s + ".text"));
 
-        scanBtn.setText(myResourceMap.getString("scanBtn"+s+".text"));
-        saveBtnT1.setText(myResourceMap.getString("saveBtnT1"+s+".text"));
+        scanBtn.setText(myResourceMap.getString("scanBtn" + s + ".text"));
+        saveBtnT1.setText(myResourceMap.getString("saveBtnT1" + s + ".text"));
 
-        sideLbT1.setText(myResourceMap.getString("sideLbT1"+s+".text"));
-        frontSideRdT1.setText(myResourceMap.getString("frontSideRdT1"+s+".text"));
-        backSideRdT1.setText(myResourceMap.getString("backSideRdT1"+s+".text"));
+        sideLbT1.setText(myResourceMap.getString("sideLbT1" + s + ".text"));
+        frontSideRdT1.setText(myResourceMap.getString("frontSideRdT1" + s + ".text"));
+        backSideRdT1.setText(myResourceMap.getString("backSideRdT1" + s + ".text"));
 
-        frontBtnT1.setText(myResourceMap.getString("frontBtnT1"+s+".text"));
-        backBtnT1.setText(myResourceMap.getString("backBtnT1"+s+".text"));
+        frontBtnT1.setText(myResourceMap.getString("frontBtnT1" + s + ".text"));
+        backBtnT1.setText(myResourceMap.getString("backBtnT1" + s + ".text"));
 
-        frontCropBtnT1.setText(myResourceMap.getString("frontCropBtnT1"+s+".text"));
-        backCropBtnT1.setText(myResourceMap.getString("backCropBtnT1"+s+".text"));
+        frontCropBtnT1.setText(myResourceMap.getString("frontCropBtnT1" + s + ".text"));
+        backCropBtnT1.setText(myResourceMap.getString("backCropBtnT1" + s + ".text"));
 
         //set language for Query tab
-        genSearchT2.setText(myResourceMap.getString("genSearchT2"+s+".text"));
-        quickLb.setText(myResourceMap.getString("quickLb"+s+".text"));
+        genSearchT2.setText(myResourceMap.getString("genSearchT2" + s + ".text"));
+        quickLb.setText(myResourceMap.getString("quickLb" + s + ".text"));
 
-        deletedBtnT2.setText(myResourceMap.getString("deletedBtnT2"+s+".text"));
-        editBtnT2.setText(myResourceMap.getString("editBtnT2"+s+".text"));
+        deletedBtnT2.setText(myResourceMap.getString("deletedBtnT2" + s + ".text"));
+        editBtnT2.setText(myResourceMap.getString("editBtnT2" + s + ".text"));
 
         //set language for Result tab
-        idLbT3.setText(myResourceMap.getString("idLbT3"+s+".text"));
-        blackWhiteBtnT3.setText(myResourceMap.getString("blackWhiteBtnT3"+s+".text"));
-        autoCropBtnT3.setText(myResourceMap.getString("autoCropBtnT3"+s+".text"));
-        rotateBtnT3.setText(myResourceMap.getString("rotateBtnT3"+s+".text"));
-        emailBtnT3.setText(myResourceMap.getString("emailBtnT3"+s+".text"));
-        undoBtnT3.setText(myResourceMap.getString("undoBtnT3"+s+".text"));
-        confirmBtnT3.setText(myResourceMap.getString("confirmBtnT3"+s+".text"));
-        brightLbT3.setText(myResourceMap.getString("brightLbT3"+s+".text"));
+        idLbT3.setText(myResourceMap.getString("idLbT3" + s + ".text"));
+        blackWhiteBtnT3.setText(myResourceMap.getString("blackWhiteBtnT3" + s + ".text"));
+        autoCropBtnT3.setText(myResourceMap.getString("autoCropBtnT3" + s + ".text"));
+        rotateBtnT3.setText(myResourceMap.getString("rotateBtnT3" + s + ".text"));
+        emailBtnT3.setText(myResourceMap.getString("emailBtnT3" + s + ".text"));
+        undoBtnT3.setText(myResourceMap.getString("undoBtnT3" + s + ".text"));
+        confirmBtnT3.setText(myResourceMap.getString("confirmBtnT3" + s + ".text"));
+        brightLbT3.setText(myResourceMap.getString("brightLbT3" + s + ".text"));
 
-        saveBtnT3.setText(myResourceMap.getString("saveBtnT3"+s+".text"));
+        saveBtnT3.setText(myResourceMap.getString("saveBtnT3" + s + ".text"));
 
-        sideLbT3.setText(myResourceMap.getString("sideLbT3"+s+".text"));
-        frontSideRdT3.setText(myResourceMap.getString("frontSideRdT3"+s+".text"));
-        backSideRdT3.setText(myResourceMap.getString("backSideRdT3"+s+".text"));
+        sideLbT3.setText(myResourceMap.getString("sideLbT3" + s + ".text"));
+        frontSideRdT3.setText(myResourceMap.getString("frontSideRdT3" + s + ".text"));
+        backSideRdT3.setText(myResourceMap.getString("backSideRdT3" + s + ".text"));
 
-        frontBtnT3.setText(myResourceMap.getString("frontBtnT3"+s+".text"));
-        backBtnT3.setText(myResourceMap.getString("backBtnT3"+s+".text"));
+        frontBtnT3.setText(myResourceMap.getString("frontBtnT3" + s + ".text"));
+        backBtnT3.setText(myResourceMap.getString("backBtnT3" + s + ".text"));
 
-        frontCropBtnT3.setText(myResourceMap.getString("frontCropBtnT3"+s+".text"));
-        backCropBtnT3.setText(myResourceMap.getString("backCropBtnT3"+s+".text"));
+        frontCropBtnT3.setText(myResourceMap.getString("frontCropBtnT3" + s + ".text"));
+        backCropBtnT3.setText(myResourceMap.getString("backCropBtnT3" + s + ".text"));
 
         //set language for Import Export tab
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("importPanel.border.title"+s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("exportPanel.border.title"+s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("importPanel.border.title" + s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("exportPanel.border.title" + s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
 
-        importLbT4.setText(myResourceMap.getString("importLbT4"+s+".text"));
-        importBrowseBtnT4.setText(myResourceMap.getString("importBrowseBtnT4"+s+".text"));
-        replaceBtnT4.setText(myResourceMap.getString("replaceBtnT4"+s+".text"));
-        pendingBtnT4.setText(myResourceMap.getString("pendingBtnT4"+s+".text"));
+        importLbT4.setText(myResourceMap.getString("importLbT4" + s + ".text"));
+        importBrowseBtnT4.setText(myResourceMap.getString("importBrowseBtnT4" + s + ".text"));
+        replaceBtnT4.setText(myResourceMap.getString("replaceBtnT4" + s + ".text"));
+        pendingBtnT4.setText(myResourceMap.getString("pendingBtnT4" + s + ".text"));
 
-        exportLbT4.setText(myResourceMap.getString("exportLbT4"+s+".text"));
-        browseExportBtnT4.setText(myResourceMap.getString("browseExportBtnT4"+s+".text"));
-        exportBtnT4.setText(myResourceMap.getString("exportBtnT4"+s+".text"));
+        exportLbT4.setText(myResourceMap.getString("exportLbT4" + s + ".text"));
+        browseExportBtnT4.setText(myResourceMap.getString("browseExportBtnT4" + s + ".text"));
+        exportBtnT4.setText(myResourceMap.getString("exportBtnT4" + s + ".text"));
 
         //set Alert language
-        ADD_ALERT = "addAlertT1"+s+".text";
-        UPDATE_ALERT = "updateAlertT3"+s+".text";
-        MISSING_ALERT = "missingName"+s+".text";
-        DELETE_ALERT = "deleteAlert"+s+".text";
-        CONFIRM_ALERT = "confirmAlert"+s+".text";
-        YES_CHOICE = "yesChoice"+s+".text";
-        NO_CHOICE = "noChoice"+s+".text";
-        IMPORT_ALERT = "importAlert"+s+".text";
-        EXPORT_ALERT = "exportAlert"+s+".text";
-        ACCEPT_CHOICE = "acceptChoice"+s+".text";
-        NOTIFICATION_ALERT = "notificationAlert"+s+".text";
+        ADD_ALERT = "addAlertT1" + s + ".text";
+        UPDATE_ALERT = "updateAlertT3" + s + ".text";
+        MISSING_ALERT = "missingName" + s + ".text";
+        DELETE_ALERT = "deleteAlert" + s + ".text";
+        CONFIRM_ALERT = "confirmAlert" + s + ".text";
+        YES_CHOICE = "yesChoice" + s + ".text";
+        NO_CHOICE = "noChoice" + s + ".text";
+        IMPORT_ALERT = "importAlert" + s + ".text";
+        EXPORT_ALERT = "exportAlert" + s + ".text";
+        ACCEPT_CHOICE = "acceptChoice" + s + ".text";
+        NOTIFICATION_ALERT = "notificationAlert" + s + ".text";
 
         //set crop panel
-        CROP_PANEL_TITLE = "cropPanelTitle"+s+".text";
-        CROP_CONFIRM = "cropConfirm"+s+".text";
-        CROP_CANCEL = "cropCancel"+s+".text";
-        CROP_FOCUS = "cropFocus"+s+".text";
+        CROP_PANEL_TITLE = "cropPanelTitle" + s + ".text";
+        CROP_CONFIRM = "cropConfirm" + s + ".text";
+        CROP_CANCEL = "cropCancel" + s + ".text";
+        CROP_FOCUS = "cropFocus" + s + ".text";
     }
 
-    private String[] getOptionChoice(){
-        String[] option = new String[]{myResourceMap.getString(YES_CHOICE),myResourceMap.getString(NO_CHOICE)};
+    private String[] getOptionChoice() {
+        String[] option = new String[]{myResourceMap.getString(YES_CHOICE), myResourceMap.getString(NO_CHOICE)};
         return option;
     }
 
-    private String[] getAcceptChoice(){
+    private String[] getAcceptChoice() {
         String[] option = new String[]{myResourceMap.getString(ACCEPT_CHOICE)};
         return option;
     }
 
-    private Card getCardFromForm(int index){
+    private Card getCardFromForm(int index) {
         Card newCard;
-        switch(index){
-            case 0 :newCard = getCardFromT1(); break;
-            case 1 :newCard = getCardFromT2(); break;
-            case 2 :newCard = getCardFromT3(); break;
-            default: newCard = new Card();
-            }
+        switch (index) {
+            case 0:
+                newCard = getCardFromT1();
+                break;
+            case 1:
+                newCard = getCardFromT2();
+                break;
+            case 2:
+                newCard = getCardFromT3();
+                break;
+            default:
+                newCard = new Card();
+        }
         return newCard;
     }
- 
-    private Card getCardFromT1(){
+
+    private Card getCardFromT1() {
         Card newCard;
 
         String name = nameTfT1.getText();
@@ -6279,11 +6346,11 @@ public class ScannerView extends FrameView {
         String noteE = noteTaTE1.getText();
 
         return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
-                                        imgFront, imgBack,
-                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+                imgFront, imgBack,
+                nameE, lastNameE, titleE, companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
     }
 
-     private Card getCardFromT2(){
+    private Card getCardFromT2() {
         Card newCard;
 
         String name = nameTfT2.getText();
@@ -6317,11 +6384,11 @@ public class ScannerView extends FrameView {
         String noteE = noteTaTE2.getText();
 
         return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
-                                        "", "",
-                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+                "", "",
+                nameE, lastNameE, titleE, companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
     }
 
-    private Card getCardFromT3(){
+    private Card getCardFromT3() {
         Card newCard;
 
         String name = nameTfT3.getText();
@@ -6355,11 +6422,11 @@ public class ScannerView extends FrameView {
         String noteE = noteTaTE3.getText();
 
         return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
-                                        "", "",
-                                        nameE, lastNameE, titleE,companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
+                "", "",
+                nameE, lastNameE, titleE, companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
     }
 
-    private void clearFormT1(){
+    private void clearFormT1() {
         nameTfT1.setText("");
         lastnameTfT1.setText("");
         titleTfT1.setText("");
@@ -6398,7 +6465,7 @@ public class ScannerView extends FrameView {
         backLbT1.setIcon(null);
     }
 
-    private void clearFormT3(){
+    private void clearFormT3() {
 
         idNameLbT3.setText("");
 
@@ -6439,7 +6506,6 @@ public class ScannerView extends FrameView {
         frontLbT3.setIcon(null);
         backLbT3.setIcon(null);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adsLbT1;
     private javax.swing.JLabel adsLbT2;
@@ -6789,13 +6855,11 @@ public class ScannerView extends FrameView {
     private javax.swing.JTextField webTfT2;
     private javax.swing.JTextField webTfT3;
     // End of variables declaration//GEN-END:variables
-
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-
     //file chooser
     private/*final*/ javax.swing.JFileChooser dbChooser = new javax.swing.JFileChooser();
     private/*final*/ javax.swing.JFileChooser imgChooser = new javax.swing.JFileChooser();
@@ -6807,24 +6871,19 @@ public class ScannerView extends FrameView {
     private ArrayList<Card> localCardList;
     private File defaultcard;
     private JDialog aboutBox;
-
     // For Yov's part: image processing and scanner variables
     private CardScanner bcScanner;
     private BusinessCard scannedBCard, scannedBCardBack;
     public BufferedImage scannedImage;
     private String scannedImageFileName, scannedImageFileNameBack;
     private boolean isFrontSelected;
-
     private BusinessCard resultBCard, resultBCardBack;
     private BufferedImage resultImage;
     private boolean isFrontSelectedResult;
-
     private boolean isBrowsedFront, isBrowsedBack;
     private boolean isBrowsedFrontResult, isBrowsedBackResult;
-
     private int frontUIState, backUIState;
     private int frontUIStateResult, backUIStateResult;
-
     private String ADD_ALERT = "addAlertT1.text";
     private String UPDATE_ALERT = "updateAlertT3.text";
     private String NOTIFICATION_ALERT = "notificationAlert.text";
@@ -6836,21 +6895,17 @@ public class ScannerView extends FrameView {
     private String IMPORT_ALERT = "importAlert.text";
     private String EXPORT_ALERT = "exportAlert.text";
     private String ACCEPT_CHOICE = "acceptChoice.text";
-
     private String CROP_PANEL_TITLE = "cropPanelTitle.text";
     private String CROP_CONFIRM = "cropConfirm.text";
     private String CROP_CANCEL = "cropCancel.text";
     private String CROP_FOCUS = "cropFocus.text";
-
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;
     private final int STATE_IMAGE_EDITED = 2;
-
     private final int SCAN_TAB = 0;
     private final int QUERY_TAB = 1;
     private final int RESULT_TAB = 2;
     private final int IMPORT_EXPORT_TAB = 3;
-
     private final int QUICK_NONE = -1;
     private final int QUICK_TH_0 = 0;
     private final int QUICK_TH_1 = 1;
@@ -6861,7 +6916,6 @@ public class ScannerView extends FrameView {
     private final int QUICK_TH_6 = 6;
     private final int QUICK_TH_7 = 7;
     private final int QUICK_TH_8 = 8;
-
     private final int QUICK_EN_0 = 9;
     private final int QUICK_EN_1 = 10;
     private final int QUICK_EN_2 = 11;
@@ -6871,12 +6925,9 @@ public class ScannerView extends FrameView {
     private final int QUICK_EN_6 = 15;
     private final int QUICK_EN_7 = 16;
     private final int QUICK_EN_8 = 17;
-
     private final int EN = 0;
     private final int TH = 1;
-
-    private final int WIN_WIDTH= 450;
-    private final int WIN_HEIGHT= 180;
-
+    private final int WIN_WIDTH = 450;
+    private final int WIN_HEIGHT = 180;
     private XTableColumnModel xCol;
 }

@@ -87,7 +87,7 @@ public class BusinessCard { // DONE - But not tested yet
             try {
                 File tessExe = new File(".");
 
-                tessExe = new File(tessExe.getCanonicalPath() + "\\externalLib\\tesseract");
+                tessExe = new File(tessExe.getCanonicalPath() + File.separator+"externalLib"+File.separator+"tesseract");
                 //System.out.println("Tesseract Path(Absolute) = " + tessExe.getAbsolutePath());
                 //System.out.println("Tesseract Path(Canonical) = " + tessExe.getCanonicalPath());
 
