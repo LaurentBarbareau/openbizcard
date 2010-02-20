@@ -5670,10 +5670,10 @@ public class ScannerView extends FrameView {
                 scannedBCard = new BusinessCard(frontImgDialog.getCroppedImage());
 
                 frontLbT1.setIcon(new ImageIcon(scannedImage));
-                if (backLbT1.getIcon() != null) {
-                    backLbT1.setIcon(new ImageIcon(scannedImage));
-                    scannedBCardBack = new BusinessCard(frontImgDialog.getCroppedImage());
-                }
+//                if (backLbT1.getIcon() != null) {
+//                    backLbT1.setIcon(new ImageIcon(scannedImage));
+//                    scannedBCardBack = new BusinessCard(frontImgDialog.getCroppedImage());
+//                }
             }
 
         }
@@ -5698,10 +5698,10 @@ public class ScannerView extends FrameView {
                 scannedBCardBack = new BusinessCard(backImgDialog.getCroppedImage());
 
                 backLbT1.setIcon(new ImageIcon(scannedImage));
-                if (frontLbT1.getIcon() != null) {
-                    frontLbT1.setIcon(new ImageIcon(scannedImage));
-                    scannedBCard = new BusinessCard(backImgDialog.getCroppedImage());
-                }
+//                if (frontLbT1.getIcon() != null) {
+//                    frontLbT1.setIcon(new ImageIcon(scannedImage));
+//                    scannedBCard = new BusinessCard(backImgDialog.getCroppedImage());
+//                }
             }
         }
     }//GEN-LAST:event_backCropBtnT1ActionPerformed
@@ -5725,10 +5725,10 @@ public class ScannerView extends FrameView {
                 resultBCard = new BusinessCard(frontImgDialogResult.getCroppedImage());
 
                 frontLbT3.setIcon(new ImageIcon(resultImage));
-                if (backLbT3.getIcon() != null) {
-                    backLbT3.setIcon(new ImageIcon(scannedImage));
-                    scannedBCardBack = new BusinessCard(frontImgDialogResult.getCroppedImage());
-                }
+//                if (backLbT3.getIcon() != null) {
+//                    backLbT3.setIcon(new ImageIcon(scannedImage));
+//                    scannedBCardBack = new BusinessCard(frontImgDialogResult.getCroppedImage());
+//                }
             }
         }
     }//GEN-LAST:event_frontCropBtnT3ActionPerformed
@@ -5752,10 +5752,10 @@ public class ScannerView extends FrameView {
                 resultBCardBack = new BusinessCard(backImgDialogResult.getCroppedImage());
 
                 backLbT3.setIcon(new ImageIcon(resultImage));
-                 if (frontLbT3.getIcon() != null) {
-                    frontLbT3.setIcon(new ImageIcon(scannedImage));
-                    scannedBCard = new BusinessCard(backImgDialogResult.getCroppedImage());
-                }
+//                 if (frontLbT3.getIcon() != null) {
+//                    frontLbT3.setIcon(new ImageIcon(scannedImage));
+//                    scannedBCard = new BusinessCard(backImgDialogResult.getCroppedImage());
+//                }
             }
 
         }
@@ -6407,6 +6407,9 @@ public class ScannerView extends FrameView {
         String ads = adsTaT3.getText();
         String note = noteTaT3.getText();
 
+         String imgFront = validatePath(frontTfT3.getText());
+        String imgBack = validatePath(backTfT3.getText());
+
         String nameE = nameTfTE3.getText();
         String lastNameE = lastnameTfTE3.getText();
         String titleE = titleTfTE3.getText();
@@ -6422,7 +6425,7 @@ public class ScannerView extends FrameView {
         String noteE = noteTaTE3.getText();
 
         return newCard = new Card(name, lastName, title, email, company, web, ads, city, state, country, code, phone, fax, mobile, note,
-                "", "",
+                imgFront, imgBack,
                 nameE, lastNameE, titleE, companyE, adsE, cityE, stateE, countryE, codeE, phoneE, faxE, mobileE, noteE);
     }
 
