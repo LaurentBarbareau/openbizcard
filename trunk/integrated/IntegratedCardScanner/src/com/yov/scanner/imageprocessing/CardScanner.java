@@ -80,8 +80,8 @@ public class CardScanner implements ScannerListener {
     cardScanner.addListener(scannerListener);
     }
      */
-
     ScannerView scannerView = null;
+
     public synchronized BufferedImage scan(ScannerView scannerView) {
         this.scannerView = scannerView;
         scanImage = null;
@@ -103,13 +103,11 @@ public class CardScanner implements ScannerListener {
             isWaiting = true;
             System.out.println("+++++++ Scanner Wait +++");
             waitSource = SOURCE_SCAN;
-             if (cardScanner instanceof SaneScanner) {
+            if (cardScanner instanceof SaneScanner) {
+            } else {
+//                wait();
 
-             }
-             else{
-			wait();
-
-             }
+            }
 
             isNotified = !isNotified;
 
@@ -137,7 +135,14 @@ public class CardScanner implements ScannerListener {
                     try {
 //                                System.out.println("SaneScanner  count" + count  + cardScanner.);
 //                                     System.out.println(count+"Setting scaner name" +cardScanner.getSelectedDeviceName() );
-                        tf.setText(cardScanner.getSelectedDeviceName() + count);
+                        String scannerName = cardScanner.getSelectedDeviceName();
+                        // Remove "TWAIN" or "SANE" from scanner's name
+                        int extStrPos = scannerName.lastIndexOf("TWAIN") + scannerName.lastIndexOf("SANE") + 1;
+
+                        if (extStrPos > -1) {
+                            scannerName = scannerName.substring(0, extStrPos - 1);
+                        }
+                        tf.setText(scannerName);
                     } catch (ScannerIOException ex) {
                         Logger.getLogger(CardScanner.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -161,20 +166,26 @@ public class CardScanner implements ScannerListener {
 
         try {
             cardScanner.select();
+            isWaiting = true;
+            System.out.println("+++++++ Select Wait +++");
+            waitSource = SOURCE_SELECT;
             if (cardScanner instanceof SaneScanner) {
                 if (sanechecker != null) {
                     sanechecker.mTrucking = false;
                 }
-                ;
                 sanechecker = new SaneChecker(tf);
                 new Thread(sanechecker).start();
                 return cardScanner.getSelectedDeviceName();
             } else {
-                wait();
+
+//                wait();
+                if (sanechecker != null) {
+                    sanechecker.mTrucking = false;
+                }
+                sanechecker = new SaneChecker(tf);
+                new Thread(sanechecker).start();
             }
-            isWaiting = true;
-            System.out.println("+++++++ Select Wait +++");
-            waitSource = SOURCE_SELECT;
+
             //wait();
 
             isNotified = !isNotified;
@@ -192,6 +203,7 @@ public class CardScanner implements ScannerListener {
         if (extStrPos > -1) {
             scannerName = scannerName.substring(0, extStrPos - 1);
         }
+        System.out.println("New Scanner is " + scannerName);
         return scannerName;
     }
 
@@ -236,21 +248,25 @@ public class CardScanner implements ScannerListener {
             scanImage = metadata.getImage();
 
             System.out.println("Have an image now!" + scanImage.getWidth());
-            if(cardScanner instanceof  SaneScanner){
-                if(scannerView != null){
+            if (cardScanner instanceof SaneScanner) {
+                if (scannerView != null) {
                     scannerView.scannedImage = scanImage;
                     scannerView.setScannedImage();
                 }
-            }else{
-            if (!isNotified && isWaiting) {
-                notify();
-                isNotified = true;
-                isWaiting = false;
-                System.out.println("+++++++ Update Notify +++");
-            }
+            } else {
+//                if (!isNotified && isWaiting) {
+//                    notify();
+//                    isNotified = true;
+//                    isWaiting = false;
+//                    System.out.println("+++++++ Update Notify +++");
+//                }
+                 if (scannerView != null) {
+                    scannerView.scannedImage = scanImage;
+                    scannerView.setScannedImage();
+                }
             }
 
-            
+
             //TestUI2.class.notifyAll();
 
             try {
