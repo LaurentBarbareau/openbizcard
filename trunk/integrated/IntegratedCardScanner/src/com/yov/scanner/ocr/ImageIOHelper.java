@@ -89,7 +89,7 @@ public class ImageIOHelper {
         String path = imageFile.getPath();
         StringBuffer strB = new StringBuffer(path);
         strB.insert(path.lastIndexOf('.'), index);
-        return new File(strB.toString().replaceFirst("(?<=\\.)(\\w+)$", "tif"));
+        return new File(strB.toString().replaceFirst("(?<="+File.separator+".)("+File.separator+"w+)$", "tif"));
     }
         
     public static ArrayList<ImageIconScalable> getImageList(File imageFile) {
