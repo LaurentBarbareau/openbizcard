@@ -50,6 +50,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collections;
+import java.util.Iterator;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 
@@ -4778,17 +4779,28 @@ public class ScannerView extends FrameView {
         Card tempCard = new Card();
 
         if (response == 0) {
+            ArrayList<Card> ids = new ArrayList<Card>();
             for (int i = model.getRowCount() - 1; i >= 0; i--) {
                 if (((Boolean) model.getValueAt(i, 0)).booleanValue() == true) {
-                    try {
+
                         temp = (Long) model.getValueAt(i, 9);
+                        tempCard = new Card();
                         tempCard.setId(temp);
-                        CardLocalManager.deleteLocalCard(temp, defaultcard.getAbsolutePath());
-                        localCardList.remove(tempCard);
+                        ids.add(tempCard);
+//                        localCardList.remove(tempCard);
                         model.removeRow(i);
-                    } catch (ScannerDBException ex) {
-                        Logger.getLogger(ScannerView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
+                }
+            }
+            // Sort from high to low
+
+            Collections.sort(ids);
+            for (Iterator<Card> it = ids.iterator(); it.hasNext();) {
+                try{
+                Card card = it.next();
+                localCardList =  (ArrayList<Card>) CardLocalManager.deleteLocalCard(card.getId(), defaultcard.getAbsolutePath());
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
             }
         }
@@ -5966,7 +5978,9 @@ public class ScannerView extends FrameView {
                         if (isBrowsedFrontResult) {
 
                             File originalImage = new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg");
+                             if (originalImage.isFile()) {
                             originalImage.delete();
+                             }
                             ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
 
                         }

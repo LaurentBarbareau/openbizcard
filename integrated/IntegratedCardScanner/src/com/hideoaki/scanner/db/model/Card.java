@@ -11,7 +11,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 
-public class Card {
+public class Card implements Comparable<Card>{
 
     public static final String DEFAULT_LOCAL_CARD_FILE = "defaultcard.csv";
     private Long id;
@@ -44,6 +44,9 @@ public class Card {
     private String mobileE;
     private String noteE;
 
+    public int compareTo(Card o) {
+        return (int)(o.id - this.id  ) ;
+    }
     public String getAddressE() {
         return addressE;
     }
@@ -565,12 +568,15 @@ public class Card {
 
     public static List<Card> deleteLocalCard(long id, String pathToCSV)
             throws ScannerDBException {
+        System.out.println("Delete id " + id);
         Card temp = new Card();
         temp.setId(id);
         ArrayList<Card> currentCards = loadLocalCard(pathToCSV);
         int i = currentCards.indexOf(temp);
         if (i >= 0) {
+             System.out.println("Real Delete id " + id);
             currentCards.remove(i);
+             System.out.println("currentCards size "  + currentCards.size());
         }
         saveLocalCard(currentCards, pathToCSV);
         return currentCards;
