@@ -44,6 +44,11 @@ import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
@@ -958,11 +963,11 @@ public class ScannerView extends FrameView {
         blankPanel0.setLayout(blankPanel0Layout);
         blankPanel0Layout.setHorizontalGroup(
             blankPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel0Layout.setVerticalGroup(
             blankPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -977,11 +982,11 @@ public class ScannerView extends FrameView {
         blankPanel1.setLayout(blankPanel1Layout);
         blankPanel1Layout.setHorizontalGroup(
             blankPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel1Layout.setVerticalGroup(
             blankPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1014,11 +1019,11 @@ public class ScannerView extends FrameView {
         blankPanel2.setLayout(blankPanel2Layout);
         blankPanel2Layout.setHorizontalGroup(
             blankPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel2Layout.setVerticalGroup(
             blankPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2126,11 +2131,11 @@ public class ScannerView extends FrameView {
         blankPanel4.setLayout(blankPanel4Layout);
         blankPanel4Layout.setHorizontalGroup(
             blankPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel4Layout.setVerticalGroup(
             blankPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2162,11 +2167,11 @@ public class ScannerView extends FrameView {
         blankPanel12.setLayout(blankPanel12Layout);
         blankPanel12Layout.setHorizontalGroup(
             blankPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel12Layout.setVerticalGroup(
             blankPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2199,11 +2204,11 @@ public class ScannerView extends FrameView {
         blankPanel13.setLayout(blankPanel13Layout);
         blankPanel13Layout.setHorizontalGroup(
             blankPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel13Layout.setVerticalGroup(
             blankPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3703,11 +3708,11 @@ public class ScannerView extends FrameView {
         blankPanel5.setLayout(blankPanel5Layout);
         blankPanel5Layout.setHorizontalGroup(
             blankPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel5Layout.setVerticalGroup(
             blankPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3739,11 +3744,11 @@ public class ScannerView extends FrameView {
         blankPanel16.setLayout(blankPanel16Layout);
         blankPanel16Layout.setHorizontalGroup(
             blankPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel16Layout.setVerticalGroup(
             blankPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3776,11 +3781,11 @@ public class ScannerView extends FrameView {
         blankPanel17.setLayout(blankPanel17Layout);
         blankPanel17Layout.setHorizontalGroup(
             blankPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel17Layout.setVerticalGroup(
             blankPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4290,7 +4295,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4299,7 +4304,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4622,10 +4627,14 @@ public class ScannerView extends FrameView {
 
                         if (isBrowsedFront) {
                             ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
+                            newCard.setImgFront("./cardImages/" + cardID + ".jpg");
                         } else {
-                            imgFile.renameTo(new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
+                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg";
+//                            imgFile.renameTo(new File(fname));
+                            copyfile(imgFileName, fname);
+                            newCard.setImgFront(fname);
                         }
-                        newCard.setImgFront("./cardImages/" + cardID + ".jpg");
+
 
                     }
                 }
@@ -4637,10 +4646,14 @@ public class ScannerView extends FrameView {
 
                         if (isBrowsedBack) {
                             ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
+                            newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
                         } else {
-                            imgBackFile.renameTo(new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
+                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg";
+                            copyfile(imgBackFileName, fname);
+//                            imgBackFile.renameTo(new File(fname));
+                            newCard.setImgBack(fname);
                         }
-                        newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
+
                     }
                 }
 
@@ -4656,7 +4669,33 @@ public class ScannerView extends FrameView {
             clearFormT1();
         }
     }//GEN-LAST:event_saveBtnT1ActionPerformed
+    private static void copyfile(String srFile, String dtFile) {
+        try {
+            File f1 = new File(srFile);
+            File f2 = new File(dtFile);
+            InputStream in = new FileInputStream(f1);
 
+            //For Append the file.
+//      OutputStream out = new FileOutputStream(f2,true);
+
+            //For Overwrite the file.
+            OutputStream out = new FileOutputStream(f2);
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+            System.out.println("File copied.");
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage() + " in the specified directory.");
+            System.exit(0);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     private void frontBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frontBtnT1ActionPerformed
         // TODO add your handling code here:
 
@@ -4758,7 +4797,7 @@ public class ScannerView extends FrameView {
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
-        if(importTableT2.getSelectedRow() == -1){
+        if (importTableT2.getSelectedRow() == -1) {
             return;
         }
         long id = (Long) model.getValueAt(importTableT2.getSelectedRow(), 9);
@@ -4981,6 +5020,34 @@ public class ScannerView extends FrameView {
             System.err.println("!!! Scanned Image is NULL !!!");
         }
     }
+
+    public void setScannedImage(String newFileName) {
+        if (scannedImage != null) {
+            if (isFrontSelected) {
+                scannedBCard = new BusinessCard(scannedImage);
+
+                frontLbT1.setIcon(new ImageIcon(scannedImage));
+                frontTfT1.setText(newFileName);
+
+                frontUIState = STATE_WITH_IMAGE;
+                setButtonsState(frontUIState);
+
+                isBrowsedFront = false;
+            } else {
+                scannedBCardBack = new BusinessCard(scannedImage);
+
+                backLbT1.setIcon(new ImageIcon(scannedImage));
+                backTfT1.setText(newFileName);
+
+                backUIState = STATE_WITH_IMAGE;
+                setButtonsState(backUIState);
+
+                isBrowsedBack = false;
+            }
+        } else {
+            System.err.println("!!! Scanned Image is NULL !!!");
+        }
+    }
     private void rotateBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotateBtnT1ActionPerformed
         if (isFrontSelected) {
             if (scannedBCard != null) {
@@ -5046,8 +5113,8 @@ public class ScannerView extends FrameView {
                 } else {
 //                    scannedBCard.setImageFileName(scannedImageFileName
 //                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
-                     scannedBCard.setImageFileName(frontTfT1.getText());
-                     System.out.print("OCR Image file name back"  +frontTfT1.getText() );
+                    scannedBCard.setImageFileName(frontTfT1.getText());
+                    System.out.print("OCR Image file name back" + frontTfT1.getText());
                 }
 
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
@@ -5072,8 +5139,8 @@ public class ScannerView extends FrameView {
                 } else {
 //                    scannedBCardBack.setImageFileName(scannedImageFileNameBack
 //                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
-                     scannedBCardBack.setImageFileName(backTfT1.getText());
-                     System.out.print("OCR Image file name back"  +backTfT1.getText() );
+                    scannedBCardBack.setImageFileName(backTfT1.getText());
+                    System.out.print("OCR Image file name back" + backTfT1.getText());
                 }
 
                 //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
@@ -5743,7 +5810,7 @@ public class ScannerView extends FrameView {
     private void backCropBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCropBtnT3ActionPerformed
         if (((backUIStateResult == STATE_WITH_IMAGE) || (backUIStateResult == STATE_IMAGE_EDITED))
                 && (backTfT3.getText() != null) && (backTfT3.getText().length() > 0)) {
-               System.out.println("backt3 : " +backTfT3.getText() );
+            System.out.println("backt3 : " + backTfT3.getText());
             ImagePanelDialog backImgDialogResult = new ImagePanelDialog(backTfT3.getText());
 
             backImgDialogResult.init();
@@ -6414,7 +6481,7 @@ public class ScannerView extends FrameView {
         String ads = adsTaT3.getText();
         String note = noteTaT3.getText();
 
-         String imgFront = validatePath(frontTfT3.getText());
+        String imgFront = validatePath(frontTfT3.getText());
         String imgBack = validatePath(backTfT3.getText());
 
         String nameE = nameTfTE3.getText();
@@ -6885,7 +6952,7 @@ public class ScannerView extends FrameView {
     private CardScanner bcScanner;
     private BusinessCard scannedBCard, scannedBCardBack;
     public BufferedImage scannedImage;
-    private String scannedImageFileName, scannedImageFileNameBack;
+    public String scannedImageFileName, scannedImageFileNameBack;
     private boolean isFrontSelected;
     private BusinessCard resultBCard, resultBCardBack;
     private BufferedImage resultImage;
