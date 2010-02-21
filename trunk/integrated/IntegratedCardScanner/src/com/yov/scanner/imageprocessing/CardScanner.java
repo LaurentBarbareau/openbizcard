@@ -3,6 +3,7 @@ package com.yov.scanner.imageprocessing;
 import com.jen.scanner.ui.ScannerView;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -229,12 +230,21 @@ public class CardScanner implements ScannerListener {
         return oldName;
     }
 
-    public String setTargetFileName(String newFileName) {
+    public void setTargetFileName(String newFileName) {
+         File curDir = new File(".");
+        try {
+            String scannedImageFileName = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator;
+             targetFileName = scannedImageFileName;
+             return;
+        } catch (IOException ex) {
+            Logger.getLogger(CardScanner.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
         String oldFileName = targetFileName;
         targetFileName = newFileName;
-        System.out.println("CardScanner.setTargetFileName(String newFlieName)");
-
-        return oldFileName;
+        System.out.println("CardScanner.setTargetFileName " + targetFileName);
+        // Find from Image file Name
+//          return oldFileName;
     }
 
     @Override
@@ -248,10 +258,11 @@ public class CardScanner implements ScannerListener {
             scanImage = metadata.getImage();
 
             System.out.println("Have an image now!" + scanImage.getWidth());
+            String newFileName = targetFileName + fileNameIndex + ".jpg";
             if (cardScanner instanceof SaneScanner) {
                 if (scannerView != null) {
                     scannerView.scannedImage = scanImage;
-                    scannerView.setScannedImage();
+                    scannerView.setScannedImage(newFileName);
                 }
             } else {
 //                if (!isNotified && isWaiting) {
@@ -262,7 +273,7 @@ public class CardScanner implements ScannerListener {
 //                }
                  if (scannerView != null) {
                     scannerView.scannedImage = scanImage;
-                    scannerView.setScannedImage();
+                    scannerView.setScannedImage(newFileName);
                 }
             }
 
@@ -271,8 +282,8 @@ public class CardScanner implements ScannerListener {
 
             try {
 
-                System.out.println("Writing image to " + targetFileName + fileNameIndex + ".jpg");
-                ImageIO.write(scanImage, "jpg", new File(targetFileName + fileNameIndex + ".jpg"));
+                System.out.println("Writing image to " +newFileName );
+                ImageIO.write(scanImage, "jpg", new File(newFileName));
                 fileNameIndex++;
 
                 //	        new uk.co.mmscomputing.concurrent.Semaphore(0,true).tryAcquire(2000,null);
