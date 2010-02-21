@@ -300,7 +300,7 @@ public class CardImage {
 		};
 		
 		BufferedImage brightImage = new BufferedImage(imageData.getWidth(), imageData.getHeight(),
-				imageData.getType());
+				BufferedImage.TYPE_INT_BGR);
 		ConvolveOp brightOp = new ConvolveOp(new Kernel(1, 1, new float[]{brightRatio}));
 		brightOp.filter(imageData, brightImage);
 		
