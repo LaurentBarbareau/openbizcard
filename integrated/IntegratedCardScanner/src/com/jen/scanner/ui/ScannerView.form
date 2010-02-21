@@ -268,6 +268,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="nameTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -280,6 +283,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="titleTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -292,6 +298,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="companyTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -304,6 +313,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="disTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -316,6 +328,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="codeTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -328,6 +343,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="mobileTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -340,6 +358,9 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="text" type="java.lang.String" resourceKey="faxTfT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -351,6 +372,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -362,6 +386,9 @@
                         <Component class="javax.swing.JTextField" name="emailTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -373,6 +400,9 @@
                         <Component class="javax.swing.JTextField" name="webTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="webTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -384,6 +414,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -395,6 +428,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -406,6 +442,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -417,6 +456,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -475,6 +517,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT1" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -535,6 +580,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT1" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -544,7 +592,13 @@
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel0">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel0" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -555,12 +609,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -570,7 +624,13 @@
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[10, 10]"/>
                             </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -581,12 +641,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -605,6 +665,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -615,7 +678,13 @@
                         </Component>
                         <Container class="javax.swing.JPanel" name="blankPanel2">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -626,12 +695,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -650,6 +719,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -672,6 +744,9 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -694,6 +769,9 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -760,6 +838,9 @@
                         <Component class="javax.swing.JTextField" name="disTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -771,6 +852,9 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -782,6 +866,9 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -793,6 +880,9 @@
                         <Component class="javax.swing.JTextField" name="faxTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -850,6 +940,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaTE1.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE1" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -915,6 +1008,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -926,6 +1022,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -937,6 +1036,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -948,6 +1050,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE1" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1008,6 +1113,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaTE1.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE1" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -1021,7 +1129,13 @@
                 </Container>
                 <Container class="javax.swing.JPanel" name="blankPanel3">
                   <Properties>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="blankPanel3" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1032,12 +1146,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -1201,7 +1315,13 @@
                         <Component class="javax.swing.JTextField" name="scannerTxtT1">
                           <Properties>
                             <Property name="text" type="java.lang.String" resourceKey="scannerTxtT1.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="scannerTxtT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -1416,7 +1536,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="frontPanelT1" alignment="0" pref="329" max="32767" attributes="0"/>
+                              <Component id="frontPanelT1" alignment="0" pref="334" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1446,13 +1566,13 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="frontTfT1" pref="147" max="32767" attributes="0"/>
+                                              <Component id="frontTfT1" pref="152" max="32767" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="frontBtnT1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="frontCropBtnT1" min="-2" pref="89" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="frontSpT1" alignment="0" pref="319" max="32767" attributes="0"/>
+                                          <Component id="frontSpT1" alignment="0" pref="324" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -1543,7 +1663,7 @@
                                       </Group>
                                       <Component id="backSpT1" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="14" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1832,6 +1952,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1843,6 +1966,9 @@
                         <Component class="javax.swing.JTextField" name="titleTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1854,6 +1980,9 @@
                         <Component class="javax.swing.JTextField" name="companyTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1865,6 +1994,9 @@
                         <Component class="javax.swing.JTextField" name="disTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1876,6 +2008,9 @@
                         <Component class="javax.swing.JTextField" name="codeTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1887,6 +2022,9 @@
                         <Component class="javax.swing.JTextField" name="mobileTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1898,6 +2036,9 @@
                         <Component class="javax.swing.JTextField" name="faxTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1909,6 +2050,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1920,6 +2064,9 @@
                         <Component class="javax.swing.JTextField" name="emailTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1931,6 +2078,9 @@
                         <Component class="javax.swing.JTextField" name="webTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="webTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1942,6 +2092,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1953,6 +2106,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1964,6 +2120,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1975,6 +2134,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2033,6 +2195,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT2" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -2093,6 +2258,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT2" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -2102,7 +2270,13 @@
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel4">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel4" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2113,19 +2287,25 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel11">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel11" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2136,19 +2316,25 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel12">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel12" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2159,12 +2345,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -2183,6 +2369,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2228,6 +2417,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2250,6 +2442,9 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2272,6 +2467,9 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2338,6 +2536,9 @@
                         <Component class="javax.swing.JTextField" name="disTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2349,6 +2550,9 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2360,6 +2564,9 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2371,6 +2578,9 @@
                         <Component class="javax.swing.JTextField" name="faxTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2428,6 +2638,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaTE2.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE2" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -2493,6 +2706,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2504,6 +2720,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2515,6 +2734,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2526,6 +2748,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE2" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2586,6 +2811,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaTE2.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE2" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -2602,7 +2830,13 @@
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[10, 10]"/>
                     </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="blankPanel14" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2613,12 +2847,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -3257,7 +3491,13 @@
                 </Container>
                 <Container class="javax.swing.JPanel" name="blankPanel6">
                   <Properties>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="blankPanel6" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[10, 10]"/>
+                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -3268,12 +3508,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -4023,6 +4263,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4034,6 +4277,9 @@
                         <Component class="javax.swing.JTextField" name="titleTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4045,6 +4291,9 @@
                         <Component class="javax.swing.JTextField" name="companyTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4056,6 +4305,9 @@
                         <Component class="javax.swing.JTextField" name="disTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4067,6 +4319,9 @@
                         <Component class="javax.swing.JTextField" name="codeTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4078,6 +4333,9 @@
                         <Component class="javax.swing.JTextField" name="mobileTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4089,6 +4347,9 @@
                         <Component class="javax.swing.JTextField" name="faxTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4100,6 +4361,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4111,6 +4375,9 @@
                         <Component class="javax.swing.JTextField" name="emailTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4122,6 +4389,9 @@
                         <Component class="javax.swing.JTextField" name="webTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="webTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4133,6 +4403,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4144,6 +4417,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4155,6 +4431,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4166,6 +4445,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4224,6 +4506,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT3" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -4284,6 +4569,9 @@
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT3" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -4293,7 +4581,13 @@
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel5">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel5" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4304,19 +4598,25 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel15">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel15" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4327,19 +4627,25 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                         </Container>
                         <Container class="javax.swing.JPanel" name="blankPanel16">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel16" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4350,12 +4656,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -4374,6 +4680,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4384,7 +4693,13 @@
                         </Component>
                         <Container class="javax.swing.JPanel" name="blankPanel17">
                           <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="blankPanel17" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[10, 10]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4395,12 +4710,12 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -4419,6 +4734,9 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4441,6 +4759,9 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4463,6 +4784,9 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4529,6 +4853,9 @@
                         <Component class="javax.swing.JTextField" name="disTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4540,6 +4867,9 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4551,6 +4881,9 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4562,6 +4895,9 @@
                         <Component class="javax.swing.JTextField" name="faxTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4619,6 +4955,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="adsTaTE3.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE3" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -4684,6 +5023,9 @@
                         <Component class="javax.swing.JTextField" name="subDisTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4695,6 +5037,9 @@
                         <Component class="javax.swing.JTextField" name="provinceTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4706,6 +5051,9 @@
                         <Component class="javax.swing.JTextField" name="phoneTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4717,6 +5065,9 @@
                         <Component class="javax.swing.JTextField" name="countryTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE3" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4777,6 +5128,9 @@
                                     <Property name="font" type="java.awt.Font" resourceKey="noteTaTE3.font"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[334, 52]"/>
+                                    </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE3" noResource="true"/>
                                   </Properties>
                                 </Component>
@@ -4888,7 +5242,13 @@
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" resourceKey="importTfT4.text"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="importTfT4" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="importBrowseBtnT4">
@@ -5033,7 +5393,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="127" max="32767" attributes="0"/>
+                              <EmptySpace pref="121" max="32767" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                           </Group>
@@ -5044,7 +5404,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                              <EmptySpace pref="17" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -5102,7 +5462,13 @@
                         <Component class="javax.swing.JTextField" name="exportTfT4">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="exportTfT4" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="browseExportBtnT4">
