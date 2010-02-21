@@ -5120,15 +5120,18 @@ public class ScannerView extends FrameView {
 
         if (isFrontSelected) {
             if ((scannedBCard != null) && (scannedImageFileName != null)) {
+                String filename = "";
                 if (scannedImageFileName.contains(".jpg")) {
+                    filename = scannedImageFileName;
                     scannedBCard.setImageFileName(scannedImageFileName);
                 } else {
 //                    scannedBCard.setImageFileName(scannedImageFileName
 //                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
+                    filename = frontTfT1.getText();
                     scannedBCard.setImageFileName(frontTfT1.getText());
                     System.out.print("OCR Image file name back" + frontTfT1.getText());
                 }
-
+                System.out.println("Doing OCR file " +filename);
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
                 //noteTaT1.setText( scannedBCard.retrieveData() );
 

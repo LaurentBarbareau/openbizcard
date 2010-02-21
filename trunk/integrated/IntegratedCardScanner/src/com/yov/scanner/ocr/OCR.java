@@ -31,7 +31,12 @@ public class OCR {
         StringBuffer strB = new StringBuffer();
         
         List<String> cmd = new ArrayList<String>();
-        cmd.add(tessPath + "/tesseract");
+        System.out.println("Tessaract path " +tessPath + File.separator+"tesseract" );
+        if(File.separator.equals("/")){
+            cmd.add("tesseract");
+        }else{
+             cmd.add(tessPath + File.separator+"tesseract");
+        }
         cmd.add(""); // placeholder for inputfile
         cmd.add(outputFile.getName());
         cmd.add(LANG_OPTION);
@@ -43,7 +48,7 @@ public class OCR {
         for (File tempImage : tempImages) {
             // actual output file will be "output.txt"
 //            ProcessBuilder pb = new ProcessBuilder(tessPath + "/tesseract", tempImage.getAbsolutePath(), outputFile.getAbsolutePath(), LANG_OPTION, lang);            
-            
+          
             cmd.set(1, tempImage.getName());
             pb.command(cmd);
             pb.redirectErrorStream(true);
