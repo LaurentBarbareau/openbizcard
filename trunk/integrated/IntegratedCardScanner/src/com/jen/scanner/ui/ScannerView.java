@@ -743,6 +743,7 @@ public class ScannerView extends FrameView {
 
         nameTfT1.setColumns(10);
         nameTfT1.setText(resourceMap.getString("nameTfT1.text")); // NOI18N
+        nameTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfT1.setName("nameTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -754,6 +755,7 @@ public class ScannerView extends FrameView {
 
         titleTfT1.setColumns(10);
         titleTfT1.setText(resourceMap.getString("titleTfT1.text")); // NOI18N
+        titleTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfT1.setName("titleTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -765,6 +767,7 @@ public class ScannerView extends FrameView {
 
         companyTfT1.setColumns(10);
         companyTfT1.setText(resourceMap.getString("companyTfT1.text")); // NOI18N
+        companyTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfT1.setName("companyTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -776,6 +779,7 @@ public class ScannerView extends FrameView {
 
         disTfT1.setColumns(10);
         disTfT1.setText(resourceMap.getString("disTfT1.text")); // NOI18N
+        disTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfT1.setName("disTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -787,6 +791,7 @@ public class ScannerView extends FrameView {
 
         codeTfT1.setColumns(10);
         codeTfT1.setText(resourceMap.getString("codeTfT1.text")); // NOI18N
+        codeTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfT1.setName("codeTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -798,6 +803,7 @@ public class ScannerView extends FrameView {
 
         mobileTfT1.setColumns(10);
         mobileTfT1.setText(resourceMap.getString("mobileTfT1.text")); // NOI18N
+        mobileTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfT1.setName("mobileTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -809,6 +815,7 @@ public class ScannerView extends FrameView {
 
         faxTfT1.setColumns(10);
         faxTfT1.setText(resourceMap.getString("faxTfT1.text")); // NOI18N
+        faxTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfT1.setName("faxTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -819,6 +826,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(faxTfT1, gridBagConstraints);
 
         lastnameTfT1.setColumns(10);
+        lastnameTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfT1.setName("lastnameTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -829,6 +837,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(lastnameTfT1, gridBagConstraints);
 
         emailTfT1.setColumns(10);
+        emailTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         emailTfT1.setName("emailTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -839,6 +848,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(emailTfT1, gridBagConstraints);
 
         webTfT1.setColumns(10);
+        webTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         webTfT1.setName("webTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -849,6 +859,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(webTfT1, gridBagConstraints);
 
         subDisTfT1.setColumns(10);
+        subDisTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfT1.setName("subDisTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -859,6 +870,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(subDisTfT1, gridBagConstraints);
 
         provinceTfT1.setColumns(10);
+        provinceTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfT1.setName("provinceTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -869,6 +881,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(provinceTfT1, gridBagConstraints);
 
         phoneTfT1.setColumns(10);
+        phoneTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfT1.setName("phoneTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -879,6 +892,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(phoneTfT1, gridBagConstraints);
 
         countryTfT1.setColumns(10);
+        countryTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfT1.setName("countryTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -900,6 +914,7 @@ public class ScannerView extends FrameView {
         adsTaT1.setLineWrap(true);
         adsTaT1.setRows(3);
         adsTaT1.setAutoscrolls(false);
+        adsTaT1.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaT1.setName("adsTaT1"); // NOI18N
         adsScrT1.setViewportView(adsTaT1);
 
@@ -934,6 +949,7 @@ public class ScannerView extends FrameView {
         noteTaT1.setLineWrap(true);
         noteTaT1.setRows(3);
         noteTaT1.setAutoscrolls(false);
+        noteTaT1.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaT1.setName("noteTaT1"); // NOI18N
         noteScrT1.setViewportView(noteTaT1);
 
@@ -958,17 +974,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridheight = 2;
         upLeftT1.add(notePanelT1, gridBagConstraints);
 
+        blankPanel0.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel0.setName("blankPanel0"); // NOI18N
+        blankPanel0.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel0Layout = new javax.swing.GroupLayout(blankPanel0);
         blankPanel0.setLayout(blankPanel0Layout);
         blankPanel0Layout.setHorizontalGroup(
             blankPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel0Layout.setVerticalGroup(
             blankPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -977,17 +995,19 @@ public class ScannerView extends FrameView {
         upLeftT1.add(blankPanel0, gridBagConstraints);
 
         blankPanel1.setMaximumSize(new java.awt.Dimension(10, 10));
+        blankPanel1.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel1.setName("blankPanel1"); // NOI18N
+        blankPanel1.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel1Layout = new javax.swing.GroupLayout(blankPanel1);
         blankPanel1.setLayout(blankPanel1Layout);
         blankPanel1Layout.setHorizontalGroup(
             blankPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel1Layout.setVerticalGroup(
             blankPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1005,6 +1025,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(nameLbTE1, gridBagConstraints);
 
         nameTfTE1.setColumns(10);
+        nameTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfTE1.setName("nameTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1014,17 +1035,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         upLeftT1.add(nameTfTE1, gridBagConstraints);
 
+        blankPanel2.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel2.setName("blankPanel2"); // NOI18N
+        blankPanel2.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel2Layout = new javax.swing.GroupLayout(blankPanel2);
         blankPanel2.setLayout(blankPanel2Layout);
         blankPanel2Layout.setHorizontalGroup(
             blankPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel2Layout.setVerticalGroup(
             blankPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1041,6 +1064,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(lastnameLbTE1, gridBagConstraints);
 
         lastnameTfTE1.setColumns(10);
+        lastnameTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfTE1.setName("lastnameTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1060,6 +1084,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(titleLbTE1, gridBagConstraints);
 
         titleTfTE1.setColumns(10);
+        titleTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfTE1.setName("titleTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1079,6 +1104,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(companyLbTE1, gridBagConstraints);
 
         companyTfTE1.setColumns(10);
+        companyTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfTE1.setName("companyTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1134,6 +1160,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(adsLbTE1, gridBagConstraints);
 
         disTfTE1.setColumns(10);
+        disTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfTE1.setName("disTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1144,6 +1171,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(disTfTE1, gridBagConstraints);
 
         codeTfTE1.setColumns(10);
+        codeTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfTE1.setName("codeTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1154,6 +1182,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(codeTfTE1, gridBagConstraints);
 
         mobileTfTE1.setColumns(10);
+        mobileTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfTE1.setName("mobileTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1164,6 +1193,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(mobileTfTE1, gridBagConstraints);
 
         faxTfTE1.setColumns(10);
+        faxTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfTE1.setName("faxTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1184,6 +1214,7 @@ public class ScannerView extends FrameView {
         adsTaTE1.setFont(resourceMap.getFont("adsTaTE1.font")); // NOI18N
         adsTaTE1.setRows(3);
         adsTaTE1.setAutoscrolls(false);
+        adsTaTE1.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaTE1.setName("adsTaTE1"); // NOI18N
         adsScrTE1.setViewportView(adsTaTE1);
 
@@ -1252,6 +1283,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(noteLbTE1, gridBagConstraints);
 
         subDisTfTE1.setColumns(10);
+        subDisTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfTE1.setName("subDisTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1262,6 +1294,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(subDisTfTE1, gridBagConstraints);
 
         provinceTfTE1.setColumns(10);
+        provinceTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfTE1.setName("provinceTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1272,6 +1305,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(provinceTfTE1, gridBagConstraints);
 
         phoneTfTE1.setColumns(10);
+        phoneTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfTE1.setName("phoneTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1282,6 +1316,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(phoneTfTE1, gridBagConstraints);
 
         countryTfTE1.setColumns(10);
+        countryTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfTE1.setName("countryTfTE1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1302,6 +1337,7 @@ public class ScannerView extends FrameView {
         noteTaTE1.setFont(resourceMap.getFont("noteTaTE1.font")); // NOI18N
         noteTaTE1.setRows(3);
         noteTaTE1.setAutoscrolls(false);
+        noteTaTE1.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaTE1.setName("noteTaTE1"); // NOI18N
         noteScrTE1.setViewportView(noteTaTE1);
 
@@ -1334,17 +1370,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         scannerTab.add(upLeftScrollPaneT1, gridBagConstraints);
 
+        blankPanel3.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel3.setName("blankPanel3"); // NOI18N
+        blankPanel3.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel3Layout = new javax.swing.GroupLayout(blankPanel3);
         blankPanel3.setLayout(blankPanel3Layout);
         blankPanel3Layout.setHorizontalGroup(
             blankPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel3Layout.setVerticalGroup(
             blankPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1371,7 +1409,9 @@ public class ScannerView extends FrameView {
         });
 
         scannerTxtT1.setText(resourceMap.getString("scannerTxtT1.text")); // NOI18N
+        scannerTxtT1.setMinimumSize(new java.awt.Dimension(86, 20));
         scannerTxtT1.setName("scannerTxtT1"); // NOI18N
+        scannerTxtT1.setPreferredSize(new java.awt.Dimension(86, 20));
 
         javax.swing.GroupLayout scannerPanelLayout = new javax.swing.GroupLayout(scannerPanel);
         scannerPanel.setLayout(scannerPanelLayout);
@@ -1658,12 +1698,12 @@ public class ScannerView extends FrameView {
             .addGroup(frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontCropBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
                 .addContainerGap())
         );
         frontPanelT1Layout.setVerticalGroup(
@@ -1682,7 +1722,7 @@ public class ScannerView extends FrameView {
         lowLeftT1.setLayout(lowLeftT1Layout);
         lowLeftT1Layout.setHorizontalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
         lowLeftT1Layout.setVerticalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1736,7 +1776,7 @@ public class ScannerView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1, 0, 0, Short.MAX_VALUE))
                     .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         lowRightT1Layout.setVerticalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1917,6 +1957,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(countryLbT2, gridBagConstraints);
 
         nameTfT2.setColumns(10);
+        nameTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfT2.setName("nameTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1927,6 +1968,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(nameTfT2, gridBagConstraints);
 
         titleTfT2.setColumns(10);
+        titleTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfT2.setName("titleTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1937,6 +1979,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(titleTfT2, gridBagConstraints);
 
         companyTfT2.setColumns(10);
+        companyTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfT2.setName("companyTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1947,6 +1990,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(companyTfT2, gridBagConstraints);
 
         disTfT2.setColumns(10);
+        disTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfT2.setName("disTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1957,6 +2001,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(disTfT2, gridBagConstraints);
 
         codeTfT2.setColumns(10);
+        codeTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfT2.setName("codeTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1967,6 +2012,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(codeTfT2, gridBagConstraints);
 
         mobileTfT2.setColumns(10);
+        mobileTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfT2.setName("mobileTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1977,6 +2023,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(mobileTfT2, gridBagConstraints);
 
         faxTfT2.setColumns(10);
+        faxTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfT2.setName("faxTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1987,6 +2034,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(faxTfT2, gridBagConstraints);
 
         lastnameTfT2.setColumns(10);
+        lastnameTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfT2.setName("lastnameTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -1997,6 +2045,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(lastnameTfT2, gridBagConstraints);
 
         emailTfT2.setColumns(10);
+        emailTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         emailTfT2.setName("emailTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2007,6 +2056,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(emailTfT2, gridBagConstraints);
 
         webTfT2.setColumns(10);
+        webTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         webTfT2.setName("webTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2017,6 +2067,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(webTfT2, gridBagConstraints);
 
         subDisTfT2.setColumns(10);
+        subDisTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfT2.setName("subDisTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2027,6 +2078,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(subDisTfT2, gridBagConstraints);
 
         provinceTfT2.setColumns(10);
+        provinceTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfT2.setName("provinceTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2037,6 +2089,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(provinceTfT2, gridBagConstraints);
 
         phoneTfT2.setColumns(10);
+        phoneTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfT2.setName("phoneTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2047,6 +2100,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(phoneTfT2, gridBagConstraints);
 
         countryTfT2.setColumns(10);
+        countryTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfT2.setName("countryTfT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2068,6 +2122,7 @@ public class ScannerView extends FrameView {
         adsTaT2.setLineWrap(true);
         adsTaT2.setRows(3);
         adsTaT2.setAutoscrolls(false);
+        adsTaT2.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaT2.setName("adsTaT2"); // NOI18N
         adsScrT2.setViewportView(adsTaT2);
 
@@ -2102,6 +2157,7 @@ public class ScannerView extends FrameView {
         noteTaT2.setLineWrap(true);
         noteTaT2.setRows(3);
         noteTaT2.setAutoscrolls(false);
+        noteTaT2.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaT2.setName("noteTaT2"); // NOI18N
         noteScrT2.setViewportView(noteTaT2);
 
@@ -2126,17 +2182,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridheight = 2;
         upLeftT2.add(notePanelT2, gridBagConstraints);
 
+        blankPanel4.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel4.setName("blankPanel4"); // NOI18N
+        blankPanel4.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel4Layout = new javax.swing.GroupLayout(blankPanel4);
         blankPanel4.setLayout(blankPanel4Layout);
         blankPanel4Layout.setHorizontalGroup(
             blankPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel4Layout.setVerticalGroup(
             blankPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2144,17 +2202,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         upLeftT2.add(blankPanel4, gridBagConstraints);
 
+        blankPanel11.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel11.setName("blankPanel11"); // NOI18N
+        blankPanel11.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel11Layout = new javax.swing.GroupLayout(blankPanel11);
         blankPanel11.setLayout(blankPanel11Layout);
         blankPanel11Layout.setHorizontalGroup(
             blankPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel11Layout.setVerticalGroup(
             blankPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2162,17 +2222,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 8;
         upLeftT2.add(blankPanel11, gridBagConstraints);
 
+        blankPanel12.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel12.setName("blankPanel12"); // NOI18N
+        blankPanel12.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel12Layout = new javax.swing.GroupLayout(blankPanel12);
         blankPanel12.setLayout(blankPanel12Layout);
         blankPanel12Layout.setHorizontalGroup(
             blankPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel12Layout.setVerticalGroup(
             blankPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2190,6 +2252,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(nameLbTE2, gridBagConstraints);
 
         nameTfTE2.setColumns(10);
+        nameTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfTE2.setName("nameTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2226,6 +2289,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(lastnameLbTE2, gridBagConstraints);
 
         lastnameTfTE2.setColumns(10);
+        lastnameTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfTE2.setName("lastnameTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2245,6 +2309,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(titleLbTE2, gridBagConstraints);
 
         titleTfTE2.setColumns(10);
+        titleTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfTE2.setName("titleTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2264,6 +2329,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(companyLbTE2, gridBagConstraints);
 
         companyTfTE2.setColumns(10);
+        companyTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfTE2.setName("companyTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2319,6 +2385,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(adsLbTE2, gridBagConstraints);
 
         disTfTE2.setColumns(10);
+        disTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfTE2.setName("disTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2329,6 +2396,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(disTfTE2, gridBagConstraints);
 
         codeTfTE2.setColumns(10);
+        codeTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfTE2.setName("codeTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2339,6 +2407,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(codeTfTE2, gridBagConstraints);
 
         mobileTfTE2.setColumns(10);
+        mobileTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfTE2.setName("mobileTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2349,6 +2418,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(mobileTfTE2, gridBagConstraints);
 
         faxTfTE2.setColumns(10);
+        faxTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfTE2.setName("faxTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2369,6 +2439,7 @@ public class ScannerView extends FrameView {
         adsTaTE2.setFont(resourceMap.getFont("adsTaTE2.font")); // NOI18N
         adsTaTE2.setRows(3);
         adsTaTE2.setAutoscrolls(false);
+        adsTaTE2.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaTE2.setName("adsTaTE2"); // NOI18N
         adsScrTE2.setViewportView(adsTaTE2);
 
@@ -2437,6 +2508,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(noteLbTE2, gridBagConstraints);
 
         subDisTfTE2.setColumns(10);
+        subDisTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfTE2.setName("subDisTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2447,6 +2519,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(subDisTfTE2, gridBagConstraints);
 
         provinceTfTE2.setColumns(10);
+        provinceTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfTE2.setName("provinceTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2457,6 +2530,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(provinceTfTE2, gridBagConstraints);
 
         phoneTfTE2.setColumns(10);
+        phoneTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfTE2.setName("phoneTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2467,6 +2541,7 @@ public class ScannerView extends FrameView {
         upLeftT2.add(phoneTfTE2, gridBagConstraints);
 
         countryTfTE2.setColumns(10);
+        countryTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfTE2.setName("countryTfTE2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2487,6 +2562,7 @@ public class ScannerView extends FrameView {
         noteTaTE2.setFont(resourceMap.getFont("noteTaTE2.font")); // NOI18N
         noteTaTE2.setRows(3);
         noteTaTE2.setAutoscrolls(false);
+        noteTaTE2.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaTE2.setName("noteTaTE2"); // NOI18N
         noteScrTE2.setViewportView(noteTaTE2);
 
@@ -2520,17 +2596,19 @@ public class ScannerView extends FrameView {
         queryTab.add(upLeftScrollPaneT2, gridBagConstraints);
 
         blankPanel14.setMaximumSize(new java.awt.Dimension(10, 10));
+        blankPanel14.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel14.setName("blankPanel14"); // NOI18N
+        blankPanel14.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel14Layout = new javax.swing.GroupLayout(blankPanel14);
         blankPanel14.setLayout(blankPanel14Layout);
         blankPanel14Layout.setHorizontalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel14Layout.setVerticalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2964,17 +3042,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         queryTab.add(lowPanelT2, gridBagConstraints);
 
+        blankPanel6.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel6.setName("blankPanel6"); // NOI18N
+        blankPanel6.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel6Layout = new javax.swing.GroupLayout(blankPanel6);
         blankPanel6.setLayout(blankPanel6Layout);
         blankPanel6Layout.setHorizontalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel6Layout.setVerticalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3494,6 +3574,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(countryLbT3, gridBagConstraints);
 
         nameTfT3.setColumns(10);
+        nameTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfT3.setName("nameTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3504,6 +3585,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(nameTfT3, gridBagConstraints);
 
         titleTfT3.setColumns(10);
+        titleTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfT3.setName("titleTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3514,6 +3596,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(titleTfT3, gridBagConstraints);
 
         companyTfT3.setColumns(10);
+        companyTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfT3.setName("companyTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3524,6 +3607,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(companyTfT3, gridBagConstraints);
 
         disTfT3.setColumns(10);
+        disTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfT3.setName("disTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3534,6 +3618,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(disTfT3, gridBagConstraints);
 
         codeTfT3.setColumns(10);
+        codeTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfT3.setName("codeTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3544,6 +3629,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(codeTfT3, gridBagConstraints);
 
         mobileTfT3.setColumns(10);
+        mobileTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfT3.setName("mobileTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3554,6 +3640,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(mobileTfT3, gridBagConstraints);
 
         faxTfT3.setColumns(10);
+        faxTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfT3.setName("faxTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3564,6 +3651,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(faxTfT3, gridBagConstraints);
 
         lastnameTfT3.setColumns(10);
+        lastnameTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfT3.setName("lastnameTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3574,6 +3662,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(lastnameTfT3, gridBagConstraints);
 
         emailTfT3.setColumns(10);
+        emailTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         emailTfT3.setName("emailTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3584,6 +3673,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(emailTfT3, gridBagConstraints);
 
         webTfT3.setColumns(10);
+        webTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         webTfT3.setName("webTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3594,6 +3684,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(webTfT3, gridBagConstraints);
 
         subDisTfT3.setColumns(10);
+        subDisTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfT3.setName("subDisTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3604,6 +3695,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(subDisTfT3, gridBagConstraints);
 
         provinceTfT3.setColumns(10);
+        provinceTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfT3.setName("provinceTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3614,6 +3706,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(provinceTfT3, gridBagConstraints);
 
         phoneTfT3.setColumns(10);
+        phoneTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfT3.setName("phoneTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3624,6 +3717,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(phoneTfT3, gridBagConstraints);
 
         countryTfT3.setColumns(10);
+        countryTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfT3.setName("countryTfT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3645,6 +3739,7 @@ public class ScannerView extends FrameView {
         adsTaT3.setLineWrap(true);
         adsTaT3.setRows(3);
         adsTaT3.setAutoscrolls(false);
+        adsTaT3.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaT3.setName("adsTaT3"); // NOI18N
         adsScrT3.setViewportView(adsTaT3);
 
@@ -3679,6 +3774,7 @@ public class ScannerView extends FrameView {
         noteTaT3.setLineWrap(true);
         noteTaT3.setRows(3);
         noteTaT3.setAutoscrolls(false);
+        noteTaT3.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaT3.setName("noteTaT3"); // NOI18N
         noteScrT3.setViewportView(noteTaT3);
 
@@ -3703,17 +3799,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridheight = 2;
         upLeftT3.add(notePanelT3, gridBagConstraints);
 
+        blankPanel5.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel5.setName("blankPanel5"); // NOI18N
+        blankPanel5.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel5Layout = new javax.swing.GroupLayout(blankPanel5);
         blankPanel5.setLayout(blankPanel5Layout);
         blankPanel5Layout.setHorizontalGroup(
             blankPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel5Layout.setVerticalGroup(
             blankPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3721,17 +3819,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         upLeftT3.add(blankPanel5, gridBagConstraints);
 
+        blankPanel15.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel15.setName("blankPanel15"); // NOI18N
+        blankPanel15.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel15Layout = new javax.swing.GroupLayout(blankPanel15);
         blankPanel15.setLayout(blankPanel15Layout);
         blankPanel15Layout.setHorizontalGroup(
             blankPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel15Layout.setVerticalGroup(
             blankPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3739,17 +3839,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 8;
         upLeftT3.add(blankPanel15, gridBagConstraints);
 
+        blankPanel16.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel16.setName("blankPanel16"); // NOI18N
+        blankPanel16.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel16Layout = new javax.swing.GroupLayout(blankPanel16);
         blankPanel16.setLayout(blankPanel16Layout);
         blankPanel16Layout.setHorizontalGroup(
             blankPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel16Layout.setVerticalGroup(
             blankPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3767,6 +3869,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(nameLbTE3, gridBagConstraints);
 
         nameTfTE3.setColumns(10);
+        nameTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfTE3.setName("nameTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3776,17 +3879,19 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         upLeftT3.add(nameTfTE3, gridBagConstraints);
 
+        blankPanel17.setMinimumSize(new java.awt.Dimension(10, 10));
         blankPanel17.setName("blankPanel17"); // NOI18N
+        blankPanel17.setPreferredSize(new java.awt.Dimension(10, 10));
 
         javax.swing.GroupLayout blankPanel17Layout = new javax.swing.GroupLayout(blankPanel17);
         blankPanel17.setLayout(blankPanel17Layout);
         blankPanel17Layout.setHorizontalGroup(
             blankPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         blankPanel17Layout.setVerticalGroup(
             blankPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3803,6 +3908,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(lastnameLbTE3, gridBagConstraints);
 
         lastnameTfTE3.setColumns(10);
+        lastnameTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         lastnameTfTE3.setName("lastnameTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -3822,6 +3928,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(titleLbTE3, gridBagConstraints);
 
         titleTfTE3.setColumns(10);
+        titleTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         titleTfTE3.setName("titleTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3841,6 +3948,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(companyLbTE3, gridBagConstraints);
 
         companyTfTE3.setColumns(10);
+        companyTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         companyTfTE3.setName("companyTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3896,6 +4004,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(adsLbTE3, gridBagConstraints);
 
         disTfTE3.setColumns(10);
+        disTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         disTfTE3.setName("disTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3906,6 +4015,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(disTfTE3, gridBagConstraints);
 
         codeTfTE3.setColumns(10);
+        codeTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         codeTfTE3.setName("codeTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3916,6 +4026,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(codeTfTE3, gridBagConstraints);
 
         mobileTfTE3.setColumns(10);
+        mobileTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         mobileTfTE3.setName("mobileTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3926,6 +4037,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(mobileTfTE3, gridBagConstraints);
 
         faxTfTE3.setColumns(10);
+        faxTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         faxTfTE3.setName("faxTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -3946,6 +4058,7 @@ public class ScannerView extends FrameView {
         adsTaTE3.setFont(resourceMap.getFont("adsTaTE3.font")); // NOI18N
         adsTaTE3.setRows(3);
         adsTaTE3.setAutoscrolls(false);
+        adsTaTE3.setMinimumSize(new java.awt.Dimension(334, 52));
         adsTaTE3.setName("adsTaTE3"); // NOI18N
         adsScrTE3.setViewportView(adsTaTE3);
 
@@ -4014,6 +4127,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(noteLbTE3, gridBagConstraints);
 
         subDisTfTE3.setColumns(10);
+        subDisTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         subDisTfTE3.setName("subDisTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -4024,6 +4138,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(subDisTfTE3, gridBagConstraints);
 
         provinceTfTE3.setColumns(10);
+        provinceTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         provinceTfTE3.setName("provinceTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -4034,6 +4149,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(provinceTfTE3, gridBagConstraints);
 
         phoneTfTE3.setColumns(10);
+        phoneTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         phoneTfTE3.setName("phoneTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -4044,6 +4160,7 @@ public class ScannerView extends FrameView {
         upLeftT3.add(phoneTfTE3, gridBagConstraints);
 
         countryTfTE3.setColumns(10);
+        countryTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfTE3.setName("countryTfTE3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -4064,6 +4181,7 @@ public class ScannerView extends FrameView {
         noteTaTE3.setFont(resourceMap.getFont("noteTaTE3.font")); // NOI18N
         noteTaTE3.setRows(3);
         noteTaTE3.setAutoscrolls(false);
+        noteTaTE3.setMinimumSize(new java.awt.Dimension(334, 52));
         noteTaTE3.setName("noteTaTE3"); // NOI18N
         noteScrTE3.setViewportView(noteTaTE3);
 
@@ -4116,7 +4234,9 @@ public class ScannerView extends FrameView {
 
         importTfT4.setEditable(false);
         importTfT4.setText(resourceMap.getString("importTfT4.text")); // NOI18N
+        importTfT4.setMinimumSize(new java.awt.Dimension(86, 20));
         importTfT4.setName("importTfT4"); // NOI18N
+        importTfT4.setPreferredSize(new java.awt.Dimension(86, 20));
 
         importBrowseBtnT4.setText(resourceMap.getString("importBrowseBtnT4.text")); // NOI18N
         importBrowseBtnT4.setName("importBrowseBtnT4"); // NOI18N
@@ -4246,7 +4366,9 @@ public class ScannerView extends FrameView {
         exportLbT4.setName("exportLbT4"); // NOI18N
 
         exportTfT4.setEditable(false);
+        exportTfT4.setMinimumSize(new java.awt.Dimension(86, 20));
         exportTfT4.setName("exportTfT4"); // NOI18N
+        exportTfT4.setPreferredSize(new java.awt.Dimension(86, 20));
 
         browseExportBtnT4.setText(resourceMap.getString("browseExportBtnT4.text")); // NOI18N
         browseExportBtnT4.setName("browseExportBtnT4"); // NOI18N
@@ -4296,7 +4418,7 @@ public class ScannerView extends FrameView {
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -4305,7 +4427,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
