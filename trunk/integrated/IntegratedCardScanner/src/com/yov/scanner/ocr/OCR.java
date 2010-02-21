@@ -39,6 +39,8 @@ public class OCR {
         }
         cmd.add(""); // placeholder for inputfile
         cmd.add(outputFile.getName());
+        System.out.println("outputFile.getName " + outputFile.getName() );
+
         cmd.add(LANG_OPTION);
         cmd.add(lang);
             
@@ -48,9 +50,10 @@ public class OCR {
         for (File tempImage : tempImages) {
             // actual output file will be "output.txt"
 //            ProcessBuilder pb = new ProcessBuilder(tessPath + "/tesseract", tempImage.getAbsolutePath(), outputFile.getAbsolutePath(), LANG_OPTION, lang);            
-          
-            cmd.set(1, tempImage.getName());
-            pb.command(cmd);
+          System.out.println("input file:" + tempImage.getName());
+//            cmd.set(1, tempImage.getName());
+           cmd.set(1, tempImage.getName());
+           pb.command(cmd);
             pb.redirectErrorStream(true);
             Process process = pb.start();
 //            Process process = Runtime.getRuntime().exec(cmd.toArray(new String[0]));
