@@ -9,6 +9,7 @@
 
 package com.yov.scanner.ocr;
 
+import com.jen.scanner.ui.util.Utils;
 import java.io.*;
 import java.util.*;
 import javax.imageio.*;
@@ -89,6 +90,12 @@ public class ImageIOHelper {
         String path = imageFile.getPath();
         StringBuffer strB = new StringBuffer(path);
         strB.insert(path.lastIndexOf('.'), index);
+        if(File.separator.equals("/")){
+           String ext =  Utils.getExtension(imageFile);
+           String filename = strB.toString();
+           filename = filename.replaceAll(ext, "tif");
+            return new File(filename);
+        }else
         return new File(strB.toString().replaceFirst("(?<="+File.separator+".)("+File.separator+"w+)$", "tif"));
     }
         
