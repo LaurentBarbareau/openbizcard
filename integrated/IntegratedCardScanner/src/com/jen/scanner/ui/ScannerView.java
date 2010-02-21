@@ -5044,8 +5044,10 @@ public class ScannerView extends FrameView {
                 if (scannedImageFileName.contains(".jpg")) {
                     scannedBCard.setImageFileName(scannedImageFileName);
                 } else {
-                    scannedBCard.setImageFileName(scannedImageFileName
-                            + bcScanner.getFileNameIndex() + ".jpg");
+//                    scannedBCard.setImageFileName(scannedImageFileName
+//                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
+                     scannedBCard.setImageFileName(frontTfT1.getText());
+                     System.out.print("OCR Image file name back"  +frontTfT1.getText() );
                 }
 
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
@@ -5068,8 +5070,10 @@ public class ScannerView extends FrameView {
                 if (scannedImageFileNameBack.contains(".jpg")) {
                     scannedBCardBack.setImageFileName(scannedImageFileNameBack);
                 } else {
-                    scannedBCardBack.setImageFileName(scannedImageFileNameBack
-                            + bcScanner.getFileNameIndex() + ".jpg");
+//                    scannedBCardBack.setImageFileName(scannedImageFileNameBack
+//                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
+                     scannedBCardBack.setImageFileName(backTfT1.getText());
+                     System.out.print("OCR Image file name back"  +backTfT1.getText() );
                 }
 
                 //scannedBCardBack.initRonCemerOCR(new JTabbedPane());
