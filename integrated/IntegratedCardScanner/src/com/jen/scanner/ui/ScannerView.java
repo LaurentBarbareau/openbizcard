@@ -4758,6 +4758,9 @@ public class ScannerView extends FrameView {
     private void editBtnT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnT2ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) importTableT2.getModel();
+        if(importTableT2.getSelectedRow() == -1){
+            return;
+        }
         long id = (Long) model.getValueAt(importTableT2.getSelectedRow(), 9);
         Card editCard = getCardById(id, localCardList);
 //        editCard = localCardList.g
