@@ -102,9 +102,9 @@ public class TestUI implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		//try{
 			if(event.getSource() == scanBtn){
-				bcScanner.scan();
+//				bcScanner.scan();
 			}else if(event.getSource() == selectBtn){
-				scannerName = bcScanner.selectScanner();
+//				scannerName = bcScanner.selectScanner();
 				
 				scannerTxt.setText(scannerName);
 			}

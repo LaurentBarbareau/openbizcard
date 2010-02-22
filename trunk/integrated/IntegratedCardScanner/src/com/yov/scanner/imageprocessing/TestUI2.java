@@ -157,7 +157,7 @@ public class TestUI2 implements ActionListener{
 			//System.out.println(" -+-+- Start Scanning -+-+- ");
 
 			//cardImage = bcScanner.scan();
-			scannedImage = bcScanner.scan();
+//			scannedImage = bcScanner.scan();
 			
 			if(scannedImage != null){
 				System.out.println(" -+-+- Get the Scanning Image -+-+-");
@@ -172,7 +172,7 @@ public class TestUI2 implements ActionListener{
 			System.out.println("Scanning is done");
 			
 		}else if(event.getSource() == selectBtn){
-			scannerName = bcScanner.selectScanner();
+//			scannerName = bcScanner.selectScanner();
 			scannerTxt.setText(scannerName);
 			
 		}else if(event.getSource() == showBtn){
