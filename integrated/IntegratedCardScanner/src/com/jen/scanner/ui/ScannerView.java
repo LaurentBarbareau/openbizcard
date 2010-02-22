@@ -65,7 +65,7 @@ public class ScannerView extends FrameView {
         super(app);
 
         initComponents();
-
+        
         menuTab.setEnabledAt(RESULT_TAB, false);
         saveBtnT3.setEnabled(false);
 
@@ -303,22 +303,23 @@ public class ScannerView extends FrameView {
         scannerLbT1 = new javax.swing.JLabel();
         scannerBtnT1 = new javax.swing.JButton();
         scannerTxtT1 = new javax.swing.JTextField();
-        brightPanelT1 = new javax.swing.JPanel();
-        brightLbT1 = new javax.swing.JLabel();
-        brightSldT1 = new javax.swing.JSlider();
-        rotateBtnT1 = new javax.swing.JButton();
-        emailBtnT1 = new javax.swing.JButton();
-        saveBtnT1 = new javax.swing.JButton();
-        scanBtn = new javax.swing.JButton();
-        undoBtnT1 = new javax.swing.JButton();
-        confirmBtnT1 = new javax.swing.JButton();
-        readCardBtnT1 = new javax.swing.JButton();
-        sideLbT1 = new javax.swing.JLabel();
-        frontSideRdT1 = new javax.swing.JRadioButton();
-        backSideRdT1 = new javax.swing.JRadioButton();
         doubleSideBtnT1 = new javax.swing.JButton();
         blackWhiteBtnT1 = new javax.swing.JButton();
         autoCropBtnT1 = new javax.swing.JButton();
+        readCardBtnT1 = new javax.swing.JButton();
+        rotateBtnT1 = new javax.swing.JButton();
+        emailBtnT1 = new javax.swing.JButton();
+        undoBtnT1 = new javax.swing.JButton();
+        confirmBtnT1 = new javax.swing.JButton();
+        brightPanelT1 = new javax.swing.JPanel();
+        brightLbT1 = new javax.swing.JLabel();
+        brightSldT1 = new javax.swing.JSlider();
+        scanBtn = new javax.swing.JButton();
+        saveBtnT1 = new javax.swing.JButton();
+        selSidePanelT1 = new javax.swing.JPanel();
+        sideLbT1 = new javax.swing.JLabel();
+        frontSideRdT1 = new javax.swing.JRadioButton();
+        backSideRdT1 = new javax.swing.JRadioButton();
         low = new javax.swing.JPanel();
         lowLeftT1 = new javax.swing.JPanel();
         frontPanelT1 = new javax.swing.JPanel();
@@ -448,21 +449,22 @@ public class ScannerView extends FrameView {
         blankPanel6 = new javax.swing.JPanel();
         resultTab = new javax.swing.JPanel();
         upRightT3 = new javax.swing.JPanel();
-        brightPanelT3 = new javax.swing.JPanel();
-        brightLbT3 = new javax.swing.JLabel();
-        brightSldT3 = new javax.swing.JSlider();
-        rotateBtnT3 = new javax.swing.JButton();
-        emailBtnT3 = new javax.swing.JButton();
         idPanelT3 = new javax.swing.JPanel();
         idLbT3 = new javax.swing.JLabel();
         idNameLbT3 = new javax.swing.JLabel();
+        autoCropBtnT3 = new javax.swing.JButton();
+        blackWhiteBtnT3 = new javax.swing.JButton();
+        rotateBtnT3 = new javax.swing.JButton();
+        emailBtnT3 = new javax.swing.JButton();
+        undoBtnT3 = new javax.swing.JButton();
+        confirmBtnT3 = new javax.swing.JButton();
+        brightPanelT3 = new javax.swing.JPanel();
+        brightLbT3 = new javax.swing.JLabel();
+        brightSldT3 = new javax.swing.JSlider();
+        selSidePanelT3 = new javax.swing.JPanel();
         sideLbT3 = new javax.swing.JLabel();
         frontSideRdT3 = new javax.swing.JRadioButton();
         backSideRdT3 = new javax.swing.JRadioButton();
-        undoBtnT3 = new javax.swing.JButton();
-        confirmBtnT3 = new javax.swing.JButton();
-        autoCropBtnT3 = new javax.swing.JButton();
-        blackWhiteBtnT3 = new javax.swing.JButton();
         saveBtnT3 = new javax.swing.JButton();
         lowT3 = new javax.swing.JPanel();
         lowLeftT3 = new javax.swing.JPanel();
@@ -560,7 +562,6 @@ public class ScannerView extends FrameView {
         replaceBtnT4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         pendingBtnT4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         exportPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         exportLbT4 = new javax.swing.JLabel();
@@ -569,36 +570,44 @@ public class ScannerView extends FrameView {
         exportBtnT4 = new javax.swing.JButton();
         blankPanelT4 = new javax.swing.JPanel();
         statusPanel = new javax.swing.JPanel();
-        statusPanelSeparator = new javax.swing.JSeparator();
+        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
         databaseLb = new javax.swing.JLabel();
         databaseNameLb = new javax.swing.JLabel();
         languageLb = new javax.swing.JLabel();
         langaugeChangeBtn = new javax.swing.JButton();
 
-        mainPanel.setMaximumSize(new java.awt.Dimension(704, 616));
-        mainPanel.setMinimumSize(new java.awt.Dimension(704, 616));
+        mainPanel.setMaximumSize(new java.awt.Dimension(704, 674));
+        mainPanel.setMinimumSize(new java.awt.Dimension(704, 674));
         mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setPreferredSize(new java.awt.Dimension(704, 616));
+        mainPanel.setPreferredSize(new java.awt.Dimension(704, 674));
 
-        menuTab.setMaximumSize(null);
+        menuTab.setMaximumSize(new java.awt.Dimension(720, 680));
+        menuTab.setMinimumSize(new java.awt.Dimension(720, 680));
         menuTab.setName("menuTab"); // NOI18N
-        menuTab.setPreferredSize(new java.awt.Dimension(665, 623));
+        menuTab.setPreferredSize(new java.awt.Dimension(720, 680));
 
-        scannerTab.setMaximumSize(new java.awt.Dimension(610, 566));
+        scannerTab.setMaximumSize(new java.awt.Dimension(720, 680));
+        scannerTab.setMinimumSize(new java.awt.Dimension(720, 680));
         scannerTab.setName("scannerTab"); // NOI18N
+        scannerTab.setPreferredSize(new java.awt.Dimension(720, 680));
         scannerTab.setLayout(new java.awt.GridBagLayout());
 
+        upLeftScrollPaneT1.setAutoscrolls(true);
+        upLeftScrollPaneT1.setMinimumSize(new java.awt.Dimension(380, 260));
         upLeftScrollPaneT1.setName("upLeftScrollPaneT1"); // NOI18N
-        upLeftScrollPaneT1.setPreferredSize(new java.awt.Dimension(390, 260));
+        upLeftScrollPaneT1.setPreferredSize(new java.awt.Dimension(380, 260));
 
-        upLeftT1.setMinimumSize(new java.awt.Dimension(650, 240));
+        upLeftT1.setMinimumSize(new java.awt.Dimension(720, 240));
         upLeftT1.setName("upLeftT1"); // NOI18N
-        upLeftT1.setPreferredSize(new java.awt.Dimension(650, 240));
+        upLeftT1.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT1.setLayout(new java.awt.GridBagLayout());
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
         nameLbT1.setText(resourceMap.getString("nameLbT1.text")); // NOI18N
+        nameLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        nameLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         nameLbT1.setName("nameLbT1"); // NOI18N
+        nameLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -607,7 +616,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(nameLbT1, gridBagConstraints);
 
         titleLbT1.setText(resourceMap.getString("titleLbT1.text")); // NOI18N
+        titleLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        titleLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         titleLbT1.setName("titleLbT1"); // NOI18N
+        titleLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -616,7 +628,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(titleLbT1, gridBagConstraints);
 
         companyLbT1.setText(resourceMap.getString("companyLbT1.text")); // NOI18N
+        companyLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        companyLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         companyLbT1.setName("companyLbT1"); // NOI18N
+        companyLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -625,7 +640,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(companyLbT1, gridBagConstraints);
 
         disLbT1.setText(resourceMap.getString("disLbT1.text")); // NOI18N
+        disLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        disLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         disLbT1.setName("disLbT1"); // NOI18N
+        disLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -634,7 +652,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(disLbT1, gridBagConstraints);
 
         codeLbT1.setText(resourceMap.getString("codeLbT1.text")); // NOI18N
+        codeLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        codeLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         codeLbT1.setName("codeLbT1"); // NOI18N
+        codeLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -643,7 +664,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(codeLbT1, gridBagConstraints);
 
         mobileLbT1.setText(resourceMap.getString("mobileLbT1.text")); // NOI18N
+        mobileLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        mobileLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         mobileLbT1.setName("mobileLbT1"); // NOI18N
+        mobileLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -652,7 +676,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(mobileLbT1, gridBagConstraints);
 
         faxLbT1.setText(resourceMap.getString("faxLbT1.text")); // NOI18N
+        faxLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        faxLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         faxLbT1.setName("faxLbT1"); // NOI18N
+        faxLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -661,7 +688,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(faxLbT1, gridBagConstraints);
 
         adsLbT1.setText(resourceMap.getString("adsLbT1.text")); // NOI18N
+        adsLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
+        adsLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
         adsLbT1.setName("adsLbT1"); // NOI18N
+        adsLbT1.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -675,6 +705,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(lastnameLbT1, gridBagConstraints);
 
         emailLbT1.setText(resourceMap.getString("emailLbT1.text")); // NOI18N
@@ -932,7 +963,7 @@ public class ScannerView extends FrameView {
             adsPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelT1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -973,7 +1004,7 @@ public class ScannerView extends FrameView {
             notePanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelT1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1008,6 +1039,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(lastnameLbTE1, gridBagConstraints);
 
         lastnameTfTE1.setColumns(10);
@@ -1179,7 +1211,7 @@ public class ScannerView extends FrameView {
             adsPanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelTE1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1308,7 +1340,7 @@ public class ScannerView extends FrameView {
             notePanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelTE1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1340,12 +1372,12 @@ public class ScannerView extends FrameView {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         scannerTab.add(upLeftScrollPaneT1, gridBagConstraints);
 
-        upRightT1.setMinimumSize(new java.awt.Dimension(250, 250));
+        upRightT1.setMinimumSize(new java.awt.Dimension(285, 285));
         upRightT1.setName("upRightT1"); // NOI18N
-        upRightT1.setPreferredSize(new java.awt.Dimension(268, 270));
+        upRightT1.setPreferredSize(new java.awt.Dimension(285, 285));
+        upRightT1.setLayout(new java.awt.GridBagLayout());
 
         scannerPanel.setName("scannerPanel"); // NOI18N
 
@@ -1386,15 +1418,139 @@ public class ScannerView extends FrameView {
                 .addComponent(scannerBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        brightPanelT1.setMinimumSize(new java.awt.Dimension(242, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        upRightT1.add(scannerPanel, gridBagConstraints);
+
+        doubleSideBtnT1.setText(resourceMap.getString("doubleSideBtnT1.text")); // NOI18N
+        doubleSideBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        doubleSideBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        doubleSideBtnT1.setName("doubleSideBtnT1"); // NOI18N
+        doubleSideBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        doubleSideBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doubleSideBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        upRightT1.add(doubleSideBtnT1, gridBagConstraints);
+
+        blackWhiteBtnT1.setText(resourceMap.getString("blackWhiteBtnT1.text")); // NOI18N
+        blackWhiteBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT1.setName("blackWhiteBtnT1"); // NOI18N
+        blackWhiteBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blackWhiteBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        upRightT1.add(blackWhiteBtnT1, gridBagConstraints);
+
+        autoCropBtnT1.setText(resourceMap.getString("autoCropBtnT1.text")); // NOI18N
+        autoCropBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT1.setName("autoCropBtnT1"); // NOI18N
+        autoCropBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autoCropBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        upRightT1.add(autoCropBtnT1, gridBagConstraints);
+
+        readCardBtnT1.setText(resourceMap.getString("readCardBtnT1.text")); // NOI18N
+        readCardBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        readCardBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        readCardBtnT1.setName("readCardBtnT1"); // NOI18N
+        readCardBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        readCardBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                readCardBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        upRightT1.add(readCardBtnT1, gridBagConstraints);
+
+        rotateBtnT1.setText(resourceMap.getString("rotateBtnT1.text")); // NOI18N
+        rotateBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        rotateBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        rotateBtnT1.setName("rotateBtnT1"); // NOI18N
+        rotateBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        rotateBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rotateBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        upRightT1.add(rotateBtnT1, gridBagConstraints);
+
+        emailBtnT1.setText(resourceMap.getString("emailBtnT1.text")); // NOI18N
+        emailBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        emailBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        emailBtnT1.setName("emailBtnT1"); // NOI18N
+        emailBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        emailBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        upRightT1.add(emailBtnT1, gridBagConstraints);
+
+        undoBtnT1.setText(resourceMap.getString("undoBtnT1.text")); // NOI18N
+        undoBtnT1.setName("undoBtn"); // NOI18N
+        undoBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                undoBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        upRightT1.add(undoBtnT1, gridBagConstraints);
+
+        confirmBtnT1.setText(resourceMap.getString("confirmBtnT1.text")); // NOI18N
+        confirmBtnT1.setName("confirmBtn"); // NOI18N
+        confirmBtnT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnT1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        upRightT1.add(confirmBtnT1, gridBagConstraints);
+
+        brightPanelT1.setMinimumSize(new java.awt.Dimension(242, 60));
         brightPanelT1.setName("brightPanelT1"); // NOI18N
-        brightPanelT1.setPreferredSize(new java.awt.Dimension(242, 40));
+        brightPanelT1.setPreferredSize(new java.awt.Dimension(242, 60));
         brightPanelT1.setRequestFocusEnabled(false);
-        brightPanelT1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        brightPanelT1.setLayout(new java.awt.GridBagLayout());
 
         brightLbT1.setText(resourceMap.getString("brightLbT1.text")); // NOI18N
         brightLbT1.setName("brightLbT1"); // NOI18N
-        brightPanelT1.add(brightLbT1);
+        brightPanelT1.add(brightLbT1, new java.awt.GridBagConstraints());
 
         brightSldT1.setMajorTickSpacing(1);
         brightSldT1.setMaximum(5);
@@ -1403,10 +1559,10 @@ public class ScannerView extends FrameView {
         brightSldT1.setPaintLabels(true);
         brightSldT1.setSnapToTicks(true);
         brightSldT1.setValue(3);
-        brightSldT1.setMaximumSize(new java.awt.Dimension(32767, 35));
-        brightSldT1.setMinimumSize(new java.awt.Dimension(50, 35));
+        brightSldT1.setMaximumSize(new java.awt.Dimension(150, 60));
+        brightSldT1.setMinimumSize(new java.awt.Dimension(150, 60));
         brightSldT1.setName("brightSldT1"); // NOI18N
-        brightSldT1.setPreferredSize(new java.awt.Dimension(150, 35));
+        brightSldT1.setPreferredSize(new java.awt.Dimension(150, 60));
         Hashtable labelTable = new Hashtable();
         labelTable.put( new Integer( 1 ), new JLabel("1") );
         labelTable.put( new Integer( 2 ), new JLabel("2") );
@@ -1419,69 +1575,52 @@ public class ScannerView extends FrameView {
                 brightSldT1StateChanged(evt);
             }
         });
-        brightPanelT1.add(brightSldT1);
+        brightPanelT1.add(brightSldT1, new java.awt.GridBagConstraints());
 
-        rotateBtnT1.setText(resourceMap.getString("rotateBtnT1.text")); // NOI18N
-        rotateBtnT1.setMaximumSize(new java.awt.Dimension(110, 23));
-        rotateBtnT1.setMinimumSize(new java.awt.Dimension(110, 23));
-        rotateBtnT1.setName("rotateBtnT1"); // NOI18N
-        rotateBtnT1.setPreferredSize(new java.awt.Dimension(110, 23));
-        rotateBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rotateBtnT1ActionPerformed(evt);
-            }
-        });
-
-        emailBtnT1.setText(resourceMap.getString("emailBtnT1.text")); // NOI18N
-        emailBtnT1.setName("emailBtnT1"); // NOI18N
-        emailBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailBtnT1ActionPerformed(evt);
-            }
-        });
-
-        saveBtnT1.setText(resourceMap.getString("saveBtnT1.text")); // NOI18N
-        saveBtnT1.setName("saveBtnT1"); // NOI18N
-        saveBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnT1ActionPerformed(evt);
-            }
-        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        upRightT1.add(brightPanelT1, gridBagConstraints);
 
         scanBtn.setText(resourceMap.getString("scanBtn.text")); // NOI18N
+        scanBtn.setMaximumSize(new java.awt.Dimension(100, 31));
+        scanBtn.setMinimumSize(new java.awt.Dimension(100, 31));
         scanBtn.setName("scanBtn"); // NOI18N
+        scanBtn.setPreferredSize(new java.awt.Dimension(100, 31));
         scanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scanBtnActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        upRightT1.add(scanBtn, gridBagConstraints);
 
-        undoBtnT1.setText(resourceMap.getString("undoBtnT1.text")); // NOI18N
-        undoBtnT1.setName("undoBtn"); // NOI18N
-        undoBtnT1.addActionListener(new java.awt.event.ActionListener() {
+        saveBtnT1.setText(resourceMap.getString("saveBtnT1.text")); // NOI18N
+        saveBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
+        saveBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
+        saveBtnT1.setName("saveBtnT1"); // NOI18N
+        saveBtnT1.setPreferredSize(new java.awt.Dimension(100, 31));
+        saveBtnT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                undoBtnT1ActionPerformed(evt);
+                saveBtnT1ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        upRightT1.add(saveBtnT1, gridBagConstraints);
 
-        confirmBtnT1.setText(resourceMap.getString("confirmBtnT1.text")); // NOI18N
-        confirmBtnT1.setName("confirmBtn"); // NOI18N
-        confirmBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmBtnT1ActionPerformed(evt);
-            }
-        });
-
-        readCardBtnT1.setText(resourceMap.getString("readCardBtnT1.text")); // NOI18N
-        readCardBtnT1.setName("readCardBtnT1"); // NOI18N
-        readCardBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                readCardBtnT1ActionPerformed(evt);
-            }
-        });
+        selSidePanelT1.setMinimumSize(new java.awt.Dimension(248, 30));
+        selSidePanelT1.setName("selSidePanelT1"); // NOI18N
+        selSidePanelT1.setPreferredSize(new java.awt.Dimension(248, 30));
 
         sideLbT1.setText(resourceMap.getString("sideLbT1.text")); // NOI18N
         sideLbT1.setName("sideLbT1"); // NOI18N
+        selSidePanelT1.add(sideLbT1);
 
         frontSideRdT1.setText(resourceMap.getString("frontSideRdT1.text")); // NOI18N
         frontSideRdT1.setName("frontSideRdT1"); // NOI18N
@@ -1490,6 +1629,7 @@ public class ScannerView extends FrameView {
                 frontSideRdT1ActionPerformed(evt);
             }
         });
+        selSidePanelT1.add(frontSideRdT1);
 
         backSideRdT1.setText(resourceMap.getString("backSideRdT1.text")); // NOI18N
         backSideRdT1.setName("backSideRdT1"); // NOI18N
@@ -1498,104 +1638,13 @@ public class ScannerView extends FrameView {
                 backSideRdT1ActionPerformed(evt);
             }
         });
+        selSidePanelT1.add(backSideRdT1);
 
-        doubleSideBtnT1.setText(resourceMap.getString("doubleSideBtnT1.text")); // NOI18N
-        doubleSideBtnT1.setName("doubleSideBtnT1"); // NOI18N
-        doubleSideBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doubleSideBtnT1ActionPerformed(evt);
-            }
-        });
-
-        blackWhiteBtnT1.setText(resourceMap.getString("blackWhiteBtnT1.text")); // NOI18N
-        blackWhiteBtnT1.setName("blackWhiteBtnT1"); // NOI18N
-        blackWhiteBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                blackWhiteBtnT1ActionPerformed(evt);
-            }
-        });
-
-        autoCropBtnT1.setText(resourceMap.getString("autoCropBtnT1.text")); // NOI18N
-        autoCropBtnT1.setName("autoCropBtnT1"); // NOI18N
-        autoCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                autoCropBtnT1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout upRightT1Layout = new javax.swing.GroupLayout(upRightT1);
-        upRightT1.setLayout(upRightT1Layout);
-        upRightT1Layout.setHorizontalGroup(
-            upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upRightT1Layout.createSequentialGroup()
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(undoBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(rotateBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(doubleSideBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(autoCropBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(blackWhiteBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(readCardBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emailBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(confirmBtnT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(sideLbT1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(frontSideRdT1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backSideRdT1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, upRightT1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(scanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(saveBtnT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(brightPanelT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        upRightT1Layout.setVerticalGroup(
-            upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upRightT1Layout.createSequentialGroup()
-                .addComponent(scannerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doubleSideBtnT1)
-                    .addComponent(blackWhiteBtnT1))
-                .addGap(7, 7, 7)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(readCardBtnT1)
-                    .addComponent(autoCropBtnT1))
-                .addGap(7, 7, 7)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotateBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(undoBtnT1)
-                    .addComponent(confirmBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(brightPanelT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scanBtn)
-                    .addComponent(saveBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(upRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sideLbT1)
-                    .addComponent(frontSideRdT1)
-                    .addComponent(backSideRdT1))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        upRightT1.add(selSidePanelT1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1612,9 +1661,9 @@ public class ScannerView extends FrameView {
         lowLeftT1.setName("lowLeftT1"); // NOI18N
 
         frontPanelT1.setMaximumSize(null);
-        frontPanelT1.setMinimumSize(new java.awt.Dimension(100, 50));
+        frontPanelT1.setMinimumSize(new java.awt.Dimension(332, 340));
         frontPanelT1.setName("frontPanelT1"); // NOI18N
-        frontPanelT1.setPreferredSize(new java.awt.Dimension(300, 50));
+        frontPanelT1.setPreferredSize(new java.awt.Dimension(332, 340));
 
         frontTfT1.setEditable(false);
         frontTfT1.setText(resourceMap.getString("frontTfT1.text")); // NOI18N
@@ -1633,6 +1682,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        frontSpT1.setMinimumSize(new java.awt.Dimension(320, 291));
         frontSpT1.setName("frontSpT1"); // NOI18N
         frontSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
 
@@ -1648,15 +1698,15 @@ public class ScannerView extends FrameView {
         frontPanelT1.setLayout(frontPanelT1Layout);
         frontPanelT1Layout.setHorizontalGroup(
             frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frontPanelT1Layout.createSequentialGroup()
-                .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
+                .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(frontSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                    .addGroup(frontPanelT1Layout.createSequentialGroup()
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(frontCropBtnT1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                        .addComponent(frontCropBtnT1)))
                 .addContainerGap())
         );
         frontPanelT1Layout.setVerticalGroup(
@@ -1664,10 +1714,10 @@ public class ScannerView extends FrameView {
             .addGroup(frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(frontTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frontBtnT1)
-                    .addComponent(frontCropBtnT1))
+                    .addComponent(frontCropBtnT1)
+                    .addComponent(frontBtnT1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(frontSpT1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1675,16 +1725,17 @@ public class ScannerView extends FrameView {
         lowLeftT1.setLayout(lowLeftT1Layout);
         lowLeftT1Layout.setHorizontalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         lowLeftT1Layout.setVerticalGroup(
             lowLeftT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(frontPanelT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         low.add(lowLeftT1);
 
         lowRightT1.setMaximumSize(null);
+        lowRightT1.setMinimumSize(new java.awt.Dimension(332, 340));
         lowRightT1.setName("lowRightT1"); // NOI18N
 
         backTfT1.setEditable(false);
@@ -1704,8 +1755,9 @@ public class ScannerView extends FrameView {
             }
         });
 
+        backSpT1.setMinimumSize(new java.awt.Dimension(320, 291));
         backSpT1.setName("backSpT1"); // NOI18N
-        backSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
+        backSpT1.setPreferredSize(new java.awt.Dimension(320, 291));
 
         backCropBtnT1.setText(resourceMap.getString("backCropBtnT1.text")); // NOI18N
         backCropBtnT1.setName("backCropBtnT1"); // NOI18N
@@ -1728,7 +1780,7 @@ public class ScannerView extends FrameView {
                         .addComponent(backBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1, 0, 0, Short.MAX_VALUE))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lowRightT1Layout.setVerticalGroup(
@@ -1739,7 +1791,7 @@ public class ScannerView extends FrameView {
                     .addComponent(backCropBtnT1)
                     .addComponent(backBtnT1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1761,20 +1813,26 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("scannerTab.TabConstraints.tabTitle"), scannerTab); // NOI18N
 
+        queryTab.setMaximumSize(new java.awt.Dimension(680, 630));
+        queryTab.setMinimumSize(new java.awt.Dimension(680, 630));
         queryTab.setName("queryTab"); // NOI18N
+        queryTab.setPreferredSize(new java.awt.Dimension(680, 630));
         queryTab.setLayout(new java.awt.GridBagLayout());
 
         upLeftScrollPaneT2.setMinimumSize(new java.awt.Dimension(350, 260));
         upLeftScrollPaneT2.setName("upLeftScrollPaneT2"); // NOI18N
         upLeftScrollPaneT2.setPreferredSize(new java.awt.Dimension(390, 260));
 
-        upLeftT2.setMinimumSize(new java.awt.Dimension(650, 240));
+        upLeftT2.setMinimumSize(new java.awt.Dimension(720, 240));
         upLeftT2.setName("upLeftT2"); // NOI18N
-        upLeftT2.setPreferredSize(new java.awt.Dimension(650, 240));
+        upLeftT2.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT2.setLayout(new java.awt.GridBagLayout());
 
         nameLbT2.setText(resourceMap.getString("nameLbT2.text")); // NOI18N
+        nameLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        nameLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         nameLbT2.setName("nameLbT2"); // NOI18N
+        nameLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1783,7 +1841,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(nameLbT2, gridBagConstraints);
 
         titleLbT2.setText(resourceMap.getString("titleLbT2.text")); // NOI18N
+        titleLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        titleLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         titleLbT2.setName("titleLbT2"); // NOI18N
+        titleLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -1792,7 +1853,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(titleLbT2, gridBagConstraints);
 
         companyLbT2.setText(resourceMap.getString("companyLbT2.text")); // NOI18N
+        companyLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        companyLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         companyLbT2.setName("companyLbT2"); // NOI18N
+        companyLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -1801,7 +1865,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(companyLbT2, gridBagConstraints);
 
         disLbT2.setText(resourceMap.getString("disLbT2.text")); // NOI18N
+        disLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        disLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         disLbT2.setName("disLbT2"); // NOI18N
+        disLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -1810,7 +1877,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(disLbT2, gridBagConstraints);
 
         codeLbT2.setText(resourceMap.getString("codeLbT2.text")); // NOI18N
+        codeLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        codeLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         codeLbT2.setName("codeLbT2"); // NOI18N
+        codeLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -1819,7 +1889,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(codeLbT2, gridBagConstraints);
 
         mobileLbT2.setText(resourceMap.getString("mobileLbT2.text")); // NOI18N
+        mobileLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        mobileLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         mobileLbT2.setName("mobileLbT2"); // NOI18N
+        mobileLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -1828,7 +1901,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(mobileLbT2, gridBagConstraints);
 
         faxLbT2.setText(resourceMap.getString("faxLbT2.text")); // NOI18N
+        faxLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        faxLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         faxLbT2.setName("faxLbT2"); // NOI18N
+        faxLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -1837,7 +1913,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(faxLbT2, gridBagConstraints);
 
         adsLbT2.setText(resourceMap.getString("adsLbT2.text")); // NOI18N
+        adsLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
+        adsLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
         adsLbT2.setName("adsLbT2"); // NOI18N
+        adsLbT2.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -1851,6 +1930,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(lastnameLbT2, gridBagConstraints);
 
         emailLbT2.setText(resourceMap.getString("emailLbT2.text")); // NOI18N
@@ -2062,6 +2142,7 @@ public class ScannerView extends FrameView {
         countryTfT2.setColumns(10);
         countryTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
         countryTfT2.setName("countryTfT2"); // NOI18N
+        countryTfT2.setPreferredSize(new java.awt.Dimension(86, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
@@ -2100,7 +2181,7 @@ public class ScannerView extends FrameView {
             adsPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2139,7 +2220,7 @@ public class ScannerView extends FrameView {
             notePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2174,6 +2255,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(lastnameLbTE2, gridBagConstraints);
 
         lastnameTfTE2.setColumns(10);
@@ -2345,7 +2427,7 @@ public class ScannerView extends FrameView {
             adsPanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelTE2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2474,7 +2556,7 @@ public class ScannerView extends FrameView {
             notePanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelTE2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2516,11 +2598,11 @@ public class ScannerView extends FrameView {
         blankPanel14.setLayout(blankPanel14Layout);
         blankPanel14Layout.setHorizontalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel14Layout.setVerticalGroup(
             blankPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2534,8 +2616,9 @@ public class ScannerView extends FrameView {
         upRightT2.setPreferredSize(new java.awt.Dimension(265, 250));
         upRightT2.setLayout(new java.awt.GridBagLayout());
 
+        genSearchPanelT2.setMinimumSize(new java.awt.Dimension(260, 50));
         genSearchPanelT2.setName("genSearchT2"); // NOI18N
-        genSearchPanelT2.setPreferredSize(new java.awt.Dimension(250, 50));
+        genSearchPanelT2.setPreferredSize(new java.awt.Dimension(260, 50));
 
         genSearchTfT2.setText(resourceMap.getString("genSearchTfT2.text")); // NOI18N
         genSearchTfT2.setName("genSearchTfT2"); // NOI18N
@@ -2553,7 +2636,7 @@ public class ScannerView extends FrameView {
         genSearchPanelT2Layout.setHorizontalGroup(
             genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(genSearchPanelT2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(genSearchT2)
@@ -2566,7 +2649,7 @@ public class ScannerView extends FrameView {
                 .addGroup(genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genSearchT2))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2587,16 +2670,18 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         quickPanelT2.add(quickLb, gridBagConstraints);
 
-        btnPanel0T2.setMaximumSize(new java.awt.Dimension(280, 47));
-        btnPanel0T2.setMinimumSize(new java.awt.Dimension(280, 47));
+        btnPanel0T2.setMaximumSize(new java.awt.Dimension(230, 50));
+        btnPanel0T2.setMinimumSize(new java.awt.Dimension(230, 50));
         btnPanel0T2.setName("btnPanel0T2"); // NOI18N
-        btnPanel0T2.setPreferredSize(new java.awt.Dimension(230, 47));
+        btnPanel0T2.setPreferredSize(new java.awt.Dimension(230, 50));
         btnPanel0T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn0T2.setActionCommand(resourceMap.getString("engBtn0T2.actionCommand")); // NOI18N
         engBtn0T2.setLabel(resourceMap.getString("engBtn0T2.label")); // NOI18N
+        engBtn0T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn0T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn0T2.setName("engBtn0T2"); // NOI18N
-        engBtn0T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn0T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn0T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn0T2ActionPerformed(evt);
@@ -2605,8 +2690,10 @@ public class ScannerView extends FrameView {
         btnPanel0T2.add(engBtn0T2, new java.awt.GridBagConstraints());
 
         engBtn1T2.setText(resourceMap.getString("engBtn1T2.text")); // NOI18N
+        engBtn1T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn1T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn1T2.setName("engBtn1T2"); // NOI18N
-        engBtn1T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn1T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn1T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn1T2ActionPerformed(evt);
@@ -2615,8 +2702,10 @@ public class ScannerView extends FrameView {
         btnPanel0T2.add(engBtn1T2, new java.awt.GridBagConstraints());
 
         engBtn2T2.setText(resourceMap.getString("engBtn2T2.text")); // NOI18N
+        engBtn2T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn2T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn2T2.setName("engBtn2T2"); // NOI18N
-        engBtn2T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn2T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn2T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn2T2ActionPerformed(evt);
@@ -2625,8 +2714,10 @@ public class ScannerView extends FrameView {
         btnPanel0T2.add(engBtn2T2, new java.awt.GridBagConstraints());
 
         thBtn0T2.setText(resourceMap.getString("thBtn0T2.text")); // NOI18N
+        thBtn0T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn0T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn0T2.setName("thBtn0T2"); // NOI18N
-        thBtn0T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn0T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn0T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn0T2ActionPerformed(evt);
@@ -2637,8 +2728,10 @@ public class ScannerView extends FrameView {
         btnPanel0T2.add(thBtn0T2, gridBagConstraints);
 
         thBtn1T2.setText(resourceMap.getString("thBtn1T2.text")); // NOI18N
+        thBtn1T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn1T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn1T2.setName("thBtn1T2"); // NOI18N
-        thBtn1T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn1T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn1T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn1T2ActionPerformed(evt);
@@ -2649,7 +2742,10 @@ public class ScannerView extends FrameView {
         btnPanel0T2.add(thBtn1T2, gridBagConstraints);
 
         thBtn2T2.setText(resourceMap.getString("thBtn2T2.text")); // NOI18N
+        thBtn2T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn2T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn2T2.setName("thBtn2T2"); // NOI18N
+        thBtn2T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn2T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn2T2ActionPerformed(evt);
@@ -2665,15 +2761,17 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         quickPanelT2.add(btnPanel0T2, gridBagConstraints);
 
-        btnPanel1T2.setMaximumSize(new java.awt.Dimension(280, 47));
-        btnPanel1T2.setMinimumSize(new java.awt.Dimension(280, 47));
+        btnPanel1T2.setMaximumSize(new java.awt.Dimension(230, 50));
+        btnPanel1T2.setMinimumSize(new java.awt.Dimension(230, 50));
         btnPanel1T2.setName("btnPanel1T2"); // NOI18N
-        btnPanel1T2.setPreferredSize(new java.awt.Dimension(230, 47));
+        btnPanel1T2.setPreferredSize(new java.awt.Dimension(230, 50));
         btnPanel1T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn3T2.setText(resourceMap.getString("engBtn3T2.text")); // NOI18N
+        engBtn3T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn3T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn3T2.setName("engBtn3T2"); // NOI18N
-        engBtn3T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn3T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn3T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn3T2ActionPerformed(evt);
@@ -2682,7 +2780,10 @@ public class ScannerView extends FrameView {
         btnPanel1T2.add(engBtn3T2, new java.awt.GridBagConstraints());
 
         thBtn3T2.setText(resourceMap.getString("thBtn3T2.text")); // NOI18N
+        thBtn3T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn3T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn3T2.setName("thBtn3T2"); // NOI18N
+        thBtn3T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn3T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn3T2ActionPerformed(evt);
@@ -2693,7 +2794,10 @@ public class ScannerView extends FrameView {
         btnPanel1T2.add(thBtn3T2, gridBagConstraints);
 
         engBtn4T2.setText(resourceMap.getString("engBtn4T2.text")); // NOI18N
+        engBtn4T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn4T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn4T2.setName("engBtn4T2"); // NOI18N
+        engBtn4T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn4T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn4T2ActionPerformed(evt);
@@ -2703,7 +2807,7 @@ public class ScannerView extends FrameView {
 
         thBtn4T2.setText(resourceMap.getString("thBtn4T2.text")); // NOI18N
         thBtn4T2.setName("thBtn4T2"); // NOI18N
-        thBtn4T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn4T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn4T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn4T2ActionPerformed(evt);
@@ -2714,8 +2818,10 @@ public class ScannerView extends FrameView {
         btnPanel1T2.add(thBtn4T2, gridBagConstraints);
 
         engBtn5T2.setText(resourceMap.getString("engBtn5T2.text")); // NOI18N
+        engBtn5T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn5T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn5T2.setName("engBtn5T2"); // NOI18N
-        engBtn5T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn5T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn5T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn5T2ActionPerformed(evt);
@@ -2724,8 +2830,10 @@ public class ScannerView extends FrameView {
         btnPanel1T2.add(engBtn5T2, new java.awt.GridBagConstraints());
 
         thBtn5T2.setText(resourceMap.getString("thBtn5T2.text")); // NOI18N
+        thBtn5T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn5T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn5T2.setName("thBtn5T2"); // NOI18N
-        thBtn5T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn5T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn5T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn5T2ActionPerformed(evt);
@@ -2741,17 +2849,17 @@ public class ScannerView extends FrameView {
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 0);
         quickPanelT2.add(btnPanel1T2, gridBagConstraints);
 
-        btnPanel2T2.setMaximumSize(new java.awt.Dimension(280, 47));
-        btnPanel2T2.setMinimumSize(new java.awt.Dimension(280, 47));
+        btnPanel2T2.setMaximumSize(new java.awt.Dimension(230, 50));
+        btnPanel2T2.setMinimumSize(new java.awt.Dimension(230, 50));
         btnPanel2T2.setName("btnPanel2T2"); // NOI18N
-        btnPanel2T2.setPreferredSize(new java.awt.Dimension(230, 47));
+        btnPanel2T2.setPreferredSize(new java.awt.Dimension(230, 50));
         btnPanel2T2.setLayout(new java.awt.GridBagLayout());
 
         engBtn6T2.setText(resourceMap.getString("engBtn6T2.text")); // NOI18N
-        engBtn6T2.setMaximumSize(new java.awt.Dimension(30, 23));
-        engBtn6T2.setMinimumSize(new java.awt.Dimension(30, 23));
+        engBtn6T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn6T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn6T2.setName("engBtn6T2"); // NOI18N
-        engBtn6T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn6T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn6T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn6T2ActionPerformed(evt);
@@ -2763,7 +2871,10 @@ public class ScannerView extends FrameView {
         btnPanel2T2.add(engBtn6T2, gridBagConstraints);
 
         engBtn7T2.setText(resourceMap.getString("engBtn7T2.text")); // NOI18N
+        engBtn7T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn7T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn7T2.setName("engBtn7T2"); // NOI18N
+        engBtn7T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn7T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn7T2ActionPerformed(evt);
@@ -2775,8 +2886,10 @@ public class ScannerView extends FrameView {
         btnPanel2T2.add(engBtn7T2, gridBagConstraints);
 
         engBtn8T2.setText(resourceMap.getString("engBtn8T2.text")); // NOI18N
+        engBtn8T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        engBtn8T2.setMinimumSize(new java.awt.Dimension(53, 25));
         engBtn8T2.setName("engBtn8T2"); // NOI18N
-        engBtn8T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        engBtn8T2.setPreferredSize(new java.awt.Dimension(53, 25));
         engBtn8T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engBtn8T2ActionPerformed(evt);
@@ -2788,8 +2901,10 @@ public class ScannerView extends FrameView {
         btnPanel2T2.add(engBtn8T2, gridBagConstraints);
 
         thBtn8T2.setText(resourceMap.getString("thBtn8T2.text")); // NOI18N
+        thBtn8T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn8T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn8T2.setName("thBtn8T2"); // NOI18N
-        thBtn8T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn8T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn8T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn8T2ActionPerformed(evt);
@@ -2801,8 +2916,10 @@ public class ScannerView extends FrameView {
         btnPanel2T2.add(thBtn8T2, gridBagConstraints);
 
         thBtn7T2.setText(resourceMap.getString("thBtn7T2.text")); // NOI18N
+        thBtn7T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn7T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn7T2.setName("thBtn7T2"); // NOI18N
-        thBtn7T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn7T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn7T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn7T2ActionPerformed(evt);
@@ -2814,8 +2931,10 @@ public class ScannerView extends FrameView {
         btnPanel2T2.add(thBtn7T2, gridBagConstraints);
 
         thBtn6T2.setText(resourceMap.getString("thBtn6T2.text")); // NOI18N
+        thBtn6T2.setMaximumSize(new java.awt.Dimension(53, 25));
+        thBtn6T2.setMinimumSize(new java.awt.Dimension(53, 25));
         thBtn6T2.setName("thBtn6T2"); // NOI18N
-        thBtn6T2.setPreferredSize(new java.awt.Dimension(53, 23));
+        thBtn6T2.setPreferredSize(new java.awt.Dimension(53, 25));
         thBtn6T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 thBtn6T2ActionPerformed(evt);
@@ -2888,7 +3007,7 @@ public class ScannerView extends FrameView {
             tablePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tablePanelT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addContainerGap())
         );
         tablePanelT2Layout.setVerticalGroup(
@@ -2929,7 +3048,7 @@ public class ScannerView extends FrameView {
             .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(deletedBtnT2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(editBtnT2)
                 .addGap(33, 33, 33))
         );
@@ -2960,11 +3079,11 @@ public class ScannerView extends FrameView {
         blankPanel6.setLayout(blankPanel6Layout);
         blankPanel6Layout.setHorizontalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         blankPanel6Layout.setVerticalGroup(
             blankPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2974,64 +3093,17 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("queryTab.TabConstraints.tabTitle"), queryTab); // NOI18N
 
-        resultTab.setMaximumSize(new java.awt.Dimension(650, 595));
-        resultTab.setMinimumSize(new java.awt.Dimension(650, 595));
+        resultTab.setMaximumSize(new java.awt.Dimension(680, 630));
+        resultTab.setMinimumSize(new java.awt.Dimension(680, 630));
         resultTab.setName("resultTab"); // NOI18N
-        resultTab.setPreferredSize(new java.awt.Dimension(650, 595));
+        resultTab.setPreferredSize(new java.awt.Dimension(680, 630));
         resultTab.setLayout(new java.awt.GridBagLayout());
 
         upRightT3.setMaximumSize(new java.awt.Dimension(230, 250));
         upRightT3.setMinimumSize(new java.awt.Dimension(230, 250));
         upRightT3.setName("upRightT3"); // NOI18N
         upRightT3.setPreferredSize(new java.awt.Dimension(230, 280));
-
-        brightPanelT3.setMinimumSize(new java.awt.Dimension(242, 40));
-        brightPanelT3.setName("brightPanelT3"); // NOI18N
-        brightPanelT3.setPreferredSize(new java.awt.Dimension(242, 40));
-        brightPanelT3.setRequestFocusEnabled(false);
-        brightPanelT3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        brightLbT3.setText(resourceMap.getString("brightLbT3.text")); // NOI18N
-        brightLbT3.setName("brightLbT3"); // NOI18N
-        brightPanelT3.add(brightLbT3);
-
-        brightSldT3.setMajorTickSpacing(1);
-        brightSldT3.setMaximum(5);
-        brightSldT3.setMinimum(1);
-        brightSldT3.setMinorTickSpacing(1);
-        brightSldT3.setPaintLabels(true);
-        brightSldT3.setSnapToTicks(true);
-        brightSldT3.setValue(3);
-        brightSldT3.setMaximumSize(new java.awt.Dimension(32767, 35));
-        brightSldT3.setMinimumSize(new java.awt.Dimension(50, 35));
-        brightSldT3.setName("brightSldT3"); // NOI18N
-        brightSldT3.setPreferredSize(new java.awt.Dimension(150, 35));
-        brightSldT3.setLabelTable( labelTable );
-        brightSldT3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                brightSldT3StateChanged(evt);
-            }
-        });
-        brightPanelT3.add(brightSldT3);
-
-        rotateBtnT3.setText(resourceMap.getString("rotateBtnT3.text")); // NOI18N
-        rotateBtnT3.setMaximumSize(new java.awt.Dimension(110, 23));
-        rotateBtnT3.setMinimumSize(new java.awt.Dimension(110, 23));
-        rotateBtnT3.setName("rotateBtnT3"); // NOI18N
-        rotateBtnT3.setPreferredSize(new java.awt.Dimension(110, 23));
-        rotateBtnT3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rotateBtnT3ActionPerformed(evt);
-            }
-        });
-
-        emailBtnT3.setText(resourceMap.getString("emailBtnT3.text")); // NOI18N
-        emailBtnT3.setName("emailBtnT3"); // NOI18N
-        emailBtnT3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailBtnT3ActionPerformed(evt);
-            }
-        });
+        upRightT3.setLayout(new java.awt.GridBagLayout());
 
         idPanelT3.setMaximumSize(new java.awt.Dimension(150, 22));
         idPanelT3.setMinimumSize(new java.awt.Dimension(150, 22));
@@ -3066,24 +3138,71 @@ public class ScannerView extends FrameView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        sideLbT3.setText(resourceMap.getString("sideLbT3.text")); // NOI18N
-        sideLbT3.setName("sideLbT3"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        upRightT3.add(idPanelT3, gridBagConstraints);
 
-        frontSideRdT3.setText(resourceMap.getString("frontSideRdT3.text")); // NOI18N
-        frontSideRdT3.setName("frontSideRdT3"); // NOI18N
-        frontSideRdT3.addActionListener(new java.awt.event.ActionListener() {
+        autoCropBtnT3.setText(resourceMap.getString("autoCropBtnT3.text")); // NOI18N
+        autoCropBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT3.setName("autoCropBtnT3"); // NOI18N
+        autoCropBtnT3.setPreferredSize(new java.awt.Dimension(100, 31));
+        autoCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frontSideRdT3ActionPerformed(evt);
+                autoCropBtnT3ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        upRightT3.add(autoCropBtnT3, gridBagConstraints);
 
-        backSideRdT3.setText(resourceMap.getString("backSideRdT3.text")); // NOI18N
-        backSideRdT3.setName("backSideRdT3"); // NOI18N
-        backSideRdT3.addActionListener(new java.awt.event.ActionListener() {
+        blackWhiteBtnT3.setText(resourceMap.getString("blackWhiteBtnT3.text")); // NOI18N
+        blackWhiteBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT3.setName("blackWhiteBtnT3"); // NOI18N
+        blackWhiteBtnT3.setPreferredSize(new java.awt.Dimension(100, 31));
+        blackWhiteBtnT3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backSideRdT3ActionPerformed(evt);
+                blackWhiteBtnT3ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        upRightT3.add(blackWhiteBtnT3, gridBagConstraints);
+
+        rotateBtnT3.setText(resourceMap.getString("rotateBtnT3.text")); // NOI18N
+        rotateBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
+        rotateBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
+        rotateBtnT3.setName("rotateBtnT3"); // NOI18N
+        rotateBtnT3.setPreferredSize(new java.awt.Dimension(100, 31));
+        rotateBtnT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rotateBtnT3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        upRightT3.add(rotateBtnT3, gridBagConstraints);
+
+        emailBtnT3.setText(resourceMap.getString("emailBtnT3.text")); // NOI18N
+        emailBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
+        emailBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
+        emailBtnT3.setName("emailBtnT3"); // NOI18N
+        emailBtnT3.setPreferredSize(new java.awt.Dimension(100, 31));
+        emailBtnT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailBtnT3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        upRightT3.add(emailBtnT3, gridBagConstraints);
 
         undoBtnT3.setText(resourceMap.getString("undoBtnT3.text")); // NOI18N
         undoBtnT3.setName("undoBtnT3"); // NOI18N
@@ -3092,6 +3211,10 @@ public class ScannerView extends FrameView {
                 undoBtnT3ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        upRightT3.add(undoBtnT3, gridBagConstraints);
 
         confirmBtnT3.setText(resourceMap.getString("confirmBtnT3.text")); // NOI18N
         confirmBtnT3.setName("confirmBtnT3"); // NOI18N
@@ -3100,92 +3223,93 @@ public class ScannerView extends FrameView {
                 confirmBtnT3ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        upRightT3.add(confirmBtnT3, gridBagConstraints);
 
-        autoCropBtnT3.setText(resourceMap.getString("autoCropBtnT3.text")); // NOI18N
-        autoCropBtnT3.setName("autoCropBtnT3"); // NOI18N
-        autoCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                autoCropBtnT3ActionPerformed(evt);
+        brightPanelT3.setMinimumSize(new java.awt.Dimension(242, 60));
+        brightPanelT3.setName("brightPanelT3"); // NOI18N
+        brightPanelT3.setPreferredSize(new java.awt.Dimension(242, 60));
+        brightPanelT3.setRequestFocusEnabled(false);
+        brightPanelT3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        brightLbT3.setText(resourceMap.getString("brightLbT3.text")); // NOI18N
+        brightLbT3.setName("brightLbT3"); // NOI18N
+        brightPanelT3.add(brightLbT3);
+
+        brightSldT3.setMajorTickSpacing(1);
+        brightSldT3.setMaximum(5);
+        brightSldT3.setMinimum(1);
+        brightSldT3.setMinorTickSpacing(1);
+        brightSldT3.setPaintLabels(true);
+        brightSldT3.setSnapToTicks(true);
+        brightSldT3.setValue(3);
+        brightSldT3.setMaximumSize(new java.awt.Dimension(32767, 35));
+        brightSldT3.setMinimumSize(new java.awt.Dimension(50, 35));
+        brightSldT3.setName("brightSldT3"); // NOI18N
+        brightSldT3.setPreferredSize(new java.awt.Dimension(150, 60));
+        brightSldT3.setLabelTable( labelTable );
+        brightSldT3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                brightSldT3StateChanged(evt);
             }
         });
+        brightPanelT3.add(brightSldT3);
 
-        blackWhiteBtnT3.setText(resourceMap.getString("blackWhiteBtnT3.text")); // NOI18N
-        blackWhiteBtnT3.setName("blackWhiteBtnT3"); // NOI18N
-        blackWhiteBtnT3.addActionListener(new java.awt.event.ActionListener() {
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        upRightT3.add(brightPanelT3, gridBagConstraints);
+
+        selSidePanelT3.setMinimumSize(new java.awt.Dimension(248, 30));
+        selSidePanelT3.setName("selSidePanelT3"); // NOI18N
+        selSidePanelT3.setPreferredSize(new java.awt.Dimension(248, 30));
+
+        sideLbT3.setText(resourceMap.getString("sideLbT3.text")); // NOI18N
+        sideLbT3.setName("sideLbT3"); // NOI18N
+        selSidePanelT3.add(sideLbT3);
+
+        frontSideRdT3.setText(resourceMap.getString("frontSideRdT3.text")); // NOI18N
+        frontSideRdT3.setName("frontSideRdT3"); // NOI18N
+        frontSideRdT3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                blackWhiteBtnT3ActionPerformed(evt);
+                frontSideRdT3ActionPerformed(evt);
             }
         });
+        selSidePanelT3.add(frontSideRdT3);
+
+        backSideRdT3.setText(resourceMap.getString("backSideRdT3.text")); // NOI18N
+        backSideRdT3.setName("backSideRdT3"); // NOI18N
+        backSideRdT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backSideRdT3ActionPerformed(evt);
+            }
+        });
+        selSidePanelT3.add(backSideRdT3);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        upRightT3.add(selSidePanelT3, gridBagConstraints);
 
         saveBtnT3.setText(resourceMap.getString("saveBtnT3.text")); // NOI18N
+        saveBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
+        saveBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
         saveBtnT3.setName("saveBtnT3"); // NOI18N
+        saveBtnT3.setPreferredSize(new java.awt.Dimension(100, 31));
         saveBtnT3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnT3ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout upRightT3Layout = new javax.swing.GroupLayout(upRightT3);
-        upRightT3.setLayout(upRightT3Layout);
-        upRightT3Layout.setHorizontalGroup(
-            upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upRightT3Layout.createSequentialGroup()
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(upRightT3Layout.createSequentialGroup()
-                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(undoBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(autoCropBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rotateBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(blackWhiteBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(emailBtnT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(confirmBtnT3)))
-                            .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(sideLbT3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(frontSideRdT3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backSideRdT3))
-                    .addGroup(upRightT3Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(saveBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        upRightT3Layout.setVerticalGroup(
-            upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upRightT3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(idPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(autoCropBtnT3)
-                    .addComponent(blackWhiteBtnT3))
-                .addGap(7, 7, 7)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rotateBtnT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailBtnT3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmBtnT3)
-                    .addComponent(undoBtnT3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(brightPanelT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(upRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sideLbT3)
-                    .addComponent(frontSideRdT3)
-                    .addComponent(backSideRdT3))
-                .addGap(18, 18, 18)
-                .addComponent(saveBtnT3)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        upRightT3.add(saveBtnT3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3235,7 +3359,7 @@ public class ScannerView extends FrameView {
             .addGroup(lowLeftT3Layout.createSequentialGroup()
                 .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lowLeftT3Layout.createSequentialGroup()
-                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3252,7 +3376,7 @@ public class ScannerView extends FrameView {
                         .addComponent(frontBtnT3))
                     .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3263,7 +3387,7 @@ public class ScannerView extends FrameView {
 
         lowRightT3.setMinimumSize(new java.awt.Dimension(350, 335));
         lowRightT3.setName("lowRightT3"); // NOI18N
-        lowRightT3.setPreferredSize(new java.awt.Dimension(340, 335));
+        lowRightT3.setPreferredSize(new java.awt.Dimension(350, 335));
 
         backTfT3.setEditable(false);
         backTfT3.setName("backTfT3"); // NOI18N
@@ -3296,17 +3420,19 @@ public class ScannerView extends FrameView {
         lowRightT3.setLayout(lowRightT3Layout);
         lowRightT3Layout.setHorizontalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
+            .addGroup(lowRightT3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
+                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backCropBtnT3)))
-                .addGap(20, 20, 20))
+                        .addComponent(backCropBtnT3)
+                        .addGap(20, 20, 20))
+                    .addGroup(lowRightT3Layout.createSequentialGroup()
+                        .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                        .addGap(21, 21, 21))))
         );
         lowRightT3Layout.setVerticalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3316,7 +3442,7 @@ public class ScannerView extends FrameView {
                     .addComponent(backBtnT3)
                     .addComponent(backCropBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3336,13 +3462,16 @@ public class ScannerView extends FrameView {
         upLeftScrollPaneT3.setName("upLeftScrollPaneT3"); // NOI18N
         upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(390, 260));
 
-        upLeftT3.setMinimumSize(new java.awt.Dimension(650, 240));
+        upLeftT3.setMinimumSize(new java.awt.Dimension(720, 240));
         upLeftT3.setName("upLeftT3"); // NOI18N
-        upLeftT3.setPreferredSize(new java.awt.Dimension(650, 240));
+        upLeftT3.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT3.setLayout(new java.awt.GridBagLayout());
 
         nameLbT3.setText(resourceMap.getString("nameLbT3.text")); // NOI18N
+        nameLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        nameLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         nameLbT3.setName("nameLbT3"); // NOI18N
+        nameLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -3351,7 +3480,11 @@ public class ScannerView extends FrameView {
         upLeftT3.add(nameLbT3, gridBagConstraints);
 
         titleLbT3.setText(resourceMap.getString("titleLbT3.text")); // NOI18N
+        titleLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        titleLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         titleLbT3.setName("titleLbT3"); // NOI18N
+        titleLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
+        titleLbT3.setRequestFocusEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -3360,7 +3493,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(titleLbT3, gridBagConstraints);
 
         companyLbT3.setText(resourceMap.getString("companyLbT3.text")); // NOI18N
+        companyLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        companyLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         companyLbT3.setName("companyLbT3"); // NOI18N
+        companyLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -3369,7 +3505,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(companyLbT3, gridBagConstraints);
 
         disLbT3.setText(resourceMap.getString("disLbT3.text")); // NOI18N
+        disLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        disLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         disLbT3.setName("disLbT3"); // NOI18N
+        disLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -3378,7 +3517,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(disLbT3, gridBagConstraints);
 
         codeLbT3.setText(resourceMap.getString("codeLbT3.text")); // NOI18N
+        codeLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        codeLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         codeLbT3.setName("codeLbT3"); // NOI18N
+        codeLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -3387,7 +3529,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(codeLbT3, gridBagConstraints);
 
         mobileLbT3.setText(resourceMap.getString("mobileLbT3.text")); // NOI18N
+        mobileLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        mobileLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         mobileLbT3.setName("mobileLbT3"); // NOI18N
+        mobileLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -3396,7 +3541,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(mobileLbT3, gridBagConstraints);
 
         faxLbT3.setText(resourceMap.getString("faxLbT3.text")); // NOI18N
+        faxLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        faxLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         faxLbT3.setName("faxLbT3"); // NOI18N
+        faxLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -3405,7 +3553,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(faxLbT3, gridBagConstraints);
 
         adsLbT3.setText(resourceMap.getString("adsLbT3.text")); // NOI18N
+        adsLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
+        adsLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
         adsLbT3.setName("adsLbT3"); // NOI18N
+        adsLbT3.setPreferredSize(new java.awt.Dimension(86, 15));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -3419,6 +3570,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(lastnameLbT3, gridBagConstraints);
 
         emailLbT3.setText(resourceMap.getString("emailLbT3.text")); // NOI18N
@@ -3668,7 +3820,7 @@ public class ScannerView extends FrameView {
             adsPanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelT3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3709,7 +3861,7 @@ public class ScannerView extends FrameView {
             notePanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelT3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3744,6 +3896,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(lastnameLbTE3, gridBagConstraints);
 
         lastnameTfTE3.setColumns(10);
@@ -3915,7 +4068,7 @@ public class ScannerView extends FrameView {
             adsPanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adsPanelTE3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(adsScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(adsScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4044,7 +4197,7 @@ public class ScannerView extends FrameView {
             notePanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(notePanelTE3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(noteScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(noteScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4081,18 +4234,21 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("resultTab.TabConstraints.tabTitle"), resultTab); // NOI18N
 
+        importExportTab.setMaximumSize(new java.awt.Dimension(680, 630));
+        importExportTab.setMinimumSize(new java.awt.Dimension(680, 630));
         importExportTab.setName("importExportTab"); // NOI18N
+        importExportTab.setPreferredSize(new java.awt.Dimension(680, 630));
         importExportTab.setLayout(new java.awt.GridBagLayout());
 
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
-        importPanel.setMinimumSize(new java.awt.Dimension(600, 120));
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Loma", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        importPanel.setMinimumSize(new java.awt.Dimension(600, 127));
         importPanel.setName("importPanel"); // NOI18N
-        importPanel.setPreferredSize(new java.awt.Dimension(600, 120));
+        importPanel.setPreferredSize(new java.awt.Dimension(600, 127));
         importPanel.setLayout(new java.awt.GridBagLayout());
 
-        importPanelT4.setMinimumSize(new java.awt.Dimension(280, 40));
+        importPanelT4.setMinimumSize(new java.awt.Dimension(280, 50));
         importPanelT4.setName("importPanelT4"); // NOI18N
-        importPanelT4.setPreferredSize(new java.awt.Dimension(280, 40));
+        importPanelT4.setPreferredSize(new java.awt.Dimension(280, 50));
 
         importLbT4.setText(resourceMap.getString("importLbT4.text")); // NOI18N
         importLbT4.setName("importLbT4"); // NOI18N
@@ -4122,7 +4278,7 @@ public class ScannerView extends FrameView {
                 .addComponent(importTfT4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(importBrowseBtnT4)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         importPanelT4Layout.setVerticalGroup(
             importPanelT4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4159,16 +4315,14 @@ public class ScannerView extends FrameView {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(replaceBtnT4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(24, 24, 24)
+                .addComponent(replaceBtnT4, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(replaceBtnT4)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4178,6 +4332,7 @@ public class ScannerView extends FrameView {
 
         jPanel2.setMinimumSize(new java.awt.Dimension(140, 40));
         jPanel2.setName("jPanel2"); // NOI18N
+        jPanel2.setPreferredSize(new java.awt.Dimension(140, 40));
 
         pendingBtnT4.setText(resourceMap.getString("pendingBtnT4.text")); // NOI18N
         pendingBtnT4.setName("pendingBtnT4"); // NOI18N
@@ -4193,15 +4348,14 @@ public class ScannerView extends FrameView {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(pendingBtnT4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addComponent(pendingBtnT4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(pendingBtnT4)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4209,21 +4363,17 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         importPanel.add(jPanel2, gridBagConstraints);
 
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-        importPanel.add(jLabel1, new java.awt.GridBagConstraints());
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         importExportTab.add(importPanel, gridBagConstraints);
         importPanel.getAccessibleContext().setAccessibleName(resourceMap.getString("importPanel.AccessibleContext.accessibleName")); // NOI18N
 
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Loma", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
         exportPanel.setName("exportPanel"); // NOI18N
         exportPanel.setPreferredSize(new java.awt.Dimension(600, 100));
 
-        jPanel5.setMinimumSize(new java.awt.Dimension(100, 40));
+        jPanel5.setMinimumSize(new java.awt.Dimension(344, 40));
         jPanel5.setName("jPanel5"); // NOI18N
         jPanel5.setPreferredSize(new java.awt.Dimension(344, 40));
 
@@ -4282,17 +4432,17 @@ public class ScannerView extends FrameView {
         exportPanel.setLayout(exportPanelLayout);
         exportPanelLayout.setHorizontalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+            .addGroup(exportPanelLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         exportPanelLayout.setVerticalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4335,10 +4485,10 @@ public class ScannerView extends FrameView {
         menuTab.getAccessibleContext().setAccessibleName(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleName")); // NOI18N
         menuTab.getAccessibleContext().setAccessibleDescription(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleDescription")); // NOI18N
 
-        statusPanel.setMaximumSize(new java.awt.Dimension(700, 24));
-        statusPanel.setMinimumSize(new java.awt.Dimension(700, 24));
+        statusPanel.setMaximumSize(new java.awt.Dimension(704, 24));
+        statusPanel.setMinimumSize(new java.awt.Dimension(704, 24));
         statusPanel.setName("statusPanel"); // NOI18N
-        statusPanel.setPreferredSize(new java.awt.Dimension(700, 24));
+        statusPanel.setPreferredSize(new java.awt.Dimension(704, 24));
 
         statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
 
@@ -4380,20 +4530,16 @@ public class ScannerView extends FrameView {
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(12, 12, 12)
                 .addComponent(databaseLb)
                 .addGap(2, 2, 2)
                 .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
                 .addComponent(languageLb)
-                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(statusPanelLayout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE))
-                    .addGroup(statusPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(26, 26, 26)
+                .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(statusPanelSeparator))
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4402,7 +4548,7 @@ public class ScannerView extends FrameView {
                     .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(languageLb)
-                        .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(statusPanelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(databaseLb))
@@ -6764,7 +6910,6 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel importPanelT4;
     private javax.swing.JTable importTableT2;
     private javax.swing.JTextField importTfT4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
@@ -6881,10 +7026,11 @@ public class ScannerView extends FrameView {
     private javax.swing.JPanel scannerPanel;
     private javax.swing.JPanel scannerTab;
     private javax.swing.JTextField scannerTxtT1;
+    private javax.swing.JPanel selSidePanelT1;
+    private javax.swing.JPanel selSidePanelT3;
     private javax.swing.JLabel sideLbT1;
     private javax.swing.JLabel sideLbT3;
     private javax.swing.JPanel statusPanel;
-    private javax.swing.JSeparator statusPanelSeparator;
     private javax.swing.JLabel subDisLbT1;
     private javax.swing.JLabel subDisLbT2;
     private javax.swing.JLabel subDisLbT3;
