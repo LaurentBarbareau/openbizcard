@@ -42,7 +42,9 @@ import com.yov.scanner.imageprocessing.CardScanner;
 import com.yov.scanner.imageprocessing.BusinessCard;
 import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -53,6 +55,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * The application's main frame.
@@ -64,8 +71,9 @@ public class ScannerView extends FrameView {
     public ScannerView(SingleFrameApplication app) {
         super(app);
 
+        setDefaultFont();
         initComponents();
-        
+//        setDefaultFont();
         menuTab.setEnabledAt(RESULT_TAB, false);
         saveBtnT3.setEnabled(false);
 
@@ -166,7 +174,7 @@ public class ScannerView extends FrameView {
             }
 
         }
-        bcScanner = new CardScanner(scannedImageFileName);
+//        bcScanner = new CardScanner(scannedImageFileName);
 
         isFrontSelected = true;
         isFrontSelectedResult = true;
@@ -190,7 +198,7 @@ public class ScannerView extends FrameView {
         backUIStateResult = STATE_NO_IMAGE;
         setButtonsStateResult(frontUIStateResult);
 
-        scannerTxtT1.setText(bcScanner.getName());
+//        scannerTxtT1.setText(bcScanner.getName());
 
         isBrowsedFront = false;
         isBrowsedBack = false;
@@ -581,6 +589,7 @@ public class ScannerView extends FrameView {
         mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(704, 674));
 
+        menuTab.setFont(getDefaultFont());
         menuTab.setMaximumSize(new java.awt.Dimension(720, 680));
         menuTab.setMinimumSize(new java.awt.Dimension(720, 680));
         menuTab.setName("menuTab"); // NOI18N
@@ -602,6 +611,7 @@ public class ScannerView extends FrameView {
         upLeftT1.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT1.setLayout(new java.awt.GridBagLayout());
 
+        nameLbT1.setFont(getDefaultFont());
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
         nameLbT1.setText(resourceMap.getString("nameLbT1.text")); // NOI18N
         nameLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
@@ -615,6 +625,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(nameLbT1, gridBagConstraints);
 
+        titleLbT1.setFont(getDefaultFont());
         titleLbT1.setText(resourceMap.getString("titleLbT1.text")); // NOI18N
         titleLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         titleLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -627,6 +638,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(titleLbT1, gridBagConstraints);
 
+        companyLbT1.setFont(getDefaultFont());
         companyLbT1.setText(resourceMap.getString("companyLbT1.text")); // NOI18N
         companyLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         companyLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -639,6 +651,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(companyLbT1, gridBagConstraints);
 
+        disLbT1.setFont(getDefaultFont());
         disLbT1.setText(resourceMap.getString("disLbT1.text")); // NOI18N
         disLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         disLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -651,6 +664,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(disLbT1, gridBagConstraints);
 
+        codeLbT1.setFont(getDefaultFont());
         codeLbT1.setText(resourceMap.getString("codeLbT1.text")); // NOI18N
         codeLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         codeLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -663,6 +677,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(codeLbT1, gridBagConstraints);
 
+        mobileLbT1.setFont(getDefaultFont());
         mobileLbT1.setText(resourceMap.getString("mobileLbT1.text")); // NOI18N
         mobileLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         mobileLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -675,6 +690,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(mobileLbT1, gridBagConstraints);
 
+        faxLbT1.setFont(getDefaultFont());
         faxLbT1.setText(resourceMap.getString("faxLbT1.text")); // NOI18N
         faxLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         faxLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -687,6 +703,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(faxLbT1, gridBagConstraints);
 
+        adsLbT1.setFont(getDefaultFont());
         adsLbT1.setText(resourceMap.getString("adsLbT1.text")); // NOI18N
         adsLbT1.setMaximumSize(new java.awt.Dimension(86, 15));
         adsLbT1.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -699,6 +716,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(adsLbT1, gridBagConstraints);
 
+        lastnameLbT1.setFont(getDefaultFont());
         lastnameLbT1.setText(resourceMap.getString("lastnameLbT1.text")); // NOI18N
         lastnameLbT1.setName("lastnameLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -708,6 +726,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(lastnameLbT1, gridBagConstraints);
 
+        emailLbT1.setFont(getDefaultFont());
         emailLbT1.setText(resourceMap.getString("emailLbT1.text")); // NOI18N
         emailLbT1.setName("emailLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -717,6 +736,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(emailLbT1, gridBagConstraints);
 
+        webLbT1.setFont(getDefaultFont());
         webLbT1.setText(resourceMap.getString("webLbT1.text")); // NOI18N
         webLbT1.setName("webLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -726,6 +746,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(webLbT1, gridBagConstraints);
 
+        subDisLbT1.setFont(getDefaultFont());
         subDisLbT1.setText(resourceMap.getString("subDisLbT1.text")); // NOI18N
         subDisLbT1.setName("subDisLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -735,6 +756,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(subDisLbT1, gridBagConstraints);
 
+        provinceLbT1.setFont(getDefaultFont());
         provinceLbT1.setText(resourceMap.getString("provinceLbT1.text")); // NOI18N
         provinceLbT1.setName("provinceLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -744,6 +766,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(provinceLbT1, gridBagConstraints);
 
+        phoneLbT1.setFont(getDefaultFont());
         phoneLbT1.setText(resourceMap.getString("phoneLbT1.text")); // NOI18N
         phoneLbT1.setName("phoneLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -753,6 +776,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(phoneLbT1, gridBagConstraints);
 
+        noteLbT1.setFont(getDefaultFont());
         noteLbT1.setText(resourceMap.getString("noteLbT1.text")); // NOI18N
         noteLbT1.setName("noteLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -762,6 +786,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT1.add(noteLbT1, gridBagConstraints);
 
+        countryLbT1.setFont(getDefaultFont());
         countryLbT1.setText(resourceMap.getString("countryLbT1.text")); // NOI18N
         countryLbT1.setName("countryLbT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -772,6 +797,7 @@ public class ScannerView extends FrameView {
         upLeftT1.add(countryLbT1, gridBagConstraints);
 
         nameTfT1.setColumns(10);
+        nameTfT1.setFont(getDefaultFont());
         nameTfT1.setText(resourceMap.getString("nameTfT1.text")); // NOI18N
         nameTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
         nameTfT1.setName("nameTfT1"); // NOI18N
@@ -1381,9 +1407,11 @@ public class ScannerView extends FrameView {
 
         scannerPanel.setName("scannerPanel"); // NOI18N
 
+        scannerLbT1.setFont(getDefaultFont());
         scannerLbT1.setText(resourceMap.getString("scannerLbT1.text")); // NOI18N
         scannerLbT1.setName("scannerLbT1"); // NOI18N
 
+        scannerBtnT1.setFont(getDefaultFont());
         scannerBtnT1.setText(resourceMap.getString("scannerBtnT1.text")); // NOI18N
         scannerBtnT1.setMaximumSize(new java.awt.Dimension(90, 23));
         scannerBtnT1.setName("scannerBtnT1"); // NOI18N
@@ -1424,6 +1452,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridwidth = 2;
         upRightT1.add(scannerPanel, gridBagConstraints);
 
+        doubleSideBtnT1.setFont(getDefaultFont());
         doubleSideBtnT1.setText(resourceMap.getString("doubleSideBtnT1.text")); // NOI18N
         doubleSideBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         doubleSideBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1440,6 +1469,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         upRightT1.add(doubleSideBtnT1, gridBagConstraints);
 
+        blackWhiteBtnT1.setFont(getDefaultFont());
         blackWhiteBtnT1.setText(resourceMap.getString("blackWhiteBtnT1.text")); // NOI18N
         blackWhiteBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         blackWhiteBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1455,6 +1485,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         upRightT1.add(blackWhiteBtnT1, gridBagConstraints);
 
+        autoCropBtnT1.setFont(getDefaultFont());
         autoCropBtnT1.setText(resourceMap.getString("autoCropBtnT1.text")); // NOI18N
         autoCropBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         autoCropBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1471,6 +1502,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         upRightT1.add(autoCropBtnT1, gridBagConstraints);
 
+        readCardBtnT1.setFont(getDefaultFont());
         readCardBtnT1.setText(resourceMap.getString("readCardBtnT1.text")); // NOI18N
         readCardBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         readCardBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1486,6 +1518,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 2;
         upRightT1.add(readCardBtnT1, gridBagConstraints);
 
+        rotateBtnT1.setFont(getDefaultFont());
         rotateBtnT1.setText(resourceMap.getString("rotateBtnT1.text")); // NOI18N
         rotateBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         rotateBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1502,6 +1535,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         upRightT1.add(rotateBtnT1, gridBagConstraints);
 
+        emailBtnT1.setFont(getDefaultFont());
         emailBtnT1.setText(resourceMap.getString("emailBtnT1.text")); // NOI18N
         emailBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         emailBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1517,6 +1551,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 3;
         upRightT1.add(emailBtnT1, gridBagConstraints);
 
+        undoBtnT1.setFont(getDefaultFont());
         undoBtnT1.setText(resourceMap.getString("undoBtnT1.text")); // NOI18N
         undoBtnT1.setName("undoBtn"); // NOI18N
         undoBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1530,6 +1565,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         upRightT1.add(undoBtnT1, gridBagConstraints);
 
+        confirmBtnT1.setFont(getDefaultFont());
         confirmBtnT1.setText(resourceMap.getString("confirmBtnT1.text")); // NOI18N
         confirmBtnT1.setName("confirmBtn"); // NOI18N
         confirmBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1548,6 +1584,7 @@ public class ScannerView extends FrameView {
         brightPanelT1.setRequestFocusEnabled(false);
         brightPanelT1.setLayout(new java.awt.GridBagLayout());
 
+        brightLbT1.setFont(getDefaultFont());
         brightLbT1.setText(resourceMap.getString("brightLbT1.text")); // NOI18N
         brightLbT1.setName("brightLbT1"); // NOI18N
         brightPanelT1.add(brightLbT1, new java.awt.GridBagConstraints());
@@ -1583,6 +1620,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridwidth = 2;
         upRightT1.add(brightPanelT1, gridBagConstraints);
 
+        scanBtn.setFont(getDefaultFont());
         scanBtn.setText(resourceMap.getString("scanBtn.text")); // NOI18N
         scanBtn.setMaximumSize(new java.awt.Dimension(100, 31));
         scanBtn.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1599,6 +1637,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         upRightT1.add(scanBtn, gridBagConstraints);
 
+        saveBtnT1.setFont(getDefaultFont());
         saveBtnT1.setText(resourceMap.getString("saveBtnT1.text")); // NOI18N
         saveBtnT1.setMaximumSize(new java.awt.Dimension(100, 31));
         saveBtnT1.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -1618,10 +1657,12 @@ public class ScannerView extends FrameView {
         selSidePanelT1.setName("selSidePanelT1"); // NOI18N
         selSidePanelT1.setPreferredSize(new java.awt.Dimension(248, 30));
 
+        sideLbT1.setFont(getDefaultFont());
         sideLbT1.setText(resourceMap.getString("sideLbT1.text")); // NOI18N
         sideLbT1.setName("sideLbT1"); // NOI18N
         selSidePanelT1.add(sideLbT1);
 
+        frontSideRdT1.setFont(getDefaultFont());
         frontSideRdT1.setText(resourceMap.getString("frontSideRdT1.text")); // NOI18N
         frontSideRdT1.setName("frontSideRdT1"); // NOI18N
         frontSideRdT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1631,6 +1672,7 @@ public class ScannerView extends FrameView {
         });
         selSidePanelT1.add(frontSideRdT1);
 
+        backSideRdT1.setFont(getDefaultFont());
         backSideRdT1.setText(resourceMap.getString("backSideRdT1.text")); // NOI18N
         backSideRdT1.setName("backSideRdT1"); // NOI18N
         backSideRdT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1674,6 +1716,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        frontBtnT1.setFont(getDefaultFont());
         frontBtnT1.setText(resourceMap.getString("frontBtnT1.text")); // NOI18N
         frontBtnT1.setName("frontBtnT1"); // NOI18N
         frontBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1686,6 +1729,7 @@ public class ScannerView extends FrameView {
         frontSpT1.setName("frontSpT1"); // NOI18N
         frontSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
 
+        frontCropBtnT1.setFont(getDefaultFont());
         frontCropBtnT1.setText(resourceMap.getString("frontCropBtnT1.text")); // NOI18N
         frontCropBtnT1.setName("frontCropBtnT1"); // NOI18N
         frontCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1702,7 +1746,7 @@ public class ScannerView extends FrameView {
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(frontSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addGroup(frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1747,6 +1791,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        backBtnT1.setFont(getDefaultFont());
         backBtnT1.setText(resourceMap.getString("backBtnT1.text")); // NOI18N
         backBtnT1.setName("backBtnT1"); // NOI18N
         backBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1759,6 +1804,7 @@ public class ScannerView extends FrameView {
         backSpT1.setName("backSpT1"); // NOI18N
         backSpT1.setPreferredSize(new java.awt.Dimension(320, 291));
 
+        backCropBtnT1.setFont(getDefaultFont());
         backCropBtnT1.setText(resourceMap.getString("backCropBtnT1.text")); // NOI18N
         backCropBtnT1.setName("backCropBtnT1"); // NOI18N
         backCropBtnT1.addActionListener(new java.awt.event.ActionListener() {
@@ -1772,15 +1818,15 @@ public class ScannerView extends FrameView {
         lowRightT1Layout.setHorizontalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowRightT1Layout.createSequentialGroup()
-                .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lowRightT1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backCropBtnT1, 0, 0, Short.MAX_VALUE))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backCropBtnT1))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         lowRightT1Layout.setVerticalGroup(
@@ -1828,6 +1874,7 @@ public class ScannerView extends FrameView {
         upLeftT2.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT2.setLayout(new java.awt.GridBagLayout());
 
+        nameLbT2.setFont(getDefaultFont());
         nameLbT2.setText(resourceMap.getString("nameLbT2.text")); // NOI18N
         nameLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         nameLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1840,6 +1887,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(nameLbT2, gridBagConstraints);
 
+        titleLbT2.setFont(getDefaultFont());
         titleLbT2.setText(resourceMap.getString("titleLbT2.text")); // NOI18N
         titleLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         titleLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1852,6 +1900,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(titleLbT2, gridBagConstraints);
 
+        companyLbT2.setFont(getDefaultFont());
         companyLbT2.setText(resourceMap.getString("companyLbT2.text")); // NOI18N
         companyLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         companyLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1864,6 +1913,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(companyLbT2, gridBagConstraints);
 
+        disLbT2.setFont(getDefaultFont());
         disLbT2.setText(resourceMap.getString("disLbT2.text")); // NOI18N
         disLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         disLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1876,6 +1926,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(disLbT2, gridBagConstraints);
 
+        codeLbT2.setFont(getDefaultFont());
         codeLbT2.setText(resourceMap.getString("codeLbT2.text")); // NOI18N
         codeLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         codeLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1888,6 +1939,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(codeLbT2, gridBagConstraints);
 
+        mobileLbT2.setFont(getDefaultFont());
         mobileLbT2.setText(resourceMap.getString("mobileLbT2.text")); // NOI18N
         mobileLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         mobileLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1900,6 +1952,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(mobileLbT2, gridBagConstraints);
 
+        faxLbT2.setFont(getDefaultFont());
         faxLbT2.setText(resourceMap.getString("faxLbT2.text")); // NOI18N
         faxLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         faxLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1912,6 +1965,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(faxLbT2, gridBagConstraints);
 
+        adsLbT2.setFont(getDefaultFont());
         adsLbT2.setText(resourceMap.getString("adsLbT2.text")); // NOI18N
         adsLbT2.setMaximumSize(new java.awt.Dimension(86, 15));
         adsLbT2.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -1924,6 +1978,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(adsLbT2, gridBagConstraints);
 
+        lastnameLbT2.setFont(getDefaultFont());
         lastnameLbT2.setText(resourceMap.getString("lastnameLbT2.text")); // NOI18N
         lastnameLbT2.setName("lastnameLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1933,6 +1988,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(lastnameLbT2, gridBagConstraints);
 
+        emailLbT2.setFont(getDefaultFont());
         emailLbT2.setText(resourceMap.getString("emailLbT2.text")); // NOI18N
         emailLbT2.setName("emailLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1942,6 +1998,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(emailLbT2, gridBagConstraints);
 
+        webLbT2.setFont(getDefaultFont());
         webLbT2.setText(resourceMap.getString("webLbT2.text")); // NOI18N
         webLbT2.setName("webLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1951,6 +2008,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(webLbT2, gridBagConstraints);
 
+        subDisLbT2.setFont(getDefaultFont());
         subDisLbT2.setText(resourceMap.getString("subDisLbT2.text")); // NOI18N
         subDisLbT2.setName("subDisLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1960,6 +2018,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(subDisLbT2, gridBagConstraints);
 
+        provinceLbT2.setFont(getDefaultFont());
         provinceLbT2.setText(resourceMap.getString("provinceLbT2.text")); // NOI18N
         provinceLbT2.setName("provinceLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1969,6 +2028,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(provinceLbT2, gridBagConstraints);
 
+        phoneLbT2.setFont(getDefaultFont());
         phoneLbT2.setText(resourceMap.getString("phoneLbT2.text")); // NOI18N
         phoneLbT2.setName("phoneLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1978,6 +2038,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(phoneLbT2, gridBagConstraints);
 
+        noteLbT2.setFont(getDefaultFont());
         noteLbT2.setText(resourceMap.getString("noteLbT2.text")); // NOI18N
         noteLbT2.setName("noteLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1987,6 +2048,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT2.add(noteLbT2, gridBagConstraints);
 
+        countryLbT2.setFont(getDefaultFont());
         countryLbT2.setText(resourceMap.getString("countryLbT2.text")); // NOI18N
         countryLbT2.setName("countryLbT2"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2623,6 +2685,7 @@ public class ScannerView extends FrameView {
         genSearchTfT2.setText(resourceMap.getString("genSearchTfT2.text")); // NOI18N
         genSearchTfT2.setName("genSearchTfT2"); // NOI18N
 
+        genSearchT2.setFont(getDefaultFont());
         genSearchT2.setText(resourceMap.getString("genSearchT2.text")); // NOI18N
         genSearchT2.setName("genSearchT2"); // NOI18N
         genSearchT2.addActionListener(new java.awt.event.ActionListener() {
@@ -2713,6 +2776,7 @@ public class ScannerView extends FrameView {
         });
         btnPanel0T2.add(engBtn2T2, new java.awt.GridBagConstraints());
 
+        thBtn0T2.setFont(getDefaultFont());
         thBtn0T2.setText(resourceMap.getString("thBtn0T2.text")); // NOI18N
         thBtn0T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn0T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2727,6 +2791,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         btnPanel0T2.add(thBtn0T2, gridBagConstraints);
 
+        thBtn1T2.setFont(getDefaultFont());
         thBtn1T2.setText(resourceMap.getString("thBtn1T2.text")); // NOI18N
         thBtn1T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn1T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2741,6 +2806,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         btnPanel0T2.add(thBtn1T2, gridBagConstraints);
 
+        thBtn2T2.setFont(getDefaultFont());
         thBtn2T2.setText(resourceMap.getString("thBtn2T2.text")); // NOI18N
         thBtn2T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn2T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2779,6 +2845,7 @@ public class ScannerView extends FrameView {
         });
         btnPanel1T2.add(engBtn3T2, new java.awt.GridBagConstraints());
 
+        thBtn3T2.setFont(getDefaultFont());
         thBtn3T2.setText(resourceMap.getString("thBtn3T2.text")); // NOI18N
         thBtn3T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn3T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2805,6 +2872,7 @@ public class ScannerView extends FrameView {
         });
         btnPanel1T2.add(engBtn4T2, new java.awt.GridBagConstraints());
 
+        thBtn4T2.setFont(getDefaultFont());
         thBtn4T2.setText(resourceMap.getString("thBtn4T2.text")); // NOI18N
         thBtn4T2.setName("thBtn4T2"); // NOI18N
         thBtn4T2.setPreferredSize(new java.awt.Dimension(53, 25));
@@ -2829,6 +2897,7 @@ public class ScannerView extends FrameView {
         });
         btnPanel1T2.add(engBtn5T2, new java.awt.GridBagConstraints());
 
+        thBtn5T2.setFont(getDefaultFont());
         thBtn5T2.setText(resourceMap.getString("thBtn5T2.text")); // NOI18N
         thBtn5T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn5T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2900,6 +2969,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         btnPanel2T2.add(engBtn8T2, gridBagConstraints);
 
+        thBtn8T2.setFont(getDefaultFont());
         thBtn8T2.setText(resourceMap.getString("thBtn8T2.text")); // NOI18N
         thBtn8T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn8T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2915,6 +2985,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         btnPanel2T2.add(thBtn8T2, gridBagConstraints);
 
+        thBtn7T2.setFont(getDefaultFont());
         thBtn7T2.setText(resourceMap.getString("thBtn7T2.text")); // NOI18N
         thBtn7T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn7T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2930,6 +3001,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         btnPanel2T2.add(thBtn7T2, gridBagConstraints);
 
+        thBtn6T2.setFont(getDefaultFont());
         thBtn6T2.setText(resourceMap.getString("thBtn6T2.text")); // NOI18N
         thBtn6T2.setMaximumSize(new java.awt.Dimension(53, 25));
         thBtn6T2.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -2972,6 +3044,7 @@ public class ScannerView extends FrameView {
 
         jScrollPane4.setName("jScrollPane4"); // NOI18N
 
+        importTableT2.setFont(getDefaultFont());
         importTableT2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2999,6 +3072,17 @@ public class ScannerView extends FrameView {
         TableColumn col = importTableT2.getColumnModel().getColumn(9);
         xCol.setAllColumnsVisible();
         xCol.setColumnVisible(col, false);
+
+        JTableHeader header = importTableT2.getTableHeader();
+        final TableCellRenderer headerRenderer = header.getDefaultRenderer();
+        header.setDefaultRenderer( new TableCellRenderer() {
+            public Component getTableCellRendererComponent( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column ) {
+                Component comp = headerRenderer.getTableCellRendererComponent( table, value, isSelected, hasFocus, row, column );
+                comp.setFont(getDefaultFont());
+                return comp;
+            }
+        });
+        importTableT2.setTableHeader(header);
         jScrollPane4.setViewportView(importTableT2);
 
         javax.swing.GroupLayout tablePanelT2Layout = new javax.swing.GroupLayout(tablePanelT2);
@@ -3048,7 +3132,7 @@ public class ScannerView extends FrameView {
             .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(deletedBtnT2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(editBtnT2)
                 .addGap(33, 33, 33))
         );
@@ -3109,6 +3193,7 @@ public class ScannerView extends FrameView {
         idPanelT3.setMinimumSize(new java.awt.Dimension(150, 22));
         idPanelT3.setName("idPanelT3"); // NOI18N
 
+        idLbT3.setFont(getDefaultFont());
         idLbT3.setText(resourceMap.getString("idLbT3.text")); // NOI18N
         idLbT3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         idLbT3.setName("idLbT3"); // NOI18N
@@ -3144,6 +3229,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridwidth = 2;
         upRightT3.add(idPanelT3, gridBagConstraints);
 
+        autoCropBtnT3.setFont(getDefaultFont());
         autoCropBtnT3.setText(resourceMap.getString("autoCropBtnT3.text")); // NOI18N
         autoCropBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
         autoCropBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -3159,6 +3245,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         upRightT3.add(autoCropBtnT3, gridBagConstraints);
 
+        blackWhiteBtnT3.setFont(getDefaultFont());
         blackWhiteBtnT3.setText(resourceMap.getString("blackWhiteBtnT3.text")); // NOI18N
         blackWhiteBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
         blackWhiteBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -3174,6 +3261,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 1;
         upRightT3.add(blackWhiteBtnT3, gridBagConstraints);
 
+        rotateBtnT3.setFont(getDefaultFont());
         rotateBtnT3.setText(resourceMap.getString("rotateBtnT3.text")); // NOI18N
         rotateBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
         rotateBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -3189,6 +3277,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 2;
         upRightT3.add(rotateBtnT3, gridBagConstraints);
 
+        emailBtnT3.setFont(getDefaultFont());
         emailBtnT3.setText(resourceMap.getString("emailBtnT3.text")); // NOI18N
         emailBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
         emailBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -3204,6 +3293,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 2;
         upRightT3.add(emailBtnT3, gridBagConstraints);
 
+        undoBtnT3.setFont(getDefaultFont());
         undoBtnT3.setText(resourceMap.getString("undoBtnT3.text")); // NOI18N
         undoBtnT3.setName("undoBtnT3"); // NOI18N
         undoBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3216,6 +3306,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 3;
         upRightT3.add(undoBtnT3, gridBagConstraints);
 
+        confirmBtnT3.setFont(getDefaultFont());
         confirmBtnT3.setText(resourceMap.getString("confirmBtnT3.text")); // NOI18N
         confirmBtnT3.setName("confirmBtnT3"); // NOI18N
         confirmBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3234,6 +3325,7 @@ public class ScannerView extends FrameView {
         brightPanelT3.setRequestFocusEnabled(false);
         brightPanelT3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        brightLbT3.setFont(getDefaultFont());
         brightLbT3.setText(resourceMap.getString("brightLbT3.text")); // NOI18N
         brightLbT3.setName("brightLbT3"); // NOI18N
         brightPanelT3.add(brightLbT3);
@@ -3267,10 +3359,12 @@ public class ScannerView extends FrameView {
         selSidePanelT3.setName("selSidePanelT3"); // NOI18N
         selSidePanelT3.setPreferredSize(new java.awt.Dimension(248, 30));
 
+        sideLbT3.setFont(getDefaultFont());
         sideLbT3.setText(resourceMap.getString("sideLbT3.text")); // NOI18N
         sideLbT3.setName("sideLbT3"); // NOI18N
         selSidePanelT3.add(sideLbT3);
 
+        frontSideRdT3.setFont(getDefaultFont());
         frontSideRdT3.setText(resourceMap.getString("frontSideRdT3.text")); // NOI18N
         frontSideRdT3.setName("frontSideRdT3"); // NOI18N
         frontSideRdT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3280,6 +3374,7 @@ public class ScannerView extends FrameView {
         });
         selSidePanelT3.add(frontSideRdT3);
 
+        backSideRdT3.setFont(getDefaultFont());
         backSideRdT3.setText(resourceMap.getString("backSideRdT3.text")); // NOI18N
         backSideRdT3.setName("backSideRdT3"); // NOI18N
         backSideRdT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3295,6 +3390,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridwidth = 2;
         upRightT3.add(selSidePanelT3, gridBagConstraints);
 
+        saveBtnT3.setFont(getDefaultFont());
         saveBtnT3.setText(resourceMap.getString("saveBtnT3.text")); // NOI18N
         saveBtnT3.setMaximumSize(new java.awt.Dimension(100, 31));
         saveBtnT3.setMinimumSize(new java.awt.Dimension(100, 31));
@@ -3333,6 +3429,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        frontBtnT3.setFont(getDefaultFont());
         frontBtnT3.setText(resourceMap.getString("frontBtnT3.text")); // NOI18N
         frontBtnT3.setName("frontBtnT3"); // NOI18N
         frontBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3344,6 +3441,7 @@ public class ScannerView extends FrameView {
         frontSpT3.setName("frontSpT3"); // NOI18N
         frontSpT3.setPreferredSize(new java.awt.Dimension(100, 260));
 
+        frontCropBtnT3.setFont(getDefaultFont());
         frontCropBtnT3.setText(resourceMap.getString("frontCropBtnT3.text")); // NOI18N
         frontCropBtnT3.setName("frontCropBtnT3"); // NOI18N
         frontCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3358,8 +3456,9 @@ public class ScannerView extends FrameView {
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
                 .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lowLeftT3Layout.createSequentialGroup()
-                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowLeftT3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3370,10 +3469,9 @@ public class ScannerView extends FrameView {
         lowLeftT3Layout.setVerticalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
-                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(frontCropBtnT3)
-                        .addComponent(frontBtnT3))
+                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(frontCropBtnT3)
+                    .addComponent(frontBtnT3)
                     .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
@@ -3397,6 +3495,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        backBtnT3.setFont(getDefaultFont());
         backBtnT3.setText(resourceMap.getString("backBtnT3.text")); // NOI18N
         backBtnT3.setName("backBtnT3"); // NOI18N
         backBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3408,6 +3507,7 @@ public class ScannerView extends FrameView {
         backSpT3.setName("backSpT3"); // NOI18N
         backSpT3.setPreferredSize(new java.awt.Dimension(305, 260));
 
+        backCropBtnT3.setFont(getDefaultFont());
         backCropBtnT3.setText(resourceMap.getString("backCropBtnT3.text")); // NOI18N
         backCropBtnT3.setName("backCropBtnT3"); // NOI18N
         backCropBtnT3.addActionListener(new java.awt.event.ActionListener() {
@@ -3424,7 +3524,7 @@ public class ScannerView extends FrameView {
                 .addContainerGap()
                 .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3467,6 +3567,7 @@ public class ScannerView extends FrameView {
         upLeftT3.setPreferredSize(new java.awt.Dimension(720, 240));
         upLeftT3.setLayout(new java.awt.GridBagLayout());
 
+        nameLbT3.setFont(getDefaultFont());
         nameLbT3.setText(resourceMap.getString("nameLbT3.text")); // NOI18N
         nameLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         nameLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3479,6 +3580,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(nameLbT3, gridBagConstraints);
 
+        titleLbT3.setFont(getDefaultFont());
         titleLbT3.setText(resourceMap.getString("titleLbT3.text")); // NOI18N
         titleLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         titleLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3492,6 +3594,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(titleLbT3, gridBagConstraints);
 
+        companyLbT3.setFont(getDefaultFont());
         companyLbT3.setText(resourceMap.getString("companyLbT3.text")); // NOI18N
         companyLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         companyLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3504,6 +3607,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(companyLbT3, gridBagConstraints);
 
+        disLbT3.setFont(getDefaultFont());
         disLbT3.setText(resourceMap.getString("disLbT3.text")); // NOI18N
         disLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         disLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3516,6 +3620,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(disLbT3, gridBagConstraints);
 
+        codeLbT3.setFont(getDefaultFont());
         codeLbT3.setText(resourceMap.getString("codeLbT3.text")); // NOI18N
         codeLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         codeLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3528,6 +3633,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(codeLbT3, gridBagConstraints);
 
+        mobileLbT3.setFont(getDefaultFont());
         mobileLbT3.setText(resourceMap.getString("mobileLbT3.text")); // NOI18N
         mobileLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         mobileLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3540,6 +3646,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(mobileLbT3, gridBagConstraints);
 
+        faxLbT3.setFont(getDefaultFont());
         faxLbT3.setText(resourceMap.getString("faxLbT3.text")); // NOI18N
         faxLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         faxLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3552,6 +3659,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(faxLbT3, gridBagConstraints);
 
+        adsLbT3.setFont(getDefaultFont());
         adsLbT3.setText(resourceMap.getString("adsLbT3.text")); // NOI18N
         adsLbT3.setMaximumSize(new java.awt.Dimension(86, 15));
         adsLbT3.setMinimumSize(new java.awt.Dimension(86, 15));
@@ -3564,6 +3672,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(adsLbT3, gridBagConstraints);
 
+        lastnameLbT3.setFont(getDefaultFont());
         lastnameLbT3.setText(resourceMap.getString("lastnameLbT3.text")); // NOI18N
         lastnameLbT3.setName("lastnameLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3573,6 +3682,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(lastnameLbT3, gridBagConstraints);
 
+        emailLbT3.setFont(getDefaultFont());
         emailLbT3.setText(resourceMap.getString("emailLbT3.text")); // NOI18N
         emailLbT3.setName("emailLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3582,6 +3692,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(emailLbT3, gridBagConstraints);
 
+        webLbT3.setFont(getDefaultFont());
         webLbT3.setText(resourceMap.getString("webLbT3.text")); // NOI18N
         webLbT3.setName("webLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3591,6 +3702,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(webLbT3, gridBagConstraints);
 
+        subDisLbT3.setFont(getDefaultFont());
         subDisLbT3.setText(resourceMap.getString("subDisLbT3.text")); // NOI18N
         subDisLbT3.setName("subDisLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3600,6 +3712,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(subDisLbT3, gridBagConstraints);
 
+        provinceLbT3.setFont(getDefaultFont());
         provinceLbT3.setText(resourceMap.getString("provinceLbT3.text")); // NOI18N
         provinceLbT3.setName("provinceLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3609,6 +3722,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(provinceLbT3, gridBagConstraints);
 
+        phoneLbT3.setFont(getDefaultFont());
         phoneLbT3.setText(resourceMap.getString("phoneLbT3.text")); // NOI18N
         phoneLbT3.setName("phoneLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3618,6 +3732,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(phoneLbT3, gridBagConstraints);
 
+        noteLbT3.setFont(getDefaultFont());
         noteLbT3.setText(resourceMap.getString("noteLbT3.text")); // NOI18N
         noteLbT3.setName("noteLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3627,6 +3742,7 @@ public class ScannerView extends FrameView {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         upLeftT3.add(noteLbT3, gridBagConstraints);
 
+        countryLbT3.setFont(getDefaultFont());
         countryLbT3.setText(resourceMap.getString("countryLbT3.text")); // NOI18N
         countryLbT3.setName("countryLbT3"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4234,13 +4350,16 @@ public class ScannerView extends FrameView {
 
         menuTab.addTab(resourceMap.getString("resultTab.TabConstraints.tabTitle"), resultTab); // NOI18N
 
+        importExportTab.setBorder(BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, getDefaultFont(), resourceMap.getColor("importPanel.border.titleColor")));
+        importExportTab.setFont(getDefaultFont());
         importExportTab.setMaximumSize(new java.awt.Dimension(680, 630));
         importExportTab.setMinimumSize(new java.awt.Dimension(680, 630));
         importExportTab.setName("importExportTab"); // NOI18N
         importExportTab.setPreferredSize(new java.awt.Dimension(680, 630));
         importExportTab.setLayout(new java.awt.GridBagLayout());
 
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Loma", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Serif", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        importPanel.setFont(getDefaultFont());
         importPanel.setMinimumSize(new java.awt.Dimension(600, 127));
         importPanel.setName("importPanel"); // NOI18N
         importPanel.setPreferredSize(new java.awt.Dimension(600, 127));
@@ -4250,15 +4369,18 @@ public class ScannerView extends FrameView {
         importPanelT4.setName("importPanelT4"); // NOI18N
         importPanelT4.setPreferredSize(new java.awt.Dimension(280, 50));
 
+        importLbT4.setFont(getDefaultFont());
         importLbT4.setText(resourceMap.getString("importLbT4.text")); // NOI18N
         importLbT4.setName("importLbT4"); // NOI18N
 
         importTfT4.setEditable(false);
+        importTfT4.setFont(getDefaultFont());
         importTfT4.setText(resourceMap.getString("importTfT4.text")); // NOI18N
         importTfT4.setMinimumSize(new java.awt.Dimension(86, 20));
         importTfT4.setName("importTfT4"); // NOI18N
         importTfT4.setPreferredSize(new java.awt.Dimension(86, 20));
 
+        importBrowseBtnT4.setFont(getDefaultFont());
         importBrowseBtnT4.setText(resourceMap.getString("importBrowseBtnT4.text")); // NOI18N
         importBrowseBtnT4.setName("importBrowseBtnT4"); // NOI18N
         importBrowseBtnT4.addActionListener(new java.awt.event.ActionListener() {
@@ -4302,6 +4424,7 @@ public class ScannerView extends FrameView {
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(140, 40));
 
+        replaceBtnT4.setFont(getDefaultFont());
         replaceBtnT4.setText(resourceMap.getString("replaceBtnT4.text")); // NOI18N
         replaceBtnT4.setName("replaceBtnT4"); // NOI18N
         replaceBtnT4.addActionListener(new java.awt.event.ActionListener() {
@@ -4334,6 +4457,7 @@ public class ScannerView extends FrameView {
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(140, 40));
 
+        pendingBtnT4.setFont(getDefaultFont());
         pendingBtnT4.setText(resourceMap.getString("pendingBtnT4.text")); // NOI18N
         pendingBtnT4.setName("pendingBtnT4"); // NOI18N
         pendingBtnT4.addActionListener(new java.awt.event.ActionListener() {
@@ -4369,7 +4493,8 @@ public class ScannerView extends FrameView {
         importExportTab.add(importPanel, gridBagConstraints);
         importPanel.getAccessibleContext().setAccessibleName(resourceMap.getString("importPanel.AccessibleContext.accessibleName")); // NOI18N
 
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Loma", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Serif", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        exportPanel.setFont(getDefaultFont());
         exportPanel.setName("exportPanel"); // NOI18N
         exportPanel.setPreferredSize(new java.awt.Dimension(600, 100));
 
@@ -4377,14 +4502,17 @@ public class ScannerView extends FrameView {
         jPanel5.setName("jPanel5"); // NOI18N
         jPanel5.setPreferredSize(new java.awt.Dimension(344, 40));
 
+        exportLbT4.setFont(getDefaultFont());
         exportLbT4.setText(resourceMap.getString("exportLbT4.text")); // NOI18N
         exportLbT4.setName("exportLbT4"); // NOI18N
 
         exportTfT4.setEditable(false);
+        exportTfT4.setFont(getDefaultFont());
         exportTfT4.setMinimumSize(new java.awt.Dimension(86, 20));
         exportTfT4.setName("exportTfT4"); // NOI18N
         exportTfT4.setPreferredSize(new java.awt.Dimension(86, 20));
 
+        browseExportBtnT4.setFont(getDefaultFont());
         browseExportBtnT4.setText(resourceMap.getString("browseExportBtnT4.text")); // NOI18N
         browseExportBtnT4.setName("browseExportBtnT4"); // NOI18N
         browseExportBtnT4.addActionListener(new java.awt.event.ActionListener() {
@@ -4393,6 +4521,7 @@ public class ScannerView extends FrameView {
             }
         });
 
+        exportBtnT4.setFont(getDefaultFont());
         exportBtnT4.setText(resourceMap.getString("exportBtnT4.text")); // NOI18N
         exportBtnT4.setName("exportBtnT4"); // NOI18N
         exportBtnT4.addActionListener(new java.awt.event.ActionListener() {
@@ -4441,7 +4570,7 @@ public class ScannerView extends FrameView {
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -4492,6 +4621,7 @@ public class ScannerView extends FrameView {
 
         statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
 
+        databaseLb.setFont(getDefaultFont());
         databaseLb.setText(resourceMap.getString("databaseLb.text")); // NOI18N
         databaseLb.setName("databaseLb"); // NOI18N
 
@@ -4511,9 +4641,11 @@ public class ScannerView extends FrameView {
         }
         databaseNameLb.setText(defaultcard.getAbsolutePath());
 
+        languageLb.setFont(getDefaultFont());
         languageLb.setText(resourceMap.getString("languageLb.text")); // NOI18N
         languageLb.setName("languageLb"); // NOI18N
 
+        langaugeChangeBtn.setFont(getDefaultFont());
         langaugeChangeBtn.setText(resourceMap.getString("langaugeChangeBtn.text")); // NOI18N
         langaugeChangeBtn.setMaximumSize(new java.awt.Dimension(89, 25));
         langaugeChangeBtn.setMinimumSize(new java.awt.Dimension(89, 25));
@@ -4530,14 +4662,14 @@ public class ScannerView extends FrameView {
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(databaseLb)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(languageLb)
-                .addGap(26, 26, 26)
-                .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(statusPanelSeparator))
         );
@@ -4551,10 +4683,9 @@ public class ScannerView extends FrameView {
                         .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(statusPanelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(databaseLb))
-                    .addGroup(statusPanelLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(databaseLb, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(databaseNameLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -4600,6 +4731,28 @@ public class ScannerView extends FrameView {
             }
         }
         return newPath;
+    }
+
+    private Font getDefaultFont(){
+        return defaultFont;
+    }
+
+    private void setDefaultFont(){
+      String os = "windows";
+      String[] font = new String[2];
+      int size = 11;
+      if (System.getProperty("os.name").toLowerCase().indexOf("windows") > -1) {
+        os = "windows";
+      } else if (System.getProperty("os.name").toLowerCase().indexOf("linux") > -1) {
+        os = "linux";
+      } else if (System.getProperty("os.name").toLowerCase().indexOf("mac") > -1) {
+        os = "mac";
+      }
+      System.out.println(">>>>>>>> OS "+os);
+      font = myResourceMap.getString(os+".font").split(" ");
+      System.out.println(">>>>>>>> font "+ font[0]+" "+font[1]);
+      size = Integer.parseInt(font[1]);
+      defaultFont = new Font(font[0],Font.PLAIN,size);
     }
 
     private void updateTable(ArrayList<Card> cardList, DefaultTableModel model) {
@@ -4975,6 +5128,19 @@ public class ScannerView extends FrameView {
         adsTaT3.setText(editCard.getAddress());
         noteTaT3.setText(editCard.getNote());
 
+        nameTfTE3.setText(editCard.getFirstNameE());
+        lastnameTfTE3.setText(editCard.getLastNameE());
+        titleTfTE3.setText(editCard.getPositionE());
+        companyTfTE3.setText(editCard.getCompanyE());
+        disTfTE3.setText(editCard.getStateE());
+        subDisTfTE3.setText(editCard.getCityE());
+        codeTfTE3.setText(editCard.getZipE());
+        countryTfTE3.setText(editCard.getCountryE());
+        mobileTfTE3.setText(editCard.getMobileE());
+        phoneTfTE3.setText(editCard.getTelephoneE());
+        faxTfTE3.setText(editCard.getFaxE());
+        adsTaTE3.setText(editCard.getAddressE());
+        noteTaTE3.setText(editCard.getNoteE());
 
         //frontTfT3.setText(frontPath);
         //backTfT3.setText(backPath);
@@ -6475,8 +6641,8 @@ public class ScannerView extends FrameView {
         backCropBtnT3.setText(myResourceMap.getString("backCropBtnT3" + s + ".text"));
 
         //set language for Import Export tab
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("importPanel.border.title" + s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, myResourceMap.getString("exportPanel.border.title" + s), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), myResourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        importPanel.setBorder(BorderFactory.createTitledBorder(null, myResourceMap.getString("importPanel.border.title" + s), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, getDefaultFont(), myResourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(BorderFactory.createTitledBorder(null, myResourceMap.getString("exportPanel.border.title" + s), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, getDefaultFont(), myResourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
 
         importLbT4.setText(myResourceMap.getString("importLbT4" + s + ".text"));
         importBrowseBtnT4.setText(myResourceMap.getString("importBrowseBtnT4" + s + ".text"));
@@ -7158,4 +7324,5 @@ public class ScannerView extends FrameView {
     private final int WIN_WIDTH = 450;
     private final int WIN_HEIGHT = 180;
     private XTableColumnModel xCol;
+    private Font defaultFont;
 }
