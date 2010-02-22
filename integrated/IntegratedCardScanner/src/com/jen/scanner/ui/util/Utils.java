@@ -9,11 +9,13 @@ import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.jen.scanner.ui.ScannerView;
+import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *

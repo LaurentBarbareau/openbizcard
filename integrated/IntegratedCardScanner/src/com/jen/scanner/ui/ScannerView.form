@@ -31,6 +31,9 @@
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="menuTab">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="getDefaultFont()" type="code"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[720, 680]"/>
             </Property>
@@ -106,6 +109,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="nameLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="nameLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -126,6 +132,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="titleLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="titleLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -146,6 +155,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="companyLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="companyLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -166,6 +178,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="disLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="disLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -186,6 +201,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="codeLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="codeLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -206,6 +224,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="mobileLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="mobileLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -226,6 +247,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="faxLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="faxLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -246,6 +270,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="adsLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="adsLbT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -266,6 +293,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lastnameLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="lastnameLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="lastnameLbT1" noResource="true"/>
                           </Properties>
@@ -277,6 +307,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="emailLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="emailLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="emailLbT1" noResource="true"/>
                           </Properties>
@@ -288,6 +321,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="webLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="webLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="webLbT1" noResource="true"/>
                           </Properties>
@@ -299,6 +335,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="subDisLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="subDisLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="subDisLbT1" noResource="true"/>
                           </Properties>
@@ -310,6 +349,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="provinceLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="provinceLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="provinceLbT1" noResource="true"/>
                           </Properties>
@@ -321,6 +363,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="phoneLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="phoneLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="phoneLbT1" noResource="true"/>
                           </Properties>
@@ -332,6 +377,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="noteLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="noteLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="noteLbT1" noResource="true"/>
                           </Properties>
@@ -343,6 +391,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="countryLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="countryLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="countryLbT1" noResource="true"/>
                           </Properties>
@@ -355,6 +406,9 @@
                         <Component class="javax.swing.JTextField" name="nameTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="nameTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 20]"/>
@@ -1269,12 +1323,18 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="scannerLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="scannerLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="scannerLbT1" noResource="true"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="scannerBtnT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="scannerBtnT1.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[90, 23]"/>
@@ -1301,6 +1361,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="doubleSideBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="doubleSideBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1324,6 +1387,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="blackWhiteBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="blackWhiteBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1347,6 +1413,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="autoCropBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="autoCropBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1370,6 +1439,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="readCardBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="readCardBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1393,6 +1465,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="rotateBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="rotateBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1416,6 +1491,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="emailBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="emailBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1439,6 +1517,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="undoBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="undoBtnT1.text"/>
                         <Property name="name" type="java.lang.String" value="undoBtn" noResource="true"/>
                       </Properties>
@@ -1453,6 +1534,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="confirmBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="confirmBtnT1.text"/>
                         <Property name="name" type="java.lang.String" value="confirmBtn" noResource="true"/>
                       </Properties>
@@ -1486,6 +1570,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="brightLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="brightLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="brightLbT1" noResource="true"/>
                           </Properties>
@@ -1533,6 +1620,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="scanBtn">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="scanBtn.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1556,6 +1646,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="saveBtnT1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="saveBtnT1.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -1597,12 +1690,18 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="sideLbT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="sideLbT1.text"/>
                             <Property name="name" type="java.lang.String" value="sideLbT1" noResource="true"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="frontSideRdT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="frontSideRdT1.text"/>
                             <Property name="name" type="java.lang.String" value="frontSideRdT1" noResource="true"/>
                           </Properties>
@@ -1612,6 +1711,9 @@
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="backSideRdT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backSideRdT1.text"/>
                             <Property name="name" type="java.lang.String" value="backSideRdT1" noResource="true"/>
                           </Properties>
@@ -1686,7 +1788,7 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="frontSpT1" alignment="0" pref="320" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="frontTfT1" pref="150" max="32767" attributes="0"/>
+                                              <Component id="frontTfT1" pref="146" max="32767" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="frontBtnT1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -1725,6 +1827,9 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="frontBtnT1">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="frontBtnT1.text"/>
                                 <Property name="name" type="java.lang.String" value="frontBtnT1" noResource="true"/>
                               </Properties>
@@ -1751,6 +1856,9 @@
                             </Container>
                             <Component class="javax.swing.JButton" name="frontCropBtnT1">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="frontCropBtnT1.text"/>
                                 <Property name="name" type="java.lang.String" value="frontCropBtnT1" noResource="true"/>
                               </Properties>
@@ -1777,16 +1885,16 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="0" attributes="1">
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           <Component id="backTfT1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="backBtnT1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="backCropBtnT1" min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="backCropBtnT1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="backSpT1" alignment="0" pref="320" max="32767" attributes="0"/>
+                                      <Component id="backSpT1" alignment="0" pref="323" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1820,6 +1928,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="backBtnT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backBtnT1.text"/>
                             <Property name="name" type="java.lang.String" value="backBtnT1" noResource="true"/>
                           </Properties>
@@ -1846,6 +1957,9 @@
                         </Container>
                         <Component class="javax.swing.JButton" name="backCropBtnT1">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backCropBtnT1.text"/>
                             <Property name="name" type="java.lang.String" value="backCropBtnT1" noResource="true"/>
                           </Properties>
@@ -1928,6 +2042,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="nameLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="nameLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -1948,6 +2065,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="titleLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="titleLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -1968,6 +2088,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="companyLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="companyLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -1988,6 +2111,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="disLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="disLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -2008,6 +2134,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="codeLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="codeLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -2028,6 +2157,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="mobileLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="mobileLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -2048,6 +2180,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="faxLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="faxLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -2068,6 +2203,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="adsLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="adsLbT2.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -2088,6 +2226,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lastnameLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="lastnameLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="lastnameLbT2" noResource="true"/>
                           </Properties>
@@ -2099,6 +2240,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="emailLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="emailLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="emailLbT2" noResource="true"/>
                           </Properties>
@@ -2110,6 +2254,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="webLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="webLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="webLbT2" noResource="true"/>
                           </Properties>
@@ -2121,6 +2268,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="subDisLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="subDisLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="subDisLbT2" noResource="true"/>
                           </Properties>
@@ -2132,6 +2282,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="provinceLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="provinceLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="provinceLbT2" noResource="true"/>
                           </Properties>
@@ -2143,6 +2296,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="phoneLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="phoneLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="phoneLbT2" noResource="true"/>
                           </Properties>
@@ -2154,6 +2310,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="noteLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="noteLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="noteLbT2" noResource="true"/>
                           </Properties>
@@ -2165,6 +2324,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="countryLbT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="countryLbT2.text"/>
                             <Property name="name" type="java.lang.String" value="countryLbT2" noResource="true"/>
                           </Properties>
@@ -3121,6 +3283,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="genSearchT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="genSearchT2.text"/>
                             <Property name="name" type="java.lang.String" value="genSearchT2" noResource="true"/>
                           </Properties>
@@ -3255,6 +3420,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn0T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn0T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3278,6 +3446,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn1T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn1T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3301,6 +3472,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn2T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn2T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3370,6 +3544,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn3T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn3T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3416,6 +3593,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn4T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn4T2.text"/>
                                 <Property name="name" type="java.lang.String" value="thBtn4T2" noResource="true"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3456,6 +3636,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn5T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn5T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3571,6 +3754,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn8T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn8T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3594,6 +3780,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn7T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn7T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3617,6 +3806,9 @@
                             </Component>
                             <Component class="javax.swing.JToggleButton" name="thBtn6T2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="thBtn6T2.text"/>
                                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 25]"/>
@@ -3707,6 +3899,9 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="importTableT2">
                               <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="10" rowCount="0">
                                     <Column editable="true" title="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;" type="java.lang.Boolean"/>
@@ -3726,7 +3921,7 @@
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="importTableT2.setColumnModel(xCol);"/>
                                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="xCol = new XTableColumnModel();"/>
-                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableColumn col = importTableT2.getColumnModel().getColumn(9);&#xd;&#xa;xCol.setAllColumnsVisible();&#xd;&#xa;xCol.setColumnVisible(col, false);"/>
+                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableColumn col = importTableT2.getColumnModel().getColumn(9);&#xd;&#xa;xCol.setAllColumnsVisible();&#xd;&#xa;xCol.setColumnVisible(col, false);&#xd;&#xa;&#xd;&#xa;JTableHeader header = importTableT2.getTableHeader();&#xd;&#xa;final TableCellRenderer headerRenderer = header.getDefaultRenderer();&#xd;&#xa;header.setDefaultRenderer( new TableCellRenderer() {&#xd;&#xa;    public Component getTableCellRendererComponent( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column ) {&#xd;&#xa;        Component comp = headerRenderer.getTableCellRendererComponent( table, value, isSelected, hasFocus, row, column );&#xd;&#xa;&#x9;comp.setFont(getDefaultFont());&#xd;&#xa;&#x9;return comp;&#xd;&#xa;    }&#xd;&#xa;&#x9;&#x9;});&#xd;&#xa;importTableT2.setTableHeader(header);"/>
                               </AuxValues>
                             </Component>
                           </SubComponents>
@@ -3752,7 +3947,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Component id="deletedBtnT2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="87" max="32767" attributes="0"/>
+                                  <EmptySpace pref="85" max="32767" attributes="0"/>
                                   <Component id="editBtnT2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
@@ -3905,6 +4100,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="idLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="idLbT3.text"/>
                             <Property name="horizontalTextPosition" type="int" value="10"/>
                             <Property name="name" type="java.lang.String" value="idLbT3" noResource="true"/>
@@ -3928,6 +4126,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="autoCropBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="autoCropBtnT3.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -3951,6 +4152,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="blackWhiteBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="blackWhiteBtnT3.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -3974,6 +4178,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="rotateBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="rotateBtnT3.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -3997,6 +4204,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="emailBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="emailBtnT3.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -4020,6 +4230,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="undoBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="undoBtnT3.text"/>
                         <Property name="name" type="java.lang.String" value="undoBtnT3" noResource="true"/>
                       </Properties>
@@ -4034,6 +4247,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="confirmBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="confirmBtnT3.text"/>
                         <Property name="name" type="java.lang.String" value="confirmBtnT3" noResource="true"/>
                       </Properties>
@@ -4069,6 +4285,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="brightLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="brightLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="brightLbT3" noResource="true"/>
                           </Properties>
@@ -4124,12 +4343,18 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="sideLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="sideLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="sideLbT3" noResource="true"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="frontSideRdT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="frontSideRdT3.text"/>
                             <Property name="name" type="java.lang.String" value="frontSideRdT3" noResource="true"/>
                           </Properties>
@@ -4139,6 +4364,9 @@
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="backSideRdT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backSideRdT3.text"/>
                             <Property name="name" type="java.lang.String" value="backSideRdT3" noResource="true"/>
                           </Properties>
@@ -4150,6 +4378,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="saveBtnT3">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="getDefaultFont()" type="code"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" resourceKey="saveBtnT3.text"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 31]"/>
@@ -4209,8 +4440,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="frontTfT3" pref="147" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="frontTfT3" pref="131" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="frontBtnT3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -4225,12 +4457,10 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="frontCropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="frontBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="frontTfT3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="frontCropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="frontBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="frontTfT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="frontSpT3" pref="286" max="32767" attributes="0"/>
@@ -4251,6 +4481,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="frontBtnT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="frontBtnT3.text"/>
                             <Property name="name" type="java.lang.String" value="frontBtnT3" noResource="true"/>
                           </Properties>
@@ -4274,6 +4507,9 @@
                         </Container>
                         <Component class="javax.swing.JButton" name="frontCropBtnT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="frontCropBtnT3.text"/>
                             <Property name="name" type="java.lang.String" value="frontCropBtnT3" noResource="true"/>
                           </Properties>
@@ -4306,7 +4542,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="backTfT3" pref="157" max="32767" attributes="0"/>
+                                          <Component id="backTfT3" pref="150" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="backBtnT3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -4348,6 +4584,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="backBtnT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backBtnT3.text"/>
                             <Property name="name" type="java.lang.String" value="backBtnT3" noResource="true"/>
                           </Properties>
@@ -4371,6 +4610,9 @@
                         </Container>
                         <Component class="javax.swing.JButton" name="backCropBtnT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backCropBtnT3.text"/>
                             <Property name="name" type="java.lang.String" value="backCropBtnT3" noResource="true"/>
                           </Properties>
@@ -4415,6 +4657,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="nameLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="nameLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4435,6 +4680,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="titleLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="titleLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4456,6 +4704,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="companyLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="companyLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4476,6 +4727,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="disLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="disLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4496,6 +4750,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="codeLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="codeLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4516,6 +4773,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="mobileLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="mobileLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4536,6 +4796,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="faxLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="faxLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4556,6 +4819,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="adsLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="adsLbT3.text"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 15]"/>
@@ -4576,6 +4842,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lastnameLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="lastnameLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="lastnameLbT3" noResource="true"/>
                           </Properties>
@@ -4587,6 +4856,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="emailLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="emailLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="emailLbT3" noResource="true"/>
                           </Properties>
@@ -4598,6 +4870,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="webLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="webLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="webLbT3" noResource="true"/>
                           </Properties>
@@ -4609,6 +4884,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="subDisLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="subDisLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="subDisLbT3" noResource="true"/>
                           </Properties>
@@ -4620,6 +4898,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="provinceLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="provinceLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="provinceLbT3" noResource="true"/>
                           </Properties>
@@ -4631,6 +4912,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="phoneLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="phoneLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="phoneLbT3" noResource="true"/>
                           </Properties>
@@ -4642,6 +4926,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="noteLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="noteLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="noteLbT3" noResource="true"/>
                           </Properties>
@@ -4653,6 +4940,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="countryLbT3">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="countryLbT3.text"/>
                             <Property name="name" type="java.lang.String" value="countryLbT3" noResource="true"/>
                           </Properties>
@@ -5519,6 +5809,12 @@
             </Container>
             <Container class="javax.swing.JPanel" name="importExportTab">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="BorderFactory.createTitledBorder(null, resourceMap.getString(&quot;importPanel.border.title&quot;), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, getDefaultFont(), resourceMap.getColor(&quot;importPanel.border.titleColor&quot;))" type="code"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="getDefaultFont()" type="code"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[680, 630]"/>
                 </Property>
@@ -5549,6 +5845,9 @@
                           <Property name="color" resourceKey="importPanel.border.titleColor"/>
                         </TitledBorder>
                       </Border>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="getDefaultFont()" type="code"/>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[600, 127]"/>
@@ -5616,6 +5915,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="importLbT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="importLbT4.text"/>
                             <Property name="name" type="java.lang.String" value="importLbT4" noResource="true"/>
                           </Properties>
@@ -5623,6 +5925,9 @@
                         <Component class="javax.swing.JTextField" name="importTfT4">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="importTfT4.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 20]"/>
@@ -5635,6 +5940,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="importBrowseBtnT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="importBrowseBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="importBrowseBtnT4" noResource="true"/>
                           </Properties>
@@ -5681,6 +5989,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JButton" name="replaceBtnT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="replaceBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="replaceBtnT4" noResource="true"/>
                           </Properties>
@@ -5728,6 +6039,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JButton" name="pendingBtnT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="pendingBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="pendingBtnT4" noResource="true"/>
                           </Properties>
@@ -5748,6 +6062,9 @@
                           <Property name="color" resourceKey="exportPanel.border.titleColor"/>
                         </TitledBorder>
                       </Border>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="getDefaultFont()" type="code"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="exportPanel" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5774,7 +6091,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel5" pref="45" max="32767" attributes="0"/>
+                              <Component id="jPanel5" pref="49" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -5826,6 +6143,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="exportLbT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="exportLbT4.text"/>
                             <Property name="name" type="java.lang.String" value="exportLbT4" noResource="true"/>
                           </Properties>
@@ -5833,6 +6153,9 @@
                         <Component class="javax.swing.JTextField" name="exportTfT4">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                               <Dimension value="[86, 20]"/>
                             </Property>
@@ -5844,6 +6167,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="browseExportBtnT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="browseExportBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="browseExportBtnT4" noResource="true"/>
                           </Properties>
@@ -5853,6 +6179,9 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="exportBtnT4">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="exportBtnT4.text"/>
                             <Property name="name" type="java.lang.String" value="exportBtnT4" noResource="true"/>
                           </Properties>
@@ -5914,14 +6243,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="databaseLb" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="databaseNameLb" min="-2" pref="402" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="languageLb" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="langaugeChangeBtn" min="-2" pref="119" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="langaugeChangeBtn" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="statusPanelSeparator" max="32767" attributes="0"/>
               </Group>
@@ -5938,11 +6267,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="databaseLb" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="databaseNameLb" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="databaseLb" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="databaseNameLb" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -5962,6 +6290,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="databaseLb">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="getDefaultFont()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="databaseLb.text"/>
             <Property name="name" type="java.lang.String" value="databaseLb" noResource="true"/>
           </Properties>
@@ -5986,12 +6317,18 @@
         </Component>
         <Component class="javax.swing.JLabel" name="languageLb">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="getDefaultFont()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="languageLb.text"/>
             <Property name="name" type="java.lang.String" value="languageLb" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="langaugeChangeBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="getDefaultFont()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="langaugeChangeBtn.text"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[89, 25]"/>
