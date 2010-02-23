@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -42,13 +43,14 @@ public class Utils {
         return ext;
     }
 
-    public static boolean checkFirstName(Card c,String alert){
+    public static boolean checkFirstName(Card c,String alert,Font f){
         boolean chk = false;
         if(c.getFirstName()!=null && !c.getFirstName().equals("")) chk = true;
         else{
             org.jdesktop.application.ResourceMap myResourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
-            chk = false;
-            JOptionPane.showMessageDialog(null,myResourceMap.getString(alert),"information", JOptionPane.INFORMATION_MESSAGE);
+            chk = false;            
+            String txt = "<html><body><FONT FACE=\""+f.getName()+"\" >"+myResourceMap.getString(alert)+"</FONT></body></html>";
+            JOptionPane.showMessageDialog(null,txt,"information", JOptionPane.INFORMATION_MESSAGE);
         }
         return chk;
     }

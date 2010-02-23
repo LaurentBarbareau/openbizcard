@@ -56,6 +56,7 @@ import java.util.Iterator;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
@@ -174,7 +175,8 @@ public class ScannerView extends FrameView {
             }
 
         }
-//        bcScanner = new CardScanner(scannedImageFileName);
+//        uncomment this
+        bcScanner = new CardScanner(scannedImageFileName);
 
         isFrontSelected = true;
         isFrontSelectedResult = true;
@@ -198,7 +200,7 @@ public class ScannerView extends FrameView {
         backUIStateResult = STATE_NO_IMAGE;
         setButtonsStateResult(frontUIStateResult);
 
-//        scannerTxtT1.setText(bcScanner.getName());
+        scannerTxtT1.setText(bcScanner.getName());
 
         isBrowsedFront = false;
         isBrowsedBack = false;
@@ -606,9 +608,9 @@ public class ScannerView extends FrameView {
         upLeftScrollPaneT1.setName("upLeftScrollPaneT1"); // NOI18N
         upLeftScrollPaneT1.setPreferredSize(new java.awt.Dimension(380, 260));
 
-        upLeftT1.setMinimumSize(new java.awt.Dimension(720, 240));
+        upLeftT1.setMinimumSize(new java.awt.Dimension(720, 260));
         upLeftT1.setName("upLeftT1"); // NOI18N
-        upLeftT1.setPreferredSize(new java.awt.Dimension(720, 240));
+        upLeftT1.setPreferredSize(new java.awt.Dimension(720, 260));
         upLeftT1.setLayout(new java.awt.GridBagLayout());
 
         nameLbT1.setFont(getDefaultFont());
@@ -799,8 +801,9 @@ public class ScannerView extends FrameView {
         nameTfT1.setColumns(10);
         nameTfT1.setFont(getDefaultFont());
         nameTfT1.setText(resourceMap.getString("nameTfT1.text")); // NOI18N
-        nameTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfT1.setName("nameTfT1"); // NOI18N
+        nameTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -810,9 +813,11 @@ public class ScannerView extends FrameView {
         upLeftT1.add(nameTfT1, gridBagConstraints);
 
         titleTfT1.setColumns(10);
+        titleTfT1.setFont(getDefaultFont());
         titleTfT1.setText(resourceMap.getString("titleTfT1.text")); // NOI18N
-        titleTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfT1.setName("titleTfT1"); // NOI18N
+        titleTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -822,9 +827,11 @@ public class ScannerView extends FrameView {
         upLeftT1.add(titleTfT1, gridBagConstraints);
 
         companyTfT1.setColumns(10);
+        companyTfT1.setFont(getDefaultFont());
         companyTfT1.setText(resourceMap.getString("companyTfT1.text")); // NOI18N
-        companyTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfT1.setName("companyTfT1"); // NOI18N
+        companyTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -834,9 +841,11 @@ public class ScannerView extends FrameView {
         upLeftT1.add(companyTfT1, gridBagConstraints);
 
         disTfT1.setColumns(10);
+        disTfT1.setFont(getDefaultFont());
         disTfT1.setText(resourceMap.getString("disTfT1.text")); // NOI18N
-        disTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfT1.setName("disTfT1"); // NOI18N
+        disTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -846,8 +855,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(disTfT1, gridBagConstraints);
 
         codeTfT1.setColumns(10);
+        codeTfT1.setFont(getDefaultFont());
         codeTfT1.setText(resourceMap.getString("codeTfT1.text")); // NOI18N
-        codeTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfT1.setName("codeTfT1"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -858,9 +868,11 @@ public class ScannerView extends FrameView {
         upLeftT1.add(codeTfT1, gridBagConstraints);
 
         mobileTfT1.setColumns(10);
+        mobileTfT1.setFont(getDefaultFont());
         mobileTfT1.setText(resourceMap.getString("mobileTfT1.text")); // NOI18N
-        mobileTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfT1.setName("mobileTfT1"); // NOI18N
+        mobileTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -870,9 +882,11 @@ public class ScannerView extends FrameView {
         upLeftT1.add(mobileTfT1, gridBagConstraints);
 
         faxTfT1.setColumns(10);
+        faxTfT1.setFont(getDefaultFont());
         faxTfT1.setText(resourceMap.getString("faxTfT1.text")); // NOI18N
-        faxTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfT1.setName("faxTfT1"); // NOI18N
+        faxTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -882,8 +896,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(faxTfT1, gridBagConstraints);
 
         lastnameTfT1.setColumns(10);
-        lastnameTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfT1.setFont(getDefaultFont());
+        lastnameTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfT1.setName("lastnameTfT1"); // NOI18N
+        lastnameTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -893,8 +909,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(lastnameTfT1, gridBagConstraints);
 
         emailTfT1.setColumns(10);
-        emailTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        emailTfT1.setFont(getDefaultFont());
+        emailTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         emailTfT1.setName("emailTfT1"); // NOI18N
+        emailTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -904,8 +922,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(emailTfT1, gridBagConstraints);
 
         webTfT1.setColumns(10);
-        webTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        webTfT1.setFont(getDefaultFont());
+        webTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         webTfT1.setName("webTfT1"); // NOI18N
+        webTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -915,8 +935,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(webTfT1, gridBagConstraints);
 
         subDisTfT1.setColumns(10);
-        subDisTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfT1.setFont(getDefaultFont());
+        subDisTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfT1.setName("subDisTfT1"); // NOI18N
+        subDisTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -926,8 +948,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(subDisTfT1, gridBagConstraints);
 
         provinceTfT1.setColumns(10);
-        provinceTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfT1.setFont(getDefaultFont());
+        provinceTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfT1.setName("provinceTfT1"); // NOI18N
+        provinceTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 4;
@@ -937,8 +961,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(provinceTfT1, gridBagConstraints);
 
         phoneTfT1.setColumns(10);
-        phoneTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfT1.setFont(getDefaultFont());
+        phoneTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfT1.setName("phoneTfT1"); // NOI18N
+        phoneTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 5;
@@ -948,8 +974,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(phoneTfT1, gridBagConstraints);
 
         countryTfT1.setColumns(10);
-        countryTfT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfT1.setFont(getDefaultFont());
+        countryTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfT1.setName("countryTfT1"); // NOI18N
+        countryTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
@@ -961,6 +989,7 @@ public class ScannerView extends FrameView {
         adsPanelT1.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT1.setName("adsPanelT1"); // NOI18N
         adsPanelT1.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelT1.setLayout(new java.awt.GridLayout());
 
         adsScrT1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT1.setHorizontalScrollBar(null);
@@ -969,28 +998,16 @@ public class ScannerView extends FrameView {
         adsScrT1.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaT1.setColumns(30);
-        adsTaT1.setFont(resourceMap.getFont("adsTaT1.font")); // NOI18N
+        adsTaT1.setFont(getDefaultFont());
         adsTaT1.setLineWrap(true);
         adsTaT1.setRows(3);
         adsTaT1.setAutoscrolls(false);
         adsTaT1.setMaximumSize(new java.awt.Dimension(99, 52));
         adsTaT1.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT1.setName("adsTaT1"); // NOI18N
-        adsTaT1.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrT1.setViewportView(adsTaT1);
 
-        javax.swing.GroupLayout adsPanelT1Layout = new javax.swing.GroupLayout(adsPanelT1);
-        adsPanelT1.setLayout(adsPanelT1Layout);
-        adsPanelT1Layout.setHorizontalGroup(
-            adsPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelT1Layout.setVerticalGroup(
-            adsPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelT1.add(adsScrT1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -1001,6 +1018,7 @@ public class ScannerView extends FrameView {
         notePanelT1.setMinimumSize(new java.awt.Dimension(99, 70));
         notePanelT1.setName("notePanelT1"); // NOI18N
         notePanelT1.setPreferredSize(new java.awt.Dimension(99, 70));
+        notePanelT1.setLayout(new java.awt.GridLayout());
 
         noteScrT1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT1.setHorizontalScrollBar(null);
@@ -1009,29 +1027,15 @@ public class ScannerView extends FrameView {
         noteScrT1.setPreferredSize(new java.awt.Dimension(99, 52));
 
         noteTaT1.setColumns(30);
-        noteTaT1.setFont(resourceMap.getFont("noteTaT1.font")); // NOI18N
+        noteTaT1.setFont(getDefaultFont());
         noteTaT1.setLineWrap(true);
         noteTaT1.setRows(3);
         noteTaT1.setAutoscrolls(false);
         noteTaT1.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT1.setName("noteTaT1"); // NOI18N
-        noteTaT1.setPreferredSize(new java.awt.Dimension(120, 52));
         noteScrT1.setViewportView(noteTaT1);
 
-        javax.swing.GroupLayout notePanelT1Layout = new javax.swing.GroupLayout(notePanelT1);
-        notePanelT1.setLayout(notePanelT1Layout);
-        notePanelT1Layout.setHorizontalGroup(
-            notePanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT1Layout.createSequentialGroup()
-                .addComponent(noteScrT1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelT1Layout.setVerticalGroup(
-            notePanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrT1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelT1.add(noteScrT1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -1049,8 +1053,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(nameLbTE1, gridBagConstraints);
 
         nameTfTE1.setColumns(10);
-        nameTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfTE1.setFont(getDefaultFont());
+        nameTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfTE1.setName("nameTfTE1"); // NOI18N
+        nameTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
@@ -1069,8 +1075,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(lastnameLbTE1, gridBagConstraints);
 
         lastnameTfTE1.setColumns(10);
-        lastnameTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfTE1.setFont(getDefaultFont());
+        lastnameTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfTE1.setName("lastnameTfTE1"); // NOI18N
+        lastnameTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
@@ -1089,8 +1097,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(titleLbTE1, gridBagConstraints);
 
         titleTfTE1.setColumns(10);
-        titleTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfTE1.setFont(getDefaultFont());
+        titleTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfTE1.setName("titleTfTE1"); // NOI18N
+        titleTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
@@ -1109,8 +1119,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(companyLbTE1, gridBagConstraints);
 
         companyTfTE1.setColumns(10);
-        companyTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfTE1.setFont(getDefaultFont());
+        companyTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfTE1.setName("companyTfTE1"); // NOI18N
+        companyTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 2;
@@ -1165,8 +1177,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(adsLbTE1, gridBagConstraints);
 
         disTfTE1.setColumns(10);
-        disTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfTE1.setFont(getDefaultFont());
+        disTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfTE1.setName("disTfTE1"); // NOI18N
+        disTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 3;
@@ -1176,8 +1190,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(disTfTE1, gridBagConstraints);
 
         codeTfTE1.setColumns(10);
-        codeTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfTE1.setFont(getDefaultFont());
+        codeTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfTE1.setName("codeTfTE1"); // NOI18N
+        codeTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 4;
@@ -1187,8 +1203,10 @@ public class ScannerView extends FrameView {
         upLeftT1.add(codeTfTE1, gridBagConstraints);
 
         mobileTfTE1.setColumns(10);
-        mobileTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfTE1.setFont(getDefaultFont());
+        mobileTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfTE1.setName("mobileTfTE1"); // NOI18N
+        mobileTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 5;
@@ -1198,8 +1216,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(mobileTfTE1, gridBagConstraints);
 
         faxTfTE1.setColumns(10);
-        faxTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfTE1.setName("faxTfTE1"); // NOI18N
+        faxTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 6;
@@ -1211,6 +1230,7 @@ public class ScannerView extends FrameView {
         adsPanelTE1.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE1.setName("adsPanelTE1"); // NOI18N
         adsPanelTE1.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelTE1.setLayout(new java.awt.GridLayout());
 
         adsScrTE1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE1.setHorizontalScrollBar(null);
@@ -1219,26 +1239,14 @@ public class ScannerView extends FrameView {
         adsScrTE1.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaTE1.setColumns(30);
-        adsTaTE1.setFont(resourceMap.getFont("adsTaTE1.font")); // NOI18N
+        adsTaTE1.setFont(getDefaultFont());
         adsTaTE1.setRows(3);
         adsTaTE1.setAutoscrolls(false);
         adsTaTE1.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE1.setName("adsTaTE1"); // NOI18N
-        adsTaTE1.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrTE1.setViewportView(adsTaTE1);
 
-        javax.swing.GroupLayout adsPanelTE1Layout = new javax.swing.GroupLayout(adsPanelTE1);
-        adsPanelTE1.setLayout(adsPanelTE1Layout);
-        adsPanelTE1Layout.setHorizontalGroup(
-            adsPanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelTE1Layout.setVerticalGroup(
-            adsPanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelTE1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelTE1.add(adsScrTE1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -1292,8 +1300,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(noteLbTE1, gridBagConstraints);
 
         subDisTfTE1.setColumns(10);
-        subDisTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfTE1.setName("subDisTfTE1"); // NOI18N
+        subDisTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 3;
@@ -1303,8 +1312,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(subDisTfTE1, gridBagConstraints);
 
         provinceTfTE1.setColumns(10);
-        provinceTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfTE1.setName("provinceTfTE1"); // NOI18N
+        provinceTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 4;
@@ -1314,8 +1324,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(provinceTfTE1, gridBagConstraints);
 
         phoneTfTE1.setColumns(10);
-        phoneTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfTE1.setName("phoneTfTE1"); // NOI18N
+        phoneTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 5;
@@ -1325,8 +1336,9 @@ public class ScannerView extends FrameView {
         upLeftT1.add(phoneTfTE1, gridBagConstraints);
 
         countryTfTE1.setColumns(10);
-        countryTfTE1.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfTE1.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfTE1.setName("countryTfTE1"); // NOI18N
+        countryTfTE1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 6;
@@ -1338,6 +1350,7 @@ public class ScannerView extends FrameView {
         notePanelTE1.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelTE1.setName("notePanelTE1"); // NOI18N
         notePanelTE1.setPreferredSize(new java.awt.Dimension(100, 70));
+        notePanelTE1.setLayout(new java.awt.GridLayout());
 
         noteScrTE1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE1.setHorizontalScrollBar(null);
@@ -1346,28 +1359,14 @@ public class ScannerView extends FrameView {
         noteScrTE1.setPreferredSize(new java.awt.Dimension(100, 52));
 
         noteTaTE1.setColumns(30);
-        noteTaTE1.setFont(resourceMap.getFont("noteTaTE1.font")); // NOI18N
+        noteTaTE1.setFont(getDefaultFont());
         noteTaTE1.setRows(3);
         noteTaTE1.setAutoscrolls(false);
         noteTaTE1.setMinimumSize(new java.awt.Dimension(102, 52));
         noteTaTE1.setName("noteTaTE1"); // NOI18N
-        noteTaTE1.setPreferredSize(new java.awt.Dimension(102, 52));
         noteScrTE1.setViewportView(noteTaTE1);
 
-        javax.swing.GroupLayout notePanelTE1Layout = new javax.swing.GroupLayout(notePanelTE1);
-        notePanelTE1.setLayout(notePanelTE1Layout);
-        notePanelTE1Layout.setHorizontalGroup(
-            notePanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE1Layout.createSequentialGroup()
-                .addComponent(noteScrTE1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelTE1Layout.setVerticalGroup(
-            notePanelTE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrTE1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelTE1.add(noteScrTE1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -1422,9 +1421,9 @@ public class ScannerView extends FrameView {
         });
 
         scannerTxtT1.setText(resourceMap.getString("scannerTxtT1.text")); // NOI18N
-        scannerTxtT1.setMinimumSize(new java.awt.Dimension(86, 20));
+        scannerTxtT1.setMinimumSize(new java.awt.Dimension(86, 25));
         scannerTxtT1.setName("scannerTxtT1"); // NOI18N
-        scannerTxtT1.setPreferredSize(new java.awt.Dimension(86, 20));
+        scannerTxtT1.setPreferredSize(new java.awt.Dimension(86, 25));
 
         javax.swing.GroupLayout scannerPanelLayout = new javax.swing.GroupLayout(scannerPanel);
         scannerPanel.setLayout(scannerPanelLayout);
@@ -1708,6 +1707,7 @@ public class ScannerView extends FrameView {
         frontPanelT1.setPreferredSize(new java.awt.Dimension(332, 340));
 
         frontTfT1.setEditable(false);
+        frontTfT1.setFont(getDefaultFont());
         frontTfT1.setText(resourceMap.getString("frontTfT1.text")); // NOI18N
         frontTfT1.setName("frontTfT1"); // NOI18N
         frontTfT1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1746,7 +1746,7 @@ public class ScannerView extends FrameView {
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(frontSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addGroup(frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1760,8 +1760,8 @@ public class ScannerView extends FrameView {
                     .addComponent(frontTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(frontCropBtnT1)
                     .addComponent(frontBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1783,6 +1783,7 @@ public class ScannerView extends FrameView {
         lowRightT1.setName("lowRightT1"); // NOI18N
 
         backTfT1.setEditable(false);
+        backTfT1.setFont(getDefaultFont());
         backTfT1.setText(resourceMap.getString("backTfT1.text")); // NOI18N
         backTfT1.setName("backTfT1"); // NOI18N
         backTfT1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1819,25 +1820,24 @@ public class ScannerView extends FrameView {
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowRightT1Layout.createSequentialGroup()
                 .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lowRightT1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(lowRightT1Layout.createSequentialGroup()
+                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         lowRightT1Layout.setVerticalGroup(
             lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowRightT1Layout.createSequentialGroup()
                 .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backCropBtnT1)
-                    .addComponent(backBtnT1))
+                    .addComponent(backBtnT1)
+                    .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1869,9 +1869,9 @@ public class ScannerView extends FrameView {
         upLeftScrollPaneT2.setName("upLeftScrollPaneT2"); // NOI18N
         upLeftScrollPaneT2.setPreferredSize(new java.awt.Dimension(390, 260));
 
-        upLeftT2.setMinimumSize(new java.awt.Dimension(720, 240));
+        upLeftT2.setMinimumSize(new java.awt.Dimension(720, 260));
         upLeftT2.setName("upLeftT2"); // NOI18N
-        upLeftT2.setPreferredSize(new java.awt.Dimension(720, 240));
+        upLeftT2.setPreferredSize(new java.awt.Dimension(720, 260));
         upLeftT2.setLayout(new java.awt.GridBagLayout());
 
         nameLbT2.setFont(getDefaultFont());
@@ -2059,8 +2059,9 @@ public class ScannerView extends FrameView {
         upLeftT2.add(countryLbT2, gridBagConstraints);
 
         nameTfT2.setColumns(10);
-        nameTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfT2.setName("nameTfT2"); // NOI18N
+        nameTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -2070,8 +2071,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(nameTfT2, gridBagConstraints);
 
         titleTfT2.setColumns(10);
-        titleTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfT2.setFont(getDefaultFont());
+        titleTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfT2.setName("titleTfT2"); // NOI18N
+        titleTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -2081,8 +2084,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(titleTfT2, gridBagConstraints);
 
         companyTfT2.setColumns(10);
-        companyTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfT2.setFont(getDefaultFont());
+        companyTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfT2.setName("companyTfT2"); // NOI18N
+        companyTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -2092,8 +2097,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(companyTfT2, gridBagConstraints);
 
         disTfT2.setColumns(10);
-        disTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfT2.setFont(getDefaultFont());
+        disTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfT2.setName("disTfT2"); // NOI18N
+        disTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -2103,8 +2110,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(disTfT2, gridBagConstraints);
 
         codeTfT2.setColumns(10);
-        codeTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfT2.setFont(getDefaultFont());
+        codeTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfT2.setName("codeTfT2"); // NOI18N
+        codeTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -2114,8 +2123,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(codeTfT2, gridBagConstraints);
 
         mobileTfT2.setColumns(10);
-        mobileTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfT2.setFont(getDefaultFont());
+        mobileTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfT2.setName("mobileTfT2"); // NOI18N
+        mobileTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -2125,8 +2136,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(mobileTfT2, gridBagConstraints);
 
         faxTfT2.setColumns(10);
-        faxTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfT2.setFont(getDefaultFont());
+        faxTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfT2.setName("faxTfT2"); // NOI18N
+        faxTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -2136,8 +2149,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(faxTfT2, gridBagConstraints);
 
         lastnameTfT2.setColumns(10);
-        lastnameTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfT2.setFont(getDefaultFont());
+        lastnameTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfT2.setName("lastnameTfT2"); // NOI18N
+        lastnameTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -2147,8 +2162,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(lastnameTfT2, gridBagConstraints);
 
         emailTfT2.setColumns(10);
-        emailTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        emailTfT2.setFont(getDefaultFont());
+        emailTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         emailTfT2.setName("emailTfT2"); // NOI18N
+        emailTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -2158,8 +2175,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(emailTfT2, gridBagConstraints);
 
         webTfT2.setColumns(10);
-        webTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        webTfT2.setFont(getDefaultFont());
+        webTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         webTfT2.setName("webTfT2"); // NOI18N
+        webTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -2169,8 +2188,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(webTfT2, gridBagConstraints);
 
         subDisTfT2.setColumns(10);
-        subDisTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfT2.setFont(getDefaultFont());
+        subDisTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfT2.setName("subDisTfT2"); // NOI18N
+        subDisTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -2180,8 +2201,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(subDisTfT2, gridBagConstraints);
 
         provinceTfT2.setColumns(10);
-        provinceTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfT2.setFont(getDefaultFont());
+        provinceTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfT2.setName("provinceTfT2"); // NOI18N
+        provinceTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 4;
@@ -2191,8 +2214,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(provinceTfT2, gridBagConstraints);
 
         phoneTfT2.setColumns(10);
-        phoneTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfT2.setFont(getDefaultFont());
+        phoneTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfT2.setName("phoneTfT2"); // NOI18N
+        phoneTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 5;
@@ -2202,9 +2227,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(phoneTfT2, gridBagConstraints);
 
         countryTfT2.setColumns(10);
-        countryTfT2.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfT2.setFont(getDefaultFont());
+        countryTfT2.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfT2.setName("countryTfT2"); // NOI18N
-        countryTfT2.setPreferredSize(new java.awt.Dimension(86, 20));
+        countryTfT2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
@@ -2216,6 +2242,7 @@ public class ScannerView extends FrameView {
         adsPanelT2.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT2.setName("adsPanelT2"); // NOI18N
         adsPanelT2.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelT2.setLayout(new java.awt.GridLayout());
 
         adsScrT2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT2.setHorizontalScrollBar(null);
@@ -2224,27 +2251,15 @@ public class ScannerView extends FrameView {
         adsScrT2.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaT2.setColumns(30);
-        adsTaT2.setFont(resourceMap.getFont("adsTaT2.font")); // NOI18N
+        adsTaT2.setFont(getDefaultFont());
         adsTaT2.setLineWrap(true);
         adsTaT2.setRows(3);
         adsTaT2.setAutoscrolls(false);
         adsTaT2.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT2.setName("adsTaT2"); // NOI18N
-        adsTaT2.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrT2.setViewportView(adsTaT2);
 
-        javax.swing.GroupLayout adsPanelT2Layout = new javax.swing.GroupLayout(adsPanelT2);
-        adsPanelT2.setLayout(adsPanelT2Layout);
-        adsPanelT2Layout.setHorizontalGroup(
-            adsPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelT2Layout.setVerticalGroup(
-            adsPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelT2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelT2.add(adsScrT2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -2255,35 +2270,22 @@ public class ScannerView extends FrameView {
         notePanelT2.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelT2.setName("notePanelT2"); // NOI18N
         notePanelT2.setPreferredSize(new java.awt.Dimension(100, 70));
+        notePanelT2.setLayout(new java.awt.GridLayout());
 
         noteScrT2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT2.setHorizontalScrollBar(null);
         noteScrT2.setName("noteScrT2"); // NOI18N
 
         noteTaT2.setColumns(30);
-        noteTaT2.setFont(resourceMap.getFont("noteTaT2.font")); // NOI18N
+        noteTaT2.setFont(getDefaultFont());
         noteTaT2.setLineWrap(true);
         noteTaT2.setRows(3);
         noteTaT2.setAutoscrolls(false);
         noteTaT2.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT2.setName("noteTaT2"); // NOI18N
-        noteTaT2.setPreferredSize(new java.awt.Dimension(99, 52));
         noteScrT2.setViewportView(noteTaT2);
 
-        javax.swing.GroupLayout notePanelT2Layout = new javax.swing.GroupLayout(notePanelT2);
-        notePanelT2.setLayout(notePanelT2Layout);
-        notePanelT2Layout.setHorizontalGroup(
-            notePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT2Layout.createSequentialGroup()
-                .addComponent(noteScrT2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelT2Layout.setVerticalGroup(
-            notePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrT2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelT2.add(noteScrT2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -2301,8 +2303,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(nameLbTE2, gridBagConstraints);
 
         nameTfTE2.setColumns(10);
-        nameTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfTE2.setFont(getDefaultFont());
+        nameTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfTE2.setName("nameTfTE2"); // NOI18N
+        nameTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
@@ -2321,8 +2325,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(lastnameLbTE2, gridBagConstraints);
 
         lastnameTfTE2.setColumns(10);
-        lastnameTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfTE2.setFont(getDefaultFont());
+        lastnameTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfTE2.setName("lastnameTfTE2"); // NOI18N
+        lastnameTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
@@ -2341,8 +2347,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(titleLbTE2, gridBagConstraints);
 
         titleTfTE2.setColumns(10);
-        titleTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfTE2.setFont(getDefaultFont());
+        titleTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfTE2.setName("titleTfTE2"); // NOI18N
+        titleTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
@@ -2361,8 +2369,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(companyLbTE2, gridBagConstraints);
 
         companyTfTE2.setColumns(10);
-        companyTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfTE2.setFont(getDefaultFont());
+        companyTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfTE2.setName("companyTfTE2"); // NOI18N
+        companyTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 2;
@@ -2417,8 +2427,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(adsLbTE2, gridBagConstraints);
 
         disTfTE2.setColumns(10);
-        disTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfTE2.setFont(getDefaultFont());
+        disTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfTE2.setName("disTfTE2"); // NOI18N
+        disTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 3;
@@ -2428,8 +2440,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(disTfTE2, gridBagConstraints);
 
         codeTfTE2.setColumns(10);
-        codeTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfTE2.setFont(getDefaultFont());
+        codeTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfTE2.setName("codeTfTE2"); // NOI18N
+        codeTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 4;
@@ -2439,8 +2453,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(codeTfTE2, gridBagConstraints);
 
         mobileTfTE2.setColumns(10);
-        mobileTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfTE2.setFont(getDefaultFont());
+        mobileTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfTE2.setName("mobileTfTE2"); // NOI18N
+        mobileTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 5;
@@ -2450,8 +2466,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(mobileTfTE2, gridBagConstraints);
 
         faxTfTE2.setColumns(10);
-        faxTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfTE2.setFont(getDefaultFont());
+        faxTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfTE2.setName("faxTfTE2"); // NOI18N
+        faxTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 6;
@@ -2463,6 +2481,7 @@ public class ScannerView extends FrameView {
         adsPanelTE2.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE2.setName("adsPanelTE2"); // NOI18N
         adsPanelTE2.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelTE2.setLayout(new java.awt.GridLayout());
 
         adsScrTE2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE2.setHorizontalScrollBar(null);
@@ -2471,26 +2490,14 @@ public class ScannerView extends FrameView {
         adsScrTE2.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaTE2.setColumns(30);
-        adsTaTE2.setFont(resourceMap.getFont("adsTaTE2.font")); // NOI18N
+        adsTaTE2.setFont(getDefaultFont());
         adsTaTE2.setRows(3);
         adsTaTE2.setAutoscrolls(false);
         adsTaTE2.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE2.setName("adsTaTE2"); // NOI18N
-        adsTaTE2.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrTE2.setViewportView(adsTaTE2);
 
-        javax.swing.GroupLayout adsPanelTE2Layout = new javax.swing.GroupLayout(adsPanelTE2);
-        adsPanelTE2.setLayout(adsPanelTE2Layout);
-        adsPanelTE2Layout.setHorizontalGroup(
-            adsPanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelTE2Layout.setVerticalGroup(
-            adsPanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelTE2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelTE2.add(adsScrTE2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -2544,8 +2551,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(noteLbTE2, gridBagConstraints);
 
         subDisTfTE2.setColumns(10);
-        subDisTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfTE2.setFont(getDefaultFont());
+        subDisTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfTE2.setName("subDisTfTE2"); // NOI18N
+        subDisTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 3;
@@ -2555,8 +2564,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(subDisTfTE2, gridBagConstraints);
 
         provinceTfTE2.setColumns(10);
-        provinceTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfTE2.setFont(getDefaultFont());
+        provinceTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfTE2.setName("provinceTfTE2"); // NOI18N
+        provinceTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 4;
@@ -2566,8 +2577,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(provinceTfTE2, gridBagConstraints);
 
         phoneTfTE2.setColumns(10);
-        phoneTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfTE2.setFont(getDefaultFont());
+        phoneTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfTE2.setName("phoneTfTE2"); // NOI18N
+        phoneTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 5;
@@ -2577,8 +2590,10 @@ public class ScannerView extends FrameView {
         upLeftT2.add(phoneTfTE2, gridBagConstraints);
 
         countryTfTE2.setColumns(10);
-        countryTfTE2.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfTE2.setFont(getDefaultFont());
+        countryTfTE2.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfTE2.setName("countryTfTE2"); // NOI18N
+        countryTfTE2.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 6;
@@ -2590,6 +2605,7 @@ public class ScannerView extends FrameView {
         notePanelTE2.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelTE2.setName("notePanelTE2"); // NOI18N
         notePanelTE2.setPreferredSize(new java.awt.Dimension(100, 70));
+        notePanelTE2.setLayout(new java.awt.GridLayout());
 
         noteScrTE2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE2.setHorizontalScrollBar(null);
@@ -2598,28 +2614,14 @@ public class ScannerView extends FrameView {
         noteScrTE2.setPreferredSize(new java.awt.Dimension(99, 52));
 
         noteTaTE2.setColumns(30);
-        noteTaTE2.setFont(resourceMap.getFont("noteTaTE2.font")); // NOI18N
+        noteTaTE2.setFont(getDefaultFont());
         noteTaTE2.setRows(3);
         noteTaTE2.setAutoscrolls(false);
         noteTaTE2.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaTE2.setName("noteTaTE2"); // NOI18N
-        noteTaTE2.setPreferredSize(new java.awt.Dimension(99, 52));
         noteScrTE2.setViewportView(noteTaTE2);
 
-        javax.swing.GroupLayout notePanelTE2Layout = new javax.swing.GroupLayout(notePanelTE2);
-        notePanelTE2.setLayout(notePanelTE2Layout);
-        notePanelTE2Layout.setHorizontalGroup(
-            notePanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE2Layout.createSequentialGroup()
-                .addComponent(noteScrTE2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelTE2Layout.setVerticalGroup(
-            notePanelTE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrTE2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelTE2.add(noteScrTE2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -2725,6 +2727,7 @@ public class ScannerView extends FrameView {
         quickPanelT2.setPreferredSize(new java.awt.Dimension(250, 200));
         quickPanelT2.setLayout(new java.awt.GridBagLayout());
 
+        quickLb.setFont(getDefaultFont());
         quickLb.setText(resourceMap.getString("quickLb.text")); // NOI18N
         quickLb.setName("quickLb"); // NOI18N
         quickLb.setPreferredSize(new java.awt.Dimension(150, 14));
@@ -3106,44 +3109,36 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         lowPanelT2.add(tablePanelT2, gridBagConstraints);
 
+        deleteEditPanelT2.setMinimumSize(new java.awt.Dimension(200, 40));
         deleteEditPanelT2.setName("deleteEditPanelT2"); // NOI18N
-        deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(250, 30));
+        deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(200, 40));
+        deleteEditPanelT2.setLayout(new java.awt.GridLayout());
 
+        deletedBtnT2.setFont(getDefaultFont());
         deletedBtnT2.setText(resourceMap.getString("deletedBtnT2.text")); // NOI18N
+        deletedBtnT2.setMaximumSize(new java.awt.Dimension(50, 40));
+        deletedBtnT2.setMinimumSize(new java.awt.Dimension(50, 40));
         deletedBtnT2.setName("deletedBtnT2"); // NOI18N
+        deletedBtnT2.setPreferredSize(new java.awt.Dimension(50, 40));
         deletedBtnT2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletedBtnT2ActionPerformed(evt);
             }
         });
+        deleteEditPanelT2.add(deletedBtnT2);
 
+        editBtnT2.setFont(getDefaultFont());
         editBtnT2.setText(resourceMap.getString("editBtnT2.text")); // NOI18N
+        editBtnT2.setMaximumSize(new java.awt.Dimension(50, 40));
+        editBtnT2.setMinimumSize(new java.awt.Dimension(50, 40));
         editBtnT2.setName("editBtnT2"); // NOI18N
+        editBtnT2.setPreferredSize(new java.awt.Dimension(50, 40));
         editBtnT2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editBtnT2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout deleteEditPanelT2Layout = new javax.swing.GroupLayout(deleteEditPanelT2);
-        deleteEditPanelT2.setLayout(deleteEditPanelT2Layout);
-        deleteEditPanelT2Layout.setHorizontalGroup(
-            deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(deletedBtnT2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(editBtnT2)
-                .addGap(33, 33, 33))
-        );
-        deleteEditPanelT2Layout.setVerticalGroup(
-            deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deleteEditPanelT2Layout.createSequentialGroup()
-                .addGroup(deleteEditPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletedBtnT2)
-                    .addComponent(editBtnT2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        deleteEditPanelT2.add(editBtnT2);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -3422,6 +3417,7 @@ public class ScannerView extends FrameView {
         lowLeftT3.setPreferredSize(new java.awt.Dimension(337, 335));
 
         frontTfT3.setEditable(false);
+        frontTfT3.setFont(getDefaultFont());
         frontTfT3.setName("frontTfT3"); // NOI18N
         frontTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3455,11 +3451,10 @@ public class ScannerView extends FrameView {
         lowLeftT3Layout.setHorizontalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
-                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowLeftT3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(frontTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(frontTfT3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontCropBtnT3))
@@ -3474,7 +3469,7 @@ public class ScannerView extends FrameView {
                     .addComponent(frontBtnT3)
                     .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3488,6 +3483,7 @@ public class ScannerView extends FrameView {
         lowRightT3.setPreferredSize(new java.awt.Dimension(350, 335));
 
         backTfT3.setEditable(false);
+        backTfT3.setFont(getDefaultFont());
         backTfT3.setName("backTfT3"); // NOI18N
         backTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3524,7 +3520,7 @@ public class ScannerView extends FrameView {
                 .addContainerGap()
                 .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3542,7 +3538,7 @@ public class ScannerView extends FrameView {
                     .addComponent(backBtnT3)
                     .addComponent(backCropBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3562,9 +3558,9 @@ public class ScannerView extends FrameView {
         upLeftScrollPaneT3.setName("upLeftScrollPaneT3"); // NOI18N
         upLeftScrollPaneT3.setPreferredSize(new java.awt.Dimension(390, 260));
 
-        upLeftT3.setMinimumSize(new java.awt.Dimension(720, 240));
+        upLeftT3.setMinimumSize(new java.awt.Dimension(720, 260));
         upLeftT3.setName("upLeftT3"); // NOI18N
-        upLeftT3.setPreferredSize(new java.awt.Dimension(720, 240));
+        upLeftT3.setPreferredSize(new java.awt.Dimension(720, 260));
         upLeftT3.setLayout(new java.awt.GridBagLayout());
 
         nameLbT3.setFont(getDefaultFont());
@@ -3753,8 +3749,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(countryLbT3, gridBagConstraints);
 
         nameTfT3.setColumns(10);
-        nameTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfT3.setFont(getDefaultFont());
+        nameTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfT3.setName("nameTfT3"); // NOI18N
+        nameTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -3764,8 +3762,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(nameTfT3, gridBagConstraints);
 
         titleTfT3.setColumns(10);
-        titleTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfT3.setFont(getDefaultFont());
+        titleTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfT3.setName("titleTfT3"); // NOI18N
+        titleTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -3775,8 +3775,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(titleTfT3, gridBagConstraints);
 
         companyTfT3.setColumns(10);
-        companyTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfT3.setFont(getDefaultFont());
+        companyTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfT3.setName("companyTfT3"); // NOI18N
+        companyTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -3786,8 +3788,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(companyTfT3, gridBagConstraints);
 
         disTfT3.setColumns(10);
-        disTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfT3.setFont(getDefaultFont());
+        disTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfT3.setName("disTfT3"); // NOI18N
+        disTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -3797,8 +3801,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(disTfT3, gridBagConstraints);
 
         codeTfT3.setColumns(10);
-        codeTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfT3.setFont(getDefaultFont());
+        codeTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfT3.setName("codeTfT3"); // NOI18N
+        codeTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -3808,8 +3814,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(codeTfT3, gridBagConstraints);
 
         mobileTfT3.setColumns(10);
-        mobileTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfT3.setFont(getDefaultFont());
+        mobileTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfT3.setName("mobileTfT3"); // NOI18N
+        mobileTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -3819,8 +3827,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(mobileTfT3, gridBagConstraints);
 
         faxTfT3.setColumns(10);
-        faxTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfT3.setFont(getDefaultFont());
+        faxTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfT3.setName("faxTfT3"); // NOI18N
+        faxTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -3830,8 +3840,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(faxTfT3, gridBagConstraints);
 
         lastnameTfT3.setColumns(10);
-        lastnameTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfT3.setFont(getDefaultFont());
+        lastnameTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfT3.setName("lastnameTfT3"); // NOI18N
+        lastnameTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -3841,8 +3853,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(lastnameTfT3, gridBagConstraints);
 
         emailTfT3.setColumns(10);
-        emailTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        emailTfT3.setFont(getDefaultFont());
+        emailTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         emailTfT3.setName("emailTfT3"); // NOI18N
+        emailTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -3852,8 +3866,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(emailTfT3, gridBagConstraints);
 
         webTfT3.setColumns(10);
-        webTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        webTfT3.setFont(getDefaultFont());
+        webTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         webTfT3.setName("webTfT3"); // NOI18N
+        webTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -3863,8 +3879,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(webTfT3, gridBagConstraints);
 
         subDisTfT3.setColumns(10);
-        subDisTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfT3.setFont(getDefaultFont());
+        subDisTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfT3.setName("subDisTfT3"); // NOI18N
+        subDisTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -3874,8 +3892,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(subDisTfT3, gridBagConstraints);
 
         provinceTfT3.setColumns(10);
-        provinceTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfT3.setFont(getDefaultFont());
+        provinceTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfT3.setName("provinceTfT3"); // NOI18N
+        provinceTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 4;
@@ -3885,8 +3905,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(provinceTfT3, gridBagConstraints);
 
         phoneTfT3.setColumns(10);
-        phoneTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfT3.setFont(getDefaultFont());
+        phoneTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfT3.setName("phoneTfT3"); // NOI18N
+        phoneTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 5;
@@ -3896,8 +3918,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(phoneTfT3, gridBagConstraints);
 
         countryTfT3.setColumns(10);
-        countryTfT3.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfT3.setFont(getDefaultFont());
+        countryTfT3.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfT3.setName("countryTfT3"); // NOI18N
+        countryTfT3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
@@ -3909,6 +3933,7 @@ public class ScannerView extends FrameView {
         adsPanelT3.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT3.setName("adsPanelT3"); // NOI18N
         adsPanelT3.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelT3.setLayout(new java.awt.GridLayout());
 
         adsScrT3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT3.setHorizontalScrollBar(null);
@@ -3917,27 +3942,15 @@ public class ScannerView extends FrameView {
         adsScrT3.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaT3.setColumns(30);
-        adsTaT3.setFont(resourceMap.getFont("adsTaT3.font")); // NOI18N
+        adsTaT3.setFont(getDefaultFont());
         adsTaT3.setLineWrap(true);
         adsTaT3.setRows(3);
         adsTaT3.setAutoscrolls(false);
         adsTaT3.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT3.setName("adsTaT3"); // NOI18N
-        adsTaT3.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrT3.setViewportView(adsTaT3);
 
-        javax.swing.GroupLayout adsPanelT3Layout = new javax.swing.GroupLayout(adsPanelT3);
-        adsPanelT3.setLayout(adsPanelT3Layout);
-        adsPanelT3Layout.setHorizontalGroup(
-            adsPanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelT3Layout.setVerticalGroup(
-            adsPanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelT3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelT3.add(adsScrT3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -3948,6 +3961,7 @@ public class ScannerView extends FrameView {
         notePanelT3.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelT3.setName("notePanelT3"); // NOI18N
         notePanelT3.setPreferredSize(new java.awt.Dimension(100, 70));
+        notePanelT3.setLayout(new java.awt.GridLayout());
 
         noteScrT3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT3.setHorizontalScrollBar(null);
@@ -3956,29 +3970,15 @@ public class ScannerView extends FrameView {
         noteScrT3.setPreferredSize(new java.awt.Dimension(99, 52));
 
         noteTaT3.setColumns(30);
-        noteTaT3.setFont(resourceMap.getFont("noteTaT3.font")); // NOI18N
+        noteTaT3.setFont(getDefaultFont());
         noteTaT3.setLineWrap(true);
         noteTaT3.setRows(3);
         noteTaT3.setAutoscrolls(false);
         noteTaT3.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT3.setName("noteTaT3"); // NOI18N
-        noteTaT3.setPreferredSize(new java.awt.Dimension(99, 52));
         noteScrT3.setViewportView(noteTaT3);
 
-        javax.swing.GroupLayout notePanelT3Layout = new javax.swing.GroupLayout(notePanelT3);
-        notePanelT3.setLayout(notePanelT3Layout);
-        notePanelT3Layout.setHorizontalGroup(
-            notePanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT3Layout.createSequentialGroup()
-                .addComponent(noteScrT3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelT3Layout.setVerticalGroup(
-            notePanelT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelT3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrT3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelT3.add(noteScrT3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -3996,8 +3996,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(nameLbTE3, gridBagConstraints);
 
         nameTfTE3.setColumns(10);
-        nameTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        nameTfTE3.setFont(getDefaultFont());
+        nameTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         nameTfTE3.setName("nameTfTE3"); // NOI18N
+        nameTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
@@ -4016,8 +4018,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(lastnameLbTE3, gridBagConstraints);
 
         lastnameTfTE3.setColumns(10);
-        lastnameTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        lastnameTfTE3.setFont(getDefaultFont());
+        lastnameTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         lastnameTfTE3.setName("lastnameTfTE3"); // NOI18N
+        lastnameTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
@@ -4036,8 +4040,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(titleLbTE3, gridBagConstraints);
 
         titleTfTE3.setColumns(10);
-        titleTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        titleTfTE3.setFont(getDefaultFont());
+        titleTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         titleTfTE3.setName("titleTfTE3"); // NOI18N
+        titleTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
@@ -4056,8 +4062,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(companyLbTE3, gridBagConstraints);
 
         companyTfTE3.setColumns(10);
-        companyTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        companyTfTE3.setFont(getDefaultFont());
+        companyTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         companyTfTE3.setName("companyTfTE3"); // NOI18N
+        companyTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 2;
@@ -4112,8 +4120,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(adsLbTE3, gridBagConstraints);
 
         disTfTE3.setColumns(10);
-        disTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        disTfTE3.setFont(getDefaultFont());
+        disTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         disTfTE3.setName("disTfTE3"); // NOI18N
+        disTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 3;
@@ -4123,8 +4133,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(disTfTE3, gridBagConstraints);
 
         codeTfTE3.setColumns(10);
-        codeTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        codeTfTE3.setFont(getDefaultFont());
+        codeTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfTE3.setName("codeTfTE3"); // NOI18N
+        codeTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 4;
@@ -4134,8 +4146,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(codeTfTE3, gridBagConstraints);
 
         mobileTfTE3.setColumns(10);
-        mobileTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        mobileTfTE3.setFont(getDefaultFont());
+        mobileTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         mobileTfTE3.setName("mobileTfTE3"); // NOI18N
+        mobileTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 5;
@@ -4145,8 +4159,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(mobileTfTE3, gridBagConstraints);
 
         faxTfTE3.setColumns(10);
-        faxTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        faxTfTE3.setFont(getDefaultFont());
+        faxTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         faxTfTE3.setName("faxTfTE3"); // NOI18N
+        faxTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 6;
@@ -4158,6 +4174,7 @@ public class ScannerView extends FrameView {
         adsPanelTE3.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE3.setName("adsPanelTE3"); // NOI18N
         adsPanelTE3.setPreferredSize(new java.awt.Dimension(99, 70));
+        adsPanelTE3.setLayout(new java.awt.GridLayout());
 
         adsScrTE3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE3.setHorizontalScrollBar(null);
@@ -4166,26 +4183,14 @@ public class ScannerView extends FrameView {
         adsScrTE3.setPreferredSize(new java.awt.Dimension(99, 52));
 
         adsTaTE3.setColumns(30);
-        adsTaTE3.setFont(resourceMap.getFont("adsTaTE3.font")); // NOI18N
+        adsTaTE3.setFont(getDefaultFont());
         adsTaTE3.setRows(3);
         adsTaTE3.setAutoscrolls(false);
         adsTaTE3.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE3.setName("adsTaTE3"); // NOI18N
-        adsTaTE3.setPreferredSize(new java.awt.Dimension(99, 52));
         adsScrTE3.setViewportView(adsTaTE3);
 
-        javax.swing.GroupLayout adsPanelTE3Layout = new javax.swing.GroupLayout(adsPanelTE3);
-        adsPanelTE3.setLayout(adsPanelTE3Layout);
-        adsPanelTE3Layout.setHorizontalGroup(
-            adsPanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(adsScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        adsPanelTE3Layout.setVerticalGroup(
-            adsPanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adsPanelTE3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adsScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        adsPanelTE3.add(adsScrTE3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
@@ -4239,8 +4244,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(noteLbTE3, gridBagConstraints);
 
         subDisTfTE3.setColumns(10);
-        subDisTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        subDisTfTE3.setFont(getDefaultFont());
+        subDisTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         subDisTfTE3.setName("subDisTfTE3"); // NOI18N
+        subDisTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 3;
@@ -4250,8 +4257,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(subDisTfTE3, gridBagConstraints);
 
         provinceTfTE3.setColumns(10);
-        provinceTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        provinceTfTE3.setFont(getDefaultFont());
+        provinceTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         provinceTfTE3.setName("provinceTfTE3"); // NOI18N
+        provinceTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 4;
@@ -4261,8 +4270,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(provinceTfTE3, gridBagConstraints);
 
         phoneTfTE3.setColumns(10);
-        phoneTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        phoneTfTE3.setFont(getDefaultFont());
+        phoneTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         phoneTfTE3.setName("phoneTfTE3"); // NOI18N
+        phoneTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 5;
@@ -4272,8 +4283,10 @@ public class ScannerView extends FrameView {
         upLeftT3.add(phoneTfTE3, gridBagConstraints);
 
         countryTfTE3.setColumns(10);
-        countryTfTE3.setMinimumSize(new java.awt.Dimension(86, 20));
+        countryTfTE3.setFont(getDefaultFont());
+        countryTfTE3.setMinimumSize(new java.awt.Dimension(86, 25));
         countryTfTE3.setName("countryTfTE3"); // NOI18N
+        countryTfTE3.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 6;
@@ -4285,6 +4298,7 @@ public class ScannerView extends FrameView {
         notePanelTE3.setMinimumSize(new java.awt.Dimension(99, 70));
         notePanelTE3.setName("notePanelTE3"); // NOI18N
         notePanelTE3.setPreferredSize(new java.awt.Dimension(99, 70));
+        notePanelTE3.setLayout(new java.awt.GridLayout());
 
         noteScrTE3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE3.setHorizontalScrollBar(null);
@@ -4293,28 +4307,14 @@ public class ScannerView extends FrameView {
         noteScrTE3.setPreferredSize(new java.awt.Dimension(99, 52));
 
         noteTaTE3.setColumns(30);
-        noteTaTE3.setFont(resourceMap.getFont("noteTaTE3.font")); // NOI18N
+        noteTaTE3.setFont(getDefaultFont());
         noteTaTE3.setRows(3);
         noteTaTE3.setAutoscrolls(false);
         noteTaTE3.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaTE3.setName("noteTaTE3"); // NOI18N
-        noteTaTE3.setPreferredSize(new java.awt.Dimension(99, 52));
         noteScrTE3.setViewportView(noteTaTE3);
 
-        javax.swing.GroupLayout notePanelTE3Layout = new javax.swing.GroupLayout(notePanelTE3);
-        notePanelTE3.setLayout(notePanelTE3Layout);
-        notePanelTE3Layout.setHorizontalGroup(
-            notePanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE3Layout.createSequentialGroup()
-                .addComponent(noteScrTE3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        notePanelTE3Layout.setVerticalGroup(
-            notePanelTE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(notePanelTE3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(noteScrTE3, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-        );
+        notePanelTE3.add(noteScrTE3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 10;
@@ -4358,7 +4358,7 @@ public class ScannerView extends FrameView {
         importExportTab.setPreferredSize(new java.awt.Dimension(680, 630));
         importExportTab.setLayout(new java.awt.GridBagLayout());
 
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Serif", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
         importPanel.setFont(getDefaultFont());
         importPanel.setMinimumSize(new java.awt.Dimension(600, 127));
         importPanel.setName("importPanel"); // NOI18N
@@ -4445,7 +4445,7 @@ public class ScannerView extends FrameView {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(replaceBtnT4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4479,7 +4479,7 @@ public class ScannerView extends FrameView {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(pendingBtnT4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4493,7 +4493,7 @@ public class ScannerView extends FrameView {
         importExportTab.add(importPanel, gridBagConstraints);
         importPanel.getAccessibleContext().setAccessibleName(resourceMap.getString("importPanel.AccessibleContext.accessibleName")); // NOI18N
 
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Serif", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
         exportPanel.setFont(getDefaultFont());
         exportPanel.setName("exportPanel"); // NOI18N
         exportPanel.setPreferredSize(new java.awt.Dimension(600, 100));
@@ -4564,13 +4564,13 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         exportPanelLayout.setVerticalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exportPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -4625,6 +4625,7 @@ public class ScannerView extends FrameView {
         databaseLb.setText(resourceMap.getString("databaseLb.text")); // NOI18N
         databaseLb.setName("databaseLb"); // NOI18N
 
+        databaseNameLb.setFont(getDefaultFont());
         databaseNameLb.setText(resourceMap.getString("databaseNameLb.text")); // NOI18N
         databaseNameLb.setMaximumSize(new java.awt.Dimension(50, 15));
         databaseNameLb.setMinimumSize(new java.awt.Dimension(50, 15));
@@ -4753,6 +4754,12 @@ public class ScannerView extends FrameView {
       System.out.println(">>>>>>>> font "+ font[0]+" "+font[1]);
       size = Integer.parseInt(font[1]);
       defaultFont = new Font(font[0],Font.PLAIN,size);
+
+//      UIManager.put("Label.font",defaultFont);
+//      UIManager.put("Button.font",defaultFont);
+
+      ImagePanelDialog.setDefaultFont(defaultFont);
+
     }
 
     private void updateTable(ArrayList<Card> cardList, DefaultTableModel model) {
@@ -4897,7 +4904,7 @@ public class ScannerView extends FrameView {
     private void saveBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT1ActionPerformed
         // TODO add your handling code here:
         Card newCard = getCardFromForm(SCAN_TAB);
-        if (Utils.checkFirstName(newCard, MISSING_ALERT)) {
+        if (Utils.checkFirstName(newCard, MISSING_ALERT,getDefaultFont())) {
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
                 CardLocalManager.addLocalCard(newCard, defaultcard.getAbsolutePath());
@@ -4954,7 +4961,8 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx) {
                 ioEx.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null, myResourceMap.getString(ADD_ALERT), "information", JOptionPane.INFORMATION_MESSAGE);
+            String txt = "<html><body><FONT FACE=\""+getDefaultFont().getName()+"\" >"+myResourceMap.getString(ADD_ALERT)+"</FONT></body></html>";
+            JOptionPane.showMessageDialog(null, txt, "information", JOptionPane.INFORMATION_MESSAGE);
             clearFormT1();
         }
     }//GEN-LAST:event_saveBtnT1ActionPerformed
@@ -5058,7 +5066,10 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         int response;//0 = yes, 1 = no
         String[] options = getOptionChoice();
-        response = JOptionPane.showOptionDialog(null, myResourceMap.getString(DELETE_ALERT), myResourceMap.getString(CONFIRM_ALERT),
+
+        String txt = "<html><body><FONT FACE=\""+getDefaultFont().getName()+"\" >"+myResourceMap.getString(DELETE_ALERT)+"</FONT></body></html>";        
+        
+        response = JOptionPane.showOptionDialog(null, new JLabel(txt), myResourceMap.getString(CONFIRM_ALERT),
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                 null, options, options[0]);
 //        response = javax.swing.JOptionPane.showConfirmDialog(null, DELETE_ALERT,CONFIRM_ALERT,javax.swing.JOptionPane.YES_NO_OPTION);
@@ -5270,9 +5281,12 @@ public class ScannerView extends FrameView {
             String fileName = exportTfT4.getText();
             if (fileName != null && !fileName.equals("")) {
                 ZipUtils.exportCards(localCardList, fileName + ".zip");
+                Font f = getDefaultFont();
                 String[] options = getAcceptChoice();
                 String[] alert = myResourceMap.getString(EXPORT_ALERT).split(",");
-                JOptionPane.showOptionDialog(null, alert[0] + " " + localCardList.size() + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+                String alertTxt = "<html><body><FONT FACE=\""+f.getName()+"\" >"+alert[0] + " " + localCardList.size() + " " + alert[1]+"</FONT></body></html>";                
+
+                JOptionPane.showOptionDialog(null, alertTxt, myResourceMap.getString(NOTIFICATION_ALERT),
                         JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                         null, options, options[0]);
             }
@@ -6263,7 +6277,7 @@ public class ScannerView extends FrameView {
         // TODO add your handling code here:
         Card newCard = getCardFromForm(RESULT_TAB);
         newCard.setId(Long.parseLong(idNameLbT3.getText()));
-        if (Utils.checkFirstName(newCard, MISSING_ALERT)) {
+        if (Utils.checkFirstName(newCard, MISSING_ALERT,getDefaultFont())) {
             try {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
 
@@ -6323,8 +6337,10 @@ public class ScannerView extends FrameView {
             } catch (IOException ioEx) {
                 ioEx.printStackTrace();
             }
+            
             String[] options = getAcceptChoice();
-            JOptionPane.showOptionDialog(null, myResourceMap.getString(UPDATE_ALERT), myResourceMap.getString(NOTIFICATION_ALERT),
+            String txt = "<html><body><FONT FACE=\""+getDefaultFont().getName()+"\" >"+myResourceMap.getString(UPDATE_ALERT)+"</FONT></body></html>";
+            JOptionPane.showOptionDialog(null, txt, myResourceMap.getString(NOTIFICATION_ALERT),
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, options, options[0]);
             clearFormT3();
@@ -6491,7 +6507,7 @@ public class ScannerView extends FrameView {
     private void emailBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT1ActionPerformed
         // TODO add your handling code here:
         Card c = getCardFromForm(SCAN_TAB);
-        if (Utils.checkFirstName(c, MISSING_ALERT)) {
+        if (Utils.checkFirstName(c, MISSING_ALERT,getDefaultFont())) {
             SendEmailUtil.sendEmail("", "", c, c.getImgFront(), c.getImgBack());
         }
     }//GEN-LAST:event_emailBtnT1ActionPerformed
@@ -6502,9 +6518,12 @@ public class ScannerView extends FrameView {
         if (fileName != null && !fileName.equals("")) {
             localCardList.clear();
             localCardList = ZipUtils.importCards(fileName);
+            Font f = getDefaultFont();
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0] + " " + localCardList.size() + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+            String alertTxt = "<html><body><FONT FACE=\""+f.getName()+"\" >"+alert[0] + " " + localCardList.size() + " " + alert[1]+"</FONT></body></html>";
+            
+            JOptionPane.showOptionDialog(null, alertTxt, myResourceMap.getString(NOTIFICATION_ALERT),
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, options, options[0]);
         }
@@ -6517,9 +6536,12 @@ public class ScannerView extends FrameView {
             int size = localCardList.size();
             localCardList.addAll(ZipUtils.importCards(fileName));
             size = localCardList.size() - size;
+            Font f = getDefaultFont();
             String[] options = getAcceptChoice();
             String[] alert = myResourceMap.getString(IMPORT_ALERT).split(",");
-            JOptionPane.showOptionDialog(null, alert[0] + " " + size + " " + alert[1], myResourceMap.getString(NOTIFICATION_ALERT),
+            String alertTxt = "<html><body><FONT FACE=\""+f.getName()+"\" >"+alert[0] + " " + localCardList.size() + " " + alert[1]+"</FONT></body></html>";
+            
+            JOptionPane.showOptionDialog(null, alertTxt, myResourceMap.getString(NOTIFICATION_ALERT),
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, options, options[0]);
         }
@@ -6544,7 +6566,7 @@ public class ScannerView extends FrameView {
 
     private void emailBtnT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnT3ActionPerformed
         Card c = getCardFromForm(RESULT_TAB);
-        if (Utils.checkFirstName(c, MISSING_ALERT)) {
+        if (Utils.checkFirstName(c, MISSING_ALERT,getDefaultFont())) {
             SendEmailUtil.sendEmail("", "", c, c.getImgFront(), c.getImgBack());
         }
     }//GEN-LAST:event_emailBtnT3ActionPerformed
@@ -6674,12 +6696,15 @@ public class ScannerView extends FrameView {
     }
 
     private String[] getOptionChoice() {
-        String[] option = new String[]{myResourceMap.getString(YES_CHOICE), myResourceMap.getString(NO_CHOICE)};
+        Font f = getDefaultFont();
+        String[] option = new String[]{"<html><body><FONT FACE=\""+f.getName()+"\" >"+myResourceMap.getString(YES_CHOICE)+"</FONT></body></html>",
+                            "<html><body><FONT FACE=\""+f.getName()+"\" >"+myResourceMap.getString(NO_CHOICE)+"</FONT></body></html>"
+                          };
         return option;
     }
 
     private String[] getAcceptChoice() {
-        String[] option = new String[]{myResourceMap.getString(ACCEPT_CHOICE)};
+        String[] option = new String[]{"<html><body><FONT FACE=\""+getDefaultFont().getName()+"\" >"+myResourceMap.getString(ACCEPT_CHOICE)+"</FONT></body></html>",};
         return option;
     }
 

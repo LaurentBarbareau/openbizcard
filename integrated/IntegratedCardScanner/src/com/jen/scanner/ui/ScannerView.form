@@ -97,11 +97,11 @@
                     <Container class="javax.swing.JPanel" name="upLeftT1">
                       <Properties>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="upLeftT1" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                       </Properties>
 
@@ -411,9 +411,12 @@
                             </Property>
                             <Property name="text" type="java.lang.String" resourceKey="nameTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -424,11 +427,17 @@
                         <Component class="javax.swing.JTextField" name="titleTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="titleTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -439,11 +448,17 @@
                         <Component class="javax.swing.JTextField" name="companyTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="companyTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -454,11 +469,17 @@
                         <Component class="javax.swing.JTextField" name="disTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="disTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -469,9 +490,12 @@
                         <Component class="javax.swing.JTextField" name="codeTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="codeTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT1" noResource="true"/>
                           </Properties>
@@ -484,11 +508,17 @@
                         <Component class="javax.swing.JTextField" name="mobileTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="mobileTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -499,11 +529,17 @@
                         <Component class="javax.swing.JTextField" name="faxTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="faxTfT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -514,10 +550,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -528,10 +570,16 @@
                         <Component class="javax.swing.JTextField" name="emailTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -542,10 +590,16 @@
                         <Component class="javax.swing.JTextField" name="webTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="webTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -556,10 +610,16 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -570,10 +630,16 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -584,10 +650,16 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -598,10 +670,16 @@
                         <Component class="javax.swing.JTextField" name="countryTfT1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -625,20 +703,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrT1" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrT1" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrT1">
@@ -664,7 +731,9 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaT1">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaT1.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -675,9 +744,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT1" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -700,23 +766,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrT1" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrT1" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrT1">
@@ -742,7 +794,9 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaT1">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaT1.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -750,9 +804,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT1" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[120, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -773,10 +824,16 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -798,10 +855,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -823,10 +886,16 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -848,10 +917,16 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -917,10 +992,16 @@
                         <Component class="javax.swing.JTextField" name="disTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -931,10 +1012,16 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -945,10 +1032,16 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE1">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -960,9 +1053,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -986,20 +1082,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrTE1" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrTE1" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrTE1">
@@ -1025,16 +1110,15 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaTE1">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaTE1.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE1" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -1100,9 +1184,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1114,9 +1201,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1128,9 +1218,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1142,9 +1235,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE1" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1168,23 +1264,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrTE1" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrTE1" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrTE1">
@@ -1210,16 +1292,15 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaTE1">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaTE1.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[102, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE1" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[102, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -1349,11 +1430,11 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" resourceKey="scannerTxtT1.text"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="scannerTxtT1" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -1788,7 +1869,7 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="frontSpT1" alignment="0" pref="320" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="frontTfT1" pref="146" max="32767" attributes="0"/>
+                                              <Component id="frontTfT1" pref="158" max="32767" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="frontBtnT1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -1807,8 +1888,8 @@
                                           <Component id="frontCropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="frontBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="frontSpT1" pref="291" max="32767" attributes="0"/>
+                                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                                      <Component id="frontSpT1" pref="293" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1818,6 +1899,9 @@
                             <Component class="javax.swing.JTextField" name="frontTfT1">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="getDefaultFont()" type="code"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" resourceKey="frontTfT1.text"/>
                                 <Property name="name" type="java.lang.String" value="frontTfT1" noResource="true"/>
                               </Properties>
@@ -1886,17 +1970,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="0" attributes="1">
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="backTfT1" min="-2" pref="147" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="1">
+                                          <Component id="backTfT1" pref="158" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="backBtnT1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="backCropBtnT1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="backSpT1" alignment="0" pref="323" max="32767" attributes="0"/>
+                                      <Component id="backSpT1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1904,12 +1987,12 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="backTfT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="backCropBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="backBtnT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="backTfT1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="backSpT1" pref="291" max="32767" attributes="0"/>
+                                  <Component id="backSpT1" pref="295" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1919,6 +2002,9 @@
                         <Component class="javax.swing.JTextField" name="backTfT1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="backTfT1.text"/>
                             <Property name="name" type="java.lang.String" value="backTfT1" noResource="true"/>
                           </Properties>
@@ -2030,11 +2116,11 @@
                     <Container class="javax.swing.JPanel" name="upLeftT2">
                       <Properties>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="upLeftT2" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                       </Properties>
 
@@ -2340,9 +2426,12 @@
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2353,10 +2442,16 @@
                         <Component class="javax.swing.JTextField" name="titleTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2367,10 +2462,16 @@
                         <Component class="javax.swing.JTextField" name="companyTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2381,10 +2482,16 @@
                         <Component class="javax.swing.JTextField" name="disTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2395,10 +2502,16 @@
                         <Component class="javax.swing.JTextField" name="codeTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2409,10 +2522,16 @@
                         <Component class="javax.swing.JTextField" name="mobileTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2423,10 +2542,16 @@
                         <Component class="javax.swing.JTextField" name="faxTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2437,10 +2562,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2451,10 +2582,16 @@
                         <Component class="javax.swing.JTextField" name="emailTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2465,10 +2602,16 @@
                         <Component class="javax.swing.JTextField" name="webTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="webTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2479,10 +2622,16 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2493,10 +2642,16 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2507,10 +2662,16 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2521,12 +2682,15 @@
                         <Component class="javax.swing.JTextField" name="countryTfT2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT2" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                           </Properties>
                           <Constraints>
@@ -2551,20 +2715,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrT2" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrT2" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrT2">
@@ -2590,7 +2743,9 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaT2">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaT2.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -2598,9 +2753,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT2" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -2623,23 +2775,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrT2" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrT2" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrT2">
@@ -2659,7 +2797,9 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaT2">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaT2.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -2667,9 +2807,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT2" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -2690,10 +2827,16 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2715,10 +2858,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2740,10 +2889,16 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2765,10 +2920,16 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2834,10 +2995,16 @@
                         <Component class="javax.swing.JTextField" name="disTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2848,10 +3015,16 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2862,10 +3035,16 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2876,10 +3055,16 @@
                         <Component class="javax.swing.JTextField" name="faxTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -2903,20 +3088,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrTE2" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrTE2" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrTE2">
@@ -2942,16 +3116,15 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaTE2">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaTE2.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE2" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -3016,10 +3189,16 @@
                         <Component class="javax.swing.JTextField" name="subDisTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -3030,10 +3209,16 @@
                         <Component class="javax.swing.JTextField" name="provinceTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -3044,10 +3229,16 @@
                         <Component class="javax.swing.JTextField" name="phoneTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -3058,10 +3249,16 @@
                         <Component class="javax.swing.JTextField" name="countryTfTE2">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -3085,23 +3282,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrTE2" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrTE2" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrTE2">
@@ -3127,16 +3310,15 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaTE2">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaTE2.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE2" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -3315,6 +3497,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="quickLb">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="quickLb.text"/>
                             <Property name="name" type="java.lang.String" value="quickLb" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3930,9 +4115,12 @@
                     </Container>
                     <Container class="javax.swing.JPanel" name="deleteEditPanelT2">
                       <Properties>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 40]"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="deleteEditPanelT2" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[250, 30]"/>
+                          <Dimension value="[200, 40]"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -3941,35 +4129,27 @@
                         </Constraint>
                       </Constraints>
 
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="deletedBtnT2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="85" max="32767" attributes="0"/>
-                                  <Component id="editBtnT2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="deletedBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="editBtnT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                        <Property name="columns" type="int" value="0"/>
+                        <Property name="rows" type="int" value="1"/>
                       </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JButton" name="deletedBtnT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="deletedBtnT2.text"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="deletedBtnT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletedBtnT2ActionPerformed"/>
@@ -3977,8 +4157,20 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="editBtnT2">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" resourceKey="editBtnT2.text"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="editBtnT2" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[50, 40]"/>
+                            </Property>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBtnT2ActionPerformed"/>
@@ -4439,11 +4631,10 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="1">
+                                          <Component id="frontTfT3" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="frontTfT3" pref="131" max="32767" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="frontBtnT3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="frontCropBtnT3" min="-2" max="-2" attributes="0"/>
@@ -4463,7 +4654,7 @@
                                       <Component id="frontTfT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="frontSpT3" pref="286" max="32767" attributes="0"/>
+                                  <Component id="frontSpT3" pref="290" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -4473,6 +4664,9 @@
                         <Component class="javax.swing.JTextField" name="frontTfT3">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="frontTfT3" noResource="true"/>
                           </Properties>
                           <Events>
@@ -4542,7 +4736,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="backTfT3" pref="150" max="32767" attributes="0"/>
+                                          <Component id="backTfT3" pref="162" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="backBtnT3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -4566,7 +4760,7 @@
                                       <Component id="backCropBtnT3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="backSpT3" pref="286" max="32767" attributes="0"/>
+                                  <Component id="backSpT3" pref="290" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -4576,6 +4770,9 @@
                         <Component class="javax.swing.JTextField" name="backTfT3">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="backTfT3" noResource="true"/>
                           </Properties>
                           <Events>
@@ -4645,11 +4842,11 @@
                     <Container class="javax.swing.JPanel" name="upLeftT3">
                       <Properties>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="upLeftT3" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[720, 240]"/>
+                          <Dimension value="[720, 260]"/>
                         </Property>
                       </Properties>
 
@@ -4955,10 +5152,16 @@
                         <Component class="javax.swing.JTextField" name="nameTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4969,10 +5172,16 @@
                         <Component class="javax.swing.JTextField" name="titleTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4983,10 +5192,16 @@
                         <Component class="javax.swing.JTextField" name="companyTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -4997,10 +5212,16 @@
                         <Component class="javax.swing.JTextField" name="disTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5011,10 +5232,16 @@
                         <Component class="javax.swing.JTextField" name="codeTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5025,10 +5252,16 @@
                         <Component class="javax.swing.JTextField" name="mobileTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5039,10 +5272,16 @@
                         <Component class="javax.swing.JTextField" name="faxTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5053,10 +5292,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5067,10 +5312,16 @@
                         <Component class="javax.swing.JTextField" name="emailTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="emailTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5081,10 +5332,16 @@
                         <Component class="javax.swing.JTextField" name="webTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="webTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5095,10 +5352,16 @@
                         <Component class="javax.swing.JTextField" name="subDisTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5109,10 +5372,16 @@
                         <Component class="javax.swing.JTextField" name="provinceTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5123,10 +5392,16 @@
                         <Component class="javax.swing.JTextField" name="phoneTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5137,10 +5412,16 @@
                         <Component class="javax.swing.JTextField" name="countryTfT3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfT3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5164,20 +5445,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrT3" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrT3" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrT3">
@@ -5203,7 +5473,9 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaT3">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaT3.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -5211,9 +5483,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaT3" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -5236,23 +5505,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrT3" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrT3" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrT3">
@@ -5278,7 +5533,9 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaT3">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaT3.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="lineWrap" type="boolean" value="true"/>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
@@ -5286,9 +5543,6 @@
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaT3" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -5309,10 +5563,16 @@
                         <Component class="javax.swing.JTextField" name="nameTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="nameTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5334,10 +5594,16 @@
                         <Component class="javax.swing.JTextField" name="lastnameTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="lastnameTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5359,10 +5625,16 @@
                         <Component class="javax.swing.JTextField" name="titleTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="titleTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5384,10 +5656,16 @@
                         <Component class="javax.swing.JTextField" name="companyTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="companyTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5453,10 +5731,16 @@
                         <Component class="javax.swing.JTextField" name="disTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="disTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5467,10 +5751,16 @@
                         <Component class="javax.swing.JTextField" name="codeTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="codeTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5481,10 +5771,16 @@
                         <Component class="javax.swing.JTextField" name="mobileTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="mobileTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5495,10 +5791,16 @@
                         <Component class="javax.swing.JTextField" name="faxTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="faxTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5522,20 +5824,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="adsScrTE3" alignment="0" pref="99" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="adsScrTE3" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="adsScrTE3">
@@ -5561,16 +5852,15 @@
                                 <Component class="javax.swing.JTextArea" name="adsTaTE3">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="adsTaTE3.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="adsTaTE3" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -5635,10 +5925,16 @@
                         <Component class="javax.swing.JTextField" name="subDisTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="subDisTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5649,10 +5945,16 @@
                         <Component class="javax.swing.JTextField" name="provinceTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="provinceTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5663,10 +5965,16 @@
                         <Component class="javax.swing.JTextField" name="phoneTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="phoneTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5677,10 +5985,16 @@
                         <Component class="javax.swing.JTextField" name="countryTfTE3">
                           <Properties>
                             <Property name="columns" type="int" value="10"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="getDefaultFont()" type="code"/>
+                            </Property>
                             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[86, 20]"/>
+                              <Dimension value="[86, 25]"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="countryTfTE3" noResource="true"/>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[86, 25]"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -5704,23 +6018,9 @@
                             </Constraint>
                           </Constraints>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="noteScrTE3" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="noteScrTE3" pref="58" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="0"/>
+                            <Property name="rows" type="int" value="1"/>
                           </Layout>
                           <SubComponents>
                             <Container class="javax.swing.JScrollPane" name="noteScrTE3">
@@ -5746,16 +6046,15 @@
                                 <Component class="javax.swing.JTextArea" name="noteTaTE3">
                                   <Properties>
                                     <Property name="columns" type="int" value="30"/>
-                                    <Property name="font" type="java.awt.Font" resourceKey="noteTaTE3.font"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="getDefaultFont()" type="code"/>
+                                    </Property>
                                     <Property name="rows" type="int" value="3"/>
                                     <Property name="autoscrolls" type="boolean" value="false"/>
                                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                       <Dimension value="[99, 52]"/>
                                     </Property>
                                     <Property name="name" type="java.lang.String" value="noteTaTE3" noResource="true"/>
-                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                      <Dimension value="[99, 52]"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -5981,7 +6280,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="replaceBtnT4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -6031,7 +6330,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="pendingBtnT4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -6083,15 +6382,15 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="117" max="32767" attributes="0"/>
+                              <EmptySpace pref="115" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel5" pref="49" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <Component id="jPanel5" min="-2" pref="51" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -6299,6 +6598,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="databaseNameLb">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="getDefaultFont()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" resourceKey="databaseNameLb.text"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[50, 15]"/>

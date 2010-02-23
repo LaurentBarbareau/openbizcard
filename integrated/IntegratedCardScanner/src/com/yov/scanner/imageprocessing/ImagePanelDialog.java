@@ -5,11 +5,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -32,6 +31,8 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
     private int winWidth;
     private int winHeight;
 
+    private static Font font;
+
     public ImagePanelDialog(String imageFileName) {
         super();
         imgPane = new ImagePanel(imageFileName);
@@ -49,7 +50,7 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         // }
 
         // imgWin = new JFrame("Image Panel");
-        this.setTitle("Image Panel Dialog");
+
         this.setModal(true);
         // imgWin.setModalExclusionType(Dialog.ModalExclusionType.NO_EXCLUDE);
 
@@ -59,9 +60,12 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         JPanel imgBackPane = new JPanel();
         JPanel buttonPane = new JPanel();
 
-        confirmBtn = new JButton("Confirm");
-        cancelBtn = new JButton("Cancel");
-        focusBtn = new JButton("Focus");
+        confirmBtn = new JButton();
+        cancelBtn = new JButton();
+        focusBtn = new JButton();
+
+        if(font!=null)setDisplayFont(font);
+        setAllText("Image Panel Dialog", "Confirm", "Cancel", "Focus");
 
         imgWidth = imgPane.getImageWidth();
         imgHeight = imgPane.getImageHeight();
@@ -131,6 +135,17 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         }
 
 
+    }
+
+    public static void setDefaultFont(Font f){
+        font = f;
+    }
+
+    public void setDisplayFont(Font f){
+        this.setFont(f);
+        confirmBtn.setFont(f);
+        cancelBtn.setFont(f);
+        focusBtn.setFont(f);
     }
 
     public void setAllText(String title, String confirm, String cancel, String focus){
