@@ -261,7 +261,9 @@ public class Engine implements HTTPHandler {
 							"no such key"));
 					picInfo.setThumbnailURL(item.optString("thumbnail",
 							"no such key"));
-
+					picInfo.setCat(item.optString("video_cat",
+							"no such key"));//
+					
 					// fix thumbnail url
 					// picInfo.setThumbnailURL("http://www.dhlknowledge.com/web/uploads/sample.png");
 					// Video Attach
@@ -309,7 +311,9 @@ public class Engine implements HTTPHandler {
 					}
 					picInfo.comments = comments;
 					// End Comment
-					items.addElement(picInfo);
+					if (!picInfo.getCat().equals("")) {
+						items.addElement(picInfo);
+					}
 				}
 
 				final MCastScreen videoShowScreen = MCastScreen.getInstance();
@@ -318,7 +322,7 @@ public class Engine implements HTTPHandler {
 
 					public void run() {
 
-						videoShowScreen.setList(myItems);
+						videoShowScreen.setList(myItems, null);
 						videoShowScreen.processHaveNext(returnItem);
 					}
 				});

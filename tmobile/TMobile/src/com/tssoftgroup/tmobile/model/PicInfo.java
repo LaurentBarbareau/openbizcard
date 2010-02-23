@@ -15,8 +15,17 @@ public class PicInfo {
 	private String description = "";
 	private String videoUrl = "";
 	private String duration= "";
+	private String cat= "";
 
 	
+	public String getCat() {
+		return cat;
+	}
+
+	public void setCat(String cat) {
+		this.cat = cat;
+	}
+
 	public Vector comments = new Vector();
 	public Vector moreInfos = new Vector();
 	private String thumbnailURL;

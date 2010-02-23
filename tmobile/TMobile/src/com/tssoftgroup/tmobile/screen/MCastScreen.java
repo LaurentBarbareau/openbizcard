@@ -29,9 +29,11 @@ import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BasicEditField;
 import net.rim.device.api.ui.component.BitmapField;
+import net.rim.device.api.ui.component.ChoiceField;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.component.RadioButtonGroup;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
+import net.rim.device.api.ui.container.VerticalFieldManager;
 
 import com.tssoftgroup.tmobile.component.EditFieldwithFocus;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
@@ -66,6 +68,9 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 	Vector all = new Vector();
 	public LoadPicThread loader;
 
+	VerticalFieldManager catManager = new VerticalFieldManager();
+	Vector allCats = new Vector();
+	Vector allTrains = new Vector();
 	public static MCastScreen getInstance() {
 		if (instance == null) {
 			instance = new MCastScreen();
@@ -97,14 +102,81 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 		createVideoMain();
 
 	}
+	private ChoiceField catChoice = null;
 
-	public void setList(Vector picInfos) {
+	public void setList(Vector picInfos, String cat) {
+		allTrains = picInfos;
+		allCats = new Vector();
+		allCats.addElement("All");
 		_list.removeAll();
 		all.removeAllElements();
+		int ind = 0;
 		for (int i = 0; i < picInfos.size(); i++) {
-			_list.add((PicInfo) picInfos.elementAt(i));
-			all.addElement((PicInfo) picInfos.elementAt(i));
+			PicInfo picInfo = (PicInfo)picInfos.elementAt(i);
+//			_list.add(picInfo); 
+			if (cat == null) {
+				if(!picInfo.getCat().equals("")){
+					System.out.println("<========AddToList1");
+					_list.add(picInfo);
+					all.addElement(picInfo);
+				}
+			} else {
+				if (picInfo.getCat().equals(cat)) {
+					System.out.println("<========AddToList2");
+					_list.add(picInfo);
+					all.addElement(picInfo);
+				}
+			}
+			boolean dup = false;
+			for (int j = 0; j < allCats.size(); j++) {
+				String c = (String)allCats.elementAt(j);
+				if(c.equals(picInfo.getCat())){
+					dup = true;
+				}
+			}
+			if(!dup && !picInfo.getCat().equals("")){
+				allCats.addElement(picInfo.getCat());
+			}
 		}
+
+		if (catChoice != null  ) {
+			try{
+				catManager.delete(catChoice);
+			}catch(IllegalArgumentException e){
+				// Delete item that is not belong to 
+			}
+		}
+		// Set Category
+		System.out.println("allcats " + allCats.size());
+		catChoice = new ChoiceField("Category :", allCats.size(), 0) {
+			public Object getChoice(int index) throws IllegalArgumentException {
+				System.out.println("a1 test" + allCats.size() );
+				System.out.println("a2 test" + index);
+				if(allCats.size() > index){
+					return allCats.elementAt(index);	
+				}else{
+					return "";
+				}
+				
+			}
+
+			
+		};
+		System.out.println("aaaa");
+		for (int i = 0; i < allCats.size(); i++) {
+			if(((String)allCats.elementAt(i)).equals(cat)){
+				ind = i;
+			}
+		}
+		catChoice.setSelectedIndex(ind);
+		System.out.println("bbbb");
+		catChoice.setChangeListener(this);
+		System.out.println("cccc");
+		catChoice.setMargin(0, 50 * Display.getWidth() / 480, 0,25 * Display.getWidth() / 480 );
+		catChoice.setPadding(0, 50 * Display.getWidth() / 480, 0,0);
+		catChoice.setFont(MyColor.FONT_SEARCH);
+		System.out.println("ddddd");
+		catManager.add(catChoice);
 	}
 
 	public boolean navigationClick(int status, int time) {
@@ -207,6 +279,7 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 			// Topic Photo and List field
 			MainListVerticalFieldManager videoManager = new MainListVerticalFieldManager();
 			videoManager.add(mainHorizontalManager);
+			videoManager.add(catManager);
 			// Topic 
 			
 //			bf = new BitmapField(img, BitmapField.NON_FOCUSABLE);
@@ -298,6 +371,25 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 	}
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
+		if (field == catChoice) {
+			System.out.println("cat choice size " + catChoice.getSize());
+			System.out.println("cat choice ind" + catChoice.getSelectedIndex());
+			
+			String selectedCat = (String)catChoice.getChoice(catChoice.getSelectedIndex());
+			System.out.println("11111");
+			
+			if(selectedCat.equals("All")){
+				selectedCat = null;
+			}
+			setList(allTrains, selectedCat);
+			System.out.println("2222");
+			
+			processHaveNext(numItem);
+			System.out.println("33333");
+			
+//			Engine.trainingCat = (String)allCats.elementAt(catChoice.getSelectedIndex()); 
+			return;
+		}
 		if(!(field instanceof MyButtonField)){
 			super.fieldChanged(field, context);
 			return;
