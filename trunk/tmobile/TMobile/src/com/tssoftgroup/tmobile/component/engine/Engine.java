@@ -6,6 +6,7 @@ import java.util.Vector;
 import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.component.Dialog;
+import net.rim.device.api.ui.component.Status;
 
 import com.tssoftgroup.tmobile.component.BitmapFieldWithStatus;
 import com.tssoftgroup.tmobile.component.engine.json.JSONArray;
@@ -80,15 +81,16 @@ public class Engine implements HTTPHandler {
 	}
 
 	public void updateStatus(String status) {
-		for (int i = 0; i < bitmapHeader.size(); i++) {
-			try {
-				BitmapFieldWithStatus bmpfield = (BitmapFieldWithStatus) bitmapHeader
-						.elementAt(i);
-				bmpfield.setStatus(status);
-			} catch (Exception e) {
-				System.out.println("error update status ");
-			}
-		}
+//		for (int i = 0; i < bitmapHeader.size(); i++) {
+//			try {
+//				BitmapFieldWithStatus bmpfield = (BitmapFieldWithStatus) bitmapHeader
+//						.elementAt(i);
+//				bmpfield.setStatus(status);
+//			} catch (Exception e) {
+//				System.out.println("error update status ");
+//			}
+//		}
+		Status.show(status);
 	}
 
 	public static Engine getInstance() {
