@@ -6,9 +6,14 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,6 +23,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.image.BufferedImage;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class ImagePanelDialog extends JDialog implements ActionListener {
 
@@ -57,6 +64,7 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         Container contentPane = this.getContentPane();
         JPanel mainPane = new JPanel();
 
+        JScrollPane scrollPane = new JScrollPane(imgPane);
         JPanel imgBackPane = new JPanel();
         JPanel buttonPane = new JPanel();
 
@@ -102,12 +110,13 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         contentPane.add(mainPane, BorderLayout.CENTER);
 
         mainPane.setLayout(new BorderLayout());
-        mainPane.add(imgBackPane, BorderLayout.CENTER);
+        mainPane.add(scrollPane, BorderLayout.CENTER);
         mainPane.add(buttonPane, BorderLayout.EAST);
 
-        imgBackPane.setLayout(new BorderLayout());
-        imgBackPane.setBackground(new Color(100, 100, 100));
-        imgBackPane.add(imgPane, BorderLayout.CENTER);
+        scrollPane.setBackground(new Color(100,100,100));
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setAutoscrolls(true);
 
         confirmBtn.addActionListener(this);
         cancelBtn.addActionListener(this);
@@ -125,6 +134,8 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         buttonPane.add(Box.createRigidArea(new Dimension(1, inSpace)));
         focusBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPane.add(focusBtn);
+
+        setDisplayPosition();
     }
 
     private void setButtonFunction() {
@@ -133,8 +144,6 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
         } else {
             confirmBtn.setEnabled(true);
         }
-
-
     }
 
     public static void setDefaultFont(Font f){
@@ -265,7 +274,7 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
             }
 
             this.setVisible(true);
-
+            this.dispose();
         }
 
         if (e.getSource() == focusBtn) {
@@ -284,11 +293,22 @@ public class ImagePanelDialog extends JDialog implements ActionListener {
 
     }
 
+    private void setDisplayPosition(){
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation((dim.width/2)-(this.winWidth/2), (dim.height/2)-(this.winHeight/2));
+    }
+
     public boolean isImageCropped() {
         return imgPane.isCropped();
     }
 
     public BufferedImage getCroppedImage(){
         return imgPane.getCroppedImage();
+    }
+
+    public static void main (String[] args){
+        ImagePanelDialog p = new ImagePanelDialog("C:/Documents and Settings/Jenchote/Desktop/scanner/resultPage.jpg");
+        p.init();
+        p.setVisible(true);
     }
 }

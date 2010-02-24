@@ -1,15 +1,10 @@
 package com.yov.scanner.imageprocessing;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -19,7 +14,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class ImagePanel extends Component implements MouseListener, MouseMotionListener {
+public class ImagePanel extends JPanel implements MouseListener, MouseMotionListener {
 
     private BufferedImage displayImage;
     private BufferedImage croppedImage;
@@ -103,6 +98,8 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
         this.setMaximumSize(new Dimension(displayImage.getWidth(), displayImage.getHeight()));
         this.setMinimumSize(new Dimension(displayImage.getWidth(), displayImage.getHeight()));
         this.setPreferredSize(new Dimension(displayImage.getWidth(), displayImage.getHeight()));
+
+//        setImage(displayImage);
     }
 
     public void setImage(BufferedImage newImage) {
@@ -177,7 +174,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
     @Override
     public void paint(Graphics g) {
-        //super.paint(g);
+//        super.paint(g);
 
         if (displayImage != null) {
 
@@ -199,27 +196,39 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
             int paneHeight = this.getHeight();
             int paneWidth = this.getWidth();
 
+//            if (!isFocused) {
+//                if ((paneHeight > imgHeight) && (paneWidth > imgWidth)) {
+//                    dispX = (int) ((paneWidth / 2.0f) - (imgWidth / 2.0f));
+//                    dispY = (int) ((paneHeight / 2.0f) - (imgHeight / 2.0f));
+//                }
+//            } else {
+//                if ((paneHeight > 2 * dragHeight) && (paneWidth > 2 * dragWidth)) {
+//                    dispX = (int) ((paneWidth / 2.0f) - (dragWidth));
+//                    dispY = (int) ((paneHeight / 2.0f) - (dragHeight));
+//                }
+//            }
+//                    this.setLocation(dispX + originalX, dispY + originalY);
+
             if (!isFocused) {
-                if ((paneHeight > imgHeight) && (paneWidth > imgWidth)) {
+                if ((paneHeight > imgHeight) || (paneWidth > imgWidth)) {
                     dispX = (int) ((paneWidth / 2.0f) - (imgWidth / 2.0f));
                     dispY = (int) ((paneHeight / 2.0f) - (imgHeight / 2.0f));
+
+                    g.drawImage(displayImage, dispX + originalX, dispY + originalY, null);
+                }else{
+                    g.drawImage(displayImage, 0, 0, null);
                 }
             } else {
-                if ((paneHeight > 2 * dragHeight) && (paneWidth > 2 * dragWidth)) {
-                    dispX = (int) ((paneWidth / 2.0f) - (dragWidth));
-                    dispY = (int) ((paneHeight / 2.0f) - (dragHeight));
+                if ((paneHeight > imgHeight) || (paneWidth > imgWidth)) {
+                    dispX = (int) ((paneWidth / 2.0f) - (imgWidth / 2.0f));
+                    dispY = (int) ((paneHeight / 2.0f) - (imgHeight / 2.0f));
+
+                    g.drawImage(displayImage, dispX + originalX, dispY + originalY, 2 * dragWidth, 2 * dragHeight, clickX, clickY, dragX, dragY, null);
+                }else{
+                    g.drawImage(displayImage, 0, 0, 2 * dragWidth, 2 * dragHeight, clickX, clickY, dragX, dragY, null);
                 }
-            }
-
-            this.setLocation(dispX + originalX, dispY + originalY);
-
-            if (!isFocused) {
-
-                g.drawImage(displayImage, 0, 0, null);
-
-            } else {
-
-                g.drawImage(displayImage, 0, 0, 2 * dragWidth, 2 * dragHeight, clickX, clickY, dragX, dragY, null);
+//                g.drawImage(displayImage, 0, 0, 2 * dragWidth, 2 * dragHeight, clickX, clickY, dragX, dragY, null);
+                System.out.println("painted 1");
 
             }
 
@@ -406,6 +415,9 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
     @Override
     public void mouseDragged(MouseEvent e) {
 
+        Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
+        ((JPanel)e.getSource()).scrollRectToVisible(r);
+
         dragX = e.getX();
         dragY = e.getY();
 
@@ -435,7 +447,7 @@ public class ImagePanel extends Component implements MouseListener, MouseMotionL
 
         //System.out.println("----------- dragged at (" + dragX + ", " + dragY + ")");
     }
-
+    
     @Override
     public void mouseMoved(MouseEvent arg0) {
         // TODO Auto-generated method stub

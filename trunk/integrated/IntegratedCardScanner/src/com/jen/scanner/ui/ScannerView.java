@@ -9,7 +9,9 @@ import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.hideoaki.scanner.db.utils.SendEmailUtil;
 import com.hideoaki.scanner.db.utils.ZipUtils;
 import com.jen.scanner.ui.util.CardComparator;
+import com.jen.scanner.ui.util.FocusToNextTA;
 import com.jen.scanner.ui.util.JPGFileFilter;
+import com.jen.scanner.ui.util.MyTextFieldFocusListener;
 import com.jen.scanner.ui.util.Utils;
 import com.jen.scanner.ui.util.ZipFileFilter;
 import java.io.IOException;
@@ -55,9 +57,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
@@ -74,9 +77,9 @@ public class ScannerView extends FrameView {
 
         setDefaultFont();
         initComponents();
-//        setDefaultFont();
         menuTab.setEnabledAt(RESULT_TAB, false);
         saveBtnT3.setEnabled(false);
+        setFocusListener();
 
         try {
             localCardList = CardLocalManager.loadLocalCard(defaultcard.getAbsolutePath());
@@ -4762,6 +4765,132 @@ public class ScannerView extends FrameView {
 
     }
 
+    private void setFocusListener(){
+        int front = 0;
+        int back = 360;
+        KeyStroke tabKey = KeyStroke.getKeyStroke("TAB");
+
+        MyTextFieldFocusListener frontFocusT1 = new MyTextFieldFocusListener(upLeftScrollPaneT1, front);
+        MyTextFieldFocusListener backFocusT1 = new MyTextFieldFocusListener(upLeftScrollPaneT1, back);
+
+        nameTfT1.addFocusListener(frontFocusT1);
+        lastnameTfT1.addFocusListener(frontFocusT1);
+        titleTfT1.addFocusListener(frontFocusT1);
+        emailTfT1.addFocusListener(frontFocusT1);
+        companyTfT1.addFocusListener(frontFocusT1);
+        webTfT1.addFocusListener(frontFocusT1);
+        disTfT1.addFocusListener(frontFocusT1);
+        subDisTfT1.addFocusListener(frontFocusT1);
+        codeTfT1.addFocusListener(frontFocusT1);
+        countryTfT1.addFocusListener(frontFocusT1);
+        provinceTfT1.addFocusListener(frontFocusT1);
+        mobileTfT1.addFocusListener(frontFocusT1);
+        phoneTfT1.addFocusListener(frontFocusT1);
+        faxTfT1.addFocusListener(frontFocusT1);
+        adsTaT1.addFocusListener(frontFocusT1);
+        noteTaT1.addFocusListener(frontFocusT1);
+                
+        adsTaT1.getInputMap().put(tabKey,new FocusToNextTA((noteTaT1)));
+        noteTaT1.getInputMap().put(tabKey,new FocusToNextTA((adsTaTE1)));
+
+        nameTfTE1.addFocusListener(backFocusT1);
+        lastnameTfTE1.addFocusListener(backFocusT1);
+        titleTfTE1.addFocusListener(backFocusT1);
+        companyTfTE1.addFocusListener(backFocusT1);
+        disTfTE1.addFocusListener(backFocusT1);
+        subDisTfTE1.addFocusListener(backFocusT1);
+        codeTfTE1.addFocusListener(backFocusT1);
+        provinceTfTE1.addFocusListener(backFocusT1);
+        mobileTfTE1.addFocusListener(backFocusT1);
+        phoneTfTE1.addFocusListener(backFocusT1);
+        faxTfTE1.addFocusListener(backFocusT1);
+        adsTaTE1.addFocusListener(backFocusT1);
+        noteTaTE1.addFocusListener(backFocusT1);
+
+        adsTaTE1.getInputMap().put(tabKey,new FocusToNextTA((noteTaTE1)));  
+        noteTaTE1.getInputMap().put(tabKey,new FocusToNextTA((nameTfT1)));
+
+        MyTextFieldFocusListener frontFocusT2 = new MyTextFieldFocusListener(upLeftScrollPaneT2, front);
+        MyTextFieldFocusListener backFocusT2 = new MyTextFieldFocusListener(upLeftScrollPaneT2, back);
+
+        nameTfT2.addFocusListener(frontFocusT2);
+        lastnameTfT2.addFocusListener(frontFocusT2);
+        titleTfT2.addFocusListener(frontFocusT2);
+        emailTfT2.addFocusListener(frontFocusT2);
+        companyTfT2.addFocusListener(frontFocusT2);
+        webTfT2.addFocusListener(frontFocusT2);
+        disTfT2.addFocusListener(frontFocusT2);
+        subDisTfT2.addFocusListener(frontFocusT2);
+        codeTfT2.addFocusListener(frontFocusT2);
+        countryTfT2.addFocusListener(frontFocusT2);
+        provinceTfT2.addFocusListener(frontFocusT2);
+        mobileTfT2.addFocusListener(frontFocusT2);
+        phoneTfT2.addFocusListener(frontFocusT2);
+        faxTfT2.addFocusListener(frontFocusT2);
+        adsTaT2.addFocusListener(frontFocusT2);
+        noteTaT2.addFocusListener(frontFocusT2);
+
+        adsTaT2.getInputMap().put(tabKey,new FocusToNextTA((noteTaT2)));
+        noteTaT2.getInputMap().put(tabKey,new FocusToNextTA((adsTaTE2)));
+
+        nameTfTE2.addFocusListener(backFocusT2);
+        lastnameTfTE2.addFocusListener(backFocusT2);
+        titleTfTE2.addFocusListener(backFocusT2);
+        companyTfTE2.addFocusListener(backFocusT2);
+        disTfTE2.addFocusListener(backFocusT2);
+        subDisTfTE2.addFocusListener(backFocusT2);
+        codeTfTE2.addFocusListener(backFocusT2);
+        provinceTfTE2.addFocusListener(backFocusT2);
+        mobileTfTE2.addFocusListener(backFocusT2);
+        phoneTfTE2.addFocusListener(backFocusT2);
+        faxTfTE2.addFocusListener(backFocusT2);
+        adsTaTE2.addFocusListener(backFocusT2);
+        noteTaTE2.addFocusListener(backFocusT2);
+
+        adsTaTE2.getInputMap().put(tabKey,new FocusToNextTA((noteTaTE2)));
+        noteTaTE2.getInputMap().put(tabKey,new FocusToNextTA((nameTfT2)));
+
+        MyTextFieldFocusListener frontFocusT3 = new MyTextFieldFocusListener(upLeftScrollPaneT3, front);
+        MyTextFieldFocusListener backFocusT3 = new MyTextFieldFocusListener(upLeftScrollPaneT3, back);
+
+        nameTfT3.addFocusListener(frontFocusT3);
+        lastnameTfT3.addFocusListener(frontFocusT3);
+        titleTfT3.addFocusListener(frontFocusT3);
+        emailTfT3.addFocusListener(frontFocusT3);
+        companyTfT3.addFocusListener(frontFocusT3);
+        webTfT3.addFocusListener(frontFocusT3);
+        disTfT3.addFocusListener(frontFocusT3);
+        subDisTfT3.addFocusListener(frontFocusT3);
+        codeTfT3.addFocusListener(frontFocusT3);
+        countryTfT3.addFocusListener(frontFocusT3);
+        provinceTfT3.addFocusListener(frontFocusT3);
+        mobileTfT3.addFocusListener(frontFocusT3);
+        phoneTfT3.addFocusListener(frontFocusT3);
+        faxTfT3.addFocusListener(frontFocusT3);
+        adsTaT3.addFocusListener(frontFocusT3);
+        noteTaT3.addFocusListener(frontFocusT3);
+
+        adsTaT3.getInputMap().put(tabKey,new FocusToNextTA((noteTaT3)));
+        noteTaT3.getInputMap().put(tabKey,new FocusToNextTA((adsTaTE3)));
+
+        nameTfTE3.addFocusListener(backFocusT3);
+        lastnameTfTE3.addFocusListener(backFocusT3);
+        titleTfTE3.addFocusListener(backFocusT3);
+        companyTfTE3.addFocusListener(backFocusT3);
+        disTfTE3.addFocusListener(backFocusT3);
+        subDisTfTE3.addFocusListener(backFocusT3);
+        codeTfTE3.addFocusListener(backFocusT3);
+        provinceTfTE3.addFocusListener(backFocusT3);
+        mobileTfTE3.addFocusListener(backFocusT3);
+        phoneTfTE3.addFocusListener(backFocusT3);
+        faxTfTE3.addFocusListener(backFocusT3);
+        adsTaTE3.addFocusListener(backFocusT3);
+        noteTaTE3.addFocusListener(backFocusT3);
+
+        adsTaTE3.getInputMap().put(tabKey,new FocusToNextTA((noteTaTE3)));
+        noteTaTE3.getInputMap().put(tabKey,new FocusToNextTA((nameTfT3)));
+    }
+
     private void updateTable(ArrayList<Card> cardList, DefaultTableModel model) {
         Object[][] tableArray = new Object[cardList.size()][];
         Collections.sort(cardList, new CardComparator());
@@ -7350,4 +7479,5 @@ public class ScannerView extends FrameView {
     private final int WIN_HEIGHT = 180;
     private XTableColumnModel xCol;
     private Font defaultFont;
+
 }
