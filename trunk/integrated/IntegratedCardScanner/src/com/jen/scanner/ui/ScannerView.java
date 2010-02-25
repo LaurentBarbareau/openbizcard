@@ -862,6 +862,7 @@ public class ScannerView extends FrameView {
         codeTfT1.setText(resourceMap.getString("codeTfT1.text")); // NOI18N
         codeTfT1.setMinimumSize(new java.awt.Dimension(86, 25));
         codeTfT1.setName("codeTfT1"); // NOI18N
+        codeTfT1.setPreferredSize(new java.awt.Dimension(86, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -992,7 +993,7 @@ public class ScannerView extends FrameView {
         adsPanelT1.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT1.setName("adsPanelT1"); // NOI18N
         adsPanelT1.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelT1.setLayout(new java.awt.GridLayout());
+        adsPanelT1.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrT1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT1.setHorizontalScrollBar(null);
@@ -1021,7 +1022,7 @@ public class ScannerView extends FrameView {
         notePanelT1.setMinimumSize(new java.awt.Dimension(99, 70));
         notePanelT1.setName("notePanelT1"); // NOI18N
         notePanelT1.setPreferredSize(new java.awt.Dimension(99, 70));
-        notePanelT1.setLayout(new java.awt.GridLayout());
+        notePanelT1.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrT1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT1.setHorizontalScrollBar(null);
@@ -1233,7 +1234,7 @@ public class ScannerView extends FrameView {
         adsPanelTE1.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE1.setName("adsPanelTE1"); // NOI18N
         adsPanelTE1.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelTE1.setLayout(new java.awt.GridLayout());
+        adsPanelTE1.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrTE1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE1.setHorizontalScrollBar(null);
@@ -1353,7 +1354,7 @@ public class ScannerView extends FrameView {
         notePanelTE1.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelTE1.setName("notePanelTE1"); // NOI18N
         notePanelTE1.setPreferredSize(new java.awt.Dimension(100, 70));
-        notePanelTE1.setLayout(new java.awt.GridLayout());
+        notePanelTE1.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrTE1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE1.setHorizontalScrollBar(null);
@@ -1747,9 +1748,9 @@ public class ScannerView extends FrameView {
             frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frontPanelT1Layout.createSequentialGroup()
                 .addGroup(frontPanelT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(frontSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                    .addComponent(frontSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                     .addGroup(frontPanelT1Layout.createSequentialGroup()
-                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addComponent(frontTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(frontBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1763,8 +1764,8 @@ public class ScannerView extends FrameView {
                     .addComponent(frontTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(frontCropBtnT1)
                     .addComponent(frontBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1824,12 +1825,12 @@ public class ScannerView extends FrameView {
             .addGroup(lowRightT1Layout.createSequentialGroup()
                 .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(lowRightT1Layout.createSequentialGroup()
-                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                 .addContainerGap())
         );
         lowRightT1Layout.setVerticalGroup(
@@ -1840,7 +1841,7 @@ public class ScannerView extends FrameView {
                     .addComponent(backBtnT1)
                     .addComponent(backTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(backSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2245,7 +2246,7 @@ public class ScannerView extends FrameView {
         adsPanelT2.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT2.setName("adsPanelT2"); // NOI18N
         adsPanelT2.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelT2.setLayout(new java.awt.GridLayout());
+        adsPanelT2.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrT2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT2.setHorizontalScrollBar(null);
@@ -2273,7 +2274,7 @@ public class ScannerView extends FrameView {
         notePanelT2.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelT2.setName("notePanelT2"); // NOI18N
         notePanelT2.setPreferredSize(new java.awt.Dimension(100, 70));
-        notePanelT2.setLayout(new java.awt.GridLayout());
+        notePanelT2.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrT2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT2.setHorizontalScrollBar(null);
@@ -2484,7 +2485,7 @@ public class ScannerView extends FrameView {
         adsPanelTE2.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE2.setName("adsPanelTE2"); // NOI18N
         adsPanelTE2.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelTE2.setLayout(new java.awt.GridLayout());
+        adsPanelTE2.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrTE2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE2.setHorizontalScrollBar(null);
@@ -2608,7 +2609,7 @@ public class ScannerView extends FrameView {
         notePanelTE2.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelTE2.setName("notePanelTE2"); // NOI18N
         notePanelTE2.setPreferredSize(new java.awt.Dimension(100, 70));
-        notePanelTE2.setLayout(new java.awt.GridLayout());
+        notePanelTE2.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrTE2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE2.setHorizontalScrollBar(null);
@@ -2708,7 +2709,7 @@ public class ScannerView extends FrameView {
                 .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(genSearchT2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         genSearchPanelT2Layout.setVerticalGroup(
             genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2717,7 +2718,7 @@ public class ScannerView extends FrameView {
                 .addGroup(genSearchPanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genSearchTfT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(genSearchT2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -3097,7 +3098,7 @@ public class ScannerView extends FrameView {
             tablePanelT2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tablePanelT2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addContainerGap())
         );
         tablePanelT2Layout.setVerticalGroup(
@@ -3115,7 +3116,7 @@ public class ScannerView extends FrameView {
         deleteEditPanelT2.setMinimumSize(new java.awt.Dimension(200, 40));
         deleteEditPanelT2.setName("deleteEditPanelT2"); // NOI18N
         deleteEditPanelT2.setPreferredSize(new java.awt.Dimension(200, 40));
-        deleteEditPanelT2.setLayout(new java.awt.GridLayout());
+        deleteEditPanelT2.setLayout(new java.awt.GridLayout(1, 0));
 
         deletedBtnT2.setFont(getDefaultFont());
         deletedBtnT2.setText(resourceMap.getString("deletedBtnT2.text")); // NOI18N
@@ -3472,7 +3473,7 @@ public class ScannerView extends FrameView {
                     .addComponent(frontBtnT3)
                     .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3523,14 +3524,14 @@ public class ScannerView extends FrameView {
                 .addContainerGap()
                 .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT3)
                         .addGap(20, 20, 20))
                     .addGroup(lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                        .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                         .addGap(21, 21, 21))))
         );
         lowRightT3Layout.setVerticalGroup(
@@ -3541,7 +3542,7 @@ public class ScannerView extends FrameView {
                     .addComponent(backBtnT3)
                     .addComponent(backCropBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3936,7 +3937,7 @@ public class ScannerView extends FrameView {
         adsPanelT3.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelT3.setName("adsPanelT3"); // NOI18N
         adsPanelT3.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelT3.setLayout(new java.awt.GridLayout());
+        adsPanelT3.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrT3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrT3.setHorizontalScrollBar(null);
@@ -3964,7 +3965,7 @@ public class ScannerView extends FrameView {
         notePanelT3.setMinimumSize(new java.awt.Dimension(100, 70));
         notePanelT3.setName("notePanelT3"); // NOI18N
         notePanelT3.setPreferredSize(new java.awt.Dimension(100, 70));
-        notePanelT3.setLayout(new java.awt.GridLayout());
+        notePanelT3.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrT3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrT3.setHorizontalScrollBar(null);
@@ -4177,7 +4178,7 @@ public class ScannerView extends FrameView {
         adsPanelTE3.setMinimumSize(new java.awt.Dimension(99, 70));
         adsPanelTE3.setName("adsPanelTE3"); // NOI18N
         adsPanelTE3.setPreferredSize(new java.awt.Dimension(99, 70));
-        adsPanelTE3.setLayout(new java.awt.GridLayout());
+        adsPanelTE3.setLayout(new java.awt.GridLayout(1, 0));
 
         adsScrTE3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         adsScrTE3.setHorizontalScrollBar(null);
@@ -4301,7 +4302,7 @@ public class ScannerView extends FrameView {
         notePanelTE3.setMinimumSize(new java.awt.Dimension(99, 70));
         notePanelTE3.setName("notePanelTE3"); // NOI18N
         notePanelTE3.setPreferredSize(new java.awt.Dimension(99, 70));
-        notePanelTE3.setLayout(new java.awt.GridLayout());
+        notePanelTE3.setLayout(new java.awt.GridLayout(1, 0));
 
         noteScrTE3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         noteScrTE3.setHorizontalScrollBar(null);
@@ -4361,7 +4362,7 @@ public class ScannerView extends FrameView {
         importExportTab.setPreferredSize(new java.awt.Dimension(680, 630));
         importExportTab.setLayout(new java.awt.GridBagLayout());
 
-        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 0, 13), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
+        importPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("importPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("importPanel.border.titleColor"))); // NOI18N
         importPanel.setFont(getDefaultFont());
         importPanel.setMinimumSize(new java.awt.Dimension(600, 127));
         importPanel.setName("importPanel"); // NOI18N
@@ -4403,7 +4404,7 @@ public class ScannerView extends FrameView {
                 .addComponent(importTfT4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(importBrowseBtnT4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         importPanelT4Layout.setVerticalGroup(
             importPanelT4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4413,7 +4414,7 @@ public class ScannerView extends FrameView {
                     .addComponent(importTfT4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(importBrowseBtnT4)
                     .addComponent(importLbT4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4448,7 +4449,7 @@ public class ScannerView extends FrameView {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(replaceBtnT4)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4474,7 +4475,7 @@ public class ScannerView extends FrameView {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(pendingBtnT4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -4482,7 +4483,7 @@ public class ScannerView extends FrameView {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(pendingBtnT4)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -4496,7 +4497,7 @@ public class ScannerView extends FrameView {
         importExportTab.add(importPanel, gridBagConstraints);
         importPanel.getAccessibleContext().setAccessibleName(resourceMap.getString("importPanel.AccessibleContext.accessibleName")); // NOI18N
 
-        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 0, 13), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
+        exportPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("exportPanel.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), resourceMap.getColor("exportPanel.border.titleColor"))); // NOI18N
         exportPanel.setFont(getDefaultFont());
         exportPanel.setName("exportPanel"); // NOI18N
         exportPanel.setPreferredSize(new java.awt.Dimension(600, 100));
@@ -4557,7 +4558,7 @@ public class ScannerView extends FrameView {
                     .addComponent(browseExportBtnT4)
                     .addComponent(exportLbT4)
                     .addComponent(exportBtnT4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout exportPanelLayout = new javax.swing.GroupLayout(exportPanel);
@@ -4567,12 +4568,12 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         exportPanelLayout.setVerticalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exportPanelLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -4675,7 +4676,7 @@ public class ScannerView extends FrameView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(langaugeChangeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(statusPanelSeparator))
+                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 3, Short.MAX_VALUE))
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
