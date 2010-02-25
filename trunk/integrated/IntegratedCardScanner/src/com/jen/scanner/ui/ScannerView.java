@@ -1731,7 +1731,7 @@ public class ScannerView extends FrameView {
 
         frontSpT1.setMinimumSize(new java.awt.Dimension(320, 291));
         frontSpT1.setName("frontSpT1"); // NOI18N
-        frontSpT1.setPreferredSize(new java.awt.Dimension(100, 260));
+        frontSpT1.setPreferredSize(new java.awt.Dimension(320, 291));
 
         frontCropBtnT1.setFont(getDefaultFont());
         frontCropBtnT1.setText(resourceMap.getString("frontCropBtnT1.text")); // NOI18N
@@ -1764,8 +1764,8 @@ public class ScannerView extends FrameView {
                     .addComponent(frontTfT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(frontCropBtnT1)
                     .addComponent(frontBtnT1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(frontSpT1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
