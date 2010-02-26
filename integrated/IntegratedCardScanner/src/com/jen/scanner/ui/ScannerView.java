@@ -1830,12 +1830,12 @@ public class ScannerView extends FrameView {
             .addGroup(lowRightT1Layout.createSequentialGroup()
                 .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(lowRightT1Layout.createSequentialGroup()
-                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         lowRightT1Layout.setVerticalGroup(
@@ -4573,7 +4573,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         exportPanelLayout.setVerticalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5565,23 +5565,376 @@ public class ScannerView extends FrameView {
     }//GEN-LAST:event_scannerBtnT1ActionPerformed
     // Oak add class for Right click menu
     class PopUpFillMenu extends JPopupMenu {
+
     JMenuItem firstNameItem;
+    JMenuItem lastNameItem;
+    JMenuItem positionItem;
+    JMenuItem emailItem;
+    JMenuItem companyItem;
+    JMenuItem webItem;
+    JMenuItem districtItem;
+    JMenuItem subDistrictItem;
+    JMenuItem postalCodeItem;
+    JMenuItem provinceItem;
+    JMenuItem mobileItem;
+    JMenuItem phoneItem;
+    JMenuItem faxItem;
+    JMenuItem countryItem;
+    JMenuItem addressItem;
+    JMenuItem otherItem;
+    // Eng
+     JMenuItem firstNameItemEng;
+    JMenuItem lastNameItemEng;
+    JMenuItem positionItemEng;
+    JMenuItem companyItemEng;
+    JMenuItem districtItemEng;
+    JMenuItem subDistrictItemEng;
+    JMenuItem postalCodeItemEng;
+    JMenuItem provinceItemEng;
+    JMenuItem mobileItemEng;
+    JMenuItem phoneItemEng;
+    JMenuItem faxItemEng;
+    JMenuItem countryItemEng;
+    JMenuItem addressItemEng;
+    JMenuItem otherItemEng;
     public PopUpFillMenu(){
         // New Item
-        firstNameItem = new JMenuItem("First Name");
-        
+        firstNameItem = new JMenuItem(nameLbT1.getText());
+        lastNameItem = new JMenuItem(lastnameLbT1.getText());
+        positionItem = new JMenuItem(titleLbT1.getText());
+        emailItem = new JMenuItem(emailLbT1.getText());
+        companyItem = new JMenuItem(companyLbT1.getText());
+        webItem = new JMenuItem(webLbT1.getText());
+        districtItem = new JMenuItem(disLbT1.getText());
+        subDistrictItem = new JMenuItem(subDisLbT1.getText());
+        postalCodeItem = new JMenuItem(codeLbT1.getText());
+        provinceItem = new JMenuItem(provinceLbT1.getText());
+        mobileItem = new JMenuItem(mobileLbT1.getText());
+        phoneItem = new JMenuItem(phoneLbT1.getText());
+        faxItem = new JMenuItem(faxLbT1.getText());
+        countryItem = new JMenuItem(countryLbT1.getText());
+        addressItem = new JMenuItem(adsLbT1.getText());
+        otherItem = new JMenuItem(noteLbT1.getText());
+        //
+         firstNameItemEng = new JMenuItem(nameLbTE1.getText());
+        lastNameItemEng = new JMenuItem(lastnameLbTE1.getText());
+        positionItemEng = new JMenuItem(titleLbTE1.getText());
+        companyItemEng = new JMenuItem(companyLbTE1.getText());
+        districtItemEng = new JMenuItem(disLbTE1.getText());
+        subDistrictItemEng = new JMenuItem(subDisLbTE1.getText());
+        postalCodeItemEng = new JMenuItem(codeLbTE1.getText());
+        provinceItemEng = new JMenuItem(provinceLbTE1.getText());
+        mobileItemEng = new JMenuItem(mobileLbTE1.getText());
+        phoneItemEng = new JMenuItem(phoneLbTE1.getText());
+        faxItemEng = new JMenuItem(faxLbTE1.getText());
+        countryItemEng = new JMenuItem(countryLbTE1.getText());
+        addressItemEng = new JMenuItem(adsLbTE1.getText());
+        otherItemEng = new JMenuItem(noteLbTE1.getText());
         // Add Listener 
         firstNameItem.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
                    System.out.println("You select " + ocrTxt.getSelectedText());
-                   
+                   nameTfT1.setText(selectedText);
                 }
             });
+              lastNameItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                  lastnameTfT1.setText(selectedText);
+                }
+            });
+              positionItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     titleTfT1.setText(selectedText);
+                }
+            });
+              emailItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     emailTfT1.setText(selectedText);
+                }
+            });
+              companyItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                 companyTfT1.setText(selectedText);
+                }
+            });
+              webItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     webTfT1.setText(selectedText);
+                }
+            });
+              districtItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     disTfT1.setText(selectedText);
+                }
+            });
+              subDistrictItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   subDisTfT1.setText(selectedText);
+                }
+            });
+              postalCodeItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   codeTfT1.setText(selectedText);
+                }
+            });
+              provinceItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   provinceTfT1.setText(selectedText);
+                }
+            });
+              mobileItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   mobileTfT1.setText(selectedText);
+                }
+            });
+              phoneItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   phoneTfT1.setText(selectedText);
+                }
+            });
+              faxItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   faxTfT1.setText(selectedText);
+                }
+            });
+              countryItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   countryTfT1.setText(selectedText);
+                }
+            });
+              addressItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   adsTaT1.setText(selectedText);
+                }
+            });
+              otherItem.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   noteTaT1.setText(selectedText);
+                }
+            });
+            // Eng
+            firstNameItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   nameTfTE1.setText(selectedText);
+                }
+            });
+              lastNameItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                  lastnameTfTE1.setText(selectedText);
+                }
+            });
+              positionItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     titleTfTE1.setText(selectedText);
+                }
+            });
+              companyItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                 companyTfTE1.setText(selectedText);
+                }
+            });
+              districtItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                     disTfTE1.setText(selectedText);
+                }
+            });
+              subDistrictItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   subDisTfTE1.setText(selectedText);
+                }
+            });
+              postalCodeItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   codeTfTE1.setText(selectedText);
+                }
+            });
+              provinceItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   provinceTfTE1.setText(selectedText);
+                }
+            });
+              mobileItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   mobileTfTE1.setText(selectedText);
+                }
+            });
+              phoneItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   phoneTfTE1.setText(selectedText);
+                }
+            });
+              faxItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   faxTfTE1.setText(selectedText);
+                }
+            });
+              countryItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   countryTfTE1.setText(selectedText);
+                }
+            });
+              addressItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   adsTaTE1.setText(selectedText);
+                }
+            });
+              otherItemEng.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedText =  ocrTxt.getSelectedText();
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   noteTaTE1.setText(selectedText);
+                }
+            });
+
         // Add to menu
         add(firstNameItem);
-
+        add(lastNameItem);
+        add(positionItem);
+        add(emailItem);
+        add(companyItem);
+        add(webItem);
+        add(districtItem);
+        add(subDistrictItem);
+        add(postalCodeItem);
+        add(provinceItem);
+        add(mobileItem);
+        add(phoneItem);
+        add(faxItem);
+        add(countryItem);
+        add(addressItem);
+        add(otherItem);
+        // Eng
+          add(firstNameItemEng);
+        add(lastNameItemEng);
+        add(positionItemEng);
+        add(companyItemEng);
+        add(districtItemEng);
+        add(subDistrictItemEng);
+        add(postalCodeItemEng);
+        add(provinceItemEng);
+        add(mobileItemEng);
+        add(phoneItemEng);
+        add(faxItemEng);
+        add(countryItemEng);
+        add(addressItemEng);
+        add(otherItemEng);
     }
     }
 class PopClickListener extends MouseAdapter {
