@@ -47,6 +47,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -59,11 +61,14 @@ import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.text.Highlighter.Highlight;
 
 /**
  * The application's main frame.
@@ -5558,11 +5563,52 @@ public class ScannerView extends FrameView {
             scannerTxtT1.setText(bcScanner.selectScanner(scannerTxtT1));
         }
     }//GEN-LAST:event_scannerBtnT1ActionPerformed
+    // Oak add class for Right click menu
+    class PopUpFillMenu extends JPopupMenu {
+    JMenuItem firstNameItem;
+    public PopUpFillMenu(){
+        // New Item
+        firstNameItem = new JMenuItem("First Name");
+        
+        // Add Listener 
+        firstNameItem.addActionListener(new ActionListener() {
 
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   
+                }
+            });
+        // Add to menu
+        add(firstNameItem);
+
+    }
+    }
+class PopClickListener extends MouseAdapter {
+    public void mousePressed(MouseEvent e){
+        if (e.isPopupTrigger())
+            doPop(e);
+    }
+
+    public void mouseReleased(MouseEvent e){
+        if (e.isPopupTrigger())
+            doPop(e);
+    }
+
+    private void doPop(MouseEvent e){
+        PopUpFillMenu menu = new PopUpFillMenu();
+        System.out.println("compo " + e.getComponent().toString() + " x: " +e.getX() + " y: " + e.getY());
+        menu.show(e.getComponent(), e.getX(), e.getY());
+    }
+}
+
+    // End
+    Card popupCard ;
+     JTextArea ocrTxt;
     private void readCardBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readCardBtnT1ActionPerformed
         // Yov is working Here
         //System.out.println("TrainingImageFolder: " + trainingImgFolder);
-
+        popupCard = new Card();
         if (isFrontSelected) {
             if ((scannedBCard != null) && (scannedImageFileName != null)) {
                 String filename = "";
@@ -5586,8 +5632,13 @@ public class ScannerView extends FrameView {
                 textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
-                JTextArea ocrTxt = new JTextArea();
+                ocrTxt = new JTextArea("OCR Running ...");
                 ocrTxt.setText(scannedBCard.retrieveData());
+                // Oak add right click menu
+                System.out.println("add Click listenr ");
+                ocrTxt.addMouseListener(new PopClickListener());
+
+                // End Oak
                 contentPane.add(ocrTxt, BorderLayout.CENTER);
                 textWin.setVisible(true);
 
@@ -5612,8 +5663,13 @@ public class ScannerView extends FrameView {
                 textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
-                JTextArea ocrTxt = new JTextArea();
+                ocrTxt = new JTextArea("OCR Running ...");
                 ocrTxt.setText(scannedBCardBack.retrieveData());
+                // Oak add right click menu
+
+                 ocrTxt.addMouseListener(new PopClickListener());
+                System.out.println("add Click listenr ");
+                // End Oak
                 contentPane.add(ocrTxt, BorderLayout.CENTER);
                 textWin.setVisible(true);
 

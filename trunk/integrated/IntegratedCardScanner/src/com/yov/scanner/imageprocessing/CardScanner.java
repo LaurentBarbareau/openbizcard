@@ -128,6 +128,7 @@ public class CardScanner implements ScannerListener {
             this.tf = tf;
         }
 
+        @Override
         public void run() {
             int count = 0;
 
