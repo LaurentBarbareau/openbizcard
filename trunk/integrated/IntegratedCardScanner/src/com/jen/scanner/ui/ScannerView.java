@@ -5639,6 +5639,17 @@ public class ScannerView extends FrameView {
                     String selectedText =  ocrTxt.getSelectedText();
                    System.out.println("You select " + ocrTxt.getSelectedText());
                    nameTfT1.setText(selectedText);
+//                    String ocrText = ocrTxt.getText();
+//                    System.out.println("text lenght" + ocrText.length());
+//                    System.out.println("start" + ocrTxt.getSelectionStart());
+//                    System.out.println("end" + ocrTxt.getSelectionEnd());
+//                    System.out.println("numend" + (ocrText.length() - ocrTxt.getSelectionEnd() ));
+//
+//                    String first = ocrText.substring(0, ocrTxt.getSelectionStart()) ;
+//
+//
+//                    String last =  ocrText.substring(ocrTxt.getSelectionEnd(), (ocrText.length() - ocrTxt.getSelectionEnd()));
+//                    ocrTxt.setText(first+last);
                 }
             });
               lastNameItem.addActionListener(new ActionListener() {
@@ -5655,8 +5666,10 @@ public class ScannerView extends FrameView {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String selectedText =  ocrTxt.getSelectedText();
-                   System.out.println("You select " + ocrTxt.getSelectedText());
+                   System.out.println("You select " + ocrTxt.getSelectedText() + ocrTxt.getSelectionStart());
                      titleTfT1.setText(selectedText);
+
+
                 }
             });
               emailItem.addActionListener(new ActionListener() {
