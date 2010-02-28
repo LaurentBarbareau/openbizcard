@@ -4759,6 +4759,7 @@ public class ScannerView extends FrameView {
         os = "mac";
       }
       System.out.println(">>>>>>>> OS "+os);
+       System.out.println("string " + myResourceMap.getString("linux.font"));
       font = myResourceMap.getString(os+".font").split(" ");
       System.out.println(">>>>>>>> font "+ font[0]+" "+font[1]);
       size = Integer.parseInt(font[1]);
