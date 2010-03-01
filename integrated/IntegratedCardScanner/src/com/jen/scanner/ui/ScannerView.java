@@ -5,6 +5,7 @@ package com.jen.scanner.ui;
 
 import com.hideoaki.scanner.db.manager.CardLocalManager;
 import com.hideoaki.scanner.db.model.Card;
+import com.hideoaki.scanner.db.utils.BusinessCardAnalyser;
 import com.hideoaki.scanner.db.utils.ScannerDBException;
 import com.hideoaki.scanner.db.utils.SendEmailUtil;
 import com.hideoaki.scanner.db.utils.ZipUtils;
@@ -69,6 +70,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.text.Highlighter.Highlight;
+import javax.xml.stream.events.StartDocument;
 
 /**
  * The application's main frame.
@@ -6000,7 +6002,34 @@ class PopClickListener extends MouseAdapter {
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
                 ocrTxt = new JTextArea("OCR Running ...");
-                ocrTxt.setText(scannedBCard.retrieveData());
+               new Thread(new Runnable() {
+
+                    public void run() {
+                        String ocrData = scannedBCard.retrieveData();
+                        ocrTxt.setText(ocrData);
+                        // Auto Fill
+                        Card c = BusinessCardAnalyser.analyse(ocrData);
+                        // fill card into the form
+                        if(c.getWebsite() != null){
+                             webTfT1.setText(c.getWebsite());
+                        }
+                        if(c.getEmail() != null){
+                             emailTfT1.setText(c.getEmail());
+                        }
+                        if(c.getMobile() != null){
+                             mobileTfT1.setText(c.getMobile());
+                        }
+                        if(c.getCompany() != null){
+                             companyTfT1.setText(c.getCompany());
+                        }
+                         if(c.getCompanyE() != null){
+                             companyTfTE1.setText(c.getCompanyE());
+                        }
+
+                    }
+                }).start();
+               
+                
                 // Oak add right click menu
                 System.out.println("add Click listenr ");
                 ocrTxt.addMouseListener(new PopClickListener());
@@ -6030,10 +6059,34 @@ class PopClickListener extends MouseAdapter {
                 textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
-                ocrTxt = new JTextArea("OCR Running ...");
-                ocrTxt.setText(scannedBCardBack.retrieveData());
-                // Oak add right click menu
 
+                ocrTxt = new JTextArea("OCR Running ...");
+                new Thread(new Runnable() {
+
+                    public void run() {
+                        String ocrData = scannedBCard.retrieveData();
+                        ocrTxt.setText(ocrData);
+                        // Auto Fill
+                        Card c = BusinessCardAnalyser.analyse(ocrData);
+                        // fill card into the form
+                        if(c.getWebsite() != null){
+                             webTfT1.setText(c.getWebsite());
+                        }
+                        if(c.getEmail() != null){
+                             emailTfT1.setText(c.getEmail());
+                        }
+                        if(c.getMobile() != null){
+                             mobileTfT1.setText(c.getMobile());
+                        }
+                        if(c.getCompany() != null){
+                             companyTfT1.setText(c.getCompany());
+                        }
+                         if(c.getCompanyE() != null){
+                             companyTfTE1.setText(c.getCompanyE());
+                        }
+
+                    }
+                }).start();
                  ocrTxt.addMouseListener(new PopClickListener());
                 System.out.println("add Click listenr ");
                 // End Oak
