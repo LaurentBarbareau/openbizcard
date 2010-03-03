@@ -101,6 +101,7 @@ public class BusinessCard { // DONE - But not tested yet
                 //System.out.println("My imageFile's parent = " + imgFile.getParentFile().toString());
 
                 cardText = ocrEngine.recognizeText(imgFile, 0, false, imgFormat, "eng");
+//                cardText  = cardText +  ocrEngine.recognizeText(imgFile, 0, false, imgFormat, "tha");
 
                 //cardText = ocrEngine.recognizeText(imageFile, index, allPages, imageFormat, langCodes[jComboBoxLang.getSelectedIndex()]);
 

@@ -81,9 +81,9 @@ public class ImageIOHelper {
                 writer.write(streamMetadata, image, tiffWriteParam);
                 ios.close();
                 // Oak Add conversion tiff or linux
-                if(File.separator.equals("/")){
+//                if(File.separator.equals("/")){
                 convertTiff(tempFile);
-                }
+//                }
                 // End convertsioon
                 tempFileNames.add(tempFile);
             }
