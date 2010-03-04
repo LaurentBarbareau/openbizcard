@@ -47,7 +47,9 @@ import com.yov.scanner.imageprocessing.ImagePanelDialog;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -60,17 +62,15 @@ import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.JTextArea;
 import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.text.Highlighter.Highlight;
-import javax.xml.stream.events.StartDocument;
 
 /**
  * The application's main frame.
@@ -5997,7 +5997,10 @@ class PopClickListener extends MouseAdapter {
 
                 JFrame textWin = new JFrame("OCR-Read Text");
                 textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                textWin.setLocation(100, 100);
+
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                textWin.setLocation((dim.width/2)-(WIN_WIDTH/2), (dim.height/2)-(WIN_HEIGHT/2));
+
                 textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
@@ -6035,7 +6038,7 @@ class PopClickListener extends MouseAdapter {
                 ocrTxt.addMouseListener(new PopClickListener());
 
                 // End Oak
-                contentPane.add(ocrTxt, BorderLayout.CENTER);
+                contentPane.add(new JScrollPane(ocrTxt),BorderLayout.CENTER);
                 textWin.setVisible(true);
 
             }
@@ -6055,7 +6058,10 @@ class PopClickListener extends MouseAdapter {
 
                 JFrame textWin = new JFrame("OCR-Read Text");
                 textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                textWin.setLocation(100, 100);
+
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                textWin.setLocation((dim.width/2)-(WIN_WIDTH/2), (dim.height/2)-(WIN_HEIGHT/2));
+                
                 textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
                 Container contentPane = textWin.getContentPane();
                 contentPane.setLayout(new BorderLayout());
@@ -6064,7 +6070,7 @@ class PopClickListener extends MouseAdapter {
                 new Thread(new Runnable() {
 
                     public void run() {
-                        String ocrData = scannedBCard.retrieveData();
+                        String ocrData = scannedBCardBack.retrieveData();
                         ocrTxt.setText(ocrData);
                         // Auto Fill
                         Card c = BusinessCardAnalyser.analyse(ocrData);
@@ -6090,7 +6096,7 @@ class PopClickListener extends MouseAdapter {
                  ocrTxt.addMouseListener(new PopClickListener());
                 System.out.println("add Click listenr ");
                 // End Oak
-                contentPane.add(ocrTxt, BorderLayout.CENTER);
+                contentPane.add(new JScrollPane(ocrTxt),BorderLayout.CENTER);
                 textWin.setVisible(true);
 
             }
@@ -7953,7 +7959,7 @@ class PopClickListener extends MouseAdapter {
     private final int EN = 0;
     private final int TH = 1;
     private final int WIN_WIDTH = 450;
-    private final int WIN_HEIGHT = 180;
+    private final int WIN_HEIGHT = 400;
     private XTableColumnModel xCol;
     private Font defaultFont;
 
