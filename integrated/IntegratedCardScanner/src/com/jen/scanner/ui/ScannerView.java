@@ -1012,7 +1012,6 @@ public class ScannerView extends FrameView {
         adsTaT1.setFont(getDefaultFont());
         adsTaT1.setLineWrap(true);
         adsTaT1.setRows(3);
-        adsTaT1.setAutoscrolls(false);
         adsTaT1.setMaximumSize(new java.awt.Dimension(99, 52));
         adsTaT1.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT1.setName("adsTaT1"); // NOI18N
@@ -1041,7 +1040,6 @@ public class ScannerView extends FrameView {
         noteTaT1.setFont(getDefaultFont());
         noteTaT1.setLineWrap(true);
         noteTaT1.setRows(3);
-        noteTaT1.setAutoscrolls(false);
         noteTaT1.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT1.setName("noteTaT1"); // NOI18N
         noteScrT1.setViewportView(noteTaT1);
@@ -1252,7 +1250,6 @@ public class ScannerView extends FrameView {
         adsTaTE1.setColumns(30);
         adsTaTE1.setFont(getDefaultFont());
         adsTaTE1.setRows(3);
-        adsTaTE1.setAutoscrolls(false);
         adsTaTE1.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE1.setName("adsTaTE1"); // NOI18N
         adsScrTE1.setViewportView(adsTaTE1);
@@ -1372,7 +1369,6 @@ public class ScannerView extends FrameView {
         noteTaTE1.setColumns(30);
         noteTaTE1.setFont(getDefaultFont());
         noteTaTE1.setRows(3);
-        noteTaTE1.setAutoscrolls(false);
         noteTaTE1.setMinimumSize(new java.awt.Dimension(102, 52));
         noteTaTE1.setName("noteTaTE1"); // NOI18N
         noteScrTE1.setViewportView(noteTaTE1);
@@ -1832,12 +1828,12 @@ public class ScannerView extends FrameView {
             .addGroup(lowRightT1Layout.createSequentialGroup()
                 .addGroup(lowRightT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(lowRightT1Layout.createSequentialGroup()
-                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                        .addComponent(backTfT1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(backBtnT1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backCropBtnT1))
-                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backSpT1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                 .addContainerGap())
         );
         lowRightT1Layout.setVerticalGroup(
@@ -2265,7 +2261,6 @@ public class ScannerView extends FrameView {
         adsTaT2.setFont(getDefaultFont());
         adsTaT2.setLineWrap(true);
         adsTaT2.setRows(3);
-        adsTaT2.setAutoscrolls(false);
         adsTaT2.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT2.setName("adsTaT2"); // NOI18N
         adsScrT2.setViewportView(adsTaT2);
@@ -2291,7 +2286,6 @@ public class ScannerView extends FrameView {
         noteTaT2.setFont(getDefaultFont());
         noteTaT2.setLineWrap(true);
         noteTaT2.setRows(3);
-        noteTaT2.setAutoscrolls(false);
         noteTaT2.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT2.setName("noteTaT2"); // NOI18N
         noteScrT2.setViewportView(noteTaT2);
@@ -2503,7 +2497,6 @@ public class ScannerView extends FrameView {
         adsTaTE2.setColumns(30);
         adsTaTE2.setFont(getDefaultFont());
         adsTaTE2.setRows(3);
-        adsTaTE2.setAutoscrolls(false);
         adsTaTE2.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE2.setName("adsTaTE2"); // NOI18N
         adsScrTE2.setViewportView(adsTaTE2);
@@ -2627,7 +2620,6 @@ public class ScannerView extends FrameView {
         noteTaTE2.setColumns(30);
         noteTaTE2.setFont(getDefaultFont());
         noteTaTE2.setRows(3);
-        noteTaTE2.setAutoscrolls(false);
         noteTaTE2.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaTE2.setName("noteTaTE2"); // NOI18N
         noteScrTE2.setViewportView(noteTaTE2);
@@ -3956,7 +3948,6 @@ public class ScannerView extends FrameView {
         adsTaT3.setFont(getDefaultFont());
         adsTaT3.setLineWrap(true);
         adsTaT3.setRows(3);
-        adsTaT3.setAutoscrolls(false);
         adsTaT3.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaT3.setName("adsTaT3"); // NOI18N
         adsScrT3.setViewportView(adsTaT3);
@@ -3984,7 +3975,6 @@ public class ScannerView extends FrameView {
         noteTaT3.setFont(getDefaultFont());
         noteTaT3.setLineWrap(true);
         noteTaT3.setRows(3);
-        noteTaT3.setAutoscrolls(false);
         noteTaT3.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaT3.setName("noteTaT3"); // NOI18N
         noteScrT3.setViewportView(noteTaT3);
@@ -4196,7 +4186,6 @@ public class ScannerView extends FrameView {
         adsTaTE3.setColumns(30);
         adsTaTE3.setFont(getDefaultFont());
         adsTaTE3.setRows(3);
-        adsTaTE3.setAutoscrolls(false);
         adsTaTE3.setMinimumSize(new java.awt.Dimension(99, 52));
         adsTaTE3.setName("adsTaTE3"); // NOI18N
         adsScrTE3.setViewportView(adsTaTE3);
@@ -4320,7 +4309,6 @@ public class ScannerView extends FrameView {
         noteTaTE3.setColumns(30);
         noteTaTE3.setFont(getDefaultFont());
         noteTaTE3.setRows(3);
-        noteTaTE3.setAutoscrolls(false);
         noteTaTE3.setMinimumSize(new java.awt.Dimension(99, 52));
         noteTaTE3.setName("noteTaTE3"); // NOI18N
         noteScrTE3.setViewportView(noteTaTE3);
@@ -4575,7 +4563,7 @@ public class ScannerView extends FrameView {
             .addGroup(exportPanelLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         exportPanelLayout.setVerticalGroup(
             exportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4745,7 +4733,7 @@ public class ScannerView extends FrameView {
         return newPath;
     }
 
-    private Font getDefaultFont(){
+    public static Font getDefaultFont(){
         return defaultFont;
     }
 
@@ -7305,6 +7293,9 @@ class PopClickListener extends MouseAdapter {
         CROP_CONFIRM = "cropConfirm" + s + ".text";
         CROP_CANCEL = "cropCancel" + s + ".text";
         CROP_FOCUS = "cropFocus" + s + ".text";
+
+        //set email alert
+        SendEmailUtil.setAlertMsg("emailAlert"+s+".text");
     }
 
     private String[] getOptionChoice() {
@@ -7929,7 +7920,7 @@ class PopClickListener extends MouseAdapter {
     private String CROP_PANEL_TITLE = "cropPanelTitle.text";
     private String CROP_CONFIRM = "cropConfirm.text";
     private String CROP_CANCEL = "cropCancel.text";
-    private String CROP_FOCUS = "cropFocus.text";
+    private String CROP_FOCUS = "cropFocus.text";    
     private final int STATE_NO_IMAGE = 0;
     private final int STATE_WITH_IMAGE = 1;
     private final int STATE_IMAGE_EDITED = 2;
@@ -7961,6 +7952,6 @@ class PopClickListener extends MouseAdapter {
     private final int WIN_WIDTH = 450;
     private final int WIN_HEIGHT = 400;
     private XTableColumnModel xCol;
-    private Font defaultFont;
+    private static Font defaultFont;
 
 }
