@@ -55,6 +55,13 @@ public class Utils {
         return chk;
     }
 
+    public static void mailClientNotify(String alert,String path, Font f){
+        System.out.println("text name = "+alert);
+        org.jdesktop.application.ResourceMap myResourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ScannerView.class);
+        String txt = "<html><body><FONT FACE=\""+f.getName()+"\" >"+myResourceMap.getString(alert)+path+"</FONT></body></html>";
+        JOptionPane.showMessageDialog(null,txt,"information", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static ArrayList<Card> quickSearchCard(String str,ArrayList<Card> allCard){
         ArrayList<Card> resultCards = new ArrayList<Card>();
         String[] s = str.split("");
