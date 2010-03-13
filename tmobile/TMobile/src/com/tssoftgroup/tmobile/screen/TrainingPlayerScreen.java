@@ -70,7 +70,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 	public void setFullScreen(boolean bool) {
 		isFullScreen = bool;
 	}
-
+	MyButtonField fullButton ;
 	public TrainingPlayerScreen(TrainingInfo trainInfo) {
 		this.traininfo = trainInfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -177,11 +177,12 @@ public class TrainingPlayerScreen extends MainScreen implements
 
 		// edge = new XYEdges(206, 5, 6, 24);
 		// CustomButtonField fullButton = new
-		MyButtonField fullButton = new MyButtonField("Full Screen",
+		fullButton = new MyButtonField("Full Screen",
 				ButtonField.ELLIPSIS, true);
 		// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		fullButton.setChangeListener(new ButtonListener(player, 9, this));
 		buttonHorizontalManager.add(fullButton);
+		fullButton.setFocusable(false);
 		// / Play button
 		MyButtonField nextButton = new MyButtonField("Next",
 				ButtonField.ELLIPSIS, true);
@@ -217,7 +218,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 		// add(bf);
 
 		addMenuItem(_mainMenuItem);
-		addMenuItem(_videoItem);
+//		addMenuItem(_videoItem);
 		// addMenuItem( _exitFullItem );
 
 	}
@@ -414,8 +415,10 @@ public class TrainingPlayerScreen extends MainScreen implements
 							// _volumeDisplay.setText("Volume : " +
 							// volumeControl.getLevel());
 						} else if (event.equals(STARTED)) {
+							fullButton.setFocusable(true);
 							try {
 								if (!isFullScreen) {
+									
 									videoControl.setDisplaySize(
 											Const.VIDEO_WIDTH, videoControl
 													.getSourceHeight()
@@ -432,6 +435,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 							_currentTime.setText(df.format(date));
 							// _controlButton.setLabel("Pause");
 						} else if (event.equals(STOPPED)) {
+							fullButton.setFocusable(false);
 							Date date = new Date(player.getMediaTime() / 1000);
 							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
 							_currentTime.setText(df.format(date));
@@ -445,6 +449,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 							try {
 								if (player != null
 										&& player.getState() == player.STARTED) {
+									fullButton.setFocusable(false);
 									videoControl.setDisplayFullScreen(false);
 									isFullScreen = false;
 								}

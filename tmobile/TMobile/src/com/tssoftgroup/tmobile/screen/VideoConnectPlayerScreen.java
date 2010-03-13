@@ -87,6 +87,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 	public void setCurrentCommentInd(int currentComment) {
 		this.currentComment = currentComment;
 	}
+	MyButtonField fullButton;
 	public VideoConnectPlayerScreen(PicInfo picInfo) {
 		this.picinfo = picInfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -196,10 +197,11 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 
 		// edge = new XYEdges(206, 5, 6, 24);
 		// CustomButtonField fullButton = new
-		MyButtonField fullButton = new MyButtonField("Full Screen",
+		fullButton = new MyButtonField("Full Screen",
 				ButtonField.ELLIPSIS, true);
 		// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		fullButton.setChangeListener(new ButtonListener(player, 9, this));
+		fullButton.setFocusable(false);
 		buttonHorizontalManager.add(fullButton);
 
 		// edge = new XYEdges(206, 5, 6, 5);
@@ -236,7 +238,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		// add(bf);
 
 		addMenuItem(_mainMenuItem);
-		addMenuItem(_videoItem);
+//		addMenuItem(_videoItem);
 		// addMenuItem( _exitFullItem );
 
 	}
@@ -574,6 +576,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 							// _volumeDisplay.setText("Volume : " +
 							// volumeControl.getLevel());
 						} else if (event.equals(STARTED)) {
+							fullButton.setFocusable(true);
 							try {
 								if (!isFullScreen) {
 									videoControl.setDisplaySize(
@@ -592,6 +595,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 							_currentTime.setText(df.format(date));
 							// _controlButton.setLabel("Pause");
 						} else if (event.equals(STOPPED)) {
+							fullButton.setFocusable(false);
 							Date date = new Date(player.getMediaTime() / 1000);
 							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
 							_currentTime.setText(df.format(date));
@@ -605,6 +609,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 							try {
 								if (player != null
 										&& player.getState() == player.STARTED) {
+									fullButton.setFocusable(false);
 									videoControl.setDisplayFullScreen(false);
 									isFullScreen = false;
 								}
