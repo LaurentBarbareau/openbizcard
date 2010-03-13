@@ -542,15 +542,32 @@ public class MCastPlayerScreen extends MainScreen implements
 		 * successful, the edit screen is popped from the display stack.
 		 */
 		public void run() {
+			boolean bool = false;
+			try {
+				// player.stop();
+				// VideoControl videoControl = (VideoControl)
+				// player.getControl("VideoControl");
+				if (player != null && player.getState() == player.STARTED && isFullScreen) {
+					bool = true;
+					isFullScreen = false;
+					videoControl.setDisplayFullScreen(false);
+				}
+				// player.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(!bool){
 			try {
 				player.stop();
 				_timerUpdateThread.stop();
 			} catch (Exception e) {
 				System.out.println("" + e.toString());
 			}
-			UiApplication.getUiApplication().popScreen(MCastPlayerScreen.this);
+			UiApplication.getUiApplication().popScreen(
+					MCastPlayerScreen.this);
 			UiApplication.getUiApplication().popScreen(
 					UiApplication.getUiApplication().getActiveScreen());
+			}
 		}
 	}
 

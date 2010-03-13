@@ -351,6 +351,7 @@ public class Engine implements HTTPHandler {
 				System.out.println("Otehr " + ex.toString());
 			}
 		} else if (mode == MODE_LOGIN) {
+			System.out.print("result " + mode);
 			if (result.equals("NOCONNECTION")) {
 				// UiApplication.getUiApplication().invokeLater(new Runnable(){
 				//
