@@ -248,7 +248,8 @@ public class TrainingPlayerScreen extends MainScreen implements
 			// player.stop();
 			// VideoControl videoControl = (VideoControl)
 			// player.getControl("VideoControl");
-			if (player != null && player.getState() == player.STARTED && isFullScreen) {
+			if (player != null && player.getState() == player.STARTED
+					&& isFullScreen) {
 				bool = true;
 				isFullScreen = false;
 				videoControl.setDisplayFullScreen(false);
@@ -260,8 +261,8 @@ public class TrainingPlayerScreen extends MainScreen implements
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
-		case Characters.BACKSPACE:
-			return true;
+//		case Characters.BACKSPACE:
+//			return true;
 		case Characters.ESCAPE:
 			if (!bool) {
 
@@ -311,6 +312,21 @@ public class TrainingPlayerScreen extends MainScreen implements
 		 * successful, the edit screen is popped from the display stack.
 		 */
 		public void run() {
+			boolean bool = false;
+			try {
+				// player.stop();
+				// VideoControl videoControl = (VideoControl)
+				// player.getControl("VideoControl");
+				if (player != null && player.getState() == player.STARTED && isFullScreen) {
+					bool = true;
+					isFullScreen = false;
+					videoControl.setDisplayFullScreen(false);
+				}
+				// player.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(!bool){
 			try {
 				player.stop();
 				_timerUpdateThread.stop();
@@ -321,6 +337,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 					TrainingPlayerScreen.this);
 			UiApplication.getUiApplication().popScreen(
 					UiApplication.getUiApplication().getActiveScreen());
+			}
 		}
 	}
 
@@ -388,48 +405,58 @@ public class TrainingPlayerScreen extends MainScreen implements
 
 	public void playerUpdate(Player _player, final String event,
 			Object eventData) {
-		UiApplication.getUiApplication().invokeLater(new Runnable() {
+		new Thread(new Runnable() {
+
 			public void run() {
-				if (event.equals(VOLUME_CHANGED)) {
-					// _volumeDisplay.setText("Volume : " +
-					// volumeControl.getLevel());
-				} else if (event.equals(STARTED)) {
-					try {
-						videoControl.setDisplaySize(Const.VIDEO_WIDTH,
-								videoControl.getSourceHeight()
-										* Const.VIDEO_WIDTH
-										/ videoControl.getSourceWidth());
-					} catch (MediaException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}// edge = new
-					Date date = new Date(player.getMediaTime() / 1000);
-					SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-					_currentTime.setText(df.format(date));
-					// _controlButton.setLabel("Pause");
-				} else if (event.equals(STOPPED)) {
-					Date date = new Date(player.getMediaTime() / 1000);
-					SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-					_currentTime.setText(df.format(date));
-					// _controlButton.setLabel("Start");
-				} else if (event.equals(DURATION_UPDATED)) {
-					Date date = new Date(player.getDuration() / 1000);
-					SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-					_duration.setText(df.format(date));
-				} else if (event.equals(END_OF_MEDIA)) {
-					// _controlButton.setLabel("Start");try{
-					try {
-						if (player != null
-								&& player.getState() == player.STARTED) {
-							isFullScreen = false;
-							videoControl.setDisplayFullScreen(false);
+				UiApplication.getUiApplication().invokeLater(new Runnable() {
+					public void run() {
+						if (event.equals(VOLUME_CHANGED)) {
+							// _volumeDisplay.setText("Volume : " +
+							// volumeControl.getLevel());
+						} else if (event.equals(STARTED)) {
+							try {
+								if (!isFullScreen) {
+									videoControl.setDisplaySize(
+											Const.VIDEO_WIDTH, videoControl
+													.getSourceHeight()
+													* Const.VIDEO_WIDTH
+													/ videoControl
+															.getSourceWidth());
+								}
+							} catch (MediaException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}// edge = new
+							Date date = new Date(player.getMediaTime() / 1000);
+							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+							_currentTime.setText(df.format(date));
+							// _controlButton.setLabel("Pause");
+						} else if (event.equals(STOPPED)) {
+							Date date = new Date(player.getMediaTime() / 1000);
+							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+							_currentTime.setText(df.format(date));
+							// _controlButton.setLabel("Start");
+						} else if (event.equals(DURATION_UPDATED)) {
+							Date date = new Date(player.getDuration() / 1000);
+							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+							_duration.setText(df.format(date));
+						} else if (event.equals(END_OF_MEDIA)) {
+							// _controlButton.setLabel("Start");try{
+							try {
+								if (player != null
+										&& player.getState() == player.STARTED) {
+									videoControl.setDisplayFullScreen(false);
+									isFullScreen = false;
+								}
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
-				}
+				});
 			}
-		});
+		}).start();
+
 	}
 
 	private class TimerUpdateThread extends Thread {

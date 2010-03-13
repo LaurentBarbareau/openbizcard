@@ -67,6 +67,6 @@ public class Const {
 	public static final int NUM_LIST = 10;
 	public static final String NEXT_LABEL = "Next";
 	public static final String PREVIOUS_LABEL = "Previous";
-	public static final int DEFAULT_VOLUMN = 100;
+	public static final int DEFAULT_VOLUMN = 80;
 
 }
