@@ -163,9 +163,13 @@ public class VReencodeMCast implements Runnable {
 
 	public void run() {
 		while (true) {
-			searchForUpdate();
-//			System.out.println("wake");
-			WaitAMoment();
+			try {
+				searchForUpdate();
+				// System.out.println("wake");
+				WaitAMoment();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

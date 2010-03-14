@@ -114,6 +114,8 @@ public class VReencodeVideoConnect implements Runnable {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return success;
@@ -153,6 +155,8 @@ public class VReencodeVideoConnect implements Runnable {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -160,14 +164,20 @@ public class VReencodeVideoConnect implements Runnable {
 		try {
 			Thread.sleep(5000);// unit in micro sec
 		} catch (InterruptedException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	public void run() {
 		while (true) {
-			searchForUpdate();
-			// System.out.println("wake");
-			WaitAMoment();
+			try {
+				searchForUpdate();
+				// System.out.println("wake");
+				WaitAMoment();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
