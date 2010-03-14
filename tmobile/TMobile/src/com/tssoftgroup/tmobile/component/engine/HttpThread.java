@@ -2,6 +2,8 @@ package com.tssoftgroup.tmobile.component.engine;
 
 import java.util.Vector;
 
+import com.tssoftgroup.tmobile.utils.Const;
+
 
 public class HttpThread extends Thread {
 
@@ -30,7 +32,7 @@ public class HttpThread extends Thread {
 //				} catch (InterruptedException e) {
 //					e.printStackTrace();
 //				}
-				boolean excep = false;
+//				boolean excep = false;
 				String url = (String) urls.elementAt(0);
 				String body = (String) bodies.elementAt(0);
 				int mode = ((Integer) modes.elementAt(0)).intValue();
@@ -45,14 +47,33 @@ public class HttpThread extends Thread {
 				try {
 					res = getContent(url, body, true);
 					System.out.println("myresponse " + res);
-					handler.finishCallback(res, mode);
-				} catch (SecurityException e) {
-					excep = true;
 				}
+//				catch (SecurityException e) {
+////					excep = true;
+//				}
 				catch (Exception e) {
 					e.printStackTrace();
+					for (int i = 0; i < Const.NUM_RETRY_HTTP; i++) {
+						try {
+							res = getContent(url, body, true);
+							
+							System.out.println("myresponse " + res);
+						}catch (Exception ex) {
+							ex.printStackTrace();
+//							System.out.println("\n---------\n error httpcon.close() "+e.getMessage()+e.toString()+"\n");
+						}
+						break;
+					}
 //					System.out.println("\n---------\n error httpcon.close() "+e.getMessage()+e.toString()+"\n");
 				}
+				try {
+					handler.finishCallback(res, mode);
+				}
+					catch (Exception ex) {
+						ex.printStackTrace();
+//						System.out.println("\n---------\n error httpcon.close() "+e.getMessage()+e.toString()+"\n");
+					}
+				
 			} else {
 				try {
 					waiting = true;
