@@ -411,6 +411,7 @@ public class TrainingPlayerScreen extends MainScreen implements
 			public void run() {
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 					public void run() {
+						try{
 						if (event.equals(VOLUME_CHANGED)) {
 							// _volumeDisplay.setText("Volume : " +
 							// volumeControl.getLevel());
@@ -456,6 +457,10 @@ public class TrainingPlayerScreen extends MainScreen implements
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
+						}
+						//cat
+						}catch(Exception e){
+							e.printStackTrace();
 						}
 					}
 				});

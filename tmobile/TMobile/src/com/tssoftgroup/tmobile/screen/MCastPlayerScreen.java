@@ -88,6 +88,11 @@ public class MCastPlayerScreen extends MainScreen implements
 		isFullScreen = bool;
 	}
 	MyButtonField fullButton;
+	public void startPlayer(){
+		
+		
+	}
+	
 	public MCastPlayerScreen(PicInfo picinfo) {
 		this.picinfo = picinfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -654,8 +659,10 @@ public class MCastPlayerScreen extends MainScreen implements
 		new Thread(new Runnable() {
 
 			public void run() {
+//				try{
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 					public void run() {
+						try{
 						if (event.equals(VOLUME_CHANGED)) {
 							// _volumeDisplay.setText("Volume : " +
 							// volumeControl.getLevel());
@@ -701,8 +708,13 @@ public class MCastPlayerScreen extends MainScreen implements
 								e.printStackTrace();
 							}
 						}
+						//cat
+						}catch(Exception e){
+							e.printStackTrace();
+						}
 					}
 				});
+				
 			}
 		}).start();
 
