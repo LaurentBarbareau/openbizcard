@@ -203,6 +203,7 @@ public class ButtonListener implements FieldChangeListener {
 				_timerUpdateThread.stop();
 				break;
 			case 9:// MyVideoScreen.FullScreen
+				try{
 				if(player.getState() == player.STARTED){
 					player.stop();
 					VideoControl videoControl = (VideoControl) player
@@ -211,7 +212,9 @@ public class ButtonListener implements FieldChangeListener {
 					myPlayer.setFullScreen(true);
 					player.start();	
 				}
-				
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				break;
 			case 10:// MyVideoScreen.Comment
 				Dialog.alert("CommentButtonListener, MediaTime:"
