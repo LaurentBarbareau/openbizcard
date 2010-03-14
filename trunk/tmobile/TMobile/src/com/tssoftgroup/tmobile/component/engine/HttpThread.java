@@ -2,6 +2,9 @@ package com.tssoftgroup.tmobile.component.engine;
 
 import java.util.Vector;
 
+import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.component.Dialog;
+
 import com.tssoftgroup.tmobile.utils.Const;
 
 public class HttpThread extends Thread {
@@ -44,8 +47,10 @@ public class HttpThread extends Thread {
 				bodies.removeElementAt(0);
 				modes.removeElementAt(0);
 				String res = "";
+				boolean pass =false;
 				try {
 					res = getContent(url, body, true);
+					pass = true;
 					System.out.println("myresponse " + res);
 				}
 				// catch (SecurityException e) {
@@ -56,7 +61,7 @@ public class HttpThread extends Thread {
 					for (int i = 0; i < Const.NUM_RETRY_HTTP; i++) {
 						try {
 							res = getContent(url, body, true);
-
+							pass = true;
 							System.out.println("myresponse " + res);
 						} catch (Exception ex) {
 							ex.printStackTrace();
@@ -65,12 +70,21 @@ public class HttpThread extends Thread {
 						break;
 					}
 					// System.out.println("\n---------\n error httpcon.close() "+e.getMessage()+e.toString()+"\n");
+					
 				}
+				if(pass){
 				try {
 					handler.finishCallback(res, mode);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					// System.out.println("\n---------\n error httpcon.close() "+e.getMessage()+e.toString()+"\n");
+				}
+				}else{
+					UiApplication.getUiApplication().invokeLater(new Runnable(){
+
+						public void run() {
+							Dialog.alert("The Network is not stable. Please exit the program and try again.");
+						}});
 				}
 
 			} else {
