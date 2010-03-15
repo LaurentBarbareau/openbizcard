@@ -5960,8 +5960,8 @@ class PopClickListener extends MouseAdapter {
 }
 
     // End
-    Card popupCard ;
-     JTextArea ocrTxt;
+
+
     private void readCardBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readCardBtnT1ActionPerformed
         // Yov is working Here
         //System.out.println("TrainingImageFolder: " + trainingImgFolder);
@@ -5983,52 +5983,39 @@ class PopClickListener extends MouseAdapter {
                 //cannedBCard.initRonCemerOCR(new JTabbedPane());
                 //noteTaT1.setText( scannedBCard.retrieveData() );
 
-                JFrame textWin = new JFrame("OCR-Read Text");
-                textWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                OCRTextFrame textWin = OCRTextFrame.createTextFrame();
+                ocrTxt = textWin.getTxtArea();
 
-                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-                textWin.setLocation((dim.width/2)-(WIN_WIDTH/2), (dim.height/2)-(WIN_HEIGHT/2));
-
-                textWin.setSize(WIN_WIDTH, WIN_HEIGHT);
-                Container contentPane = textWin.getContentPane();
-                contentPane.setLayout(new BorderLayout());
-                ocrTxt = new JTextArea("OCR Running ...");
-               new Thread(new Runnable() {
-
-                    public void run() {
-                        String ocrData = scannedBCard.retrieveData();
-                        ocrTxt.setText(ocrData);
-                        // Auto Fill
-                        Card c = BusinessCardAnalyser.analyse(ocrData);
-                        // fill card into the form
-                        if(c.getWebsite() != null){
-                             webTfT1.setText(c.getWebsite());
-                        }
-                        if(c.getEmail() != null){
-                             emailTfT1.setText(c.getEmail());
-                        }
-                        if(c.getMobile() != null){
-                             mobileTfT1.setText(c.getMobile());
-                        }
-                        if(c.getCompany() != null){
-                             companyTfT1.setText(c.getCompany());
-                        }
-                         if(c.getCompanyE() != null){
-                             companyTfTE1.setText(c.getCompanyE());
-                        }
-
-                    }
-                }).start();
-               
-                
-                // Oak add right click menu
-                System.out.println("add Click listenr ");
-                ocrTxt.addMouseListener(new PopClickListener());
-
-                // End Oak
-                contentPane.add(new JScrollPane(ocrTxt),BorderLayout.CENTER);
-                textWin.setVisible(true);
-
+                if(retrieveData!=null){
+                    new Thread(retrieveData).start();
+                }else{
+                    retrieveData = new Runnable() {
+                        public void run() {
+                            String ocrData = scannedBCard.retrieveData();
+                            ocrTxt.setText(ocrData);
+                            // Auto Fill
+                            Card c = BusinessCardAnalyser.analyse(ocrData);
+                            // fill card into the form
+                            if(c.getWebsite() != null){
+                                 webTfT1.setText(c.getWebsite());
+                            }
+                            if(c.getEmail() != null){
+                                 emailTfT1.setText(c.getEmail());
+                            }
+                            if(c.getMobile() != null){
+                                 mobileTfT1.setText(c.getMobile());
+                            }
+                            if(c.getCompany() != null){
+                                 companyTfT1.setText(c.getCompany());
+                            }
+                             if(c.getCompanyE() != null){
+                                 companyTfTE1.setText(c.getCompanyE());
+                            }
+                       }
+                  };
+               new Thread(retrieveData).start();
+              }
+              ocrTxt.addMouseListener(new PopClickListener());
             }
         } else {
             if ((scannedBCardBack != null) && (scannedImageFileNameBack != null)) {
@@ -7953,5 +7940,7 @@ class PopClickListener extends MouseAdapter {
     private final int WIN_HEIGHT = 400;
     private XTableColumnModel xCol;
     private static Font defaultFont;
-
+    private Card popupCard ;
+    private JTextArea ocrTxt;
+    private Runnable retrieveData;
 }
