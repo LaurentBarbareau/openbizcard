@@ -46,6 +46,7 @@ import net.rim.device.api.ui.container.VerticalFieldManager;
 import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
+import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
@@ -88,6 +89,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		this.currentComment = currentComment;
 	}
 	MyButtonField fullButton;
+	MyButtonField playButton = null;
 	public VideoConnectPlayerScreen(PicInfo picInfo) {
 		this.picinfo = picInfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -184,7 +186,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
               *
               */
 		// CustomButtonField playButton = new
-		MyButtonField playButton = null;
+		
 		// if(player.getState()==player.STARTED){
 		// playButton = new MyButtonField("Pause",ButtonField.ELLIPSIS);
 		// }else{
@@ -215,7 +217,25 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		// edge = new XYEdges(206, 24, 6, 24);
 		// CustomButtonField commentButton = new
 		MyButtonField commentButton = new MyButtonField("Comment",
-				ButtonField.ELLIPSIS, true);
+				ButtonField.ELLIPSIS, true) {
+
+			protected void onFocus(int direction) {
+				super.onFocus(direction);
+				if (playButton.getLabel().equals("Start") && direction == -1) {
+					try {
+						// Start/resume the media player.
+						player.start();
+
+						_timerUpdateThread = new TimerUpdateThread();
+						_timerUpdateThread.start();
+						playButton.setLabel("Stop");
+					} catch (MediaException pe) {
+						System.out.println(pe.toString());
+					}
+				}
+			}
+
+		};
 		// commentButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		commentButton.setChangeListener(this);
 		buttonHorizontalManager.add(commentButton);
@@ -417,7 +437,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 						addCommentMoreInfo();
 						isAlreadyAddComment = true;
 					}
-					commentLabelField.setFocus();
+//					commentLabelField.setFocus();
 				}
 			});
 
@@ -435,10 +455,27 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 
 	private Vector commentList = null;
 	public boolean isAlreadyAddComment = false;
-	public LabelField commentLabelField = new LabelFieldWithFullBG("comments",
+	public LabelField commentLabelField = new LabelFieldWithFullBGSelectable("comments",
 			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
-					- 50 * Display.getWidth() / 480);
+					- 50 * Display.getWidth() / 480){
+		protected void onFocus(int direction) {
+			if (playButton.getLabel().equals("Stop") && direction == 1) {
+				try {
+					System.out.println("playButton.getLabel().equalsstop");
+
+					// Stop/pause the media player.
+					player.stop();
+					_timerUpdateThread.stop();
+					playButton.setLabel("Start");
+				} catch (MediaException pe) {
+					System.out.println(pe.toString());
+				}
+			}
+			hasFocus = true;
+			invalidate();
+		}
+	};
 	LabelField postCommentLabel = new LabelFieldWithFullBG("post comment",
 			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
