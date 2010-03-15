@@ -87,6 +87,7 @@ public class ImageIOHelper {
                 // End convertsioon
                 tempFileNames.add(tempFile);
             }
+            iis.close();
             writer.dispose();
             reader.dispose();
         } catch (Exception exc) {
@@ -111,13 +112,12 @@ public class ImageIOHelper {
                reader.setInput(iis);
                IIOMetadata md = reader.getImageMetadata(0);
                Node n = md.getAsTree(md.getNativeMetadataFormatName());
+               reader.dispose();
+               iis.close();
                //MetadataUtilities.displayMetadata(n);
            } catch (IOException e) {
                e.printStackTrace();
            }
-
-
-
 
            Iterator writers = ImageIO.getImageWritersByFormatName("tiff");
            ImageWriter writer = (ImageWriter) writers.next();
@@ -143,6 +143,8 @@ public class ImageIOHelper {
                ImageOutputStream ios = ImageIO.createImageOutputStream(file);
                writer.setOutput(ios);
                writer.write(bi);
+               ios.close();
+               writer.dispose();
            } catch (IOException e) {
                e.printStackTrace();
            }
