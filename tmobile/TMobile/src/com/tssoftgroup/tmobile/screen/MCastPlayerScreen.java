@@ -46,6 +46,7 @@ import net.rim.device.api.ui.container.VerticalFieldManager;
 import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
+import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
@@ -77,22 +78,22 @@ public class MCastPlayerScreen extends MainScreen implements
 	public PicInfo picinfo;
 	boolean isFullScreen = false;
 	int currentComment;
-	
+
 	public int getCurrentCommentInd() {
 		return currentComment;
 	}
+
 	public void setCurrentCommentInd(int currentComment) {
 		this.currentComment = currentComment;
 	}
+
 	public void setFullScreen(boolean bool) {
 		isFullScreen = bool;
 	}
+
 	MyButtonField fullButton;
-	public void startPlayer(){
-		
-		
-	}
-	
+	MyButtonField playButton = null;
+
 	public MCastPlayerScreen(PicInfo picinfo) {
 		this.picinfo = picinfo;
 		XYEdges edge = new XYEdges(2, 0, 2, 0);
@@ -151,14 +152,16 @@ public class MCastPlayerScreen extends MainScreen implements
 							(Display.getWidth() - Const.VIDEO_WIDTH) / 2);
 					// videoField.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 					videoField.setMargin(edge);
-					_currentTime = new CrieLabelField("00:00",MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
+					_currentTime = new CrieLabelField("00:00",
+							MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 							Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.FOCUSABLE);
 					edge = new XYEdges(200 * Display.getWidth() / 480, 5, 0,
 							15 * Display.getWidth() / 480);
 					// _currentTime.setBorder(BorderFactory.createSimpleBorder(
 					// edge, Border.STYLE_TRANSPARENT));
 					// _currentTime.setMargin(edge);
-					_duration = new CrieLabelField("00:00", MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
+					_duration = new CrieLabelField("00:00",
+							MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 							Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.FOCUSABLE);
 					edge = new XYEdges(200 * Display.getWidth() / 480, 0, 0,
 							5 * Display.getWidth() / 480);
@@ -193,7 +196,6 @@ public class MCastPlayerScreen extends MainScreen implements
 		/*
               *
               */
-		MyButtonField playButton = null;
 		// if(player.getState()==player.STARTED){
 		// playButton = new MyButtonField("Pause",ButtonField.ELLIPSIS);
 		// }else{
@@ -207,8 +209,8 @@ public class MCastPlayerScreen extends MainScreen implements
 		buttonHorizontalManager.add(playButton);
 
 		// edge = new XYEdges(206, 5, 6, 24);
-		fullButton = new MyButtonField("Full Screen",
-				ButtonField.ELLIPSIS, true);
+		fullButton = new MyButtonField("Full Screen", ButtonField.ELLIPSIS,
+				true);
 		// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		// fullButton.setMargin(edge);
 		fullButton.setChangeListener(new ButtonListener(player, 9, this));
@@ -224,7 +226,26 @@ public class MCastPlayerScreen extends MainScreen implements
 
 		// edge = new XYEdges(206, 24, 6, 24);
 		MyButtonField commentButton = new MyButtonField("Comment",
-				ButtonField.ELLIPSIS, true);
+				ButtonField.ELLIPSIS, true) {
+
+			protected void onFocus(int direction) {
+				super.onFocus(direction);
+				if (playButton.getLabel().equals("Start") && direction == -1) {
+					try {
+						// Start/resume the media player.
+						player.start();
+
+						_timerUpdateThread = new TimerUpdateThread();
+						_timerUpdateThread.start();
+						playButton.setLabel("Stop");
+					} catch (MediaException pe) {
+						System.out.println(pe.toString());
+					}
+				}
+			}
+
+		};
+
 		// commentButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		// commentButton.setMargin(edge);
 		commentButton.setChangeListener(this);
@@ -249,7 +270,7 @@ public class MCastPlayerScreen extends MainScreen implements
 		// add(bf);
 
 		addMenuItem(_mainMenuItem);
-//		addMenuItem(_videoItem);
+		// addMenuItem(_videoItem);
 		// addMenuItem( _exitFullItem );
 
 	}
@@ -272,20 +293,38 @@ public class MCastPlayerScreen extends MainScreen implements
 	private Vector moreinfoList = null;
 
 	public boolean isAlreadyAddComment = false;
-	public LabelField commentLabelField = new LabelFieldWithFullBG("comments",
-			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
+	public LabelField commentLabelField = new LabelFieldWithFullBGSelectable(
+			"comments", MyColor.COMMENT_LABEL_FONT,
+			MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
 					.getWidth()
-					- 50 * Display.getWidth() / 480);
+					- 50 * Display.getWidth() / 480) {
+		protected void onFocus(int direction) {
+			if (playButton.getLabel().equals("Stop") && direction == 1) {
+				try {
+					System.out.println("playButton.getLabel().equalsstop");
+
+					// Stop/pause the media player.
+					player.stop();
+					_timerUpdateThread.stop();
+					playButton.setLabel("Start");
+				} catch (MediaException pe) {
+					System.out.println(pe.toString());
+				}
+			}
+			hasFocus = true;
+			invalidate();
+		}
+	};
 	LabelField postCommentLabel = new LabelFieldWithFullBG("post comment",
-			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
-					.getWidth()
-					- 50 * Display.getWidth() / 480);
+			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
+			MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
+					* Display.getWidth() / 480);
 
 	EditField postCommentTF = new EditField("", "");
 	LabelField moreinfoLabelField = new LabelFieldWithFullBG("more info",
-			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
-					.getWidth()
-					- 50 * Display.getWidth() / 480);
+			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
+			MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
+					* Display.getWidth() / 480);
 
 	public void addComment() {
 		postCommentTF.setText("");
@@ -303,7 +342,8 @@ public class MCastPlayerScreen extends MainScreen implements
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		commentsManager.add(commentLabel);
-		commentLabel = new CrieLabelField(Engine.comment.getComment(), MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
+		commentLabel = new CrieLabelField(Engine.comment.getComment(),
+				MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 				LabelField.FOCUSABLE);
 		commentLabel.setMargin(edge);
@@ -311,8 +351,7 @@ public class MCastPlayerScreen extends MainScreen implements
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		commentsManager.add(commentLabel);
-		FixMainScreen.processHaveComment(commentsManager, picinfo,
-				this);
+		FixMainScreen.processHaveComment(commentsManager, picinfo, this);
 	}
 
 	public void addCommentMoreInfo() {
@@ -342,7 +381,7 @@ public class MCastPlayerScreen extends MainScreen implements
 			String[] more = { moreinfo.getTitle(), moreinfo.getID() };
 			moreinfoList.addElement(more);
 		}
-
+		boolean isSet = false;
 		if (commentList != null && commentList.size() > 0) {
 			for (int i = 0; i < commentList.size(); i++) {
 				String[] commentArr = (String[]) commentList.elementAt(i);
@@ -352,6 +391,19 @@ public class MCastPlayerScreen extends MainScreen implements
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
 						LabelField.FOCUSABLE);
+				System.out.println("is set " + isSet);
+				System.out.println("comment isze != 0");
+				if (!isSet) {
+					isSet = true;
+					commentLabel = new CrieLabelField("By " + commentArr[2]
+							+ " at " + commentArr[1] + ": ",
+							MyColor.FONT_DESCRIPTION_PLAYER,
+							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+									- (Display.getWidth() > 350 ? 8 : 2),
+							LabelField.FOCUSABLE) {
+					};
+				}
+
 				commentLabel.isFix = true;
 				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 						35 * Display.getWidth() / 480);
@@ -359,7 +411,8 @@ public class MCastPlayerScreen extends MainScreen implements
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
 				commentsManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0],MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
+				commentLabel = new CrieLabelField(commentArr[0],
+						MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				commentLabel.setMargin(edge);
@@ -379,14 +432,44 @@ public class MCastPlayerScreen extends MainScreen implements
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);
+			System.out.println("is set " + isSet);
+			if (!isSet) {
+				System.out.println("comment isze == 0");
+				isSet = true;
+				commentLabel = new CrieLabelField(Wording.NO_COMMENT,
+						MyColor.FONT_DESCRIPTION_PLAYER,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+								- (Display.getWidth() > 350 ? 8 : 2),
+						LabelField.FOCUSABLE) {
+
+					protected void onFocus(int direction) {
+						// super.onFocus(direction);
+						System.out.println("onFocus");
+						if (playButton.getLabel().equals("Stop")
+								&& direction == 1) {
+							System.out
+									.println("playButton.getLabel().equalsstop");
+							try {
+								// Stop/pause the media player.
+								player.stop();
+								_timerUpdateThread.stop();
+								playButton.setLabel("Start");
+								invalidate();
+							} catch (MediaException pe) {
+								System.out.println(pe.toString());
+							}
+						}
+					}
+
+				};
+			}
 			commentLabel.isFix = true;
 			edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 					35 * Display.getWidth() / 480);
 			commentLabel.setMargin(edge);
 			commentsManager.add(commentLabel);
 		}
-		FixMainScreen.processHaveComment(commentsManager, picinfo,
-				this);
+		FixMainScreen.processHaveComment(commentsManager, picinfo, this);
 		add(commentsManager);
 		// More info
 		// moreinfoList = new Vector();
@@ -497,8 +580,8 @@ public class MCastPlayerScreen extends MainScreen implements
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
-//		case Characters.BACKSPACE:
-//			return true;
+			// case Characters.BACKSPACE:
+			// return true;
 		case Characters.ESCAPE:
 			if (!bool) {
 
@@ -553,7 +636,8 @@ public class MCastPlayerScreen extends MainScreen implements
 				// player.stop();
 				// VideoControl videoControl = (VideoControl)
 				// player.getControl("VideoControl");
-				if (player != null && player.getState() == player.STARTED && isFullScreen) {
+				if (player != null && player.getState() == player.STARTED
+						&& isFullScreen) {
 					bool = true;
 					isFullScreen = false;
 					videoControl.setDisplayFullScreen(false);
@@ -562,17 +646,17 @@ public class MCastPlayerScreen extends MainScreen implements
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if(!bool){
-			try {
-				player.stop();
-				_timerUpdateThread.stop();
-			} catch (Exception e) {
-				System.out.println("" + e.toString());
-			}
-			UiApplication.getUiApplication().popScreen(
-					MCastPlayerScreen.this);
-			UiApplication.getUiApplication().popScreen(
-					UiApplication.getUiApplication().getActiveScreen());
+			if (!bool) {
+				try {
+					player.stop();
+					_timerUpdateThread.stop();
+				} catch (Exception e) {
+					System.out.println("" + e.toString());
+				}
+				UiApplication.getUiApplication().popScreen(
+						MCastPlayerScreen.this);
+				UiApplication.getUiApplication().popScreen(
+						UiApplication.getUiApplication().getActiveScreen());
 			}
 		}
 	}
@@ -635,23 +719,23 @@ public class MCastPlayerScreen extends MainScreen implements
 						isAlreadyAddComment = true;
 					}
 					if (myBtn.getLabel().equals("Comment")) {
-						commentLabelField.setFocus();
+//						commentLabelField.setFocus();
 					} else {
-						moreinfoLabelField.setFocus();
+//						moreinfoLabelField.setFocus();
 					}
 
 				}
 			});
-		}else if (btnField.getLabel().equals("Back")) {
+		} else if (btnField.getLabel().equals("Back")) {
 			try {
 				player.stop();
 				_timerUpdateThread.stop();
 				UiApplication.getUiApplication().popScreen(
 						UiApplication.getUiApplication().getActiveScreen());
-				} catch (MediaException pe) {
-					System.out.println(pe.toString());
-				}
+			} catch (MediaException pe) {
+				System.out.println(pe.toString());
 			}
+		}
 	}
 
 	public void playerUpdate(Player _player, final String event,
@@ -659,62 +743,71 @@ public class MCastPlayerScreen extends MainScreen implements
 		new Thread(new Runnable() {
 
 			public void run() {
-//				try{
+				// try{
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 					public void run() {
-						try{
-						if (event.equals(VOLUME_CHANGED)) {
-							// _volumeDisplay.setText("Volume : " +
-							// volumeControl.getLevel());
-						} else if (event.equals(STARTED)) {
-							fullButton.setFocusable(true);
-							try {
-								if (!isFullScreen) {
-									videoControl.setDisplaySize(
-											Const.VIDEO_WIDTH, videoControl
-													.getSourceHeight()
-													* Const.VIDEO_WIDTH
-													/ videoControl
-															.getSourceWidth());
+						try {
+							if (event.equals(VOLUME_CHANGED)) {
+								// _volumeDisplay.setText("Volume : " +
+								// volumeControl.getLevel());
+							} else if (event.equals(STARTED)) {
+								fullButton.setFocusable(true);
+								try {
+									if (!isFullScreen) {
+										videoControl
+												.setDisplaySize(
+														Const.VIDEO_WIDTH,
+														videoControl
+																.getSourceHeight()
+																* Const.VIDEO_WIDTH
+																/ videoControl
+																		.getSourceWidth());
+									}
+								} catch (MediaException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}// edge = new
+								Date date = new Date(
+										player.getMediaTime() / 1000);
+								SimpleDateFormat df = new SimpleDateFormat(
+										"mm:ss");
+								_currentTime.setText(df.format(date));
+								// _controlButton.setLabel("Pause");
+							} else if (event.equals(STOPPED)) {
+								fullButton.setFocusable(false);
+								Date date = new Date(
+										player.getMediaTime() / 1000);
+								SimpleDateFormat df = new SimpleDateFormat(
+										"mm:ss");
+								_currentTime.setText(df.format(date));
+								// _controlButton.setLabel("Start");
+							} else if (event.equals(DURATION_UPDATED)) {
+								Date date = new Date(
+										player.getDuration() / 1000);
+								SimpleDateFormat df = new SimpleDateFormat(
+										"mm:ss");
+								_duration.setText(df.format(date));
+							} else if (event.equals(END_OF_MEDIA)) {
+								// _controlButton.setLabel("Start");try{
+								try {
+									if (player != null
+											&& player.getState() == player.STARTED) {
+										fullButton.setFocusable(false);
+										videoControl
+												.setDisplayFullScreen(false);
+										isFullScreen = false;
+									}
+								} catch (Exception e) {
+									e.printStackTrace();
 								}
-							} catch (MediaException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}// edge = new
-							Date date = new Date(player.getMediaTime() / 1000);
-							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-							_currentTime.setText(df.format(date));
-							// _controlButton.setLabel("Pause");
-						} else if (event.equals(STOPPED)) {
-							fullButton.setFocusable(false);
-							Date date = new Date(player.getMediaTime() / 1000);
-							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-							_currentTime.setText(df.format(date));
-							// _controlButton.setLabel("Start");
-						} else if (event.equals(DURATION_UPDATED)) {
-							Date date = new Date(player.getDuration() / 1000);
-							SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-							_duration.setText(df.format(date));
-						} else if (event.equals(END_OF_MEDIA)) {
-							// _controlButton.setLabel("Start");try{
-							try {
-								if (player != null
-										&& player.getState() == player.STARTED) {
-									fullButton.setFocusable(false);
-									videoControl.setDisplayFullScreen(false);
-									isFullScreen = false;
-								}
-							} catch (Exception e) {
-								e.printStackTrace();
 							}
-						}
-						//cat
-						}catch(Exception e){
+							// cat
+						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 				});
-				
+
 			}
 		}).start();
 
