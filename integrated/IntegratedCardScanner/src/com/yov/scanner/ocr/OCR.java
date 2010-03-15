@@ -76,7 +76,7 @@ public class OCR {
             System.out.println("Exit value = " + w);
             
             // delete temp working files
-            tempImage.delete();
+//            tempImage.delete();
             
             if (w == 0) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(outputFile.getAbsolutePath() + ".txt"), "UTF-8"));
