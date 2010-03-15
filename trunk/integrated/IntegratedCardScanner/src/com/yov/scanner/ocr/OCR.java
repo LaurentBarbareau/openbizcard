@@ -26,7 +26,7 @@ public class OCR {
     
     public String recognizeText(File imageFile, int index, boolean all, String imageFormat, String lang) throws Exception {
         ArrayList<File> tempImages = ImageIOHelper.createImages(imageFile, index, all, imageFormat);
-        
+
         File outputFile = new File(imageFile.getParentFile(), "output");
         StringBuffer strB = new StringBuffer();
         
@@ -120,7 +120,7 @@ public class OCR {
             System.out.println("Exit value = " + w);
 
             // delete temp working files
-            tempImage.delete();
+//            System.out.println("success0 :"+tempImage.delete());
 
             if (w2 == 0) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(outputFile.getAbsolutePath() + ".txt"), "UTF-8"));
@@ -151,8 +151,12 @@ public class OCR {
                 }
                 throw new RuntimeException(msg);
             }
-
         }
+
+        for (File image : tempImages) {
+           System.out.println("deleted temp file success : "+image.delete());
+        }
+
         new File(outputFile.getAbsolutePath() + ".txt").delete();
         return strB.toString();
     }
