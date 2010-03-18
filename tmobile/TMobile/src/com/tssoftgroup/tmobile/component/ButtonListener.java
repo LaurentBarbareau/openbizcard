@@ -71,7 +71,9 @@ public class ButtonListener implements FieldChangeListener {
 		super();
 		this.buttonID = buttonID;
 	}
-	 MyPlayer myPlayer;
+
+	MyPlayer myPlayer;
+
 	public ButtonListener(Player player, int buttonID, MyPlayer m) {
 		super();
 		this.player = player;
@@ -129,6 +131,8 @@ public class ButtonListener implements FieldChangeListener {
 		this.picInfo = picinfo;
 		this.buttonID = buttonID;
 	}
+
+	public long lastFull = 0;
 
 	public void fieldChanged(Field field, int context) {
 		try {
@@ -203,17 +207,22 @@ public class ButtonListener implements FieldChangeListener {
 				_timerUpdateThread.stop();
 				break;
 			case 9:// MyVideoScreen.FullScreen
-				try{
-				if(player.getState() == player.STARTED){
-					player.stop();
-					VideoControl videoControl = (VideoControl) player
-							.getControl("VideoControl");
-					videoControl.setDisplayFullScreen(true);
-					myPlayer.setFullScreen(true);
-					player.start();	
-				}
-				}catch(Exception e){
-					e.printStackTrace();
+				long now = System.currentTimeMillis();
+				if (now - lastFull > 2000) {
+
+					try {
+						if (player.getState() == player.STARTED) {
+							player.stop();
+							VideoControl videoControl = (VideoControl) player
+									.getControl("VideoControl");
+							videoControl.setDisplayFullScreen(true);
+							myPlayer.setFullScreen(true);
+							player.start();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					lastFull = now ;
 				}
 				break;
 			case 10:// MyVideoScreen.Comment
@@ -247,53 +256,53 @@ public class ButtonListener implements FieldChangeListener {
 				// });
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 					public void run() {
-//						HttpConn.downlodFile(Const.fileName);
-//						UiApplication.getUiApplication().popScreen(
-//								UiApplication.getUiApplication()
-//										.getActiveScreen());
+						// HttpConn.downlodFile(Const.fileName);
+						// UiApplication.getUiApplication().popScreen(
+						// UiApplication.getUiApplication()
+						// .getActiveScreen());
 					}
 				});
 				break;
 			case 12:// MyDocumentMain.Sharing
 				ShareDocVideoTitleDescriptionDialog.getInstance().myshow();
-				
+
 				break;
 			case 13:// MyDocumentMain.Refresh
 				UiApplication.getUiApplication().pushModalScreen(
 						DocumentListScreen.getInstance());
 				break;
 			case 14:// MyDocumentShare.Submit
-//				if (Const.fileToUpload.trim().equals("")
-//						|| this.editField.getText().trim().equals(""))
-//					Dialog.alert("Please fill all the field");
-//				else {
-//					/*
-//					 * Dialog.alert("Sending document... Please wait"); byte
-//					 * result = HttpConn.uploadFile(Const.fileToUpload,
-//					 * this.editField.getText()); if(result ==
-//					 * Const.status_fail) Dialog.alert("Submission failed");
-//					 * else Dialog.alert("Submission success");
-//					 */
-//
-//					Status.show("Sending document (0%)... Please wait");
-//					int noOfFiles = splitFile(Const.fileToUpload);
-//					byte result = Const.status_fail;
-//					for (int i = 0; i < noOfFiles; i++) {
-//						Status.show("Sending document (" + (i + 1) * 100
-//								/ noOfFiles + "%)... Please wait");
-//						result = HttpConn.uploadFile(Const.fileToUpload + "."
-//								+ i, this.editField.getText(), noOfFiles);
-//						deleteFile(Const.fileToUpload + "." + i);
-//						if (result == Const.status_fail)
-//							break;
-//					}
-//					if (result == Const.status_fail)
-//						Dialog.alert("Submission failed");
-//					else {
-//						Status.show("Sending document (100%)... Please wait");
-//						Dialog.alert("Submission success");
-//					}
-//				}
+			// if (Const.fileToUpload.trim().equals("")
+			// || this.editField.getText().trim().equals(""))
+			// Dialog.alert("Please fill all the field");
+			// else {
+			// /*
+			// * Dialog.alert("Sending document... Please wait"); byte
+			// * result = HttpConn.uploadFile(Const.fileToUpload,
+			// * this.editField.getText()); if(result ==
+			// * Const.status_fail) Dialog.alert("Submission failed");
+			// * else Dialog.alert("Submission success");
+			// */
+			//
+			// Status.show("Sending document (0%)... Please wait");
+			// int noOfFiles = splitFile(Const.fileToUpload);
+			// byte result = Const.status_fail;
+			// for (int i = 0; i < noOfFiles; i++) {
+			// Status.show("Sending document (" + (i + 1) * 100
+			// / noOfFiles + "%)... Please wait");
+			// result = HttpConn.uploadFile(Const.fileToUpload + "."
+			// + i, this.editField.getText(), noOfFiles);
+			// deleteFile(Const.fileToUpload + "." + i);
+			// if (result == Const.status_fail)
+			// break;
+			// }
+			// if (result == Const.status_fail)
+			// Dialog.alert("Submission failed");
+			// else {
+			// Status.show("Sending document (100%)... Please wait");
+			// Dialog.alert("Submission success");
+			// }
+			// }
 				break;
 			case 15:// MyDocumentShare.Cancel
 				UiApplication.getUiApplication().popScreen(
@@ -309,16 +318,16 @@ public class ButtonListener implements FieldChangeListener {
 				Dialog.alert("Refreshing!");
 				break;
 			case 19:// MyDocumentMain.Browse
-//				UiApplication.getUiApplication().pushModalScreen(
-//						new FileExplorerDemoScreen());
+			// UiApplication.getUiApplication().pushModalScreen(
+			// new FileExplorerDemoScreen());
 				break;
 			case 20:// MyVideoComment.Cancel
 				UiApplication.getUiApplication().popScreen(
 						UiApplication.getUiApplication().getActiveScreen());
 				break;
 			case 21:// Click upload a video in video connect
-			// UiApplication.getUiApplication().pushModalScreen(
-			// MyMovieShare.getInstance());
+				// UiApplication.getUiApplication().pushModalScreen(
+				// MyMovieShare.getInstance());
 				BrowseVideoTitleDescriptionDialog.getInstance().myshow();
 				break;
 			case 22:// MyVideoShare.Browse
@@ -372,8 +381,8 @@ public class ButtonListener implements FieldChangeListener {
 				Engine.getInstance().viewVideoConnect(0, "");
 				break;
 			case 25:// HelloWorld.Poll
-//				UiApplication.getUiApplication().pushModalScreen(
-//						new MyPollMain());
+			// UiApplication.getUiApplication().pushModalScreen(
+			// new MyPollMain());
 				UiApplication.getUiApplication().pushScreen(
 						WaitScreen.getInstance());
 				Engine.getInstance().getPoll(0, "");
@@ -389,8 +398,8 @@ public class ButtonListener implements FieldChangeListener {
 			case 27:// MyMovieMain.Refresh
 				UiApplication.getUiApplication().popScreen(
 						UiApplication.getUiApplication().getActiveScreen());
-//				UiApplication.getUiApplication().pushModalScreen(
-//						VideoConnectScreen.getInstance(editField.getText()));
+				// UiApplication.getUiApplication().pushModalScreen(
+				// VideoConnectScreen.getInstance(editField.getText()));
 				break;
 			// Capture Video in Video Connect Screen
 			case 28:// MyMovieShare.Record
