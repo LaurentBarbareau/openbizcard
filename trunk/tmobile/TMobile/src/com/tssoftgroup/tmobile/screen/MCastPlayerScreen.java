@@ -199,7 +199,25 @@ public class MCastPlayerScreen extends MainScreen implements
 		// if(player.getState()==player.STARTED){
 		// playButton = new MyButtonField("Pause",ButtonField.ELLIPSIS);
 		// }else{
-		playButton = new MyButtonField("Stop", ButtonField.ELLIPSIS, true);
+		playButton = new MyButtonField("Stop", ButtonField.ELLIPSIS, true){
+
+			protected void onFocus(int direction) {
+				super.onFocus(direction);
+				if (playButton.getLabel().equals("Start") && direction == -1) {
+					try {
+						// Start/resume the media player.
+						player.start();
+
+						_timerUpdateThread = new TimerUpdateThread();
+						_timerUpdateThread.start();
+						playButton.setLabel("Stop");
+					} catch (MediaException pe) {
+						System.out.println(pe.toString());
+					}
+				}
+			}
+
+		};
 		// }
 		// playButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		// playButton.setMargin(edge);
@@ -210,7 +228,25 @@ public class MCastPlayerScreen extends MainScreen implements
 
 		// edge = new XYEdges(206, 5, 6, 24);
 		fullButton = new MyButtonField("Full Screen", ButtonField.ELLIPSIS,
-				true);
+				true){
+
+			protected void onFocus(int direction) {
+				super.onFocus(direction);
+				if (playButton.getLabel().equals("Start") && direction == -1) {
+					try {
+						// Start/resume the media player.
+						player.start();
+
+						_timerUpdateThread = new TimerUpdateThread();
+						_timerUpdateThread.start();
+						playButton.setLabel("Stop");
+					} catch (MediaException pe) {
+						System.out.println(pe.toString());
+					}
+				}
+			}
+
+		};
 		// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		// fullButton.setMargin(edge);
 		fullButton.setChangeListener(new ButtonListener(player, 9, this));
@@ -218,7 +254,25 @@ public class MCastPlayerScreen extends MainScreen implements
 		fullButton.setFocusable(false);
 		// edge = new XYEdges(206, 5, 6, 5);
 		MyButtonField infoButton = new MyButtonField("More Info",
-				ButtonField.ELLIPSIS, true);
+				ButtonField.ELLIPSIS, true){
+
+			protected void onFocus(int direction) {
+				super.onFocus(direction);
+				if (playButton.getLabel().equals("Start") && direction == -1) {
+					try {
+						// Start/resume the media player.
+						player.start();
+
+						_timerUpdateThread = new TimerUpdateThread();
+						_timerUpdateThread.start();
+						playButton.setLabel("Stop");
+					} catch (MediaException pe) {
+						System.out.println(pe.toString());
+					}
+				}
+			}
+
+		};
 		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
 		// infoButton.setMargin(edge);
 		infoButton.setChangeListener(this);
