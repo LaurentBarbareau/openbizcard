@@ -3,6 +3,7 @@ package com.tssoftgroup.tmobile.component.engine;
 import java.io.IOException;
 import java.util.Vector;
 
+import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.component.Dialog;
@@ -416,6 +417,7 @@ public class Engine implements HTTPHandler {
 						UiApplication.getUiApplication().popScreen(current);
 						UiApplication.getUiApplication().pushScreen(
 								new MCastDetail(Engine.commnetPicInfo));
+						Dialog.alert("Your Comment is sent");
 					}
 					if (current instanceof MCastPlayerScreen) {
 						// UiApplication.getUiApplication().popScreen(current);
@@ -435,12 +437,17 @@ public class Engine implements HTTPHandler {
 						cur.isAlreadyAddComment = true;
 //						cur.commentLabelField.setFocus();
 						// UiApplication.getUiApplication().pushScreen(scr);
-
+						// 
+						String choices[] = { "OK"};
+						 int values[] = { Dialog.OK};
+						Dialog dia = new Dialog("Your Comment is sent", choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+						dia.doModal();
 					}
 					if (current instanceof VideoConnectDetail) {
 						UiApplication.getUiApplication().popScreen(current);
 						UiApplication.getUiApplication().pushScreen(
 								new VideoConnectDetail(Engine.commnetPicInfo));
+						Dialog.alert("Your Comment is sent");
 					}
 					if (current instanceof VideoConnectPlayerScreen) {
 						// UiApplication.getUiApplication().popScreen(current);
@@ -459,8 +466,13 @@ public class Engine implements HTTPHandler {
 						cur.addComment();
 						cur.isAlreadyAddComment = true;
 						cur.commentLabelField.setFocus();
+						// 
+						String choices[] = { "OK"};
+						 int values[] = { Dialog.OK};
+						Dialog dia = new Dialog("Your Comment is sent", choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+						dia.doModal();
 					}
-					Dialog.alert("Your Comment is sent");
+					
 				}
 			});
 		} else if (mode == MODE_SEND_MORE_INFO) {

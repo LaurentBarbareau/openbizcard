@@ -78,7 +78,7 @@ public class MCastPlayerScreen extends MainScreen implements
 	public PicInfo picinfo;
 	boolean isFullScreen = false;
 	int currentComment;
-
+	private CommentsDialog commentDialog;
 	public int getCurrentCommentInd() {
 		return currentComment;
 	}
@@ -305,7 +305,7 @@ public class MCastPlayerScreen extends MainScreen implements
 		commentButton.setChangeListener(this);
 		buttonHorizontalManager.add(commentButton);
 		// mainManager.add(buttonHorizontalManager);
-		edge = new XYEdges(5, 0, 0, (Display.getWidth()
+		edge = new XYEdges(Const.DURATION_MARGIN_TOP, 0, 0, (Display.getWidth()
 				- _currentTime.getPreferredWidth() - 3) / 2);
 		HorizontalFieldManager timeManager = new HorizontalFieldManager();
 		timeManager.add(_currentTime);
@@ -393,7 +393,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
 				XYEdges edge;
-				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2, 35 * Display
+				edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
 						.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
@@ -426,34 +426,21 @@ public class MCastPlayerScreen extends MainScreen implements
 						MyColor.FONT_DESCRIPTION_PLAYER,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
-						LabelField.FOCUSABLE) {
-
-					protected void onFocus(int direction) {
-						// super.onFocus(direction);
-						System.out.println("onFocus");
-						if (playButton.getLabel().equals("Stop")
-								&& direction == 1) {
-							System.out
-									.println("playButton.getLabel().equalsstop");
-							try {
-								// Stop/pause the media player.
-								player.stop();
-								_timerUpdateThread.stop();
-								playButton.setLabel("Start");
-								invalidate();
-							} catch (MediaException pe) {
-								System.out.println(pe.toString());
-							}
-						}
-					}
-
-				};
+						LabelField.FOCUSABLE) ;
 			}
 			commentLabel.isFix = true;
+			XYEdges edge;
+			edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
+					.getWidth() / 480);
+			commentLabel.setMargin(edge);
 			commentsManager.add(commentLabel);
 		}
-		CommentsDialog commentsDialog = new CommentsDialog(commentsManager);
-		commentsDialog.myshow();
+		if(commentDialog == null){
+			commentDialog = new CommentsDialog(commentsManager, picinfo);
+			commentDialog.myshow();
+		}else{
+			commentDialog.myshow();
+		}
 	}	
 	protected boolean keyDown(int arg0, int arg1) {
 		// TODO Auto-generated method stub

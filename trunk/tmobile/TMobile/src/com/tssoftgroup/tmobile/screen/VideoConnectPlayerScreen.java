@@ -276,7 +276,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		commentButton.setChangeListener(this);
 		buttonHorizontalManager.add(commentButton);
 
-		edge = new XYEdges(5, 0, 0, (Display.getWidth()
+		edge = new XYEdges(Const.DURATION_MARGIN_TOP, 0, 0, (Display.getWidth()
 				- _currentTime.getPreferredWidth() - 3) / 2);
 		HorizontalFieldManager timeManager = new HorizontalFieldManager();
 		timeManager.add(_currentTime);
