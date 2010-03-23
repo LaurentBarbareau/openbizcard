@@ -479,8 +479,11 @@ public class Engine implements HTTPHandler {
 			UiApplication.getUiApplication().invokeLater(new Runnable() {
 
 				public void run() {
-					Dialog.alert("This file has been sent to "
-							+ ProfileEntry.getInstance().email);
+					String choices[] = { "OK"};
+					 int values[] = { Dialog.OK};
+					Dialog dia = new Dialog("This file has been sent to "
+							+ ProfileEntry.getInstance().email, choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+					dia.doModal();
 				}
 			});
 		} else if (mode == MODE_VIEWTRAINING) {

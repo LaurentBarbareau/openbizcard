@@ -48,6 +48,7 @@ import com.tssoftgroup.tmobile.component.CommentsDialog;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
+import com.tssoftgroup.tmobile.component.MoreInfoDialog;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
@@ -79,6 +80,7 @@ public class MCastPlayerScreen extends MainScreen implements
 	boolean isFullScreen = false;
 	int currentComment;
 	private CommentsDialog commentDialog;
+	private MoreInfoDialog moreinfoDialog;
 	public int getCurrentCommentInd() {
 		return currentComment;
 	}
@@ -442,6 +444,66 @@ public class MCastPlayerScreen extends MainScreen implements
 			commentDialog.myshow();
 		}
 	}	
+	public void showMoreInfoDialog(){
+
+		VerticalFieldManager moreinfoManager = new VerticalFieldManager();
+		moreinfoList = new Vector();
+
+		// / add data to moreinfo list
+		for (int i = 0; i < picinfo.moreInfos.size(); i++) {
+			MoreInfo moreinfo = (MoreInfo) picinfo.moreInfos.elementAt(i);
+			String[] more = { moreinfo.getTitle(), moreinfo.getID() };
+			moreinfoList.addElement(more);
+		}
+		if (moreinfoList != null && moreinfoList.size() > 0) {
+			for (int i = 0; i < moreinfoList.size(); i++) {
+				HorizontalFieldManager moreinfoManager2 = new HorizontalFieldManager();
+				String[] moreinfoArr = (String[]) moreinfoList.elementAt(i);
+				// / Label
+				CrieLabelField commentLabel = new CrieLabelField(
+						moreinfoArr[0], MyColor.FONT_DESCRIPTION_PLAYER,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
+						LabelField.NON_FOCUSABLE);
+				XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
+						.getWidth() / 480);
+				commentLabel.setMargin(edge);
+				// commentLabel.isFix = true;
+				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
+				// Border.STYLE_TRANSPARENT));
+				// / Button
+				MyButtonField emailButton = new MyButtonField("Email Me",
+						ButtonField.ELLIPSIS, true);
+
+				emailButton.setChangeListener(new ButtonListener(
+						moreinfoArr[1], 33));
+				emailButton.isBlackBG = true;
+				moreinfoManager2.add(commentLabel);
+				moreinfoManager2.add(emailButton);
+
+				moreinfoManager.add(moreinfoManager2);
+			}
+		} else if (moreinfoList.size() == 0) {
+			CrieLabelField moreinfoLabel = new CrieLabelField(
+					Wording.NO_MORE_INFO, MyColor.FONT_DESCRIPTION_PLAYER,
+					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+							- (Display.getWidth() > 350 ? 8 : 2),
+					LabelField.FOCUSABLE);
+			XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
+					.getWidth() / 480);
+			moreinfoLabel.isFix = true;
+			moreinfoLabel.setMargin(edge);
+			moreinfoManager.add(moreinfoLabel);
+		}
+		if(moreinfoDialog == null){
+			moreinfoDialog = new MoreInfoDialog(moreinfoManager, picinfo);
+			moreinfoDialog.myshow();
+		}else{
+			moreinfoDialog.myshow();
+		}
+	
+	}
+	
+	
 	protected boolean keyDown(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 
@@ -598,26 +660,10 @@ public class MCastPlayerScreen extends MainScreen implements
 			} catch (MediaException pe) {
 				System.out.println(pe.toString());
 			}
-		} else if (btnField.getLabel().equals("Comment")
-				|| btnField.getLabel().equals("More Info")) {
-//			final MyButtonField myBtn = btnField;
-//			UiApplication.getUiApplication().invokeLater(new Runnable() {
-//
-//				public void run() {
-//					if (!isAlreadyAddComment) {
-//						addCommentMoreInfo();
-//						isAlreadyAddComment = true;
-//					}
-//					if (myBtn.getLabel().equals("Comment")) {
-////						commentLabelField.setFocus();
-//					} else {
-////						moreinfoLabelField.setFocus();
-//					}
-//
-//				}
-//			});
-//			pressBack();
+		} else if (btnField.getLabel().equals("Comment")) {
 			showCommentsDialog();
+		} else if (btnField.getLabel().equals("More Info")) {
+			showMoreInfoDialog();
 		} else if (btnField.getLabel().equals("Back")) {
 			try {
 				player.stop();
