@@ -318,8 +318,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 
 		return super.keyDown(arg0, arg1);
 	}
-
-	public boolean keyChar(char c, int status, int time) {
+	public void pressBack(){
 		boolean bool = false;
 		try {
 			// player.stop();
@@ -334,26 +333,31 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		if (!bool) {
+
+			try {
+				player.stop();
+				// player.deallocate();
+				// player.close();
+				_timerUpdateThread.stop();
+			} catch (Exception e) {
+				System.out.println("" + e.toString());
+			}
+			UiApplication.getUiApplication().popScreen(
+					UiApplication.getUiApplication().getActiveScreen());
+		}
+
+		
+	}
+	public boolean keyChar(char c, int status, int time) {
+		
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
 //		case Characters.BACKSPACE:
 //			return true;
 		case Characters.ESCAPE:
-			if (!bool) {
-
-				try {
-					player.stop();
-					// player.deallocate();
-					// player.close();
-					_timerUpdateThread.stop();
-				} catch (Exception e) {
-					System.out.println("" + e.toString());
-				}
-				UiApplication.getUiApplication().popScreen(
-						UiApplication.getUiApplication().getActiveScreen());
-			}
-
+			pressBack();
 			return true;
 		default:
 			return super.keyChar(c, status, time);
@@ -466,17 +470,17 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 				System.out.println(pe.toString());
 			}
 		} else if (btnField.getLabel().equals("Comment")) {
-			UiApplication.getUiApplication().invokeLater(new Runnable() {
-
-				public void run() {
-					if (!isAlreadyAddComment) {
-						addCommentMoreInfo();
-						isAlreadyAddComment = true;
-					}
-//					commentLabelField.setFocus();
-				}
-			});
-
+//			UiApplication.getUiApplication().invokeLater(new Runnable() {
+//
+//				public void run() {
+//					if (!isAlreadyAddComment) {
+//						addCommentMoreInfo();
+//						isAlreadyAddComment = true;
+//					}
+////					commentLabelField.setFocus();
+//				}
+//			});
+			pressBack();
 		}else if (btnField.getLabel().equals("Back")) {
 			try {
 			player.stop();
