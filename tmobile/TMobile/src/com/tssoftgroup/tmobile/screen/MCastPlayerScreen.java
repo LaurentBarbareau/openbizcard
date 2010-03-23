@@ -616,40 +616,14 @@ public class MCastPlayerScreen extends MainScreen implements
 	}
 
 	public boolean keyChar(char c, int status, int time) {
-		boolean bool = false;
-		try {
-			// player.stop();
-			// VideoControl videoControl = (VideoControl)
-			// player.getControl("VideoControl");
-			if (player != null && player.getState() == player.STARTED
-					&& isFullScreen) {
-				bool = true;
-				isFullScreen = false;
-				videoControl.setDisplayFullScreen(false);
-			}
-			// player.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
 			// case Characters.BACKSPACE:
 			// return true;
 		case Characters.ESCAPE:
-			if (!bool) {
-
-				try {
-					player.stop();
-					// player.deallocate();
-					// player.close();
-					_timerUpdateThread.stop();
-				} catch (Exception e) {
-					System.out.println("" + e.toString());
-				}
-				UiApplication.getUiApplication().popScreen(
-						UiApplication.getUiApplication().getActiveScreen());
-			}
+			pressBack();
 
 			return true;
 		default:
@@ -739,7 +713,36 @@ public class MCastPlayerScreen extends MainScreen implements
 			// UiApplication.getUiApplication().getActiveScreen() );
 		}
 	}
+	private void pressBack(){
+		boolean bool = false;
+		try {
+			// player.stop();
+			// VideoControl videoControl = (VideoControl)
+			// player.getControl("VideoControl");
+			if (player != null && player.getState() == player.STARTED
+					&& isFullScreen) {
+				bool = true;
+				isFullScreen = false;
+				videoControl.setDisplayFullScreen(false);
+			}
+			// player.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (!bool) {
 
+			try {
+				player.stop();
+				// player.deallocate();
+				// player.close();
+				_timerUpdateThread.stop();
+			} catch (Exception e) {
+				System.out.println("" + e.toString());
+			}
+			UiApplication.getUiApplication().popScreen(
+					UiApplication.getUiApplication().getActiveScreen());
+		}
+	}
 	public void fieldChanged(Field field, int context) {
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField.getLabel().equals("Start")) {
@@ -764,22 +767,23 @@ public class MCastPlayerScreen extends MainScreen implements
 			}
 		} else if (btnField.getLabel().equals("Comment")
 				|| btnField.getLabel().equals("More Info")) {
-			final MyButtonField myBtn = btnField;
-			UiApplication.getUiApplication().invokeLater(new Runnable() {
-
-				public void run() {
-					if (!isAlreadyAddComment) {
-						addCommentMoreInfo();
-						isAlreadyAddComment = true;
-					}
-					if (myBtn.getLabel().equals("Comment")) {
-//						commentLabelField.setFocus();
-					} else {
-//						moreinfoLabelField.setFocus();
-					}
-
-				}
-			});
+//			final MyButtonField myBtn = btnField;
+//			UiApplication.getUiApplication().invokeLater(new Runnable() {
+//
+//				public void run() {
+//					if (!isAlreadyAddComment) {
+//						addCommentMoreInfo();
+//						isAlreadyAddComment = true;
+//					}
+//					if (myBtn.getLabel().equals("Comment")) {
+////						commentLabelField.setFocus();
+//					} else {
+////						moreinfoLabelField.setFocus();
+//					}
+//
+//				}
+//			});
+			pressBack();
 		} else if (btnField.getLabel().equals("Back")) {
 			try {
 				player.stop();
