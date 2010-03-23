@@ -26,6 +26,7 @@ public class MyButtonField extends Field {
 	private String label;
 	private int borderColor = 0x666666;
 	boolean isWhiteBG = false;
+	public boolean isBlackBG = false;
 	int BORDER = 20;
 
 	public MyButtonField(String label, long style) {
@@ -83,6 +84,9 @@ public class MyButtonField extends Field {
 			graphics.setColor(0xffffff);
 		}else{
 			graphics.setColor(Const.BG_COLOR);
+		}
+		if(isBlackBG){
+			graphics.setColor(0x000000);
 		}
 		graphics.fillRect(0, 0, fieldWidth, fieldHeight);
 		graphics.setFont(font);

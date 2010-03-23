@@ -44,6 +44,7 @@ import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
 import com.tssoftgroup.tmobile.component.ButtonListener;
+import com.tssoftgroup.tmobile.component.CommentsDialog;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
@@ -76,7 +77,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 	public PicInfo picinfo;
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	boolean isFullScreen = false;
-
+	private CommentsDialog commentDialog;
 	public void setFullScreen(boolean bool) {
 		isFullScreen = bool;
 	}
@@ -446,7 +447,92 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 			// UiApplication.getUiApplication().getActiveScreen() );
 		}
 	}
+	public void showCommentsDialog() {
+		VerticalFieldManager commentsManager = new VerticalFieldManager();
+		Vector commentList = new Vector();
+		// / add data to moreinfo list
+		for (int i = 0; i < picinfo.comments.size(); i++) {
+			Comment commment = (Comment) picinfo.comments.elementAt(i);
+			String[] comment = { commment.getComment(), commment.getTime(),
+					commment.getUser() };
+			commentList.addElement(comment);
+		}
+		boolean isSet = false;
+		if (commentList != null && commentList.size() > 0) {
+			for (int i = 0; i < commentList.size(); i++) {
+				String[] commentArr = (String[]) commentList.elementAt(i);
+				CrieLabelField commentLabel = new CrieLabelField("By "
+						+ commentArr[2] + " at " + commentArr[1] + ": ",
+						MyColor.FONT_DESCRIPTION_PLAYER,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+								- (Display.getWidth() > 350 ? 8 : 2),
+						LabelField.FOCUSABLE);
+				System.out.println("is set " + isSet);
+				System.out.println("comment isze != 0");
+				if (!isSet) {
+					isSet = true;
+					commentLabel = new CrieLabelField("By " + commentArr[2]
+							+ " at " + commentArr[1] + ": ",
+							MyColor.FONT_DESCRIPTION_PLAYER,
+							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+									- (Display.getWidth() > 350 ? 8 : 2),
+							LabelField.FOCUSABLE) {
+					};
+				}
 
+				commentLabel.isFix = true;
+				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
+				// Border.STYLE_TRANSPARENT));
+				XYEdges edge;
+				edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
+						.getWidth() / 480);
+				commentLabel.setMargin(edge);
+				commentsManager.add(commentLabel);
+				commentLabel = new CrieLabelField("- " +commentArr[0],
+						MyColor.FONT_DESCRIPTION_PLAYER_DETAIL_DIALOG,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
+						LabelField.FOCUSABLE);
+				commentLabel.isFix = true;
+				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
+				// Border.STYLE_TRANSPARENT));
+				commentLabel.setMargin(edge);
+				commentsManager.add(commentLabel);
+
+				// postCommentTF.setMaxSize(35);
+				// edit.setBorder(BorderFactory.createSimpleBorder(edge,
+				// Border.STYLE_TRANSPARENT));
+
+			}
+		} else if (commentList.size() == 0) {
+			CrieLabelField commentLabel = new CrieLabelField(
+					Wording.NO_COMMENT, MyColor.FONT_DESCRIPTION_PLAYER,
+					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+							- (Display.getWidth() > 350 ? 8 : 2),
+					LabelField.FOCUSABLE);
+			System.out.println("is set " + isSet);
+			if (!isSet) {
+				System.out.println("comment isze == 0");
+				isSet = true;
+				commentLabel = new CrieLabelField(Wording.NO_COMMENT,
+						MyColor.FONT_DESCRIPTION_PLAYER,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+								- (Display.getWidth() > 350 ? 8 : 2),
+						LabelField.FOCUSABLE) ;
+			}
+			commentLabel.isFix = true;
+			XYEdges edge;
+			edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
+					.getWidth() / 480);
+			commentLabel.setMargin(edge);
+			commentsManager.add(commentLabel);
+		}
+		if(commentDialog == null){
+			commentDialog = new CommentsDialog(commentsManager, picinfo);
+			commentDialog.myshow();
+		}else{
+			commentDialog.myshow();
+		}
+	}	
 	public void fieldChanged(Field field, int context) {
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField.getLabel().equals("Start")) {
@@ -470,17 +556,8 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 				System.out.println(pe.toString());
 			}
 		} else if (btnField.getLabel().equals("Comment")) {
-//			UiApplication.getUiApplication().invokeLater(new Runnable() {
-//
-//				public void run() {
-//					if (!isAlreadyAddComment) {
-//						addCommentMoreInfo();
-//						isAlreadyAddComment = true;
-//					}
-////					commentLabelField.setFocus();
-//				}
-//			});
-			pressBack();
+			showCommentsDialog();
+			
 		}else if (btnField.getLabel().equals("Back")) {
 			try {
 			player.stop();
