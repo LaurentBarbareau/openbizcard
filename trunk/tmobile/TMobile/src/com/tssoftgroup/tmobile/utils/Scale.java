@@ -9,6 +9,7 @@ public class Scale {
 			.getWidth() / 480;
 	public static final int VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT = 20 * Display
 			.getWidth() / 480;
+	
 	public static final int VIDEO_CONNECT_DETAIL_COMMENT_TITLE_FONT_HEIGHT = 30 * Display
 			.getWidth() / 480;
 	// Video Connect Screen
