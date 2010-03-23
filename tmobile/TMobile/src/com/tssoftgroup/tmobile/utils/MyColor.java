@@ -16,6 +16,7 @@ public class MyColor {
 	public static final int FONT_DESCRIPTION_TITLE = 0x898888;
 	public static final int FONT_DESCRIPTION_PLAYER= 0x898888;
 	public static final int FONT_DESCRIPTION_PLAYER_DETAIL= 0x00;
+	public static final int FONT_DESCRIPTION_PLAYER_DETAIL_DIALOG= 0xffffff;
 	
 	public static final int FONT_WAIT= 0xe20074;
 	public static final int LIST_TITLE_BG = 0xffce00;

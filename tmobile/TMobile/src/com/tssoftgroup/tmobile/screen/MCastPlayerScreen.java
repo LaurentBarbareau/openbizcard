@@ -44,6 +44,7 @@ import net.rim.device.api.ui.container.MainScreen;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
 import com.tssoftgroup.tmobile.component.ButtonListener;
+import com.tssoftgroup.tmobile.component.CommentsDialog;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
@@ -74,7 +75,6 @@ public class MCastPlayerScreen extends MainScreen implements
 	private VideoControl videoControl = null;
 	private VolumeControl volumeControl = null;
 	Img imgStock = Img.getInstance();
-	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	public PicInfo picinfo;
 	boolean isFullScreen = false;
 	int currentComment;
@@ -347,93 +347,24 @@ public class MCastPlayerScreen extends MainScreen implements
 	private Vector moreinfoList = null;
 
 	public boolean isAlreadyAddComment = false;
-	public LabelField commentLabelField = new LabelFieldWithFullBGSelectable(
-			"comments", MyColor.COMMENT_LABEL_FONT,
-			MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG, Display
-					.getWidth()
-					- 50 * Display.getWidth() / 480) {
-		protected void onFocus(int direction) {
-			if (playButton.getLabel().equals("Stop") && direction == 1) {
-				try {
-					System.out.println("playButton.getLabel().equalsstop");
+	
 
-					// Stop/pause the media player.
-					player.stop();
-					_timerUpdateThread.stop();
-					playButton.setLabel("Start");
-				} catch (MediaException pe) {
-					System.out.println(pe.toString());
-				}
-			}
-			hasFocus = true;
-			invalidate();
-		}
-	};
-	LabelField postCommentLabel = new LabelFieldWithFullBG("post comment",
-			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
-			MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
-					* Display.getWidth() / 480);
-
-	EditField postCommentTF = new EditField("", "");
 	LabelField moreinfoLabelField = new LabelFieldWithFullBG("more info",
 			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
 			MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
 					* Display.getWidth() / 480);
 
-	public void addComment() {
-		postCommentTF.setText("");
-		CrieLabelField commentLabel = new CrieLabelField("By "
-				+ Engine.comment.getUser() + " at " + Engine.comment.getTime()
-				+ ": ", MyColor.FONT_DESCRIPTION_PLAYER,
-				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
-						- (Display.getWidth() > 350 ? 8 : 2),
-				LabelField.FOCUSABLE);
-		commentLabel.isFix = true;
-		XYEdges edge;
-		edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2, 35 * Display
-				.getWidth() / 480);
-		commentLabel.setMargin(edge);
-		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
-		// Border.STYLE_TRANSPARENT));
-		commentsManager.add(commentLabel);
-		commentLabel = new CrieLabelField(Engine.comment.getComment(),
-				MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
-				Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
-				LabelField.FOCUSABLE);
-		commentLabel.setMargin(edge);
-		commentLabel.isFix = true;
-		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
-		// Border.STYLE_TRANSPARENT));
-		commentsManager.add(commentLabel);
-		FixMainScreen.processHaveComment(commentsManager, picinfo, this);
-	}
+	
 
-	public void addCommentMoreInfo() {
-		XYEdges edge = new XYEdges(24, 25, 8, 25);
-		commentLabelField.setFont(Scale.FONT_DETAIL_TITLE);
-		postCommentLabel.setFont(Scale.FONT_DETAIL_TITLE);
-		moreinfoLabelField.setFont(Scale.FONT_DETAIL_TITLE);
-		edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
-				Scale.EDGE, 25 * Display.getWidth() / 480);
-		commentLabelField.setMargin(edge);
-		postCommentLabel.setMargin(edge);
-		moreinfoLabelField.setMargin(edge);
-		add(commentLabelField);
-		commentList = new Vector();
-		moreinfoList = new Vector();
+	public void showCommentsDialog() {
+		VerticalFieldManager commentsManager = new VerticalFieldManager();
+		Vector commentList = new Vector();
 		// / add data to moreinfo list
 		for (int i = 0; i < picinfo.comments.size(); i++) {
 			Comment commment = (Comment) picinfo.comments.elementAt(i);
 			String[] comment = { commment.getComment(), commment.getTime(),
 					commment.getUser() };
 			commentList.addElement(comment);
-		}
-
-		// / add data to moreinfo list
-		for (int i = 0; i < picinfo.moreInfos.size(); i++) {
-			MoreInfo moreinfo = (MoreInfo) picinfo.moreInfos.elementAt(i);
-			String[] more = { moreinfo.getTitle(), moreinfo.getID() };
-			moreinfoList.addElement(more);
 		}
 		boolean isSet = false;
 		if (commentList != null && commentList.size() > 0) {
@@ -459,20 +390,21 @@ public class MCastPlayerScreen extends MainScreen implements
 				}
 
 				commentLabel.isFix = true;
-				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
-						35 * Display.getWidth() / 480);
-				commentLabel.setMargin(edge);
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
+				XYEdges edge;
+				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2, 35 * Display
+						.getWidth() / 480);
+				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0],
-						MyColor.FONT_DESCRIPTION_PLAYER_DETAIL,
+				commentLabel = new CrieLabelField("- " +commentArr[0],
+						MyColor.FONT_DESCRIPTION_PLAYER_DETAIL_DIALOG,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
-				commentLabel.setMargin(edge);
 				commentLabel.isFix = true;
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
+				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
 
 				// postCommentTF.setMaxSize(35);
@@ -518,97 +450,11 @@ public class MCastPlayerScreen extends MainScreen implements
 				};
 			}
 			commentLabel.isFix = true;
-			edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
-					35 * Display.getWidth() / 480);
-			commentLabel.setMargin(edge);
 			commentsManager.add(commentLabel);
 		}
-		FixMainScreen.processHaveComment(commentsManager, picinfo, this);
-		add(commentsManager);
-		// More info
-		// moreinfoList = new Vector();
-		// // temp data
-		// String[] more1 = { "Moreinfo 1",
-		// "http://202.57.191.166/oak/files/1.doc" };
-		// String[] more2 = { "Moreinfo 2",
-		// "http://202.57.191.166/oak/files/1.xls" };
-		//
-		// commentList.addElement(comment1);
-		// commentList.addElement(comment2);
-
-		// moreinfoList.addElement(more1);
-		// moreinfoList.addElement(more2);
-		add(moreinfoLabelField);
-		if (moreinfoList != null && moreinfoList.size() > 0) {
-			for (int i = 0; i < moreinfoList.size(); i++) {
-				HorizontalFieldManager moreinfoManager = new HorizontalFieldManager();
-				String[] moreinfoArr = (String[]) moreinfoList.elementAt(i);
-				// / Label
-				CrieLabelField commentLabel = new CrieLabelField(
-						moreinfoArr[0], MyColor.FONT_DESCRIPTION_PLAYER,
-						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
-						LabelField.NON_FOCUSABLE);
-				edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
-						35 * Display.getWidth() / 480);
-				commentLabel.setMargin(edge);
-				// commentLabel.isFix = true;
-				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
-				// Border.STYLE_TRANSPARENT));
-				// / Button
-				MyButtonField emailButton = new MyButtonField("Email Me",
-						ButtonField.ELLIPSIS, true);
-
-				emailButton.setChangeListener(new ButtonListener(
-						moreinfoArr[1], 33));
-
-				moreinfoManager.add(commentLabel);
-				moreinfoManager.add(emailButton);
-
-				add(moreinfoManager);
-			}
-		} else if (moreinfoList.size() == 0) {
-			CrieLabelField moreinfoLabel = new CrieLabelField(
-					Wording.NO_MORE_INFO, MyColor.FONT_DESCRIPTION_PLAYER,
-					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
-							- (Display.getWidth() > 350 ? 8 : 2),
-					LabelField.FOCUSABLE);
-			edge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
-					35 * Display.getWidth() / 480);
-			moreinfoLabel.isFix = true;
-			moreinfoLabel.setMargin(edge);
-			add(moreinfoLabel);
-		}
-
-		add(postCommentLabel);
-		edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2, 25 * Display
-				.getWidth() / 480);
-		postCommentTF.setMargin(edge);
-		postCommentTF.setFont(MyColor.COMMENT_LABEL_FONT);
-		add(postCommentTF);
-		// Submit and backl
-		HorizontalFieldManager buttonHorizontalManager = new HorizontalFieldManager(
-				HorizontalFieldManager.FIELD_HCENTER
-						| HorizontalFieldManager.USE_ALL_WIDTH);
-		buttonHorizontalManager.setMargin(0, 0, 0, 10);
-		MyButtonField submitButton = new MyButtonField("Submit",
-				ButtonField.ELLIPSIS, true);
-		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		submitButton.setChangeListener(new ButtonListener(postCommentTF,
-				picinfo, 35));
-		buttonHorizontalManager.add(submitButton);
-
-		MyButtonField backButton = new MyButtonField("Back",
-				ButtonField.ELLIPSIS, true);
-		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-
-		backButton.setChangeListener(this);
-		buttonHorizontalManager.add(backButton);
-		buttonHorizontalManager.setMargin(edge);
-		// buttonHorizontalManager.setMargin(0, 0, 0, 150 * Display.getWidth() /
-		// 480);
-		add(buttonHorizontalManager);
-	}
-
+		CommentsDialog commentsDialog = new CommentsDialog(commentsManager);
+		commentsDialog.myshow();
+	}	
 	protected boolean keyDown(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 
@@ -783,7 +629,8 @@ public class MCastPlayerScreen extends MainScreen implements
 //
 //				}
 //			});
-			pressBack();
+//			pressBack();
+			showCommentsDialog();
 		} else if (btnField.getLabel().equals("Back")) {
 			try {
 				player.stop();

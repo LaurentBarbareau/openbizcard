@@ -431,9 +431,9 @@ public class Engine implements HTTPHandler {
 						// MCastPlayerScreen scr = new MCastPlayerScreen(
 						// Engine.commnetPicInfo);
 						cur.picinfo = Engine.commnetPicInfo;
-						cur.addComment();
+//						cur.addComment();
 						cur.isAlreadyAddComment = true;
-						cur.commentLabelField.setFocus();
+//						cur.commentLabelField.setFocus();
 						// UiApplication.getUiApplication().pushScreen(scr);
 
 					}
