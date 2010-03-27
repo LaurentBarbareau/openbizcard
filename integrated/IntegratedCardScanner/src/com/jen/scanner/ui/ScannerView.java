@@ -5969,9 +5969,11 @@ class PopClickListener extends MouseAdapter {
         if (isFrontSelected) {
             if ((scannedBCard != null) && (scannedImageFileName != null)) {
                 String filename = "";
-                if (scannedImageFileName.contains(".jpg")) {
-                    filename = scannedImageFileName;
-                    scannedBCard.setImageFileName(scannedImageFileName);
+                if (frontTfT1.getText().contains(".jpg")) {
+                    //filename = scannedImageFileName;
+                    //scannedBCard.setImageFileName(scannedImageFileName);
+                     filename = frontTfT1.getText();
+                    scannedBCard.setImageFileName(frontTfT1.getText());
                 } else {
 //                    scannedBCard.setImageFileName(scannedImageFileName
 //                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
@@ -6020,10 +6022,11 @@ class PopClickListener extends MouseAdapter {
         } else {
             if ((scannedBCardBack != null) && (scannedImageFileNameBack != null)) {
                 if (scannedImageFileNameBack.contains(".jpg")) {
-                    scannedBCardBack.setImageFileName(scannedImageFileNameBack);
+                   // scannedBCardBack.setImageFileName(scannedImageFileNameBack);
+                      scannedBCardBack.setImageFileName(backTfT1.getText());
                 } else {
 //                    scannedBCardBack.setImageFileName(scannedImageFileNameBack
-//                            + (bcScanner.getFileNameIndex()-1) + ".jpg");
+//                           + (bcScanner.getFileNameIndex()-1) + ".jpg");
                     scannedBCardBack.setImageFileName(backTfT1.getText());
                     System.out.print("OCR Image file name back" + backTfT1.getText());
                 }
