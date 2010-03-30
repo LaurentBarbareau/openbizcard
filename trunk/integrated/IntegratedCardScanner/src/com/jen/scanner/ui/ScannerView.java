@@ -3413,15 +3413,16 @@ public class ScannerView extends FrameView {
         resultTab.add(upRightT3, gridBagConstraints);
 
         lowT3.setName("lowT3"); // NOI18N
-        lowT3.setPreferredSize(new java.awt.Dimension(650, 340));
+        lowT3.setPreferredSize(new java.awt.Dimension(690, 340));
         lowT3.setLayout(new java.awt.GridBagLayout());
 
-        lowLeftT3.setMinimumSize(new java.awt.Dimension(335, 335));
+        lowLeftT3.setMinimumSize(new java.awt.Dimension(345, 335));
         lowLeftT3.setName("lowLeftT3"); // NOI18N
-        lowLeftT3.setPreferredSize(new java.awt.Dimension(337, 335));
+        lowLeftT3.setPreferredSize(new java.awt.Dimension(345, 335));
 
         frontTfT3.setEditable(false);
         frontTfT3.setFont(getDefaultFont());
+        frontTfT3.setMaximumSize(new java.awt.Dimension(6, 20));
         frontTfT3.setName("frontTfT3"); // NOI18N
         frontTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3455,23 +3456,24 @@ public class ScannerView extends FrameView {
         lowLeftT3Layout.setHorizontalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowLeftT3Layout.createSequentialGroup()
-                        .addComponent(frontTfT3)
+                        .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(frontBtnT3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(4, 4, 4)
                         .addComponent(frontCropBtnT3))
                     .addComponent(frontSpT3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         lowLeftT3Layout.setVerticalGroup(
             lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowLeftT3Layout.createSequentialGroup()
                 .addGroup(lowLeftT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frontCropBtnT3)
                     .addComponent(frontBtnT3)
-                    .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(frontTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frontCropBtnT3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(frontSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
@@ -3482,16 +3484,22 @@ public class ScannerView extends FrameView {
         gridBagConstraints.gridy = 0;
         lowT3.add(lowLeftT3, gridBagConstraints);
 
-        lowRightT3.setMinimumSize(new java.awt.Dimension(350, 335));
+        lowRightT3.setMinimumSize(new java.awt.Dimension(345, 335));
         lowRightT3.setName("lowRightT3"); // NOI18N
-        lowRightT3.setPreferredSize(new java.awt.Dimension(350, 335));
+        lowRightT3.setPreferredSize(new java.awt.Dimension(345, 335));
 
         backTfT3.setEditable(false);
         backTfT3.setFont(getDefaultFont());
+        backTfT3.setMaximumSize(new java.awt.Dimension(6, 20));
         backTfT3.setName("backTfT3"); // NOI18N
         backTfT3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backTfT3MouseClicked(evt);
+            }
+        });
+        backTfT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backTfT3ActionPerformed(evt);
             }
         });
 
@@ -3520,19 +3528,17 @@ public class ScannerView extends FrameView {
         lowRightT3.setLayout(lowRightT3Layout);
         lowRightT3Layout.setHorizontalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lowRightT3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backTfT3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addGroup(lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(lowRightT3Layout.createSequentialGroup()
+                        .addComponent(backTfT3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(backBtnT3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backCropBtnT3)
-                        .addGap(20, 20, 20))
-                    .addGroup(lowRightT3Layout.createSequentialGroup()
-                        .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                        .addGap(21, 21, 21))))
+                        .addComponent(backCropBtnT3))
+                    .addComponent(backSpT3, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
         lowRightT3Layout.setVerticalGroup(
             lowRightT3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5286,10 +5292,6 @@ public class ScannerView extends FrameView {
         adsTaTE3.setText(editCard.getAddressE());
         noteTaTE3.setText(editCard.getNoteE());
 
-        //frontTfT3.setText(frontPath);
-        //backTfT3.setText(backPath);
-
-
         if ((frontPath != null) && (frontPath.length() > 0) && (frontPath.charAt(0) == '.')) {
             File curDir = new File(".");
             String curDirStr = "";
@@ -5312,7 +5314,9 @@ public class ScannerView extends FrameView {
                 curDirStr = curDir.getCanonicalPath();
                 System.out.println("cur dir = " + curDirStr);
                 curDirStr = curDirStr.replace('\\', '/');
+                System.out.println(">>>>> back edit before "+ backTfT3.getWidth());
                 backTfT3.setText(backPath.replaceFirst(".", curDirStr));
+                System.out.println(">>>>> back edit after "+ backTfT3.getWidth());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -6829,7 +6833,6 @@ class PopClickListener extends MouseAdapter {
             java.io.File file = imgChooser.getSelectedFile();
             String path = file.getAbsolutePath();
             frontTfT3.setText(path);
-
             ImageIcon cardIcon = new ImageIcon(path);
             java.awt.Image cardImage = cardIcon.getImage();
 
@@ -7174,6 +7177,10 @@ class PopClickListener extends MouseAdapter {
             SendEmailUtil.sendEmail("", "", c, c.getImgFront(), c.getImgBack());
         }
     }//GEN-LAST:event_emailBtnT3ActionPerformed
+
+    private void backTfT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTfT3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backTfT3ActionPerformed
 
     private void changeLanguageTo(int lang) {
         switch (lang) {
