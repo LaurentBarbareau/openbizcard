@@ -6904,10 +6904,10 @@ class PopClickListener extends MouseAdapter {
                             originalImage.delete();
                              }
                             ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + ".jpg"));
-
+                             newCard.setImgFront("./cardImages/" + cardIDStr + ".jpg");
                         }
 
-                        newCard.setImgFront("./cardImages/" + cardIDStr + ".jpg");
+                       
                     }
                 }
 
@@ -6923,9 +6923,9 @@ class PopClickListener extends MouseAdapter {
                                 originalImage.delete();
                             }
                             ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + "Back.jpg"));
-
+                             newCard.setImgBack("./cardImages/" + cardIDStr + "Back.jpg");
                         }
-                        newCard.setImgBack("./cardImages/" + cardIDStr + "Back.jpg");
+                       
                     }
                 }
 
