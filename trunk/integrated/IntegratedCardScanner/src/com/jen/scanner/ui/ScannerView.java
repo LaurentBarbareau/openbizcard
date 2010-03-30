@@ -71,6 +71,7 @@ import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import java.util.Random;
 
 /**
  * The application's main frame.
@@ -5026,7 +5027,7 @@ public class ScannerView extends FrameView {
         }
 
     }
-
+   
     private void saveBtnT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnT1ActionPerformed
         // TODO add your handling code here:
         Card newCard = getCardFromForm(SCAN_TAB);
@@ -5037,6 +5038,9 @@ public class ScannerView extends FrameView {
 
                 // Yov's added code
                 Long cardID = newCard.getId();
+                Random r = new Random();
+                String token = Long.toString(Math.abs(r.nextLong()), 36);
+                String cardIDStr = cardID +token;
                 String imgFileName = frontTfT1.getText();
                 String imgBackFileName = backTfT1.getText();
                 File imgFile = new File(imgFileName);
@@ -5048,10 +5052,11 @@ public class ScannerView extends FrameView {
                             || (imgFileName.lastIndexOf(".jpeg") == (imgFileName.length() - 5)))) {
 
                         if (isBrowsedFront) {
-                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
-                            newCard.setImgFront("./cardImages/" + cardID + ".jpg");
+                            ImageIO.write(scannedBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + ".jpg"));
+                            newCard.setImgFront("./cardImages/" + cardIDStr + ".jpg");
                         } else {
-                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg";
+                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + ".jpg";
+                            fname = fname.replace("\\", "/");
 //                            imgFile.renameTo(new File(fname));
                             copyfile(imgFileName, fname);
                             newCard.setImgFront(fname);
@@ -5067,10 +5072,11 @@ public class ScannerView extends FrameView {
                             || (imgBackFileName.lastIndexOf(".jpeg") == (imgBackFileName.length() - 5)))) {
 
                         if (isBrowsedBack) {
-                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
-                            newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
+                            ImageIO.write(scannedBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + "Back.jpg"));
+                            newCard.setImgBack("./cardImages/" + cardIDStr + "Back.jpg");
                         } else {
-                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg";
+                            String fname = curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + "Back.jpg";
+                             fname = fname.replace("\\", "/");
                             copyfile(imgBackFileName, fname);
 //                            imgBackFile.renameTo(new File(fname));
                             newCard.setImgBack(fname);
@@ -5247,7 +5253,8 @@ public class ScannerView extends FrameView {
 
         String frontPath = validatePath(editCard.getImgFront());
         String backPath = validatePath(editCard.getImgBack());
-
+         frontPath = frontPath.replace('\\', '/');
+         backPath = backPath.replace('\\', '/');
         idNameLbT3.setText(editCard.getId() + "");
         nameTfT3.setText(editCard.getFirstName());
         lastnameTfT3.setText(editCard.getLastName());
@@ -6780,6 +6787,7 @@ class PopClickListener extends MouseAdapter {
 
             frontUIState = STATE_WITH_IMAGE;
             setButtonsState(frontUIState);
+            isBrowsedFront = true;
         }
     }//GEN-LAST:event_frontTfT1MouseClicked
 
@@ -6808,6 +6816,7 @@ class PopClickListener extends MouseAdapter {
 
             backUIState = STATE_WITH_IMAGE;
             setButtonsState(backUIState);
+            isBrowsedBack = true;
         }
     }//GEN-LAST:event_backTfT1MouseClicked
 
@@ -6834,6 +6843,7 @@ class PopClickListener extends MouseAdapter {
 
             frontUIStateResult = STATE_WITH_IMAGE;
             setButtonsStateResult(frontUIStateResult);
+              isBrowsedFrontResult = true;
         }
     }//GEN-LAST:event_frontTfT3MouseClicked
 
@@ -6860,6 +6870,7 @@ class PopClickListener extends MouseAdapter {
 
             backUIStateResult = STATE_WITH_IMAGE;
             setButtonsStateResult(backUIStateResult);
+             isBrowsedBackResult= true;
         }
     }//GEN-LAST:event_backTfT3MouseClicked
 
@@ -6872,6 +6883,9 @@ class PopClickListener extends MouseAdapter {
                 //System.out.println(name+" "+lastName+" "+title+" "+email+" "+company+" "+web+" "+ads+" "+city+" "+state+" "+country+" "+code+" "+phone+" "+fax+" "+mobile+" "+note+" "+imgFront+" "+imgBack);
 
                 Long cardID = newCard.getId();
+                  Random r = new Random();
+                String token = Long.toString(Math.abs(r.nextLong()), 36);
+                String cardIDStr = cardID +token;
                 String imgFileName = frontTfT3.getText();
                 String imgBackFileName = backTfT3.getText();
                 File imgFile = new File(imgFileName);
@@ -6889,11 +6903,11 @@ class PopClickListener extends MouseAdapter {
                              if (originalImage.isFile()) {
                             originalImage.delete();
                              }
-                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + ".jpg"));
+                            ImageIO.write(resultBCard.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + ".jpg"));
 
                         }
 
-                        newCard.setImgFront("./cardImages/" + cardID + ".jpg");
+                        newCard.setImgFront("./cardImages/" + cardIDStr + ".jpg");
                     }
                 }
 
@@ -6908,10 +6922,10 @@ class PopClickListener extends MouseAdapter {
                             if (originalImage.isFile()) {
                                 originalImage.delete();
                             }
-                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardID + "Back.jpg"));
+                            ImageIO.write(resultBCardBack.getPrimaryImage().getImageData(), "jpg", new File(curDir.getCanonicalPath() + File.separator + "cardImages" + File.separator + cardIDStr + "Back.jpg"));
 
                         }
-                        newCard.setImgBack("./cardImages/" + cardID + "Back.jpg");
+                        newCard.setImgBack("./cardImages/" + cardIDStr + "Back.jpg");
                     }
                 }
 
