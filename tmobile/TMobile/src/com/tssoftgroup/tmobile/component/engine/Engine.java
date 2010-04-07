@@ -463,9 +463,7 @@ public class Engine implements HTTPHandler {
 						// MCastPlayerScreen scr = new MCastPlayerScreen(
 						// Engine.commnetPicInfo);
 						cur.picinfo = Engine.commnetPicInfo;
-						cur.addComment();
 						cur.isAlreadyAddComment = true;
-						cur.commentLabelField.setFocus();
 						// 
 						String choices[] = { "OK"};
 						 int values[] = { Dialog.OK};

@@ -62,6 +62,7 @@ public class CommentsDialog extends Dialog {
 		System.out.println("postCommentTF == null");
 		if (postCommentTF.getText().equals("")) {
 			Dialog.alert("Please input comment");
+			myshow();
 			return;
 		}
 		Comment comment = new Comment();
@@ -87,6 +88,9 @@ public class CommentsDialog extends Dialog {
 		// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 		// Border.STYLE_TRANSPARENT));
 		System.out.println("commentsManager.add(commentLabel)");
+		if(picInfo.comments.size() == 1){
+			commentsManager.deleteAll();
+		}
 		commentsManager.add(commentLabel);
 		commentLabel = new CrieLabelField(Engine.comment.getComment(),
 				MyColor.FONT_DESCRIPTION_PLAYER_DETAIL_DIALOG,
