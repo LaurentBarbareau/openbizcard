@@ -271,7 +271,8 @@ public class UploadThread implements Runnable {
 
 					String request = new String(ba);
 					// System.out.println("request " + request);
-					response = HttpUtilUploadThread.doPost(urlChunk, ba, false);
+					//response = HttpUtilUploadThread.doPost(urlChunk, ba, false);
+					response = HttpUtilUploadThread.doPost(urlChunk, "currentchunk=10&numchunk=10", false);
 					// System.out.println("myresponse " + response);
 					chunkIndex++;
 					final int myi = i;
