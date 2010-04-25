@@ -224,7 +224,7 @@ public class UploadThread implements Runnable {
 //		String picB64  = OakBase64.encode(picture);
 		String picB64  = new String(Base64Coder.encode(picture));
 		// URL Encode
-		picB64 = CrieUtils.encodeUrl(picB64);
+		//picB64 = CrieUtils.encodeUrl(picB64);
 		title = CrieUtils.encodeUrl(title);
 		description = CrieUtils.encodeUrl(description);
 		
@@ -275,7 +275,7 @@ public class UploadThread implements Runnable {
 					out.writeString("&");
 					out.writeField("description", description);
 					out.writeString("&");
-					out.writeField("video",picB64Sent);
+					out.writeField("video",CrieUtils.encodeUrl(picB64Sent) );
 					out.writeString("&");
 					out.writeField("realbytesize",picture.length);
 					out.writeString("&");
