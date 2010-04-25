@@ -10,8 +10,10 @@ import net.rim.device.api.ui.component.Status;
 
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.screen.LogScreen;
+import com.tssoftgroup.tmobile.utils.Base64Coder;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
+import com.tssoftgroup.tmobile.utils.OakBase64;
 
 public class UploadThread implements Runnable {
 
@@ -24,7 +26,7 @@ public class UploadThread implements Runnable {
 	private final int limitNum = 20;
 	private int all = 0;
 	private int currentUploading = 0;
-	public static final int LIMIT_PIC_BYTE = 81920;
+	public static final int LIMIT_PIC_BYTE = 20490 ;
 	// int LIMIT_PIC_BYTE = 163840;
 	// int LIMIT_PIC_BYTE = 4000;
 	private PicInfo picInfoItem;
@@ -219,10 +221,17 @@ public class UploadThread implements Runnable {
 
 	private String postVideoByteChunk(byte[] picture, String title,
 			String description, String url, String urlChunk) throws Exception {
+//		String picB64  = OakBase64.encode(picture);
+		String picB64  = new String(Base64Coder.encode(picture));
+		// URL Encode
+		picB64 = CrieUtils.encodeUrl(picB64);
+		title = CrieUtils.encodeUrl(title);
+		description = CrieUtils.encodeUrl(description);
+		
 		String response = "";
-		if (picture.length > LIMIT_PIC_BYTE) {
-			int numChunk = (picture.length / LIMIT_PIC_BYTE)
-					+ (picture.length % LIMIT_PIC_BYTE == 0 ? 0 : 1);
+		if (picB64.length() > LIMIT_PIC_BYTE) {
+			int numChunk = (picB64.length() / LIMIT_PIC_BYTE)
+					+ (picB64.length() % LIMIT_PIC_BYTE == 0 ? 0 : 1);
 			System.out.println(" numChunk  " + numChunk);
 			int numSent = LIMIT_PIC_BYTE;
 			int rangeStart = 0;
@@ -236,43 +245,51 @@ public class UploadThread implements Runnable {
 				System.out.println(" numChunk " + numChunk);
 				System.out.println(" chunkid " + chunkid);
 				for (int i = 0; i < numChunk; i++) {
-					String boundary = MultiPartFormOutputStream
-							.createBoundary();
+//					String boundary = MultiPartFormOutputStream
+//							.createBoundary();
 					ByteArrayOutputStream data = new ByteArrayOutputStream();
 
 					rangeStart = chunkIndex * LIMIT_PIC_BYTE;
 					rangeEnd = rangeStart + LIMIT_PIC_BYTE - 1;
 					// if it is the last chunk
-					if (rangeStart < picture.length
-							&& rangeEnd > picture.length) {
-						numSent = picture.length - rangeStart;
+					if (rangeStart < picB64.length() 
+							&& rangeEnd > picB64.length() ) {
+						numSent = picB64.length()  - rangeStart;
 						System.out.println("i " + i + " numsent " + numSent);
 					}
-					MultiPartFormOutputStream out = new MultiPartFormOutputStream(
-							data, boundary);
-					ByteArrayOutputStream b = new ByteArrayOutputStream();
-					b.write(picture, rangeStart, numSent);
-					byte[] byteSent = b.toByteArray();
-					out.writeFile("video", "video/quicktime", "video.3gp",
-							byteSent, null);
-					out.writeField("currentchunk", "" + i, null);
-					out.writeField("numchunk", "" + numChunk, null);
-					out.writeField("chunkid", pin + "" + chunkid, null);
-
-					out.writeField("title", title, null);
-					out.writeField("description", description, null);
+//					MultiPartFormOutputStream out = new MultiPartFormOutputStream(
+//							data, boundary);
+					Base64OutputStream out = new Base64OutputStream(data);
+					
+//					ByteArrayOutputStream b = new ByteArrayOutputStream();
+					//b.write(picture, rangeStart, numSent);
+					String picB64Sent =  picB64.substring(rangeStart, rangeStart +numSent );
+					//byte[] byteSent = b.toByteArray();
+					out.writeField("currentchunk", "" + i);
+					out.writeString("&");
+					out.writeField("numchunk", "" + numChunk);
+					out.writeString("&");
+					out.writeField("chunkid", pin + "" + chunkid);
+					out.writeString("&");
+					out.writeField("title", title);
+					out.writeString("&");
+					out.writeField("description", description);
+					out.writeString("&");
+					out.writeField("video",picB64Sent);
+					out.writeString("&");
+					out.writeField("realbytesize",picture.length);
+					out.writeString("&");
+					out.writeField("picbsize",picB64.length());
 					out.close();
 
 					HttpAbstractUtil.setBasicAuthentication("", "");
 					HttpUtilUploadThread
-							.setContentType(MultiPartFormOutputStream
-									.getContentType(boundary));
+							.setContentType(null);
 					byte[] ba = data.toByteArray();
 
-					String request = new String(ba);
 					// System.out.println("request " + request);
-					//response = HttpUtilUploadThread.doPost(urlChunk, ba, false);
-					response = HttpUtilUploadThread.doPost(urlChunk, "currentchunk=10&numchunk=10", false);
+					response = HttpUtilUploadThread.doPost(urlChunk, ba, false);
+//					response = HttpUtilUploadThread.doPost(urlChunk, "currentchunk=10&numchunk=10", false);
 					// System.out.println("myresponse " + response);
 					chunkIndex++;
 					final int myi = i;
