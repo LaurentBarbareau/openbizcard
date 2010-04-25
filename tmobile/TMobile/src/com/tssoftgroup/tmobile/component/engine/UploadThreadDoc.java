@@ -26,7 +26,7 @@ public class UploadThreadDoc implements Runnable {
 	private final int limitNum = 20;
 	private int all = 0;
 	private int currentUploading = 0;
-	public static final int LIMIT_PIC_BYTE = 81920;
+	public static final int LIMIT_PIC_BYTE = 20490 ;
 
 	// int LIMIT_PIC_BYTE = 163840;
 	// int LIMIT_PIC_BYTE = 4000;
@@ -258,14 +258,15 @@ public class UploadThreadDoc implements Runnable {
 					ByteArrayOutputStream b = new ByteArrayOutputStream();
 					b.write(picture, rangeStart, numSent);
 					byte[] byteSent = b.toByteArray();
-					out.writeFile("video", "video/quicktime", filename,
-							byteSent, null);
+					
 					out.writeField("currentchunk", "" + i, null);
 					out.writeField("numchunk", "" + numChunk, null);
 					out.writeField("chunkid", pin + "" + chunkid, null);
 
 					out.writeField("title", title, null);
 					out.writeField("description", description, null);
+					out.writeFile("video", "video/quicktime", filename,
+							byteSent, null);
 					out.close();
 
 					HttpAbstractUtil.setBasicAuthentication("", "");

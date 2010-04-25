@@ -10,6 +10,7 @@ import javax.microedition.io.file.FileConnection;
 
 import net.rim.blackberry.api.browser.Browser;
 import net.rim.blackberry.api.browser.BrowserSession;
+import net.rim.blackberry.api.browser.URLEncodedPostData;
 import net.rim.device.api.math.Fixed32;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Characters;
@@ -489,4 +490,31 @@ public class CrieUtils {
 		String r = System.getProperty("fileconn.dir.memorycard.photos");
 		return r;
 	}
+	public static String encodeUrl(String url)
+	{
+        if (url!=null) 
+        {
+            StringBuffer tmp = new StringBuffer();
+            int i=0;
+            try 
+            {
+                while (true) 
+                {
+                    int b = (int)url.charAt(i++);
+                    if ((b>=0x30 && b<=0x39) || (b>=0x41 && b<=0x5A) || (b>=0x61 && b<=0x7A) ||(b == 0x2F) || (b == 0x3A) || (b == 0x2D )|| (b == 0x2E)|| (b == 0x2C)|| (b == 0x3F)|| (b == 0x3D) ||(b == 0x26) || (b == 0x5F) || (b == 0x2A)) 
+                    {
+                        tmp.append((char)b);
+                    }
+                    else {
+                        tmp.append("%");
+                        if (b <= 0xf) tmp.append("0");
+                        tmp.append(Integer.toHexString(b));
+                    }
+                }
+            }
+            catch (Exception e) {}
+            return tmp.toString();
+        }
+        return null;
+	}    
 }
