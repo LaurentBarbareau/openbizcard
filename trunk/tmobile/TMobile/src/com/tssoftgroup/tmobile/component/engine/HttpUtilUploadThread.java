@@ -10,6 +10,7 @@ import javax.microedition.io.HttpConnection;
 import net.rim.device.api.io.http.HttpProtocolConstants;
 import net.rim.device.api.servicebook.ServiceBook;
 import net.rim.device.api.servicebook.ServiceRecord;
+import net.rim.device.api.system.CoverageInfo;
 import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.system.RadioInfo;
 import net.rim.device.api.system.WLANInfo;
@@ -287,9 +288,12 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 	}
 	public static String getConnectionSuffix() {
 //		if (suffix == null) {
-			if (DeviceInfo.isSimulator()) {
+		 if (DeviceInfo.isSimulator()) {
 				suffix = ";deviceside=true";
-			} else if ((WLANInfo.getWLANState() == WLANInfo.WLAN_STATE_CONNECTED)
+			}else if (CoverageInfo.isCoverageSufficient(CoverageInfo.COVERAGE_MDS)) {
+				 suffix = ";deviceside=false";
+			 }
+			  else if ((WLANInfo.getWLANState() == WLANInfo.WLAN_STATE_CONNECTED)
 					&& RadioInfo.areWAFsSupported(RadioInfo.WAF_WLAN)) {
 				suffix = ";interface=wifi";
 			} else {
