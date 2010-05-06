@@ -19,7 +19,10 @@ public class ProfileEntry {
 	public String email = "";
 	public String mobile = "";
 	public String passCode = "";
-
+	// videoname,status,scheduleTime (0 or time) |
+	// Status  0= new| 1=will be downloaded | 2=downloading | 3=downloaded
+	// 1754514.mp4,0, 40:11 5/6/2010 | 1754515.mp4,0,12:4 5/6/2010
+	public String videos = ""; 
 	Vector bookmarks;
 
 	public String toString() {
