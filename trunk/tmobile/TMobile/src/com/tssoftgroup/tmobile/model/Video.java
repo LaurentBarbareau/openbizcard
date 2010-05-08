@@ -5,12 +5,20 @@ import java.util.Vector;
 import com.tssoftgroup.tmobile.utils.StringUtil;
 
 public class Video {
+	// Status 0= new| 1=will be downloaded | 2=downloading | 3=downloaded
+	// 1754514.mp4,0, 40:11 5/6/2010 | 1754515.mp4,0,12:4 5/6/2010
+
 	public static final String SEPERATOR = ",";
 	public static final String VIDEO_SEPERATOR = "|";
 
 	private String name = "0";
 	private String status = "0";
 	private String scheduleTime = "0";
+
+	public String toString() {
+		return "name = " + name + " status = " + status + " schedule time = "
+				+ scheduleTime;
+	}
 
 	public String getName() {
 		return name;
@@ -63,13 +71,23 @@ public class Video {
 			String[] videoString = StringUtil.split(videoStringArr[i],
 					SEPERATOR);
 			vid.name = videoString[0];
-			vid.status = videoString[0];
-			vid.scheduleTime = videoString[0];
+			vid.status = videoString[1];
+			vid.scheduleTime = videoString[2];
 			ret.addElement(vid);
 		}
 		return ret;
 	}
-	public static void main(String [] args){
+
+	public static void main(String[] args) {
 		System.out.println("aaa");
+		String videos = "1754514.mp4,0,40:11 5/6/2010|1754515.mp4,1,12:4 8/6/2010";
+		Vector v = convertStringToVector(videos);
+		for (int i = 0; i < v.size(); i++) {
+			Video video = (Video) v.elementAt(i);
+			System.out.println(video);
+		}
+		String aa = convertVectorToString(v);
+		System.out.println(aa);
+		
 	}
 }
