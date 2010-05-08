@@ -43,6 +43,10 @@ public class ProfileEntry {
 		ret.append(passCode);
 		ret.append('\n');
 
+		ret.append("videos");
+		ret.append(videos);
+		ret.append('\n');
+
 		return ret.toString();
 	}
 
@@ -62,6 +66,7 @@ public class ProfileEntry {
 		email = "";
 		mobile = "";
 		passCode = "";
+		videos = "";
 	}
 
 	public ProfileEntry(byte[] buf) {
@@ -72,6 +77,7 @@ public class ProfileEntry {
 			email = dis.readUTF();
 			mobile = dis.readUTF();
 			passCode = dis.readUTF();
+			videos = dis.readUTF();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,6 +101,7 @@ public class ProfileEntry {
 			dos.writeUTF(email);
 			dos.writeUTF(mobile);
 			dos.writeUTF(passCode);
+			dos.writeUTF(videos);
 			data = baos.toByteArray();
 			baos.close();
 			dos.close();
@@ -158,6 +165,7 @@ public class ProfileEntry {
 				email = be.email;
 				mobile = be.mobile;
 				passCode = be.passCode;
+				videos = be.videos;
 				checkNull();
 
 				// System.out.println(this);
@@ -218,6 +226,9 @@ public class ProfileEntry {
 		}
 		if (passCode == null) {
 			passCode = "";
+		}
+		if (videos == null) {
+			videos = "";
 		}
 
 	}
