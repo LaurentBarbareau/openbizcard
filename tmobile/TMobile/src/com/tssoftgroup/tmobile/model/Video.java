@@ -2,6 +2,7 @@ package com.tssoftgroup.tmobile.model;
 
 import java.util.Vector;
 
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.utils.StringUtil;
 
 public class Video {
@@ -63,6 +64,9 @@ public class Video {
 	}
 
 	public static Vector convertStringToVector(String videosString) {
+		if(videosString.equals("")){
+			return new Vector();
+		}
 		Vector ret = new Vector();
 		String[] videoStringArr = StringUtil.split(videosString,
 				VIDEO_SEPERATOR);
@@ -78,16 +82,27 @@ public class Video {
 		return ret;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("aaa");
-		String videos = "1754514.mp4,0,40:11 5/6/2010|1754515.mp4,1,12:4 8/6/2010";
-		Vector v = convertStringToVector(videos);
-		for (int i = 0; i < v.size(); i++) {
-			Video video = (Video) v.elementAt(i);
-			System.out.println(video);
+//	public static void main(String[] args) {
+//		System.out.println("aaa");
+//		String videos = "1754514.mp4,0,40:11 5/6/2010|1754515.mp4,1,12:4 8/6/2010";
+//		Vector v = convertStringToVector(videos);
+//		for (int i = 0; i < v.size(); i++) {
+//			Video video = (Video) v.elementAt(i);
+//			System.out.println(video);
+//		}
+//		String aa = convertVectorToString(v);
+//		System.out.println(aa);
+//		
+//	}
+	public static String getVideoStatus(String videoName){
+		ProfileEntry profile = ProfileEntry.getInstance();
+		Vector videos =  convertStringToVector(profile.videos);
+		for (int i = 0; i < videos.size(); i++) {
+			Video video = (Video)videos.elementAt(i);
+			if(video.name.equals(videoName)){
+				return video.status;
+			}
 		}
-		String aa = convertVectorToString(v);
-		System.out.println(aa);
-		
+		return "0";
 	}
 }

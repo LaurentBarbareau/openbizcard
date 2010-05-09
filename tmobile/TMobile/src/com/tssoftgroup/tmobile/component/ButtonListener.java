@@ -11,8 +11,10 @@ import javax.microedition.media.Player;
 import javax.microedition.media.control.VideoControl;
 
 import net.rim.device.api.i18n.SimpleDateFormat;
+import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.EditField;
@@ -28,8 +30,8 @@ import com.tssoftgroup.tmobile.movieexplorer.MovieExplorerDemoScreen;
 import com.tssoftgroup.tmobile.screen.DocumentListScreen;
 import com.tssoftgroup.tmobile.screen.MCastPlayerScreen;
 import com.tssoftgroup.tmobile.screen.MCastScreen;
+import com.tssoftgroup.tmobile.screen.TrainingPlayerScreen;
 import com.tssoftgroup.tmobile.screen.VideoConnectPlayerScreen;
-import com.tssoftgroup.tmobile.screen.VideoConnectScreen;
 import com.tssoftgroup.tmobile.screen.WaitScreen;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
@@ -48,23 +50,25 @@ public class ButtonListener implements FieldChangeListener {
 	PicInfo picInfo;
 	TrainingInfo trainInfo;
 	String link;
-
+	 Screen screen;
 	public ButtonListener(String link, int buttonID) {
 		super();
 		this.link = link;
 		this.buttonID = buttonID;
 	}
 
-	public ButtonListener(PicInfo picInfo, int buttonID) {
+	public ButtonListener(PicInfo picInfo, int buttonID, Screen screen) {
 		super();
 		this.picInfo = picInfo;
 		this.buttonID = buttonID;
+		this.screen = screen;
 	}
 
-	public ButtonListener(TrainingInfo trainInfo, int buttonID) {
+	public ButtonListener(TrainingInfo trainInfo, int buttonID, Screen screen) {
 		super();
 		this.trainInfo = trainInfo;
 		this.buttonID = buttonID;
+		this.screen = screen;
 	}
 
 	public ButtonListener(int buttonID) {
@@ -413,13 +417,29 @@ public class ButtonListener implements FieldChangeListener {
 				UiApplication.getUiApplication().popScreen(
 						UiApplication.getUiApplication().getActiveScreen());
 				break;
-			case 31:// MyPollMain.Select
+			case 31:// Video Connect Download button
+				VideoDownloadDialog dialog2=  new VideoDownloadDialog(screen);
+				dialog2.myshow();
+				break;
+			case 311:// Video Connect Play button
 				UiApplication.getUiApplication().pushScreen(
 						new VideoConnectPlayerScreen(picInfo));
 				break;
-			case 32:// MyPollMain.Select
+			case 312:// Video Connect Downloadings button
+				Dialog.alert("You are downloading this video. Please wait ....");
+				break;
+			case 32:// MCast Detail Download Button
+//				UiApplication.getUiApplication().pushScreen(
+//						new MCastPlayerScreen(picInfo));
+				VideoDownloadDialog dialog=  new VideoDownloadDialog(screen);
+				dialog.myshow();
+				break;
+			case 321:// MCast Detail Play Button
 				UiApplication.getUiApplication().pushScreen(
 						new MCastPlayerScreen(picInfo));
+				break;
+			case 322:// MCast Detail Downloading
+				Dialog.alert("You are downloading this video. Please wait ....");
 				break;
 			case 33:// MyPollMain.Select
 				Engine.getInstance().sendMoreInfo(link);
@@ -455,6 +475,22 @@ public class ButtonListener implements FieldChangeListener {
 				break;
 			case 36:
 				CrieUtils.browserURL(link);
+				break;
+			case 42:// MCast Detail Download Button
+//				UiApplication.getUiApplication().pushScreen(
+//						new MCastPlayerScreen(picInfo));
+				
+				VideoDownloadDialog dialog3=  new VideoDownloadDialog(screen);
+				dialog3.myshow();
+				break;
+			case 421:// MCast Detail Play Button
+
+				TrainingPlayerScreen scr = new TrainingPlayerScreen(trainInfo);
+				UiApplication.getUiApplication().pushScreen(scr);
+			
+				break;
+			case 422:// MCast Detail Downloading
+				Dialog.alert("You are downloading this video. Please wait ....");
 				break;
 			}
 		} catch (Exception e) {

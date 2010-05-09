@@ -56,6 +56,7 @@ import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -120,9 +121,11 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 			int volumeLevel;
 			Field videoField;
 			this.videoPath = picInfo.getVideoUrl();
-			player = javax.microedition.media.Manager.createPlayer(picInfo
-					.getVideoUrl()
-					+ HttpUtilUploadThread.getConnectionSuffix());
+//			player = javax.microedition.media.Manager.createPlayer(picInfo
+//					.getVideoUrl()
+//					+ HttpUtilUploadThread.getConnectionSuffix());
+			player = javax.microedition.media.Manager.createPlayer(CrieUtils.getVideoFolderConnString()
+					+ picinfo.getFilename());
 			// }
 
 			// if the player has been created; checking method for

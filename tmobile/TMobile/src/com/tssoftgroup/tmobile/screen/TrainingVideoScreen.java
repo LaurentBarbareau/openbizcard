@@ -31,10 +31,13 @@ import net.rim.device.api.ui.container.HorizontalFieldManager;
 
 import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
+import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
+import com.tssoftgroup.tmobile.component.VideoDownloadDialog;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
+import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -47,8 +50,7 @@ import com.tssoftgroup.tmobile.utils.Scale;
  * BlackBerry applications that provide a user interface must extend
  * UiApplication.
  */
-public class TrainingVideoScreen extends FixMainScreen implements
-		FieldChangeListener {
+public class TrainingVideoScreen extends FixMainScreen  {
 	Img imgstock = Img.getInstance();
 	private MainItem _mainMenuItem = new MainItem();
 	MainListVerticalFieldManager mainManager = new MainListVerticalFieldManager();
@@ -61,10 +63,14 @@ public class TrainingVideoScreen extends FixMainScreen implements
 
 	public TrainingVideoScreen(TrainingInfo info) {
 		super(MODE_TRAIN);
+		VideoDownloadDialog.filename = info.getFilename();
+		VideoDownloadDialog.fileURL = info.getUrlDownloadVideo();
+		VideoDownloadDialog.videoname = info.getTitle();
+		
 		this.info = info;
 		createVideoMain();
 	}
-
+	HorizontalFieldManager buttonManager;
 	public void createVideoMain() {
 		// videoList = HttpConn.getList(topic, Const.type_movie);
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
@@ -77,7 +83,7 @@ public class TrainingVideoScreen extends FixMainScreen implements
 		try {
 			// submitButton.setChangeListener(new ButtonListener());
 			// Topic Photo and List field
-			nextButton.setChangeListener(new ButtonListener(info, 34));
+			nextButton.setChangeListener(new ButtonListener(info, 34,this));
 			//
 			LabelField titleLabel = new LabelFieldWithFullBG(info.getTitle(),
 					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
@@ -111,9 +117,27 @@ public class TrainingVideoScreen extends FixMainScreen implements
 								(Display.getWidth() - trainingBitmap.getWidth()) / 2 - 25);
 				mainManager.add(trainingBitmap);
 			}
-			HorizontalFieldManager buttonManager = new HorizontalFieldManager();
+			buttonManager = new HorizontalFieldManager();
+			// Check status of video
+			startButton = new MyButtonField("Start", ButtonField.ELLIPSIS);
 
-			startButton.setChangeListener(this);
+			String videoStatus = Video.getVideoStatus(info.getFilename());
+			if (videoStatus.equals("0")) {
+				// new video
+				// / Listener for show download dialog
+				startButton = new MyButtonField("Download", ButtonField.ELLIPSIS);
+				startButton
+						.setChangeListener(new ButtonListener(info, 42,this));
+			} else if (videoStatus.equals("3")) {
+				// video is downloaded
+				startButton
+						.setChangeListener(new ButtonListener(info, 421,this));
+			} else if (videoStatus.equals("2")) {
+				// video is downloading
+				startButton = new MyButtonField("Downloading", ButtonField.ELLIPSIS);
+				startButton
+						.setChangeListener(new ButtonListener(info, 422,this));
+			}
 
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,
 					25 * Display.getWidth() / 480);
@@ -134,7 +158,27 @@ public class TrainingVideoScreen extends FixMainScreen implements
 
 		addMenuItem(_mainMenuItem);
 	}
-
+	public void setDownloadButton(String status) {
+		// 0= new| 2=downloading | 3=downloaded
+		buttonManager.delete(startButton);
+		if (status.equals("0")) {
+			// new video
+			// / Listener for show download dialog
+			startButton = new MyButtonField("Download", ButtonField.ELLIPSIS);
+			startButton
+					.setChangeListener(new ButtonListener(info, 42,this));
+		} else if (status.equals("3")) {
+			// video is downloaded
+			startButton
+			.setChangeListener(new ButtonListener(info, 421,this));
+		} else if (status.equals("2")) {
+			// video is downloading
+			startButton = new MyButtonField("Downloading", ButtonField.ELLIPSIS);
+			startButton
+					.setChangeListener(new ButtonListener(info, 422,this));
+		}
+		buttonManager.insert(startButton,0);
+	}
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.
@@ -180,9 +224,9 @@ public class TrainingVideoScreen extends FixMainScreen implements
 		}
 	}
 
-	public void fieldChanged(Field field, int context) {
-		TrainingPlayerScreen scr = new TrainingPlayerScreen(info);
-		UiApplication.getUiApplication().pushScreen(scr);
-	}
+//	public void fieldChanged(Field field, int context) {
+//		TrainingPlayerScreen scr = new TrainingPlayerScreen(info);
+//		UiApplication.getUiApplication().pushScreen(scr);
+//	}
 
 }
