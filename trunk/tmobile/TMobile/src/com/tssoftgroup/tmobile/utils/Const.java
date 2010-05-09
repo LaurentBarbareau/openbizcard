@@ -57,6 +57,8 @@ public class Const {
 	public static final String URL_INCREASE_POLL_COUNT = "http://173.203.97.162/web/increasepollcount.php";
 	public static final String URL_EMAIL_DOC = "http://173.203.97.162/web/senddocemail.php";
 	public static final String DOCUMENT_PATH = "http://173.203.97.162/web/api/docs/";//Microfunding Proposal Template.doc
+	// 
+	public static final String URL_VIDEO_DOWNLOAD= "http://173.203.97.162/movies/";
 	public static final int BG_COLOR = 0xeeeeee;
 	public static final int BG_COLOR_MAIN = 0xcdcdcd;
 	public static final int LIST_BG_COLOR = 0xffffff;

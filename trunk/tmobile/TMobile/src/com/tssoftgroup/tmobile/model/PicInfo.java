@@ -2,6 +2,9 @@ package com.tssoftgroup.tmobile.model;
 
 import java.util.Vector;
 
+import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.StringUtil;
+
 import net.rim.device.api.system.Bitmap;
 
 public class PicInfo {
@@ -16,8 +19,18 @@ public class PicInfo {
 	private String videoUrl = "";
 	private String duration= "";
 	private String cat= "";
+	private String filename= "";
+	private String urlDownloadVideo= "";
 
 	
+	public String getUrlDownloadVideo() {
+		return urlDownloadVideo;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
 	public String getCat() {
 		return cat;
 	}
@@ -48,6 +61,13 @@ public class PicInfo {
 
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
+		/// find filename and store
+		String [] all = StringUtil.split(videoUrl, "/");
+		if(all.length > 0){
+			String last = all[all.length -1];
+			this.filename = last;
+			this.urlDownloadVideo = Const.URL_VIDEO_DOWNLOAD  + this.filename;
+		}
 	}
 
 	public String getDescription() {

@@ -56,7 +56,11 @@ public class Img {
 	private Bitmap pdf;
 	private Bitmap ppt;
 	private Bitmap xls;
-	
+	/// Downloading and Download button
+	private Bitmap download;
+	private Bitmap downloadFocus;
+	private Bitmap downloading;
+	private Bitmap downloadingFocus;
 	// Dont have moreinfo Button now
 	public Bitmap getZip() {
 		if (zip == null) {
@@ -165,6 +169,37 @@ public class Img {
 		}
 		return playOn;
 	}
+	//
+	public Bitmap getDownloading() {
+		if (downloading == null) {
+			downloading = CrieUtils.createScaleBitmap(
+					"downloading.png",  105 * Display.getWidth()/480);
+		}
+		return downloading;
+	}
+	public Bitmap getDownloadingOn() {
+		if (downloadingFocus == null) {
+			downloadingFocus = CrieUtils.createScaleBitmap(
+					"downloadingSelected.png",  105 * Display.getWidth()/480);
+		}
+		return downloadingFocus;
+	}
+	public Bitmap getDownload() {
+		if (download == null) {
+			download = CrieUtils.createScaleBitmap(
+					"download.png",  105 * Display.getWidth()/480);
+		}
+		return download;
+	}
+	public Bitmap getDownloadOn() {
+		if (downloadFocus == null) {
+			downloadFocus = CrieUtils.createScaleBitmap(
+					"downloadSelected.png",  105 * Display.getWidth()/480);
+		}
+		return downloadFocus;
+	}
+	
+	//
 	public Bitmap getHeader() {
 		if (header == null) {
 			header = CrieUtils.createScaleBitmap("Header_480.png", Display
@@ -314,4 +349,5 @@ public class Img {
 		}
 		return passcode;
 	}
+	
 }

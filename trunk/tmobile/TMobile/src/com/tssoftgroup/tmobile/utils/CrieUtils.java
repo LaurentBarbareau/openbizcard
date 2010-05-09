@@ -184,7 +184,9 @@ public class CrieUtils {
 	public static String getDocumentFolderConnString() {
 		return "file:///SDCard/BlackBerry/documents/";
 	}
-
+	public static String getVideoFolderConnString() {
+		return "file:///SDCard/BlackBerry/videos/";
+	}
 	public static String getDocumentFolderStringForUser() {
 		return "Media Card/BlackBerry/documents/";
 	}

@@ -42,9 +42,11 @@ import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
+import com.tssoftgroup.tmobile.component.VideoDownloadDialog;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.MoreInfo;
 import com.tssoftgroup.tmobile.model.PicInfo;
+import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -65,9 +67,15 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 	HorizontalFieldManager thumnailDescDurationPlayManager = new HorizontalFieldManager();
 	VerticalFieldManager descDurationPlayManager = new VerticalFieldManager();
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
-	
+	HorizontalFieldManager durationPlayManager;
+	PicInfo picInfo = null;
 	public MCastDetail(PicInfo picinfo) {
 		super(MODE_MCAST);
+		this.picInfo = picinfo;
+		VideoDownloadDialog.filename = picinfo.getFilename();
+		VideoDownloadDialog.fileURL = picinfo.getUrlDownloadVideo();
+		VideoDownloadDialog.videoname = picinfo.getTitle();
+		System.out.println(picinfo.getFilename());
 		this.videoPath = picinfo.getVideoUrl();
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 
@@ -98,15 +106,35 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				moreinfoList.addElement(more);
 			}
 			LabelField titleLabel = new LabelFieldWithFullBG(
-					picinfo.getTitle(), MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR,
-					MyColor.TOPIC_BG, Display.getWidth() - 50
-							* Display.getWidth() / 480);
+					picinfo.getTitle(), MyColor.FONT_TOPIC,
+					MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
+							.getWidth()
+							- 50 * Display.getWidth() / 480);
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,
 					25 * Display.getWidth() / 480);
 			titleLabel.setMargin(edge);
 			mainManager.add(titleLabel);
-			// 
-			playButtonImg.setChangeListener(new ButtonListener(picinfo, 32));
+			// Check video status
+			String videoStatus = Video.getVideoStatus(picinfo.getFilename());
+			if (videoStatus.equals("0")) {
+				// new video
+				// / Listener for show download dialog
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getDownload(), imgStock.getDownloadOn());
+				playButtonImg
+						.setChangeListener(new ButtonListener(picinfo, 32,this));
+			} else if (videoStatus.equals("3")) {
+				// video is downloaded
+				playButtonImg
+				.setChangeListener(new ButtonListener(picinfo, 321,this));
+			} else if (videoStatus.equals("2")) {
+				// video is downloading
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getDownloading(), imgStock.getDownloadingOn());
+				playButtonImg
+				.setChangeListener(new ButtonListener(picinfo, 322,this));
+			}
+
 			int thumbWidth = 0;
 			if (picinfo.getThumbnail() != null) {
 				BitmapField thumb = new BitmapField(picinfo.getThumbnail());
@@ -115,7 +143,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				thumbWidth = thumb.getWidth() + 10 * Display.getWidth() / 480;
 			}
 
-			HorizontalFieldManager durationPlayManager = new HorizontalFieldManager();
+			 durationPlayManager = new HorizontalFieldManager();
 			// /
 			CrieLabelField durLabel = new CrieLabelField("duration "
 					+ picinfo.getDuration(), MyColor.FONT_DESCRIPTION_TITLE,
@@ -154,7 +182,8 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			// CommentListVerticalFieldManager listVerticalManager = new
 			// CommentListVerticalFieldManager();
 			LabelField commentLB = new LabelFieldWithFullBG("comments",
-					MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
+					MyColor.COMMENT_LABEL_FONT,
+					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 
 			// LabelField commentLB = new LabelField("Comments:");
@@ -179,7 +208,8 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 							35 * Display.getWidth() / 480);
 					commentLabel.setMargin(edge);
 					commentsManager.add(commentLabel);
-					commentLabel = new CrieLabelField(commentArr[0], MyColor.FONT_DESCRIPTION,
+					commentLabel = new CrieLabelField(commentArr[0],
+							MyColor.FONT_DESCRIPTION,
 							Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 							LabelField.FOCUSABLE);
 					commentLabel.isFix = true;
@@ -200,13 +230,13 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
 			}
-			FixMainScreen.processHaveComment(commentsManager, picinfo,
-					this);
+			FixMainScreen.processHaveComment(commentsManager, picinfo, this);
 			// Deal with more info
 			VerticalFieldManager listVerticalManager = new VerticalFieldManager();
 			// LabelField moreinfoLB = new LabelField("More Info:");
 			LabelField moreinfoLB = new LabelFieldWithFullBG("more info",
-					MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
+					MyColor.COMMENT_LABEL_FONT,
+					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
 					Scale.EDGE, 25 * Display.getWidth() / 480);
@@ -267,9 +297,9 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 
 			// LabelField postCommentLabel = new LabelField("Post Comment: ");
 			LabelField postCommentLabel = new LabelFieldWithFullBG(
-					"post comment", MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
-					MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
-							* Display.getWidth() / 480);
+					"post comment", MyColor.COMMENT_LABEL_FONT,
+					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
+					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
 					Scale.EDGE, 25 * Display.getWidth() / 480);
 			postCommentLabel.setMargin(edge);
@@ -317,7 +347,26 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 
 		addMenuItem(_mainMenuItem);
 	}
-
+	public void setDownloadButton(String status) {
+		// 0= new| 2=downloading | 3=downloaded
+		durationPlayManager.delete(playButtonImg);
+		if (status.equals("0")) {
+			// new video
+			// / Listener for show download dialog
+			playButtonImg = new CustomButtonField(null, imgStock.getDownload(),
+					imgStock.getDownloadOn());
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 31,this));
+		} else if (status.equals("3")) {
+			// video is downloaded
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 311,this));
+		} else if (status.equals("2")) {
+			// video is downloading
+			playButtonImg = new CustomButtonField(null, imgStock
+					.getDownloading(), imgStock.getDownloadingOn());
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 312,this));
+		}
+		durationPlayManager.add(playButtonImg);
+	}
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.
@@ -369,6 +418,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 	public int getCurrentCommentInd() {
 		return currentComment;
 	}
+
 	public void setCurrentCommentInd(int currentComment) {
 		this.currentComment = currentComment;
 	}

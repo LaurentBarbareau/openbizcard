@@ -37,7 +37,6 @@ import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.ButtonField;
-import net.rim.device.api.ui.component.EditField;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
@@ -47,17 +46,15 @@ import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CommentsDialog;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
-import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
 import com.tssoftgroup.tmobile.component.MoreInfoDialog;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.MyPlayer;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
-import com.tssoftgroup.tmobile.component.engine.Engine;
-import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.MoreInfo;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -127,9 +124,11 @@ public class MCastPlayerScreen extends MainScreen implements
 			int volumeLevel;
 			Field videoField;
 			this.videoPath = picinfo.getVideoUrl();
-			player = javax.microedition.media.Manager.createPlayer(picinfo
-					.getVideoUrl()
-					+ HttpUtilUploadThread.getConnectionSuffix());
+//			player = javax.microedition.media.Manager.createPlayer(picinfo
+//					.getVideoUrl()
+//					+ HttpUtilUploadThread.getConnectionSuffix());
+			player = javax.microedition.media.Manager.createPlayer(CrieUtils.getVideoFolderConnString()
+					+ picinfo.getFilename());
 			// }
 
 			// if the player has been created; checking method for

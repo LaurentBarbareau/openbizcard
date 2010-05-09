@@ -3,6 +3,7 @@ package com.tssoftgroup.tmobile.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Vector;
 
 import javax.microedition.io.Connector;
 import javax.microedition.io.HttpConnection;
@@ -14,12 +15,17 @@ import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.Status;
 
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
+import com.tssoftgroup.tmobile.main.ProfileEntry;
+import com.tssoftgroup.tmobile.model.Video;
 
 public class DownloadCombiner extends Thread {
 
 	private String remoteName;
 	private String localName;
 	private int chunksize;
+	private boolean fromVideoDownload = false;
+	private String fileName;
+	private String videoname;
 
 	public DownloadCombiner(String remoteName, String localName, int chunksize) {
 		this.remoteName = remoteName;
@@ -27,7 +33,28 @@ public class DownloadCombiner extends Thread {
 		this.chunksize = chunksize;
 	}
 
+	public DownloadCombiner(String remoteName, String localName, int chunksize,
+			boolean fromVideoDownload, String fileName, String videoname) {
+		this.remoteName = remoteName;
+		this.localName = localName;
+		this.chunksize = chunksize;
+		this.fromVideoDownload = fromVideoDownload;
+		this.fileName = fileName;
+		this.videoname = videoname;
+	}
+
 	public void run() {
+		if (fromVideoDownload) {
+			// Add new Video to download queue
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videos = Video.convertStringToVector(profile.videos);
+			Video newVideo = new Video();
+			newVideo.setName(fileName);
+			newVideo.setStatus("2");
+			videos.addElement(newVideo);
+			profile.videos = Video.convertVectorToString(videos);
+			profile.saveProfile();
+		}
 		try {
 			int chunkIndex = 0;
 			int totalSize = 0;
@@ -67,7 +94,7 @@ public class DownloadCombiner extends Thread {
 								+ conn.getResponseCode());
 						break;
 					}
-					final String r =conn.getHeaderField("Content-Range");
+					final String r = conn.getHeaderField("Content-Range");
 					if (r != null) {
 						try {
 							int indMinus = r.indexOf("-");
@@ -88,8 +115,11 @@ public class DownloadCombiner extends Thread {
 								UiApplication.getUiApplication().invokeLater(
 										new Runnable() {
 											public void run() {
-												Status.show("" + percent
-														+ "% Completed", 1000);
+												if (!fromVideoDownload) {
+													Status.show("" + percent
+															+ "% Completed",
+															1000);
+												}
 											}
 										});
 							}
@@ -98,19 +128,19 @@ public class DownloadCombiner extends Thread {
 						}
 
 					} else {
-//						System.out.println("r is equal null");
-//						if (chunksize > 1000) {
-//							try {
-//								conn.close();
-//							} catch (Exception e) {
-//
-//							}
-//							new DownloadCombiner(remoteName, localName, 1000)
-//									.start();
-//							return;
-//						} else {
-//							break;
-//						}
+						// System.out.println("r is equal null");
+						// if (chunksize > 1000) {
+						// try {
+						// conn.close();
+						// } catch (Exception e) {
+						//
+						// }
+						// new DownloadCombiner(remoteName, localName, 1000)
+						// .start();
+						// return;
+						// } else {
+						// break;
+						// }
 						break;
 					}
 
@@ -139,8 +169,8 @@ public class DownloadCombiner extends Thread {
 					 */
 					Thread.sleep(1000);
 				}
-				System.out.println("Full file downloaded: " + totalSize
-						+ " Bytes");
+				System.out.println("Video " + videoname + " downloaded: "
+						+ totalSize + " Bytes");
 				final int mySize = totalSize;
 				final int fiResponseCode = myResponseCode;
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
@@ -158,23 +188,60 @@ public class DownloadCombiner extends Thread {
 											.getPredefinedBitmap(Bitmap.INFORMATION),
 									0);
 							int result = dia.doModal();
-							
+
 						} else {
-							final String choices[] = { "Open", "Done" };
-							final int values[] = { Dialog.OK, Dialog.CANCEL };
-							Dialog dia = new Dialog(
-									"Full file downloaded: " + mySize
-											+ " Bytes",
-									choices,
-									values,
-									Dialog.OK,
-									Bitmap
-											.getPredefinedBitmap(Bitmap.INFORMATION),
-									0);
-							int result = dia.doModal();
-							if (result == Dialog.OK) {
-								CrieUtils.browserURL(localName);
+							if (!fromVideoDownload) {
+								final String choices[] = { "Open", "Done" };
+								final int values[] = { Dialog.OK, Dialog.CANCEL };
+								Dialog dia = new Dialog(
+										"Full file downloaded: " + mySize
+												+ " Bytes",
+										choices,
+										values,
+										Dialog.OK,
+										Bitmap
+												.getPredefinedBitmap(Bitmap.INFORMATION),
+										0);
+								int result = dia.doModal();
+								if (result == Dialog.OK) {
+									CrieUtils.browserURL(localName);
+								} else {
+								}
 							} else {
+								// Update Status of Video to
+								ProfileEntry profile = ProfileEntry
+										.getInstance();
+								Vector videos = Video
+										.convertStringToVector(profile.videos);
+								for (int i = 0; i < videos.size(); i++) {
+									Video v = (Video) videos.elementAt(i);
+									if (v.getName().equals(fileName)) {
+										v.setStatus("3");
+									}
+								}
+								String profileVideoString = Video
+										.convertVectorToString(videos);
+								profile.videos = profileVideoString;
+								profile.saveProfile();
+								// from video download
+								final String choices[] = { "Done" };
+								final int values[] = { Dialog.OK };
+								Dialog dia = new Dialog(
+										"Video "
+												+ videoname
+												+ " downloaded: "
+												+ mySize
+												+ " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
+										choices,
+										values,
+										Dialog.OK,
+										Bitmap
+												.getPredefinedBitmap(Bitmap.INFORMATION),
+										0);
+								int result = dia.doModal();
+								if (result == Dialog.OK) {
+								} else {
+								}
 							}
 						}
 					}

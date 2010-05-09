@@ -48,6 +48,7 @@ import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.Scale;
 
@@ -97,9 +98,11 @@ public class TrainingPlayerScreen extends MainScreen implements
 			int volumeLevel;
 			Field videoField;
 			this.videoPath = trainInfo.getVideoUrl();
-			player = javax.microedition.media.Manager.createPlayer(trainInfo
-					.getVideoUrl()
-					+ HttpUtilUploadThread.getConnectionSuffix());
+//			player = javax.microedition.media.Manager.createPlayer(trainInfo
+//					.getVideoUrl()
+//					+ HttpUtilUploadThread.getConnectionSuffix());
+			player = javax.microedition.media.Manager.createPlayer(CrieUtils.getVideoFolderConnString()
+					+ trainInfo.getFilename());
 			// }
 
 			// if the player has been created; checking method for

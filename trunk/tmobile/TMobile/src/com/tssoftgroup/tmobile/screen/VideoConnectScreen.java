@@ -373,7 +373,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 						msg = " File Added: " + entry.getPath();
 						_fileFullName = entry.getPath();
 						if (_fileFullName.toLowerCase().endsWith("3gp")
-								|| _fileFullName.toLowerCase().endsWith("mp4")) {
+								|| _fileFullName.toLowerCase().endsWith("mp5")) {
 
 							if (!alreadyPush) {
 								Engine.getInstance().picInfo
@@ -401,7 +401,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 					msg = " File Deleted: " + entry.getPath();
 					_fileFullName = entry.getPath();
 					if (_fileFullName.toLowerCase().indexOf("3gp") >= 0
-							|| _fileFullName.toLowerCase().indexOf("mp4") >= 0) {
+							|| _fileFullName.toLowerCase().indexOf("mp5") >= 0) {
 					}
 					break;
 				case FileSystemJournalEntry.FILE_CHANGED:
@@ -411,7 +411,7 @@ public class VideoConnectScreen extends FixMainScreen implements
 					// checkFinishThread.lastFileChange = System
 					// .currentTimeMillis();
 					if (_fileFullName.toLowerCase().endsWith("3gp")
-							|| _fileFullName.toLowerCase().endsWith("mp4")) {
+							|| _fileFullName.toLowerCase().endsWith("mp5")) {
 
 						final Engine engine = Engine.getInstance();
 						// if (CrieUtils.getFileSize("file://" + path) > 0) {
