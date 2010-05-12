@@ -15,10 +15,28 @@ public class Video {
 	private String name = "0";
 	private String status = "0";
 	private String scheduleTime = "0";
+	private String percent = "0";
+	private String title = "0";
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public String toString() {
 		return "name = " + name + " status = " + status + " schedule time = "
-				+ scheduleTime;
+				+ scheduleTime + " percent " + percent+ " title " + title;
+	}
+
+	public String getPercent() {
+		return percent;
+	}
+
+	public void setPercent(String percent) {
+		this.percent = percent;
 	}
 
 	public String getName() {
@@ -46,7 +64,8 @@ public class Video {
 	}
 
 	private String toMyString() {
-		String ret = name + SEPERATOR + status + SEPERATOR + scheduleTime;
+		String ret = name + SEPERATOR + status + SEPERATOR + scheduleTime
+				+ SEPERATOR + percent + SEPERATOR + title;
 		return ret;
 	}
 
@@ -64,7 +83,7 @@ public class Video {
 	}
 
 	public static Vector convertStringToVector(String videosString) {
-		if(videosString.equals("")){
+		if (videosString.equals("")) {
 			return new Vector();
 		}
 		Vector ret = new Vector();
@@ -77,32 +96,57 @@ public class Video {
 			vid.name = videoString[0];
 			vid.status = videoString[1];
 			vid.scheduleTime = videoString[2];
+			vid.percent = videoString[3];
+			vid.title = videoString[4];
 			ret.addElement(vid);
 		}
 		return ret;
 	}
 
-//	public static void main(String[] args) {
-//		System.out.println("aaa");
-//		String videos = "1754514.mp4,0,40:11 5/6/2010|1754515.mp4,1,12:4 8/6/2010";
-//		Vector v = convertStringToVector(videos);
-//		for (int i = 0; i < v.size(); i++) {
-//			Video video = (Video) v.elementAt(i);
-//			System.out.println(video);
-//		}
-//		String aa = convertVectorToString(v);
-//		System.out.println(aa);
-//		
-//	}
-	public static String getVideoStatus(String videoName){
+	// public static void main(String[] args) {
+	// System.out.println("aaa");
+	// String videos =
+	// "1754514.mp4,0,40:11 5/6/2010|1754515.mp4,1,12:4 8/6/2010";
+	// Vector v = convertStringToVector(videos);
+	// for (int i = 0; i < v.size(); i++) {
+	// Video video = (Video) v.elementAt(i);
+	// System.out.println(video);
+	// }
+	// String aa = convertVectorToString(v);
+	// System.out.println(aa);
+	//		
+	// }
+	public static String getVideoStatus(String videoName) {
 		ProfileEntry profile = ProfileEntry.getInstance();
-		Vector videos =  convertStringToVector(profile.videos);
+		Vector videos = convertStringToVector(profile.videos);
 		for (int i = 0; i < videos.size(); i++) {
-			Video video = (Video)videos.elementAt(i);
-			if(video.name.equals(videoName)){
+			Video video = (Video) videos.elementAt(i);
+			if (video.name.equals(videoName)) {
 				return video.status;
 			}
 		}
 		return "0";
+	}
+
+	public static Vector getDownloadingVideo(Vector videos) {
+		Vector ret = new Vector();
+		for (int i = 0; i < videos.size(); i++) {
+			Video video = (Video) videos.elementAt(i);
+			if (video.status.equals("2")) {
+				ret.addElement(video);
+			}
+		}
+		return ret;
+	}
+
+	public static Vector getScheduleVideo(Vector videos) {
+		Vector ret = new Vector();
+		for (int i = 0; i < videos.size(); i++) {
+			Video video = (Video) videos.elementAt(i);
+			if (video.status.equals("1")) {
+				ret.addElement(video);
+			}
+		}
+		return ret;
 	}
 }

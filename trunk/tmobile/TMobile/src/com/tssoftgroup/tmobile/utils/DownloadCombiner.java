@@ -119,6 +119,15 @@ public class DownloadCombiner extends Thread {
 													Status.show("" + percent
 															+ "% Completed",
 															1000);
+												}else{
+													ProfileEntry profile = ProfileEntry.getInstance();
+													Vector videos =  Video.convertStringToVector(profile.videos);
+													for (int i = 0; i < videos.size(); i++) {
+														Video video = (Video)videos.elementAt(i);
+														if(video.getName().equals(fileName)){
+															video.setPercent(percent + " %");
+														}
+													}
 												}
 											}
 										});

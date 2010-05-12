@@ -69,6 +69,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	PicInfo picInfo = null;
+
 	public MCastDetail(PicInfo picinfo) {
 		super(MODE_MCAST);
 		this.picInfo = picinfo;
@@ -121,18 +122,24 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				// / Listener for show download dialog
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownload(), imgStock.getDownloadOn());
-				playButtonImg
-						.setChangeListener(new ButtonListener(picinfo, 32,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo, 32,
+						this));
 			} else if (videoStatus.equals("3")) {
 				// video is downloaded
-				playButtonImg
-				.setChangeListener(new ButtonListener(picinfo, 321,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						321, this));
 			} else if (videoStatus.equals("2")) {
 				// video is downloading
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownloading(), imgStock.getDownloadingOn());
-				playButtonImg
-				.setChangeListener(new ButtonListener(picinfo, 322,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						322, this));
+			} else if (videoStatus.equals("1")) {
+				// video is downloading
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getSchedule(), imgStock.getScheduleOn());
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						323, this));
 			}
 
 			int thumbWidth = 0;
@@ -143,7 +150,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 				thumbWidth = thumb.getWidth() + 10 * Display.getWidth() / 480;
 			}
 
-			 durationPlayManager = new HorizontalFieldManager();
+			durationPlayManager = new HorizontalFieldManager();
 			// /
 			CrieLabelField durLabel = new CrieLabelField("duration "
 					+ picinfo.getDuration(), MyColor.FONT_DESCRIPTION_TITLE,
@@ -347,6 +354,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 
 		addMenuItem(_mainMenuItem);
 	}
+
 	public void setDownloadButton(String status) {
 		// 0= new| 2=downloading | 3=downloaded
 		durationPlayManager.delete(playButtonImg);
@@ -355,18 +363,28 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 			// / Listener for show download dialog
 			playButtonImg = new CustomButtonField(null, imgStock.getDownload(),
 					imgStock.getDownloadOn());
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 31,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 32,
+					this));
 		} else if (status.equals("3")) {
 			// video is downloaded
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 311,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 321,
+					this));
 		} else if (status.equals("2")) {
 			// video is downloading
 			playButtonImg = new CustomButtonField(null, imgStock
 					.getDownloading(), imgStock.getDownloadingOn());
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 312,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 322,
+					this));
+		} else if (status.equals("1")) {
+			// video is downloading
+			playButtonImg = new CustomButtonField(null, imgStock.getSchedule(),
+					imgStock.getScheduleOn());
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 323,
+					this));
 		}
 		durationPlayManager.add(playButtonImg);
 	}
+
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.

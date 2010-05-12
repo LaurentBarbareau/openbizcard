@@ -61,6 +61,8 @@ public class Img {
 	private Bitmap downloadFocus;
 	private Bitmap downloading;
 	private Bitmap downloadingFocus;
+	private Bitmap schedule;
+	private Bitmap scheduleFocus;
 	// Dont have moreinfo Button now
 	public Bitmap getZip() {
 		if (zip == null) {
@@ -197,6 +199,20 @@ public class Img {
 					"downloadSelected.png",  105 * Display.getWidth()/480);
 		}
 		return downloadFocus;
+	}
+	public Bitmap getSchedule() {
+		if (schedule == null) {
+			schedule = CrieUtils.createScaleBitmap(
+					"scheduled.png",  105 * Display.getWidth()/480);
+		}
+		return schedule;
+	}
+	public Bitmap getScheduleOn() {
+		if (scheduleFocus == null) {
+			scheduleFocus = CrieUtils.createScaleBitmap(
+					"scheduledSelected.png",  105 * Display.getWidth()/480);
+		}
+		return scheduleFocus;
 	}
 	
 	//
