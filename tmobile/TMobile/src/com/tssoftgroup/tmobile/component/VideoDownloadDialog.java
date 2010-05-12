@@ -66,6 +66,7 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 		// Submit
 		if (result == Dialog.OK) {
 			if (methodNow.isSelected()) {
+				System.out.println("select now");
 				// Downlaod the file
 
 				// Check file exist
@@ -90,6 +91,25 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				if(screen instanceof TrainingVideoScreen){
 					TrainingVideoScreen mcast = (TrainingVideoScreen)screen;
 					mcast.setDownloadButton("2");
+				}
+			}else{
+				System.out.println("select schedule");
+				Date d = new Date();
+				System.out.println("Current time:" +d.getTime());
+				// method schedule
+				System.out.println("Schedule time:" + df.getDate());
+				// Change the button to downloading
+				if(screen instanceof VideoConnectDetail){
+					VideoConnectDetail videoConnect = (VideoConnectDetail)screen;
+					videoConnect.setDownloadButton("1");
+				}
+				if(screen instanceof MCastDetail){
+					MCastDetail mcast = (MCastDetail)screen;
+					mcast.setDownloadButton("1");
+				}
+				if(screen instanceof TrainingVideoScreen){
+					TrainingVideoScreen mcast = (TrainingVideoScreen)screen;
+					mcast.setDownloadButton("1");
 				}
 			}
 		}

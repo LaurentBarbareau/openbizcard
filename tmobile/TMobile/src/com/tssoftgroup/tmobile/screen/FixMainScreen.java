@@ -23,8 +23,10 @@ import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.NewVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.engine.Engine;
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
+import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -263,10 +265,19 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	 */
 	public void close() {
 		// Display a farewell message before closing application.
-		Dialog.alert("good bye");
-		System.exit(0);
-
-		super.close();
+		/// If have download queue
+		ProfileEntry profile = ProfileEntry.getInstance();
+		Vector videos = Video.convertStringToVector(profile.videos);
+		Vector sceduleVideos = Video.getScheduleVideo(videos);
+		Vector downloadingVideos = Video.getDownloadingVideo(videos);
+		if(sceduleVideos.size() > 0 || downloadingVideos.size() > 0){
+			UiApplication.getUiApplication().requestBackground();
+		}else{
+			Dialog.alert("good bye");
+			System.exit(0);
+			/// Don't have download Queue
+			super.close();
+		}
 	}
 
 	public void fieldChanged(Field field, int context) {

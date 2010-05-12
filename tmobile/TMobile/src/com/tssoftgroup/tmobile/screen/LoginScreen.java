@@ -136,7 +136,7 @@ public class LoginScreen {
 		// adding menu items
 		mainScreen.add(mainManager);
 		mainScreen.addMenuItem(saveItem);
-		mainScreen.addMenuItem(getItem);
+//		mainScreen.addMenuItem(getItem);
 		// pushing the main screen
 		UiApplication.getUiApplication().pushScreen(mainScreen);
 		// add
@@ -154,26 +154,26 @@ public class LoginScreen {
 		}
 	};
 	// adding functionality to menu item "saveItem"
-	private MenuItem getItem = new MenuItem(Wording.GET, 110, 11) {
-		// running thread for this menu item
-
-		public void run() {
-			// synchronizing thread
-			// getting contents of the persistent object
-			// checking for empty object
-			// if not empty
-			// create a new object of Store Info class
-			ProfileEntry profile = ProfileEntry.getInstance();
-			// storing information retrieved in strings
-			getName = profile.name;
-			getEmail = profile.email;
-			getMobile = profile.mobile;
-			getPasscode = profile.passCode;
-
-			// calling the show method
-			show();
-		}
-	};
+//	private MenuItem getItem = new MenuItem(Wording.GET, 110, 11) {
+//		// running thread for this menu item
+//
+//		public void run() {
+//			// synchronizing thread
+//			// getting contents of the persistent object
+//			// checking for empty object
+//			// if not empty
+//			// create a new object of Store Info class
+//			ProfileEntry profile = ProfileEntry.getInstance();
+//			// storing information retrieved in strings
+//			getName = profile.name;
+//			getEmail = profile.email;
+//			getMobile = profile.mobile;
+//			getPasscode = profile.passCode;
+//
+//			// calling the show method
+//			show();
+//		}
+//	};
 
 	// coding for persistent store
 	// new class store info implementing persistable

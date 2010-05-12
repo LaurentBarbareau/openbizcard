@@ -102,18 +102,24 @@ public class VideoConnectDetail extends FixMainScreen implements
 				// / Listener for show download dialog
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownload(), imgStock.getDownloadOn());
-				playButtonImg
-						.setChangeListener(new ButtonListener(picinfo, 31,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo, 31,
+						this));
 			} else if (videoStatus.equals("3")) {
 				// video is downloaded
-				playButtonImg
-						.setChangeListener(new ButtonListener(picinfo, 311,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						311, this));
 			} else if (videoStatus.equals("2")) {
 				// video is downloading
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownloading(), imgStock.getDownloadingOn());
-				playButtonImg
-						.setChangeListener(new ButtonListener(picinfo, 312,this));
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						312, this));
+			} else if (videoStatus.equals("1")) {
+				// video is downloading
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getSchedule(), imgStock.getScheduleOn());
+				playButtonImg.setChangeListener(new ButtonListener(picinfo,
+						313, this));
 			}
 			int thumbWidth = 0;
 			if (picinfo.getThumbnail() != null) {
@@ -289,15 +295,24 @@ public class VideoConnectDetail extends FixMainScreen implements
 			// / Listener for show download dialog
 			playButtonImg = new CustomButtonField(null, imgStock.getDownload(),
 					imgStock.getDownloadOn());
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 31,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 31,
+					this));
 		} else if (status.equals("3")) {
 			// video is downloaded
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 311,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 311,
+					this));
 		} else if (status.equals("2")) {
 			// video is downloading
 			playButtonImg = new CustomButtonField(null, imgStock
 					.getDownloading(), imgStock.getDownloadingOn());
-			playButtonImg.setChangeListener(new ButtonListener(picInfo, 312,this));
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 312,
+					this));
+		} else if (status.equals("1")) {
+			// video is downloading
+			playButtonImg = new CustomButtonField(null, imgStock.getSchedule(),
+					imgStock.getScheduleOn());
+			playButtonImg.setChangeListener(new ButtonListener(picInfo, 313,
+					this));
 		}
 		durationPlayManager.add(playButtonImg);
 	}

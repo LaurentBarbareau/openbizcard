@@ -428,6 +428,10 @@ public class ButtonListener implements FieldChangeListener {
 			case 312:// Video Connect Downloadings button
 				Dialog.alert("You are downloading this video. Please wait ....");
 				break;
+				
+			case 313:// Video Connect Downloadings button
+				Dialog.alert("This video will be scheduled");
+				break;
 			case 32:// MCast Detail Download Button
 //				UiApplication.getUiApplication().pushScreen(
 //						new MCastPlayerScreen(picInfo));
@@ -440,6 +444,9 @@ public class ButtonListener implements FieldChangeListener {
 				break;
 			case 322:// MCast Detail Downloading
 				Dialog.alert("You are downloading this video. Please wait ....");
+				break;
+			case 323:// MCast Detail Downloading
+				Dialog.alert("This video will be schedule");
 				break;
 			case 33:// MyPollMain.Select
 				Engine.getInstance().sendMoreInfo(link);
@@ -491,6 +498,9 @@ public class ButtonListener implements FieldChangeListener {
 				break;
 			case 422:// MCast Detail Downloading
 				Dialog.alert("You are downloading this video. Please wait ....");
+				break;
+			case 423:// MCast Detail Downloading
+				Dialog.alert("This video will be scheduled ");
 				break;
 			}
 		} catch (Exception e) {

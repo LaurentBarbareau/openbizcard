@@ -13,12 +13,14 @@ import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.utils.Img;
+import com.tssoftgroup.tmobile.utils.Wording;
 
 public class MyMainScreen extends FixMainScreen {
 	Img imgStock = Img.getInstance();
 
 	private static MyMainScreen instance;
 	private MainItem _mainMenuItem = new MainItem();
+	private DownloadQueueItem _downloadQueueItem = new DownloadQueueItem();
 
 	public static MyMainScreen getInstance() {
 		if (instance == null) {
@@ -101,6 +103,7 @@ public class MyMainScreen extends FixMainScreen {
 			System.out.println("" + e.toString());
 		}
 		addMenuItem(_mainMenuItem);
+		addMenuItem(_downloadQueueItem);
 		// bf = new BitmapField(img, Field.FIELD_BOTTOM | Field.USE_ALL_HEIGHT);
 		// add(bf);
 	}
@@ -110,7 +113,7 @@ public class MyMainScreen extends FixMainScreen {
 		 * Constructor.
 		 */
 		private MainItem() {
-			super("Log in", 100, 1);
+			super(Wording.LOGIN, 100, 1);
 		}
 
 		/**
@@ -121,6 +124,22 @@ public class MyMainScreen extends FixMainScreen {
 			UiApplication.getUiApplication().popScreen(
 					UiApplication.getUiApplication().getActiveScreen());
 			LoginScreen app = new LoginScreen(true);
+		}
+	}
+	private final class DownloadQueueItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private DownloadQueueItem() {
+			super("Download Queue", 200, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			UiApplication.getUiApplication().pushScreen(new DownloadQueueScreen());
 		}
 	}
 	// creating save method
