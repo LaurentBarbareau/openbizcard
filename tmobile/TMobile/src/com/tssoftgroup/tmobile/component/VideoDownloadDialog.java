@@ -1,6 +1,7 @@
 package com.tssoftgroup.tmobile.component;
 
 import java.util.Date;
+import java.util.Vector;
 
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
@@ -14,6 +15,7 @@ import net.rim.device.api.ui.component.RadioButtonField;
 import net.rim.device.api.ui.component.RadioButtonGroup;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.screen.MCastDetail;
 import com.tssoftgroup.tmobile.screen.TrainingVideoScreen;
@@ -47,6 +49,7 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 	Video video;
 	VerticalFieldManager manager = new VerticalFieldManager();
 	Screen screen;
+
 	public VideoDownloadDialog(Screen screen) {
 		super("When do you want to download this video ?", choices, values, 0,
 				Bitmap.getPredefinedBitmap(Bitmap.INFORMATION),
@@ -73,42 +76,63 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				String localPatht = CrieUtils.getVideoFolderConnString()
 						+ filename;
 				try {
-						DownloadCombiner download = new DownloadCombiner(fileURL,
-								localPatht, 40000, true, filename, videoname);
-						download.start();
+					DownloadCombiner download = new DownloadCombiner(fileURL,
+							localPatht, 40000, true, filename, videoname);
+					download.start();
 				} catch (Exception e) {
 
 				}
 				// Change the button to downloading
-				if(screen instanceof VideoConnectDetail){
-					VideoConnectDetail videoConnect = (VideoConnectDetail)screen;
+				if (screen instanceof VideoConnectDetail) {
+					VideoConnectDetail videoConnect = (VideoConnectDetail) screen;
 					videoConnect.setDownloadButton("2");
 				}
-				if(screen instanceof MCastDetail){
-					MCastDetail mcast = (MCastDetail)screen;
+				if (screen instanceof MCastDetail) {
+					MCastDetail mcast = (MCastDetail) screen;
 					mcast.setDownloadButton("2");
 				}
-				if(screen instanceof TrainingVideoScreen){
-					TrainingVideoScreen mcast = (TrainingVideoScreen)screen;
+				if (screen instanceof TrainingVideoScreen) {
+					TrainingVideoScreen mcast = (TrainingVideoScreen) screen;
 					mcast.setDownloadButton("2");
 				}
-			}else{
+			} else {
+				// check select time > current time
 				System.out.println("select schedule");
 				Date d = new Date();
-				System.out.println("Current time:" +d.getTime());
+				long currentTime = d.getTime();
+				System.out.println("Current time:" + d.getTime());
 				// method schedule
 				System.out.println("Schedule time:" + df.getDate());
+				long scheduleTime = df.getDate();
+				long min5 = 5000;
+				if (scheduleTime - currentTime < min5) {
+					Dialog
+							.alert("Please select time later than 5 minutes from now.");
+					return;
+				}
+				// / do the job
+				ProfileEntry profile = ProfileEntry.getInstance();
+				Vector videos = Video.convertStringToVector(profile.videos);
+				Video newVideo = new Video();
+				newVideo.setName(filename);
+				newVideo.setPercent("0");
+				newVideo.setScheduleTime(scheduleTime + "");
+				newVideo.setStatus("1");
+				newVideo.setTitle(videoname);
+				videos.addElement(newVideo);
+				profile.videos = Video.convertVectorToString(videos);
+				profile.saveProfile();
 				// Change the button to downloading
-				if(screen instanceof VideoConnectDetail){
-					VideoConnectDetail videoConnect = (VideoConnectDetail)screen;
+				if (screen instanceof VideoConnectDetail) {
+					VideoConnectDetail videoConnect = (VideoConnectDetail) screen;
 					videoConnect.setDownloadButton("1");
 				}
-				if(screen instanceof MCastDetail){
-					MCastDetail mcast = (MCastDetail)screen;
+				if (screen instanceof MCastDetail) {
+					MCastDetail mcast = (MCastDetail) screen;
 					mcast.setDownloadButton("1");
 				}
-				if(screen instanceof TrainingVideoScreen){
-					TrainingVideoScreen mcast = (TrainingVideoScreen)screen;
+				if (screen instanceof TrainingVideoScreen) {
+					TrainingVideoScreen mcast = (TrainingVideoScreen) screen;
 					mcast.setDownloadButton("1");
 				}
 			}
