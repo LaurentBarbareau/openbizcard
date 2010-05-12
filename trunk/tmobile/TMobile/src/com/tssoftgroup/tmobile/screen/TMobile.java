@@ -103,6 +103,8 @@ public class TMobile extends UiApplication {
 				&& original
 						.getPermission(ApplicationPermissions.PERMISSION_EXTERNAL_CONNECTIONS) == ApplicationPermissions.VALUE_ALLOW
 				&& original
+						.getPermission(ApplicationPermissions.PERMISSION_INTERNAL_CONNECTIONS) == ApplicationPermissions.VALUE_ALLOW
+				&& original
 						.getPermission(ApplicationPermissions.PERMISSION_EVENT_INJECTOR) == ApplicationPermissions.VALUE_ALLOW
 				&& original
 						.getPermission(ApplicationPermissions.PERMISSION_IDLE_TIMER) == ApplicationPermissions.VALUE_ALLOW) {
@@ -115,6 +117,8 @@ public class TMobile extends UiApplication {
 					.addPermission(ApplicationPermissions.PERMISSION_FILE_API);
 			permRequest
 					.addPermission(ApplicationPermissions.PERMISSION_EXTERNAL_CONNECTIONS);
+			permRequest
+					.addPermission(ApplicationPermissions.PERMISSION_INTERNAL_CONNECTIONS);
 			permRequest
 					.addPermission(ApplicationPermissions.PERMISSION_EVENT_INJECTOR);
 			permRequest
