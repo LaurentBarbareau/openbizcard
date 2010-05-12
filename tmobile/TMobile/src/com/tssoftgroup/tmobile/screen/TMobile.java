@@ -13,6 +13,7 @@ import net.rim.device.api.ui.UiApplication;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.utils.Img;
+import com.tssoftgroup.tmobile.utils.ScheduleRunable;
 
 /**
  * Create a new screen that extends MainScreen, which provides default standard
@@ -50,6 +51,8 @@ public class TMobile extends UiApplication {
 
 	}
 
+	public static ScheduleRunable downloadThread = null;
+
 	public static void start() {
 		try {
 			BacklightTimeout timeout = new BacklightTimeout();
@@ -66,6 +69,9 @@ public class TMobile extends UiApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		downloadThread = new ScheduleRunable();
+		new Thread(downloadThread).start();
+
 		if (!Engine.isLogin) {
 			LoginScreen app = new LoginScreen(false);
 

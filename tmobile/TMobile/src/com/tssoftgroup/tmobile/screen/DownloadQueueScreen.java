@@ -16,8 +16,10 @@ package com.tssoftgroup.tmobile.screen;
  * Environment Development Guide associated with this release.
  */
 
+import java.util.Date;
 import java.util.Vector;
 
+import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.Display;
@@ -104,14 +106,13 @@ public class DownloadQueueScreen extends FixMainScreen {
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				Video v = (Video) downloadingVideos.elementAt(i);
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
-						+ v.getPercent(), MyColor.FONT_DESCRIPTION,
+						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
 				downloadingManager.add(test1);
 			}
 
-			
 			// <<<<<============ Schedule
 			LabelField scheduleLB = new LabelFieldWithFullBG("schedule",
 					MyColor.COMMENT_LABEL_FONT,
@@ -124,8 +125,16 @@ public class DownloadQueueScreen extends FixMainScreen {
 			// Add item
 			for (int i = 0; i < scheduleVideos.size(); i++) {
 				Video v = (Video) scheduleVideos.elementAt(i);
+				String dateString = "";
+				try {
+					Date videoDate = new Date(Long.parseLong(v
+							.getScheduleTime()));
+					dateString = videoDate.toString();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
-						+ v.getScheduleTime(), MyColor.FONT_DESCRIPTION,
+						+ dateString, MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);

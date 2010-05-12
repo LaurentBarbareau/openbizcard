@@ -46,7 +46,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			ButtonField.ELLIPSIS);
 
 	// Vector of label field
-	LabelField numPage = new CrieLabelField("",0x00);
+	LabelField numPage = new CrieLabelField("", 0x00);
 	private Font pageFont = getFont().derive(Font.PLAIN,
 			17 * Display.getWidth() / 480);
 	String[] pageString = { "1", "2", "3" };
@@ -67,6 +67,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	public String search = "";
 	MyButtonField searchBT = new MyButtonField("Search", ButtonField.ELLIPSIS);
 	int numItem;
+
 	FixMainScreen(int mode) {
 		super(Manager.NO_VERTICAL_SCROLL | Manager.NO_VERTICAL_SCROLLBAR);
 		super.add(manager);
@@ -117,11 +118,11 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			previousNextManager.add(numPage);
 		}
 		// / Set new Choice Field
-		if (pageChoice != null  ) {
-			try{
-			pagingManager.delete(pageChoice);
-			}catch(IllegalArgumentException e){
-				// Delete item that is not belong to 
+		if (pageChoice != null) {
+			try {
+				pagingManager.delete(pageChoice);
+			} catch (IllegalArgumentException e) {
+				// Delete item that is not belong to
 			}
 		}
 		pageString = new String[allPage];
@@ -139,7 +140,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		// pageChoice.setMargin(edge);
 		pageChoice.setChangeListener(this);
 		if (haveNext || havePrevious) {
-		pagingManager.add(pageChoice);
+			pagingManager.add(pageChoice);
 		}
 	}
 
@@ -175,7 +176,8 @@ import com.tssoftgroup.tmobile.utils.Wording;
 						35 * Display.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				commentManager.add(commentLabel);
-				commentLabel = new CrieLabelField(commentArr[0], MyColor.getFontColor(scr.getScreen()),
+				commentLabel = new CrieLabelField(commentArr[0], MyColor
+						.getFontColor(scr.getScreen()),
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				commentLabel.isFix = true;
@@ -186,7 +188,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			}
 		} else if (commentList.size() == 0) {
 			CrieLabelField commentLabel = new CrieLabelField(
-					Wording.NO_COMMENT,MyColor.FONT_DESCRIPTION_TITLE,
+					Wording.NO_COMMENT, MyColor.FONT_DESCRIPTION_TITLE,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);
@@ -265,17 +267,22 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	 */
 	public void close() {
 		// Display a farewell message before closing application.
-		/// If have download queue
+		// / If have download queue
 		ProfileEntry profile = ProfileEntry.getInstance();
 		Vector videos = Video.convertStringToVector(profile.videos);
 		Vector sceduleVideos = Video.getScheduleVideo(videos);
 		Vector downloadingVideos = Video.getDownloadingVideo(videos);
-		if(sceduleVideos.size() > 0 || downloadingVideos.size() > 0){
+		if (sceduleVideos.size() > 0 || downloadingVideos.size() > 0) {
 			UiApplication.getUiApplication().requestBackground();
-		}else{
+		} else {
+			try {
+				TMobile.downloadThread.isRunning = false;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			Dialog.alert("good bye");
 			System.exit(0);
-			/// Don't have download Queue
+			// / Don't have download Queue
 			super.close();
 		}
 	}
