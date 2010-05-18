@@ -76,6 +76,7 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 		VideoDownloadDialog.filename = picinfo.getFilename();
 		VideoDownloadDialog.fileURL = picinfo.getUrlDownloadVideo();
 		VideoDownloadDialog.videoname = picinfo.getTitle();
+		System.out.println("video name " +VideoDownloadDialog.videoname );
 		System.out.println(picinfo.getFilename());
 		this.videoPath = picinfo.getVideoUrl();
 		XYEdges edge = new XYEdges(24, 25, 8, 25);

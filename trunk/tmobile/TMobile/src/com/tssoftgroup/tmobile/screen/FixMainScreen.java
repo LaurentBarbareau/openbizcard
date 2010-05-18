@@ -7,6 +7,7 @@ import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.Font;
 import net.rim.device.api.ui.Manager;
+import net.rim.device.api.ui.MenuItem;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.ButtonField;
@@ -22,6 +23,7 @@ import com.tssoftgroup.tmobile.component.CrieLabelField;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.NewVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
+import com.tssoftgroup.tmobile.component.SettingDialog;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Comment;
@@ -34,6 +36,10 @@ import com.tssoftgroup.tmobile.utils.Wording;
 
 /* package */public class FixMainScreen extends MainScreen implements
 		FieldChangeListener {
+	private MainItem _mainMenuItem = new MainItem();
+	private DownloadQueueItem _downloadQueueItem = new DownloadQueueItem();
+	private SettingItem _settingItem = new SettingItem();
+
 	NewVerticalFieldManager manager = new NewVerticalFieldManager();
 	boolean haveNext = false;
 	boolean havePrevious = false;
@@ -84,6 +90,9 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		// testChoice.setPadding(0, 450 * Display.getWidth() / 480, 0, 0);
 
 		pagingManager.add(pageChoice);
+		addMenuItem(_mainMenuItem);
+		addMenuItem(_downloadQueueItem);
+		addMenuItem(_settingItem);
 	}
 
 	public void processHaveNext(int numItem) {
@@ -325,6 +334,57 @@ import com.tssoftgroup.tmobile.utils.Wording;
 						WaitScreen.getInstance());
 				Engine.getInstance().getPoll(currentIndex, "");
 			}
+		}
+	}
+	private final class MainItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private MainItem() {
+			super(Wording.LOGIN, 100, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			UiApplication.getUiApplication().popScreen(
+					UiApplication.getUiApplication().getActiveScreen());
+			LoginScreen app = new LoginScreen(true);
+		}
+	}
+	private final class DownloadQueueItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private DownloadQueueItem() {
+			super("Download Queue", 200, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			UiApplication.getUiApplication().pushScreen(new DownloadQueueScreen());
+		}
+	}
+	private final class SettingItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private SettingItem() {
+			super("Setting", 300, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			SettingDialog setting = new SettingDialog();
+			setting.myshow();
 		}
 	}
 }

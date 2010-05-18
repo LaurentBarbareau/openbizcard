@@ -51,6 +51,8 @@ public class DownloadCombiner extends Thread {
 			Video newVideo = new Video();
 			newVideo.setName(fileName);
 			newVideo.setStatus("2");
+			newVideo.setTitle(videoname);
+			//
 			videos.addElement(newVideo);
 			profile.videos = Video.convertVectorToString(videos);
 			profile.saveProfile();
@@ -128,6 +130,7 @@ public class DownloadCombiner extends Thread {
 															video.setPercent(percent + " %");
 														}
 													}
+													profile.videos = Video.convertVectorToString(videos);
 												}
 											}
 										});

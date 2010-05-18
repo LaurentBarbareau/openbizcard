@@ -76,6 +76,7 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				String localPatht = CrieUtils.getVideoFolderConnString()
 						+ filename;
 				try {
+					System.out.println("video name " + videoname);
 					DownloadCombiner download = new DownloadCombiner(fileURL,
 							localPatht, 40000, true, filename, videoname);
 					download.start();
