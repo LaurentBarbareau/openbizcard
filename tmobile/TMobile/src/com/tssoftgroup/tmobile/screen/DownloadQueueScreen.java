@@ -17,6 +17,7 @@ package com.tssoftgroup.tmobile.screen;
  */
 
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Vector;
 
 import net.rim.device.api.i18n.DateFormat;
@@ -64,6 +65,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 	public VerticalFieldManager downloadingManager = new VerticalFieldManager();
 	public VerticalFieldManager scheduleManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
+	Hashtable downloadingTable = new Hashtable();
 
 	public DownloadQueueScreen() {
 		super(MODE_MCAST);
@@ -111,6 +113,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
 				downloadingManager.add(test1);
+				downloadingTable.put(v.getName(), test1);
 			}
 
 			// <<<<<============ Schedule
@@ -154,6 +157,52 @@ public class DownloadQueueScreen extends FixMainScreen {
 		edge = new XYEdges(5, 0, 0, 0);
 
 		addMenuItem(_mainMenuItem);
+		// / new thread to update status
+		new Thread(new Runnable() {
+
+			public void run() {
+				while (mTrucking) {
+					if (DownloadQueueScreen.this.isDisplayed()) {
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						updateStatus();
+					}
+				}
+			}
+		}).start();
+	}
+
+	boolean mTrucking = true;
+
+	private void updateStatus() {
+		System.out.println("update status");
+		ProfileEntry profile = ProfileEntry.getInstance();
+		Vector videos = Video.convertStringToVector(profile.videos);
+		Vector downloadingVideos = Video.getDownloadingVideo(videos);
+		for (int i = 0; i < downloadingVideos.size(); i++) {
+			final Video v = (Video) downloadingVideos.elementAt(i);
+			UiApplication.getUiApplication().invokeLater(new Runnable() {
+
+				public void run() {
+
+					//
+					CrieLabelField label = (CrieLabelField) downloadingTable
+							.get(v.getName());
+
+					if (label != null) {
+						System.out.println("label " + label.getText());
+						label.setText(v.getTitle() + " : " + v.getPercent()
+								+ "%");
+					} else {
+						System.out.println("label is null");
+					}
+				}
+			});
+
+		}
 	}
 
 	private final class MainItem extends MenuItem {
