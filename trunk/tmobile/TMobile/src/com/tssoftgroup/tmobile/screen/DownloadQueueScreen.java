@@ -108,7 +108,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				Video v = (Video) downloadingVideos.elementAt(i);
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
-						+ v.getPercent(), MyColor.FONT_DESCRIPTION,
+						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -178,29 +178,34 @@ public class DownloadQueueScreen extends FixMainScreen {
 	boolean mTrucking = true;
 
 	private void updateStatus() {
-		System.out.println("update status");
-		ProfileEntry profile = ProfileEntry.getInstance();
-		Vector videos = Video.convertStringToVector(profile.videos);
-		Vector downloadingVideos = Video.getDownloadingVideo(videos);
-		for (int i = 0; i < downloadingVideos.size(); i++) {
-			final Video v = (Video) downloadingVideos.elementAt(i);
-			UiApplication.getUiApplication().invokeLater(new Runnable() {
+		try {
+			System.out.println("update status");
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videos = Video.convertStringToVector(profile.videos);
+			Vector downloadingVideos = Video.getDownloadingVideo(videos);
+			for (int i = 0; i < downloadingVideos.size(); i++) {
+				final Video v = (Video) downloadingVideos.elementAt(i);
+				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
-				public void run() {
+					public void run() {
 
-					//
-					CrieLabelField label = (CrieLabelField) downloadingTable
-							.get(v.getName());
+						//
+						CrieLabelField label = (CrieLabelField) downloadingTable
+								.get(v.getName());
 
-					if (label != null) {
-						System.out.println("label " + label.getText());
-						label.setText(v.getTitle() + " : " + v.getPercent());
-					} else {
-						System.out.println("label is null");
+						if (label != null) {
+							System.out.println("label " + label.getText());
+							label.setText(v.getTitle() + " : " + v.getPercent()
+									+ "%");
+						} else {
+							System.out.println("label is null");
+						}
 					}
-				}
-			});
+				});
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
