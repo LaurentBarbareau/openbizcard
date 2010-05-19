@@ -1,54 +1,84 @@
 package com.tssoftgroup.tmobile.component;
 
 import java.util.Date;
-import java.util.Vector;
+import java.util.Timer;
+
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 
 import net.rim.device.api.i18n.DateFormat;
+import net.rim.device.api.i18n.SimpleDateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
-import net.rim.device.api.ui.Screen;
-import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.component.ChoiceField;
 import net.rim.device.api.ui.component.DateField;
 import net.rim.device.api.ui.component.Dialog;
-import net.rim.device.api.ui.component.LabelField;
-import net.rim.device.api.ui.component.RadioButtonField;
-import net.rim.device.api.ui.component.RadioButtonGroup;
-import net.rim.device.api.ui.container.VerticalFieldManager;
-
-import com.tssoftgroup.tmobile.main.ProfileEntry;
-import com.tssoftgroup.tmobile.model.Video;
-import com.tssoftgroup.tmobile.screen.MCastDetail;
-import com.tssoftgroup.tmobile.screen.TrainingVideoScreen;
-import com.tssoftgroup.tmobile.screen.VideoConnectDetail;
-import com.tssoftgroup.tmobile.utils.CrieUtils;
-import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 
 public class SettingDialog extends Dialog implements FieldChangeListener {
-	String[] choiceString = { "Yes", "No"};
-	ChoiceField pageChoice = new ChoiceField("Go to :", choiceString.length, 0) {
+	String[] choiceString = { "On", "Off" };
+	ChoiceField pageChoice = new ChoiceField(
+			"Download when network is roaming :", choiceString.length, 0) {
 		public Object getChoice(int index) throws IllegalArgumentException {
 			return choiceString[index];
 		}
 	};
-	DateField df = new DateField("Schedule Time : ", new Date().getTime(),
+	DateField df = new DateField("Download Time : ", new Date().getTime(),
 			DateFormat.getInstance(DateFormat.TIME_DEFAULT));
 
 	static String choices[] = { "OK", "Cancel" };
 	static int values[] = { Dialog.OK, Dialog.CANCEL };
 
+	SimpleDateFormat myDtTm = new SimpleDateFormat("hh:mm");
+
 	public SettingDialog() {
 		super("Setting", choices, values, 0, Bitmap
 				.getPredefinedBitmap(Bitmap.INFORMATION), Dialog.GLOBAL_STATUS);
-		// 
+		// Add field
+		add(pageChoice);
 		add(df);
+		// / Load old Value
+		setOldSetting();
+	}
+
+	private void setOldSetting() {
+		ProfileEntry profile = ProfileEntry.getInstance();
+		if (profile.roaming.equals("Off")) {
+			pageChoice.setSelectedIndex(1);
+		} else {
+			pageChoice.setSelectedIndex(0);
+		}
+		// time
+		try {
+			if(!profile.settingTime.equals("")){
+				try{
+					Date rememberDate = new Date(Long.parseLong(profile.settingTime));
+					df.setDate(rememberDate);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}else{
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void myshow() {
 		int result = this.doModal();
 		// Submit
 		if (result == Dialog.OK) {
+			System.out.println("pagechoice "
+					+ choiceString[pageChoice.getSelectedIndex()]);
+			System.out.println("df " + df.getDate());
+			String dateString = myDtTm.formatLocal(df.getDate());
+			System.out.println("date String " + dateString);
+			ProfileEntry profile = ProfileEntry.getInstance();
+			profile.roaming =  choiceString[pageChoice.getSelectedIndex()];
+			profile.settingTime = df.getDate()+"" ;
+			profile.saveProfile();
+			
 		}
 		// instance.displayField.setText(choices[result]);
 	}
