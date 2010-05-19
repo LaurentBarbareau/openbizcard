@@ -127,7 +127,7 @@ public class DownloadCombiner extends Thread {
 													for (int i = 0; i < videos.size(); i++) {
 														Video video = (Video)videos.elementAt(i);
 														if(video.getName().equals(fileName)){
-															video.setPercent(percent + " %");
+															video.setPercent(percent +"");
 														}
 													}
 													profile.videos = Video.convertVectorToString(videos);
