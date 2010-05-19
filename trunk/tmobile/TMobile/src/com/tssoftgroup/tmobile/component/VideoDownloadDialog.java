@@ -3,8 +3,6 @@ package com.tssoftgroup.tmobile.component;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.speech.Word;
-
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
@@ -128,7 +126,7 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				Vector videos = Video.convertStringToVector(profile.videos);
 				Video newVideo = new Video();
 				newVideo.setName(filename);
-				newVideo.setPercent("0");
+				newVideo.setPercent("0 %");
 				newVideo.setScheduleTime(scheduleTime + "");
 				newVideo.setStatus("1");
 				newVideo.setTitle(videoname);
