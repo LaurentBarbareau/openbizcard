@@ -3,6 +3,8 @@ package com.tssoftgroup.tmobile.component;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.speech.Word;
+
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
@@ -22,6 +24,7 @@ import com.tssoftgroup.tmobile.screen.TrainingVideoScreen;
 import com.tssoftgroup.tmobile.screen.VideoConnectDetail;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.DownloadCombiner;
+import com.tssoftgroup.tmobile.utils.Wording;
 
 public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 	public static String filename = "";
@@ -68,6 +71,16 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 		int result = this.doModal();
 		// Submit
 		if (result == Dialog.OK) {
+			ProfileEntry profile = ProfileEntry.getInstance();
+			// 
+			if(CrieUtils.isRoaming()){
+				if(profile.roaming.equals("On")){
+					Dialog.alert(Wording.ROAMING_MODE_YES);
+				}else{
+					Dialog.alert(Wording.ROAMING_MODE_NO);
+					return;
+				}
+			}
 			if (methodNow.isSelected()) {
 				System.out.println("select now");
 				// Downlaod the file
@@ -112,7 +125,6 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 					return;
 				}
 				// / do the job
-				ProfileEntry profile = ProfileEntry.getInstance();
 				Vector videos = Video.convertStringToVector(profile.videos);
 				Video newVideo = new Video();
 				newVideo.setName(filename);

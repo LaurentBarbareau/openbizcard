@@ -23,6 +23,8 @@ public class ProfileEntry {
 	// Status  0= new| 1=will be downloaded | 2=downloading | 3=downloaded
 	// 1754514.mp4,0, 40:11 5/6/2010 | 1754515.mp4,0,12:4 5/6/2010
 	public String videos = ""; 
+	public String roaming = "Off"; // On , Off
+	public String settingTime = ""; // long
 	Vector bookmarks;
 
 	public String toString() {
@@ -47,6 +49,14 @@ public class ProfileEntry {
 		ret.append(videos);
 		ret.append('\n');
 
+		ret.append("roaming");
+		ret.append(roaming);
+		ret.append('\n');
+		
+		ret.append("settingTime");
+		ret.append(settingTime);
+		ret.append('\n');
+		
 		return ret.toString();
 	}
 
@@ -67,6 +77,8 @@ public class ProfileEntry {
 		mobile = "";
 		passCode = "";
 		videos = "";
+		roaming = "Off";
+		settingTime = "";
 	}
 
 	public ProfileEntry(byte[] buf) {
@@ -78,6 +90,8 @@ public class ProfileEntry {
 			mobile = dis.readUTF();
 			passCode = dis.readUTF();
 			videos = dis.readUTF();
+			roaming = dis.readUTF();
+			settingTime = dis.readUTF();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,6 +116,8 @@ public class ProfileEntry {
 			dos.writeUTF(mobile);
 			dos.writeUTF(passCode);
 			dos.writeUTF(videos);
+			dos.writeUTF(roaming);
+			dos.writeUTF(settingTime);
 			data = baos.toByteArray();
 			baos.close();
 			dos.close();
@@ -166,11 +182,14 @@ public class ProfileEntry {
 				mobile = be.mobile;
 				passCode = be.passCode;
 				videos = be.videos;
+				roaming = be.roaming;
+				settingTime = be.settingTime;
 				checkNull();
 
 				// System.out.println(this);
 			} catch (Exception e) {
 				e.printStackTrace();
+//				checkNull();
 			} finally {
 				try {
 					re.destroy();
@@ -230,6 +249,11 @@ public class ProfileEntry {
 		if (videos == null) {
 			videos = "";
 		}
-
+		if (roaming == null) {
+			roaming = "Off";
+		}
+		if (settingTime == null) {
+			settingTime = "";
+		}
 	}
 }

@@ -17,5 +17,7 @@ public class Wording {
 	public static final String REPLAY = "Replay";
 	public static final String NO_COMMENT = "No comment on this video yet, please post your comment.";
 	public static final String NO_MORE_INFO = "No additional information related to this video.";
+	public static final String ROAMING_MODE_YES = "You are in roaming mode and your setting is to download the video. Please be careful about the data charge.";
+	public static final String ROAMING_MODE_NO = "You are in roaming mode and your setting is not to download the video. If you want to download the video when you are roaming, you can change the setting in menu.";
 	
 }

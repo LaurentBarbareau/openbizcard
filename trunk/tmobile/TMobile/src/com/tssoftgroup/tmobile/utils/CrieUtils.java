@@ -184,9 +184,11 @@ public class CrieUtils {
 	public static String getDocumentFolderConnString() {
 		return "file:///SDCard/BlackBerry/documents/";
 	}
+
 	public static String getVideoFolderConnString() {
 		return "file:///SDCard/BlackBerry/videos/";
 	}
+
 	public static String getDocumentFolderStringForUser() {
 		return "Media Card/BlackBerry/documents/";
 	}
@@ -492,31 +494,40 @@ public class CrieUtils {
 		String r = System.getProperty("fileconn.dir.memorycard.photos");
 		return r;
 	}
-	public static String encodeUrl(String url)
-	{
-        if (url!=null) 
-        {
-            StringBuffer tmp = new StringBuffer();
-            int i=0;
-            try 
-            {
-                while (true) 
-                {
-                    int b = (int)url.charAt(i++);
-                    if ((b>=0x30 && b<=0x39) || (b>=0x41 && b<=0x5A) || (b>=0x61 && b<=0x7A) ||(b == 0x2F) || (b == 0x3A) || (b == 0x2D )|| (b == 0x2E)|| (b == 0x2C)|| (b == 0x3F)|| (b == 0x3D) ||(b == 0x26) || (b == 0x5F) || (b == 0x2A)) 
-                    {
-                        tmp.append((char)b);
-                    }
-                    else {
-                        tmp.append("%");
-                        if (b <= 0xf) tmp.append("0");
-                        tmp.append(Integer.toHexString(b));
-                    }
-                }
-            }
-            catch (Exception e) {}
-            return tmp.toString();
-        }
-        return null;
-	}    
+
+	public static String encodeUrl(String url) {
+		if (url != null) {
+			StringBuffer tmp = new StringBuffer();
+			int i = 0;
+			try {
+				while (true) {
+					int b = (int) url.charAt(i++);
+					if ((b >= 0x30 && b <= 0x39) || (b >= 0x41 && b <= 0x5A)
+							|| (b >= 0x61 && b <= 0x7A) || (b == 0x2F)
+							|| (b == 0x3A) || (b == 0x2D) || (b == 0x2E)
+							|| (b == 0x2C) || (b == 0x3F) || (b == 0x3D)
+							|| (b == 0x26) || (b == 0x5F) || (b == 0x2A)) {
+						tmp.append((char) b);
+					} else {
+						tmp.append("%");
+						if (b <= 0xf)
+							tmp.append("0");
+						tmp.append(Integer.toHexString(b));
+					}
+				}
+			} catch (Exception e) {
+			}
+			return tmp.toString();
+		}
+		return null;
+	}
+
+	public static boolean isRoaming() {
+		boolean returnable = false;
+		if (((RadioInfo.getNetworkService() & RadioInfo.NETWORK_SERVICE_ROAMING) != 0)
+				|| ((RadioInfo.getNetworkService() & RadioInfo.NETWORK_SERVICE_ROAMING_OFF_CAMPUS) != 0)) {
+			returnable = true;
+		}
+		return returnable;
+	}
 }
