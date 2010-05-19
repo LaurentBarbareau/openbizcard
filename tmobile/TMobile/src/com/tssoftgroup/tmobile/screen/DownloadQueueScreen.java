@@ -108,7 +108,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				Video v = (Video) downloadingVideos.elementAt(i);
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
-						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
+						+ v.getPercent(), MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -194,8 +194,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 					if (label != null) {
 						System.out.println("label " + label.getText());
-						label.setText(v.getTitle() + " : " + v.getPercent()
-								+ "%");
+						label.setText(v.getTitle() + " : " + v.getPercent());
 					} else {
 						System.out.println("label is null");
 					}
