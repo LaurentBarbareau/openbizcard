@@ -45,10 +45,13 @@ public class TMobile extends UiApplication {
 	static class BacklightTimeout extends TimerTask {
 
 		public void run() {
-			Backlight.setTimeout(255);
-			Backlight.enable(true, 255);
+			if (UiApplication.getUiApplication().isForeground()) {
+				Backlight.setTimeout(255);
+				Backlight.enable(true, 255);
+			} else {
+				// Backlight.enable(false, 255);
+			}
 		}
-
 	}
 
 	public static ScheduleRunable downloadThread = null;

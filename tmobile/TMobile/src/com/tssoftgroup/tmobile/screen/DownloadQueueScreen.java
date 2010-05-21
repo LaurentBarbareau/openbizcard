@@ -51,6 +51,7 @@ import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.MoreInfo;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.model.Video;
+import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -64,6 +65,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 	String videoPath = "";
 	public VerticalFieldManager downloadingManager = new VerticalFieldManager();
 	public VerticalFieldManager scheduleManager = new VerticalFieldManager();
+	public VerticalFieldManager downloadedManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	Hashtable downloadingTable = new Hashtable();
 
@@ -103,6 +105,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			Vector videos = Video.convertStringToVector(profile.videos);
 			Vector downloadingVideos = Video.getDownloadingVideo(videos);
 			Vector scheduleVideos = Video.getScheduleVideo(videos);
+			Vector downloadedVideos = Video.getDownloadedVideo(videos);
 
 			// / Add item
 			for (int i = 0; i < downloadingVideos.size(); i++) {
@@ -112,7 +115,19 @@ public class DownloadQueueScreen extends FixMainScreen {
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
-				downloadingManager.add(test1);
+				// Horizontal manager
+				HorizontalFieldManager horManager = new HorizontalFieldManager();
+				horManager.add(test1);
+				// Delete button
+				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
+						ButtonField.ELLIPSIS);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				deleteBT.setChangeListener(deleteListener);
+
+				// //
+				horManager.add(deleteBT);
+				downloadingManager.add(horManager);
+				// Finish add horizontal manager
 				downloadingTable.put(v.getName(), test1);
 			}
 
@@ -141,14 +156,63 @@ public class DownloadQueueScreen extends FixMainScreen {
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
 				test1.setMargin(detailEdge);
-				scheduleManager.add(test1);
+				// Horizontal manager
+				HorizontalFieldManager horManager = new HorizontalFieldManager();
+				horManager.add(test1);
+				// Delete button
+				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
+						ButtonField.ELLIPSIS);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				deleteBT.setChangeListener(deleteListener);
+				horManager.add(deleteBT);
+				scheduleManager.add(horManager);
 			}
+			// <<<<<============ Finished Item
+			LabelField downloadedLB = new LabelFieldWithFullBG("downloaded",
+					MyColor.COMMENT_LABEL_FONT,
+					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
+					Display.getWidth() - 50 * Display.getWidth() / 480);
+			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
+					Scale.EDGE, 25 * Display.getWidth() / 480);
+			downloadedLB.setMargin(edge);
+			downloadedLB.setFont(Scale.FONT_DETAIL_TITLE);
+			// Add item
+			for (int i = 0; i < downloadedVideos.size(); i++) {
+				Video v = (Video) downloadedVideos.elementAt(i);
+				String dateString = "";
+				try {
+					Date videoDate = new Date(Long.parseLong(v
+							.getScheduleTime()));
+					dateString = videoDate.toString();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
+						+ dateString, MyColor.FONT_DESCRIPTION,
+						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
+						LabelField.FOCUSABLE);
+				test1.setMargin(detailEdge);
+				// Horizontal manager
+				HorizontalFieldManager horManager = new HorizontalFieldManager();
+				horManager.add(test1);
+				// Delete button
+				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
+						ButtonField.ELLIPSIS);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				deleteBT.setChangeListener(deleteListener);
+				horManager.add(deleteBT);
+				downloadedManager.add(horManager);
+			}
+			
+			
 			// / Add to Main Manager
 			mainManager.add(downloadingLB);
 			mainManager.add(downloadingManager);
 			mainManager.add(scheduleLB);
 			mainManager.add(scheduleManager);
-
+			mainManager.add(downloadedLB);
+			mainManager.add(downloadedManager);
+			
 			add(mainManager);
 		} catch (Exception e) {
 			System.out.println("" + e.toString());
@@ -237,6 +301,18 @@ public class DownloadQueueScreen extends FixMainScreen {
 			return true;
 		default:
 			return super.keyChar(c, status, time);
+		}
+	}
+
+	class DeleteButtonListerner implements FieldChangeListener {
+		Video video;
+
+		public DeleteButtonListerner(Video video) {
+			this.video = video;
+		}
+
+		public void fieldChanged(Field field, int context) {
+
 		}
 	}
 
