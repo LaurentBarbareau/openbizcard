@@ -149,4 +149,14 @@ public class Video {
 		}
 		return ret;
 	}
+	public static Vector getDownloadedVideo(Vector videos) {
+		Vector ret = new Vector();
+		for (int i = 0; i < videos.size(); i++) {
+			Video video = (Video) videos.elementAt(i);
+			if (video.status.equals("3")) {
+				ret.addElement(video);
+			}
+		}
+		return ret;
+	}
 }
