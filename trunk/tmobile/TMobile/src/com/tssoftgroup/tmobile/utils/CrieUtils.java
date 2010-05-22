@@ -189,6 +189,23 @@ public class CrieUtils {
 		return "file:///SDCard/BlackBerry/videos/";
 	}
 
+	public static String getSDCardConnString() {
+		return "file:///SDCard/";
+	}
+
+	public static long checkSDCardSize() {
+		long ret = 1000000000;
+		try {
+			FileConnection file = (FileConnection) Connector
+					.open(getSDCardConnString());
+//		    System.out.println("Free Size "  + file.availableSize());
+		    ret = file.availableSize();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
+
 	public static String getDocumentFolderStringForUser() {
 		return "Media Card/BlackBerry/documents/";
 	}

@@ -275,25 +275,26 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	 * @see net.rim.device.api.ui.Screen#close()
 	 */
 	public void close() {
-		// Display a farewell message before closing application.
-		// / If have download queue
-		ProfileEntry profile = ProfileEntry.getInstance();
-		Vector videos = Video.convertStringToVector(profile.videos);
-		Vector sceduleVideos = Video.getScheduleVideo(videos);
-		Vector downloadingVideos = Video.getDownloadingVideo(videos);
-		if (sceduleVideos.size() > 0 || downloadingVideos.size() > 0) {
-			UiApplication.getUiApplication().requestBackground();
-		} else {
-			try {
-				TMobile.downloadThread.isRunning = false;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			Dialog.alert("good bye");
-			System.exit(0);
-			// / Don't have download Queue
-			super.close();
-		}
+//		// Display a farewell message before closing application.
+//		// / If have download queue
+//		ProfileEntry profile = ProfileEntry.getInstance();
+//		Vector videos = Video.convertStringToVector(profile.videos);
+//		Vector sceduleVideos = Video.getScheduleVideo(videos);
+//		Vector downloadingVideos = Video.getDownloadingVideo(videos);
+//		if (sceduleVideos.size() > 0 || downloadingVideos.size() > 0) {
+//			UiApplication.getUiApplication().requestBackground();
+//		} else {
+//			try {
+//				TMobile.downloadThread.isRunning = false;
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			Dialog.alert("good bye");
+//			System.exit(0);
+//			// / Don't have download Queue
+//			super.close();
+//		}
+		UiApplication.getUiApplication().requestBackground();
 	}
 
 	public void fieldChanged(Field field, int context) {
