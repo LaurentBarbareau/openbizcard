@@ -236,24 +236,24 @@ public class DownloadCombiner extends Thread {
 								profile.videos = profileVideoString;
 								profile.saveProfile();
 								// from video download
-								final String choices[] = { "Done" };
-								final int values[] = { Dialog.OK };
-								Dialog dia = new Dialog(
-										"Video "
-												+ videoname
-												+ " downloaded: "
-												+ mySize
-												+ " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
-										choices,
-										values,
-										Dialog.OK,
-										Bitmap
-												.getPredefinedBitmap(Bitmap.INFORMATION),
-										0);
-								int result = dia.doModal();
-								if (result == Dialog.OK) {
-								} else {
-								}
+//								final String choices[] = { "Done" };
+//								final int values[] = { Dialog.OK };
+//								Dialog dia = new Dialog(
+//										"Video "
+//												+ videoname
+//												+ " downloaded: "
+//												+ mySize
+//												+ " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
+//										choices,
+//										values,
+//										Dialog.OK,
+//										Bitmap
+//												.getPredefinedBitmap(Bitmap.INFORMATION),
+//										0);
+//								int result = dia.doModal();
+//								if (result == Dialog.OK) {
+//								} else {
+//								}
 							}
 						}
 					}

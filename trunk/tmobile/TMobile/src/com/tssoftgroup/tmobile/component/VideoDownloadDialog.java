@@ -44,8 +44,8 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 	//
 	// SimpleDateFormat sdF = new SimpleDateFormat("mm:hh aa");
 	// DateField hourMin = new DateField("Time", 0, sdF);
-	DateField df = new DateField("Schedule Time : ", new Date().getTime(),
-			DateFormat.getInstance(DateFormat.DATETIME_DEFAULT));
+//	DateField df = new DateField("Schedule Time : ", new Date().getTime(),
+//			DateFormat.getInstance(DateFormat.DATETIME_DEFAULT));
 
 	Video video;
 	VerticalFieldManager manager = new VerticalFieldManager();
@@ -109,43 +109,43 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				}
 			} else {
 				// check select time > current time
-				System.out.println("select schedule");
-				Date d = new Date();
-				long currentTime = d.getTime();
-				System.out.println("Current time:" + d.getTime());
-				// method schedule
-				System.out.println("Schedule time:" + df.getDate());
-				long scheduleTime = df.getDate();
-				long min5 = 5000;
-				if (scheduleTime - currentTime < min5) {
-					Dialog
-							.alert("Please select time later than 5 minutes from now.");
-					return;
-				}
-				// / do the job
-				Vector videos = Video.convertStringToVector(profile.videos);
-				Video newVideo = new Video();
-				newVideo.setName(filename);
-				newVideo.setPercent("0 %");
-				newVideo.setScheduleTime(scheduleTime + "");
-				newVideo.setStatus("1");
-				newVideo.setTitle(videoname);
-				videos.addElement(newVideo);
-				profile.videos = Video.convertVectorToString(videos);
-				profile.saveProfile();
-				// Change the button to downloading
-				if (screen instanceof VideoConnectDetail) {
-					VideoConnectDetail videoConnect = (VideoConnectDetail) screen;
-					videoConnect.setDownloadButton("1");
-				}
-				if (screen instanceof MCastDetail) {
-					MCastDetail mcast = (MCastDetail) screen;
-					mcast.setDownloadButton("1");
-				}
-				if (screen instanceof TrainingVideoScreen) {
-					TrainingVideoScreen mcast = (TrainingVideoScreen) screen;
-					mcast.setDownloadButton("1");
-				}
+//				System.out.println("select schedule");
+//				Date d = new Date();
+//				long currentTime = d.getTime();
+//				System.out.println("Current time:" + d.getTime());
+//				// method schedule
+////				System.out.println("Schedule time:" + df.getDate());
+////				long scheduleTime = df.getDate();
+////				long min5 = 5000;
+////				if (scheduleTime - currentTime < min5) {
+////					Dialog
+////							.alert("Please select time later than 5 minutes from now.");
+////					return;
+////				}
+//				// / do the job
+//				Vector videos = Video.convertStringToVector(profile.videos);
+//				Video newVideo = new Video();
+//				newVideo.setName(filename);
+//				newVideo.setPercent("0 %");
+////				newVideo.setScheduleTime(scheduleTime + "");
+//				newVideo.setStatus("1");
+//				newVideo.setTitle(videoname);
+//				videos.addElement(newVideo);
+//				profile.videos = Video.convertVectorToString(videos);
+//				profile.saveProfile();
+//				// Change the button to downloading
+//				if (screen instanceof VideoConnectDetail) {
+//					VideoConnectDetail videoConnect = (VideoConnectDetail) screen;
+//					videoConnect.setDownloadButton("1");
+//				}
+//				if (screen instanceof MCastDetail) {
+//					MCastDetail mcast = (MCastDetail) screen;
+//					mcast.setDownloadButton("1");
+//				}
+//				if (screen instanceof TrainingVideoScreen) {
+//					TrainingVideoScreen mcast = (TrainingVideoScreen) screen;
+//					mcast.setDownloadButton("1");
+//				}
 			}
 		}
 		// instance.displayField.setText(choices[result]);
@@ -160,12 +160,12 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 			if (methodSchedule.isSelected()) {
 				// Select Schedule
 				System.out.println("method Schedule");
-				UiApplication.getUiApplication().invokeLater(new Runnable() {
-
-					public void run() {
-						manager.add(df);
-					}
-				});
+//				UiApplication.getUiApplication().invokeLater(new Runnable() {
+//
+//					public void run() {
+//						manager.add(df);
+//					}
+//				});
 
 			} else {
 				// Select Now
