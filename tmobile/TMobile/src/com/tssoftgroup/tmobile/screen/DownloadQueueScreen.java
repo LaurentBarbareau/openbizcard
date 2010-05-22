@@ -73,9 +73,15 @@ public class DownloadQueueScreen extends FixMainScreen {
 	public VerticalFieldManager downloadedManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	Hashtable downloadingTable = new Hashtable();
-
+	private String cutString(String str ){
+		if(str.length() > 18){
+			str = str.substring(0,17);
+		}
+		return str;
+	}
 	public DownloadQueueScreen() {
 		super(MODE_MCAST);
+		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize()) ;
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 		XYEdges detailEdge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 				35 * Display.getWidth() / 480);
@@ -115,7 +121,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			// / Add item
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				Video v = (Video) downloadingVideos.elementAt(i);
-				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
+				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle() ) + " : "
 						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
@@ -157,7 +163,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
+				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()) + " : "
 						+ dateString, MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
@@ -194,7 +200,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(v.getTitle(),
+				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()),
 						MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
@@ -250,7 +256,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 	private void updateStatus() {
 		try {
-			System.out.println("update status");
+//			System.out.println("update status");
 			ProfileEntry profile = ProfileEntry.getInstance();
 			Vector videos = Video.convertStringToVector(profile.videos);
 			Vector downloadingVideos = Video.getDownloadingVideo(videos);
@@ -261,8 +267,9 @@ public class DownloadQueueScreen extends FixMainScreen {
 					public void run() {
 
 						//
+						try{
 						CrieLabelField label = (CrieLabelField) downloadingTable
-								.get(v.getName());
+								.get( cutString(v.getName()));
 
 						if (label != null) {
 							System.out.println("label " + label.getText());
@@ -270,6 +277,9 @@ public class DownloadQueueScreen extends FixMainScreen {
 									+ "%");
 						} else {
 							System.out.println("label is null");
+						}
+						}catch(Exception e){
+							System.out.println("Error when updating download label");
 						}
 					}
 				});
@@ -343,17 +353,24 @@ public class DownloadQueueScreen extends FixMainScreen {
 				profile.saveProfile();
 				// remove from manager
 				try {
+					System.out.println("downloadingManager.delete(line)");
 					downloadingManager.delete(line);
+					System.out.println("finish downloadingManager.delete(line)");
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				try {
+					System.out.println("scheduleManager.delete(line)");
 					scheduleManager.delete(line);
+					System.out.println("finish scheduleManager.delete(line)");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				try {
+					System.out.println("downloadedManager.delete(line)");
 					downloadedManager.delete(line);
+					System.out.println("finish downloadedManager.delete(line)");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

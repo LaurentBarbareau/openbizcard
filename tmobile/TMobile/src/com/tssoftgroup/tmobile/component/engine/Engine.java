@@ -1,6 +1,7 @@
 package com.tssoftgroup.tmobile.component.engine;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Vector;
 
 import net.rim.device.api.system.Bitmap;
@@ -25,6 +26,7 @@ import com.tssoftgroup.tmobile.model.Question;
 import com.tssoftgroup.tmobile.model.RawTrainingAns;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
 import com.tssoftgroup.tmobile.model.User;
+import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.screen.DocumentListScreen;
 import com.tssoftgroup.tmobile.screen.MCastDetail;
 import com.tssoftgroup.tmobile.screen.MCastPlayerScreen;
@@ -67,6 +69,9 @@ public class Engine implements HTTPHandler {
 	public static final int MODE_VIEW_POLL_CHOICE = 12;
 	public static final int MODE_INCREASE_POLL_COUNT = 13;
 	public static final int MODE_SEND_EMAIL_DOC = 14;
+	public static final int MODE_CHECK_VIDEO_CONNECT = 15;
+	public static final int MODE_CHECK_MCAST = 16;
+	public static final int MODE_CHECK_TRAINING = 17;
 	public static boolean isLogin = false;
 	public static String userId = "";
 	public static PicInfo commnetPicInfo;
@@ -76,21 +81,25 @@ public class Engine implements HTTPHandler {
 	PollInfo pollInfo;
 	public static Comment comment;
 	int returnItem = 0;
+	// 
+	public static Vector allVideoConnect = new Vector();
+	public static Vector allMcast = new Vector();
+	public static Vector allTraining = new Vector();
 
 	public void registerStatus(BitmapFieldWithStatus bmp) {
 		bitmapHeader.addElement(bmp);
 	}
 
 	public void updateStatus(String status) {
-//		for (int i = 0; i < bitmapHeader.size(); i++) {
-//			try {
-//				BitmapFieldWithStatus bmpfield = (BitmapFieldWithStatus) bitmapHeader
-//						.elementAt(i);
-//				bmpfield.setStatus(status);
-//			} catch (Exception e) {
-//				System.out.println("error update status ");
-//			}
-//		}
+		// for (int i = 0; i < bitmapHeader.size(); i++) {
+		// try {
+		// BitmapFieldWithStatus bmpfield = (BitmapFieldWithStatus) bitmapHeader
+		// .elementAt(i);
+		// bmpfield.setStatus(status);
+		// } catch (Exception e) {
+		// System.out.println("error update status ");
+		// }
+		// }
 		Status.show(status);
 	}
 
@@ -103,12 +112,12 @@ public class Engine implements HTTPHandler {
 	}
 
 	public void finishCallback(String result, int mode) {
-		if (mode == MODE_VIEW_VIDEO_CONNECT) {
+		if (mode == MODE_VIEW_VIDEO_CONNECT || mode == MODE_CHECK_VIDEO_CONNECT) {
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray array = null;
 				String status = json.optString("Status", "400");
-				if (status.equals("400")) {
+				if (status.equals("400") && mode != MODE_CHECK_VIDEO_CONNECT) {
 					final VideoConnectScreen videoShowScreen = VideoConnectScreen
 							.getInstance();
 					UiApplication.getUiApplication().invokeLater(
@@ -178,6 +187,13 @@ public class Engine implements HTTPHandler {
 					// End Comment
 					items.addElement(picInfo);
 				}
+				// <=----------------- check video connect
+				if (mode == MODE_CHECK_VIDEO_CONNECT) {
+					allVideoConnect = items;
+					checkWithVideos(allVideoConnect);
+					return;
+				}
+
 				System.out.println("Aaaaaaa");
 				final VideoConnectScreen videoShowScreen = VideoConnectScreen
 						.getInstance();
@@ -215,12 +231,12 @@ public class Engine implements HTTPHandler {
 			} catch (Exception ex) {
 				System.out.println("Otehr " + ex.toString());
 			}
-		} else if (mode == MODE_VIEW_MCAST) {
+		} else if (mode == MODE_VIEW_MCAST || mode == MODE_CHECK_MCAST) {
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray array = null;
 				String status = json.optString("Status", "400");
-				if (status.equals("400")) {
+				if (status.equals("400") && mode != MODE_CHECK_MCAST) {
 					final MCastScreen videoShowScreen = MCastScreen
 							.getInstance();
 					UiApplication.getUiApplication().invokeLater(
@@ -264,9 +280,8 @@ public class Engine implements HTTPHandler {
 							"no such key"));
 					picInfo.setThumbnailURL(item.optString("thumbnail",
 							"no such key"));
-					picInfo.setCat(item.optString("video_cat",
-							"no such key"));//
-					
+					picInfo.setCat(item.optString("video_cat", "no such key"));//
+
 					// fix thumbnail url
 					// picInfo.setThumbnailURL("http://www.dhlknowledge.com/web/uploads/sample.png");
 					// Video Attach
@@ -318,7 +333,13 @@ public class Engine implements HTTPHandler {
 						items.addElement(picInfo);
 					}
 				}
-
+				// ///
+				if (mode == MODE_CHECK_MCAST) {
+					allMcast = items;
+					checkWithVideos(allMcast);
+					return;
+				}
+				// /
 				final MCastScreen videoShowScreen = MCastScreen.getInstance();
 				final Vector myItems = items;
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
@@ -433,14 +454,16 @@ public class Engine implements HTTPHandler {
 						// MCastPlayerScreen scr = new MCastPlayerScreen(
 						// Engine.commnetPicInfo);
 						cur.picinfo = Engine.commnetPicInfo;
-//						cur.addComment();
+						// cur.addComment();
 						cur.isAlreadyAddComment = true;
-//						cur.commentLabelField.setFocus();
+						// cur.commentLabelField.setFocus();
 						// UiApplication.getUiApplication().pushScreen(scr);
 						// 
-						String choices[] = { "OK"};
-						 int values[] = { Dialog.OK};
-						Dialog dia = new Dialog("Your Comment is sent", choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+						String choices[] = { "OK" };
+						int values[] = { Dialog.OK };
+						Dialog dia = new Dialog("Your Comment is sent",
+								choices, values, Dialog.OK,
+								Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
 						dia.doModal();
 					}
 					if (current instanceof VideoConnectDetail) {
@@ -465,26 +488,30 @@ public class Engine implements HTTPHandler {
 						cur.picinfo = Engine.commnetPicInfo;
 						cur.isAlreadyAddComment = true;
 						// 
-						String choices[] = { "OK"};
-						 int values[] = { Dialog.OK};
-						Dialog dia = new Dialog("Your Comment is sent", choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+						String choices[] = { "OK" };
+						int values[] = { Dialog.OK };
+						Dialog dia = new Dialog("Your Comment is sent",
+								choices, values, Dialog.OK,
+								Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
 						dia.doModal();
 					}
-					
+
 				}
 			});
 		} else if (mode == MODE_SEND_MORE_INFO) {
 			UiApplication.getUiApplication().invokeLater(new Runnable() {
 
 				public void run() {
-					String choices[] = { "OK"};
-					 int values[] = { Dialog.OK};
+					String choices[] = { "OK" };
+					int values[] = { Dialog.OK };
 					Dialog dia = new Dialog("This file has been sent to "
-							+ ProfileEntry.getInstance().email, choices, values,Dialog.OK, Bitmap.getPredefinedBitmap(Bitmap.INFORMATION));
+							+ ProfileEntry.getInstance().email, choices,
+							values, Dialog.OK, Bitmap
+									.getPredefinedBitmap(Bitmap.INFORMATION));
 					dia.doModal();
 				}
 			});
-		} else if (mode == MODE_VIEWTRAINING) {
+		} else if (mode == MODE_VIEWTRAINING || mode == MODE_CHECK_TRAINING) {
 
 			try {
 				JSONObject json = new JSONObject(result);
@@ -521,6 +548,13 @@ public class Engine implements HTTPHandler {
 						items.addElement(trainInfo);
 					}
 				}
+				// ///
+				if (mode == MODE_CHECK_TRAINING) {
+					allTraining = items;
+					checkWithVideos(allTraining);
+					return;
+				}
+				// /
 				final TrainingListScreen trainingScreen = TrainingListScreen
 						.getInstance();
 				final Vector myItems = items;
@@ -1138,6 +1172,82 @@ public class Engine implements HTTPHandler {
 		String body = "document_id=" + docId + "&uid=" + Engine.userId;
 		thread.setTask(url, body, MODE_SEND_EMAIL_DOC);
 		thread.go();
+	}
+
+	public void checkVideoConnect() {
+		System.out.println("check Video Connetc");
+		// WaitScreen waitScr = WaitScreen.getInstance();
+		// waitScr.setText("Logging in");
+		// if (!waitScr.isDisplayed()) {
+		// UiApplication.getUiApplication().pushScreen(waitScr);
+		// }
+		String url = Const.URL_VIEW_VIDEO;
+		String body = "type=1";
+		url = Const.URL_VIEW_VIDEO;
+		thread.setTask(url, body, MODE_CHECK_VIDEO_CONNECT);
+		thread.go();
+	}
+
+	public void checkMCast() {
+		System.out.println("check mcast");
+		// WaitScreen waitScr = WaitScreen.getInstance();
+		// waitScr.setText("Logging in");
+		// if (!waitScr.isDisplayed()) {
+		// UiApplication.getUiApplication().pushScreen(waitScr);
+		// }
+		String url = Const.URL_VIEW_VIDEO;
+		String body = "type=0";
+		thread.setTask(url, body, MODE_CHECK_MCAST);
+		thread.go();
+	}
+
+	public void checkTraining() {
+		System.out.println("check trining");
+		// URL Encode comment
+		String url = Const.URL_VIEW_TRAINING;
+		String body = "";
+		thread.setTask(url, body, MODE_CHECK_TRAINING);
+		thread.go();
+	}
+
+	private void checkWithVideos(Vector items) {
+		System.out.println("check With Video " + items.size());
+		// Get All video in profile Entry
+		ProfileEntry profile = ProfileEntry.getInstance();
+		Vector videos = Video.convertStringToVector(profile.videos);
+		for (int i = 0; i < items.size(); i++) {
+			Object item = items.elementAt(i);
+			String fileName = "";
+			String videoName = "";
+			if (item instanceof PicInfo) {
+				PicInfo picinfo = (PicInfo) item;
+				fileName = picinfo.getFilename();
+				videoName = picinfo.getTitle();
+			}
+			if (item instanceof TrainingInfo) {
+				TrainingInfo trainInfo = (TrainingInfo) item;
+				fileName = trainInfo.getFilename();
+				videoName = trainInfo.getTitle();
+			}
+			boolean alreadyHaveVideo = false;
+			for (int j = 0; j < videos.size(); j++) {
+				Video vid = (Video) videos.elementAt(j);
+				if (vid.getName().equals(fileName)) {
+					alreadyHaveVideo = true;
+				}
+			}
+			if (!alreadyHaveVideo) {
+				Video newVideo = new Video();
+				newVideo.setName(fileName);
+				newVideo.setPercent("0 %");
+				newVideo.setScheduleTime(new Date().getTime() + "");
+				newVideo.setStatus("1");
+				newVideo.setTitle(videoName);
+				videos.addElement(newVideo);
+			}
+		}
+		profile.videos = Video.convertVectorToString(videos);
+		profile.saveProfile();
 	}
 }
 

@@ -53,8 +53,9 @@ public class LoginScreen {
 	// app.enterEventDispatcher();
 	// }
 	/* creating default constructor */
+	
 	public LoginScreen(boolean needLogin) {
-
+		
 		/*
 		 * Creating an object of the main screen class to use its
 		 * functionalities

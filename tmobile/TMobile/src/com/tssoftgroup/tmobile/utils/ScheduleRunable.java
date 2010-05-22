@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import net.rim.device.api.i18n.SimpleDateFormat;
 
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Video;
 
@@ -17,6 +18,20 @@ public class ScheduleRunable implements Runnable {
 			ProfileEntry profile = ProfileEntry.getInstance();
 			Vector videos = Video.convertStringToVector(profile.videos);
 			Vector scheduleVideos = Video.getScheduleVideo(videos);
+			// //
+			if (isTimeInSetting()) {
+				if (CrieUtils.isRoaming() && profile.roaming.equals("Off")) {
+
+				} else {
+
+					Engine engine = Engine.getInstance();
+					engine.checkMCast();
+					engine.checkTraining();
+					engine.checkVideoConnect();
+				}
+
+			}
+			// //
 			for (int i = 0; i < scheduleVideos.size(); i++) {
 				Video video = (Video) scheduleVideos.elementAt(i);
 				try {

@@ -6,12 +6,14 @@ import net.rim.device.api.ui.MenuItem;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
+import net.rim.device.api.ui.component.Dialog;
 
 import com.tssoftgroup.tmobile.component.BitmapFieldWithStatus;
 import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.engine.Engine;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.Wording;
 
@@ -29,6 +31,11 @@ public class MyMainScreen extends FixMainScreen {
 
 	private MyMainScreen() {
 		super(MODE_MCAST);
+		// less than 50 meg
+		if(CrieUtils.checkSDCardSize() < 50000000){
+			Dialog.alert("Your SD Card's free space is less that 50 MB. Please free up space for using the application to download video");
+		}
+		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize()) ;
 		int firstUp = Display.getWidth() < 400 ? 0 : 24;
 		XYEdges edge = new XYEdges(firstUp, 0, 2, 0);
 		Bitmap img = imgStock.getHeader();
