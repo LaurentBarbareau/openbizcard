@@ -135,7 +135,7 @@ public class LoginScreen {
 		mainManager.add(buttonManager);
 		// adding menu items
 		mainScreen.add(mainManager);
-		mainScreen.addMenuItem(saveItem);
+//		mainScreen.addMenuItem(saveItem);
 //		mainScreen.addMenuItem(getItem);
 		// pushing the main screen
 		UiApplication.getUiApplication().pushScreen(mainScreen);
@@ -146,13 +146,13 @@ public class LoginScreen {
 	}
 
 	// adding functionality to menu item "saveItem"
-	private MenuItem saveItem = new MenuItem(Wording.LOGIN, 110, 10) {
-
-		public void run() {
-			// Calling save method
-			login();
-		}
-	};
+//	private MenuItem saveItem = new MenuItem(Wording.LOGIN, 110, 10) {
+//
+//		public void run() {
+//			// Calling save method
+//			login();
+//		}
+//	};
 	// adding functionality to menu item "saveItem"
 //	private MenuItem getItem = new MenuItem(Wording.GET, 110, 11) {
 //		// running thread for this menu item

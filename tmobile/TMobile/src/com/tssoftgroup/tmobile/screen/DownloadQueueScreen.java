@@ -16,9 +16,13 @@ package com.tssoftgroup.tmobile.screen;
  * Environment Development Guide associated with this release.
  */
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Vector;
+
+import javax.microedition.io.Connector;
+import javax.microedition.io.file.FileConnection;
 
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
@@ -52,6 +56,7 @@ import com.tssoftgroup.tmobile.model.MoreInfo;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -113,7 +118,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
 						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
-						LabelField.FOCUSABLE);
+						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
 				// Horizontal manager
 				HorizontalFieldManager horManager = new HorizontalFieldManager();
@@ -121,7 +126,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 				// Delete button
 				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
 						ButtonField.ELLIPSIS);
-				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(
+						v, horManager);
 				deleteBT.setChangeListener(deleteListener);
 
 				// //
@@ -154,7 +160,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
 						+ dateString, MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
-						LabelField.FOCUSABLE);
+						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
 				// Horizontal manager
 				HorizontalFieldManager horManager = new HorizontalFieldManager();
@@ -162,7 +168,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 				// Delete button
 				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
 						ButtonField.ELLIPSIS);
-				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(
+						v, horManager);
 				deleteBT.setChangeListener(deleteListener);
 				horManager.add(deleteBT);
 				scheduleManager.add(horManager);
@@ -187,10 +194,10 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(v.getTitle() + " : "
-						+ dateString, MyColor.FONT_DESCRIPTION,
+				CrieLabelField test1 = new CrieLabelField(v.getTitle(),
+						MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
-						LabelField.FOCUSABLE);
+						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
 				// Horizontal manager
 				HorizontalFieldManager horManager = new HorizontalFieldManager();
@@ -198,13 +205,13 @@ public class DownloadQueueScreen extends FixMainScreen {
 				// Delete button
 				MyButtonField deleteBT = new MyButtonField(Const.DELETE_LABEL,
 						ButtonField.ELLIPSIS);
-				DeleteButtonListerner deleteListener = new DeleteButtonListerner(v);
+				DeleteButtonListerner deleteListener = new DeleteButtonListerner(
+						v, horManager);
 				deleteBT.setChangeListener(deleteListener);
 				horManager.add(deleteBT);
 				downloadedManager.add(horManager);
 			}
-			
-			
+
 			// / Add to Main Manager
 			mainManager.add(downloadingLB);
 			mainManager.add(downloadingManager);
@@ -212,7 +219,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			mainManager.add(scheduleManager);
 			mainManager.add(downloadedLB);
 			mainManager.add(downloadedManager);
-			
+
 			add(mainManager);
 		} catch (Exception e) {
 			System.out.println("" + e.toString());
@@ -306,13 +313,53 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 	class DeleteButtonListerner implements FieldChangeListener {
 		Video video;
+		HorizontalFieldManager line;
 
-		public DeleteButtonListerner(Video video) {
+		public DeleteButtonListerner(Video video, HorizontalFieldManager line) {
 			this.video = video;
+			this.line = line;
 		}
 
 		public void fieldChanged(Field field, int context) {
-
+			try {
+				String localPatht = CrieUtils.getVideoFolderConnString()
+						+ video.getName();
+				FileConnection file = (FileConnection) Connector
+						.open(localPatht);
+				if (file.exists()) {
+					file.delete();
+				}
+				// remove from recordstore
+				ProfileEntry profile = ProfileEntry.getInstance();
+				Vector videos = Video.convertStringToVector(profile.videos);
+				for (int i = videos.size() - 1; i >= 0; i--) {
+					Video v = (Video) videos.elementAt(i);
+					if (v.getName().equals(video.getName())) {
+						videos.removeElementAt(i);
+					}
+				}
+				String profileVideoString = Video.convertVectorToString(videos);
+				profile.videos = profileVideoString;
+				profile.saveProfile();
+				// remove from manager
+				try {
+					downloadingManager.delete(line);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					scheduleManager.delete(line);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					downloadedManager.delete(line);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
