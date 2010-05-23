@@ -23,9 +23,9 @@ public class MyMainScreen extends FixMainScreen {
 	private static MyMainScreen instance;
 	
 	public static MyMainScreen getInstance() {
-		if (instance == null) {
+//		if (instance == null) {
 			instance = new MyMainScreen();
-		}
+//		}
 		return instance;
 	}
 
