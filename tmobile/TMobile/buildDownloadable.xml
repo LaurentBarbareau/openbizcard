@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="MCast2010" default="build" basedir=".">
+	<typedef resource="bb-ant-defs.xml" />
+	<property name="dest.dir" value="dist" />
+	<property name="src.dir" value="src" />
+	<property name="jde.home" value="c:/eclipsebb/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components" />
+	<!--<property name="jde.home" value="f:/eclipsebb/plugins/net.rim.eide.componentpack4.5.0_4.5.0.16/components" />-->
+		<property name="jde47" value="c:/eclipsebb/plugins/net.rim.eide.componentpack4.7.0_4.7.0.46/components" />
+			<target name="build" description="Build with bb-ant-tools">
+		 <delete dir="${dest.dir}"/>
+		<mkdir dir="${dest.dir}"/>
+				<rapc output="MCast2010" destdir="${dest.dir}" quiet="true" jdehome="${jde.home}">
+									<jdp type="cldc" file="default.properties">
+									</jdp>
+									<src>
+										<fileset dir="${src.dir}">
+											<include name="**/*.*" />
+										</fileset>
+									</src>
+								</rapc>
+								<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/MCast2010.cod" />
+								<jadtool input="${dest.dir}/MCast2010.jad" destdir="final">
+								   <fileset dir="dist" includes="*.cod" />
+								</jadtool>
+	
+	</target>
+	<target name="build4.7" description="Build with bb-ant-tools">
+			 <delete dir="${dest.dir}"/>
+			<mkdir dir="${dest.dir}"/>
+			<rapc output="MCast2010" destdir="${dest.dir}" quiet="true" jdehome="${jde47}">
+						<jdp type="cldc" file="default.properties">
+						</jdp>
+						<src>
+							<fileset dir="${src.dir}">
+								<include name="**/*.*" />
+							</fileset>
+						</src>
+					</rapc>
+					<sigtool password="oooaaakkk" jdehome="${jde.home}" codfile="dist/MCast2010.cod" />
+					<jadtool input="${dest.dir}/MCast2010.jad" destdir="final">
+					   <fileset dir="dist" includes="*.cod" />
+					</jadtool>
+		
+		</target>
+
+</project>
