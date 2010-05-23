@@ -241,7 +241,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				while (mTrucking) {
 					if (DownloadQueueScreen.this.isDisplayed()) {
 						try {
-							Thread.sleep(1000);
+							Thread.sleep(10000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
@@ -269,11 +269,11 @@ public class DownloadQueueScreen extends FixMainScreen {
 						//
 						try{
 						CrieLabelField label = (CrieLabelField) downloadingTable
-								.get( cutString(v.getName()));
+								.get( v.getName());
 
 						if (label != null) {
 							System.out.println("label " + label.getText());
-							label.setText(v.getTitle() + " : " + v.getPercent()
+							label.setText(cutString(v.getTitle() )+ " : " + v.getPercent()
 									+ "%");
 						} else {
 							System.out.println("label is null");

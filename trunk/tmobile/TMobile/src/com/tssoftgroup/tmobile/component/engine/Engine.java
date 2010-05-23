@@ -42,6 +42,7 @@ import com.tssoftgroup.tmobile.screen.VideoConnectScreen;
 import com.tssoftgroup.tmobile.screen.WaitScreen;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
+import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 import com.tssoftgroup.tmobile.utils.StringUtil;
 import com.tssoftgroup.tmobile.utils.URLEncoder;
 
@@ -85,7 +86,8 @@ public class Engine implements HTTPHandler {
 	public static Vector allVideoConnect = new Vector();
 	public static Vector allMcast = new Vector();
 	public static Vector allTraining = new Vector();
-
+	
+	private HttpDownloadVideoThread downloadVideoThread  = new HttpDownloadVideoThread();
 	public void registerStatus(BitmapFieldWithStatus bmp) {
 		bitmapHeader.addElement(bmp);
 	}
@@ -107,10 +109,15 @@ public class Engine implements HTTPHandler {
 		if (instance == null) {
 			instance = new Engine();
 			instance.thread.start();
+			instance.downloadVideoThread.start();
 		}
 		return instance;
 	}
-
+	public void addDownloadVideo(DownloadCombiner combiner){
+		downloadVideoThread.setTask(combiner);
+		downloadVideoThread.go();
+	}
+	
 	public void finishCallback(String result, int mode) {
 		if (mode == MODE_VIEW_VIDEO_CONNECT || mode == MODE_CHECK_VIDEO_CONNECT) {
 			try {
@@ -1239,7 +1246,7 @@ public class Engine implements HTTPHandler {
 			if (!alreadyHaveVideo) {
 				Video newVideo = new Video();
 				newVideo.setName(fileName);
-				newVideo.setPercent("0 %");
+				newVideo.setPercent("0");
 				newVideo.setScheduleTime(new Date().getTime() + "");
 				newVideo.setStatus("1");
 				newVideo.setTitle(videoName);

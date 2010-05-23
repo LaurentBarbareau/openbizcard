@@ -45,7 +45,8 @@ public class ScheduleRunable implements Runnable {
 						DownloadCombiner download = new DownloadCombiner(url,
 								localPatht, 40000, true, video.getName(), video
 										.getTitle());
-						download.start();
+//						download.start();
+						Engine.getInstance().addDownloadVideo(download);
 						// remove from vector
 						video.setStatus("2");
 						profile.videos = Video
@@ -70,6 +71,9 @@ public class ScheduleRunable implements Runnable {
 			String current = myDtTm.formatLocal(new Date().getTime());
 			String inSetting = myDtTm.formatLocal(Long.parseLong(ProfileEntry
 					.getInstance().settingTime));
+			System.out.println("<========= current " + current);
+			System.out.println("<========= inSetting " + inSetting);
+			
 			if (current.equals(inSetting)) {
 				return true;
 			} else {

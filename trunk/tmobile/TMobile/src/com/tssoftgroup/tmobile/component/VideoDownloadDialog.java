@@ -15,6 +15,7 @@ import net.rim.device.api.ui.component.RadioButtonField;
 import net.rim.device.api.ui.component.RadioButtonGroup;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.screen.MCastDetail;
@@ -90,7 +91,8 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 					System.out.println("video name " + videoname);
 					DownloadCombiner download = new DownloadCombiner(fileURL,
 							localPatht, 40000, true, filename, videoname);
-					download.start();
+//					download.start();
+					Engine.getInstance().addDownloadVideo(download);
 				} catch (Exception e) {
 
 				}
