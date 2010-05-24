@@ -39,7 +39,11 @@ public class CustomButtonField extends Field {
 		this.fieldWidth = width;
 		this.fieldHeight = height;
 	}
-
+	public void setMyBitmap(Bitmap on, Bitmap off){
+		this.on = on;
+		this.off = off;
+		button = off;
+	}
 	protected boolean navigationClick(int status, int time) {
 		fieldChangeNotify(0);
 		return true;

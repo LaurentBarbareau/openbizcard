@@ -24,43 +24,32 @@ import java.util.Vector;
 import javax.microedition.io.Connector;
 import javax.microedition.io.file.FileConnection;
 
-import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.MenuItem;
-import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.ButtonField;
-import net.rim.device.api.ui.component.Dialog;
-import net.rim.device.api.ui.component.EditField;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.VerticalFieldManager;
 
-import com.tssoftgroup.tmobile.component.ButtonListener;
 import com.tssoftgroup.tmobile.component.CrieLabelField;
-import com.tssoftgroup.tmobile.component.CustomButtonField;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
+import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
-import com.tssoftgroup.tmobile.component.ScreenWithComment;
-import com.tssoftgroup.tmobile.component.VideoDownloadDialog;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
-import com.tssoftgroup.tmobile.model.Comment;
-import com.tssoftgroup.tmobile.model.MoreInfo;
-import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
-import com.tssoftgroup.tmobile.utils.Wording;
 
 public class DownloadQueueScreen extends FixMainScreen {
 	private MainItem _mainMenuItem = new MainItem();
@@ -75,7 +64,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 	Hashtable downloadingTable = new Hashtable();
 	private String cutString(String str ){
 		if(str.length() > 18){
-			str = str.substring(0,17);
+			str = str.substring(0,17) + "...";
 		}
 		return str;
 	}
@@ -94,7 +83,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			MainListVerticalFieldManager mainManager = new MainListVerticalFieldManager();
 
 			edge = new XYEdges(2, 35, 17, 35);
-			LabelField titleLabel = new LabelFieldWithFullBG("Download Queue",
+			LabelField titleLabel = new LabelFieldWithFullBGSelectable("Download Queue",
 					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR,
 					MyColor.TOPIC_BG, Display.getWidth() - 50
 							* Display.getWidth() / 480);
@@ -152,6 +141,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 					Scale.EDGE, 25 * Display.getWidth() / 480);
 			scheduleLB.setMargin(edge);
 			scheduleLB.setFont(Scale.FONT_DETAIL_TITLE);
+			
 			// Add item
 			for (int i = 0; i < scheduleVideos.size(); i++) {
 				Video v = (Video) scheduleVideos.elementAt(i);
@@ -163,8 +153,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()) + " : "
-						+ dateString, MyColor.FONT_DESCRIPTION,
+				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()) , MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -345,6 +334,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 				for (int i = videos.size() - 1; i >= 0; i--) {
 					Video v = (Video) videos.elementAt(i);
 					if (v.getName().equals(video.getName())) {
+						downloadingTable.remove(v.getName());
 						videos.removeElementAt(i);
 					}
 				}
