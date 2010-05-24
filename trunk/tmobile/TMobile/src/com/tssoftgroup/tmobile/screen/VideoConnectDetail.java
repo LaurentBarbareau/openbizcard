@@ -65,7 +65,10 @@ public class VideoConnectDetail extends FixMainScreen implements
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	PicInfo picInfo = null;
-
+	CrieLabelField percent = new CrieLabelField("10%", MyColor.FONT_DESCRIPTION_TITLE,
+			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+					- (Display.getWidth() > 350 ? 5 : 0),
+			LabelField.NON_FOCUSABLE);
 	public VideoConnectDetail(PicInfo picinfo) {
 		super(MODE_VIDEOCONNECT);
 		this.picInfo = picinfo;
@@ -139,7 +142,14 @@ public class VideoConnectDetail extends FixMainScreen implements
 			// playButtonImg.setMargin(0, 0, 0, Display.getWidth() - 50
 			// - durLabel.getWidth() - playButtonImg.getWidth());
 			playButtonImg.setMargin(0, 0, 0, 20);
+			if (videoStatus.equals("2")) {
+				percent.setText("0%");
+			}
 			durationPlayManager.add(playButtonImg);
+			durationPlayManager.add(percent);
+			System.out.println("download statss " + videoStatus);
+			
+			
 			CrieLabelField descriptionLabel = new CrieLabelField(picinfo
 					.getDescription(), MyColor.FONT_DESCRIPTION,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
@@ -290,6 +300,7 @@ public class VideoConnectDetail extends FixMainScreen implements
 	public void setDownloadButton(String status) {
 		// 0= new| 2=downloading | 3=downloaded
 		durationPlayManager.delete(playButtonImg);
+		System.out.println("download statis " + status);
 		if (status.equals("0")) {
 			// new video
 			// / Listener for show download dialog
@@ -315,6 +326,11 @@ public class VideoConnectDetail extends FixMainScreen implements
 					this));
 		}
 		durationPlayManager.add(playButtonImg);
+		System.out.println("before add percent");
+		if (status.equals("2")) {
+			percent.setText("0%");
+			
+		}
 	}
 
 	private final class MainItem extends MenuItem {
