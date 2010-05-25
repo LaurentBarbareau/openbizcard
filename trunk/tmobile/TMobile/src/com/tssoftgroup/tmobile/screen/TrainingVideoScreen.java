@@ -64,7 +64,7 @@ public class TrainingVideoScreen extends FixMainScreen {
 	MyButtonField startButton = new MyButtonField("Start", ButtonField.ELLIPSIS);
 
 	MyButtonField nextButton = new MyButtonField("Next", ButtonField.ELLIPSIS);
-	CrieLabelField percent = new CrieLabelField(LOADING + "0%",
+	CrieLabelField percent = new CrieLabelField("",
 			MyColor.FONT_DESCRIPTION,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 					- (Display.getWidth() > 350 ? 5 : 0),
@@ -73,6 +73,7 @@ public class TrainingVideoScreen extends FixMainScreen {
 	public TrainingVideoScreen(TrainingInfo info) {
 		super(MODE_TRAIN);
 		VideoDownloadDialog.filename = info.getFilename();
+		fileName  = info.getFilename();
 		VideoDownloadDialog.fileURL = info.getUrlDownloadVideo();
 		VideoDownloadDialog.videoname = info.getTitle();
 
@@ -160,14 +161,16 @@ public class TrainingVideoScreen extends FixMainScreen {
 
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,
 					25 * Display.getWidth() / 480);
-			buttonManager.add(startButton);
-			buttonManager.add(nextButton);
-			// Percent
-			buttonManager.add(percent);
 			if (videoStatus.equals("2")) {
 				percent.setText(LOADING + "0%");
 				updateStatus();
+			} else {
+				buttonManager.add(startButton);
 			}
+		
+			buttonManager.add(nextButton);
+			// Percent
+			buttonManager.add(percent);
 			///
 			buttonManager.setMargin(edge);
 			nextButton.setMargin(0, 0, 0, 10);
