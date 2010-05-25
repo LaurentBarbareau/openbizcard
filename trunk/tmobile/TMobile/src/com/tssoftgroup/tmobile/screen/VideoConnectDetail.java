@@ -42,6 +42,7 @@ import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.VideoDownloadDialog;
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.model.Video;
@@ -52,6 +53,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 
 public class VideoConnectDetail extends FixMainScreen implements
 		FieldChangeListener, ScreenWithComment {
+	public static final String LOADING = "Downloading ";
 	private MainItem _mainMenuItem = new MainItem();
 	private Vector commentList = null;
 
@@ -65,14 +67,18 @@ public class VideoConnectDetail extends FixMainScreen implements
 	public VerticalFieldManager commentsManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	PicInfo picInfo = null;
-	CrieLabelField percent = new CrieLabelField("10%", MyColor.FONT_DESCRIPTION_TITLE,
+	CrieLabelField percent = new CrieLabelField(LOADING + "0%",
+			MyColor.FONT_DESCRIPTION,
 			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 					- (Display.getWidth() > 350 ? 5 : 0),
 			LabelField.NON_FOCUSABLE);
+	String fileName = "";
+
 	public VideoConnectDetail(PicInfo picinfo) {
 		super(MODE_VIDEOCONNECT);
 		this.picInfo = picinfo;
 		VideoDownloadDialog.filename = picinfo.getFilename();
+		fileName = picinfo.getFilename();
 		VideoDownloadDialog.fileURL = picinfo.getUrlDownloadVideo();
 		VideoDownloadDialog.videoname = picinfo.getTitle();
 
@@ -133,8 +139,12 @@ public class VideoConnectDetail extends FixMainScreen implements
 			}
 			durationPlayManager = new HorizontalFieldManager();
 			// /
-			CrieLabelField durLabel = new CrieLabelField("duration "
-					+ picinfo.getDuration(), MyColor.FONT_DESCRIPTION_TITLE,
+			String durationString = "";
+			if (!picinfo.getDuration().equals("")) {
+				durationString = "duration " + picinfo.getDuration();
+			}
+			CrieLabelField durLabel = new CrieLabelField(durationString,
+					MyColor.FONT_DESCRIPTION_TITLE,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 5 : 0),
 					LabelField.NON_FOCUSABLE);
@@ -143,13 +153,14 @@ public class VideoConnectDetail extends FixMainScreen implements
 			// - durLabel.getWidth() - playButtonImg.getWidth());
 			playButtonImg.setMargin(0, 0, 0, 20);
 			if (videoStatus.equals("2")) {
-				percent.setText("0%");
+				percent.setText(LOADING + "0%");
+				updateStatus();
+			} else {
+				durationPlayManager.add(playButtonImg);
 			}
-			durationPlayManager.add(playButtonImg);
 			durationPlayManager.add(percent);
 			System.out.println("download statss " + videoStatus);
-			
-			
+
 			CrieLabelField descriptionLabel = new CrieLabelField(picinfo
 					.getDescription(), MyColor.FONT_DESCRIPTION,
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
@@ -295,11 +306,32 @@ public class VideoConnectDetail extends FixMainScreen implements
 		// add(bf);
 
 		addMenuItem(_mainMenuItem);
+		new Thread(new Runnable() {
+
+			public void run() {
+				while (mTrucking) {
+					if (VideoConnectDetail.this.isDisplayed()) {
+						try {
+							Thread.sleep(5000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						updateStatus();
+					}
+				}
+			}
+		}).start();
 	}
+
+	boolean mTrucking = true;
 
 	public void setDownloadButton(String status) {
 		// 0= new| 2=downloading | 3=downloaded
-		durationPlayManager.delete(playButtonImg);
+		try {
+			durationPlayManager.delete(playButtonImg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("download statis " + status);
 		if (status.equals("0")) {
 			// new video
@@ -310,6 +342,8 @@ public class VideoConnectDetail extends FixMainScreen implements
 					this));
 		} else if (status.equals("3")) {
 			// video is downloaded
+			playButtonImg = new CustomButtonField(null, imgStock.getPlay(),
+					imgStock.getPlayOn());
 			playButtonImg.setChangeListener(new ButtonListener(picInfo, 311,
 					this));
 		} else if (status.equals("2")) {
@@ -325,14 +359,69 @@ public class VideoConnectDetail extends FixMainScreen implements
 			playButtonImg.setChangeListener(new ButtonListener(picInfo, 313,
 					this));
 		}
-		durationPlayManager.add(playButtonImg);
-		System.out.println("before add percent");
-		if (status.equals("2")) {
-			percent.setText("0%");
-			
+		if (!status.equals("2")) {
+			System.out.println("Add Play button");
+			durationPlayManager.add(playButtonImg);
+		} else {
+			System.out.println("before add percent");
+			if (status.equals("2")) {
+				percent.setText(LOADING + "0%");
+			}
 		}
 	}
 
+	private void updateStatus() {
+		try {
+			// System.out.println("update status");
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videos = Video.convertStringToVector(profile.videos);
+			for (int i = 0; i < videos.size(); i++) {
+				final Video v = (Video) videos.elementAt(i);
+				if(v.getName().equals(fileName)){
+					System.out.println("Found Current File");
+					System.out.println("title " + v.getTitle());
+					System.out.println("status " + v.getStatus());
+					System.out.println("percent " + v.getPercent());
+				}
+				if (v.getStatus().equals("2") && v.getName().equals(fileName)) {
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+								public void run() {
+									try {
+										percent.setText(LOADING
+												+ v.getPercent() + "%");
+									} catch (Exception e) {
+										System.out
+												.println("Error when updating download label");
+									}
+								}
+							});
+				} else if ( v.getName().equals(fileName)
+						&&v.getStatus().equals("3") && !isFinish) {
+					System.out.println("Enter in 3");
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+								public void run() {
+									try {
+										System.out.println("Enter in 4");
+										isFinish = true;
+										percent.setText("");
+										setDownloadButton("3");
+									} catch (Exception e) {
+										System.out
+												.println("Error when updating download label");
+									}
+								}
+							});
+					
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	boolean isFinish = false;
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.

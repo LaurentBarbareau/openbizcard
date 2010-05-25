@@ -16,6 +16,8 @@ package com.tssoftgroup.tmobile.screen;
  * Environment Development Guide associated with this release.
  */
 
+import java.util.Vector;
+
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Characters;
 import net.rim.device.api.system.Display;
@@ -36,6 +38,7 @@ import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.VideoDownloadDialog;
+import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.TrainingInfo;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Img;
@@ -51,6 +54,7 @@ import com.tssoftgroup.tmobile.utils.Scale;
  * UiApplication.
  */
 public class TrainingVideoScreen extends FixMainScreen {
+	public static final String LOADING = "Downloading ";
 	Img imgstock = Img.getInstance();
 	private MainItem _mainMenuItem = new MainItem();
 	MainListVerticalFieldManager mainManager = new MainListVerticalFieldManager();
@@ -60,7 +64,12 @@ public class TrainingVideoScreen extends FixMainScreen {
 	MyButtonField startButton = new MyButtonField("Start", ButtonField.ELLIPSIS);
 
 	MyButtonField nextButton = new MyButtonField("Next", ButtonField.ELLIPSIS);
-
+	CrieLabelField percent = new CrieLabelField(LOADING + "0%",
+			MyColor.FONT_DESCRIPTION,
+			Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
+					- (Display.getWidth() > 350 ? 5 : 0),
+			LabelField.NON_FOCUSABLE);
+	String fileName = "";
 	public TrainingVideoScreen(TrainingInfo info) {
 		super(MODE_TRAIN);
 		VideoDownloadDialog.filename = info.getFilename();
@@ -153,7 +162,13 @@ public class TrainingVideoScreen extends FixMainScreen {
 					25 * Display.getWidth() / 480);
 			buttonManager.add(startButton);
 			buttonManager.add(nextButton);
-
+			// Percent
+			buttonManager.add(percent);
+			if (videoStatus.equals("2")) {
+				percent.setText(LOADING + "0%");
+				updateStatus();
+			}
+			///
 			buttonManager.setMargin(edge);
 			nextButton.setMargin(0, 0, 0, 10);
 			mainManager.add(buttonManager);
@@ -167,8 +182,25 @@ public class TrainingVideoScreen extends FixMainScreen {
 		edge = new XYEdges(5, 0, 0, 0);
 
 		addMenuItem(_mainMenuItem);
+		new Thread(new Runnable() {
+
+			public void run() {
+				while (mTrucking) {
+					if (TrainingVideoScreen.this.isDisplayed()) {
+						try {
+							Thread.sleep(5000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						updateStatus();
+					}
+				}
+			}
+		}).start();
 	}
 
+	boolean mTrucking = true;
+	
 	public void setDownloadButton(String status) {
 		// 0= new| 2=downloading | 3=downloaded
 		buttonManager.delete(startButton);
@@ -189,9 +221,68 @@ public class TrainingVideoScreen extends FixMainScreen {
 			startButton = new MyButtonField("Scheduled", ButtonField.ELLIPSIS);
 			startButton.setChangeListener(new ButtonListener(info, 423, this));
 		}
-		buttonManager.insert(startButton, 0);
+		if (!status.equals("2")) {
+			System.out.println("Add Play button");
+			buttonManager.insert(startButton, 0);
+		} else {
+			System.out.println("before add percent");
+			if (status.equals("2")) {
+				percent.setText(LOADING + "0%");
+			}
+		}
 	}
+	private void updateStatus() {
+		try {
+			// System.out.println("update status");
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videos = Video.convertStringToVector(profile.videos);
+			for (int i = 0; i < videos.size(); i++) {
+				final Video v = (Video) videos.elementAt(i);
+				if(v.getName().equals(fileName)){
+					System.out.println("Found Current File");
+					System.out.println("title " + v.getTitle());
+					System.out.println("status " + v.getStatus());
+					System.out.println("percent " + v.getPercent());
+				}
+				if (v.getStatus().equals("2") && v.getName().equals(fileName)) {
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+								public void run() {
+									try {
+										percent.setText(LOADING
+												+ v.getPercent() + "%");
+									} catch (Exception e) {
+										System.out
+												.println("Error when updating download label");
+									}
+								}
+							});
+				} else if ( v.getName().equals(fileName)
+						&&v.getStatus().equals("3") && !isFinish) {
+					System.out.println("Enter in 3");
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+								public void run() {
+									try {
+										System.out.println("Enter in 4");
+										isFinish = true;
+										percent.setText("");
+										setDownloadButton("3");
+									} catch (Exception e) {
+										System.out
+												.println("Error when updating download label");
+									}
+								}
+							});
+					
+				}
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	boolean isFinish = false;
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.
