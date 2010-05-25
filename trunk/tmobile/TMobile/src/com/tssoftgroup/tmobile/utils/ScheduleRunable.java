@@ -51,12 +51,13 @@ public class ScheduleRunable implements Runnable {
 						video.setStatus("2");
 						profile.videos = Video
 								.convertVectorToString(scheduleVideos);
-						profile.saveProfile();
+						
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
+			profile.saveProfile();
 			try {
 				Thread.sleep(60000);
 			} catch (InterruptedException e) {
