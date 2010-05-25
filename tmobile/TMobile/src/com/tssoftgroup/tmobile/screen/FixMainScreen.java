@@ -39,6 +39,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 	private MainItem _mainMenuItem = new MainItem();
 	private DownloadQueueItem _downloadQueueItem = new DownloadQueueItem();
 	private SettingItem _settingItem = new SettingItem();
+	private ExitItem _exitItem = new ExitItem();
 
 	NewVerticalFieldManager manager = new NewVerticalFieldManager();
 	boolean haveNext = false;
@@ -93,6 +94,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		addMenuItem(_mainMenuItem);
 		addMenuItem(_downloadQueueItem);
 		addMenuItem(_settingItem);
+		addMenuItem(_exitItem);
 	}
 
 	public void processHaveNext(int numItem) {
@@ -386,6 +388,24 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		public void run() {
 			SettingDialog setting = new SettingDialog();
 			setting.myshow();
+		}
+	}
+	private final class ExitItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private ExitItem() {
+			super("Exit", 400, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			Dialog.alert("good bye");
+			System.exit(0);
+			// / Don't have download Queue
 		}
 	}
 }
