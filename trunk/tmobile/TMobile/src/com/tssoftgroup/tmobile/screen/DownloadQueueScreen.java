@@ -62,15 +62,17 @@ public class DownloadQueueScreen extends FixMainScreen {
 	public VerticalFieldManager downloadedManager = new VerticalFieldManager();
 	HorizontalFieldManager durationPlayManager;
 	Hashtable downloadingTable = new Hashtable();
-	private String cutString(String str ){
-		if(str.length() > 18){
-			str = str.substring(0,17) + "...";
+
+	private String cutString(String str) {
+		if (str.length() > 18) {
+			str = str.substring(0, 17) + "...";
 		}
 		return str;
 	}
+
 	public DownloadQueueScreen() {
 		super(MODE_MCAST);
-		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize()) ;
+		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize());
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 		XYEdges detailEdge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 				35 * Display.getWidth() / 480);
@@ -83,10 +85,11 @@ public class DownloadQueueScreen extends FixMainScreen {
 			MainListVerticalFieldManager mainManager = new MainListVerticalFieldManager();
 
 			edge = new XYEdges(2, 35, 17, 35);
-			LabelField titleLabel = new LabelFieldWithFullBGSelectable("Download Queue",
-					MyColor.FONT_TOPIC, MyColor.FONT_TOPIC_COLOR,
-					MyColor.TOPIC_BG, Display.getWidth() - 50
-							* Display.getWidth() / 480);
+			LabelField titleLabel = new LabelFieldWithFullBGSelectable(
+					"Download Queue", MyColor.FONT_TOPIC,
+					MyColor.FONT_TOPIC_COLOR, MyColor.TOPIC_BG, Display
+							.getWidth()
+							- 50 * Display.getWidth() / 480);
 			edge = new XYEdges(2, 25 * Display.getWidth() / 480, 2,
 					25 * Display.getWidth() / 480);
 			titleLabel.setMargin(edge);
@@ -110,8 +113,10 @@ public class DownloadQueueScreen extends FixMainScreen {
 			// / Add item
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				Video v = (Video) downloadingVideos.elementAt(i);
-				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle() ) + " : "
-						+ v.getPercent() + "%", MyColor.FONT_DESCRIPTION,
+				CrieLabelField test1 = new CrieLabelField(cutString(v
+						.getTitle())
+						+ " : " + v.getPercent() + "%",
+						MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -141,7 +146,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 					Scale.EDGE, 25 * Display.getWidth() / 480);
 			scheduleLB.setMargin(edge);
 			scheduleLB.setFont(Scale.FONT_DETAIL_TITLE);
-			
+
 			// Add item
 			for (int i = 0; i < scheduleVideos.size(); i++) {
 				Video v = (Video) scheduleVideos.elementAt(i);
@@ -153,7 +158,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()) , MyColor.FONT_DESCRIPTION,
+				CrieLabelField test1 = new CrieLabelField(cutString(v
+						.getTitle()), MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -189,8 +195,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				CrieLabelField test1 = new CrieLabelField(cutString(v.getTitle()),
-						MyColor.FONT_DESCRIPTION,
+				CrieLabelField test1 = new CrieLabelField(cutString(v
+						.getTitle()), MyColor.FONT_DESCRIPTION,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
 				test1.setMargin(detailEdge);
@@ -245,33 +251,35 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 	private void updateStatus() {
 		try {
-//			System.out.println("update status");
+			// System.out.println("update status");
 			ProfileEntry profile = ProfileEntry.getInstance();
 			Vector videos = Video.convertStringToVector(profile.videos);
 			Vector downloadingVideos = Video.getDownloadingVideo(videos);
 			for (int i = 0; i < downloadingVideos.size(); i++) {
 				final Video v = (Video) downloadingVideos.elementAt(i);
-				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
-					public void run() {
+				//
+				try {
+					final CrieLabelField label = (CrieLabelField) downloadingTable
+							.get(v.getName());
 
-						//
-						try{
-						CrieLabelField label = (CrieLabelField) downloadingTable
-								.get( v.getName());
+					if (label != null) {
+						System.out.println("label " + label.getText());
+						UiApplication.getUiApplication().invokeLater(
+								new Runnable() {
 
-						if (label != null) {
-							System.out.println("label " + label.getText());
-							label.setText(cutString(v.getTitle() )+ " : " + v.getPercent()
-									+ "%");
-						} else {
-							System.out.println("label is null");
-						}
-						}catch(Exception e){
-							System.out.println("Error when updating download label");
-						}
+									public void run() {
+										label.setText(cutString(v.getTitle())
+												+ " : " + v.getPercent() + "%");
+									}
+								});
+
+					} else {
+						// System.out.println("label is null");
 					}
-				});
+				} catch (Exception e) {
+					System.out.println("Error when updating download label");
+				}
 
 			}
 		} catch (Exception e) {
@@ -345,8 +353,9 @@ public class DownloadQueueScreen extends FixMainScreen {
 				try {
 					System.out.println("downloadingManager.delete(line)");
 					downloadingManager.delete(line);
-					System.out.println("finish downloadingManager.delete(line)");
-					
+					System.out
+							.println("finish downloadingManager.delete(line)");
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

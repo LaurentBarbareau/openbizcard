@@ -17,7 +17,7 @@ public class ScheduleRunable implements Runnable {
 		while (isRunning) {
 			ProfileEntry profile = ProfileEntry.getInstance();
 			Vector videos = Video.convertStringToVector(profile.videos);
-			Vector scheduleVideos = Video.getScheduleVideo(videos);
+			// Vector scheduleVideos = Video.getScheduleVideo(videos);
 			// //
 			if (isTimeInSetting()) {
 				if (CrieUtils.isRoaming() && profile.roaming.equals("Off")) {
@@ -32,29 +32,32 @@ public class ScheduleRunable implements Runnable {
 
 			}
 			// //
-			for (int i = 0; i < scheduleVideos.size(); i++) {
-				Video video = (Video) scheduleVideos.elementAt(i);
-				try {
-					if (new Date().getTime() > Long.parseLong(video
-							.getScheduleTime())
-							|| isTimeInSetting()) {
-						String url = Const.URL_VIDEO_DOWNLOAD + video.getName();
-						String localPatht = CrieUtils
-								.getVideoFolderConnString()
-								+ video.getName();
-						DownloadCombiner download = new DownloadCombiner(url,
-								localPatht, 40000, true, video.getName(), video
-										.getTitle());
-//						download.start();
-						Engine.getInstance().addDownloadVideo(download);
-						// remove from vector
-						video.setStatus("2");
-						profile.videos = Video
-								.convertVectorToString(scheduleVideos);
-						
+			for (int i = 0; i < videos.size(); i++) {
+				Video video = (Video) videos.elementAt(i);
+				if (video.getStatus().equals("1")) {
+					try {
+						if (new Date().getTime() > Long.parseLong(video
+								.getScheduleTime())
+								|| isTimeInSetting()) {
+							String url = Const.URL_VIDEO_DOWNLOAD
+									+ video.getName();
+							String localPatht = CrieUtils
+									.getVideoFolderConnString()
+									+ video.getName();
+							DownloadCombiner download = new DownloadCombiner(
+									url, localPatht, 40000, true, video
+											.getName(), video.getTitle());
+							// download.start();
+							Engine.getInstance().addDownloadVideo(download);
+							// remove from vector
+							video.setStatus("2");
+							profile.videos = Video
+									.convertVectorToString(videos);
+
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 			profile.saveProfile();
@@ -74,7 +77,7 @@ public class ScheduleRunable implements Runnable {
 					.getInstance().settingTime));
 			System.out.println("<========= current " + current);
 			System.out.println("<========= inSetting " + inSetting);
-			
+
 			if (current.equals(inSetting)) {
 				return true;
 			} else {
