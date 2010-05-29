@@ -2,6 +2,7 @@ package com.tssoftgroup.tmobile.screen;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
 import net.rim.blackberry.api.homescreen.HomeScreen;
 import net.rim.device.api.applicationcontrol.ApplicationPermissions;
@@ -12,6 +13,10 @@ import net.rim.device.api.ui.UiApplication;
 
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
+import com.tssoftgroup.tmobile.model.Video;
+import com.tssoftgroup.tmobile.utils.Const;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
+import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.ScheduleRunable;
 
@@ -86,7 +91,21 @@ public class TMobile extends UiApplication {
 			// app.enterEventDispatcher();
 		}
 		// Push the main screen instance onto the UI stack for rendering.
-
+		// Check downloading video and put in Queue
+		Vector videos = Video.convertStringToVector(profile.videos);
+		Engine engine = Engine.getInstance();
+		for (int i = 0; i < videos.size(); i++) {
+			Video vid = (Video) videos.elementAt(i);
+			if (vid.getStatus().equals("2")) {
+				String url = Const.URL_VIDEO_DOWNLOAD + vid.getName();
+				String localPatht = CrieUtils.getVideoFolderConnString()
+						+ vid.getName();
+				DownloadCombiner download = new DownloadCombiner(url,
+						localPatht, 40000, true, vid.getName(), vid.getTitle());
+				// download.start();
+				engine.addDownloadVideo(download);
+			}
+		}
 	}
 
 	/**
