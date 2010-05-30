@@ -47,8 +47,8 @@ public class ScheduleRunable implements Runnable {
 									.getVideoFolderConnString()
 									+ video.getName();
 							DownloadCombiner download = new DownloadCombiner(
-									url, localPatht, 40000, true, video
-											.getName(), video.getTitle());
+									url, localPatht, Const.DOWNLOAD_SIZE, true,
+									video.getName(), video.getTitle());
 							// download.start();
 							Engine.getInstance().addDownloadVideo(download);
 							// remove from vector
@@ -65,25 +65,35 @@ public class ScheduleRunable implements Runnable {
 			profile.saveProfile();
 			// Check download progress every 2 minute if the percent is the same
 			// restart the download thread
-			if (checkPercent) {
+			if (true) {
 				Engine engine = Engine.getInstance();
 				String nextName = engine.downloadVideoThread.currentDownloadName;
 				// Do something
+				System.out.println("<===== check percent");
+				System.out.println("nextName " + nextName);
+				System.out.println("previousName " + previousName);
+				System.out.println("nextName " + nextName);
 				if (!nextName.equals("") && !previousName.equals("")
 						&& nextName.equals(previousName)) {
 					Vector videoVector = Video
 							.convertStringToVector(profile.videos);
 					for (int i = 0; i < videoVector.size(); i++) {
 						Video vid = (Video) videoVector.elementAt(i);
-						if (vid.getName().equals(nextName)) {
+						if (vid.getName().equals(nextName) && vid.getStatus().equals("2")) {
+							System.out.println("vid percent " + vid.getPercent());
+							System.out.println("previousPercent " + previousPercent);
+							
 							if (vid.getPercent().equals(previousPercent)) {
 								// The thread maybe die restart it
 								engine.downloadVideoThread.mTrucking = false;
+								if (engine.downloadVideoThread.current != null) {
+									engine.downloadVideoThread.current.isCancel = true;
+								}
 								engine.downloadVideoThread = new HttpDownloadVideoThread();
 								engine.downloadVideoThread.start();
 								// Check downloading video and put in Queue
-								for (int j = 0; j < videoVector.size(); i++) {
-									Video vid2 = (Video) videos.elementAt(j);
+								for (int j = 0; j < videoVector.size(); j++) {
+									Video vid2 = (Video) videoVector.elementAt(j);
 									if (vid2.getStatus().equals("2")) {
 										String url = Const.URL_VIDEO_DOWNLOAD
 												+ vid2.getName();
@@ -91,8 +101,10 @@ public class ScheduleRunable implements Runnable {
 												.getVideoFolderConnString()
 												+ vid2.getName();
 										DownloadCombiner download = new DownloadCombiner(
-												url, localPatht, 40000, true,
-												vid2.getName(), vid2.getTitle());
+												url, localPatht,
+												Const.DOWNLOAD_SIZE, true, vid2
+														.getName(), vid2
+														.getTitle());
 										// download.start();
 										engine.addDownloadVideo(download);
 									}

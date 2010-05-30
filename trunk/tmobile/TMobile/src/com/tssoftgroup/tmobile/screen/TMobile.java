@@ -101,7 +101,7 @@ public class TMobile extends UiApplication {
 				String localPatht = CrieUtils.getVideoFolderConnString()
 						+ vid.getName();
 				DownloadCombiner download = new DownloadCombiner(url,
-						localPatht, 40000, true, vid.getName(), vid.getTitle());
+						localPatht, Const.DOWNLOAD_SIZE, true, vid.getName(), vid.getTitle());
 				// download.start();
 				engine.addDownloadVideo(download);
 			}

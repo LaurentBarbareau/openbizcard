@@ -35,7 +35,7 @@ public class MyMainScreen extends FixMainScreen {
 		if(CrieUtils.checkSDCardSize() < 50000000){
 			Dialog.alert("Your SD Card's free space is less that 50 MB. Please free up space for using the application to download video");
 		}
-		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize()) ;
+//		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize()) ;
 		int firstUp = Display.getWidth() < 400 ? 0 : 24;
 		XYEdges edge = new XYEdges(firstUp, 0, 2, 0);
 		Bitmap img = imgStock.getHeader();

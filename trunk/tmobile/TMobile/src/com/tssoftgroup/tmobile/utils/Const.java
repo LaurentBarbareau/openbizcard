@@ -73,4 +73,5 @@ public class Const {
 	public static final int DEFAULT_VOLUMN = 60;
 	public static final int NUM_RETRY_HTTP = 5;
 	public static final int DURATION_MARGIN_TOP = 15;
+	public static final int DOWNLOAD_SIZE = 128000;
 }

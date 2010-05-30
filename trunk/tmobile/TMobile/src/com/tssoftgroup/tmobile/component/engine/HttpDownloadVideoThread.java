@@ -15,7 +15,7 @@ public class HttpDownloadVideoThread extends Thread {
 
 	HTTPHandler handler;
 	public String currentDownloadName = "";
-
+	public DownloadCombiner current = null;
 	public HttpDownloadVideoThread() {
 	}
 
@@ -34,6 +34,7 @@ public class HttpDownloadVideoThread extends Thread {
 				// boolean excep = false;
 				DownloadCombiner com = (DownloadCombiner) conbiners
 						.elementAt(0);
+				current = com;
 				currentDownloadName = com.fileName;
 				conbiners.removeElementAt(0);
 				try {

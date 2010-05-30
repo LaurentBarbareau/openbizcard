@@ -17,7 +17,16 @@ public class Video {
 	private String scheduleTime = "0";
 	private String percent = "0";
 	private String title = "0";
-	
+	private String currentChunk = "0";
+
+	public String getCurrentChunk() {
+		return currentChunk;
+	}
+
+	public void setCurrentChunk(String currentChunk) {
+		this.currentChunk = currentChunk;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -28,7 +37,8 @@ public class Video {
 
 	public String toString() {
 		return "name = " + name + " status = " + status + " schedule time = "
-				+ scheduleTime + " percent " + percent+ " title " + title;
+				+ scheduleTime + " percent " + percent + " title " + title
+				+ " current chunk " + currentChunk;
 	}
 
 	public String getPercent() {
@@ -65,7 +75,7 @@ public class Video {
 
 	private String toMyString() {
 		String ret = name + SEPERATOR + status + SEPERATOR + scheduleTime
-				+ SEPERATOR + percent + SEPERATOR + title;
+				+ SEPERATOR + percent + SEPERATOR + title + SEPERATOR + currentChunk;
 		return ret;
 	}
 
@@ -93,11 +103,16 @@ public class Video {
 			Video vid = new Video();
 			String[] videoString = StringUtil.split(videoStringArr[i],
 					SEPERATOR);
-			vid.name = videoString[0];
-			vid.status = videoString[1];
-			vid.scheduleTime = videoString[2];
-			vid.percent = videoString[3];
-			vid.title = videoString[4];
+			try {
+				vid.name = videoString[0];
+				vid.status = videoString[1];
+				vid.scheduleTime = videoString[2];
+				vid.percent = videoString[3];
+				vid.title = videoString[4];
+				vid.currentChunk = videoString[5];
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			ret.addElement(vid);
 		}
 		return ret;
@@ -149,6 +164,7 @@ public class Video {
 		}
 		return ret;
 	}
+
 	public static Vector getDownloadedVideo(Vector videos) {
 		Vector ret = new Vector();
 		for (int i = 0; i < videos.size(); i++) {

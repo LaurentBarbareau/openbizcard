@@ -1,15 +1,10 @@
 package com.tssoftgroup.tmobile.component;
 
-import java.util.Date;
-import java.util.Vector;
-
-import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
 import net.rim.device.api.ui.Screen;
 import net.rim.device.api.ui.UiApplication;
-import net.rim.device.api.ui.component.DateField;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.RadioButtonField;
 import net.rim.device.api.ui.component.RadioButtonGroup;
@@ -21,6 +16,7 @@ import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.screen.MCastDetail;
 import com.tssoftgroup.tmobile.screen.TrainingVideoScreen;
 import com.tssoftgroup.tmobile.screen.VideoConnectDetail;
+import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 import com.tssoftgroup.tmobile.utils.Wording;
@@ -90,7 +86,7 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 				try {
 					System.out.println("video name " + videoname);
 					DownloadCombiner download = new DownloadCombiner(fileURL,
-							localPatht, 40000, true, filename, videoname);
+							localPatht, Const.DOWNLOAD_SIZE, true, filename, videoname);
 //					download.start();
 					Engine.getInstance().addDownloadVideo(download);
 				} catch (Exception e) {

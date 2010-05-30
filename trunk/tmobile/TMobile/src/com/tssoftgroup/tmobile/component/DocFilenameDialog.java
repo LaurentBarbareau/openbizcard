@@ -7,6 +7,8 @@ import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.component.TextField;
+
+import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 
@@ -71,7 +73,7 @@ public class DocFilenameDialog extends Dialog {
 						fc.close();
 						// Do the upload
 						DownloadCombiner download = new DownloadCombiner(url,
-								localPatht, 40000);
+								localPatht, Const.DOWNLOAD_SIZE);
 						download.start();
 					}
 				} catch (Exception e) {
