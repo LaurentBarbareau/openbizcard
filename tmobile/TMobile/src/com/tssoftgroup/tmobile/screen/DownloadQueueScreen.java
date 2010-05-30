@@ -34,6 +34,7 @@ import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.ButtonField;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.VerticalFieldManager;
@@ -43,10 +44,13 @@ import com.tssoftgroup.tmobile.component.LabelFieldWithFullBG;
 import com.tssoftgroup.tmobile.component.LabelFieldWithFullBGSelectable;
 import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.MyButtonField;
+import com.tssoftgroup.tmobile.component.engine.Engine;
+import com.tssoftgroup.tmobile.component.engine.HttpDownloadVideoThread;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Video;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
+import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -72,7 +76,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 	public DownloadQueueScreen() {
 		super(MODE_MCAST);
-		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize());
+//		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize());
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 		XYEdges detailEdge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
 				35 * Display.getWidth() / 480);
@@ -234,17 +238,67 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 			public void run() {
 				while (mTrucking) {
+					try {
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					if (DownloadQueueScreen.this.isDisplayed()) {
-						try {
-							Thread.sleep(10000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
 						updateStatus();
+					} else {
+						mTrucking = false;
 					}
 				}
 			}
 		}).start();
+		this.removeAllMenuItems();
+		addMenuItem(_reloadItem);
+	}
+
+	private ReloadItem _reloadItem = new ReloadItem();
+
+	private final class ReloadItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private ReloadItem() {
+			super("Reload", 100, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+
+			// The thread maybe die restart it
+			System.out.println("oak1");
+			Engine engine = Engine.getInstance();
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videoVector = Video.convertStringToVector(profile.videos);
+			engine.downloadVideoThread.mTrucking = false;
+			if (engine.downloadVideoThread.current != null) {
+				engine.downloadVideoThread.current.isCancel = true;
+			}
+			engine.downloadVideoThread = new HttpDownloadVideoThread();
+			engine.downloadVideoThread.start();
+			// Check downloading video and put in Queue
+			System.out.println("oak2");
+			for (int i = 0; i < videoVector.size(); i++) {
+				System.out.println("oak3i" + i);
+				Video vid2 = (Video) videoVector.elementAt(i);
+				if (vid2.getStatus().equals("2")) {
+					String url = Const.URL_VIDEO_DOWNLOAD + vid2.getName();
+					String localPatht = CrieUtils.getVideoFolderConnString()
+							+ vid2.getName();
+					DownloadCombiner download = new DownloadCombiner(url,
+							localPatht, Const.DOWNLOAD_SIZE, true, vid2
+									.getName(), vid2.getTitle());
+					// download.start();
+					engine.addDownloadVideo(download);
+				}
+			}
+		}
 	}
 
 	boolean mTrucking = true;
@@ -265,15 +319,19 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 					if (label != null) {
 						System.out.println("label " + label.getText());
-						UiApplication.getUiApplication().invokeLater(
-								new Runnable() {
+						if (!v.getPercent().equals("0")) {
+							UiApplication.getUiApplication().invokeLater(
+									new Runnable() {
 
-									public void run() {
-										label.setText(cutString(v.getTitle())
-												+ " : " + v.getPercent() + "%");
-									}
-								});
-
+										public void run() {
+											label.setText(cutString(v
+													.getTitle())
+													+ " : "
+													+ v.getPercent()
+													+ "%");
+										}
+									});
+						}
 					} else {
 						// System.out.println("label is null");
 					}
