@@ -87,7 +87,7 @@ public class Engine implements HTTPHandler {
 	public static Vector allMcast = new Vector();
 	public static Vector allTraining = new Vector();
 	
-	private HttpDownloadVideoThread downloadVideoThread  = new HttpDownloadVideoThread();
+	public HttpDownloadVideoThread downloadVideoThread  = new HttpDownloadVideoThread();
 	public void registerStatus(BitmapFieldWithStatus bmp) {
 		bitmapHeader.addElement(bmp);
 	}

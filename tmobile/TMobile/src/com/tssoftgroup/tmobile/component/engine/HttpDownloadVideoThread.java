@@ -11,9 +11,10 @@ import com.tssoftgroup.tmobile.utils.DownloadCombiner;
 public class HttpDownloadVideoThread extends Thread {
 
 	Vector conbiners = new Vector();
-	boolean mTrucking = true;
+	public boolean mTrucking = true;
 
 	HTTPHandler handler;
+	public String currentDownloadName = "";
 
 	public HttpDownloadVideoThread() {
 	}
@@ -31,8 +32,9 @@ public class HttpDownloadVideoThread extends Thread {
 				// e.printStackTrace();
 				// }
 				// boolean excep = false;
-				DownloadCombiner com = (DownloadCombiner) conbiners.elementAt(0);
-
+				DownloadCombiner com = (DownloadCombiner) conbiners
+						.elementAt(0);
+				currentDownloadName = com.fileName;
 				conbiners.removeElementAt(0);
 				try {
 					com.run();
@@ -43,6 +45,7 @@ public class HttpDownloadVideoThread extends Thread {
 				catch (Exception e) {
 					e.printStackTrace();
 				}
+				currentDownloadName = "";
 
 			} else {
 				try {

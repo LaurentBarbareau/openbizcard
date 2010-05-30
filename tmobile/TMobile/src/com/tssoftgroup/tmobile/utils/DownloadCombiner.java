@@ -24,7 +24,7 @@ public class DownloadCombiner extends Thread {
 	private String localName;
 	private int chunksize;
 	private boolean fromVideoDownload = false;
-	private String fileName;
+	public String fileName;
 	private String videoname;
 
 	public DownloadCombiner(String remoteName, String localName, int chunksize) {
