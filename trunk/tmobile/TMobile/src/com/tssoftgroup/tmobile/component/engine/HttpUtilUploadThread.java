@@ -33,6 +33,7 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 	private static String contentType = "application/x-www-form-urlencoded";
 	public static HttpConnection con = null;
 	public static String suffix = null;
+
 	/** Creates a new instance of HttpUtil */
 	public HttpUtilUploadThread() {
 	}
@@ -65,9 +66,10 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		HttpUtilUploadThread.alternateAuthen = flag;
 	}
 
-	public static String doPost(String url, String query, boolean cancelable) throws IOException,
-			Exception {
-		return doRequest(url, prepareQuery(query), HttpConnection.POST, cancelable);
+	public static String doPost(String url, String query, boolean cancelable)
+			throws IOException, Exception {
+		return doRequest(url, prepareQuery(query), HttpConnection.POST,
+				cancelable);
 	}
 
 	public static String doPost(String url, byte[] query, boolean cancelable)
@@ -75,8 +77,8 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		return doRequest(url, query, HttpConnection.POST, cancelable);
 	}
 
-	public static String doGet(String url, String query, boolean cancelable) throws IOException,
-			Exception {
+	public static String doGet(String url, String query, boolean cancelable)
+			throws IOException, Exception {
 		String fullUrl = url;
 		query = prepareQuery(query);
 		if (query.length() > 0) {
@@ -96,6 +98,7 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 					cancelable);
 		}
 	}
+
 	public static String doRequest(String url, byte[] query,
 			String requestMethod, boolean cancelable) throws IOException,
 			Exception {
@@ -110,29 +113,32 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		con = null;
 		// final String platform = Device.getPlatform();
 		while (con == null) {
-			try{con = (HttpConnection) Connector.open(url
-					+ getConnectionSuffix());
-			}catch(Exception e){
+			try {
+				con = (HttpConnection) Connector.open(url
+						+ getConnectionSuffix());
+			} catch (Exception e) {
 				e.printStackTrace();
-				UiApplication.getUiApplication().invokeLater(new Runnable(){
+				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
 					public void run() {
 						CrieUtils.removeCurrent();
-						Dialog.alert("Cannot connect to internet. Please check your internet connection");
-					}});
-			
+						Dialog
+								.alert("Cannot connect to internet. Please check your internet connection");
+					}
+				});
+
 				return "NOCONNECTION";
 			}
-			
+
 			if (cancelable)
 				HttpUtilUploadThread.con = con;
 			// Log.setState("connected");
 
 			con.setRequestMethod(requestMethod);
 
-//			con.setRequestProperty("Connection", "close");
+			// con.setRequestProperty("Connection", "close");
 			// If no useragent Python server will not accept
-//			con.setRequestProperty("User-Agent", Device.getUserAgent());
+			// con.setRequestProperty("User-Agent", Device.getUserAgent());
 
 			if (query.length > 0) {
 				// con.setRequestProperty("Content-Type", contentType);
@@ -143,7 +149,7 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 				con.setRequestProperty(
 						HttpProtocolConstants.HEADER_CONTENT_LENGTH, String
 								.valueOf(query.length));
-//				con.setRequestProperty("x-rim-transcode-content", "none");
+				// con.setRequestProperty("x-rim-transcode-content", "none");
 				// System.out.println("Length = " + query.length);
 				os = con.openOutputStream();
 				// ////Edited by oak show progress in 10 20 30 40 50 60 70 80 90
@@ -162,7 +168,7 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 			System.gc();
 
 			message = con.getResponseMessage();
-//			System.out.println("response " + message);
+			// System.out.println("response " + message);
 			// Log.info(status + " " + message);
 			switch (status) {
 			case HttpConnection.HTTP_OK:
@@ -286,43 +292,44 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		}
 		return query;
 	}
-	public static String getConnectionSuffix() {
-//		if (suffix == null) {
-		 if (DeviceInfo.isSimulator()) {
-				suffix = ";deviceside=true";
-			}else if (CoverageInfo.isCoverageSufficient(CoverageInfo.COVERAGE_MDS)) {
-				 suffix = ";deviceside=false";
-			 }
-			  else if ((WLANInfo.getWLANState() == WLANInfo.WLAN_STATE_CONNECTED)
-					&& RadioInfo.areWAFsSupported(RadioInfo.WAF_WLAN)) {
-				suffix = ";interface=wifi";
-			} else {
-				ServiceBook sb = ServiceBook.getSB();
-				ServiceRecord[] records =sb.getRecords();
-				String myuid = null;
-				for (int i = 0; i < records.length; i++) {
-					ServiceRecord myRecord = records[i];
-					String cid, uid;
 
-					if (myRecord.isValid() && !myRecord.isDisabled()) {
-						cid = myRecord.getCid().toLowerCase();
-						uid = myRecord.getUid().toLowerCase();
-						// BIS
-						// Wap2.0
-						if (cid.indexOf("wptcp") != -1 && uid.indexOf("wifi") == -1 && uid.indexOf("mms") == -1) {
-							myuid = myRecord.getUid();
-							break;
-						}
-					}	
-				}
-				if (myuid != null) {
-					// WAP2 Connection
-					suffix = ";deviceside=true;ConnectionUID=" + myuid;
-				} else {
-					suffix = ";deviceside=true";
+	public static String getConnectionSuffix() {
+		// if (suffix == null) {
+		if (DeviceInfo.isSimulator()) {
+			suffix = ";deviceside=true";
+		} else if (CoverageInfo.isCoverageSufficient(CoverageInfo.COVERAGE_MDS)) {
+			suffix = ";deviceside=false";
+		} else if ((WLANInfo.getWLANState() == WLANInfo.WLAN_STATE_CONNECTED)
+				&& RadioInfo.areWAFsSupported(RadioInfo.WAF_WLAN)) {
+			suffix = ";interface=wifi";
+		} else {
+			ServiceBook sb = ServiceBook.getSB();
+			ServiceRecord[] records = sb.getRecords();
+			String myuid = null;
+			for (int i = 0; i < records.length; i++) {
+				ServiceRecord myRecord = records[i];
+				String cid, uid;
+
+				if (myRecord.isValid() && !myRecord.isDisabled()) {
+					cid = myRecord.getCid().toLowerCase();
+					uid = myRecord.getUid().toLowerCase();
+					// BIS
+					// Wap2.0
+					if (cid.indexOf("wptcp") != -1 && uid.indexOf("wifi") == -1
+							&& uid.indexOf("mms") == -1) {
+						myuid = myRecord.getUid();
+						break;
+					}
 				}
 			}
-//		}
+			if (myuid != null) {
+				// WAP2 Connection
+				suffix = ";deviceside=true;ConnectionUID=" + myuid;
+			} else {
+				suffix = ";deviceside=true";
+			}
+		}
+		// }
 		return suffix;
 
 	}
