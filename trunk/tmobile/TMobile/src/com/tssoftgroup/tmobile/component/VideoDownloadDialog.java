@@ -87,13 +87,15 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 					System.out.println("video name " + videoname);
 					DownloadCombiner download = new DownloadCombiner(fileURL,
 							localPatht, Const.DOWNLOAD_SIZE, true, filename, videoname);
-//					download.start();
-					Engine.getInstance().addDownloadVideo(download);
+					download.start();
+//					Engine.getInstance().addDownloadVideo(download);
 				} catch (Exception e) {
-
+					System.out.println("exception " +e.getMessage());
 				}
 				// Change the button to downloading
+				System.out.println("After download combiner");
 				if (screen instanceof VideoConnectDetail) {
+					
 					VideoConnectDetail videoConnect = (VideoConnectDetail) screen;
 					videoConnect.setDownloadButton("2");
 				}

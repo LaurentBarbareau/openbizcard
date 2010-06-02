@@ -46,9 +46,12 @@ public class DownloadCombiner extends Thread {
 
 	public void run() {
 		if (fromVideoDownload) {
+			System.out.println("from video downlo0ad");
 			// Add new Video to download queue
 			ProfileEntry profile = ProfileEntry.getInstance();
+			System.out.println("after get instance ");
 			Vector videos = Video.convertStringToVector(profile.videos);
+			System.out.println("profile.videos " + profile.videos);
 			// check the old video have current name
 			boolean haveThisName = false;
 			for (int i = 0; i < videos.size(); i++) {
@@ -58,6 +61,7 @@ public class DownloadCombiner extends Thread {
 				}
 			}
 			if (!haveThisName) {
+				System.out.println("dont' have this name");
 				Video newVideo = new Video();
 				newVideo.setName(fileName);
 				newVideo.setStatus("2");
@@ -66,6 +70,8 @@ public class DownloadCombiner extends Thread {
 				videos.addElement(newVideo);
 				profile.videos = Video.convertVectorToString(videos);
 				profile.saveProfile();
+			}else{
+				System.out.println("have this name");
 			}
 		}
 		try {
