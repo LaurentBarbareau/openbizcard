@@ -150,8 +150,6 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 		System.out.println("allcats " + allCats.size());
 		catChoice = new ChoiceField("Category :", allCats.size(), 0) {
 			public Object getChoice(int index) throws IllegalArgumentException {
-				System.out.println("a1 test" + allCats.size() );
-				System.out.println("a2 test" + index);
 				if(allCats.size() > index){
 					return allCats.elementAt(index);	
 				}else{

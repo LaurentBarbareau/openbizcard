@@ -68,8 +68,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 	Hashtable downloadingTable = new Hashtable();
 
 	private String cutString(String str) {
-		if (str.length() > 18) {
-			str = str.substring(0, 17) + "...";
+		if (str.length() > 26) {
+			str = str.substring(0, 25) + "...";
 		}
 		return str;
 	}

@@ -50,32 +50,28 @@ public class LoadPicThread implements Runnable {
 					PicInfo picInfo = (PicInfo) items.elementAt(i);
 					if (picInfo.getThumbnail() == null) {
 						try {
-							System.out.println("a1");
+//							System.out.println("a1");
 
 							byte[] result = getImageByte(picInfo
 									.getThumbnailURL());
 							if (result != null) {
-								System.out.println("a2");
+//								System.out.println("a2");
 								EncodedImage encodeImg = EncodedImage
 										.createEncodedImage(result, 0,
 												result.length);
-								System.out.println("a3");
+//								System.out.println("a3");
 								EncodedImage scaledImg = CrieUtils
 										.scaleImageToWidth(
 												encodeImg,
 												Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD);
-								System.out.println("a4");
 								final Bitmap bmp = scaledImg.getBitmap();
-								System.out.println("a5");
 								picInfo.setThumbnail(bmp);
 								if (UiApplication.getUiApplication()
 										.getActiveScreen() == screen) {
-									System.out.println("a6");
 									screen.invalidate();
 								}
 							}
 						} catch (Exception e) {
-							System.out.println("a7");
 							e.printStackTrace();
 						}
 					}
@@ -84,33 +80,25 @@ public class LoadPicThread implements Runnable {
 					TrainingInfo trainInfo = (TrainingInfo) items.elementAt(i);
 					if (trainInfo.getThumbnail() == null) {
 						try {
-							System.out.println("b1");
 							byte[] result = getImageByte(trainInfo
 									.getThumbnailUrl());
 							if (result != null) {
 
-								System.out.println("b2");
 								EncodedImage encodeImg = EncodedImage
 										.createEncodedImage(result, 0,
 												result.length);
-								System.out.println("b3");
 								EncodedImage scaledImg = CrieUtils
 										.scaleImageToWidth(
 												encodeImg,
 												Scale.WIDTH_HEIGHT_THUMBNAIL_VIDEO_LISTFIELD);
-								System.out.println("b4");
 								final Bitmap bmp = scaledImg.getBitmap();
-								System.out.println("b5");
 								trainInfo.setThumbnail(bmp);
-								System.out.println("b6");
 								if (UiApplication.getUiApplication()
 										.getActiveScreen() == screen) {
-									System.out.println("b7");
 									screen.invalidate();
 								}
 							}
 						} catch (Exception e) {
-							System.out.println("b8");
 							e.printStackTrace();
 						}
 					}
