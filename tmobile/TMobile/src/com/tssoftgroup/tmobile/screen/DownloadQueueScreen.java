@@ -246,6 +246,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 					if (DownloadQueueScreen.this.isDisplayed()) {
 						updateStatus();
 					} else {
+						System.out.println("MTraunnking = false;");
 						mTrucking = false;
 					}
 				}
