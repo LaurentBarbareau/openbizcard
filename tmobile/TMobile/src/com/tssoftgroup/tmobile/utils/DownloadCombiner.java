@@ -14,6 +14,7 @@ import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.Status;
 
+import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.component.engine.HttpUtilUploadThread;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Video;
@@ -70,7 +71,7 @@ public class DownloadCombiner extends Thread {
 				videos.addElement(newVideo);
 				profile.videos = Video.convertVectorToString(videos);
 				profile.saveProfile();
-			}else{
+			} else {
 				System.out.println("have this name");
 			}
 		}
@@ -286,77 +287,79 @@ public class DownloadCombiner extends Thread {
 					+ totalSize + " Bytes");
 			final int mySize = totalSize;
 			final int fiResponseCode = myResponseCode;
-			UiApplication.getUiApplication().invokeLater(new Runnable() {
 
-				public void run() {
-					if (fiResponseCode == 404) {
-						final String choices[] = { "Done" };
-						final int values[] = { Dialog.OK };
-						Dialog dia = new Dialog("The file was removed",
-								choices, values, Dialog.OK,
-								Bitmap.getPredefinedBitmap(Bitmap.INFORMATION),
-								0);
-						int result = dia.doModal();
+			if (fiResponseCode == 404) {
+				final String choices[] = { "Done" };
+				final int values[] = { Dialog.OK };
+				Dialog dia = new Dialog("The file was removed", choices,
+						values, Dialog.OK, Bitmap
+								.getPredefinedBitmap(Bitmap.INFORMATION), 0);
+				int result = dia.doModal();
 
-					} else {
-						if (!fromVideoDownload) {
-							final String choices[] = { "Open", "Done" };
-							final int values[] = { Dialog.OK, Dialog.CANCEL };
-							Dialog dia = new Dialog(
-									"Full file downloaded: " + mySize
-											+ " Bytes",
-									choices,
-									values,
-									Dialog.OK,
-									Bitmap
-											.getPredefinedBitmap(Bitmap.INFORMATION),
-									0);
-							int result = dia.doModal();
-							if (result == Dialog.OK) {
-								CrieUtils.browserURL(localName);
-							} else {
-							}
-						} else {
-							// Update Status of Video to
-							ProfileEntry profile = ProfileEntry.getInstance();
-							Vector videos = Video
-									.convertStringToVector(profile.videos);
-							for (int i = 0; i < videos.size(); i++) {
-								Video v = (Video) videos.elementAt(i);
-								if (v.getName().equals(fileName)
-										&& v.getPercent().equals("100")) {
-									v.setStatus("3");
-									String profileVideoString = Video
-											.convertVectorToString(videos);
-									profile.videos = profileVideoString;
-									profile.saveProfile();
+			} else {
+				if (!fromVideoDownload) {
+					UiApplication.getUiApplication().invokeLater(
+							new Runnable() {
+
+								public void run() {
+									final String choices[] = { "Open", "Done" };
+									final int values[] = { Dialog.OK,
+											Dialog.CANCEL };
+									Dialog dia = new Dialog(
+											"Full file downloaded: " + mySize
+													+ " Bytes",
+											choices,
+											values,
+											Dialog.OK,
+											Bitmap
+													.getPredefinedBitmap(Bitmap.INFORMATION),
+											0);
+									int result = dia.doModal();
+									if (result == Dialog.OK) {
+										CrieUtils.browserURL(localName);
+									} else {
+									}
 								}
-							}
+							});
 
-							// from video download
-							// final String choices[] = { "Done" };
-							// final int values[] = { Dialog.OK };
-							// Dialog dia = new Dialog(
-							// "Video "
-							// + videoname
-							// + " downloaded: "
-							// + mySize
-							// +
-							// " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
-							// choices,
-							// values,
-							// Dialog.OK,
-							// Bitmap
-							// .getPredefinedBitmap(Bitmap.INFORMATION),
-							// 0);
-							// int result = dia.doModal();
-							// if (result == Dialog.OK) {
-							// } else {
-							// }
+				} else {
+					// Update Status of Video to
+					Vector myvideos = Video
+							.convertStringToVector(profile.videos);
+					for (int i = 0; i < myvideos.size(); i++) {
+						Video v = (Video) myvideos.elementAt(i);
+						if (v.getName().equals(fileName)
+								&& v.getPercent().equals("100")) {
+							v.setStatus("3");
+							String profileVideoString = Video
+									.convertVectorToString(myvideos);
+							profile.videos = profileVideoString;
+							profile.saveProfile();
 						}
 					}
+					Engine.getInstance().removeDownloadingImmediatly(this);
+					// from video download
+					// final String choices[] = { "Done" };
+					// final int values[] = { Dialog.OK };
+					// Dialog dia = new Dialog(
+					// "Video "
+					// + videoname
+					// + " downloaded: "
+					// + mySize
+					// +
+					// " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
+					// choices,
+					// values,
+					// Dialog.OK,
+					// Bitmap
+					// .getPredefinedBitmap(Bitmap.INFORMATION),
+					// 0);
+					// int result = dia.doModal();
+					// if (result == Dialog.OK) {
+					// } else {
+					// }
 				}
-			});
+			}
 			out.close();
 			file.close();
 

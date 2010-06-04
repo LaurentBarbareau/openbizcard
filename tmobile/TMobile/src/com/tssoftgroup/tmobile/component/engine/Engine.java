@@ -88,10 +88,30 @@ public class Engine implements HTTPHandler {
 	public static Vector allTraining = new Vector();
 	
 	public HttpDownloadVideoThread downloadVideoThread  = new HttpDownloadVideoThread();
+	private Vector downloadingVector = new Vector();
 	public void registerStatus(BitmapFieldWithStatus bmp) {
 		bitmapHeader.addElement(bmp);
 	}
-
+	public void addDownloadingImmediatly(DownloadCombiner combiner){
+		downloadingVector.addElement(combiner);
+	}
+	public void removeDownloadingImmediatly(DownloadCombiner combiner){
+		try{
+		downloadingVector.removeElement(combiner);
+		}catch(Exception e){
+			
+		}
+	}
+	public boolean isVideoDownloadingImmediately(String filename){
+		boolean have = false;
+		for (int i = 0; i <downloadingVector.size(); i++) {
+			DownloadCombiner combiner = (DownloadCombiner)downloadingVector.elementAt(i);
+			if(combiner.fileName.equals(filename)){
+				have = true;
+			}
+		}
+		return have;
+	}
 	public void updateStatus(String status) {
 		// for (int i = 0; i < bitmapHeader.size(); i++) {
 		// try {
