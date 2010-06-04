@@ -242,7 +242,6 @@ public class DocumentListScreen extends FixMainScreen implements FieldChangeList
 	}
 
 	protected void onUiEngineAttached(boolean attached) {
-		System.out.println("onUiEngineAttached " + attached);
 		if (_list != null) {
 			this.invalidate();
 			// fieldManager.invalidate();

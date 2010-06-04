@@ -228,7 +228,6 @@ public class ProjectListScreen extends FixMainScreen implements FieldChangeListe
 	}
 
 	protected void onUiEngineAttached(boolean attached) {
-		System.out.println("onUiEngineAttached " + attached);
 		if (attached) {
 			if (loader != null) {
 				loader.myResume();

@@ -220,7 +220,6 @@ public class PollListScreen extends FixMainScreen implements FieldChangeListener
 	}
 
 	protected void onUiEngineAttached(boolean attached) {
-		System.out.println("onUiEngineAttached " + attached);
 		if (_list != null) {
 			this.invalidate();
 			// fieldManager.invalidate();

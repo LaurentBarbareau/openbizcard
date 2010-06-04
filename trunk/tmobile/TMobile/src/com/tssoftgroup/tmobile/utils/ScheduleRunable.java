@@ -58,6 +58,7 @@ public class ScheduleRunable implements Runnable {
 
 						}
 					} catch (Exception e) {
+						System.out.println("error " + e.getMessage());
 						e.printStackTrace();
 					}
 				}

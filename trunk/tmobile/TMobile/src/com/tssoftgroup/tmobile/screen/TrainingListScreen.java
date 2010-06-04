@@ -292,7 +292,6 @@ public class TrainingListScreen extends FixMainScreen implements
 	}
 
 	protected void onUiEngineAttached(boolean attached) {
-		System.out.println("onUiEngineAttached " + attached);
 		if (attached) {
 			if (loader != null) {
 				loader.myResume();
