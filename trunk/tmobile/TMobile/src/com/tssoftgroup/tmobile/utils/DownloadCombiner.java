@@ -337,7 +337,7 @@ public class DownloadCombiner extends Thread {
 							profile.saveProfile();
 						}
 					}
-					Engine.getInstance().removeDownloadingImmediatly(this);
+//					Engine.getInstance().removeDownloadingImmediatly(this);
 					// from video download
 					// final String choices[] = { "Done" };
 					// final int values[] = { Dialog.OK };
