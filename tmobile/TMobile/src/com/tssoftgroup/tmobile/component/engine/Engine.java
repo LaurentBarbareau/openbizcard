@@ -106,6 +106,9 @@ public class Engine implements HTTPHandler {
 		boolean have = false;
 		for (int i = 0; i <downloadingVector.size(); i++) {
 			DownloadCombiner combiner = (DownloadCombiner)downloadingVector.elementAt(i);
+			System.out.println("combiner.fileName" + combiner.fileName);
+			System.out.println("filename" + filename);
+			
 			if(combiner.fileName.equals(filename)){
 				have = true;
 			}
