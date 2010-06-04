@@ -76,6 +76,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 	public DownloadQueueScreen() {
 		super(MODE_MCAST);
+		System.out.println("start");
+		long start = System.currentTimeMillis();
 //		System.out.println("checkSDCardSize " + CrieUtils.checkSDCardSize());
 		XYEdges edge = new XYEdges(24, 25, 8, 25);
 		XYEdges detailEdge = new XYEdges(2, 35 * Display.getWidth() / 480, 2,
@@ -142,7 +144,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			}
 
 			// <<<<<============ Schedule
-			LabelField scheduleLB = new LabelFieldWithFullBG("schedule",
+			LabelField scheduleLB = new LabelFieldWithFullBG("It's scheduled to download",
 					MyColor.COMMENT_LABEL_FONT,
 					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
@@ -253,7 +255,10 @@ public class DownloadQueueScreen extends FixMainScreen {
 			}
 		}).start();
 		this.removeAllMenuItems();
-		addMenuItem(_reloadItem);
+		long stop = System.currentTimeMillis();
+		System.out.println("time used " + (stop - start));
+		
+//		addMenuItem(_reloadItem);
 	}
 
 	private ReloadItem _reloadItem = new ReloadItem();
@@ -305,6 +310,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 	boolean mTrucking = true;
 
 	private void updateStatus() {
+		long start = System.currentTimeMillis();
 		try {
 			// System.out.println("update status");
 			ProfileEntry profile = ProfileEntry.getInstance();
@@ -320,16 +326,20 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 					if (label != null) {
 						System.out.println("label " + label.getText());
+						// if it is current download thread
 						if (!v.getPercent().equals("0")) {
 							UiApplication.getUiApplication().invokeLater(
 									new Runnable() {
 
 										public void run() {
+											long start = System.currentTimeMillis();
 											label.setText(cutString(v
 													.getTitle())
 													+ " : "
 													+ v.getPercent()
 													+ "%");
+											long stop = System.currentTimeMillis();
+											System.out.println("update ui "  + (stop-start));
 										}
 									});
 						}
@@ -344,6 +354,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		long stop = System.currentTimeMillis();
+		System.out.println("updatestatus " + (stop-start));
 	}
 
 	private final class MainItem extends MenuItem {

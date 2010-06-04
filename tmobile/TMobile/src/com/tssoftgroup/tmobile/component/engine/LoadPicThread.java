@@ -36,7 +36,6 @@ public class LoadPicThread implements Runnable {
 	public void run() {
 		System.out.println("Running load pic thread" + items.size());
 		for (int i = 0; i < items.size(); i++) {
-			System.out.println("loop " + i + " class " + items.elementAt(i).getClass());
 			if (running) {
 				while (pausing) {
 					try {

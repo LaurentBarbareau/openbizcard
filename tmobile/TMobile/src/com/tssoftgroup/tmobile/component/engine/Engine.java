@@ -201,7 +201,6 @@ public class Engine implements HTTPHandler {
 					return;
 				}
 
-				System.out.println("Aaaaaaa");
 				final VideoConnectScreen videoShowScreen = VideoConnectScreen
 						.getInstance();
 				final Vector myItems = items;
@@ -217,7 +216,6 @@ public class Engine implements HTTPHandler {
 						videoShowScreen);
 				videoShowScreen.loader = loadPicThread;
 				new Thread(loadPicThread).start();
-				System.out.println("bbbbbbb");
 
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
