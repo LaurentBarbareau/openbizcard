@@ -137,6 +137,8 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 						this));
 			} else if (videoStatus.equals("3")) {
 				// video is downloaded
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getPlay(), imgStock.getPlayOn());
 				playButtonImg.setChangeListener(new ButtonListener(picinfo,
 						321, this));
 			} else if (videoStatus.equals("2")) {
@@ -403,6 +405,8 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 					this));
 		} else if (status.equals("3")) {
 			// video is downloaded
+			playButtonImg = new CustomButtonField(null, imgStock.getPlay(),
+					imgStock.getPlayOn());
 			playButtonImg.setChangeListener(new ButtonListener(picInfo, 321,
 					this));
 		} else if (status.equals("2")) {

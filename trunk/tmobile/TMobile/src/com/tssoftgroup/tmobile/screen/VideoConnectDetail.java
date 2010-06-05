@@ -115,6 +115,8 @@ public class VideoConnectDetail extends FixMainScreen implements
 						this));
 			} else if (videoStatus.equals("3")) {
 				// video is downloaded
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getPlay(), imgStock.getPlayOn());
 				playButtonImg.setChangeListener(new ButtonListener(picinfo,
 						311, this));
 			} else if (videoStatus.equals("2")) {
