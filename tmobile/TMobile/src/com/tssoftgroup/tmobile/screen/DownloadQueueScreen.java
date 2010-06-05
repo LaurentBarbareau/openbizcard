@@ -409,8 +409,13 @@ public class DownloadQueueScreen extends FixMainScreen {
 						+ video.getName();
 				FileConnection file = (FileConnection) Connector
 						.open(localPatht);
+				try {
 				if (file.exists()) {
 					file.delete();
+				}
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
 				}
 				// remove from recordstore
 				ProfileEntry profile = ProfileEntry.getInstance();
@@ -434,12 +439,14 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 				} catch (Exception e) {
 					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				try {
 					System.out.println("scheduleManager.delete(line)");
 					scheduleManager.delete(line);
 					System.out.println("finish scheduleManager.delete(line)");
 				} catch (Exception e) {
+					System.out.println(e.getMessage());
 					e.printStackTrace();
 				}
 				try {
@@ -447,9 +454,11 @@ public class DownloadQueueScreen extends FixMainScreen {
 					downloadedManager.delete(line);
 					System.out.println("finish downloadedManager.delete(line)");
 				} catch (Exception e) {
+					System.out.println(e.getMessage());
 					e.printStackTrace();
 				}
 			} catch (IOException e) {
+				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
 		}

@@ -91,81 +91,41 @@ public class DownloadCombiner extends Thread {
 			int myResponseCode = 0;
 			// if video download resume from last chunk
 
-			ProfileEntry profile = ProfileEntry.getInstance();
-			Vector videos = Video.convertStringToVector(profile.videos);
-			boolean isResume = false;
-			for (int i = 0; i < videos.size(); i++) {
-				Video video = (Video) videos.elementAt(i);
-				if (video.getName().equals(fileName)) {
-					if (!video.getCurrentChunk().equals("0")) {
-						try {
-							isResume = true;
-							chunkIndex = Integer.parseInt(video
-									.getCurrentChunk());
-						} catch (Exception e) {
-							isResume = false;
-						}
-					}
-				}
-			}
-			profile.videos = Video.convertVectorToString(videos);
+			
 			// / end if
-			/*
-			 * File connection
-			 */
-			FileConnection file = (FileConnection) Connector.open(localName);
-			if (!file.exists()) {
-				try {
-					// System.out.println("1 file is open " + file.isOpen());
-					// while(file.isOpen()){
-					// Thread.sleep(5000);
-					// }
-					file.create();
-					file.setWritable(true);
-				} catch (Exception e) {
-					System.out.println("exception e" + e.getMessage());
-				}
-			} else {
-				// System.out.println("File already exists...");
-				// UiApplication.getUiApplication().invokeLater(new Runnable() {
-				//
-				// public void run() {
-				// Dialog.alert("File already exists...");
-				// }
-				// });
-				try {
-					System.out.println("2 file is open " + file.isOpen());
-					// if (file.isOpen()) {
-					// file.close();
-					// System.out.println("finish close");
-					// }
-					while (!file.canWrite()) {
-						try {
-							System.out.println("file cannot write");
-							Thread.sleep(5000);
-						} catch (Exception e) {
-							System.out.println("exception on thread.skeep");
+
+			while (true) {
+				ProfileEntry profile = ProfileEntry.getInstance();
+				Vector videos = Video.convertStringToVector(profile.videos);
+				
+				System.out.println("profile.video " + profile.videos);
+				// check resume
+				boolean isResume = false;
+				for (int i = 0; i < videos.size(); i++) {
+					Video video = (Video) videos.elementAt(i);
+					System.out.println("video.getname :" + video.getName());
+					System.out.println("filename :" + fileName);
+					
+					if (video.getName().equals(fileName)) {
+						System.out.println("video current chunk " + video.getCurrentChunk());
+						if (!video.getCurrentChunk().equals("0")) {
+							try {
+								isResume = true;
+								chunkIndex = Integer.parseInt(video
+										.getCurrentChunk());
+							} catch (Exception e) {
+								isResume = false;
+							}
 						}
 					}
-					// while(file.isOpen()){
-					// Thread.sleep(5000);
-					// }
-					if (!isResume) {
-						file.delete();
-						file.create();
-					}
-					file.setWritable(true);
-				} catch (Exception e) {
-					System.out.println("exception2 e" + e.getMessage());
 				}
-			}
-			OutputStream out = file.openOutputStream();
-			while (true) {
 				if (isCancel) {
 					break;
 				}
+				System.out.println("Starting while .....");
 				System.out.println("Opening Chunk: " + chunkIndex);
 				conn = (HttpConnection) Connector.open(currentFile
+						+ ";ConnectionTimeout=10000"
 						+ HttpUtilUploadThread.getConnectionSuffix(),
 						Connector.READ_WRITE, true);
 				rangeStart = chunkIndex * chunksize;
@@ -174,7 +134,10 @@ public class DownloadCombiner extends Thread {
 						+ rangeEnd);
 				conn.setRequestProperty("Range", "bytes=" + rangeStart + "-"
 						+ rangeEnd);
+				System.out.println("before get responsecode");
 				int responseCode = conn.getResponseCode();
+				System.out.println("after get responsecode");
+
 				myResponseCode = responseCode;
 				if (responseCode != 200 && responseCode != 206) {
 					System.out.println("Response Code = "
@@ -216,23 +179,10 @@ public class DownloadCombiner extends Thread {
 							}
 						}
 					} catch (Exception e) {
-
+						System.out.println("error " + e.getMessage());
 					}
 
 				} else {
-					// System.out.println("r is equal null");
-					// if (chunksize > 1000) {
-					// try {
-					// conn.close();
-					// } catch (Exception e) {
-					//
-					// }
-					// new DownloadCombiner(remoteName, localName, 1000)
-					// .start();
-					// return;
-					// } else {
-					// break;
-					// }
 					break;
 				}
 
@@ -241,11 +191,90 @@ public class DownloadCombiner extends Thread {
 				int length = -1;
 				byte[] readBlock = new byte[256];
 				int fileSize = 0;
-				while ((length = in.read(readBlock)) != -1) {
-					out.write(readBlock, 0, length);
-					fileSize += length;
-					Thread.yield(); // Try not to get cut off
+				/*
+				 * File connection
+				 */
+				FileConnection file = (FileConnection) Connector
+						.open(localName);
+				if (!file.exists()) {
+					try {
+						// System.out.println("1 file is open " +
+						// file.isOpen());
+						// while(file.isOpen()){
+						// Thread.sleep(5000);
+						// }
+						file.create();
+						file.setWritable(true);
+					} catch (Exception e) {
+						System.out.println("exception e" + e.getMessage());
+					}
+				} else {
+					// System.out.println("File already exists...");
+					// UiApplication.getUiApplication().invokeLater(new
+					// Runnable() {
+					//
+					// public void run() {
+					// Dialog.alert("File already exists...");
+					// }
+					// });
+					try {
+						System.out.println("2 file is open " + file.isOpen());
+						// while (!file.canWrite()) {
+						// try {
+						// System.out.println("file cannot write");
+						// Thread.sleep(5000);
+						// } catch (Exception e) {
+						// System.out.println("exception on thread.skeep");
+						// }
+						// }
+						System.out.println("is resume " + isResume);
+						if (!isResume) {
+							file.delete();
+							file.create();
+						}
+						System.out.println("is resume 2");
+						file.setWritable(true);
+					} catch (Exception e) {
+						System.out.println("exception2 e" + e.getMessage());
+					}
 				}
+				System.out.println("before open output");
+				OutputStream out = null;
+				try {
+					length = in.read(readBlock);
+					System.out.println("file size " + file.fileSize());
+					System.out.println("skip " +(chunkIndex * chunksize) );
+					out = file.openOutputStream(chunkIndex * chunksize);
+
+					while (length != -1) {
+						out.write(readBlock, 0, length);
+						fileSize += length;
+						// Thread.yield(); // Try not to get cut off
+						length = in.read(readBlock);
+					}
+				} catch (IOException ef) {
+					// time out
+					System.out.println("error IOException" + ef.getMessage());
+					in.close();
+					conn.close();
+					in = null;
+					conn = null;
+					if (out != null) {
+						out.close();
+					}
+					file.close();
+					System.out.println("Finish close everything");
+					continue;
+				} catch (Exception ef2){
+					System.out.println("Ohter exception " + ef2.getMessage());
+				}
+				System.out.println("before close output");
+				if (out != null) {
+					out.close();
+				}
+				System.out.println("file size after close out " +file.fileSize() );
+				
+				file.close();
 				totalSize += fileSize;
 				System.out.println("Chunk Downloaded: " + fileSize + " Bytes");
 
@@ -260,6 +289,7 @@ public class DownloadCombiner extends Thread {
 						if (video.getName().equals(fileName)) {
 							isDelete = false;
 							video.setCurrentChunk(chunkIndex + "");
+							System.out.println("video.setCurrentChunk " + chunkIndex);
 							if (updatePercentBool) {
 								video.setPercent(updatePercent + "");
 							}
@@ -323,6 +353,7 @@ public class DownloadCombiner extends Thread {
 							});
 
 				} else {
+					ProfileEntry profile = ProfileEntry.getInstance();
 					// Update Status of Video to
 					Vector myvideos = Video
 							.convertStringToVector(profile.videos);
@@ -337,38 +368,18 @@ public class DownloadCombiner extends Thread {
 							profile.saveProfile();
 						}
 					}
-//					Engine.getInstance().removeDownloadingImmediatly(this);
-					// from video download
-					// final String choices[] = { "Done" };
-					// final int values[] = { Dialog.OK };
-					// Dialog dia = new Dialog(
-					// "Video "
-					// + videoname
-					// + " downloaded: "
-					// + mySize
-					// +
-					// " Bytes. Please go back to first page and choose this video again to play the downloaded file.",
-					// choices,
-					// values,
-					// Dialog.OK,
-					// Bitmap
-					// .getPredefinedBitmap(Bitmap.INFORMATION),
-					// 0);
-					// int result = dia.doModal();
-					// if (result == Dialog.OK) {
-					// } else {
-					// }
 				}
 			}
-			out.close();
-			file.close();
 
 		} catch (InterruptedException ex) {
-			System.out.println("InterruptedException");
+			System.out.println("InterruptedException" + ex.getMessage());
 			ex.printStackTrace();
 		} catch (IOException ex) {
-			System.out.println("IOException");
+			System.out.println("IOException" + ex.getMessage());
+			// TCP receive timed out
 			ex.printStackTrace();
+		} catch (Exception eds) {
+			System.out.println("Exception " + eds.getMessage());
 		}
 
 	}
