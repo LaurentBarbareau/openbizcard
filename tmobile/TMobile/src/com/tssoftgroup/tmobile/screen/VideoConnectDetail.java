@@ -312,13 +312,16 @@ public class VideoConnectDetail extends FixMainScreen implements
 
 			public void run() {
 				while (mTrucking) {
-					if (VideoConnectDetail.this.isDisplayed()) {
-						try {
-							Thread.sleep(5000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+					try {
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if (VideoConnectDetail.this == UiApplication.getUiApplication().getActiveScreen()) {
+						
 						updateStatus();
+					}else{
+						mTrucking = false;
 					}
 				}
 			}
