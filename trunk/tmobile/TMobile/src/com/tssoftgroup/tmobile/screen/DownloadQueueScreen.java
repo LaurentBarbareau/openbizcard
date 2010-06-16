@@ -145,7 +145,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 
 			// <<<<<============ Schedule
 			LabelField scheduleLB = new LabelFieldWithFullBG(
-					"It's scheduled to download", MyColor.COMMENT_LABEL_FONT,
+					"Scheduled", MyColor.COMMENT_LABEL_FONT,
 					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
@@ -245,7 +245,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					if (DownloadQueueScreen.this.isDisplayed()) {
+					if (UiApplication.getUiApplication().getActiveScreen() == DownloadQueueScreen.this) {
 						updateStatus();
 					} else {
 						System.out.println("MTraunnking = false;");
@@ -427,6 +427,16 @@ public class DownloadQueueScreen extends FixMainScreen {
 						videos.removeElementAt(i);
 					}
 				}
+				// delete from download queue
+				try{
+				DownloadCombiner combiner = Engine.getInstance().getVideoDownloadingImmediately(video.getName());
+				if(combiner != null){
+					Engine.getInstance().removeDownloadingImmediatly(combiner);
+				}
+				}catch(Exception e){
+					System.out.println("Error " + e.getMessage());
+				}
+				//
 				String profileVideoString = Video.convertVectorToString(videos);
 				profile.videos = profileVideoString;
 				profile.saveProfile();

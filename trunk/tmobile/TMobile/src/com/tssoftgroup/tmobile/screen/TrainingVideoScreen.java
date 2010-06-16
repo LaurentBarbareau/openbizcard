@@ -189,13 +189,16 @@ public class TrainingVideoScreen extends FixMainScreen {
 
 			public void run() {
 				while (mTrucking) {
-					if (TrainingVideoScreen.this.isDisplayed()) {
-						try {
-							Thread.sleep(5000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if (TrainingVideoScreen.this == UiApplication.getUiApplication().getActiveScreen()) {
+						
 						updateStatus();
+					}else{
+						mTrucking = false;
 					}
 				}
 			}

@@ -115,6 +115,18 @@ public class Engine implements HTTPHandler {
 		}
 		return have;
 	}
+	public DownloadCombiner getVideoDownloadingImmediately(String filename){
+		for (int i = 0; i <downloadingVector.size(); i++) {
+			DownloadCombiner combiner = (DownloadCombiner)downloadingVector.elementAt(i);
+			System.out.println("combiner.fileName" + combiner.fileName);
+			System.out.println("filename" + filename);
+			
+			if(combiner.fileName.equals(filename)){
+				return combiner;
+			}
+		}
+		return null;
+	}
 	public void updateStatus(String status) {
 		// for (int i = 0; i < bitmapHeader.size(); i++) {
 		// try {

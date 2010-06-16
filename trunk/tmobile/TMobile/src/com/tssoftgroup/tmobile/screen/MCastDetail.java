@@ -380,13 +380,16 @@ public class MCastDetail extends FixMainScreen implements FieldChangeListener,
 
 			public void run() {
 				while (mTrucking) {
-					if (MCastDetail.this.isDisplayed()) {
-						try {
-							Thread.sleep(10000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+					try {
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if (MCastDetail.this == UiApplication.getUiApplication().getActiveScreen()) {
+						
 						updateStatus();
+					}else{
+						mTrucking = false;
 					}
 				}
 			}
