@@ -10,6 +10,7 @@ import javax.microedition.io.HttpConnection;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.EncodedImage;
 import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.container.MainScreen;
 
 import com.tssoftgroup.tmobile.model.PicInfo;
@@ -164,8 +165,19 @@ public class LoadPicThread implements Runnable {
 			}
 
 		} catch (Exception e) {
+			System.out.println("error "  +e.getMessage());
+			System.out.println("class "  +e.getClass());
 			e.printStackTrace();
-		} finally {
+			UiApplication.getUiApplication().invokeLater(new Runnable() {
+
+				public void run() {
+					CrieUtils.removeCurrent();
+					Dialog
+							.alert("Cannot connect to internet. Please check your internet connection");
+				}
+			});
+
+		}finally {
 			// Free up i/o streams and http connection
 			try {
 				if (httpcon != null)

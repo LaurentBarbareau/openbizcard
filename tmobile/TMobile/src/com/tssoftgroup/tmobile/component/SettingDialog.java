@@ -7,6 +7,7 @@ import com.tssoftgroup.tmobile.main.ProfileEntry;
 
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.i18n.SimpleDateFormat;
+import net.rim.device.api.io.http.HttpDateParser;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
@@ -57,7 +58,7 @@ public class SettingDialog extends Dialog implements FieldChangeListener {
 					e.printStackTrace();
 				}
 			}else{
-				
+				df.setDate(HttpDateParser.parse("2010-06-16T00:00"));
 			}
 			
 		} catch (Exception e) {
