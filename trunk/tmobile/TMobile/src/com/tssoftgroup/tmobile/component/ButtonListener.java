@@ -353,7 +353,6 @@ public class ButtonListener implements FieldChangeListener {
 					System.out.println("file name " + (Const.videoToUpload));
 
 					Engine engine = Engine.getInstance();
-					System.out.println("1");
 					engine.picInfo.setLocalFilename("file:///"
 							+ Const.videoToUpload);
 					System.out.println("2");
