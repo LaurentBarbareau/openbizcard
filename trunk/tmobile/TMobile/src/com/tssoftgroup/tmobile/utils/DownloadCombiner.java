@@ -378,8 +378,19 @@ public class DownloadCombiner extends Thread {
 			System.out.println("IOException" + ex.getMessage());
 			// TCP receive timed out
 			ex.printStackTrace();
-		} catch (Exception eds) {
-			System.out.println("Exception " + eds.getMessage());
+		} catch (Exception e) {
+			System.out.println("error "  +e.getMessage());
+			System.out.println("class "  +e.getClass());
+			e.printStackTrace();
+			UiApplication.getUiApplication().invokeLater(new Runnable() {
+
+				public void run() {
+					CrieUtils.removeCurrent();
+					Dialog
+							.alert("Cannot connect to internet. Please check your internet connection");
+				}
+			});
+
 		}
 
 	}

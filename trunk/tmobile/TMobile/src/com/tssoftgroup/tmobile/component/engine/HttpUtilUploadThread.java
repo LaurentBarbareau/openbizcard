@@ -116,7 +116,10 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 			try {
 				con = (HttpConnection) Connector.open(url
 						+ getConnectionSuffix());
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
+				System.out.println("error "  +e.getMessage());
+				System.out.println("class "  +e.getClass());
 				e.printStackTrace();
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 

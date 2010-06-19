@@ -11,6 +11,7 @@ import net.rim.device.api.ui.component.TextField;
 import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.DownloadCombiner;
+import com.tssoftgroup.tmobile.utils.DownloadCombinerDoc;
 
 public class DocFilenameDialog extends Dialog {
 	static String choices[] = { "Download", "Cancel" };
@@ -72,7 +73,7 @@ public class DocFilenameDialog extends Dialog {
 					} else {
 						fc.close();
 						// Do the upload
-						DownloadCombiner download = new DownloadCombiner(url,
+						DownloadCombinerDoc download = new DownloadCombinerDoc(url,
 								localPatht, Const.DOWNLOAD_SIZE);
 						download.start();
 					}
