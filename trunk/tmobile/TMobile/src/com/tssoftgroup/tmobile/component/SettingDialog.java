@@ -58,7 +58,7 @@ public class SettingDialog extends Dialog implements FieldChangeListener {
 					e.printStackTrace();
 				}
 			}else{
-				df.setDate(HttpDateParser.parse("2010-06-16T00:00"));
+				df.setDate(HttpDateParser.parse("2010-06-16T00:00+01:00"));
 			}
 			
 		} catch (Exception e) {

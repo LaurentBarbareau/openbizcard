@@ -53,6 +53,7 @@ import com.tssoftgroup.tmobile.utils.Const;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
+import com.tssoftgroup.tmobile.utils.StringUtil;
 
 /**
  * Create a new screen that extends MainScreen, which provides default standard
@@ -373,11 +374,16 @@ public class VideoConnectScreen extends FixMainScreen implements
 						msg = " File Added: " + entry.getPath();
 						_fileFullName = entry.getPath();
 						if (_fileFullName.toLowerCase().endsWith("3gp")
-								|| _fileFullName.toLowerCase().endsWith("mp5")) {
-
+								|| _fileFullName.toLowerCase().endsWith("mp5") || _fileFullName.toLowerCase().endsWith("3gp.lock3")  ) {
+							boolean isLock = _fileFullName.toLowerCase().endsWith("3gp.lock3");
 							if (!alreadyPush) {
 								Engine.getInstance().picInfo
 										.setLocalFilename("file://" + path);
+								if(isLock){
+									System.out.println("Real name " + StringUtil.replace(path, "3GP.lock3", "3GP") );
+									Engine.getInstance().picInfo
+									.setLocalFilename("file://" + StringUtil.replace(path, "3GP.lock3", "3GP"));
+								}
 								// videoScr = VideoSendScreen
 								// .getInstance("file://" + path);
 								System.out.println("taking screen shot");
@@ -386,6 +392,11 @@ public class VideoConnectScreen extends FixMainScreen implements
 							} else {
 								Engine.getInstance().picInfo
 										.setLocalFilename("file://" + path);
+								if(isLock){
+									System.out.println("Real name " + StringUtil.replace(path, "3GP.lock3", "3GP") );
+									Engine.getInstance().picInfo
+									.setLocalFilename("file://" + StringUtil.replace(path, "3GP.lock3", "3GP"));
+								}
 								// videoScr = VideoSendScreen
 								// .getInstance("file://" + path);
 							}

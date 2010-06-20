@@ -24,6 +24,7 @@ import com.tssoftgroup.tmobile.component.MyButtonField;
 import com.tssoftgroup.tmobile.component.NewVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.ScreenWithComment;
 import com.tssoftgroup.tmobile.component.SettingDialog;
+import com.tssoftgroup.tmobile.component.VideoTitleDescriptionDialog;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Comment;
@@ -38,6 +39,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		FieldChangeListener {
 	private MainItem _mainMenuItem = new MainItem();
 	private DownloadQueueItem _downloadQueueItem = new DownloadQueueItem();
+	private VideoConnectItem _videoConnectItem = new VideoConnectItem();
 	private SettingItem _settingItem = new SettingItem();
 	private ExitItem _exitItem = new ExitItem();
 
@@ -93,6 +95,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		pagingManager.add(pageChoice);
 		addMenuItem(_mainMenuItem);
 		addMenuItem(_downloadQueueItem);
+		addMenuItem(_videoConnectItem);
 		addMenuItem(_settingItem);
 		addMenuItem(_exitItem);
 	}
@@ -373,6 +376,24 @@ import com.tssoftgroup.tmobile.utils.Wording;
 			UiApplication.getUiApplication().pushScreen(new DownloadQueueScreen());
 		}
 	}
+	private final class VideoConnectItem extends MenuItem {
+		/**
+		 * Constructor.
+		 */
+		private VideoConnectItem() {
+			super("Upload a Video", 200, 1);
+		}
+
+		/**
+		 * Attempts to save the screen's data to its associated memo. If
+		 * successful, the edit screen is popped from the display stack.
+		 */
+		public void run() {
+			VideoConnectScreen.getInstance();
+			VideoTitleDescriptionDialog.getInstance().myshow();
+		}
+	}
+	
 	private final class SettingItem extends MenuItem {
 		/**
 		 * Constructor.
