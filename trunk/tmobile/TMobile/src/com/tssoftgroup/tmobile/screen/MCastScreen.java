@@ -365,20 +365,15 @@ public class MCastScreen extends FixMainScreen implements FieldChangeListener{
 	public void fieldChanged(Field field, int context) {
 //		Dialog.alert("test");
 		if (field == catChoice) {
-			System.out.println("cat choice size " + catChoice.getSize());
-			System.out.println("cat choice ind" + catChoice.getSelectedIndex());
 			
 			String selectedCat = (String)catChoice.getChoice(catChoice.getSelectedIndex());
-			System.out.println("11111");
 			
 			if(selectedCat.equals("All")){
 				selectedCat = null;
 			}
 			setList(allTrains, selectedCat);
-			System.out.println("2222");
 			
 			processHaveNext(numItem);
-			System.out.println("33333");
 			
 //			Engine.trainingCat = (String)allCats.elementAt(catChoice.getSelectedIndex()); 
 			return;
