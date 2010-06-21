@@ -75,4 +75,12 @@ public class HttpDownloadVideoThread extends Thread {
 	private synchronized void mynotify() {
 		notify();
 	}
+	public void cancel(){
+		mTrucking = false;
+		if (current != null) {
+			Engine.getInstance().removeDownloadingImmediatly(current);
+			current.cancel = true;
+		}
+		go();
+	}
 }

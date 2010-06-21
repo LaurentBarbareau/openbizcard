@@ -408,10 +408,14 @@ public class VideoConnectDetail extends FixMainScreen implements
 							new Runnable() {
 								public void run() {
 									try {
-										System.out.println("Enter in 4");
+//										System.out.println("Enter in 4");
+//										isFinish = true;
+//										percent.setText("");
+//										setDownloadButton("3");
+										// Remove current and push new
 										isFinish = true;
-										percent.setText("");
-										setDownloadButton("3");
+										UiApplication.getUiApplication().popScreen(VideoConnectDetail.this);
+										UiApplication.getUiApplication().pushScreen(new VideoConnectDetail(picInfo));
 									} catch (Exception e) {
 										System.out
 												.println("Error when updating download label");
