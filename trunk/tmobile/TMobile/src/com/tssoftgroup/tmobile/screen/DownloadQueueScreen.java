@@ -258,7 +258,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 		long stop = System.currentTimeMillis();
 		System.out.println("time used " + (stop - start));
 
-		// addMenuItem(_reloadItem);
+		 addMenuItem(_reloadItem);
 	}
 
 	private ReloadItem _reloadItem = new ReloadItem();
@@ -282,10 +282,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			Engine engine = Engine.getInstance();
 			ProfileEntry profile = ProfileEntry.getInstance();
 			Vector videoVector = Video.convertStringToVector(profile.videos);
-			engine.downloadVideoThread.mTrucking = false;
-			if (engine.downloadVideoThread.current != null) {
-				engine.downloadVideoThread.current.isCancel = true;
-			}
+			engine.downloadVideoThread.cancel();
 			engine.downloadVideoThread = new HttpDownloadVideoThread();
 			engine.downloadVideoThread.start();
 			// Check downloading video and put in Queue

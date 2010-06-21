@@ -103,10 +103,7 @@ public class ScheduleRunable implements Runnable {
 					
 					if (vid.getPercent().equals(previousPercent)) {
 						// The thread maybe die restart it
-						engine.downloadVideoThread.mTrucking = false;
-						if (engine.downloadVideoThread.current != null) {
-							engine.downloadVideoThread.current.isCancel = true;
-						}
+						engine.downloadVideoThread.cancel();
 						engine.downloadVideoThread = new HttpDownloadVideoThread();
 						engine.downloadVideoThread.start();
 						// Check downloading video and put in Queue

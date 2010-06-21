@@ -95,7 +95,7 @@ import com.tssoftgroup.tmobile.utils.Wording;
 		pagingManager.add(pageChoice);
 		addMenuItem(_mainMenuItem);
 		addMenuItem(_downloadQueueItem);
-		addMenuItem(_videoConnectItem);
+//		addMenuItem(_videoConnectItem);
 		addMenuItem(_settingItem);
 		addMenuItem(_exitItem);
 	}

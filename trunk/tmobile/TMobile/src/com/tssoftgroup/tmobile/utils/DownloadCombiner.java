@@ -27,8 +27,8 @@ public class DownloadCombiner extends Thread {
 	private boolean fromVideoDownload = false;
 	public String fileName;
 	private String videoname;
-	public boolean isCancel = false;
-
+//	public boolean isCancel = false;
+	public boolean cancel = false;
 	public DownloadCombiner(String remoteName, String localName, int chunksize) {
 		this.remoteName = remoteName;
 		this.localName = localName;
@@ -44,7 +44,7 @@ public class DownloadCombiner extends Thread {
 		this.fileName = fileName;
 		this.videoname = videoname;
 	}
-
+	
 	public void run() {
 		if (fromVideoDownload) {
 			System.out.println("from video downlo0ad");
@@ -95,6 +95,9 @@ public class DownloadCombiner extends Thread {
 			// / end if
 
 			while (true) {
+				if(cancel){
+					return;
+				}
 				ProfileEntry profile = ProfileEntry.getInstance();
 				Vector videos = Video.convertStringToVector(profile.videos);
 				
@@ -119,9 +122,9 @@ public class DownloadCombiner extends Thread {
 						}
 					}
 				}
-				if (isCancel) {
-					break;
-				}
+//				if (isCancel) {
+//					break;
+//				}
 				System.out.println("Starting while .....");
 				System.out.println("Opening Chunk: " + chunkIndex);
 				conn = (HttpConnection) Connector.open(currentFile
