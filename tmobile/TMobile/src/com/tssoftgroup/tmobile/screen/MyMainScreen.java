@@ -2,8 +2,8 @@ package com.tssoftgroup.tmobile.screen;
 
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.system.Display;
-import net.rim.device.api.ui.MenuItem;
-import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.Color;
+import net.rim.device.api.ui.Graphics;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.Dialog;
@@ -15,7 +15,6 @@ import com.tssoftgroup.tmobile.component.MainListVerticalFieldManager;
 import com.tssoftgroup.tmobile.component.engine.Engine;
 import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
-import com.tssoftgroup.tmobile.utils.Wording;
 
 public class MyMainScreen extends FixMainScreen {
 	Img imgStock = Img.getInstance();
@@ -111,7 +110,6 @@ public class MyMainScreen extends FixMainScreen {
 		// bf = new BitmapField(img, Field.FIELD_BOTTOM | Field.USE_ALL_HEIGHT);
 		// add(bf);
 	}
-
 	
 	// creating save method
 }
