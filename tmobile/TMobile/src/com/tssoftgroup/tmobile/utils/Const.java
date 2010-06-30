@@ -3,6 +3,8 @@ package com.tssoftgroup.tmobile.utils;
 import net.rim.device.api.system.Display;
 
 public class Const {
+	public static final String ERROR = "Error Occur. Please restart the program";
+	
 	public static final String success = "ok";
 	public static final String fail = "fail";
 	public static final byte type_video = 0;
