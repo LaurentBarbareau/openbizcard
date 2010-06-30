@@ -137,7 +137,7 @@ public class ButtonListener implements FieldChangeListener {
 	}
 
 	public long lastFull = 0;
-
+	public static boolean error = false;
 	public void fieldChanged(Field field, int context) {
 		try {
 			switch (buttonID) {
@@ -421,8 +421,12 @@ public class ButtonListener implements FieldChangeListener {
 				dialog2.myshow();
 				break;
 			case 311:// Video Connect Play button
-				UiApplication.getUiApplication().pushScreen(
-						new VideoConnectPlayerScreen(picInfo));
+				error = false;
+				VideoConnectPlayerScreen scr3 = new VideoConnectPlayerScreen(picInfo);
+				if(! error){
+					UiApplication.getUiApplication().pushScreen(scr3);
+				}
+				error = false;
 				break;
 			case 312:// Video Connect Downloadings button
 				Dialog.alert("You are downloading this video. Please wait ....");
@@ -438,8 +442,13 @@ public class ButtonListener implements FieldChangeListener {
 				dialog.myshow();
 				break;
 			case 321:// MCast Detail Play Button
-				UiApplication.getUiApplication().pushScreen(
-						new MCastPlayerScreen(picInfo));
+				error = false;
+
+				MCastPlayerScreen scr = new MCastPlayerScreen(picInfo);
+				if(! error){
+				UiApplication.getUiApplication().pushScreen(scr);
+				}
+				error = false;
 				break;
 			case 322:// MCast Detail Downloading
 				Dialog.alert("You are downloading this video. Please wait ....");
@@ -490,10 +499,12 @@ public class ButtonListener implements FieldChangeListener {
 				dialog3.myshow();
 				break;
 			case 421:// MCast Detail Play Button
-
-				TrainingPlayerScreen scr = new TrainingPlayerScreen(trainInfo);
-				UiApplication.getUiApplication().pushScreen(scr);
-			
+				error = false;
+				TrainingPlayerScreen scr2 = new TrainingPlayerScreen(trainInfo);
+				if(! error){
+					UiApplication.getUiApplication().pushScreen(scr2);
+				}
+				error = false;
 				break;
 			case 422:// MCast Detail Downloading
 				Dialog.alert("You are downloading this video. Please wait ....");

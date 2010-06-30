@@ -37,6 +37,7 @@ import net.rim.device.api.ui.UiApplication;
 import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.ButtonField;
+import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.LabelField;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.MainScreen;
@@ -191,9 +192,7 @@ public class MCastPlayerScreen extends MainScreen implements
 				}
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		/*
               *
               */
@@ -327,7 +326,11 @@ public class MCastPlayerScreen extends MainScreen implements
 		addMenuItem(_mainMenuItem);
 		// addMenuItem(_videoItem);
 		// addMenuItem( _exitFullItem );
-
+		} catch (Exception e) {
+			ButtonListener.error = true;
+			System.out.println(Const.ERROR + e.getMessage());
+			Dialog.alert("Error occur ! " + e.getMessage());
+		}
 	}
 
 	protected void paintBackground(Graphics g) {
