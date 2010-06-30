@@ -116,10 +116,9 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 			try {
 				con = (HttpConnection) Connector.open(url
 						+ getConnectionSuffix());
-			} 
-			catch (Exception e) {
-				System.out.println("error "  +e.getMessage());
-				System.out.println("class "  +e.getClass());
+			} catch (Exception e) {
+				System.out.println("error " + e.getMessage());
+				System.out.println("class " + e.getClass());
 				e.printStackTrace();
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
@@ -129,7 +128,12 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 								.alert("Cannot connect to internet. Please check your internet connection");
 					}
 				});
-
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception ioe) {
+				}
 				return "NOCONNECTION";
 			}
 
@@ -186,15 +190,11 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 				}
 				redirected = true;
 				url = con.getHeaderField("location");
-				con.close();
-				con = null;
 				depth++;
 				break;
 			case 100:
 				throw new IOException("unexpected 100 Continue");
 			default:
-				con.close();
-				con = null;
 				throw new IOException("Response status not OK:" + status + " "
 						+ message);
 			}
@@ -205,20 +205,30 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		if (!redirected) {
 			response = getUpdates(con, is, os);
 		} else {
-			try {
-				if (con != null) {
-					con.close();
-				}
-				if (os != null) {
-					os.close();
-				}
-				if (is != null) {
-					is.close();
-				}
-			} catch (IOException ioe) {
-				throw ioe;
-			}
+
 		}
+		try {
+			if (is != null) {
+				is.close();
+			}
+		} catch (Exception ioe) {
+			throw ioe;
+		}
+		try {
+			if (os != null) {
+				os.close();
+			}
+		} catch (Exception ioe) {
+			throw ioe;
+		}
+		try {
+			if (con != null) {
+				con.close();
+			}
+		} catch (Exception ioe) {
+			throw ioe;
+		}
+
 		if (status == HttpConnection.HTTP_BAD_REQUEST) {
 			// System.out.println(response);
 			throw new IOException("Response status not OK:");

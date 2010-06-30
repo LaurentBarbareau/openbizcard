@@ -79,6 +79,7 @@ public class MCastPlayerScreen extends MainScreen implements
 	int currentComment;
 	private CommentsDialog commentDialog;
 	private MoreInfoDialog moreinfoDialog;
+
 	public int getCurrentCommentInd() {
 		return currentComment;
 	}
@@ -125,10 +126,11 @@ public class MCastPlayerScreen extends MainScreen implements
 			int volumeLevel;
 			Field videoField;
 			this.videoPath = picinfo.getVideoUrl();
-//			player = javax.microedition.media.Manager.createPlayer(picinfo
-//					.getVideoUrl()
-//					+ HttpUtilUploadThread.getConnectionSuffix());
-			player = javax.microedition.media.Manager.createPlayer(CrieUtils.getVideoFolderConnString()
+			// player = javax.microedition.media.Manager.createPlayer(picinfo
+			// .getVideoUrl()
+			// + HttpUtilUploadThread.getConnectionSuffix());
+			player = javax.microedition.media.Manager.createPlayer(CrieUtils
+					.getVideoFolderConnString()
 					+ picinfo.getFilename());
 			// }
 
@@ -192,144 +194,149 @@ public class MCastPlayerScreen extends MainScreen implements
 				}
 			}
 
-		
-		/*
+			/*
               *
               */
-		// if(player.getState()==player.STARTED){
-		// playButton = new MyButtonField("Pause",ButtonField.ELLIPSIS);
-		// }else{
-		playButton = new MyButtonField("Stop", ButtonField.ELLIPSIS, true){
+			// if(player.getState()==player.STARTED){
+			// playButton = new MyButtonField("Pause",ButtonField.ELLIPSIS);
+			// }else{
+			playButton = new MyButtonField("Stop", ButtonField.ELLIPSIS, true) {
 
-			protected void onFocus(int direction) {
-				super.onFocus(direction);
-				if (playButton.getLabel().equals("Start") && direction == -1) {
-					try {
-						// Start/resume the media player.
-						player.start();
+				protected void onFocus(int direction) {
+					super.onFocus(direction);
+					if (playButton.getLabel().equals("Start")
+							&& direction == -1) {
+						try {
+							// Start/resume the media player.
+							player.start();
 
-						_timerUpdateThread = new TimerUpdateThread();
-						_timerUpdateThread.start();
-						playButton.setLabel("Stop");
-					} catch (MediaException pe) {
-						System.out.println(pe.toString());
+							_timerUpdateThread = new TimerUpdateThread();
+							_timerUpdateThread.start();
+							playButton.setLabel("Stop");
+						} catch (MediaException pe) {
+							System.out.println(pe.toString());
+						}
 					}
 				}
-			}
 
-		};
-		// }
-		// playButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		// playButton.setMargin(edge);
-		playButton.setChangeListener(this);
-		// buttonHorizontalManager.add(videoHorizontalManager);
+			};
+			// }
+			// playButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
+			// playButton.setMargin(edge);
+			playButton.setChangeListener(this);
+			// buttonHorizontalManager.add(videoHorizontalManager);
 
-		buttonHorizontalManager.add(playButton);
+			buttonHorizontalManager.add(playButton);
 
-		// edge = new XYEdges(206, 5, 6, 24);
-		fullButton = new MyButtonField("Full Screen", ButtonField.ELLIPSIS,
-				true){
+			// edge = new XYEdges(206, 5, 6, 24);
+			fullButton = new MyButtonField("Full Screen", ButtonField.ELLIPSIS,
+					true) {
 
-			protected void onFocus(int direction) {
-				super.onFocus(direction);
-				if (playButton.getLabel().equals("Start") && direction == -1) {
-					try {
-						// Start/resume the media player.
-						player.start();
+				protected void onFocus(int direction) {
+					super.onFocus(direction);
+					if (playButton.getLabel().equals("Start")
+							&& direction == -1) {
+						try {
+							// Start/resume the media player.
+							player.start();
 
-						_timerUpdateThread = new TimerUpdateThread();
-						_timerUpdateThread.start();
-						playButton.setLabel("Stop");
-					} catch (MediaException pe) {
-						System.out.println(pe.toString());
+							_timerUpdateThread = new TimerUpdateThread();
+							_timerUpdateThread.start();
+							playButton.setLabel("Stop");
+						} catch (MediaException pe) {
+							System.out.println(pe.toString());
+						}
 					}
 				}
-			}
 
-		};
-		// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		// fullButton.setMargin(edge);
-		fullButton.setChangeListener(new ButtonListener(player, 9, this));
-		buttonHorizontalManager.add(fullButton);
-		fullButton.setFocusable(false);
-		// edge = new XYEdges(206, 5, 6, 5);
-		MyButtonField infoButton = new MyButtonField("More Info",
-				ButtonField.ELLIPSIS, true){
+			};
+			// fullButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
+			// fullButton.setMargin(edge);
+			fullButton.setChangeListener(new ButtonListener(player, 9, this));
+			buttonHorizontalManager.add(fullButton);
+			fullButton.setFocusable(false);
+			// edge = new XYEdges(206, 5, 6, 5);
+			MyButtonField infoButton = new MyButtonField("More Info",
+					ButtonField.ELLIPSIS, true) {
 
-			protected void onFocus(int direction) {
-				super.onFocus(direction);
-				if (playButton.getLabel().equals("Start") && direction == -1) {
-					try {
-						// Start/resume the media player.
-						player.start();
+				protected void onFocus(int direction) {
+					super.onFocus(direction);
+					if (playButton.getLabel().equals("Start")
+							&& direction == -1) {
+						try {
+							// Start/resume the media player.
+							player.start();
 
-						_timerUpdateThread = new TimerUpdateThread();
-						_timerUpdateThread.start();
-						playButton.setLabel("Stop");
-					} catch (MediaException pe) {
-						System.out.println(pe.toString());
+							_timerUpdateThread = new TimerUpdateThread();
+							_timerUpdateThread.start();
+							playButton.setLabel("Stop");
+						} catch (MediaException pe) {
+							System.out.println(pe.toString());
+						}
 					}
 				}
-			}
 
-		};
-		// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		// infoButton.setMargin(edge);
-		infoButton.setChangeListener(this);
-		buttonHorizontalManager.add(infoButton);
+			};
+			// stopButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
+			// infoButton.setMargin(edge);
+			infoButton.setChangeListener(this);
+			buttonHorizontalManager.add(infoButton);
 
-		// edge = new XYEdges(206, 24, 6, 24);
-		MyButtonField commentButton = new MyButtonField("Comment",
-				ButtonField.ELLIPSIS, true) {
+			// edge = new XYEdges(206, 24, 6, 24);
+			MyButtonField commentButton = new MyButtonField("Comment",
+					ButtonField.ELLIPSIS, true) {
 
-			protected void onFocus(int direction) {
-				super.onFocus(direction);
-				if (playButton.getLabel().equals("Start") && direction == -1) {
-					try {
-						// Start/resume the media player.
-						player.start();
+				protected void onFocus(int direction) {
+					super.onFocus(direction);
+					if (playButton.getLabel().equals("Start")
+							&& direction == -1) {
+						try {
+							// Start/resume the media player.
+							player.start();
 
-						_timerUpdateThread = new TimerUpdateThread();
-						_timerUpdateThread.start();
-						playButton.setLabel("Stop");
-					} catch (MediaException pe) {
-						System.out.println(pe.toString());
+							_timerUpdateThread = new TimerUpdateThread();
+							_timerUpdateThread.start();
+							playButton.setLabel("Stop");
+						} catch (MediaException pe) {
+							System.out.println(pe.toString());
+						}
 					}
 				}
-			}
 
-		};
+			};
 
-		// commentButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
-		// commentButton.setMargin(edge);
-		commentButton.setChangeListener(this);
-		buttonHorizontalManager.add(commentButton);
-		// mainManager.add(buttonHorizontalManager);
-		edge = new XYEdges(Const.DURATION_MARGIN_TOP, 0, 0, (Display.getWidth()
-				- _currentTime.getPreferredWidth() - 3) / 2);
-		HorizontalFieldManager timeManager = new HorizontalFieldManager();
-		timeManager.add(_currentTime);
-		timeManager.add(new CrieLabelField("/", 0x00,
-				Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.NON_FOCUSABLE));
-		timeManager.add(_duration);
-		timeManager.setMargin(edge);
-		edge = new XYEdges(5, 0, 0,
-				(Display.getWidth() - buttonHorizontalManager
-						.getPreferredWidth()) / 2);
-		buttonHorizontalManager.setMargin(edge);
-		add(timeManager);
-		add(buttonHorizontalManager);
-		// add(mainManager);
-		// bf = new BitmapField(img, Field.FIELD_BOTTOM | Field.USE_ALL_HEIGHT);
-		// add(bf);
+			// commentButton.setBorder(BorderFactory.createSimpleBorder(edge,Border.STYLE_TRANSPARENT));
+			// commentButton.setMargin(edge);
+			commentButton.setChangeListener(this);
+			buttonHorizontalManager.add(commentButton);
+			// mainManager.add(buttonHorizontalManager);
+			edge = new XYEdges(Const.DURATION_MARGIN_TOP, 0, 0, (Display
+					.getWidth()
+					- _currentTime.getPreferredWidth() - 3) / 2);
+			HorizontalFieldManager timeManager = new HorizontalFieldManager();
+			timeManager.add(_currentTime);
+			timeManager.add(new CrieLabelField("/", 0x00,
+					Scale.VIDEO_PLAYER_TIME_HEIGHT, Field.NON_FOCUSABLE));
+			timeManager.add(_duration);
+			timeManager.setMargin(edge);
+			edge = new XYEdges(5, 0, 0,
+					(Display.getWidth() - buttonHorizontalManager
+							.getPreferredWidth()) / 2);
+			buttonHorizontalManager.setMargin(edge);
+			add(timeManager);
+			add(buttonHorizontalManager);
+			// add(mainManager);
+			// bf = new BitmapField(img, Field.FIELD_BOTTOM |
+			// Field.USE_ALL_HEIGHT);
+			// add(bf);
 
-		addMenuItem(_mainMenuItem);
-		// addMenuItem(_videoItem);
-		// addMenuItem( _exitFullItem );
+			addMenuItem(_mainMenuItem);
+			// addMenuItem(_videoItem);
+			// addMenuItem( _exitFullItem );
 		} catch (Exception e) {
 			ButtonListener.error = true;
 			System.out.println(Const.ERROR + e.getMessage());
-			Dialog.alert("Error occur ! " + e.getMessage());
+			Dialog.alert(Const.ERROR + "(" + e.getMessage() + ")");
 		}
 	}
 
@@ -351,14 +358,11 @@ public class MCastPlayerScreen extends MainScreen implements
 	private Vector moreinfoList = null;
 
 	public boolean isAlreadyAddComment = false;
-	
 
 	LabelField moreinfoLabelField = new LabelFieldWithFullBG("more info",
 			MyColor.COMMENT_LABEL_FONT, MyColor.COMMENT_LABEL_FONT_COLOR,
 			MyColor.COMMENT_LABEL_BG, Display.getWidth() - 50
 					* Display.getWidth() / 480);
-
-	
 
 	public void showCommentsDialog() {
 		VerticalFieldManager commentsManager = new VerticalFieldManager();
@@ -397,11 +401,11 @@ public class MCastPlayerScreen extends MainScreen implements
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
 				// Border.STYLE_TRANSPARENT));
 				XYEdges edge;
-				edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
-						.getWidth() / 480);
+				edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2,
+						15 * Display.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				commentsManager.add(commentLabel);
-				commentLabel = new CrieLabelField("- " +commentArr[0],
+				commentLabel = new CrieLabelField("- " + commentArr[0],
 						MyColor.FONT_DESCRIPTION_PLAYER_DETAIL_DIALOG,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.FOCUSABLE);
@@ -430,23 +434,24 @@ public class MCastPlayerScreen extends MainScreen implements
 						MyColor.FONT_DESCRIPTION_PLAYER,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 								- (Display.getWidth() > 350 ? 8 : 2),
-						LabelField.FOCUSABLE) ;
+						LabelField.FOCUSABLE);
 			}
 			commentLabel.isFix = true;
 			XYEdges edge;
-			edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
-					.getWidth() / 480);
+			edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2,
+					15 * Display.getWidth() / 480);
 			commentLabel.setMargin(edge);
 			commentsManager.add(commentLabel);
 		}
-		if(commentDialog == null){
+		if (commentDialog == null) {
 			commentDialog = new CommentsDialog(commentsManager, picinfo);
 			commentDialog.myshow();
-		}else{
+		} else {
 			commentDialog.myshow();
 		}
-	}	
-	public void showMoreInfoDialog(){
+	}
+
+	public void showMoreInfoDialog() {
 
 		VerticalFieldManager moreinfoManager = new VerticalFieldManager();
 		moreinfoList = new Vector();
@@ -466,8 +471,8 @@ public class MCastPlayerScreen extends MainScreen implements
 						moreinfoArr[0], MyColor.FONT_DESCRIPTION_PLAYER,
 						Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT,
 						LabelField.NON_FOCUSABLE);
-				XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
-						.getWidth() / 480);
+				XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2,
+						15 * Display.getWidth() / 480);
 				commentLabel.setMargin(edge);
 				// commentLabel.isFix = true;
 				// commentLabel.setBorder(BorderFactory.createSimpleBorder(edge,
@@ -490,22 +495,21 @@ public class MCastPlayerScreen extends MainScreen implements
 					Scale.VIDEO_CONNECT_DETAIL_COMMENT_FONT_HEIGHT
 							- (Display.getWidth() > 350 ? 8 : 2),
 					LabelField.FOCUSABLE);
-			XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2, 15 * Display
-					.getWidth() / 480);
+			XYEdges edge = new XYEdges(2, 15 * Display.getWidth() / 480, 2,
+					15 * Display.getWidth() / 480);
 			moreinfoLabel.isFix = true;
 			moreinfoLabel.setMargin(edge);
 			moreinfoManager.add(moreinfoLabel);
 		}
-		if(moreinfoDialog == null){
+		if (moreinfoDialog == null) {
 			moreinfoDialog = new MoreInfoDialog(moreinfoManager, picinfo);
 			moreinfoDialog.myshow();
-		}else{
+		} else {
 			moreinfoDialog.myshow();
 		}
-	
+
 	}
-	
-	
+
 	protected boolean keyDown(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 
@@ -513,7 +517,7 @@ public class MCastPlayerScreen extends MainScreen implements
 	}
 
 	public boolean keyChar(char c, int status, int time) {
-		
+
 		switch (c) {
 		case Characters.ENTER:
 		case Characters.DELETE:
@@ -610,7 +614,8 @@ public class MCastPlayerScreen extends MainScreen implements
 			// UiApplication.getUiApplication().getActiveScreen() );
 		}
 	}
-	private void pressBack(){
+
+	private void pressBack() {
 		boolean bool = false;
 		try {
 			// player.stop();
@@ -630,16 +635,28 @@ public class MCastPlayerScreen extends MainScreen implements
 
 			try {
 				player.stop();
-				// player.deallocate();
-				// player.close();
-				_timerUpdateThread.stop();
 			} catch (Exception e) {
 				System.out.println("" + e.toString());
 			}
+			try {
+				player.deallocate();
+			} catch (Exception e) {
+				System.out.println("" + e.toString());
+			}
+			try {
+				player.close();
+			} catch (Exception e) {
+				System.out.println("" + e.toString());
+			}
+			
+			
+			_timerUpdateThread.stop();
+
 			UiApplication.getUiApplication().popScreen(
 					UiApplication.getUiApplication().getActiveScreen());
 		}
 	}
+
 	public void fieldChanged(Field field, int context) {
 		MyButtonField btnField = (MyButtonField) field;
 		if (btnField.getLabel().equals("Start")) {

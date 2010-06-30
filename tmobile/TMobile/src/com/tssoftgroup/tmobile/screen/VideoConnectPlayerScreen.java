@@ -301,7 +301,7 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		} catch (Exception e) {
 			ButtonListener.error = true;
 			System.out.println(Const.ERROR + e.getMessage());
-			Dialog.alert("Error occur ! " + e.getMessage());
+			Dialog.alert(Const.ERROR  + "("+ e.getMessage() + ")");
 		}
 	}
 
@@ -342,7 +342,21 @@ public class VideoConnectPlayerScreen extends MainScreen implements
 		if (!bool) {
 
 			try {
-				player.stop();
+				try {
+					player.stop();
+				} catch (Exception e) {
+					System.out.println("" + e.toString());
+				}
+				try {
+					player.deallocate();
+				} catch (Exception e) {
+					System.out.println("" + e.toString());
+				}
+				try {
+					player.close();
+				} catch (Exception e) {
+					System.out.println("" + e.toString());
+				}
 				// player.deallocate();
 				// player.close();
 				_timerUpdateThread.stop();
