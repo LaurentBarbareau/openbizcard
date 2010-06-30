@@ -239,11 +239,18 @@ public class DownloadQueueScreen extends FixMainScreen {
 		new Thread(new Runnable() {
 
 			public void run() {
+				int i = 0;
 				while (mTrucking) {
 					try {
 						Thread.sleep(10000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
+					}
+					i = i+1;
+					if(i == 10){
+						i = 0;
+						/// do check
+						checkForReload();
 					}
 					if (UiApplication.getUiApplication().getActiveScreen() == DownloadQueueScreen.this) {
 						updateStatus();
@@ -276,36 +283,42 @@ public class DownloadQueueScreen extends FixMainScreen {
 		 * successful, the edit screen is popped from the display stack.
 		 */
 		public void run() {
-
-			// The thread maybe die restart it
-			System.out.println("oak1");
-			Engine engine = Engine.getInstance();
-			ProfileEntry profile = ProfileEntry.getInstance();
-			Vector videoVector = Video.convertStringToVector(profile.videos);
-			engine.downloadVideoThread.cancel();
-			engine.downloadVideoThread = new HttpDownloadVideoThread();
-			engine.downloadVideoThread.start();
-			// Check downloading video and put in Queue
-			System.out.println("oak2");
-			for (int i = 0; i < videoVector.size(); i++) {
-				System.out.println("oak3i" + i);
-				Video vid2 = (Video) videoVector.elementAt(i);
-				if (vid2.getStatus().equals("2")) {
-					String url = Const.URL_VIDEO_DOWNLOAD + vid2.getName();
-					String localPatht = CrieUtils.getVideoFolderConnString()
-							+ vid2.getName();
-					DownloadCombiner download = new DownloadCombiner(url,
-							localPatht, Const.DOWNLOAD_SIZE, true, vid2
-									.getName(), vid2.getTitle());
-					// download.start();
-					engine.addDownloadVideo(download);
-				}
-			}
+			doReload();
 		}
 	}
+	private void doReload(){
 
+
+		// The thread maybe die restart it
+		System.out.println("oak1");
+		Engine engine = Engine.getInstance();
+		ProfileEntry profile = ProfileEntry.getInstance();
+		Vector videoVector = Video.convertStringToVector(profile.videos);
+		engine.downloadVideoThread.cancel();
+		engine.downloadVideoThread = new HttpDownloadVideoThread();
+		engine.downloadVideoThread.start();
+		// Check downloading video and put in Queue
+		System.out.println("oak2");
+		for (int i = 0; i < videoVector.size(); i++) {
+			System.out.println("oak3i" + i);
+			Video vid2 = (Video) videoVector.elementAt(i);
+			if (vid2.getStatus().equals("2")) {
+				String url = Const.URL_VIDEO_DOWNLOAD + vid2.getName();
+				String localPatht = CrieUtils.getVideoFolderConnString()
+						+ vid2.getName();
+				DownloadCombiner download = new DownloadCombiner(url,
+						localPatht, Const.DOWNLOAD_SIZE, true, vid2
+								.getName(), vid2.getTitle());
+				// download.start();
+				engine.addDownloadVideo(download);
+			}
+		}
+	
+	}
 	boolean mTrucking = true;
-
+	
+	String lastCheckFile = "";
+	String lastCheckPercent = "";
 	private void updateStatus() {
 		long start = System.currentTimeMillis();
 		try {
@@ -359,7 +372,51 @@ public class DownloadQueueScreen extends FixMainScreen {
 		long stop = System.currentTimeMillis();
 		System.out.println("updatestatus " + (stop - start));
 	}
+	private void checkForReload() {
+		try {
+			// System.out.println("update status");
+			ProfileEntry profile = ProfileEntry.getInstance();
+			Vector videos = Video.convertStringToVector(profile.videos);
+			Vector downloadingVideos = Video.getDownloadingVideo(videos);
+			for (int i = 0; i < downloadingVideos.size(); i++) {
+				final Video v = (Video) downloadingVideos.elementAt(i);
 
+				//
+				try {
+					final CrieLabelField label = (CrieLabelField) downloadingTable
+							.get(v.getName());
+
+					if (label != null) {
+						System.out.println("label " + label.getText());
+						// if it is current download thread
+						if (!v.getPercent().equals("0")) {
+							if (Engine.getInstance().downloadVideoThread.currentDownloadName
+									.equals(v.getName()) || Engine.getInstance().isVideoDownloadingImmediately(v.getName())){
+								UiApplication.getUiApplication().invokeLater(
+										new Runnable() {
+
+											public void run() {
+												if(lastCheckFile.equals(v.getName()) && lastCheckPercent.equals(v.getPercent())){
+													doReload();
+												}
+												lastCheckFile = v.getName();
+												lastCheckPercent = v.getPercent();
+											}
+										});
+							}
+						}
+					} else {
+						// System.out.println("label is null");
+					}
+				} catch (Exception e) {
+					System.out.println("Error when check for reload");
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.

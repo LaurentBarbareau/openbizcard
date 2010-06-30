@@ -272,8 +272,11 @@ public class TrainingVideoScreen extends FixMainScreen {
 									try {
 										System.out.println("Enter in 4");
 										isFinish = true;
-										percent.setText("");
-										setDownloadButton("3");
+//										percent.setText("");
+//										setDownloadButton("3");
+										UiApplication.getUiApplication().popScreen(TrainingVideoScreen.this);
+										UiApplication.getUiApplication().pushScreen(new TrainingVideoScreen(info));
+										
 									} catch (Exception e) {
 										System.out
 												.println("Error when updating download label");
