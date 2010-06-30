@@ -518,51 +518,6 @@ public class ButtonListener implements FieldChangeListener {
 		}
 	}
 
-	public int splitFile(String _file) throws Exception {
-
-		FileConnection file = null;
-		InputStream input = null;
-		OutputStream output = null;
-
-		if ((file = (FileConnection) Connector.open("file:///" + _file,
-				Connector.READ)) != null) {
-			if ((input = file.openInputStream()) != null) {
-				byte[] readBlock = new byte[1048576];
-				int chunkFileId = 0;
-				int length = -1;
-				while ((length = input.read(readBlock)) != -1) {
-					String chunkFileName = _file + "." + chunkFileId++;
-					file = (FileConnection) Connector.open("file:///"
-							+ chunkFileName, Connector.READ_WRITE);
-					if (file == null || !file.exists()) {
-						file.create();
-					}
-					file.setWritable(true);
-					output = file.openOutputStream();
-					output.write(readBlock, 0, length);
-					output.flush();
-					output.close();
-					System.out.println("Wrote Chunk file " + chunkFileName
-							+ " of " + length + " Bytes");
-				}
-				System.out.println("Completed Splitting " + _file);
-				return chunkFileId;
-			}
-		}
-		return 0;
-	}
-
-	public void deleteFile(String _file) throws Exception {
-		FileConnection file = null;
-
-		if ((file = (FileConnection) Connector.open("file:///" + _file,
-				Connector.READ_WRITE)) != null) {
-			if (file != null && file.exists()) {
-				file.delete();
-			}
-		}
-	}
-
 	private class TimerUpdateThread extends Thread {
 		private boolean _threadCanRun;
 

@@ -144,8 +144,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 			}
 
 			// <<<<<============ Schedule
-			LabelField scheduleLB = new LabelFieldWithFullBG(
-					"Scheduled", MyColor.COMMENT_LABEL_FONT,
+			LabelField scheduleLB = new LabelFieldWithFullBG("Scheduled",
+					MyColor.COMMENT_LABEL_FONT,
 					MyColor.COMMENT_LABEL_FONT_COLOR, MyColor.COMMENT_LABEL_BG,
 					Display.getWidth() - 50 * Display.getWidth() / 480);
 			edge = new XYEdges(Scale.EDGE, 25 * Display.getWidth() / 480,
@@ -246,10 +246,10 @@ public class DownloadQueueScreen extends FixMainScreen {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					i = i+1;
-					if(i == 10){
+					i = i + 1;
+					if (i == 10) {
 						i = 0;
-						/// do check
+						// / do check
 						checkForReload();
 					}
 					if (UiApplication.getUiApplication().getActiveScreen() == DownloadQueueScreen.this) {
@@ -265,7 +265,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 		long stop = System.currentTimeMillis();
 		System.out.println("time used " + (stop - start));
 
-		 addMenuItem(_reloadItem);
+		addMenuItem(_reloadItem);
 	}
 
 	private ReloadItem _reloadItem = new ReloadItem();
@@ -286,8 +286,8 @@ public class DownloadQueueScreen extends FixMainScreen {
 			doReload();
 		}
 	}
-	private void doReload(){
 
+	private void doReload() {
 
 		// The thread maybe die restart it
 		System.out.println("oak1");
@@ -307,18 +307,20 @@ public class DownloadQueueScreen extends FixMainScreen {
 				String localPatht = CrieUtils.getVideoFolderConnString()
 						+ vid2.getName();
 				DownloadCombiner download = new DownloadCombiner(url,
-						localPatht, Const.DOWNLOAD_SIZE, true, vid2
-								.getName(), vid2.getTitle());
+						localPatht, Const.DOWNLOAD_SIZE, true, vid2.getName(),
+						vid2.getTitle());
 				// download.start();
 				engine.addDownloadVideo(download);
 			}
 		}
-	
+
 	}
+
 	boolean mTrucking = true;
-	
+
 	String lastCheckFile = "";
 	String lastCheckPercent = "";
+
 	private void updateStatus() {
 		long start = System.currentTimeMillis();
 		try {
@@ -339,7 +341,10 @@ public class DownloadQueueScreen extends FixMainScreen {
 						// if it is current download thread
 						if (!v.getPercent().equals("0")) {
 							if (Engine.getInstance().downloadVideoThread.currentDownloadName
-									.equals(v.getName()) || Engine.getInstance().isVideoDownloadingImmediately(v.getName())){
+									.equals(v.getName())
+									|| Engine.getInstance()
+											.isVideoDownloadingImmediately(
+													v.getName())) {
 								UiApplication.getUiApplication().invokeLater(
 										new Runnable() {
 
@@ -372,6 +377,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 		long stop = System.currentTimeMillis();
 		System.out.println("updatestatus " + (stop - start));
 	}
+
 	private void checkForReload() {
 		try {
 			// System.out.println("update status");
@@ -391,16 +397,24 @@ public class DownloadQueueScreen extends FixMainScreen {
 						// if it is current download thread
 						if (!v.getPercent().equals("0")) {
 							if (Engine.getInstance().downloadVideoThread.currentDownloadName
-									.equals(v.getName()) || Engine.getInstance().isVideoDownloadingImmediately(v.getName())){
+									.equals(v.getName())
+									|| Engine.getInstance()
+											.isVideoDownloadingImmediately(
+													v.getName())) {
 								UiApplication.getUiApplication().invokeLater(
 										new Runnable() {
 
 											public void run() {
-												if(lastCheckFile.equals(v.getName()) && lastCheckPercent.equals(v.getPercent())){
+												if (lastCheckFile.equals(v
+														.getName())
+														&& lastCheckPercent
+																.equals(v
+																		.getPercent())) {
 													doReload();
 												}
 												lastCheckFile = v.getName();
-												lastCheckPercent = v.getPercent();
+												lastCheckPercent = v
+														.getPercent();
 											}
 										});
 							}
@@ -417,6 +431,7 @@ public class DownloadQueueScreen extends FixMainScreen {
 			e.printStackTrace();
 		}
 	}
+
 	private final class MainItem extends MenuItem {
 		/**
 		 * Constructor.
@@ -464,12 +479,20 @@ public class DownloadQueueScreen extends FixMainScreen {
 				FileConnection file = (FileConnection) Connector
 						.open(localPatht);
 				try {
-				if (file.exists()) {
-					file.delete();
-				}
+					if (file.exists()) {
+						file.delete();
+					}
 				} catch (IOException e) {
 					System.out.println(e.getMessage());
 					e.printStackTrace();
+				} finally {
+					try {
+						if (file != null) {
+							file.close();
+						}
+					} catch (Exception e) {
+
+					}
 				}
 				// remove from recordstore
 				ProfileEntry profile = ProfileEntry.getInstance();
@@ -482,12 +505,14 @@ public class DownloadQueueScreen extends FixMainScreen {
 					}
 				}
 				// delete from download queue
-				try{
-				DownloadCombiner combiner = Engine.getInstance().getVideoDownloadingImmediately(video.getName());
-				if(combiner != null){
-					Engine.getInstance().removeDownloadingImmediatly(combiner);
-				}
-				}catch(Exception e){
+				try {
+					DownloadCombiner combiner = Engine.getInstance()
+							.getVideoDownloadingImmediately(video.getName());
+					if (combiner != null) {
+						Engine.getInstance().removeDownloadingImmediatly(
+								combiner);
+					}
+				} catch (Exception e) {
 					System.out.println("Error " + e.getMessage());
 				}
 				//

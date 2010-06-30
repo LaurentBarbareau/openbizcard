@@ -161,7 +161,7 @@ public class LoadPicThread implements Runnable {
 					bStrm.write(ch);
 
 				imageData = bStrm.toByteArray();
-				bStrm.close();
+//				bStrm.close();
 			}
 
 		} catch (Exception e) {
@@ -180,8 +180,8 @@ public class LoadPicThread implements Runnable {
 		}finally {
 			// Free up i/o streams and http connection
 			try {
-				if (httpcon != null)
-					httpcon.close();
+				if (bStrm != null)
+					bStrm.close();
 			} catch (Exception ignored) {
 			}
 			try {
@@ -189,6 +189,12 @@ public class LoadPicThread implements Runnable {
 					dInputS.close();
 			} catch (Exception ignored) {
 			}
+			try {
+				if (httpcon != null)
+					httpcon.close();
+			} catch (Exception ignored) {
+			}
+			
 
 		}
 		return imageData;

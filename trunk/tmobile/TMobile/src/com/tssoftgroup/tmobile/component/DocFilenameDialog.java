@@ -64,6 +64,7 @@ public class DocFilenameDialog extends Dialog {
 					FileConnection fc = (FileConnection) Connector.open(
 							localPatht, Connector.READ_WRITE);
 					if (fc.exists()) {
+						fc.close();
 						Object[] keys = { "OK" };
 						int[] values = { Dialog.OK };
 						int ret = Dialog.ask(
