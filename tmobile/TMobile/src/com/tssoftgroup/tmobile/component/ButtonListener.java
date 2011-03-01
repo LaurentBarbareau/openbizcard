@@ -48,6 +48,7 @@ public class ButtonListener implements FieldChangeListener {
 	TimerUpdateThread _timerUpdateThread;
 	public int DELAY_BEFORE_KEY = 300;
 	PicInfo picInfo;
+	ButtonListener oldListener;
 	TrainingInfo trainInfo;
 	String link;
 	 Screen screen;
@@ -63,7 +64,12 @@ public class ButtonListener implements FieldChangeListener {
 		this.buttonID = buttonID;
 		this.screen = screen;
 	}
-
+	public ButtonListener(ButtonListener oldListener, int buttonID, Screen screen) {
+		super();
+		this.oldListener = oldListener;
+		this.buttonID = buttonID;
+		this.screen = screen;
+	}
 	public ButtonListener(TrainingInfo trainInfo, int buttonID, Screen screen) {
 		super();
 		this.trainInfo = trainInfo;
@@ -139,6 +145,10 @@ public class ButtonListener implements FieldChangeListener {
 	public long lastFull = 0;
 	public static boolean error = false;
 	public void fieldChanged(Field field, int context) {
+		doFieldChage();
+	}
+	public void doFieldChage(){
+
 		try {
 			switch (buttonID) {
 			case 1:// MyVideoMain.Play
@@ -512,12 +522,16 @@ public class ButtonListener implements FieldChangeListener {
 			case 423:// MCast Detail Downloading
 				Dialog.alert("It has been scheduled to download.");
 				break;
+			case 500:// Show confirm Roaming dialog
+				ConfirmRoamingDialog confirmRoamingDialog = new ConfirmRoamingDialog();
+				confirmRoamingDialog.myshow(oldListener);
+				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	
 	}
-
 	private class TimerUpdateThread extends Thread {
 		private boolean _threadCanRun;
 

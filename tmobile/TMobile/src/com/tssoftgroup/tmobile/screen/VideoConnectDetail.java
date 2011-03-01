@@ -46,6 +46,7 @@ import com.tssoftgroup.tmobile.main.ProfileEntry;
 import com.tssoftgroup.tmobile.model.Comment;
 import com.tssoftgroup.tmobile.model.PicInfo;
 import com.tssoftgroup.tmobile.model.Video;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 import com.tssoftgroup.tmobile.utils.Img;
 import com.tssoftgroup.tmobile.utils.MyColor;
 import com.tssoftgroup.tmobile.utils.Scale;
@@ -106,31 +107,43 @@ public class VideoConnectDetail extends FixMainScreen implements
 			// 
 			// Check video status
 			String videoStatus = Video.getVideoStatus(picinfo.getFilename());
+			ButtonListener currentButtonListener;
 			if (videoStatus.equals("0")) {
 				// new video
 				// / Listener for show download dialog
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownload(), imgStock.getDownloadOn());
-				playButtonImg.setChangeListener(new ButtonListener(picinfo, 31,
-						this));
+				currentButtonListener = new ButtonListener(picinfo, 31,
+						this);
 			} else if (videoStatus.equals("3")) {
 				// video is downloaded
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getPlay(), imgStock.getPlayOn());
-				playButtonImg.setChangeListener(new ButtonListener(picinfo,
-						311, this));
+				currentButtonListener = new ButtonListener(picinfo, 311,
+						this);
 			} else if (videoStatus.equals("2")) {
 				// video is downloading
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getDownloading(), imgStock.getDownloadingOn());
-				playButtonImg.setChangeListener(new ButtonListener(picinfo,
-						312, this));
+				currentButtonListener = new ButtonListener(picinfo, 312,
+						this);
 			} else if (videoStatus.equals("1")) {
 				// video is downloading
 				playButtonImg = new CustomButtonField(null, imgStock
 						.getSchedule(), imgStock.getScheduleOn());
-				playButtonImg.setChangeListener(new ButtonListener(picinfo,
-						313, this));
+				currentButtonListener = new ButtonListener(picinfo, 313,
+						this);
+			}else{
+				currentButtonListener = null;
+			}
+			playButtonImg.setChangeListener(currentButtonListener);
+			// Add for Roaming
+			if(CrieUtils.isRoaming() && !videoStatus.equals("3")){
+				playButtonImg = new CustomButtonField(null, imgStock
+						.getPlay(), imgStock.getPlayOn());
+				// show dialog
+				playButtonImg.setChangeListener( new ButtonListener(currentButtonListener, 500,
+						this));
 			}
 			int thumbWidth = 0;
 			if (picinfo.getThumbnail() != null) {
