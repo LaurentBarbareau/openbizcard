@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Timer;
 
 import com.tssoftgroup.tmobile.main.ProfileEntry;
+import com.tssoftgroup.tmobile.utils.CrieUtils;
 
 import net.rim.device.api.i18n.DateFormat;
 import net.rim.device.api.i18n.SimpleDateFormat;
@@ -25,7 +26,7 @@ public class SettingDialog extends Dialog implements FieldChangeListener {
 			return choiceString[index];
 		}
 	};
-	DateField df = new DateField("Download Time : ", new Date().getTime(),
+	DateField df = new DateField("Update Time : ", new Date().getTime(),
 			DateFormat.getInstance(DateFormat.TIME_DEFAULT));
 
 	static String choices[] = { "OK", "Cancel" };
@@ -40,7 +41,9 @@ public class SettingDialog extends Dialog implements FieldChangeListener {
 		// Add field
 		add(pageChoice);
 		add(df);
-		add(noteField);
+		if(CrieUtils.isRoaming()){
+			add(noteField);
+		}
 		noteField.setFont(noteField.getFont().derive(Font.PLAIN, df.getFont().getHeight() - 4));
 		// / Load old Value
 		setOldSetting();
