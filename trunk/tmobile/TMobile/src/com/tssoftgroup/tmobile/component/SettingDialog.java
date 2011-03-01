@@ -11,9 +11,11 @@ import net.rim.device.api.io.http.HttpDateParser;
 import net.rim.device.api.system.Bitmap;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
+import net.rim.device.api.ui.Font;
 import net.rim.device.api.ui.component.ChoiceField;
 import net.rim.device.api.ui.component.DateField;
 import net.rim.device.api.ui.component.Dialog;
+import net.rim.device.api.ui.component.LabelField;
 
 public class SettingDialog extends Dialog implements FieldChangeListener {
 	String[] choiceString = { "On", "Off" };
@@ -30,13 +32,16 @@ public class SettingDialog extends Dialog implements FieldChangeListener {
 	static int values[] = { Dialog.OK, Dialog.CANCEL };
 
 	SimpleDateFormat myDtTm = new SimpleDateFormat("hh:mm");
-
+	
+	LabelField noteField = new LabelField("* The update won't be processed while the phone is in roaming network.");
 	public SettingDialog() {
 		super("Setting", choices, values, 0, Bitmap
 				.getPredefinedBitmap(Bitmap.INFORMATION), Dialog.GLOBAL_STATUS);
 		// Add field
 		add(pageChoice);
 		add(df);
+		add(noteField);
+		noteField.setFont(noteField.getFont().derive(Font.PLAIN, df.getFont().getHeight() - 4));
 		// / Load old Value
 		setOldSetting();
 	}

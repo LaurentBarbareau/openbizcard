@@ -13,7 +13,7 @@ import com.tssoftgroup.tmobile.model.Video;
 public class ScheduleRunable implements Runnable {
 	public boolean isRunning = true;
 	SimpleDateFormat myDtTm = new SimpleDateFormat("hh:mm");
-	boolean checkPercent = false;
+//	boolean checkPercent = false;
 
 	public void run() {
 		while (isRunning) {
@@ -23,7 +23,14 @@ public class ScheduleRunable implements Runnable {
 			// //
 			if (isTimeInSetting()) {
 				if (CrieUtils.isRoaming() && profile.roaming.equals("Off")) {
-
+					// is Roaming and set not to download when roaming 
+					try {
+						Thread.sleep(60000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					continue;
 				} else {
 
 					Engine engine = Engine.getInstance();
@@ -69,7 +76,7 @@ public class ScheduleRunable implements Runnable {
 //			if (true) {
 //				checkDownloadAndRestart();
 //			}
-			checkPercent = !checkPercent;
+//			checkPercent = !checkPercent;
 			try {
 				Thread.sleep(60000);
 			} catch (InterruptedException e) {
