@@ -66,16 +66,16 @@ public class VideoDownloadDialog extends Dialog implements FieldChangeListener {
 		int result = this.doModal();
 		// Submit
 		if (result == Dialog.OK) {
-			ProfileEntry profile = ProfileEntry.getInstance();
+//			ProfileEntry profile = ProfileEntry.getInstance();
 			// 
-			if(CrieUtils.isRoaming()){
-				if(profile.roaming.equals("On")){
-					Dialog.alert(Wording.ROAMING_MODE_YES);
-				}else{
-					Dialog.alert(Wording.ROAMING_MODE_NO);
-					return;
-				}
-			}
+//			if(CrieUtils.isRoaming()){
+//				if(profile.roaming.equals("On")){
+//					Dialog.alert(Wording.ROAMING_MODE_YES);
+//				}else{
+//					Dialog.alert(Wording.ROAMING_MODE_NO);
+//					return;
+//				}
+//			}
 			if (methodNow.isSelected()) {
 				System.out.println("select now");
 				// Downlaod the file

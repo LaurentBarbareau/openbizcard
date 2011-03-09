@@ -22,7 +22,7 @@ public class ScheduleRunable implements Runnable {
 			// Vector scheduleVideos = Video.getScheduleVideo(videos);
 			// //
 			if (isTimeInSetting()) {
-				if (CrieUtils.isRoaming() && profile.roaming.equals("Off")) {
+				if (CrieUtils.isRoaming() ) {
 					// is Roaming and set not to download when roaming 
 					try {
 						Thread.sleep(60000);
