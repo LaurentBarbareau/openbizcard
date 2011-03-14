@@ -243,34 +243,11 @@ public class HttpUtilUploadThread extends HttpAbstractUtil {
 		try {
 			int n = (int) con.getLength();
 			// Log.info("Size: " + n);
-			if (n != -1) {
-				byte[] b = new byte[n];
-				is.read(b, 0, n);
-				return new String(b);
-				// // / oak seperate 20 part
-				// int timestamp = n / 5;
-				// int current = timestamp;
-				// int off = 4;
-				// // oak
-				// for (int i = 0; i < n; i++) {
-				// if ((ch = is.read()) != -1) {
-				// stb.append((char) ch);
-				// }
-				// if (i == current) {
-				// off += 4;
-				// current += timestamp;
-				// }
-				// // if (i % 100 == 0 || i == n - 1) {
-				// // Log.setProgress(i * 100 / n);
-				// // }
-				// }
-			} else {
-
 				while ((ch = is.read()) != -1) {
 					n = is.available();
 					stb.append((char) ch);
 				}
-			}
+			
 		} catch (IOException ioe) {
 			throw ioe;
 		} finally {
