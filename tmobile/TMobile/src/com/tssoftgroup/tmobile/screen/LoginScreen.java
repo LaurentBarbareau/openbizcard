@@ -1,6 +1,7 @@
 package com.tssoftgroup.tmobile.screen;
 
 import net.rim.device.api.system.Bitmap;
+import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.system.Display;
 import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.FieldChangeListener;
@@ -55,6 +56,10 @@ public class LoginScreen {
 	/* creating default constructor */
 	
 	public LoginScreen(boolean needLogin) {
+		// print devioe name 
+		System.out.println("Device name " + DeviceInfo.getDeviceName());
+		/// Torch = 9800
+		// Storm = 9500 , 9550
 		
 		/*
 		 * Creating an object of the main screen class to use its
